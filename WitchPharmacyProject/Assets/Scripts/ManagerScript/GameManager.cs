@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     SymptomDialog dialog;
     public Text textComponent;
 
+    
+
     void Start()
     {
         visitorList = new List<VisitorClass>();

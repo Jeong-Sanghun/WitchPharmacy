@@ -40,6 +40,39 @@ public class JsonManager
 
     }
 
+    public void SaveJson<T>(T saveData,string name)
+    {
+        string jsonText;
+
+
+        //안드로이드에서의 저장 위치를 다르게 해주어야 한다
+        //Application.dataPath를 이용하면 어디로 가는지는 구글링 해보길 바란다
+        //안드로이드의 경우에는 데이터조작을 막기위해 2진데이터로 변환을 해야한다
+
+        string savePath = Application.dataPath;
+        string appender = "/userData/" +name+ ".json";
+#if UNITY_EDITOR_WIN
+
+#endif
+#if UNITY_ANDROID
+        savePath = Application.persistentDataPath;
+        
+#endif
+        //stringBuilder는 최적화에 좋대서 쓰고있다. string+string은 메모리낭비가 심하다
+        // 사실 이정도 한두번 쓰는건 상관없긴한데 그냥 써주자. 우리의 컴은 좋으니까..
+        StringBuilder builder = new StringBuilder(savePath);
+        builder.Append(appender);
+        jsonText = JsonUtility.ToJson(saveData, true);
+        //이러면은 일단 데이터가 텍스트로 변환이 된다
+        //jsonUtility를 이용하여 data인 WholeGameData를 json형식의 text로 바꾸어준다
+
+        //파일스트림을 이렇게 지정해주고 저장해주면된당 끗
+        FileStream fileStream = new FileStream(builder.ToString(), FileMode.Create);
+        byte[] bytes = Encoding.UTF8.GetBytes(jsonText);
+        fileStream.Write(bytes, 0, bytes.Length);
+        fileStream.Close();
+    }
+
 
     public SaveDataClass LoadSaveData()
     {
