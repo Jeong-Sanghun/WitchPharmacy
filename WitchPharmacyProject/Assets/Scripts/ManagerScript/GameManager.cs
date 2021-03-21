@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    public SceneManager SceneManagerScirpt;
+
     List<VisitorClass> visitorList;
     SymptomDialog dialog;
     public Text textComponent;
