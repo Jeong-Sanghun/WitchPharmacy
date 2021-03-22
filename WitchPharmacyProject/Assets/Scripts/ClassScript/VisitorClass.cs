@@ -10,6 +10,7 @@ public enum Symptom
 }
 
 //이거 제이슨으로 저장하는게 아님
+//랜덤손님 1명이 가지고 있는 클래스
 public class VisitorClass
 {
     public string name;

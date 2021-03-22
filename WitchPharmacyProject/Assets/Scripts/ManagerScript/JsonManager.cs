@@ -4,8 +4,9 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 
-public class JsonManager
+public class JsonManager    //SH
 {
+    //세이브데이터를 세이브해줌.
     public void SaveJson(SaveDataClass saveData)
     {
         string jsonText;
@@ -40,6 +41,7 @@ public class JsonManager
 
     }
 
+    //세이브데이터 테스트를 위해 만든거
     public void SaveJson<T>(T saveData,string name)
     {
         string jsonText;
@@ -74,6 +76,7 @@ public class JsonManager
     }
 
 
+    //로딩
     public SaveDataClass LoadSaveData()
     {
         //이제 우리가 이전에 저장했던 데이터를 꺼내야한다
