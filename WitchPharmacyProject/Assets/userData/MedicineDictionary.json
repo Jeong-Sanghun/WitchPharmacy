@@ -1,0 +1,1214 @@
+{
+    "medicineList": [
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "realGameobject": {
+                "instanceID": 0
+            }
+        }
+    ]
+}

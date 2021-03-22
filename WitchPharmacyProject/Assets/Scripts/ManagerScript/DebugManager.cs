@@ -19,7 +19,8 @@ public class DebugManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DebugFunction();
+        //상훈이의 주석처리
+       // DebugFunction();
 
     }
 

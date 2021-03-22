@@ -17,7 +17,8 @@ public class JsonManager    //SH
         //안드로이드의 경우에는 데이터조작을 막기위해 2진데이터로 변환을 해야한다
 
         string savePath = Application.dataPath;
-        string appender = "/userData/SaveData.json";
+        string appender = "/userData/";
+        string nameString = "SaveData.json";
 #if UNITY_EDITOR_WIN
 
 #endif
@@ -25,10 +26,16 @@ public class JsonManager    //SH
         savePath = Application.persistentDataPath;
         
 #endif
-        //stringBuilder는 최적화에 좋대서 쓰고있다. string+string은 메모리낭비가 심하다
-        // 사실 이정도 한두번 쓰는건 상관없긴한데 그냥 써주자. 우리의 컴은 좋으니까..
         StringBuilder builder = new StringBuilder(savePath);
         builder.Append(appender);
+        if (!Directory.Exists(builder.ToString()))
+        {
+            //디렉토리가 없는경우 만들어준다
+            Directory.CreateDirectory(builder.ToString());
+
+        }
+        builder.Append(nameString);
+
         jsonText = JsonUtility.ToJson(saveData, true);
         //이러면은 일단 데이터가 텍스트로 변환이 된다
         //jsonUtility를 이용하여 data인 WholeGameData를 json형식의 text로 바꾸어준다
@@ -52,7 +59,8 @@ public class JsonManager    //SH
         //안드로이드의 경우에는 데이터조작을 막기위해 2진데이터로 변환을 해야한다
 
         string savePath = Application.dataPath;
-        string appender = "/userData/" +name+ ".json";
+        string appender = "/userData/";
+        string nameString = name+ ".json";
 #if UNITY_EDITOR_WIN
 
 #endif
@@ -60,10 +68,19 @@ public class JsonManager    //SH
         savePath = Application.persistentDataPath;
         
 #endif
-        //stringBuilder는 최적화에 좋대서 쓰고있다. string+string은 메모리낭비가 심하다
-        // 사실 이정도 한두번 쓰는건 상관없긴한데 그냥 써주자. 우리의 컴은 좋으니까..
         StringBuilder builder = new StringBuilder(savePath);
         builder.Append(appender);
+        if (!Directory.Exists(builder.ToString()))
+        {
+            //디렉토리가 없는경우 만들어준다
+            Debug.Log("뭐야");
+            Directory.CreateDirectory(builder.ToString());
+
+        }
+        builder.Append(nameString);
+        //stringBuilder는 최적화에 좋대서 쓰고있다. string+string은 메모리낭비가 심하다
+        // 사실 이정도 한두번 쓰는건 상관없긴한데 그냥 써주자. 우리의 컴은 좋으니까..
+
         jsonText = JsonUtility.ToJson(saveData, true);
         //이러면은 일단 데이터가 텍스트로 변환이 된다
         //jsonUtility를 이용하여 data인 WholeGameData를 json형식의 text로 바꾸어준다
@@ -126,11 +143,6 @@ public class JsonManager    //SH
             //세이브파일이 없는경우
             gameData = new SaveDataClass();
         }
-
-
-
-
-
         return gameData;
         //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
     }

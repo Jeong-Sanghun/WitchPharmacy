@@ -15,9 +15,10 @@ public class DialogBundle //상훈
     public DialogBundle()
     {
         dialogArray = new string[4];
-        for (int i = 0; i < dialogArray.Length; i++)
-        {
-            dialogArray[i] = (i - 2).ToString() + "번째 증상";
-        }
+        dialogArray[0] = "-2 증상";
+        dialogArray[1] = "-1 증상";
+        dialogArray[2] = "1 증상";
+        dialogArray[3] = "2 증상";
+
     }
 }

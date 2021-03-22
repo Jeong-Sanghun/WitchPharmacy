@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
 
 public class SceneManager : MonoBehaviour // JH
 {
@@ -16,12 +17,15 @@ public class SceneManager : MonoBehaviour // JH
         float currentTargetNumber=0f; // 해당 Time에 출력을 목표로 하는 최소 글자 수
         int currentNumber=0; // 해당 Time에 출력중인 글자 수
         string displayedText="";
-        while(currentTargetNumber < inputTextString.Length){
+        StringBuilder builder = new StringBuilder(displayedText);
+        while (currentTargetNumber < inputTextString.Length){
             while (currentNumber < currentTargetNumber){ // 목표 글자수까지 출력
-                displayedText += inputTextString.Substring(currentNumber,1);
+                //displayedText += inputTextString.Substring(currentNumber,1);
+                builder.Append(inputTextString.Substring(currentNumber, 1));
                 currentNumber++;
             }
-            inputTextUI.text = displayedText;
+            //inputTextUI.text = displayedText;
+            inputTextUI.text = builder.ToString();
             yield return null;
             miniTimer += Time.deltaTime;
             currentTargetNumber = miniTimer/eachTime;
