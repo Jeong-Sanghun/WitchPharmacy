@@ -13,14 +13,14 @@ public class DebugManager : MonoBehaviour
 
     public void DebugFunction(){
         StartCoroutine(GameManagerScirpt.SceneManagerScirpt.LoadTextOneByOne(debugString,DebugText.GetComponent<Text>()));
-        StartCoroutine(GameManagerScirpt.SceneManagerScirpt.MoveModule_Accel(debug_GameObject,new Vector3(7f,-1.74f,-1f),2f));
+        StartCoroutine(GameManagerScirpt.SceneManagerScirpt.MoveModule_Accel(debug_GameObject,new Vector3(7f,-1.74f,-1f),0.5f));
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //상훈이의 주석처리
-       // DebugFunction();
+       //DebugFunction();
 
     }
 
