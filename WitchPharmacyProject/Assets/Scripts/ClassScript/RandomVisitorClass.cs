@@ -55,9 +55,14 @@ public class RandomVisitorClass //SH
         //MedicineClass firstMedicine = ownedMedicineList[firstMedicineIndex];
         //first number 는 -1, 1, SecondNumber 은 2, -2
         answerMedicineList = new List<MedicineClass>();
-        //첫번째 약재 정해줌
 
-        //두번쨰 약재 정해줌. 이제부터 가능한 약재 리스트가 들어감.
+        //첫번쨰 약재 정해줌. 이제부터 가능한 약재 리스트가 들어감.
+        /* 첫번째 루프는 약재를 정하고, 그 약재의 + - 값을 고려해서 가능한 약재의 리스트를 뽑아낸다
+         * 예를들어 물+ 불--라면, 불- 나무++은 제외, 나무+ 빛--는 넣는 식. +2 위 -2아래로는 다 재낀다.
+         * 그 리스트들을 뽑았다 치면 그 다음 루프에서 증상어레이에 값을 다시 더해서 누적계산하는방식.
+         * 
+         * 
+         */ 
         int forIndex = 0;
         while (symptomNumber > nowMedicineNumber)
         {
@@ -75,6 +80,7 @@ public class RandomVisitorClass //SH
                 }
                 available = true;
                 //만약 증상 합이 2나 -2 넘어가면 그 약은 안되는거니까 다시돌려
+                //여기가 누적계산하는 곳
                 int amount = symptomNumberArray[(int)medicine.firstSymptom] + medicine.firstNumber;
                 if (amount < -2 || amount > 2)
                 {
@@ -120,6 +126,7 @@ public class RandomVisitorClass //SH
                 symptomAmountList.Add(-1 * symptomNumberArray[i]);
             }
         }
+        //아마 절대 안나올 것.
         if(nowMedicineNumber == 0)
         {
             fullDialog = "저는 아픈데가 없는데 왜온거죠";
@@ -127,6 +134,7 @@ public class RandomVisitorClass //SH
         }
 
         
+        //솔직히 이 아래 다 디버그용임. 실코드에 안쓸것
         string iamString = "저는 ";
         string andString = ", 하고";
         string problemString = " 에 문제가 있는거 같아요. \n";

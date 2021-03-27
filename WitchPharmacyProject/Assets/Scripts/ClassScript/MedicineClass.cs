@@ -13,5 +13,14 @@ public class MedicineClass  //SH
     public int firstNumber;
     public int secondNumber;
 
-    public GameObject realGameobject;
+    //public GameObject realGameobject;
+
+    public MedicineClass()
+    {
+        name = "null";
+        firstSymptom = Symptom.water;
+        secondSymptom = Symptom.fire;
+        firstNumber = 1;
+        secondNumber = 2;
+    }
 }
