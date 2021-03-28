@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour //SH
     public SceneManager SceneManagerScirpt;
     //모든 매니저 스크립트에서 참조
     public SaveDataClass saveData;
-    public MedicineDictionary medicineDictionary;
+    public MedicineDataWrapper medicineDataWrapper;
     
     //이거는 세이브 로드 확인해볼라고
     public SymptomDialog symptomDialog;
@@ -40,21 +40,50 @@ public class GameManager : MonoBehaviour //SH
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.
     void DebugDataJson()
     {
-        List<int> random = new List<int>();
-        for(int i = 0; i < 200; i++)
-        {
-            random.Add(Random.Range(0, 2));
-        }
-        medicineDictionary = new MedicineDictionary(random);
+        
+       /* medicineDataWrapper = new MedicineDataWrapper();
         saveData = new SaveDataClass();
-        for(int i = 0; i < medicineDictionary.medicineList.Count; i++)
+        for(int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
             saveData.ownedMedicineList.Add(i);
+        }
+        for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i += 0)
+        {
             saveData.owningMedicineList.Add(i);
+            i += Random.Range(0, 4);
+        }
+        for (int i = 0; i < saveData.owningMedicineList.Count; i++)
+        {
+            if (saveData.owningMedicineDictionary.ContainsKey(saveData.owningMedicineList[i]))
+            {
+                saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] = saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] + 1;
+
+            }
+            else
+            {
+                saveData.owningMedicineDictionary.Add(saveData.owningMedicineList[i],1);
+            }
         }
         symptomDialog = new SymptomDialog();
-        jsonManager.SaveJson<MedicineDictionary>(medicineDictionary, "MedicineDictionary");
+        jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
-        jsonManager.SaveJson(saveData);
+        jsonManager.SaveJson(saveData);*/
+        
+        medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
+        symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
+        saveData = jsonManager.LoadSaveData();
+
+        for (int i = 0; i < saveData.owningMedicineList.Count; i++)
+        {
+            if (saveData.owningMedicineDictionary.ContainsKey(saveData.owningMedicineList[i]))
+            {
+                saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] = saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] + 1;
+
+            }
+            else
+            {
+                saveData.owningMedicineDictionary.Add(saveData.owningMedicineList[i], 1);
+            }
+        }
     }
 }

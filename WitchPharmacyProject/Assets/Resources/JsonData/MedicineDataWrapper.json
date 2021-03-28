@@ -1,0 +1,1214 @@
+{
+    "medicineDataList": [
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 0,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 0,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 0,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 0,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 1,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 1,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 1,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 1,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 2,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 2,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 2,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 3,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 3,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 3,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 4,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 4,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 4,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 4,
+            "secondSymptom": 5,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 0,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "축축한 원석",
+            "firstSymptom": 5,
+            "secondSymptom": 1,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "흐르는 불꽃",
+            "firstSymptom": 5,
+            "secondSymptom": 2,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "시든 이슬",
+            "firstSymptom": 5,
+            "secondSymptom": 3,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": -1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": -2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        },
+        {
+            "name": "싸늘한 열매",
+            "firstSymptom": 5,
+            "secondSymptom": 4,
+            "firstNumber": 1,
+            "secondNumber": 2,
+            "medicineImage": {
+                "instanceID": 0
+            }
+        }
+    ]
+}

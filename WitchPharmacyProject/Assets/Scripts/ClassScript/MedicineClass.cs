@@ -13,6 +13,8 @@ public class MedicineClass  //SH
     public int firstNumber;
     public int secondNumber;
 
+    public Sprite medicineImage;
+
     //public GameObject realGameobject;
 
     public MedicineClass()
@@ -22,5 +24,6 @@ public class MedicineClass  //SH
         secondSymptom = Symptom.fire;
         firstNumber = 1;
         secondNumber = 2;
+        medicineImage = null;
     }
 }

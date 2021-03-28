@@ -7,17 +7,25 @@ using UnityEngine;
 public class SaveDataClass
 {
     public string name;
-    public List<int> owningMedicineList;  //현재 가지고있는거
+    //public List<int> owningMedicineList;  //현재 가지고있는거
     public List<int> ownedMedicineList;   //딕셔너리
-    //int로 쓰는 이유는 MeidcineDictionary에 index값을 뽑아서 쓸 것이기 때문이다.
-    //json이 길어지면 데이터 저장하는데 귀찮아짐. 그리고 똑같은 값을 dictionary에서도 쓰고 여기서도 쓸 이유가 없음.
+    //Key값은 medicine종류에 해당하는 medicineDictionary의 index
+    //Value값은 그 약을 얼마나 가지고 있는지. 만약 0이라면 Dictionary에서 삭제.
+
+    //이시발....시발........딕셔너리는 json저장이 안된대. ....
+    public Dictionary<int, int> owningMedicineDictionary;
+
+    //그래서 리스트로 저장을 하고 딕셔너리를 만들어줄거임 ㅋㅋ....
+    public List<int> owningMedicineList;
+    
+
 
     public SaveDataClass()
     {
         name = "initName";
-        owningMedicineList = new List<int>();
+        owningMedicineDictionary = new Dictionary<int, int>();
         ownedMedicineList = new List<int>();
-        
+        owningMedicineList = new List<int>();
 
 
     }

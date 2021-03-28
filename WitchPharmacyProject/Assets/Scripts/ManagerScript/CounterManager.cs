@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //카운터씬 매니저
+//여기서 증상까지 만들어서 RoomManager로 넘겨줌
 public class CounterManager : MonoBehaviour //SH
 {
     GameManager gameManager;
@@ -12,9 +13,9 @@ public class CounterManager : MonoBehaviour //SH
     SymptomDialog symptomDialog;
     List<int> ownedMedicineIndexList;
     List<MedicineClass> ownedMedicineList;
-    List<int> owningMedicineIndexList;
-    List<MedicineClass> owningMedicineList;
-    MedicineDictionary medicineDictionary;
+    Dictionary<int,int> owningMedicineDictionary;
+    //List<MedicineClass> owningMedicineList;
+    List<MedicineClass> medicineDataList;
 
     [SerializeField]
     List<RandomVisitorClass> randomVisitorList;
@@ -26,20 +27,21 @@ public class CounterManager : MonoBehaviour //SH
         sceneManager = gameManager.SceneManagerScirpt;
         symptomDialog = gameManager.symptomDialog;
         saveData = gameManager.saveData;
-        medicineDictionary = gameManager.medicineDictionary;
+        medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         
         ownedMedicineIndexList = saveData.ownedMedicineList;
         ownedMedicineList = new List<MedicineClass>();
         for(int i = 0; i < ownedMedicineIndexList.Count; i++)
         {
-            ownedMedicineList.Add(medicineDictionary.medicineList[ownedMedicineIndexList[i]]);
+            ownedMedicineList.Add(medicineDataList[ownedMedicineIndexList[i]]);
         }
-        owningMedicineIndexList = saveData.owningMedicineList;
-        owningMedicineList = new List<MedicineClass>();
+        owningMedicineDictionary = saveData.owningMedicineDictionary;
+        //owningMedicineList = new List<MedicineClass>();
+        /*
         for (int i = 0; i < owningMedicineIndexList.Count; i++)
         {
             owningMedicineList.Add(medicineDictionary.medicineList[owningMedicineIndexList[i]]);
-        }
+        }*/
         //여기까진 게임메니저랑 세이브데이터에서 데이터 받아오는거 및 초기화.
 
         randomVisitorList = new List<RandomVisitorClass>();
