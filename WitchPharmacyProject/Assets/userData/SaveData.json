@@ -124,75 +124,181 @@
         120
     ],
     "owningMedicineList": [
-        0,
-        2,
-        3,
-        6,
-        7,
-        8,
-        10,
-        12,
-        13,
-        13,
-        16,
-        16,
-        19,
-        22,
-        23,
-        25,
-        28,
-        30,
-        33,
-        36,
-        39,
-        42,
-        44,
-        46,
-        48,
-        49,
-        49,
-        51,
-        51,
-        54,
-        55,
-        58,
-        60,
-        60,
-        61,
-        63,
-        66,
-        68,
-        71,
-        71,
-        74,
-        74,
-        77,
-        78,
-        78,
-        78,
-        81,
-        84,
-        87,
-        89,
-        92,
-        92,
-        95,
-        97,
-        97,
-        97,
-        99,
-        99,
-        99,
-        102,
-        102,
-        105,
-        108,
-        111,
-        112,
-        113,
-        114,
-        115,
-        118,
-        118
+        {
+            "medicineIndex": 0,
+            "medicineQuantity": 26
+        },
+        {
+            "medicineIndex": 4,
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 8,
+            "medicineQuantity": 13
+        },
+        {
+            "medicineIndex": 9,
+            "medicineQuantity": 47
+        },
+        {
+            "medicineIndex": 12,
+            "medicineQuantity": 22
+        },
+        {
+            "medicineIndex": 16,
+            "medicineQuantity": 32
+        },
+        {
+            "medicineIndex": 18,
+            "medicineQuantity": 32
+        },
+        {
+            "medicineIndex": 20,
+            "medicineQuantity": 19
+        },
+        {
+            "medicineIndex": 21,
+            "medicineQuantity": 35
+        },
+        {
+            "medicineIndex": 22,
+            "medicineQuantity": 24
+        },
+        {
+            "medicineIndex": 26,
+            "medicineQuantity": 18
+        },
+        {
+            "medicineIndex": 28,
+            "medicineQuantity": 13
+        },
+        {
+            "medicineIndex": 29,
+            "medicineQuantity": 15
+        },
+        {
+            "medicineIndex": 30,
+            "medicineQuantity": 43
+        },
+        {
+            "medicineIndex": 34,
+            "medicineQuantity": 41
+        },
+        {
+            "medicineIndex": 38,
+            "medicineQuantity": 31
+        },
+        {
+            "medicineIndex": 41,
+            "medicineQuantity": 36
+        },
+        {
+            "medicineIndex": 45,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 47,
+            "medicineQuantity": 14
+        },
+        {
+            "medicineIndex": 51,
+            "medicineQuantity": 46
+        },
+        {
+            "medicineIndex": 55,
+            "medicineQuantity": 43
+        },
+        {
+            "medicineIndex": 57,
+            "medicineQuantity": 35
+        },
+        {
+            "medicineIndex": 61,
+            "medicineQuantity": 18
+        },
+        {
+            "medicineIndex": 65,
+            "medicineQuantity": 17
+        },
+        {
+            "medicineIndex": 69,
+            "medicineQuantity": 32
+        },
+        {
+            "medicineIndex": 73,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 76,
+            "medicineQuantity": 26
+        },
+        {
+            "medicineIndex": 80,
+            "medicineQuantity": 21
+        },
+        {
+            "medicineIndex": 83,
+            "medicineQuantity": 7
+        },
+        {
+            "medicineIndex": 85,
+            "medicineQuantity": 41
+        },
+        {
+            "medicineIndex": 86,
+            "medicineQuantity": 49
+        },
+        {
+            "medicineIndex": 87,
+            "medicineQuantity": 3
+        },
+        {
+            "medicineIndex": 91,
+            "medicineQuantity": 49
+        },
+        {
+            "medicineIndex": 94,
+            "medicineQuantity": 6
+        },
+        {
+            "medicineIndex": 98,
+            "medicineQuantity": 27
+        },
+        {
+            "medicineIndex": 101,
+            "medicineQuantity": 12
+        },
+        {
+            "medicineIndex": 105,
+            "medicineQuantity": 12
+        },
+        {
+            "medicineIndex": 109,
+            "medicineQuantity": 33
+        },
+        {
+            "medicineIndex": 113,
+            "medicineQuantity": 20
+        },
+        {
+            "medicineIndex": 114,
+            "medicineQuantity": 31
+        },
+        {
+            "medicineIndex": 115,
+            "medicineQuantity": 19
+        },
+        {
+            "medicineIndex": 116,
+            "medicineQuantity": 38
+        },
+        {
+            "medicineIndex": 117,
+            "medicineQuantity": 44
+        },
+        {
+            "medicineIndex": 120,
+            "medicineQuantity": 22
+        }
     ]
 }

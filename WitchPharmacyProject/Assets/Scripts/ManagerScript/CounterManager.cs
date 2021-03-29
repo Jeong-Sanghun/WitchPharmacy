@@ -48,7 +48,7 @@ public class CounterManager : MonoBehaviour //SH
         for (int i = 0; i< 100; i++)
         {
             randomVisitorList.Add(new RandomVisitorClass(symptomDialog,ownedMedicineList));
-            Debug.Log(randomVisitorList[i].answerMedicineList.Count +"개 짜리");
+            //Debug.Log(randomVisitorList[i].answerMedicineList.Count +"개 짜리");
 
         }
         // LoadTextOneByOne(string inputTextString, Text inputTextUI, float eachTime = 0.05f)

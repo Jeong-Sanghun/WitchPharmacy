@@ -249,4 +249,9 @@ public class RoomManager : MonoBehaviour    //SH
         }*/
 
     }
+
+    public void DragDebug()
+    {
+        Debug.Log("드래깅");
+    }
 }

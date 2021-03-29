@@ -1646,6 +1646,49 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 362985393}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &752647123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752647122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2027568710}
+          m_MethodName: DragDebug
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2027568710}
+          m_MethodName: DragDebug
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &752647126 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6440219008225185848, guid: 67a468ac5cd4fa24d881b5afcfc543a8,
@@ -4820,7 +4863,7 @@ MonoBehaviour:
   saveData:
     name: 
     ownedMedicineList: 
-    owningMedicineList: 
+    owningMedicineList: []
   medicineDataWrapper:
     medicineDataList:
     - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"

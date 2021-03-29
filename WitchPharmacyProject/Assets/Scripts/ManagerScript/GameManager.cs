@@ -41,33 +41,24 @@ public class GameManager : MonoBehaviour //SH
     void DebugDataJson()
     {
         
-       /* medicineDataWrapper = new MedicineDataWrapper();
+        medicineDataWrapper = new MedicineDataWrapper();
         saveData = new SaveDataClass();
         for(int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
             saveData.ownedMedicineList.Add(i);
         }
-        for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i += 0)
+        for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
-            saveData.owningMedicineList.Add(i);
+            int quant = Random.Range(1, 50);
+            OwningMedicineClass med = new OwningMedicineClass(i, quant);
+            saveData.owningMedicineList.Add(med);
             i += Random.Range(0, 4);
         }
-        for (int i = 0; i < saveData.owningMedicineList.Count; i++)
-        {
-            if (saveData.owningMedicineDictionary.ContainsKey(saveData.owningMedicineList[i]))
-            {
-                saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] = saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] + 1;
 
-            }
-            else
-            {
-                saveData.owningMedicineDictionary.Add(saveData.owningMedicineList[i],1);
-            }
-        }
         symptomDialog = new SymptomDialog();
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
-        jsonManager.SaveJson(saveData);*/
+        jsonManager.SaveJson(saveData);
         
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
@@ -75,14 +66,14 @@ public class GameManager : MonoBehaviour //SH
 
         for (int i = 0; i < saveData.owningMedicineList.Count; i++)
         {
-            if (saveData.owningMedicineDictionary.ContainsKey(saveData.owningMedicineList[i]))
+            if (saveData.owningMedicineDictionary.ContainsKey(saveData.owningMedicineList[i].medicineIndex))
             {
-                saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] = saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] + 1;
-
+                saveData.owningMedicineDictionary[saveData.owningMedicineList[i].medicineIndex] = saveData.owningMedicineList[i].medicineQuantity;
+                    //saveData.owningMedicineDictionary[saveData.owningMedicineList[i]] + 1;
             }
             else
             {
-                saveData.owningMedicineDictionary.Add(saveData.owningMedicineList[i], 1);
+                saveData.owningMedicineDictionary.Add(saveData.owningMedicineList[i].medicineIndex, saveData.owningMedicineList[i].medicineQuantity);
             }
         }
     }

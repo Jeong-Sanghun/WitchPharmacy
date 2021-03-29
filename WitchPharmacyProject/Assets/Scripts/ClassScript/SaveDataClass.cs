@@ -16,8 +16,9 @@ public class SaveDataClass
     public Dictionary<int, int> owningMedicineDictionary;
 
     //그래서 리스트로 저장을 하고 딕셔너리를 만들어줄거임 ㅋㅋ....
-    public List<int> owningMedicineList;
-    
+    //이거 세이브 할 때 dictionary랑 owningMedicineList랑 동기화 해줘야됨 안그러면 세이브 젓댐
+    public List<OwningMedicineClass> owningMedicineList;
+
 
 
     public SaveDataClass()
@@ -25,7 +26,7 @@ public class SaveDataClass
         name = "initName";
         owningMedicineDictionary = new Dictionary<int, int>();
         ownedMedicineList = new List<int>();
-        owningMedicineList = new List<int>();
+        owningMedicineList = new List<OwningMedicineClass>();
 
 
     }
