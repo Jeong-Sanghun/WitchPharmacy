@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Text;
 
 
@@ -10,17 +11,22 @@ public class RoomManager : MonoBehaviour    //SH
 {
     class MedicineButton
     {
-        public MedicineClass medicineClass;
-        public GameObject buttonObject;
-        public RectTransform buttonRect;
-        public int medicineIndex;
-        public int medicineQuant;
-        public bool isActive;
 
-        public MedicineButton(GameObject obj, int index, int quant,MedicineClass medicine)
+        public MedicineClass medicineClass; //아이템의 약 속성이 뭔지
+        public GameObject buttonObject;     //스크롤뷰에 들어가있는 버튼 오브젝트
+        public GameObject propertyObject;   //클릭하면 속성창이 떠야되는데 그 속성창 오브젝트
+        public RectTransform buttonRect;    //버튼 rect 계속 getComponent해주기 귀찮아서
+        public GameObject medicineObject;   //드래그앤드롭시 약재 오브젝트
+        public int medicineIndex;           //약재 딕셔너리의 인덱스
+        public int medicineQuant;           //약재 몇개인지
+        public bool isActive;               //지금 activeSelf상태. 속성을 껐다켰다 해줘야해서.
+
+        public MedicineButton(GameObject obj, int index, int quant, MedicineClass medicine, GameObject property, GameObject medicineObj)
         {
             medicineClass = medicine;
             buttonObject = obj;
+            propertyObject = property;
+            medicineObject = medicineObj;
             buttonRect = buttonObject.GetComponent<RectTransform>();
             medicineIndex = index;
             medicineQuant = quant;
@@ -33,7 +39,7 @@ public class RoomManager : MonoBehaviour    //SH
     SaveDataClass saveData;
     List<MedicineClass> medicineDataList;
     List<int> ownedMedicineList;
-    Dictionary<int,int> owningMedicineDictionary;
+    Dictionary<int, int> owningMedicineDictionary;
     //위는 기본적인 매니저들 그리고 데이터들
 
     //월드에 false로 미리 6개를 만들어놓는다. Instantiate하면 렉걸리니까. 그리고 어차피 6개 고정인 스크롤뷰임.
@@ -49,6 +55,9 @@ public class RoomManager : MonoBehaviour    //SH
 
     [SerializeField]
     Image[] propertyButtonImageArray;
+
+    [SerializeField]
+    Transform propertyObjectParent;
 
     //스크롤뷰에 들어가는 약재버튼 하나. 프리팹으로 만들어서 Instantiate해줄거.
     //프리팹들에 들어가는 것들을 다 받아오고, 시작할 때만 설정해주고 Instantiate해주고 그다음 버튼 새로 설정하고 Instantiate해주고 반복.
@@ -69,10 +78,18 @@ public class RoomManager : MonoBehaviour    //SH
     [SerializeField]
     Text prefabButtonSecondEffectNumber;
 
-    List<MedicineButton> activedMedicineButtonList;
+
     List<MedicineButton> wholeMedicineButtonList;
     //int[] contentButtonQuantityArray;
     bool[] isButtonOn;
+
+
+    //이거 드래그앤드롭할떄 필요함
+    [SerializeField]
+    GameObject medicineObjectPrefab;        //약재 오브젝트 프리팹
+    GameObject touchedObject;               //터치한 오브젝트
+    RaycastHit2D hit;                         //터치를 위한 raycastHit
+    public Camera cam;                      //레이캐스트를 위한 카메라.
 
 
     // Start is called before the first frame update
@@ -90,14 +107,14 @@ public class RoomManager : MonoBehaviour    //SH
             contentButtonQuantityArray[i] = 0;
         }*/
         isButtonOn = new bool[6];
-        for(int i = 0; i < isButtonOn.Length; i++)
+        for (int i = 0; i < isButtonOn.Length; i++)
         {
             isButtonOn[i] = false;
         }
-        activedMedicineButtonList = new List<MedicineButton>();
         wholeMedicineButtonList = new List<MedicineButton>();
-        
-        for(int i =0; i<ownedMedicineList.Count; i++)
+
+        int buttonIndex = 0;
+        for (int i = 0; i < ownedMedicineList.Count; i++)
         {
             //내가 가졌던거중에 없으면 컨티뉴
             int index = ownedMedicineList[i];
@@ -107,7 +124,7 @@ public class RoomManager : MonoBehaviour    //SH
             }
             int quantity = owningMedicineDictionary[index];
             MedicineClass medicine = medicineDataList[index];
-            if(medicine.medicineImage == null)
+            if (medicine.medicineImage == null)
             {
                 StringBuilder builder = new StringBuilder("Items/");
                 builder.Append(medicine.name);
@@ -124,32 +141,34 @@ public class RoomManager : MonoBehaviour    //SH
             //이제 이 리스트에서 active하고 위치바꿔주고 그럴거임.
             GameObject buttonObject = Instantiate(medicineButtonPrefab, scrollContent.transform);
             buttonObject.SetActive(true);
-            MedicineButton buttonClass = new MedicineButton(buttonObject,index,quantity,medicine);
+            GameObject propertyObject = Instantiate(medicineButtonPrefab, propertyObjectParent);
+            propertyObject.SetActive(false);
+            propertyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-450, 250);
+            propertyObject.GetComponent<Image>().color = Color.grey;
+            GameObject medicineObj = Instantiate(medicineObjectPrefab);
+            medicineObj.SetActive(false);
+            medicineObj.GetComponent<SpriteRenderer>().sprite = medicine.medicineImage;
+            MedicineButton buttonClass = new MedicineButton(buttonObject, index, quantity, medicine, propertyObject,medicineObj);
             wholeMedicineButtonList.Add(buttonClass);
+            //이 위까지가 프리팹들 다 설정해서 whoelMedicineButtonList에 buttonClass를 추가하는거임.
+            //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
 
+            //scrollView의 각 버튼마다 index에 맞는 eventTrigger를 심어줘야함.
+            EventTrigger buttonEvent = buttonObject.GetComponent<EventTrigger>();
 
-            /*
-            if(medicine.firstSymptom == medicine.secondSymptom)
-            {
-                //요소 두개가 같은 경우.특수 아이템 전용
-            }
-            else
-            {
+            int delegateIndex = buttonIndex;
+            EventTrigger.Entry entry1 = new EventTrigger.Entry();
+            entry1.eventID = EventTriggerType.PointerDown;
+            entry1.callback.AddListener((data) => { OnButtonDown((PointerEventData)data,delegateIndex); });
+            buttonEvent.triggers.Add(entry1);
 
-                GameObject firstButton = Instantiate(medicineButtonPrefab, scrollContentArray[(int)medicine.firstSymptom].transform);
-                RectTransform rect = firstButton.GetComponent<RectTransform>();
-                rect.anchoredPosition = new Vector2(0, -90 - contentButtonQuantityArray[(int)medicine.firstSymptom] * 180);
-                firstButton.SetActive(true);
+            EventTrigger.Entry entry2 = new EventTrigger.Entry();
+            entry2.eventID = EventTriggerType.Drag;
+            entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+            buttonEvent.triggers.Add(entry2);
 
-                GameObject secondButton = Instantiate(medicineButtonPrefab, scrollContentArray[(int)medicine.secondSymptom].transform);
-                rect = secondButton.GetComponent<RectTransform>();
-                rect.anchoredPosition = new Vector2(0, -90 - contentButtonQuantityArray[(int)medicine.secondSymptom] * 180);
-                secondButton.SetActive(true);
-
-                contentButtonQuantityArray[(int)medicine.firstSymptom]++;
-                contentButtonQuantityArray[(int)medicine.secondSymptom]++;
-            }*/
-
+            //wholeMedicienButtonList의 index임.
+            buttonIndex++;
         }
 
         /*
@@ -160,7 +179,16 @@ public class RoomManager : MonoBehaviour    //SH
 
     }
 
-    
+    //약재 떨어뜨릴 때 약재를 꺼줘야해서.
+    public void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            OnButtonUp();
+        }
+    }
+
+
     //속성 누르면 그 속성 아이템 뜨게하는 버튼
     public void PropertyListButton(int index)
     {
@@ -182,9 +210,9 @@ public class RoomManager : MonoBehaviour    //SH
                         {
                             continue;
                         }
-                        if(isButtonOn[j] == true && wholeMedicineButtonList[i].isActive == false)
+                        if (isButtonOn[j] == true && wholeMedicineButtonList[i].isActive == false)
                         {
-                            if((int)wholeMedicineButtonList[i].medicineClass.firstSymptom == j
+                            if ((int)wholeMedicineButtonList[i].medicineClass.firstSymptom == j
                                 || (int)wholeMedicineButtonList[i].medicineClass.secondSymptom == j)
                             {
                                 wholeMedicineButtonList[i].isActive = true;
@@ -250,8 +278,55 @@ public class RoomManager : MonoBehaviour    //SH
 
     }
 
-    public void DragDebug()
+    int nowButtonIndex = -1;
+    bool dragged = false;
+    //여기서 인덱스는 버튼의 인덱스다. wholeButton의 인덱스 메디슨의 인덱스가아님
+    //버튼을 드래그해서 팟에 넣는거.
+    public void OnButtonDrag(PointerEventData data, int index)
     {
-        Debug.Log("드래깅");
+        Debug.Log("Drag " + index);
+        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
+        wholeMedicineButtonList[index].medicineObject.SetActive(true);
+        wholeMedicineButtonList[index].medicineObject.transform.position = new Vector3(mousePos.x, mousePos.y, -8);
+        nowButtonIndex = index;
+        dragged = true;
+
+    }
+
+    //드래그하고서 클릭 뗐을 때
+    public void OnButtonUp()
+    {
+
+        if (nowButtonIndex != -1 && dragged == true)
+        {
+            wholeMedicineButtonList[nowButtonIndex].medicineObject.SetActive(false);
+        }
+    }
+
+    //버튼 클릭했을 때
+    public void OnButtonDown(PointerEventData data, int index)
+    {
+        Debug.Log("Down " + index);
+        wholeMedicineButtonList[index].propertyObject.SetActive(true);
+        wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
+        if(nowButtonIndex != -1)
+        {
+            wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
+            wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
+        }
+
+        if(nowButtonIndex == index)
+        {
+            nowButtonIndex = -1;
+        }
+        else
+        {
+            nowButtonIndex = index;
+        }
+
+        dragged = false;
+
+
+
     }
 }
