@@ -16,17 +16,27 @@ public class MedicineDataWrapper //SH
 
         //여기아래부터 디버그용임
         MedicineClass medicine = new MedicineClass();
-        medicine.name = "싸늘한 열매";
-        medicine.firstSymptom = Symptom.fire;
-        medicine.secondSymptom = Symptom.dirt;
-        medicine.firstNumber = -1;
-        medicine.secondNumber = 2;
+        medicine.firstName = "아무것도";
+        medicine.secondName = "아님";
+        medicine.firstSymptom = Symptom.none;
+        medicine.secondSymptom = Symptom.none;
+        medicine.firstNumber = 0;
+        medicine.secondNumber = 0;
+        medicineDataList.Add(medicine);
+
+       medicine = new MedicineClass();
+        medicine.firstName = "아무것도";
+        medicine.secondName = "아님";
+        medicine.firstSymptom = Symptom.none;
+        medicine.secondSymptom = Symptom.none;
+        medicine.firstNumber = 0;
+        medicine.secondNumber = 0;
         medicineDataList.Add(medicine);
 
         //6 * 6 * 2 * 2
 
 
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             for(int j = 0; j < 6; j++)
             {
@@ -42,19 +52,23 @@ public class MedicineDataWrapper //SH
                         int num = j % 4;
                         if(num == 0)
                         {
-                            medicine.name = "싸늘한 열매";
+                            medicine.firstName = "싸늘한";
+                                medicine.secondName =  "열매";
                         }
                         else if(num == 1)
                         {
-                            medicine.name = "축축한 원석";
+                            medicine.firstName = "축축한";
+                            medicine.secondName = "원석";
                         }
                         else if (num == 2)
                         {
-                            medicine.name = "흐르는 불꽃";
+                            medicine.firstName = "흐르는";
+                            medicine.secondName = "불꽃";
                         }
                         else if (num == 3)
                         {
-                            medicine.name = "시든 이슬";
+                            medicine.firstName = "시든";
+                            medicine.secondName = "이슬";
                         }
                         medicine.firstSymptom = (Symptom)i;
                         medicine.secondSymptom = (Symptom)j;

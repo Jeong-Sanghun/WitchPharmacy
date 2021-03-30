@@ -1841,6 +1841,7 @@ RectTransform:
   - {fileID: 1368277041}
   - {fileID: 764764779}
   - {fileID: 1673894691}
+  - {fileID: 1403752333}
   - {fileID: 682171877}
   m_Father: {fileID: 697495329}
   m_RootOrder: 1
@@ -1954,7 +1955,7 @@ RectTransform:
   m_Children:
   - {fileID: 367560642}
   m_Father: {fileID: 586333725}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2003,7 +2004,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 682171879}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2027568710}
+        m_MethodName: OnCookButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &682171879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4205,6 +4217,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400168480}
   m_CullTransparentMesh: 0
+--- !u!1 &1403752332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403752333}
+  - component: {fileID: 1403752335}
+  - component: {fileID: 1403752334}
+  m_Layer: 5
+  m_Name: cookedMedicineText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1403752333
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403752332}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 586333725}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 24, y: 212}
+  m_SizeDelta: {x: 1200, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1403752334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403752332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 103
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 131
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uB053\uC778\uB2E4"
+--- !u!222 &1403752335
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403752332}
+  m_CullTransparentMesh: 0
 --- !u!1 &1482353161
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,734 +5648,853 @@ MonoBehaviour:
     owningMedicineList: []
   medicineDataWrapper:
     medicineDataList:
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC544\uBB34\uAC83\uB3C4"
+      secondName: "\uC544\uB2D8"
       firstSymptom: 1
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 0
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 0
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 0
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 0
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 0
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 0
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 0
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 0
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 0
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 0
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 0
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 0
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 5
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 5
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 5
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 0
       secondSymptom: 5
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 1
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 1
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 1
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 1
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 1
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 1
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 1
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 1
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 1
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 1
       secondSymptom: 5
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 1
       secondSymptom: 5
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 1
       secondSymptom: 5
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 1
       secondSymptom: 5
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 2
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 2
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 2
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 2
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 2
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 5
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 5
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 5
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 2
       secondSymptom: 5
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 3
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 3
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 3
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 3
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 3
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 5
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 5
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 5
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 3
       secondSymptom: 5
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 4
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 4
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 4
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 4
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 4
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 4
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 4
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 4
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 4
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 4
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 4
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 4
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 5
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 5
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 5
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 4
       secondSymptom: 5
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 5
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 5
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 5
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uCD95\uCD95\uD55C \uC6D0\uC11D"
+    - firstName: "\uCD95\uCD95\uD55C"
+      secondName: "\uC6D0\uC11D"
       firstSymptom: 5
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 5
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 5
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 5
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uD750\uB974\uB294 \uBD88\uAF43"
+    - firstName: "\uD750\uB974\uB294"
+      secondName: "\uBD88\uAF43"
       firstSymptom: 5
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 5
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 5
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 5
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2DC\uB4E0 \uC774\uC2AC"
+    - firstName: "\uC2DC\uB4E0"
+      secondName: "\uC774\uC2AC"
       firstSymptom: 5
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
       medicineImage: {fileID: 0}
-    - name: "\uC2F8\uB298\uD55C \uC5F4\uB9E4"
+    - firstName: "\uC2F8\uB298\uD55C"
+      secondName: "\uC5F4\uB9E4"
       firstSymptom: 5
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
       medicineImage: {fileID: 0}
-  cookedMedicineDataWrapper:
-    cookedMedicineDataList: []
   symptomDialog:
     symptomDialogArray:
     - dialogArray:
@@ -6397,6 +6606,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   medicineInPotList: []
   isPotCooked: 0
+  cookedMedicine:
+    name: null
+    medicineArray: 000000000000000000000000
+  cookedMedicineText: {fileID: 1403752334}
+  cookButtonObject: {fileID: 682171876}
 --- !u!4 &2027568711
 Transform:
   m_ObjectHideFlags: 0

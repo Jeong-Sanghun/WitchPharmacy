@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour //SH
     //모든 매니저 스크립트에서 참조
     public SaveDataClass saveData;
     public MedicineDataWrapper medicineDataWrapper;
-    public CookedMedicineDataWrapper cookedMedicineDataWrapper;
+    //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
     
     //이거는 세이브 로드 확인해볼라고
     public SymptomDialog symptomDialog;
@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<CookedMedicineDataWrapper>(cookedMedicineDataWrapper, "CookedMedicineDataWrapper");
         jsonManager.SaveJson(saveData);
         
-        medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
-        cookedMedicineDataWrapper = jsonManager.ResourceDataLoad<CookedMedicineDataWrapper>("CookedMedicineDataWrapper");
-        saveData = jsonManager.LoadSaveData();
+        //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
+        //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
+        //cookedMedicineDataWrapper = jsonManager.ResourceDataLoad<CookedMedicineDataWrapper>("CookedMedicineDataWrapper");
+        //saveData = jsonManager.LoadSaveData();
 
         for (int i = 0; i < saveData.owningMedicineList.Count; i++)
         {

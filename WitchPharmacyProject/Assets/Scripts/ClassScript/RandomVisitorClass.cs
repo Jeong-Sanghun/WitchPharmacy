@@ -72,6 +72,10 @@ public class RandomVisitorClass //SH
             {
                 MedicineClass medicine = ownedMedicineList[i];
                 bool available = false;
+                if(medicine.firstSymptom == Symptom.none)
+                {
+                    continue;
+                }
                 if(medicine.firstSymptom == earSymptom || medicine.secondSymptom == earSymptom 
                     || medicine.firstSymptom == hornSymptom || medicine.secondSymptom == hornSymptom)
                 {

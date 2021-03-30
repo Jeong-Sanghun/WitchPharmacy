@@ -7,7 +7,8 @@ using UnityEngine;
 [System.Serializable]
 public class MedicineClass  //SH
 {
-    public string name;
+    public string firstName;
+    public string secondName;
     public Symptom firstSymptom;
     public Symptom secondSymptom;
     public int firstNumber;
@@ -19,7 +20,8 @@ public class MedicineClass  //SH
 
     public MedicineClass()
     {
-        name = "null";
+        firstName = "null";
+        secondName = "null";
         firstSymptom = Symptom.water;
         secondSymptom = Symptom.fire;
         firstNumber = 1;
