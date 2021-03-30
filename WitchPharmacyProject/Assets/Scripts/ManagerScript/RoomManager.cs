@@ -107,12 +107,14 @@ public class RoomManager : MonoBehaviour    //SH
     RaycastHit2D hit;                         //터치를 위한 raycastHit
     public Camera cam;                      //레이캐스트를 위한 카메라.
 
+    //현재 팟 안에 들어가있는 메디슨의 리스트. 이게 존나 중요.
     [SerializeField]
     List<MedicineButton> medicineInPotList;
 
     //약재를 다 끓여서 만들었는지
     //counterManager에서 받아올거임. 쿡한상태에서 간거하고 안하고 간거랑 다를테니까
     public bool isPotCooked;
+    CookedMedicineData cookedMedicine;
 
     // Start is called before the first frame update
     void Start()
@@ -442,6 +444,16 @@ public class RoomManager : MonoBehaviour    //SH
     public void OnCookButton()
     {
         isPotCooked = true;
+        int[] indexArray = new int[3];
+        int cookedMedicineindex = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            indexArray[i] = medicineInPotList[i].index;
+            owningMedicineDictionary[i]--;
+        }
+        cookedMedicineIndex = indexArray[0] + indexArray[1] * medicineDataList.Count + indexArray[2] * medicineDataList.Count * medicineDataList;
 
+        cookedMedicine = cookedMedicineDataList[cookedMedicineindex];
+        
     }
 }
