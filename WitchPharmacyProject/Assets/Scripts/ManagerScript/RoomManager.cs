@@ -49,6 +49,7 @@ public class RoomManager : MonoBehaviour    //SH
     List<MedicineClass> medicineDataList;
     List<int> ownedMedicineList;
     Dictionary<int, int> owningMedicineDictionary;
+    List<CookedMedicineData> cookedMedicineDataList;
     //위는 기본적인 매니저들 그리고 데이터들
 
     //월드에 false로 미리 6개를 만들어놓는다. Instantiate하면 렉걸리니까. 그리고 어차피 6개 고정인 스크롤뷰임.
@@ -109,6 +110,10 @@ public class RoomManager : MonoBehaviour    //SH
     [SerializeField]
     List<MedicineButton> medicineInPotList;
 
+    //약재를 다 끓여서 만들었는지
+    //counterManager에서 받아올거임. 쿡한상태에서 간거하고 안하고 간거랑 다를테니까
+    public bool isPotCooked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -117,6 +122,7 @@ public class RoomManager : MonoBehaviour    //SH
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         ownedMedicineList = saveData.ownedMedicineList;
         owningMedicineDictionary = saveData.owningMedicineDictionary;
+        cookedMedicineDataList = gameManager.cookedMedicineDataWrapper.cookedMedicineDataList;
         /*
         contentButtonQuantityArray = new int[6];
         for(int i = 0; i < contentButtonQuantityArray.Length; i++)
@@ -131,6 +137,8 @@ public class RoomManager : MonoBehaviour    //SH
         wholeMedicineButtonList = new List<MedicineButton>();
         medicineInPotList = new List<MedicineButton>();
         potMedicineObjectList = new List<GameObject>();
+
+        isPotCooked = false;
 
 
         int buttonIndex = 0;
@@ -426,6 +434,14 @@ public class RoomManager : MonoBehaviour    //SH
         }
 
         dragged = false;
+
+    }
+
+    //아시발 코드길어짅다;;;;;;
+    //끓인다 버튼 누를 때.
+    public void OnCookButton()
+    {
+        isPotCooked = true;
 
     }
 }

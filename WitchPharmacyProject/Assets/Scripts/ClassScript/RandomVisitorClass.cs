@@ -6,7 +6,7 @@ using System.Text;
 
 public enum Symptom
 {
-    water, fire, dirt, wood, metal, light
+    water, fire, dirt, wood, metal, light, none
 }
 
 //이거 제이슨으로 저장하는게 아님
