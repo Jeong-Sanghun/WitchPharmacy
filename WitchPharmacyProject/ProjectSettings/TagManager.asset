@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pot
   - PotMedicine
+  - RecycleBin
   layers:
   - Default
   - TransparentFX

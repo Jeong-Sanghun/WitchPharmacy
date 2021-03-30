@@ -42,8 +42,10 @@ public class RoomManager : MonoBehaviour    //SH
             isActive = false;
         }
     }
-
-    public CounterManager counterManager;
+    [SerializeField]
+    CounterManager counterManager;
+    [SerializeField]
+    CookedMedicineManager cookedMedicineManager;
     GameManager gameManager;
     SaveDataClass saveData;
     List<MedicineClass> medicineDataList;
@@ -103,6 +105,7 @@ public class RoomManager : MonoBehaviour    //SH
     [SerializeField]
     GameObject[] potMedicineParentArray;
     List<GameObject> potMedicineObjectList;
+
     GameObject touchedObject;               //터치한 오브젝트
     RaycastHit2D hit;                         //터치를 위한 raycastHit
     public Camera cam;                      //레이캐스트를 위한 카메라.
@@ -113,12 +116,14 @@ public class RoomManager : MonoBehaviour    //SH
 
     //약재를 다 끓여서 만들었는지
     //counterManager에서 받아올거임. 쿡한상태에서 간거하고 안하고 간거랑 다를테니까
-    public bool isPotCooked;
-    public CookedMedicineData cookedMedicine;
+    bool isPotCooked;
+    public CookedMedicine cookedMedicine;
     [SerializeField]
     Text cookedMedicineText;
     [SerializeField]
     GameObject cookButtonObject;
+    [SerializeField]
+    GameObject cookedMedicinePrefab;
 
 
     // Start is called before the first frame update
@@ -247,7 +252,7 @@ public class RoomManager : MonoBehaviour    //SH
         {
             OnButtonUp();
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isPotCooked == false)
         {
             Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
             if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
@@ -380,7 +385,8 @@ public class RoomManager : MonoBehaviour    //SH
     //버튼을 드래그해서 팟에 넣는거.
     public void OnButtonDrag(PointerEventData data, int index)
     {
-        if(wholeMedicineButtonList[index].medicineQuant <= 0)
+        Debug.Log("왜 드래그 안돼");
+        if(wholeMedicineButtonList[index].medicineQuant <= 0 || isPotCooked)
         {
             return;
         }
@@ -395,6 +401,10 @@ public class RoomManager : MonoBehaviour    //SH
     //드래그하고서 클릭 뗐을 때
     public void OnButtonUp()
     {
+        if (isPotCooked)
+        {
+            return;
+        }
         if (nowButtonIndex != -1 && dragged == true)
         {
             wholeMedicineButtonList[nowButtonIndex].medicineObject.SetActive(false);
@@ -561,8 +571,23 @@ public class RoomManager : MonoBehaviour    //SH
         cookedMedicine.name = builder.ToString();
         cookedMedicineText.text = cookedMedicine.name;
 
+        for(int i = 0; i < 3; i++)
+        {
+            potMedicineObjectList[i].SetActive(false);
+        }
+
+        cookedMedicinePrefab.SetActive(true);
+        cookedMedicine.medicineObject = cookedMedicinePrefab;
+        cookedMedicineManager.CookedMedicineManagerSetting(cookedMedicine);
         medicineInPotList.Clear();
+        potMedicineObjectList.Clear();
 
+    }
 
+    //쿡드매니저에서 불러옴. 버려지면
+    public void CookedMedicineRemoved()
+    {
+        isPotCooked = false;
+        cookedMedicine = null;
     }
 }
