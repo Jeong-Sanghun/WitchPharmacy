@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour //SH
             int quant = Random.Range(1, 50);
             OwningMedicineClass med = new OwningMedicineClass(i, quant);
             saveData.owningMedicineList.Add(med);
-            i += Random.Range(0, 4);
+            //i += Random.Range(0, 4);
         }
         symptomDialog = new SymptomDialog();
         
@@ -78,12 +78,10 @@ public class GameManager : MonoBehaviour //SH
 
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
-        //jsonManager.SaveJson<CookedMedicineDataWrapper>(cookedMedicineDataWrapper, "CookedMedicineDataWrapper");
         jsonManager.SaveJson(saveData);
         
         //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
-        //cookedMedicineDataWrapper = jsonManager.ResourceDataLoad<CookedMedicineDataWrapper>("CookedMedicineDataWrapper");
         //saveData = jsonManager.LoadSaveData();
 
         for (int i = 0; i < saveData.owningMedicineList.Count; i++)

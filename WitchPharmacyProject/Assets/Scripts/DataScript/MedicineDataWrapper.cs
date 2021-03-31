@@ -24,15 +24,6 @@ public class MedicineDataWrapper //SH
         medicine.secondNumber = 0;
         medicineDataList.Add(medicine);
 
-       medicine = new MedicineClass();
-        medicine.firstName = "아무것도";
-        medicine.secondName = "아님";
-        medicine.firstSymptom = Symptom.none;
-        medicine.secondSymptom = Symptom.none;
-        medicine.firstNumber = 0;
-        medicine.secondNumber = 0;
-        medicineDataList.Add(medicine);
-
         //6 * 6 * 2 * 2
 
 

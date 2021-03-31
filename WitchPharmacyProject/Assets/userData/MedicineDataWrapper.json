@@ -12,17 +12,6 @@
             }
         },
         {
-            "firstName": "아무것도",
-            "secondName": "아님",
-            "firstSymptom": 6,
-            "secondSymptom": 6,
-            "firstNumber": 0,
-            "secondNumber": 0,
-            "medicineImage": {
-                "instanceID": 0
-            }
-        },
-        {
             "firstName": "축축한",
             "secondName": "원석",
             "firstSymptom": 0,

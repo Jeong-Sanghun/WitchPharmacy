@@ -110,6 +110,14 @@ public class RoomManager : MonoBehaviour    //SH
     RaycastHit2D hit;                         //터치를 위한 raycastHit
     public Camera cam;                      //레이캐스트를 위한 카메라.
 
+    Vector3 cameraRoomPos;  //카메라 포지션 결정해줘야돼서. 화면바꾸기
+    Vector3 cameraCounterPos;
+    [SerializeField]
+    GameObject roomUICanvas;    //카운터로 옮겨갈때 이거 바꿔줘야해.
+    [SerializeField]
+    GameObject counterUICanvas;
+    
+
     //현재 팟 안에 들어가있는 메디슨의 리스트. 이게 존나 중요.
     [SerializeField]
     List<MedicineButton> medicineInPotList;
@@ -117,13 +125,17 @@ public class RoomManager : MonoBehaviour    //SH
     //약재를 다 끓여서 만들었는지
     //counterManager에서 받아올거임. 쿡한상태에서 간거하고 안하고 간거랑 다를테니까
     bool isPotCooked;
-    public CookedMedicine cookedMedicine;
+    CookedMedicine cookedMedicine;
     [SerializeField]
     Text cookedMedicineText;
     [SerializeField]
     GameObject cookButtonObject;
     [SerializeField]
     GameObject cookedMedicinePrefab;
+    Vector3 cookedMedicineCounterPos;
+
+    //현재 조제실에 있는가.
+    public bool nowInRoom;
 
 
     // Start is called before the first frame update
@@ -152,6 +164,12 @@ public class RoomManager : MonoBehaviour    //SH
 
         isPotCooked = false;
         cookButtonObject.SetActive(false);
+
+        cameraRoomPos = new Vector3(51.2f, 0, -10);
+        cameraCounterPos = new Vector3(0, 0, -10);
+        cookedMedicineCounterPos = new Vector3(-100, -555, 0);
+
+        nowInRoom = false;
 
 
         int buttonIndex = 0;
@@ -319,8 +337,46 @@ public class RoomManager : MonoBehaviour    //SH
             propertyButtonImageArray[index].color = Color.white;
 
             isButtonOn[index] = false;
+            int pushedButton = 0;
+            for (int i = 0; i < 6; i++)
+            {
+                if (isButtonOn[i])
+                {
+                    pushedButton++;
+                }
+            }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
+                if(pushedButton == 0)
+                {
+                    wholeMedicineButtonList[i].isActive = false;
+                    continue;
+                }
+                if (wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
+                {
+                    wholeMedicineButtonList[i].isActive = true;
+                    continue;
+                }
+
+                wholeMedicineButtonList[i].isActive = false;
+
+                if (pushedButton > 1)
+                {
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] &&
+    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    {
+                        wholeMedicineButtonList[i].isActive = true;
+                    }
+                }
+                else
+                {
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] ||
+isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    {
+                        wholeMedicineButtonList[i].isActive = true;
+                    }
+                }
+                /*
                 if ((int)wholeMedicineButtonList[i].medicineClass.firstSymptom == index
                     || (int)wholeMedicineButtonList[i].medicineClass.secondSymptom == index
                     || wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
@@ -342,7 +398,7 @@ public class RoomManager : MonoBehaviour    //SH
                             }
                         }
                     }
-                }
+                }*/
             }
         }
         else
@@ -350,14 +406,47 @@ public class RoomManager : MonoBehaviour    //SH
             propertyButtonImageArray[index].color = Color.red;
 
             isButtonOn[index] = true;
+            int pushedButton = 0;
+            for(int i = 0; i < 6; i++)
+            {
+                if (isButtonOn[i])
+                {
+                    pushedButton++;
+                }
+            }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-                if ((int)wholeMedicineButtonList[i].medicineClass.firstSymptom == index
-                    || (int)wholeMedicineButtonList[i].medicineClass.secondSymptom == index
-                    || wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
+                if(wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
                 {
                     wholeMedicineButtonList[i].isActive = true;
+                    continue;
                 }
+                if (pushedButton > 1)
+                {
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] &&
+    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    {
+                        wholeMedicineButtonList[i].isActive = true;
+                    }
+                    else
+                    {
+                        wholeMedicineButtonList[i].isActive = false;
+                    }
+                }
+                else
+                {
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] ||
+isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    {
+                        wholeMedicineButtonList[i].isActive = true;
+                    }
+                    else
+                    {
+                        wholeMedicineButtonList[i].isActive = false;
+                    }
+                }
+
+
             }
         }
 
@@ -483,10 +572,11 @@ public class RoomManager : MonoBehaviour    //SH
         {
             return;
         }
-        isPotCooked = true;
         int[] indexArray = new int[3];
         bool[] noneMedicineArray = new bool[3];
         int noneMedicineNumber = 0;
+        cookButtonObject.SetActive(false);
+        cookedMedicine = new CookedMedicine();
         for (int i = 0; i < 3; i++)
         {
             indexArray[i] = medicineInPotList[i].medicineIndex;
@@ -581,13 +671,48 @@ public class RoomManager : MonoBehaviour    //SH
         cookedMedicineManager.CookedMedicineManagerSetting(cookedMedicine);
         medicineInPotList.Clear();
         potMedicineObjectList.Clear();
+        isPotCooked = true;
 
     }
 
-    //쿡드매니저에서 불러옴. 버려지면
+    //쿡드매니저에서 불러옴. 버려지면, 혹은 손님한테 낸다면.
     public void CookedMedicineRemoved()
     {
         isPotCooked = false;
         cookedMedicine = null;
+    }
+
+    //CookedMedicineManager에서 약을 트레이로 올릴 때도 사용함. 버튼에서도 사용함.
+    //룸이 움직일 때 카메라 옮겨줌
+    public void ToCounterButton(bool isMedicineOnTray)
+    {
+        //버튼에서 호출할때는 false, 트레이에올려서 호출할때는 true
+        nowInRoom = false;
+        cam.transform.position = cameraCounterPos;
+        roomUICanvas.SetActive(false);
+        counterUICanvas.SetActive(true);
+        if (isPotCooked)
+        {
+            if (isMedicineOnTray == false)
+            {
+                medicineObjectPrefab.SetActive(false);
+            }
+            
+        }
+    }
+    
+    //이거 카운터매니저에 넣을려 했는데 카운터매니저에서 변수선언하기 귀찮음.
+    //카운터에서 조제실 오는 버튼.
+    public void ToRoomButton()
+    {
+        nowInRoom = true;
+        cam.transform.position = cameraRoomPos;
+        roomUICanvas.SetActive(true);
+        counterUICanvas.SetActive(false);
+        if (isPotCooked)
+        {
+            //이거 손님한테 주고 돌아올 때 새롭게해줘야함.
+            medicineObjectPrefab.SetActive(true);
+        }
     }
 }

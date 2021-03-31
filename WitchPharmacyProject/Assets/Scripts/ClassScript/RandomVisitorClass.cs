@@ -20,6 +20,7 @@ public class RandomVisitorClass //SH
 
     public List<Symptom> symptomList;
     public List<int> symptomAmountList;
+    public int[] symptomAmountArray;
     //증상은 무조건 두 개    
     public List<MedicineClass> answerMedicineList;
 
@@ -43,14 +44,15 @@ public class RandomVisitorClass //SH
         hornSymptom = (Symptom)Random.Range(0, 6);
         symptomList = new List<Symptom>();
         symptomAmountList = new List<int>();
+        symptomAmountArray = new int[6];
         List<MedicineClass> availableMedicineList = new List<MedicineClass>();
         int[] symptomNumberArray = new int[6];
         for(int i = 0; i < symptomNumberArray.Length; i++)
         {
             symptomNumberArray[i] = 0;
         }
-        //int symptomNumber = Random.Range(2, 5);
-        int symptomNumber = 6;
+        //int symptomNumber = Random.Range(1, 4);
+        int symptomNumber = 1;
         int nowMedicineNumber = 0;
         //MedicineClass firstMedicine = ownedMedicineList[firstMedicineIndex];
         //first number 는 -1, 1, SecondNumber 은 2, -2
@@ -128,7 +130,9 @@ public class RandomVisitorClass //SH
             {
                 symptomList.Add((Symptom)i);
                 symptomAmountList.Add(-1 * symptomNumberArray[i]);
+
             }
+            symptomAmountArray[i] = (-1 * symptomNumberArray[i]);
         }
         //아마 절대 안나올 것.
         if(nowMedicineNumber == 0)
