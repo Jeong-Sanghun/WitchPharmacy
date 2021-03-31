@@ -51,8 +51,8 @@ public class RandomVisitorClass //SH
         {
             symptomNumberArray[i] = 0;
         }
-        //int symptomNumber = Random.Range(1, 4);
-        int symptomNumber = 1;
+        int symptomNumber = Random.Range(1, 4);
+        //int symptomNumber = 1;
         int nowMedicineNumber = 0;
         //MedicineClass firstMedicine = ownedMedicineList[firstMedicineIndex];
         //first number 는 -1, 1, SecondNumber 은 2, -2

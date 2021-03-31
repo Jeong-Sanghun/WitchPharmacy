@@ -124,7 +124,8 @@ public class RoomManager : MonoBehaviour    //SH
 
     //약재를 다 끓여서 만들었는지
     //counterManager에서 받아올거임. 쿡한상태에서 간거하고 안하고 간거랑 다를테니까
-    bool isPotCooked;
+    //countermanager에서 이 값을 변화시켜줌.
+    public bool isPotCooked;
     CookedMedicine cookedMedicine;
     [SerializeField]
     Text cookedMedicineText;
@@ -137,6 +138,11 @@ public class RoomManager : MonoBehaviour    //SH
     //현재 조제실에 있는가.
     public bool nowInRoom;
 
+    [SerializeField]
+    Text[] symptomChartTextArray;
+    [SerializeField]
+    GameObject symptomChartObject;
+    RandomVisitorClass nowVisitor;
 
     // Start is called before the first frame update
     void Start()
@@ -313,7 +319,7 @@ public class RoomManager : MonoBehaviour    //SH
                         }
                         potMedicineObjectList.RemoveAt(listIndex);
                         medicineInPotList.RemoveAt(listIndex);
-
+                        ChangeSymptomChartText();
 
                         if (medicineInPotList.Count < 3)
                         {
@@ -376,29 +382,6 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                         wholeMedicineButtonList[i].isActive = true;
                     }
                 }
-                /*
-                if ((int)wholeMedicineButtonList[i].medicineClass.firstSymptom == index
-                    || (int)wholeMedicineButtonList[i].medicineClass.secondSymptom == index
-                    || wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
-                {
-                    wholeMedicineButtonList[i].isActive = false;
-                    for (int j = 0; j < isButtonOn.Length; j++)
-                    {
-                        if (j == index)
-                        {
-                            continue;
-                        }
-                        if (isButtonOn[j] == true && wholeMedicineButtonList[i].isActive == false)
-                        {
-                            if ((int)wholeMedicineButtonList[i].medicineClass.firstSymptom == j
-                                || (int)wholeMedicineButtonList[i].medicineClass.secondSymptom == j
-                                || wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
-                            {
-                                wholeMedicineButtonList[i].isActive = true;
-                            }
-                        }
-                    }
-                }*/
             }
         }
         else
@@ -503,7 +486,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
             return;
         }
         int buttonIndex = nowButtonIndex;
-        nowButtonIndex = -1;
+        //nowButtonIndex = -1;
         dragged = false;
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
         if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
@@ -535,6 +518,8 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                 {
                     cookButtonObject.SetActive(true);
                 }
+
+                ChangeSymptomChartText();
 
             }
         }
@@ -714,5 +699,52 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
             //이거 손님한테 주고 돌아올 때 새롭게해줘야함.
             medicineObjectPrefab.SetActive(true);
         }
+    }
+
+    //증상기록 켜는 버튼, 끄는 버튼에서 여는거.
+    public void SymptomChartButton(bool turnOn)
+    {
+        if (turnOn)
+        {
+            symptomChartObject.SetActive(true);
+        }
+        else
+        {
+            symptomChartObject.SetActive(false);
+        }
+    }
+
+    //이거 카운터매니저에서 넘겨주는거
+    public void VisitorVisits(RandomVisitorClass visitor)
+    {
+        nowVisitor = visitor;
+        ChangeSymptomChartText();
+    }
+
+    void ChangeSymptomChartText()
+    {
+        if(nowVisitor == null)
+        {
+            return;
+        }
+        int[] array = new int[7];
+        for(int i = 0; i< 6; i++)
+        {
+            array[i] = nowVisitor.symptomAmountArray[i];
+        }
+        for(int i = 0; i < medicineInPotList.Count; i++)
+        {
+            int firstSymtpom = (int)medicineInPotList[i].medicineClass.firstSymptom;
+            array[firstSymtpom] += medicineInPotList[i].medicineClass.firstNumber;
+
+            int secondSymtpom = (int)medicineInPotList[i].medicineClass.secondSymptom;
+            array[secondSymtpom] += medicineInPotList[i].medicineClass.secondNumber;
+        }
+
+        for (int i = 0; i < 6; i++)
+        {
+            symptomChartTextArray[i].text = array[i].ToString();
+        }
+
     }
 }

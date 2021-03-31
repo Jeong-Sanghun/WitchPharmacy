@@ -118,6 +118,7 @@ public class CookedMedicineManager : MonoBehaviour
             if (touchedObject.CompareTag("Visitor"))
             {
                 counterManager.OnMedicineDelivery(cookedMedicine);
+                roomManager.CookedMedicineRemoved();
                 cookedMedicine.medicineObject.SetActive(false);
             }
         }

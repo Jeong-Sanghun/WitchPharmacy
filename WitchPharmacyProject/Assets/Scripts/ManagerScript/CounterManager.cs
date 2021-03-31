@@ -9,6 +9,8 @@ public class CounterManager : MonoBehaviour //SH
 {
     GameManager gameManager;
     SceneManager sceneManager;
+    [SerializeField]
+    RoomManager roomManager;
     SaveDataClass saveData;
     SymptomDialog symptomDialog;
     List<int> ownedMedicineIndexList;
@@ -16,11 +18,17 @@ public class CounterManager : MonoBehaviour //SH
     Dictionary<int,int> owningMedicineDictionary;
     //List<MedicineClass> owningMedicineList;
     List<MedicineClass> medicineDataList;
+   
 
     [SerializeField]
     List<RandomVisitorClass> randomVisitorList;
     RandomVisitorClass nowVisitor;
     public Text visitorText;
+
+    [SerializeField]
+    GameObject visitorObject;
+    Vector3 visitorAppearPos;
+    Vector3 visitorDisappearPos;
 
     void Start()
     {
@@ -36,6 +44,9 @@ public class CounterManager : MonoBehaviour //SH
             ownedMedicineList.Add(medicineDataList[ownedMedicineIndexList[i]]);
         }
         owningMedicineDictionary = saveData.owningMedicineDictionary;
+
+        visitorAppearPos = new Vector3(-7.06f, -1.46f, -1);
+        visitorDisappearPos = new Vector3(-7.06f, -10, -1);
         //owningMedicineList = new List<MedicineClass>();
         /*
         for (int i = 0; i < owningMedicineIndexList.Count; i++)
@@ -61,7 +72,8 @@ public class CounterManager : MonoBehaviour //SH
     {
         nowVisitor = new RandomVisitorClass(symptomDialog, ownedMedicineList);
         randomVisitorList.Add(nowVisitor);
-        StartCoroutine(sceneManager.LoadTextOneByOne(randomVisitorList[index].fullDialog, visitorText));
+        roomManager.VisitorVisits(nowVisitor);
+        StartCoroutine(VisitorAppearCoroutine());
         index++;
     }
 
@@ -110,8 +122,28 @@ public class CounterManager : MonoBehaviour //SH
             }
             builder.Append(" 쪽이 이상해요...");
         }
-        StartCoroutine(sceneManager.LoadTextOneByOne(builder.ToString(), visitorText)) ;
 
+        StartCoroutine(VisitorDisapperCoroutine(builder.ToString()));
+    }
+
+    
+    IEnumerator VisitorAppearCoroutine()
+    {
+
+        StartCoroutine(sceneManager.MoveModule_Accel2(visitorObject, visitorAppearPos, 2f));
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(sceneManager.LoadTextOneByOne(randomVisitorList[index-1].fullDialog, visitorText));
+
+
+    }
+
+    IEnumerator VisitorDisapperCoroutine(string dialog)
+    {
+        StartCoroutine(sceneManager.LoadTextOneByOne(dialog, visitorText));
+        yield return new WaitForSeconds(4f);
+        StartCoroutine(sceneManager.MoveModule_Accel2(visitorObject, visitorDisappearPos, 2f));
+        yield return new WaitForSeconds(1.5f);
+        SpawnRandomVisitor();
     }
 
 
