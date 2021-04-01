@@ -38,6 +38,13 @@ public class GameManager : MonoBehaviour //SH
         DebugDataJson();
     }
 
+    //아마 모든 매니저에서 참조할것.
+    public void SaveJson()
+    {
+
+        jsonManager.SaveJson(saveData);
+    }
+
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.
     void DebugDataJson()
     {
@@ -84,6 +91,7 @@ public class GameManager : MonoBehaviour //SH
         //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         //saveData = jsonManager.LoadSaveData();
 
+        /*
         for (int i = 0; i < saveData.owningMedicineList.Count; i++)
         {
             if (saveData.owningMedicineDictionary.ContainsKey(saveData.owningMedicineList[i].medicineIndex))
@@ -95,6 +103,6 @@ public class GameManager : MonoBehaviour //SH
             {
                 saveData.owningMedicineDictionary.Add(saveData.owningMedicineList[i].medicineIndex, saveData.owningMedicineList[i].medicineQuantity);
             }
-        }
+        }*/
     }
 }

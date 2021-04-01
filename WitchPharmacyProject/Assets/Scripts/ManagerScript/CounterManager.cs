@@ -15,7 +15,7 @@ public class CounterManager : MonoBehaviour //SH
     SymptomDialog symptomDialog;
     List<int> ownedMedicineIndexList;
     List<MedicineClass> ownedMedicineList;
-    Dictionary<int,int> owningMedicineDictionary;
+    //Dictionary<int,int> owningMedicineDictionary;
     //List<MedicineClass> owningMedicineList;
     List<MedicineClass> medicineDataList;
    
@@ -27,6 +27,10 @@ public class CounterManager : MonoBehaviour //SH
 
     [SerializeField]
     GameObject visitorObject;
+
+    [SerializeField]
+    GameObject[] visitorBodyParts;
+
     Vector3 visitorAppearPos;
     Vector3 visitorDisappearPos;
 
@@ -43,10 +47,15 @@ public class CounterManager : MonoBehaviour //SH
         {
             ownedMedicineList.Add(medicineDataList[ownedMedicineIndexList[i]]);
         }
-        owningMedicineDictionary = saveData.owningMedicineDictionary;
+        //owningMedicineDictionary = saveData.owningMedicineDictionary;
 
-        visitorAppearPos = new Vector3(-7.06f, -1.46f, -1);
-        visitorDisappearPos = new Vector3(-7.06f, -10, -1);
+        for(int i = 0; i < visitorBodyParts.Length; i++)
+        {
+            visitorBodyParts[i].SetActive(false);
+        }
+
+        visitorAppearPos = new Vector3(-7.06f, 1.22f, -1);
+        visitorDisappearPos = new Vector3(-7.06f, -12, -1);
         //owningMedicineList = new List<MedicineClass>();
         /*
         for (int i = 0; i < owningMedicineIndexList.Count; i++)
@@ -71,6 +80,19 @@ public class CounterManager : MonoBehaviour //SH
     void SpawnRandomVisitor()
     {
         nowVisitor = new RandomVisitorClass(symptomDialog, ownedMedicineList);
+
+        for(int i = 0; i < visitorBodyParts.Length; i++)
+        {
+            if(i == nowVisitor.bodyIndex)
+            {
+                visitorBodyParts[i].SetActive(true);
+            }
+            else
+            {
+                visitorBodyParts[i].SetActive(false);
+            }
+        }
+
         randomVisitorList.Add(nowVisitor);
         roomManager.VisitorVisits(nowVisitor);
         StartCoroutine(VisitorAppearCoroutine());

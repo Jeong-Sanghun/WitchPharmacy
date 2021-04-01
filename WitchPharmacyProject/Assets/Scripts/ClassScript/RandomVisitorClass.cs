@@ -27,6 +27,22 @@ public class RandomVisitorClass //SH
     public Symptom earSymptom;
     public Symptom hornSymptom;
 
+    public int bodyIndex;
+    public int faceIndex;
+    public int faceComponentIndex;
+    public int hairIndex;
+    public int earIndex;
+    public int hornIndex;
+
+    /*body	_00	_01    	
+*1. 머리카락 	hair	_00	_02 	(*hair_00_02 파츠가 있는 경우에만)
+2. 얼굴 (얼굴형)	face	_00	_01
+3. 얼굴 (이목구비)	face	_00	_02
+4. 머리카락	hair	_00	_01
+5. 귀		ear	_00	     	(단일 레이어)
+6. 뿔		horn 
+
+
     /*
      * ownedMedicineList
 1. ownedMedicineList 인덱스에서 랜덤으로 1~3개를 뽑는다(종류뽑기)
@@ -58,14 +74,20 @@ public class RandomVisitorClass //SH
         //first number 는 -1, 1, SecondNumber 은 2, -2
         answerMedicineList = new List<MedicineClass>();
 
+        bodyIndex = Random.Range(0,2);
+        faceIndex = 0;
+        faceComponentIndex = 0;
+        hairIndex = 0;
+        earIndex = 0;
+        hornIndex = 0;
+
         //첫번쨰 약재 정해줌. 이제부터 가능한 약재 리스트가 들어감.
         /* 첫번째 루프는 약재를 정하고, 그 약재의 + - 값을 고려해서 가능한 약재의 리스트를 뽑아낸다
          * 예를들어 물+ 불--라면, 불- 나무++은 제외, 나무+ 빛--는 넣는 식. +2 위 -2아래로는 다 재낀다.
          * 그 리스트들을 뽑았다 치면 그 다음 루프에서 증상어레이에 값을 다시 더해서 누적계산하는방식.
          * 
          * 
-         */ 
-        int forIndex = 0;
+         */
         while (symptomNumber > nowMedicineNumber)
         {
 
@@ -121,7 +143,6 @@ public class RandomVisitorClass //SH
             answerMedicineList.Add(answerMedicine);
             nowMedicineNumber++;
             availableMedicineList.Clear();
-            forIndex++;
         }
         //여기 위까지가 판정, 정답약 넣는거.
         for(int i = 0; i < symptomNumberArray.Length; i++)

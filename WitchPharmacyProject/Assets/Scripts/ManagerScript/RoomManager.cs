@@ -18,12 +18,14 @@ public class RoomManager : MonoBehaviour    //SH
         public GameObject propertyObject;   //클릭하면 속성창이 떠야되는데 그 속성창 오브젝트
         public RectTransform buttonRect;    //버튼 rect 계속 getComponent해주기 귀찮아서
         public GameObject medicineObject;   //드래그앤드롭시 약재 오브젝트
+        public OwningMedicineClass owningMedicine;     //owningMedicineList에서 가져오는거
         public int medicineIndex;           //약재 딕셔너리의 인덱스
         public int medicineQuant;           //약재 몇개인지
         public Text quantityText;
         public Text propertyQuantityText;
         public bool isActive;               //지금 activeSelf상태. 속성을 껐다켰다 해줘야해서.
         public bool isOnPot;
+        public bool zeroMedicine;
         public GameObject potMedicineObject;    //팟 위에 둥실둥실 떠있는 오브젝트
 
         public MedicineButton(GameObject obj, int index, int quant, 
@@ -40,6 +42,7 @@ public class RoomManager : MonoBehaviour    //SH
             quantityText = quantText;
             propertyQuantityText = propertyQuantText;
             isActive = false;
+            zeroMedicine = false;
         }
     }
     [SerializeField]
@@ -50,7 +53,8 @@ public class RoomManager : MonoBehaviour    //SH
     SaveDataClass saveData;
     List<MedicineClass> medicineDataList;
     List<int> ownedMedicineList;
-    Dictionary<int, int> owningMedicineDictionary;
+    List<OwningMedicineClass> owningMedicineList;
+    //Dictionary<int, int> owningMedicineDictionary;
     //List<CookedMedicineData> cookedMedicineDataList;
     //위는 기본적인 매니저들 그리고 데이터들
 
@@ -151,7 +155,8 @@ public class RoomManager : MonoBehaviour    //SH
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         ownedMedicineList = saveData.ownedMedicineList;
-        owningMedicineDictionary = saveData.owningMedicineDictionary;
+        owningMedicineList = saveData.owningMedicineList;
+        //owningMedicineDictionary = saveData.owningMedicineDictionary;
         //cookedMedicineDataList = gameManager.cookedMedicineDataWrapper.cookedMedicineDataList;
         /*
         contentButtonQuantityArray = new int[6];
@@ -183,11 +188,21 @@ public class RoomManager : MonoBehaviour    //SH
         {
             //내가 가졌던거중에 없으면 컨티뉴
             int index = ownedMedicineList[i];
-            if (!owningMedicineDictionary.ContainsKey(index))
+            OwningMedicineClass owningMedicine = null;
+            for(int j = 0; j < owningMedicineList.Count; j++)
+            {
+                if(owningMedicineList[j].medicineIndex == index)
+                {
+                    owningMedicine = owningMedicineList[j];
+                    break;
+                }
+                
+            }
+            if(owningMedicine == null)
             {
                 continue;
             }
-            int quantity = owningMedicineDictionary[index];
+            int quantity = owningMedicine.medicineQuantity;
             MedicineClass medicine = medicineDataList[index];
             StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
             nameBuilder.Append(" ");
@@ -223,6 +238,7 @@ public class RoomManager : MonoBehaviour    //SH
             MedicineButton buttonClass =
                 new MedicineButton(buttonObject, index, quantity,
                 medicine, propertyObject,medicineObj,quantText,propertyQuantText);
+            buttonClass.owningMedicine = owningMedicine;
             wholeMedicineButtonList.Add(buttonClass);
             //이 위까지가 프리팹들 다 설정해서 whoelMedicineButtonList에 buttonClass를 추가하는거임.
             //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
@@ -353,6 +369,11 @@ public class RoomManager : MonoBehaviour    //SH
             }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
+                if (wholeMedicineButtonList[i].zeroMedicine)
+                {
+                    wholeMedicineButtonList[i].isActive = false;
+                    continue;
+                }
                 if(pushedButton == 0)
                 {
                     wholeMedicineButtonList[i].isActive = false;
@@ -399,7 +420,12 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
             }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-                if(wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
+                if (wholeMedicineButtonList[i].zeroMedicine)
+                {
+                    wholeMedicineButtonList[i].isActive = false;
+                    continue;
+                }
+                if (wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
                 {
                     wholeMedicineButtonList[i].isActive = true;
                     continue;
@@ -457,7 +483,6 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //버튼을 드래그해서 팟에 넣는거.
     public void OnButtonDrag(PointerEventData data, int index)
     {
-        Debug.Log("왜 드래그 안돼");
         if(wholeMedicineButtonList[index].medicineQuant <= 0 || isPotCooked)
         {
             return;
@@ -564,8 +589,8 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         cookedMedicine = new CookedMedicine();
         for (int i = 0; i < 3; i++)
         {
-            indexArray[i] = medicineInPotList[i].medicineIndex;
-            owningMedicineDictionary[indexArray[i]]--;
+            medicineInPotList[i].owningMedicine.medicineQuantity--;
+            
             if(medicineInPotList[i].medicineClass.firstSymptom == Symptom.none)
             {
                 noneMedicineArray[i] = true;
@@ -654,6 +679,29 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         cookedMedicinePrefab.SetActive(true);
         cookedMedicine.medicineObject = cookedMedicinePrefab;
         cookedMedicineManager.CookedMedicineManagerSetting(cookedMedicine);
+        for(int i = 0; i < medicineInPotList.Count; i++)
+        {
+            if(medicineInPotList[i].medicineClass.firstSymptom == Symptom.none)
+            {
+                continue;
+            }
+            OwningMedicineClass owningMedicine = medicineInPotList[i].owningMedicine;
+            owningMedicine.medicineQuantity = medicineInPotList[i].medicineQuant;
+            if (owningMedicine.medicineQuantity <=0)
+            {
+                owningMedicineList.Remove(owningMedicine);
+                medicineInPotList[i].zeroMedicine = true;
+            }
+            
+        }
+        for(int i = 0; i < 6; i++)
+        {
+            if(isButtonOn[i] == true)
+            {
+                PropertyListButton(i);
+            }
+        }
+        
         medicineInPotList.Clear();
         potMedicineObjectList.Clear();
         isPotCooked = true;
