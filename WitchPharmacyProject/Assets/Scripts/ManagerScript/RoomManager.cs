@@ -215,7 +215,15 @@ public class RoomManager : MonoBehaviour    //SH
             }
             prefabButtonIcon.sprite = medicine.medicineImage;
             prefabButtonName.text = nameBuilder.ToString();
-            prefabButtonQuantity.text = quantity.ToString();
+            if(medicine.firstSymptom == Symptom.none)
+            {
+                prefabButtonQuantity.text = null;
+            }
+            else
+            {
+                prefabButtonQuantity.text = quantity.ToString();
+            }
+            
             prefabButtonFirstEffectIcon.text = medicine.firstSymptom.ToString();
             prefabButtonSecondEffectIcon.text = medicine.secondSymptom.ToString();
             prefabButtonFirstEffectNumber.text = medicine.firstNumber.ToString();
@@ -529,8 +537,12 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                 }
                 
                 medicineInPotList.Add(nowMedicineButton);
-                nowMedicineButton.medicineQuant--;
-                nowMedicineButton.quantityText.text = nowMedicineButton.medicineQuant.ToString();
+                //아무것도 아님이 뜨면 줄여주지 않음
+                if (nowMedicineButton.medicineClass.firstSymptom != Symptom.none)
+                {
+                    nowMedicineButton.medicineQuant--;
+                    nowMedicineButton.quantityText.text = nowMedicineButton.medicineQuant.ToString();
+                }
                 nowMedicineButton.propertyQuantityText.text = nowMedicineButton.medicineQuant.ToString();
                 GameObject medicineObj = nowMedicineButton.medicineObject;
                 GameObject inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);

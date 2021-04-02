@@ -8,6 +8,7 @@ TagManager:
   - PotMedicine
   - RecycleBin
   - Visitor
+  - Dust
   layers:
   - Default
   - TransparentFX

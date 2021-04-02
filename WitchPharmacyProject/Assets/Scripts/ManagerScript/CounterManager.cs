@@ -34,6 +34,9 @@ public class CounterManager : MonoBehaviour //SH
     Vector3 visitorAppearPos;
     Vector3 visitorDisappearPos;
 
+    [SerializeField]
+    GameObject dialogPanelObject;
+
     void Start()
     {
         gameManager = GameManager.singleTon;
@@ -54,7 +57,7 @@ public class CounterManager : MonoBehaviour //SH
             visitorBodyParts[i].SetActive(false);
         }
 
-        visitorAppearPos = new Vector3(-7.06f, 1.22f, -1);
+        visitorAppearPos = new Vector3(-7.06f, 0.88f, -1);
         visitorDisappearPos = new Vector3(-7.06f, -12, -1);
         //owningMedicineList = new List<MedicineClass>();
         /*
@@ -166,6 +169,12 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorObject, visitorDisappearPos, 2f));
         yield return new WaitForSeconds(1.5f);
         SpawnRandomVisitor();
+    }
+
+    //측정도구 켜질 때 대화창 꺼주기 위한거
+    public void DialogActive(bool active)
+    {
+        dialogPanelObject.SetActive(active);
     }
 
 
