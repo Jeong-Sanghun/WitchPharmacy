@@ -148,6 +148,11 @@ public class RoomManager : MonoBehaviour    //SH
     GameObject symptomChartObject;
     RandomVisitorClass nowVisitor;
 
+    //증상기록창에서 측정도구로 측정한 증상은 토글이 고정이 되어야함
+    //그래서 어떤 걸 측정도구로 측정했는지 알아야함.
+    public bool[] symptomMeasuredArray;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -181,6 +186,13 @@ public class RoomManager : MonoBehaviour    //SH
         cookedMedicineCounterPos = new Vector3(-100, -555, 0);
 
         nowInRoom = false;
+
+        symptomMeasuredArray = new bool[5];
+        for(int i = 0; i < 5; i++)
+        {
+            symptomMeasuredArray[i] = false;
+        }
+
 
 
         int buttonIndex = 0;
@@ -267,11 +279,13 @@ public class RoomManager : MonoBehaviour    //SH
             entry1.callback.AddListener((data) => { OnButtonDown((PointerEventData)data,delegateIndex); });
             buttonEvent.triggers.Add(entry1);
             */
+            //버튼 이벤트
             EventTrigger.Entry entry2 = new EventTrigger.Entry();
             entry2.eventID = EventTriggerType.Drag;
             entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
             buttonEvent.triggers.Add(entry2);
 
+            //속성창 이벤트
             EventTrigger.Entry entry3 = new EventTrigger.Entry();
             entry3.eventID = EventTriggerType.Drag;
             entry3.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
@@ -298,6 +312,7 @@ public class RoomManager : MonoBehaviour    //SH
     {
         if (Input.GetMouseButtonUp(0))
         {
+            //손 뗄 때 내가 약을 들고있는 상태인지, 그거를 누구 위에 올려놓았는지 판단.
             OnButtonUp();
         }
         if (Input.GetMouseButtonDown(0) && isPotCooked == false)
@@ -489,7 +504,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     bool dragged = false;
     //여기서 인덱스는 버튼의 인덱스다. wholeButton의 인덱스 메디슨의 인덱스가아님
     //버튼을 드래그해서 팟에 넣는거.
-    public void OnButtonDrag(PointerEventData data, int index)
+    void OnButtonDrag(PointerEventData data, int index)
     {
         if(wholeMedicineButtonList[index].medicineQuant <= 0 || isPotCooked)
         {
@@ -504,7 +519,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     }
 
     //드래그하고서 클릭 뗐을 때
-    public void OnButtonUp()
+    void OnButtonUp()
     {
         if (isPotCooked)
         {
@@ -602,7 +617,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         for (int i = 0; i < 3; i++)
         {
             medicineInPotList[i].owningMedicine.medicineQuantity--;
-            
+            indexArray[i] = medicineInPotList[i].medicineIndex;
             if(medicineInPotList[i].medicineClass.firstSymptom == Symptom.none)
             {
                 noneMedicineArray[i] = true;
@@ -778,10 +793,15 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     public void VisitorVisits(RandomVisitorClass visitor)
     {
         nowVisitor = visitor;
+        for(int i = 0; i < 5; i++)
+        {
+            symptomMeasuredArray[i] = false;
+        }
         ChangeSymptomChartText();
     }
 
-    void ChangeSymptomChartText()
+    //차트가 변할 때 얘도 같이 변해야한다. counterManager의 symptomCheckToggle에서 호출
+    public void ChangeSymptomChartText()
     {
         if(nowVisitor == null)
         {
@@ -790,7 +810,23 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         int[] array = new int[7];
         for(int i = 0; i< 6; i++)
         {
-            array[i] = nowVisitor.symptomAmountArray[i];
+            if (i == 5)
+            {
+                array[i] = counterManager.symptomCheckArray[i];
+            }
+            else
+            {
+                if (symptomMeasuredArray[i] == true)
+                {
+                    array[i] = nowVisitor.symptomAmountArray[i];
+                }
+                else
+                {
+                    array[i] = counterManager.symptomCheckArray[i];
+                }
+            }
+
+            
         }
         for(int i = 0; i < medicineInPotList.Count; i++)
         {
@@ -803,8 +839,25 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
 
         for (int i = 0; i < 6; i++)
         {
-            symptomChartTextArray[i].text = array[i].ToString();
+            if(counterManager.symptomCheckedArray[i])
+            {
+                symptomChartTextArray[i].text = array[i].ToString();
+            }
+            else
+            {
+                symptomChartTextArray[i].text = "???";
+            }
+            
+
+
         }
 
+    }
+
+    //이거 measureTool에서 불러옴. 오버라이드 된 그거.
+    public void SymptomMeasured(int index)
+    {
+        symptomMeasuredArray[index] = true;
+        ChangeSymptomChartText();
     }
 }

@@ -15,6 +15,7 @@ public class CookedMedicineManager : MonoBehaviour
     RoomManager roomManager;
     [SerializeField]
     CounterManager counterManager;
+    [SerializeField]
     CookedMedicine cookedMedicine;
 
     GameObject touchedObject;               //터치한 오브젝트

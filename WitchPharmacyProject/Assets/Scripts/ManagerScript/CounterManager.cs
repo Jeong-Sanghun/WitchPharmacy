@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Text;
 //카운터씬 매니저
 //여기서 증상까지 만들어서 RoomManager로 넘겨줌
@@ -11,6 +12,8 @@ public class CounterManager : MonoBehaviour //SH
     SceneManager sceneManager;
     [SerializeField]
     RoomManager roomManager;
+    [SerializeField]
+    MeasureToolManager measureToolManager;
     SaveDataClass saveData;
     SymptomDialog symptomDialog;
     List<int> ownedMedicineIndexList;
@@ -37,6 +40,32 @@ public class CounterManager : MonoBehaviour //SH
     [SerializeField]
     GameObject dialogPanelObject;
 
+    [SerializeField]
+    GameObject[] measureToolIconArray ;
+    Vector3[] measureToolOriginPosArray;
+
+    GameObject touchedObject;               //터치한 오브젝트
+    RaycastHit2D hit;                         //터치를 위한 raycastHit
+    public Camera cam;                      //레이캐스트를 위한 카메라.
+
+
+    //내가 기록한 값. 룸매니저의 증상확인에서 가져옴.
+    //바로바로 가져와야돼서 퍼블릭 쓸수박에 없엄슴
+    public int[] symptomCheckArray;
+    public bool[] symptomCheckedArray;  //체크를 했는지 안했는지
+
+    [SerializeField]
+    GameObject symptomChartObject;
+    [SerializeField]
+    ToggleGroup[] toggleGroupArray;
+    MeasureTool[] measureToolArray;
+    
+    //2차원배열은 serialize안되네;
+    [SerializeField]
+    Toggle[] toggleArray;
+    
+
+
     void Start()
     {
         gameManager = GameManager.singleTon;
@@ -45,6 +74,7 @@ public class CounterManager : MonoBehaviour //SH
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         ownedMedicineIndexList = saveData.ownedMedicineList;
+        measureToolArray = measureToolManager.measureToolArray;
         ownedMedicineList = new List<MedicineClass>();
         for(int i = 0; i < ownedMedicineIndexList.Count; i++)
         {
@@ -59,24 +89,42 @@ public class CounterManager : MonoBehaviour //SH
 
         visitorAppearPos = new Vector3(-7.06f, 0.88f, -1);
         visitorDisappearPos = new Vector3(-7.06f, -12, -1);
-        //owningMedicineList = new List<MedicineClass>();
-        /*
-        for (int i = 0; i < owningMedicineIndexList.Count; i++)
-        {
-            owningMedicineList.Add(medicineDictionary.medicineList[owningMedicineIndexList[i]]);
-        }*/
-        //여기까진 게임메니저랑 세이브데이터에서 데이터 받아오는거 및 초기화.
 
         randomVisitorList = new List<RandomVisitorClass>();
-        for (int i = 0; i< 100; i++)
+
+        measureToolOriginPosArray = new Vector3[5];
+        symptomCheckArray = new int[6];
+        symptomCheckedArray = new bool[6];
+        symptomChartObject.SetActive(false);
+       
+        //기록안했을 떄가 -10임
+        for(int i = 0; i < symptomCheckArray.Length; i++)
         {
+            symptomCheckArray[i] = 0;
+            symptomCheckedArray[i] = false;
+        } 
 
-            //Debug.Log(randomVisitorList[i].answerMedicineList.Count +"개 짜리");
+        for(int i = 0; i < 5; i++)
+        {
+            measureToolOriginPosArray[i] = measureToolIconArray[i].transform.position;
+            EventTrigger buttonEvent = measureToolIconArray[i].GetComponent<EventTrigger>();
 
+
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            int delegateIndex = i;
+            entry.eventID = EventTriggerType.Drag;
+            entry.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+            buttonEvent.triggers.Add(entry);
+
+            EventTrigger.Entry entry1 = new EventTrigger.Entry();
+            entry1.eventID = EventTriggerType.PointerUp;
+            entry1.callback.AddListener((data) => { OnButtonUp((PointerEventData)data, delegateIndex); });
+            buttonEvent.triggers.Add(entry1);
         }
-        // LoadTextOneByOne(string inputTextString, Text inputTextUI, float eachTime = 0.05f)
 
-        SpawnRandomVisitor();
+
+
+        SpawnRandomVisitor();   //이거 나중에 지울거임.
     }
 
     int index = 0;
@@ -96,12 +144,33 @@ public class CounterManager : MonoBehaviour //SH
             }
         }
 
+
+
         randomVisitorList.Add(nowVisitor);
         roomManager.VisitorVisits(nowVisitor);
+        measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
         StartCoroutine(VisitorAppearCoroutine());
         index++;
+        //기록안했을 떄가 -3임
+        for(int i = 0; i < toggleGroupArray.Length; i++)
+        {
+            for (int j = i * 5; j < i * 5 + 5; j++)
+            {
+                toggleArray[j].isOn = false;
+                toggleArray[j].group = toggleGroupArray[i];
+            }
+            //toggleGroupArray[i].SetAllTogglesOff();
+
+            
+        }
+        for (int i = 0; i < symptomCheckArray.Length; i++)
+        {
+            symptomCheckedArray[i] = false;
+            symptomCheckArray[i] = 0;
+        }
     }
 
+    //cookedMedicineManager의 pointerUP에서 호출
     public void OnMedicineDelivery(CookedMedicine medicine)
     {
         int[] medicineIndexArray = medicine.medicineArray;
@@ -120,11 +189,14 @@ public class CounterManager : MonoBehaviour //SH
             {
                 continue;
             }
+            Debug.Log("메디슨 첫번째 넘버 " + med.firstNumber);
+            Debug.Log("메디슨 두번째 넘버 " + med.secondNumber);
             medicineSymptomArray[(int)med.firstSymptom] += med.firstNumber;
             medicineSymptomArray[(int)med.secondSymptom] += med.secondNumber;
         }
         for(int i = 0; i < 6; i++)
         {
+            Debug.Log((Symptom)i + " 증상 " + medicineSymptomArray[i] + visitorSymptomArray[i]);
             if(medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
             {
                 goodMedicine = false;
@@ -177,10 +249,128 @@ public class CounterManager : MonoBehaviour //SH
         dialogPanelObject.SetActive(active);
     }
 
-
-    void Update()
+    void OnButtonDrag(PointerEventData data, int index)
     {
+        Vector2 mousePos =Input.mousePosition;
+        measureToolIconArray[index].transform.position = Input.mousePosition;
+    }
 
+    //드래그하고서 클릭 뗐을 때
+    void OnButtonUp(PointerEventData data, int index)
+    {
+        measureToolIconArray[index].transform.position = measureToolOriginPosArray[index];
+
+        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
+        {
+            touchedObject = hit.collider.gameObject;
+            //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
+            if (touchedObject.CompareTag("Visitor"))
+            {
+                measureToolManager.ToolOpenButton(index);
+            }
+        }
+    }
+
+    int symptomToggleIndex = 0;
+    //시발 파라미터가 1개밖에 안들어가서 어쩔 수 없이 두 개의 함수를 파야했다.
+    //위에거에서는 단순히 증상인덱스만 넘겨주고, 아래거에서는 -2~2의 값을 넘겨준다
+    public void ToggleIndexChecker(int symptom)
+    {
+        symptomToggleIndex = symptom;
+    }
+
+
+    public void SymptomCheckToggle(int amount)
+    {
+        if(symptomToggleIndex != 5)
+        {
+            if (measureToolArray[symptomToggleIndex].measureEnd)
+            {
+                int fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
+
+                for (int i = symptomToggleIndex * 5; i < symptomToggleIndex*5 + 5; i++)
+                {
+                    if (i == fixedToggle)
+                    {
+                        if(toggleArray[i].isOn == false)
+                        {
+                            toggleArray[i].isOn = true;
+                        }
+                    }
+                    else
+                    {
+                        toggleArray[i].isOn = false;
+                    }
+                }
+
+                symptomCheckedArray[symptomToggleIndex] = true;
+                symptomCheckArray[symptomToggleIndex] = nowVisitor.symptomAmountArray[symptomToggleIndex];
+
+            }
+            else
+            {
+                if (!toggleGroupArray[symptomToggleIndex].AnyTogglesOn())
+                {
+                    symptomCheckedArray[symptomToggleIndex] = false;
+                    symptomCheckArray[symptomToggleIndex] = 0;
+                }
+                else
+                {
+                    symptomCheckedArray[symptomToggleIndex] = true;
+                    symptomCheckArray[symptomToggleIndex] = amount;
+                }
+            }
+        }
+        else
+        {
+            if (!toggleGroupArray[symptomToggleIndex].AnyTogglesOn())
+            {
+                symptomCheckedArray[symptomToggleIndex] = false;
+                symptomCheckArray[symptomToggleIndex] = 0;
+            }
+            else
+            {
+                symptomCheckedArray[symptomToggleIndex] = true;
+                symptomCheckArray[symptomToggleIndex] = amount;
+            }
+        }
+
+       
+        roomManager.ChangeSymptomChartText();
+    }
+
+    //측정이 끝나면 토글창을 고정시켜줘야돼.
+    public void OnMeasureEnd(int symptom)
+    {
+        ToggleIndexChecker(symptom);
+        SymptomCheckToggle(0);
+
+        Debug.Log("메저 엔드");
+        //int pushedToggle = symptomToggleIndex * 5 + 2 + amount;
+        int fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
+        toggleGroupArray[symptomToggleIndex].SetAllTogglesOff();
+
+        for (int i = symptomToggleIndex * 5; i < symptomToggleIndex*5 + 5; i++)
+        {
+            toggleArray[i].group = null;
+            if (i == fixedToggle)
+            {
+                toggleArray[i].isOn = true;
+            }
+            else
+            {
+                toggleArray[i].isOn = false;
+            }
+
+        }
+
+    }
+
+    //증상기록 버튼 닫기버튼
+    public void SymptomChartActive(bool active)
+    {
+        symptomChartObject.SetActive(active);
     }
 
 }

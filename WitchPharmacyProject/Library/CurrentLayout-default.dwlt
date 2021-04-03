@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 342}
   m_MaxSize: {x: 16006, y: 8042}
   vertical: 0
-  controlID: 5404
+  controlID: 158
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 342}
   m_MaxSize: {x: 12005, y: 8042}
   vertical: 1
-  controlID: 5498
+  controlID: 100
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 5499
+  controlID: 101
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -421,20 +421,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 5afffeff
-      m_LastClickedID: -65702
-      m_ExpandedIDs: 4600ffffb604ffff1205ffff4005ffff8c5dffff64fbffff96390000663a0000fa3a0000663b00009c3b0000283c0000
+      m_SelectedIDs: 1c400000
+      m_LastClickedID: 16412
+      m_ExpandedIDs: 5afbffff74390000003a00004a3a0000de3b0000ba3c00008c3e00009c3f0000f03f000080410000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: DialogCase
-        m_OriginalName: DialogCase
+        m_Name: Toggle
+        m_OriginalName: Toggle
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 15206
+        m_UserData: 15448
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -483,9 +483,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1280, y: 720, z: 0}
+    m_Target: {x: 2096.5837, y: 854.72766, z: -9.21543}
     speed: 2
-    m_Value: {x: 1280, y: 720, z: 0}
+    m_Value: {x: 2096.5837, y: 854.72766, z: -9.21543}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -535,9 +535,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1468.6047
+    m_Target: 372.54062
     speed: 2
-    m_Value: 1468.6047
+    m_Value: 372.54062
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -691,20 +691,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/ManagerScript
+    - Assets/Scripts/ClassScript
   m_ViewMode: 1
   m_StartGridSize: 67
   m_LastFolders:
-  - Assets/Scripts/ManagerScript
+  - Assets/Scripts/ClassScript
   m_LastFoldersGridSize: 67
   m_LastProjectPath: C:\Users\CafeAlle\Documents\GitHub\WitchPharmacy\WitchPharmacyProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 24}
-    m_SelectedIDs: 6c3d0000
-    m_LastClickedID: 15724
-    m_ExpandedIDs: 00000000503d0000523d0000543d0000563d0000603d00006c3d000000ca9a3b
+    m_SelectedIDs: ec710100
+    m_LastClickedID: 94700
+    m_ExpandedIDs: 00000000fc420000fe420000004300000243000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -732,7 +732,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000503d0000523d0000543d0000563d000000ca9a3b
+    m_ExpandedIDs: 00000000fc420000fe4200000043000002430000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -757,8 +757,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 1c400000
+    m_LastClickedInstanceID: 16412
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000ee3800009c530000b63c0000e83c0000a4460000
     m_RenameOverlay:

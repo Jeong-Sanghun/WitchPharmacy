@@ -7,14 +7,23 @@ public class MeasureTool : MonoBehaviour    //SH
     GameManager gameManager;
     [SerializeField]
     MeasureToolManager measureToolManager;
+    [SerializeField]
+    RoomManager roomManager;
+    [SerializeField]
+    CounterManager countermanager;
 
     GameObject toolObject;
-    
+    protected int symptomNumber;
+
+    //CounterManager에서 측정이 끝났는지 알아야 토글을 못하게 막는다.
+    public bool measureEnd = false;
+    int toolIndex = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.singleTon;
+        measureEnd = false;
     }
 
     // Update is called once per frame
@@ -29,9 +38,21 @@ public class MeasureTool : MonoBehaviour    //SH
         toolObject.SetActive(active);
     }
 
-    //상속된것들에서 씀
-    protected void MeasureEnd(int index)
+    //measureToolManager에서 불러줌씨발;
+    public virtual void OnNewVisitor(int symptomNum,int index)
     {
-        measureToolManager.MeasureEnd(index);
+        symptomNumber = symptomNum;
+        measureEnd = false;
+        toolIndex = index;
     }
+
+    //상속된것들에서 씀
+    protected virtual void MeasureEnd()
+    {
+        roomManager.SymptomMeasured(toolIndex);
+        measureEnd = true;
+        countermanager.OnMeasureEnd(toolIndex);
+    }
+
+
 }

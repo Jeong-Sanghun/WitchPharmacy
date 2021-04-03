@@ -88,7 +88,7 @@ public class RandomVisitorClass //SH
          * 
          * 
          */
-        while (symptomNumber > nowMedicineNumber)
+        while (symptomNumber > nowMedicineNumber || nowMedicineNumber ==0)
         {
 
             //가지고있는 약재 한바퀴 돌면서 가능한 약재 찾기.
