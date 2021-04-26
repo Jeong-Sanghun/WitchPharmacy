@@ -283,7 +283,7 @@ public class RandomVisitorClass //SH
                 }
                 else
                 {
-                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * i - 0.1f * j);
+                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i+1) - 0.1f * (j+1));
                 }
                 
             }
