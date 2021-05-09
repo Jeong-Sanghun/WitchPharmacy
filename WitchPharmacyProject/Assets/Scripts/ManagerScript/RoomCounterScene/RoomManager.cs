@@ -9,42 +9,7 @@ using System.Text;
 //조제실에서 약재버튼 생성해주고 그걸로 조합해서 카운터매니저로 넘길거임.
 public class RoomManager : MonoBehaviour    //SH
 {
-    [System.Serializable]
-    class MedicineButton
-    {
 
-        public MedicineClass medicineClass; //아이템의 약 속성이 뭔지
-        public GameObject buttonObject;     //스크롤뷰에 들어가있는 버튼 오브젝트
-        public GameObject propertyObject;   //클릭하면 속성창이 떠야되는데 그 속성창 오브젝트
-        public RectTransform buttonRect;    //버튼 rect 계속 getComponent해주기 귀찮아서
-        public GameObject medicineObject;   //드래그앤드롭시 약재 오브젝트
-        public OwningMedicineClass owningMedicine;     //owningMedicineList에서 가져오는거
-        public int medicineIndex;           //약재 딕셔너리의 인덱스
-        public int medicineQuant;           //약재 몇개인지
-        public Text quantityText;
-        public Text propertyQuantityText;
-        public bool isActive;               //지금 activeSelf상태. 속성을 껐다켰다 해줘야해서.
-        public bool isOnPot;
-        public bool zeroMedicine;
-        public GameObject potMedicineObject;    //팟 위에 둥실둥실 떠있는 오브젝트
-
-        public MedicineButton(GameObject obj, int index, int quant, 
-            MedicineClass medicine, GameObject property, GameObject medicineObj,
-            Text quantText,Text propertyQuantText)
-        {
-            medicineClass = medicine;
-            buttonObject = obj;
-            propertyObject = property;
-            medicineObject = medicineObj;
-            buttonRect = buttonObject.GetComponent<RectTransform>();
-            medicineIndex = index;
-            medicineQuant = quant;
-            quantityText = quantText;
-            propertyQuantityText = propertyQuantText;
-            isActive = false;
-            zeroMedicine = false;
-        }
-    }
     [SerializeField]
     CounterManager counterManager;
     [SerializeField]
@@ -58,9 +23,6 @@ public class RoomManager : MonoBehaviour    //SH
     //List<CookedMedicineData> cookedMedicineDataList;
     //위는 기본적인 매니저들 그리고 데이터들
 
-    //월드에 false로 미리 6개를 만들어놓는다. Instantiate하면 렉걸리니까. 그리고 어차피 6개 고정인 스크롤뷰임.
-    //[SerializeField]
-    //GameObject[] medicineScrollArray;
     //스크롤 뷰에 들어가있는 content들 위아래 길이조정 해줘야함.
     //버튼도 이 아래에 생성할거여서 따로 드래그앤드롭 해줘야함. GetChild로 받아왔는데 순서꼬이면 귀찮아짐.
     [SerializeField]
@@ -161,14 +123,6 @@ public class RoomManager : MonoBehaviour    //SH
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         ownedMedicineList = saveData.ownedMedicineList;
         owningMedicineList = saveData.owningMedicineList;
-        //owningMedicineDictionary = saveData.owningMedicineDictionary;
-        //cookedMedicineDataList = gameManager.cookedMedicineDataWrapper.cookedMedicineDataList;
-        /*
-        contentButtonQuantityArray = new int[6];
-        for(int i = 0; i < contentButtonQuantityArray.Length; i++)
-        {
-            contentButtonQuantityArray[i] = 0;
-        }*/
         isButtonOn = new bool[6];
         for (int i = 0; i < isButtonOn.Length; i++)
         {
@@ -272,13 +226,7 @@ public class RoomManager : MonoBehaviour    //SH
             //scrollView의 각 버튼마다 index에 맞는 eventTrigger를 심어줘야함.
             Transform iconObject = buttonObject.transform.GetChild(0);
             EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
-            
-            /*
-            EventTrigger.Entry entry1 = new EventTrigger.Entry();
-            entry1.eventID = EventTriggerType.PointerDown;
-            entry1.callback.AddListener((data) => { OnButtonDown((PointerEventData)data,delegateIndex); });
-            buttonEvent.triggers.Add(entry1);
-            */
+
             //버튼 이벤트
             EventTrigger.Entry entry2 = new EventTrigger.Entry();
             entry2.eventID = EventTriggerType.Drag;
@@ -297,13 +245,6 @@ public class RoomManager : MonoBehaviour    //SH
             //wholeMedicienButtonList의 index임.
 
         }
-
-        /*
-        for(int i = 0; i < 6; i++)
-        {
-            scrollContentArray[i].sizeDelta = new Vector2(0, 180 * contentButtonQuantityArray[i]);
-        }
-        */
 
     }
 
