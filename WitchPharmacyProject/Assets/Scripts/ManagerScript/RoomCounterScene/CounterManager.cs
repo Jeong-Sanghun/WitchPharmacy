@@ -26,7 +26,8 @@ public class CounterManager : MonoBehaviour //SH
     [SerializeField]
     List<RandomVisitorClass> randomVisitorList;
     RandomVisitorClass nowVisitor;
-    public Text visitorText;
+    [SerializeField]
+    Text visitorText;
 
     [SerializeField]
     GameObject visitorParent;
@@ -50,7 +51,9 @@ public class CounterManager : MonoBehaviour //SH
 
     //내가 기록한 값. 룸매니저의 증상확인에서 가져옴.
     //바로바로 가져와야돼서 퍼블릭 쓸수박에 없엄슴
+    [HideInInspector]
     public int[] symptomCheckArray;
+    [HideInInspector]
     public bool[] symptomCheckedArray;  //체크를 했는지 안했는지
 
     [SerializeField]
@@ -117,8 +120,8 @@ public class CounterManager : MonoBehaviour //SH
             buttonEvent.triggers.Add(entry1);
         }
 
-
-
+        //스태틱으로 만들어버려
+        RandomVisitorClass.SetOwnedMedicineList(ownedMedicineList);
         SpawnRandomVisitor();   //이거 나중에 지울거임.
     }
 
@@ -130,7 +133,7 @@ public class CounterManager : MonoBehaviour //SH
             nowVisitor.visitorObject.SetActive(false);
         }
         
-        nowVisitor = new RandomVisitorClass(symptomDialog, ownedMedicineList,visitorParent);
+        nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent);
         randomVisitorList.Add(nowVisitor);
         roomManager.VisitorVisits(nowVisitor);
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);

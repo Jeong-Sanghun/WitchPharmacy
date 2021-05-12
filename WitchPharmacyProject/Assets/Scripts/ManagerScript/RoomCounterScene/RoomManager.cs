@@ -14,6 +14,7 @@ public class RoomManager : MonoBehaviour    //SH
     CounterManager counterManager;
     [SerializeField]
     CookedMedicineManager cookedMedicineManager;
+
     GameManager gameManager;
     SaveDataClass saveData;
     List<MedicineClass> medicineDataList;
@@ -91,6 +92,7 @@ public class RoomManager : MonoBehaviour    //SH
     //약재를 다 끓여서 만들었는지
     //counterManager에서 받아올거임. 쿡한상태에서 간거하고 안하고 간거랑 다를테니까
     //countermanager에서 이 값을 변화시켜줌.
+    [HideInInspector]
     public bool isPotCooked;
     CookedMedicine cookedMedicine;
     [SerializeField]
@@ -102,6 +104,7 @@ public class RoomManager : MonoBehaviour    //SH
     Vector3 cookedMedicineCounterPos;
 
     //현재 조제실에 있는가.
+    [HideInInspector]
     public bool nowInRoom;
 
     [SerializeField]
@@ -112,6 +115,7 @@ public class RoomManager : MonoBehaviour    //SH
 
     //증상기록창에서 측정도구로 측정한 증상은 토글이 고정이 되어야함
     //그래서 어떤 걸 측정도구로 측정했는지 알아야함.
+    [HideInInspector]
     public bool[] symptomMeasuredArray;
 
 

@@ -37,4 +37,8 @@ public class MedicineButton
         isActive = false;
         zeroMedicine = false;
     }
+
+
+
+
 }

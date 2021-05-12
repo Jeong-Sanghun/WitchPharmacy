@@ -32,6 +32,7 @@ public class RandomVisitorClass //SH
     public int[] symptomAmountArray;
     //증상은 무조건 두 개    
     public List<MedicineClass> answerMedicineList;
+    static List<MedicineClass> ownedMedicineList;
 
     public Symptom earSymptom;
     public Symptom hornSymptom;
@@ -64,7 +65,7 @@ public class RandomVisitorClass //SH
 
     //약재의 종류는 최대 3개
     //약재 개수는 같은거는 최대 2개.
-    public RandomVisitorClass(SymptomDialog dialog, List<MedicineClass> ownedMedicineList,GameObject parent)
+    public RandomVisitorClass(SymptomDialog dialog,GameObject parent)
     {
         earSymptom = (Symptom)Random.Range(0, 6);
         hornSymptom = (Symptom)Random.Range(0, 6);
@@ -289,6 +290,11 @@ public class RandomVisitorClass //SH
         }
 
 
+    }
+
+    public static void SetOwnedMedicineList(List<MedicineClass> ownedMedicineList)
+    {
+        RandomVisitorClass.ownedMedicineList = ownedMedicineList;
     }
 
 
