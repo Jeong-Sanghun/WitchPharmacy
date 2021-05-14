@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//json
 [System.Serializable]
 public class RegionAvailableMedicine
 {

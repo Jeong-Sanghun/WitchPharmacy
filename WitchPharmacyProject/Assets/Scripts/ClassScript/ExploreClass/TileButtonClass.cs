@@ -10,12 +10,13 @@ public enum TileType
 
 public enum Edge
 {
-    Up,Down,Left,Right
+    Up,Down,Left,Right,UpLeft, DownRight, UpRight, DownLeft
 }
 
 public class TileButtonClass
 {
-    static int edgeNumber = 4;
+    public static int edgeNumber = 8;
+    public static int maxCost = 4;
     public GameObject tileButtonObject;
     public TileButtonClass[] adjacentTileArray;
     public Tile tileClass;
@@ -23,6 +24,7 @@ public class TileButtonClass
     public int[] adjacentCostArray;
     public bool isStartTile;
     public bool isSetUp;
+    public int nowEdgeNumber;
 
     public TileButtonClass(GameObject button, Tile tile,bool start)
     {
@@ -43,6 +45,7 @@ public class TileButtonClass
 
         isStartTile = start;
         isSetUp = start;
+        nowEdgeNumber = 0;
     }
 
     //디버그용
@@ -64,6 +67,7 @@ public class TileButtonClass
 
         isStartTile = start;
         isSetUp = start;
+        nowEdgeNumber = 0;
     }
 
     public void SetEdge(TileButtonClass otherTileButton, int cost, Edge edgeWay)
@@ -83,6 +87,7 @@ public class TileButtonClass
         otherTileButton.adjacentTileArray[(int)oppositeWay] = this;
         otherTileButton.adjacentCostArray[(int)oppositeWay] = cost;
         otherTileButton.adjacentBoolArray[(int)oppositeWay] = true;
+        nowEdgeNumber++;
 
     }
 

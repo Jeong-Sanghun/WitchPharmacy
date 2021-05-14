@@ -18,7 +18,7 @@ public class RegionProperty
         regionName = "testRegion";
         tileTypeList = new List<int>();
         tileTypeList.Add(0);
-        for (int i = 1; i<10; i++)
+        for (int i = 1; i<RegionIngame.tileNumber; i++)
         {
             tileTypeList.Add(Random.Range(1, 8));
         }

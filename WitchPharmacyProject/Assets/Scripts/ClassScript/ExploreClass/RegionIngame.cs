@@ -6,6 +6,7 @@ public class RegionIngame
 {
     public RegionProperty regionProperty;
     public List<TileButtonClass> tileButtonList;
+    public static int tileNumber = 30;
 
     public RegionIngame()
     {
@@ -26,7 +27,50 @@ public class RegionIngame
         GameObject inst = GameObject.Instantiate(button,canvas);
         Tile tile = new StartTile(0);
         tileButtonList.Add(new TileButtonClass(inst,tile,true));
-        for (int i = 1; i < 10; i++)
+        for (int i = 1; i < tileNumber; i++)
+        {
+            inst = GameObject.Instantiate(button, canvas);
+            switch (regionProperty.tileTypeList[i])
+            {
+                //StartTile, MedicineTile, StoreTile, StoryTile, TreasureTile, TrapTile, BarrierTile, SpecialStoreTile
+                case 1:
+                    tile = new MedicineTile(i);
+                    break;
+                case 2:
+                    tile = new StoreTile(i);
+                    break;
+                case 3:
+                    tile = new StoryTile(i);
+                    break;
+                case 4:
+                    tile = new TreasureTile(i);
+                    break;
+                case 5:
+                    tile = new TrapTile(i);
+                    break;
+                case 6:
+                    tile = new BarrierTile(i);
+                    break;
+                case 7:
+                    tile = new SpecialStoreTile(i);
+                    break;
+                default:
+                    tile = new MedicineTile(i);
+                    break;
+            }
+            tileButtonList.Add(new TileButtonClass(inst, tile, false));
+        }
+    }
+
+
+    public RegionIngame(RegionProperty json,GameObject button, Transform canvas)
+    {
+        regionProperty = json;
+        tileButtonList = new List<TileButtonClass>();
+        GameObject inst = GameObject.Instantiate(button, canvas);
+        Tile tile = new StartTile(0);
+        tileButtonList.Add(new TileButtonClass(inst, tile, true));
+        for (int i = 1; i < tileNumber; i++)
         {
             inst = GameObject.Instantiate(button, canvas);
             switch (regionProperty.tileTypeList[i])
