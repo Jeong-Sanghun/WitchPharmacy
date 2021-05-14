@@ -43,7 +43,6 @@ public class TileButtonClass
 
         isStartTile = start;
         isSetUp = start;
-
     }
 
     //디버그용
@@ -64,6 +63,7 @@ public class TileButtonClass
         }
 
         isStartTile = start;
+        isSetUp = start;
     }
 
     public void SetEdge(TileButtonClass otherTileButton, int cost, Edge edgeWay)
