@@ -122,6 +122,7 @@ public class CounterManager : MonoBehaviour //SH
 
         //스태틱으로 만들어버려
         RandomVisitorClass.SetOwnedMedicineList(ownedMedicineList);
+
         SpawnRandomVisitor();   //이거 나중에 지울거임.
     }
 

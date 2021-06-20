@@ -127,7 +127,7 @@ public class RoomManager : MonoBehaviour    //SH
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         ownedMedicineList = saveData.ownedMedicineList;
         owningMedicineList = saveData.owningMedicineList;
-        isButtonOn = new bool[6];
+        isButtonOn = new bool[5];
         for (int i = 0; i < isButtonOn.Length; i++)
         {
             isButtonOn[i] = false;
@@ -328,7 +328,7 @@ public class RoomManager : MonoBehaviour    //SH
 
             isButtonOn[index] = false;
             int pushedButton = 0;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (isButtonOn[i])
                 {
@@ -379,7 +379,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
 
             isButtonOn[index] = true;
             int pushedButton = 0;
-            for(int i = 0; i < 6; i++)
+            for(int i = 0; i < 5; i++)
             {
                 if (isButtonOn[i])
                 {
@@ -666,7 +666,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
             }
             
         }
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 5; i++)
         {
             if(isButtonOn[i] == true)
             {
@@ -752,15 +752,15 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         {
             return;
         }
-        int[] array = new int[7];
-        for(int i = 0; i< 6; i++)
+        int[] array = new int[6];
+        for(int i = 0; i< 5; i++)
         {
-            if (i == 5)
-            {
-                array[i] = counterManager.symptomCheckArray[i];
-            }
-            else
-            {
+            //if (i == 5)
+            //{
+            //    array[i] = counterManager.symptomCheckArray[i];
+            //}
+            //else
+            //{
                 if (symptomMeasuredArray[i] == true)
                 {
                     array[i] = nowVisitor.symptomAmountArray[i];
@@ -769,7 +769,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                 {
                     array[i] = counterManager.symptomCheckArray[i];
                 }
-            }
+            //}
 
             
         }
@@ -782,7 +782,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
             array[secondSymtpom] += medicineInPotList[i].medicineClass.secondNumber;
         }
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             if(counterManager.symptomCheckedArray[i])
             {

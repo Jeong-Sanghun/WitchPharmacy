@@ -6,7 +6,7 @@ using System.Text;
 
 public enum Symptom
 {
-    water, fire, dirt, wood, metal, light, none
+    water, fire, dirt, air, spirit, none
 }
 
 //랜덤캐릭터 할 때 한요소가 두개씩 있는경우가 있어서 그럼.
@@ -34,9 +34,10 @@ public class RandomVisitorClass //SH
     public List<MedicineClass> answerMedicineList;
     static List<MedicineClass> ownedMedicineList;
 
+    /*
     public Symptom earSymptom;
     public Symptom hornSymptom;
-
+    */
     //body clothes head face hair ear horn
     //인덱스별로 레이어가 있음. 각 파츠가 몇개까지 있는지 미리 저장해두고 그 인덱스에서 뽑아옴.
     static int[] partsNum = { 1, 2, 2, 2, 2, 4, 4 };
@@ -67,13 +68,13 @@ public class RandomVisitorClass //SH
     //약재 개수는 같은거는 최대 2개.
     public RandomVisitorClass(SymptomDialog dialog,GameObject parent)
     {
-        earSymptom = (Symptom)Random.Range(0, 6);
-        hornSymptom = (Symptom)Random.Range(0, 6);
+        //earSymptom = (Symptom)Random.Range(0, 6);
+        //hornSymptom = (Symptom)Random.Range(0, 6);
         symptomList = new List<Symptom>();
         symptomAmountList = new List<int>();
         symptomAmountArray = new int[6];
         List<MedicineClass> availableMedicineList = new List<MedicineClass>();
-        int[] symptomNumberArray = new int[6];
+        int[] symptomNumberArray = new int[5];
         for(int i = 0; i < symptomNumberArray.Length; i++)
         {
             symptomNumberArray[i] = 0;
@@ -103,12 +104,13 @@ public class RandomVisitorClass //SH
                 {
                     continue;
                 }
+                /*
                 if(medicine.firstSymptom == earSymptom || medicine.secondSymptom == earSymptom 
                     || medicine.firstSymptom == hornSymptom || medicine.secondSymptom == hornSymptom)
                 {
                     //귀랑 뿔 겹치는거 빼주고
                     continue;
-                }
+                }*/
                 available = true;
                 //만약 증상 합이 2나 -2 넘어가면 그 약은 안되는거니까 다시돌려
                 //여기가 누적계산하는 곳
@@ -292,8 +294,10 @@ public class RandomVisitorClass //SH
 
     }
 
+    //이걸 어디서 불러오지 씨발;
     public static void SetOwnedMedicineList(List<MedicineClass> ownedMedicineList)
     {
+        Debug.Log("어디");
         RandomVisitorClass.ownedMedicineList = ownedMedicineList;
     }
 
