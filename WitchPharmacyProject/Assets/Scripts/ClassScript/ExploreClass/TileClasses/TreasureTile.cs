@@ -9,5 +9,6 @@ public class TreasureTile : Tile
     public TreasureTile(int i) : base(i)
     {
         index = i;
+        tileType = TileType.TreasureTile;
     }
 }

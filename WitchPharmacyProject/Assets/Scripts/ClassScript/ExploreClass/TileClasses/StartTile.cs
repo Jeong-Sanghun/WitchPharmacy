@@ -7,5 +7,6 @@ public class StartTile : Tile
     public StartTile(int i) : base(i)
     {
         index = i;
+        tileType = TileType.StartTile;
     }
 }

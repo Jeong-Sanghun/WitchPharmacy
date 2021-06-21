@@ -8,5 +8,6 @@ public class StoryTile : Tile
     public StoryTile(int i) : base(i)
     {
         index = i;
+        tileType = TileType.StoryTile;
     }
 }

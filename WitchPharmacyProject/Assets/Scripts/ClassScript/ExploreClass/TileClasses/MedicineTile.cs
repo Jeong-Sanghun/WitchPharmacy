@@ -7,5 +7,6 @@ public class MedicineTile : Tile
     public MedicineTile(int i) : base(i)
     {
         index = i;
+        tileType = TileType.MedicineTile;
     }
 }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using System.Text;
 
 public class SceneManager : MonoBehaviour // JH
 {
     
-    public GameManager GameManagerScript;
+    GameManager gameManager;
+    public static SceneManager inst;
 
 
     // // Module // //
@@ -174,10 +176,23 @@ public class SceneManager : MonoBehaviour // JH
     // // Module // //
 
 
-
-    void Start()
+    public void LoadScene(string sceneName)
     {
-       
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+
+    void Awake()
+    {
+        if (inst == null)
+        {
+            inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     

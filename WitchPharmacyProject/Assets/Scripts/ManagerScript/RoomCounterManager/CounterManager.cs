@@ -71,7 +71,7 @@ public class CounterManager : MonoBehaviour //SH
     void Start()
     {
         gameManager = GameManager.singleTon;
-        sceneManager = gameManager.SceneManagerScirpt;
+        sceneManager = SceneManager.inst;
         symptomDialog = gameManager.symptomDialog;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;

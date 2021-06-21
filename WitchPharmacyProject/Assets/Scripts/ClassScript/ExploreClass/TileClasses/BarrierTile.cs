@@ -7,5 +7,6 @@ public class BarrierTile : Tile
     public BarrierTile(int i) : base(i)
     {
         index = i;
+        tileType = TileType.BarrierTile;
     }
 }

@@ -7,5 +7,6 @@ public class SpecialStoreTile : Tile
     public SpecialStoreTile(int i) : base(i)
     {
         index = i;
+        tileType = TileType.SpecialStoreTile;
     }
 }

@@ -7544,7 +7544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &697495329
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11578,7 +11578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1073689472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15877,7 +15877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359cfac1ae747bc458900e1d81e77b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManagerScript: {fileID: 1955705301}
 --- !u!4 &1496457249
 Transform:
   m_ObjectHideFlags: 0
@@ -24794,22 +24793,22 @@ PrefabInstance:
     - target: {fileID: 8582334778768357147, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8582334778768357147, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8582334778768357147, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 8582334778768357147, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 8582334778768357147, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
@@ -24824,17 +24823,17 @@ PrefabInstance:
     - target: {fileID: 8582334779060610151, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8582334779060610151, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 8582334779060610151, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.29481193
       objectReference: {fileID: 0}
     - target: {fileID: 8582334779060610168, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
@@ -24970,12 +24969,12 @@ PrefabInstance:
     - target: {fileID: 8582334779888673761, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8582334779888673761, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8582334779888673761, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
@@ -24985,12 +24984,12 @@ PrefabInstance:
     - target: {fileID: 8582334780174406321, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8582334780174406321, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 8582334780174406323, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
@@ -25016,12 +25015,12 @@ PrefabInstance:
     - target: {fileID: 8582334780334546436, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8582334780334546436, guid: 91cc12dce53dbab4f83587f1592e6d44,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91cc12dce53dbab4f83587f1592e6d44, type: 3}

@@ -18,13 +18,13 @@ public class GameManager : MonoBehaviour //SH
     public SymptomDialog symptomDialog;
 
     //세이브데이터 불러오기 및 딕셔너리 읽기.
-    JsonManager jsonManager;   
+    JsonManager jsonManager;
 
-    
 
-    void Start()
+
+    void Awake()
     {
-        if(singleTon == null)
+        if (singleTon == null)
         {
             singleTon = this;
             DontDestroyOnLoad(gameObject);
@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour //SH
         {
             Destroy(gameObject);
         }
-        //중복방지 싱글톤
+    }
+    void Start()
+    {
 
         jsonManager = new JsonManager();
         DebugDataJson();
