@@ -40,12 +40,12 @@ public class RegionProperty
             }
             tileTypeArray[roundRobin]++;
         }
-        regionAvailableMedicine = new int[RegionIngame.medicineNumber];
-        medicineProbability = new float[RegionIngame.medicineNumber];
-        for (int i = 0; i < RegionIngame.medicineNumber; i++)
+        regionAvailableMedicine = new int[MedicineTileManager.appearingMedicine];
+        medicineProbability = new float[MedicineTileManager.appearingMedicine];
+        for (int i = 0; i < MedicineTileManager.appearingMedicine; i++)
         {
             regionAvailableMedicine[i] = Random.Range(0,20);
-            medicineProbability[i] = 100.0f/ RegionIngame.medicineNumber;
+            medicineProbability[i] = 100.0f/ MedicineTileManager.appearingMedicine;
         }
         //regionAvailableMedicine = new RegionAvailableMedicine();
     }

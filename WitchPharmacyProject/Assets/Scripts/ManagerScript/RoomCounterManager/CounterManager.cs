@@ -185,7 +185,6 @@ public class CounterManager : MonoBehaviour //SH
         }
         for(int i = 0; i < 6; i++)
         {
-            Debug.Log((Symptom)i + " 증상 " + medicineSymptomArray[i] + visitorSymptomArray[i]);
             if(medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
             {
                 goodMedicine = false;

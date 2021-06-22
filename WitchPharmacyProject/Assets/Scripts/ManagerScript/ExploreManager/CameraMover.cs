@@ -40,6 +40,14 @@ public class CameraMover : MonoBehaviour
             {
                 cameraObject.transform.localPosition =
                    cameraObject.transform.localPosition + new Vector3(deltaMousepos.x/100 * speed, 0, 0);
+                if (cameraObject.transform.localPosition.x > 17)
+                {
+                    cameraObject.transform.localPosition = new Vector3(17, 0, -10);
+                }
+                else if (cameraObject.transform.localPosition.x < 0)
+                {
+                    cameraObject.transform.localPosition = new Vector3(0, 0, -10);
+                }
 
             }
             lastMousepos = Input.mousePosition;
