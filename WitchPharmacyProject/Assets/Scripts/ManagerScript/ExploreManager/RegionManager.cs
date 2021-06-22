@@ -114,9 +114,23 @@ public class RegionManager : MonoBehaviour
         {
             for (int i = 0; i < nowTile.adjacentTileList.Count; i++)
             {
-                bool notIncluded = false;
-                AStar node = new AStar();
+                
                 TileButtonClass nextTile = nowTile.adjacentTileList[i];
+                bool cont = false;
+                for(int j = 0; j < cNodeList.Count; j++)
+                {
+                    if(nextTile.tileClass.index == cNodeList[j].nodeID)
+                    {
+                        cont = true;
+                        break;
+                    }
+                }
+                if (cont)
+                    continue;
+
+                bool included = false;
+                AStar node = new AStar();
+
 
                 node.nodeID = nextTile.tileClass.index;
                 node.gScore = nowTile.adjacentCostList[i];
@@ -132,18 +146,18 @@ public class RegionManager : MonoBehaviour
                         if(node.fScore < oNodeList[j].fScore)
                         {
                             oNodeList.RemoveAt(j);
-                        }
-                        else
-                        {
-                            notIncluded = true;
+                            oNodeList.Add(node);
+                            included = true;
+                            break;
                         }
                     }
                 }
-                if (!notIncluded)
+                if (!included && node.nodeID != startIndex)
                 {
                     oNodeList.Add(node);
                 }
             }
+
             float minimum = oNodeList[0].fScore;
             int minimumIndex = 0;
             for(int i = 1; i < oNodeList.Count; i++)
@@ -154,14 +168,57 @@ public class RegionManager : MonoBehaviour
                     minimumIndex = i;
                 }
             }
-
-            cNodeList.Add(oNodeList[minimumIndex]);
             nowTile = tileButtonList[oNodeList[minimumIndex].nodeID];
-            if(cNodeList[cNodeList.Count-1].nodeID == targetIndex)
+            if(oNodeList[minimumIndex].nodeID == targetIndex)
             {
                 solved = true;
+                cNodeList.Add(oNodeList[minimumIndex]);
+            }
+            else
+            {
+                if (nowTile.adjacentTileList.Count > 1)
+                {
+                    cNodeList.Add(oNodeList[minimumIndex]);
+                }
             }
             oNodeList.RemoveAt(minimumIndex);
+
+            //AStar pruneNode = cNodeList[cNodeList.Count-1];
+            //if (tileButtonList[pruneNode.nodeID].adjacentTileList.Count == 1
+            //    && pruneNode.nodeID != targetIndex)
+            //{
+            //    cNodeList.Remove(pruneNode);
+            //    bool pruning = false;
+            //    while (!pruning)
+            //    {
+            //        //ㅡ0ㅡ이런길로 왔다면 계속 돌아감.
+            //        if (tileButtonList[pruneNode.parentNode].adjacentTileList.Count < 3)
+            //        {
+            //            for(int i = 0; i < cNodeList.Count; i++)
+            //            {
+            //                if(pruneNode.parentNode == cNodeList[i].nodeID)
+            //                {
+            //                    pruneNode = cNodeList[i];
+            //                    break;
+            //                }
+            //            }
+            //            if(pruneNode.parentNode != -1)
+            //            {
+            //                cNodeList.Remove(pruneNode);
+            //            }
+            //            else
+            //            {
+            //                pruning = true;
+            //            }
+
+            //        }
+            //        else
+            //        {
+            //            pruning = true;
+            //        }
+            //    }
+            //}
+
         }
         List<AStar> stack = new List<AStar>();
         pathIndex = new List<int>();
@@ -190,6 +247,48 @@ public class RegionManager : MonoBehaviour
         }
 
 
+    }
+
+
+    //이놈이 돌아가는지 판별.
+    bool CheckPath(int startIndex, int targetIndex,int containingIndex, List<TileButtonClass> nowAdjacentList)
+    {
+        //pathIndex.Add(startIndex);
+        for (int i = 0; i < nowAdjacentList.Count; i++)
+        {
+            if (nowAdjacentList[i].tileClass.index == targetIndex)
+            {
+                
+                return true;
+            }
+        }
+
+        for (int i = 0; i < nowAdjacentList.Count; i++)
+        {
+            bool isEndNode = false;
+            for (int k = 0; k < pathIndex.Count; k++)
+            {
+                if (nowAdjacentList[i].tileClass.index == pathIndex[k])
+                {
+                    isEndNode = true;
+                }
+            }
+            if (!isEndNode)
+            {
+                bool solved = CheckPath(nowAdjacentList[i].tileClass.index, targetIndex,
+                containingIndex, nowAdjacentList[i].adjacentTileList);
+                if (!solved)
+                {
+                    //pathIndex.Remove(nowAdjacentList[i].tileClass.index);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        //pathIndex.Remove(startIndex);
+        return false;
     }
 
 
