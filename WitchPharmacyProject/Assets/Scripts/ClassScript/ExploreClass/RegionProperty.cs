@@ -15,6 +15,7 @@ public class RegionProperty
     //    TreasureTile, TrapTile, BarrierTile, SpecialStoreTile
     //}
     public int[] regionAvailableMedicine;
+    public float[] medicineProbability;
     
     //더미 생성자
     public RegionProperty(int _index)
@@ -39,10 +40,12 @@ public class RegionProperty
             }
             tileTypeArray[roundRobin]++;
         }
-        regionAvailableMedicine = new int[8];
-        for (int i = 0; i < 8; i++)
+        regionAvailableMedicine = new int[RegionIngame.medicineNumber];
+        medicineProbability = new float[RegionIngame.medicineNumber];
+        for (int i = 0; i < RegionIngame.medicineNumber; i++)
         {
-            regionAvailableMedicine[i] = i;
+            regionAvailableMedicine[i] = Random.Range(0,20);
+            medicineProbability[i] = 100.0f/ RegionIngame.medicineNumber;
         }
         //regionAvailableMedicine = new RegionAvailableMedicine();
     }

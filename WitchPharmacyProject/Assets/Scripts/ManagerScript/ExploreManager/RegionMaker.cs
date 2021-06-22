@@ -43,9 +43,26 @@ public class RegionMaker : MonoBehaviour
             for (int i = 0; i < RegionIngame.tileNumber; i++)
             {
                 tileButtonList[i].tileButtonObject = Instantiate(dumyPrefab, canvas);
+                tileButtonList[i].tileButtonObject.SetActive(false);
                 tileButtonList[i].tileButtonObject.GetComponent<RectTransform>().anchoredPosition
                     = new Vector2(tileButtonList[i].xPos, tileButtonList[i].yPos);
+                tileButtonList[i].adjacentLineList.Clear();
             }
+            for (int i = 0; i < RegionIngame.tileNumber; i++)
+            {
+                //이거는 에지 라인 만들어주는거.
+                for (int j = 0; j < tileButtonList[i].adjacentTileList.Count; j++)
+                {
+                    Vector3[] arr = new Vector3[2];
+                    arr[0] = tileButtonList[i].tileButtonObject.transform.position;
+                    arr[1] = tileButtonList[i].adjacentTileList[j].tileButtonObject.transform.position;
+                    GameObject edgeObj = GameObject.Instantiate(dumyEdge.gameObject, canvas);
+                    tileButtonList[i].adjacentLineList.Add(edgeObj);
+                    edgeObj.SetActive(false);
+                    edgeObj.GetComponent<LineRenderer>().SetPositions(arr);
+                }
+            }
+            tileButtonList[0].tileButtonObject.SetActive(true);
         }
         else
         {
@@ -76,8 +93,8 @@ public class RegionMaker : MonoBehaviour
                     }
                     else
                     {
-                        //x = (tileButtonList[i-3].xPos) + (1 + Random.Range(0,TileButtonClass.maxCost)) * positionConstant;
-                        x = (tileButtonList[i - 3].xPos) + (1) * positionConstant;
+                        x = ((i-1)/3 + (1 + Random.Range(0,TileButtonClass.maxCost))) * positionConstant;
+                        //x = (tileButtonList[i - 3].xPos) + (1) * positionConstant;
                     }
 
                     //나중에 여기다가 상수 곱해줘야함.
@@ -105,23 +122,29 @@ public class RegionMaker : MonoBehaviour
             {
                 RecursionEdge(i, true);
             }
-        }
 
-        for (int i = 0; i < RegionIngame.tileNumber; i++)
-        {
-            //이거는 에지 라인 만들어주는거.
-            tileButtonList[i].tileButtonObject.SetActive(true);
-            for (int j = 0; j < tileButtonList[i].adjacentTileList.Count; j++)
+            for (int i = 0; i < RegionIngame.tileNumber; i++)
             {
-                Vector3[] arr = new Vector3[2];
-                arr[0] = tileButtonList[i].tileButtonObject.transform.position;
-                arr[1] = tileButtonList[i].adjacentTileList[j].tileButtonObject.transform.position;
-                GameObject edgeObj = GameObject.Instantiate(dumyEdge.gameObject, canvas);
-                edgeObj.SetActive(true);
-                edgeObj.GetComponent<LineRenderer>().SetPositions(arr);
+                tileButtonList[i].tileButtonObject.SetActive(false);
             }
-
+            tileButtonList[0].tileButtonObject.SetActive(true);
         }
+
+        //for (int i = 0; i < RegionIngame.tileNumber; i++)
+        //{
+        //    //이거는 에지 라인 만들어주는거.
+        //    tileButtonList[i].tileButtonObject.SetActive(true);
+        //    for (int j = 0; j < tileButtonList[i].adjacentTileList.Count; j++)
+        //    {
+        //        Vector3[] arr = new Vector3[2];
+        //        arr[0] = tileButtonList[i].tileButtonObject.transform.position;
+        //        arr[1] = tileButtonList[i].adjacentTileList[j].tileButtonObject.transform.position;
+        //        GameObject edgeObj = GameObject.Instantiate(dumyEdge.gameObject, canvas);
+        //        edgeObj.SetActive(true);
+        //        edgeObj.GetComponent<LineRenderer>().SetPositions(arr);
+        //    }
+
+        //}
 
         //이거 더미임. 스프라이트로 바꿔야함 나중에.
         for(int i = 0; i < RegionIngame.tileNumber; i++)
@@ -188,54 +211,93 @@ public class RegionMaker : MonoBehaviour
                 forLoopEndIndex = RegionIngame.tileNumber - 1;
             }
             //만약 트래벌스인데 에지가 없으면 그대로 연결해줌.
-            if (isTraverse)
+            
+        }
+        if (isTraverse)
+        {
+            if (!edgedBool[index])
             {
-                if (!edgedBool[index])
+                //이게 트래벌스.
+                int rand;
+                if ((index - 1) / 3 == 0)
                 {
-                    //이게 트래벌스.
-                    int rand;
-                    if ((index - 1) / 3 == 0)
-                    {
-                        rand = 0;
-                    }
-                    else
-                    {
-                        //뒷라인에서땡겨줌.
-                        rand = Random.Range(forLoopStartIndex - 3, forLoopStartIndex);
-                    }
-
-                    edgedBool[index] = true;
-                    tileButtonList[rand].SetEdge(tileButtonList[index]);
-
+                    rand = 0;
                 }
+                else
+                {
+                    //뒷라인에서땡겨줌.
+                    rand = Random.Range(forLoopStartIndex - 3, forLoopStartIndex);
+                }
+
+                edgedBool[index] = true;
+                Vector3[] arr = new Vector3[2];
+                arr[0] = tileButtonList[rand].tileButtonObject.transform.position;
+                arr[1] = tileButtonList[index].tileButtonObject.transform.position;
+                GameObject edgeObj = GameObject.Instantiate(dumyEdge.gameObject, canvas);
+                edgeObj.SetActive(false);
+                edgeObj.GetComponent<LineRenderer>().SetPositions(arr);
+
+                      //이거1 번에서 3번 꽂는거 방지.
+                if ((index % 3 == 2 && rand % 3 == 0 && rand - index == 1))
+                {
+                    return;
+                }
+
+                if ((index % 3 == 0 && rand % 3 == 2 && index - rand == 1))
+                {
+                    return;
+                }
+
+
+                tileButtonList[rand].SetEdge(tileButtonList[index], edgeObj);
+
+
             }
+            return;
         }
         //이 위까지가 트래벌스.
-        for(int i = forLoopStartIndex; i <= forLoopEndIndex; i++)
+        for (int i = forLoopStartIndex; i <= forLoopEndIndex; i++)
         {
             //이건 랜덤연결해주는거. t
-            if (index == i || edgedBool[i])
+            if (index == i)// || edgedBool[i])
             {
                 continue;
             }
             bool continueOrNot;
-            if(Random.Range(0,2) == 0)
+            int randomRange;
+            if (edgedBool[i])
             {
-                continueOrNot = true;
+                randomRange = 4;
             }
             else
             {
+                randomRange = 2;
+            }
+            if(Random.Range(0,randomRange) == 0)
+            {
                 continueOrNot = false;
+            }
+            else
+            {
+                continueOrNot = true;
             }
             if(index == 0 && i == forLoopEndIndex && !edgedBool[0])
             {
                 //이게 0번이랑 연결 안됐을 떄 연결해주는거.
                 edgedBool[i] = true;
-                tileButtonList[index].SetEdge(tileButtonList[i]);
+
+                Vector3[] arr = new Vector3[2];
+                arr[0] = tileButtonList[index].tileButtonObject.transform.position;
+                arr[1] = tileButtonList[i].tileButtonObject.transform.position;
+                GameObject edgeObj = GameObject.Instantiate(dumyEdge.gameObject, canvas);
+                edgeObj.SetActive(false);
+                edgeObj.GetComponent<LineRenderer>().SetPositions(arr);
+
+                tileButtonList[index].SetEdge(tileButtonList[i],edgeObj);
             }
             else
             {
-                if (continueOrNot && !isTraverse)
+                if (continueOrNot)// && !isTraverse)
                 {
                     continue;
                 }
@@ -256,7 +318,15 @@ public class RegionMaker : MonoBehaviour
                 }
 
                 edgedBool[i] = true;
-                tileButtonList[index].SetEdge(tileButtonList[i]);
+
+                Vector3[] arr = new Vector3[2];
+                arr[0] = tileButtonList[index].tileButtonObject.transform.position;
+                arr[1] = tileButtonList[i].tileButtonObject.transform.position;
+                GameObject edgeObj = GameObject.Instantiate(dumyEdge.gameObject, canvas);
+                edgeObj.SetActive(false);
+                edgeObj.GetComponent<LineRenderer>().SetPositions(arr);
+
+                tileButtonList[index].SetEdge(tileButtonList[i],edgeObj);
                 if (!edgedBool[index])
                 {
                     RecursionEdge(index, true);

@@ -177,12 +177,7 @@ public class RoomManager : MonoBehaviour    //SH
             StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
             nameBuilder.Append(" ");
             nameBuilder.Append(medicine.secondName);
-            if (medicine.medicineImage == null)
-            {
-                StringBuilder builder = new StringBuilder("Items/");
-                builder.Append(nameBuilder.ToString());
-                medicine.medicineImage = Resources.Load<Sprite>(builder.ToString());
-            }
+            medicine.LoadImage();
             prefabButtonIcon.sprite = medicine.medicineImage;
             prefabButtonName.text = nameBuilder.ToString();
             if(medicine.firstSymptom == Symptom.none)

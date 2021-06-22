@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Text;
 
 //지역탐색에 들어간 후 지역을 고를 때 나옴.
 public class ExploreManager : MonoBehaviour
@@ -14,7 +16,14 @@ public class ExploreManager : MonoBehaviour
     bool[] visitedRegionArray;
     int nowIndex;
 
+    //이거 타일매니저로 넘겨줘야되는데 regionManager에서 타일매니저로 넘겨줌
+    public RegionProperty nowProperty;
+    public RegionIngame nowRegionIngame;
+
+    //이거 단위 초임.
     public float nowTime;
+
+    Text timeText;
     
     // Start is called before the first frame update
     void Awake()
@@ -71,6 +80,8 @@ public class ExploreManager : MonoBehaviour
     public void OnRegionLoad(int index)
     {
         nowIndex = index;
+        nowProperty = regionPropertyWrapper.regionPropertyArray[nowIndex];
+        nowRegionIngame = regionIngameArray[nowIndex];
         sceneManager.LoadScene("RegionScene");
 
     }
@@ -79,6 +90,7 @@ public class ExploreManager : MonoBehaviour
     public void OnRegionLoaded(RegionMaker _regionMaker)
     {
         regionMaker = _regionMaker;
+        timeText = GameObject.Find("TimeText").GetComponent<Text>();
         if (regionIngameArray[nowIndex] == null)
         {
             regionIngameArray[nowIndex] = regionMaker.EdgeMaker(null, regionPropertyWrapper.regionPropertyArray[nowIndex]);
@@ -87,12 +99,23 @@ public class ExploreManager : MonoBehaviour
         {
             regionMaker.EdgeMaker(regionIngameArray[nowIndex], regionPropertyWrapper.regionPropertyArray[nowIndex]);
         }
+
     }
 
     //이거 버튼누를때마다 불러옴.
+    //이거 단위 초다.
     public void TimeChange(float plusTime)
     {
         nowTime += plusTime;
+
+        int hour = (int)nowTime / 3600;
+        int minute = ((int)nowTime % 3600) / 60;
+        StringBuilder builder = new StringBuilder(hour.ToString());
+        builder.Append("시");
+        builder.Append(minute.ToString());
+        builder.Append("분");
+        timeText.text = builder.ToString();
+
     }
 
     //이거 RegionManager에서 불러옴.

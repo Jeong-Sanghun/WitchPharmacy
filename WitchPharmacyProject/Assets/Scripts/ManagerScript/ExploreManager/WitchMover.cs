@@ -18,8 +18,13 @@ public class WitchMover : MonoBehaviour
     List<TileButtonClass> tileButtonList;
     List<AStar> oNodeList;
     List<AStar> cNodeList;
+    [SerializeField]
+    GameObject tileOpenButton;
     bool moveCoroutineRunning;
     int nowWitchIndex;
+
+    //RegionManager에서 타일매니저로 넘겨줌
+    public TileButtonClass nowTileButton;
 
     [System.Serializable]
     struct AStar
@@ -48,6 +53,15 @@ public class WitchMover : MonoBehaviour
         }
         witchRect.transform.SetAsLastSibling();
         TimeCost(0);
+        AwareTile(tileButtonList[0]);
+
+        for(int i = 1; i < tileButtonList.Count; i++)
+        {
+            if (tileButtonList[i].awared)
+            {
+                AwareTile(tileButtonList[i]);
+            }
+        }
     }
 
 
@@ -63,16 +77,17 @@ public class WitchMover : MonoBehaviour
     IEnumerator WitchMoveCor(int targetIndex)
     {
         moveCoroutineRunning = true;
+        tileOpenButton.SetActive(false);
 
         //List<TileButtonClass> adjacentList = tileButtonList[nowWitchIndex].adjacentTileList;
         //List<float> costList = tileButtonList[nowWitchIndex].adjacentCostList;
         FindPath(nowWitchIndex, targetIndex);
-        for (int i = 0; i < pathIndex.Count; i++)
-            Debug.Log(pathIndex[i]);
+
         for (int i= 0; i < pathIndex.Count-1; i++)
         {
             float timer = 0;
             float cost =0;
+            bool awareness = false;
             Vector2 startPos = new Vector2(tileButtonList[pathIndex[i]].xPos, tileButtonList[pathIndex[i]].yPos);
             Vector2 endPos = new Vector2(tileButtonList[pathIndex[i + 1]].xPos, tileButtonList[pathIndex[i + 1]].yPos);
             cost = Mathf.Sqrt(Vector2.SqrMagnitude(startPos - endPos));
@@ -80,12 +95,29 @@ public class WitchMover : MonoBehaviour
             {
                 timer += Time.deltaTime * 300/cost;
                 witchRect.anchoredPosition = Vector2.Lerp(startPos, endPos, timer);
+                //중간에 들어서면 보여주기
+                if (timer > 0.5f&& awareness == false)
+                {
+                    awareness = true;
+                    AwareTile(tileButtonList[pathIndex[i + 1]]);
+                }
                 yield return null;
             }
             TimeCost(cost);
         }
         nowWitchIndex = targetIndex;
         moveCoroutineRunning = false;
+
+        //if(tileButtonList[targetIndex].tileClass.tileType != TileType.StartTile)
+        //{
+        //    tileOpenButton.SetActive(true);
+        //}
+
+        nowTileButton = tileButtonList[targetIndex];
+        if (tileButtonList[targetIndex].tileClass.tileType == TileType.MedicineTile)
+        {
+            tileOpenButton.SetActive(true);
+        }
 
     }
     
@@ -214,13 +246,38 @@ public class WitchMover : MonoBehaviour
         //시간 넣어주는거.
         cost = cost - cost % 60;
         exploreManager.TimeChange(cost);
-        int hour = (int)exploreManager.nowTime / 3600;
-        int minute = ((int)exploreManager.nowTime % 3600) / 60;
-        StringBuilder builder = new StringBuilder(hour.ToString());
-        builder.Append("시");
-        builder.Append(minute.ToString());
-        builder.Append("분");
-        timeText.text = builder.ToString();
+
+    }
+
+    void OpenButtonActive()
+    {
+        TileButtonClass nowTile = tileButtonList[nowWitchIndex];
+        if(nowTile.tileClass.tileType == TileType.StartTile)
+        {
+            tileOpenButton.SetActive(false);
+        }
+        else
+        {
+            tileOpenButton.SetActive(false);
+        }
+    }
+
+    //전장의 안개 걷히는거
+    void AwareTile(TileButtonClass nextTile)
+    {
+        nextTile.awared = true;
+        for(int i = 0; i < nextTile.adjacentTileList.Count; i++)
+        {
+            if (!nextTile.adjacentTileList[i].tileButtonObject.activeSelf)
+            {
+                nextTile.adjacentTileList[i].tileButtonObject.SetActive(true);
+                StartCoroutine(sceneManager.FadeModule_Image(nextTile.adjacentTileList[i].tileButtonObject, 0, 1, 600 / nextTile.adjacentCostList[i]));
+            }
+            nextTile.adjacentLineList[i].SetActive(true);
+
+            
+        }
+        
     }
 
 }

@@ -16,8 +16,9 @@ public enum Edge
 public class TileButtonClass
 {
     public static int edgeNumber = 8;
-    public static int maxCost = 4;
+    public static float maxCost = 0.5f;
     public GameObject tileButtonObject;
+    public List<GameObject> adjacentLineList;
 
     [HideInInspector]
     public List<TileButtonClass> adjacentTileList;
@@ -29,12 +30,19 @@ public class TileButtonClass
     public int nowEdgeNumber;
     public float xPos;
     public float yPos;
+    //들어갔는지
+    public bool opened;
+    //밝혀졌는지
+    public bool awared;
 
     public TileButtonClass(GameObject button, Tile tile,bool start)
     {
         tileButtonObject = button;
         adjacentTileList = new List<TileButtonClass>();
+        adjacentLineList = new List<GameObject>();
         tileClass = tile;
+        opened = false;
+        awared = false;
         /*
         adjacentBoolArray = new bool[edgeNumber];
         for(int i = 0; i < edgeNumber; i++)
@@ -77,31 +85,25 @@ public class TileButtonClass
         yPos = y;
     }
 
-    public void SetEdge(TileButtonClass otherTileButton)
+    public void SetEdge(TileButtonClass otherTileButton,GameObject adjacentLine)
     {
         if (adjacentTileList.Contains(otherTileButton))
         {
             Debug.Log("진짜좆됐음");
+            return;
         }
         float cost = Mathf.Sqrt((otherTileButton.xPos - xPos) * (otherTileButton.xPos - xPos)
            + (otherTileButton.yPos - yPos) * (otherTileButton.yPos - yPos));
         adjacentTileList.Add(otherTileButton);
         adjacentCostList.Add(cost) ;
-        //        adjacentBoolArray[(int)edgeWay] = true;
-        //Edge oppositeWay;
-        ////반대방향
-        //if ((int)edgeWay % 2 == 0)
-        //{
-        //    oppositeWay = edgeWay + 1;
-        //}
-        //else
-        //{
-        //    oppositeWay = edgeWay - 1;
-        //}
+        adjacentLineList.Add(adjacentLine);
+        nowEdgeNumber++;
+
         otherTileButton.adjacentTileList.Add(this);
         otherTileButton.adjacentCostList.Add(cost);
+        otherTileButton.adjacentLineList.Add(adjacentLine);
         otherTileButton.nowEdgeNumber++;
-        nowEdgeNumber++;
+
 
     }
 

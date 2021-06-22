@@ -10,6 +10,7 @@ public class RegionIngame
     public List<TileButtonClass> tileButtonList;
     public static int tileNumber = 30;
 
+
     ////dumy생성자. 나중에 제이슨으로 받아올거임.
     //public RegionIngame(GameObject button,Transform canvas)
     //{

@@ -10,10 +10,17 @@ public class Tile
 {
     public int index;
     public TileType tileType;
+    public bool opened;
 
     public Tile(int index)
     {
         this.index = index;
+        opened = false;
+    }
+
+    public virtual void Open()
+    {
+        opened = true;
     }
 
 }
