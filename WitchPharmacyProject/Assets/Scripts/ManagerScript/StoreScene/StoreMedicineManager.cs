@@ -51,9 +51,22 @@ public class StoreMedicineManager : MonoBehaviour {
     [SerializeField]
     Text prefabButtonSecondEffectNumber;
 
+    [SerializeField]
+    GameObject popupParent;
+    [SerializeField]
+    Text popupQuantityText;
+    [SerializeField]
+    Slider quantSlider;
+
+
     List<MedicineButton> wholeMedicineButtonList;
     //int[] contentButtonQuantityArray;
     bool[] isButtonOn;
+
+    int nowButtonIndex;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -333,9 +346,97 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     }
 
     //버튼 클릭했을 때. 인덱스는 wholeButtonList의 index임. 거기안에 medicineClass들어있음.
+    //팝업올라옴
     public void OnButtonDown(int index)
     {
+        if (popupParent.activeSelf)
+        {
+            return;
+        }
+
+        nowButtonIndex = index;
+        popupQuantityText.text = "0";
+        quantSlider.value = 0;
+        if(!wholeMedicineButtonList[index].zeroMedicine)
+            popupParent.SetActive(true);
+    }
+
+    public void OnSliderValueChange()
+    {
+        popupQuantityText.text = ((int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value)).ToString();
+    }
+
+    public void OnQuantityChangeButton(bool plus)
+    {
+        int one;
+        if (plus)
+        {
+            one = 1;
+        }
+        else
+        {
+            one = -1;
+        }
+        float ratio = 1.0f / wholeMedicineButtonList[nowButtonIndex].medicineQuant;
+        //float value = (int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value) *ratio;
+        //quantSlider.value = value;
         
+        if(quantSlider.value + one * ratio <0)
+        {
+            quantSlider.value = 0;
+        }
+        else if(quantSlider.value + one * ratio > 1)
+        {
+            quantSlider.value = 1;
+        }
+        else
+        {
+            quantSlider.value += one * ratio;
+        }
+
+        popupQuantityText.text =((int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value)).ToString();
+
+    }
+
+    public void OnBuyButton()
+    {
+        int quant = (int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value);
+        popupParent.SetActive(false);
+        if (quant == 0)
+        {
+            return;
+        }
+        else
+        {
+            wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
+            if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
+            {
+                wholeMedicineButtonList[nowButtonIndex].zeroMedicine = true;
+            }
+            
+            wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineQuantity += quant;
+            wholeMedicineButtonList[nowButtonIndex].quantityText.text = wholeMedicineButtonList[nowButtonIndex].medicineQuant.ToString();
+        }
+        if (wholeMedicineButtonList[nowButtonIndex].zeroMedicine)
+        {
+            for (int i = 0; i < isButtonOn.Length; i++)
+            {
+                if (isButtonOn[i] == true)
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        PropertyListButton(i);
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void OnPopupBackButton()
+    {
+        popupParent.SetActive(false);
+        nowButtonIndex = -1;
     }
 
     // Update is called once per frame
