@@ -9,11 +9,12 @@ public class ExploreManager : MonoBehaviour
 {
     const int regionQuantity = 10;
     public static ExploreManager inst;
+    GameManager gameManager;
     SceneManager sceneManager;
     RegionMaker regionMaker;
     RegionPropertyWrapper regionPropertyWrapper;
     RegionIngame[] regionIngameArray;
-    bool[] visitedRegionArray;
+    //bool[] visitedRegionArray;
     int nowIndex;
 
     //이거 타일매니저로 넘겨줘야되는데 regionManager에서 타일매니저로 넘겨줌
@@ -42,37 +43,38 @@ public class ExploreManager : MonoBehaviour
     private void Start()
     {
         sceneManager = SceneManager.inst;
-        regionPropertyWrapper = new RegionPropertyWrapper();
+        gameManager = GameManager.singleTon;
+        regionPropertyWrapper = gameManager.regionPropertyWrapper;
 
         //이거도 더미. 나중에는 제이슨으로 받아올건데 지금은 임시로 램덤.
-        int roundRobin;
+        //int roundRobin;
 
-        for (int j = 0; j < regionQuantity; j++)
-        {
-            regionPropertyWrapper.regionPropertyArray[j].tileTypeArray[0] = 1;
-            for (int k = 1; k < 8; k++)
-            {
-                regionPropertyWrapper.regionPropertyArray[j].tileTypeArray[k] = 0;
-            }
-        }
+        //for (int j = 0; j < regionQuantity; j++)
+        //{
+        //    regionPropertyWrapper.regionPropertyArray[j].tileTypeArray[0] = 1;
+        //    for (int k = 1; k < 8; k++)
+        //    {
+        //        regionPropertyWrapper.regionPropertyArray[j].tileTypeArray[k] = 0;
+        //    }
+        //}
 
 
-        for (int j = 0; j < regionQuantity; j++)
-        {
-            for (int i = 1; i < RegionIngame.tileNumber; i++)
-            {
-                roundRobin = Random.Range(1, 8);
-                regionPropertyWrapper.regionPropertyArray[j].tileTypeArray[roundRobin]++;
-            }
-        }
+        //for (int j = 0; j < regionQuantity; j++)
+        //{
+        //    for (int i = 1; i < RegionIngame.tileNumber; i++)
+        //    {
+        //        roundRobin = Random.Range(1, 8);
+        //        regionPropertyWrapper.regionPropertyArray[j].tileTypeArray[roundRobin]++;
+        //    }
+        //}
         
         regionIngameArray = new RegionIngame[regionQuantity];
         //이거는 굳이 필요없을지도..
-        visitedRegionArray = new bool[regionQuantity];
-        for(int i = 0; i < regionQuantity; i++)
-        {
-            visitedRegionArray[i] = false;
-        }
+        //visitedRegionArray = new bool[regionQuantity];
+        //for(int i = 0; i < regionQuantity; i++)
+        //{
+        //    visitedRegionArray[i] = false;
+        //}
 
     }
 

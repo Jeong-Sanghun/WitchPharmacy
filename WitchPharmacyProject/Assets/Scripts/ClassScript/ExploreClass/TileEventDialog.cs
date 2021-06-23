@@ -6,4 +6,5 @@ using UnityEngine;
 public class TileEventDialog
 {
     ConversationDialogBundle dialogBundle;
+
 }

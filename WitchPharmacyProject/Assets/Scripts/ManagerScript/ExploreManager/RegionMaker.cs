@@ -20,7 +20,7 @@ public class RegionMaker : MonoBehaviour
 
 
     //기즈모 그리기위한 더미변수
-    bool draw = false;
+    //bool draw = false;
 
     // Start is called before the first frame update
 

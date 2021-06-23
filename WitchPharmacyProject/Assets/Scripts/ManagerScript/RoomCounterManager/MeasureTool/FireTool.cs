@@ -70,7 +70,7 @@ public class FireTool : MeasureTool
     public override void OnNewVisitor(int symptomNum,int index)
     {
         base.OnNewVisitor(symptomNum,index);
-        float x, y, p;
+        float x, y;
         for (int i = 0; i < dustQuantity; i++)
         {
             dustObjectArray[i].SetActive(true);

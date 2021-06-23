@@ -23,7 +23,7 @@ public class RegionProperty
         //타일개수만큼 타일 타입을 만들어주는 프로퍼티
         //나중에 제이슨 파일로 받아올거임.
         index = _index;
-        regionName = "testRegion";
+        regionName = "testRegion" + _index.ToString() ;
         tileTypeArray = new int[8];
         tileTypeArray[0] = 1;
         for(int i = 1; i < 8; i++)
@@ -44,7 +44,7 @@ public class RegionProperty
         medicineProbability = new float[MedicineTileManager.appearingMedicine];
         for (int i = 0; i < MedicineTileManager.appearingMedicine; i++)
         {
-            regionAvailableMedicine[i] = Random.Range(0,20);
+            //regionAvailableMedicine[i] = Random.Range(0,20);
             medicineProbability[i] = 100.0f/ MedicineTileManager.appearingMedicine;
         }
         //regionAvailableMedicine = new RegionAvailableMedicine();

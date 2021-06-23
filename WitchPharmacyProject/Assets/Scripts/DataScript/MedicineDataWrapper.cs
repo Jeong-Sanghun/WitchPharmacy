@@ -63,6 +63,7 @@ public class MedicineDataWrapper //SH
                         }
                         medicine.firstSymptom = (Symptom)i;
                         medicine.secondSymptom = (Symptom)j;
+                        medicine.cost = i + j + k + h + 1;
                         if (k == 0)
                         {
                             medicine.firstNumber = -1;

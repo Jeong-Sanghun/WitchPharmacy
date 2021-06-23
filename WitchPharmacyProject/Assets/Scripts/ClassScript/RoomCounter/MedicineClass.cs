@@ -14,6 +14,7 @@ public class MedicineClass  //SH
     public Symptom secondSymptom;
     public int firstNumber;
     public int secondNumber;
+    public int cost;
 
     public Sprite medicineImage;
 

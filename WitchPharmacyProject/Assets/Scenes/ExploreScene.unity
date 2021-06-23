@@ -1429,6 +1429,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e0383bad11fba40bbdf1e223f95c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nowProperty:
+    index: 0
+    regionName: 
+    tileTypeArray: 
+    regionAvailableMedicine: 
+    medicineProbability: []
+  nowRegionIngame:
+    regionProperty:
+      index: 0
+      regionName: 
+      tileTypeArray: 
+      regionAvailableMedicine: 
+      medicineProbability: []
   nowTime: 0
 --- !u!4 &1068690344
 Transform:
@@ -1695,6 +1708,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92660121f739fe64a8bde4290c7dd97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  regionOpenButtonArray:
+  - {fileID: 1708577994}
+  - {fileID: 377065933}
+  - {fileID: 1474126694}
+  - {fileID: 496004418}
+  - {fileID: 2080816584}
+  - {fileID: 498493295}
+  - {fileID: 1940382739}
+  - {fileID: 592092990}
+  - {fileID: 895261266}
+  - {fileID: 1675606207}
 --- !u!1 &1504723211
 GameObject:
   m_ObjectHideFlags: 0

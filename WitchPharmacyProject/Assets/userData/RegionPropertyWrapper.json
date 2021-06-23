@@ -1,0 +1,344 @@
+{
+    "regionPropertyArray": [
+        {
+            "index": 0,
+            "regionName": "testRegion0",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 1,
+            "regionName": "testRegion1",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 2,
+            "regionName": "testRegion2",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 3,
+            "regionName": "testRegion3",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 4,
+            "regionName": "testRegion4",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 5,
+            "regionName": "testRegion5",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 6,
+            "regionName": "testRegion6",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 7,
+            "regionName": "testRegion7",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 8,
+            "regionName": "testRegion8",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        },
+        {
+            "index": 9,
+            "regionName": "testRegion9",
+            "tileTypeArray": [
+                1,
+                7,
+                4,
+                4,
+                4,
+                4,
+                3,
+                3
+            ],
+            "regionAvailableMedicine": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ]
+        }
+    ]
+}

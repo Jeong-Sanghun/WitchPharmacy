@@ -7,7 +7,6 @@ using UnityEngine;
 [System.Serializable]
 public class RegionPropertyWrapper
 {
-    public string regionName;
     public RegionProperty[] regionPropertyArray;
 
     //dumy생성자
