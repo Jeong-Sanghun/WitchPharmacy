@@ -174,8 +174,10 @@ public class RegionMaker : MonoBehaviour
                     break;
                 case 5:
                 case 6:
-                case 7:
                     buttonColor = new Color(0.3f, 0.3f, 1);
+                    break;
+                case 7:
+                    buttonColor = Color.green;
                     break;
                 default:
                     buttonColor = new Color(0.5f,0.5f,0.5f);
@@ -218,18 +220,39 @@ public class RegionMaker : MonoBehaviour
             if (!edgedBool[index])
             {
                 //이게 트래벌스.
-                int rand;
-                if ((index - 1) / 3 == 0)
+                int rand =0;
+                bool goAhead = true;
+                do
                 {
-                    rand = 0;
-                }
-                else
-                {
-                    //뒷라인에서땡겨줌.
-                    rand = Random.Range(forLoopStartIndex - 3, forLoopStartIndex);
-                }
+                    if ((index - 1) / 3 == 0)
+                    {
+                        rand = 0;
+                    }
+                    else
+                    {
+                        //뒷라인에서땡겨줌.
+                        rand = Random.Range(forLoopStartIndex - 3, forLoopStartIndex);
+                    }
+                    if ((index % 3 == 2 && rand % 3 == 0 && rand - index == 1))
+                    {
+                        goAhead = false;
+                    }
+                    else
+                    {
+                        if ((index % 3 == 0 && rand % 3 == 2 && index - rand == 1))
+                        {
+                            goAhead = false;
+                        }
+                        else
+                        {
+                            goAhead = true;
+                        }
+                        
+                    }
+                } while (!goAhead) ;
 
-                edgedBool[index] = true;
+
+                    edgedBool[index] = true;
                 Vector3[] arr = new Vector3[2];
                 arr[0] = tileButtonList[rand].tileButtonObject.transform.position;
                 arr[1] = tileButtonList[index].tileButtonObject.transform.position;
@@ -238,21 +261,17 @@ public class RegionMaker : MonoBehaviour
                 edgeObj.GetComponent<LineRenderer>().SetPositions(arr);
 
                       //이거1 번에서 3번 꽂는거 방지.
-                if ((index % 3 == 2 && rand % 3 == 0 && rand - index == 1))
-                {
-                    return;
-                }
 
-                if ((index % 3 == 0 && rand % 3 == 2 && index - rand == 1))
-                {
-                    return;
-                }
 
 
                 tileButtonList[rand].SetEdge(tileButtonList[index], edgeObj);
 
 
             }
+            return;
+        }
+        if (tileButtonList[index].tileClass.tileType == TileType.SpecialStoreTile)
+        {
             return;
         }
         //이 위까지가 트래벌스.
@@ -263,6 +282,7 @@ public class RegionMaker : MonoBehaviour
             {
                 continue;
             }
+
             bool continueOrNot;
             int randomRange;
             if (edgedBool[i])
