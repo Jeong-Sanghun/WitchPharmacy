@@ -40,10 +40,9 @@ public class RegionManager : MonoBehaviour
                 case 1:
                     tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<MedicineTileManager>();
                     break;
-                //case 2:
-                //    tile = new StoreTile(nowFullArrayIndex);
-                //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
-                //    break;
+                case 2:
+                    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<StoreTileManager>();
+                    break;
                 //case 3:
                 //    tile = new StoryTile(nowFullArrayIndex);
                 //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
@@ -85,7 +84,7 @@ public class RegionManager : MonoBehaviour
     {
         TileButtonClass nowTile = witchMover.nowTileButton;
         TileType tileType = nowTile.tileClass.tileType;
-        if (tileType == TileType.StartTile)
+        if (tileType == TileType.StartTile || (tileType !=TileType.StoreTile && tileType != TileType.MedicineTile))
         {
             return;
         }
@@ -126,6 +125,8 @@ public class RegionManager : MonoBehaviour
         {
             canvasArray[i].SetActive(false);
         }
+        witchMover.AwareTile(witchMover.nowTileButton);
+        witchMover.TileOpen();
     }
     
 

@@ -10,6 +10,7 @@ public class StoreManager : MonoBehaviour
     [SerializeField]
     GameObject toolTab;
 
+
     public void MedicineTabButton()
     {
         medicineTab.SetActive(true);

@@ -280,6 +280,7 @@ RectTransform:
   - {fileID: 1796702642}
   - {fileID: 2120702684}
   - {fileID: 1317326452}
+  - {fileID: 1959583327}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -778,6 +779,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1582716796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582716797}
+  - component: {fileID: 1582716799}
+  - component: {fileID: 1582716798}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1582716797
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582716796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1959583327}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1582716798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582716796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 67
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 67
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uC2A4\uD1A0\uB9AC"
+--- !u!222 &1582716799
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582716796}
+  m_CullTransparentMesh: 0
 --- !u!1 &1601763035
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +893,7 @@ MonoBehaviour:
     ownedMedicineList: 
     owningMedicineList: []
     unlockedRegionIndex: 
+    owningToolList: []
   medicineDataWrapper:
     medicineDataList:
     - firstName: "\uC544\uBB34\uAC83\uB3C4"
@@ -822,6 +902,7 @@ MonoBehaviour:
       secondSymptom: 5
       firstNumber: 0
       secondNumber: 0
+      cost: 0
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -829,6 +910,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
+      cost: 2
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -836,6 +918,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
+      cost: 3
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -843,6 +926,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
+      cost: 3
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -850,6 +934,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -857,6 +942,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
+      cost: 3
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -864,6 +950,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -871,6 +958,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -878,6 +966,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -885,6 +974,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -892,6 +982,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -899,6 +990,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -906,6 +998,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -913,6 +1006,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -920,6 +1014,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -927,6 +1022,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -934,6 +1030,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -941,6 +1038,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
+      cost: 2
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -948,6 +1046,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
+      cost: 3
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -955,6 +1054,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
+      cost: 3
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -962,6 +1062,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -969,6 +1070,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -976,6 +1078,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -983,6 +1086,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -990,6 +1094,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -997,6 +1102,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1004,6 +1110,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1011,6 +1118,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1018,6 +1126,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1025,6 +1134,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1032,6 +1142,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1039,6 +1150,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1046,6 +1158,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1053,6 +1166,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
+      cost: 3
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1060,6 +1174,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1067,6 +1182,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1074,6 +1190,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1081,6 +1198,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1088,6 +1206,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1095,6 +1214,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1102,6 +1222,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1109,6 +1230,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1116,6 +1238,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1123,6 +1246,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1130,6 +1254,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1137,6 +1262,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1144,6 +1270,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1151,6 +1278,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1158,6 +1286,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
+      cost: 9
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1165,6 +1294,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
+      cost: 4
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1172,6 +1302,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1179,6 +1310,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1186,6 +1318,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1193,6 +1326,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1200,6 +1334,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1207,6 +1342,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1214,6 +1350,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1221,6 +1358,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1228,6 +1366,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1235,6 +1374,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1242,6 +1382,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1249,6 +1390,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: -2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1256,6 +1398,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: -1
       secondNumber: 2
+      cost: 9
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1263,6 +1406,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: -2
+      cost: 9
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1270,6 +1414,7 @@ MonoBehaviour:
       secondSymptom: 4
       firstNumber: 1
       secondNumber: 2
+      cost: 10
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1277,6 +1422,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: -2
+      cost: 5
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1284,6 +1430,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: -1
       secondNumber: 2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1291,6 +1438,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
@@ -1298,6 +1446,7 @@ MonoBehaviour:
       secondSymptom: 0
       firstNumber: 1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1305,6 +1454,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: -2
+      cost: 6
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1312,6 +1462,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: -1
       secondNumber: 2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1319,6 +1470,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: -2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
@@ -1326,6 +1478,7 @@ MonoBehaviour:
       secondSymptom: 1
       firstNumber: 1
       secondNumber: 2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1333,6 +1486,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: -2
+      cost: 7
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1340,6 +1494,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: -1
       secondNumber: 2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1347,6 +1502,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: -2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
@@ -1354,6 +1510,7 @@ MonoBehaviour:
       secondSymptom: 2
       firstNumber: 1
       secondNumber: 2
+      cost: 9
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1361,6 +1518,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: -2
+      cost: 8
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1368,6 +1526,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: -1
       secondNumber: 2
+      cost: 9
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1375,6 +1534,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: -2
+      cost: 9
       medicineImage: {fileID: 0}
     - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
@@ -1382,6 +1542,7 @@ MonoBehaviour:
       secondSymptom: 3
       firstNumber: 1
       secondNumber: 2
+      cost: 10
       medicineImage: {fileID: 0}
   regionPropertyWrapper:
     regionPropertyArray:
@@ -1515,6 +1676,179 @@ MonoBehaviour:
       - 12.5
       - 12.5
       - 12.5
+  storeToolDataWrapper:
+    storeToolDataList:
+    - name: "\uACE1\uAD2D\uC774"
+      toolTip: "\uD0D0\uD5D8 \uC911 \uBC14\uC704 \uC7A5\uC560\uBB3C\uC744 \uD30C\uAD34\uD560
+        \uC218 \uC788\uB2E4. 1\uD68C\uC131"
+      cost: 10
+      usedOnce: 1
+      usedForExplore: 1
+      toolImage: {fileID: 0}
+    - name: "\uC0BD"
+      toolTip: "\uD0D0\uD5D8 \uC911 \uD759\uB354\uBBF8 \uC7A5\uC560\uBB3C\uC744 \uD30C\uAD34\uD560
+        \uC218 \uC788\uB2E4. 1\uD68C\uC131"
+      cost: 10
+      usedOnce: 1
+      usedForExplore: 1
+      toolImage: {fileID: 0}
+    - name: "\uC190\uC804\uB4F1"
+      toolTip: "\uBC14 \uBC1D\uB2E4... \uB3D9\uAD74\uC9C0\uC5ED\uC744 \uD0D0\uD5D8\uD560
+        \uC218 \uC788\uC2B5\uB2C8\uB2E4"
+      cost: 1000
+      usedOnce: 0
+      usedForExplore: 1
+      toolImage: {fileID: 0}
+    - name: "\uC6B0\uC815"
+      toolTip: "\uC774\uAC8C \uCC10 \uC6B0\uC815\uC774\uC9C0 \u314B\u314B"
+      cost: 100000
+      usedOnce: 1
+      usedForExplore: 0
+      toolImage: {fileID: 0}
+  conversationDialogBundleWrapper:
+    conversationDialogBundleList:
+    - bundleName: bundle
+      dialogWrapperList:
+      - dialogWrapperName: 0
+        conversationDialogList:
+        - index: 0
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uC624\uB298 \uB0A0\uC528\uAC00 \uCC38 \uB9D1\uC744 \uAC83 \uAC19\uC9C0?
+            \uADF8\uB798\uC11C\uC778\uC9C0 \uB0B4 \uAE30\uBD84\uB3C4 \uC88B\uC544!"
+        - index: 1
+          characterIndex: 1
+          leftSide: 0
+          dialog: "\uBB34\uC2A8\uC18C\uB9AC\uC57C \uBC16\uC5D0 \uBE44\uAC00 \uC794\uB729\uC624\uC796\uC544"
+        - index: 2
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uC5C7........\uC9C4\uC9DC\uB124 \uBBF8\uC548\uD574!!"
+        - index: 3
+          characterIndex: 1
+          leftSide: 1
+          dialog: "\uB2E4\uC74C\uBD80\uD134 \uCC3D\uBB38\uC744 \uC798 \uBCF4\uACE0\uB2E4\uB2C8\uB77C\uAD6C"
+      - dialogWrapperName: 1
+        conversationDialogList:
+        - index: 0
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uBB50\uC57C \uB9D0\uC774 \uB108\uBB34 \uC2EC\uD55C\uAC70 \uC544\uB2C8\uC57C?
+            \uC0AC\uACFC\uD574!"
+        - index: 1
+          characterIndex: 1
+          leftSide: 0
+          dialog: "??? \uB2C8\uAC00 \uBA3C\uC800 \uC774\uC0C1\uD55C \uC18C\uB9AC\uB97C
+            \uD55C\uAC70\uC796\uC544"
+        - index: 2
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uC9C0\uAE08 \uB0A0 \uB9CC\uB9CC\uD558\uAC8C \uBCF4\uB294\uAC70\uC57C????"
+        - index: 3
+          characterIndex: 1
+          leftSide: 1
+          dialog: "\uC544 \uC544\uB2C8 \uADF8\uAC8C \uC544\uB2C8\uB77C..."
+      - dialogWrapperName: 2
+        conversationDialogList:
+        - index: 0
+          characterIndex: 0
+          leftSide: 1
+          dialog: "....\uCE74\uB9AC\uC57C...\uC6B0\uB9AC\uC9D1\uC5D0\uB294 \uCC3D\uBB38
+            \uC5C6\uB294\uAC70 \uC54C\uC796\uC544"
+        - index: 1
+          characterIndex: 1
+          leftSide: 0
+          dialog: "\uBB50\uC57C \uB8E8\uC5D8\uB9AC\uC544 \uB108 \uC774\uC0C1\uD574.
+            \uC6B0\uB9AC\uC9D1\uC5D0 \uCC3D\uBB38 \uC788\uC5B4! \uC800\uAE30... \uC5B4
+            \uC5B4\uB514\uAC14\uC9C0......"
+        - index: 2
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uD751\uD751....\uC774\uB7EC\uC9C0\uB9C8 \uC81C\uBC1C \uB098 \uB108\uBB34
+            \uC2AC\uD37C"
+        - index: 3
+          characterIndex: 1
+          leftSide: 1
+          dialog: ".....\uBBF8\uC548....\uBCD1\uC138\uAC00 \uC880 \uC2EC\uD574\uC9C4\uAC70\uAC19\uC544....."
+      conversationRouter:
+        routingBundleName:
+        - 0
+        - 1
+        routeButtonText:
+        - "(\uADFC\uB370 \uC880 \uC5F4\uBC1B\uB124...)"
+        - "(\uADFC\uB370 \uC6B0\uB9AC\uC9D1\uC5D4 \uCC3D\uBB38\uC774 \uC5C6\uC796\uC544...?)"
+      nextBundleName: testBundle
+    - bundleName: testBundle
+      dialogWrapperList:
+      - dialogWrapperName: 0
+        conversationDialogList:
+        - index: 0
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uC624\uB298 \uB0A0\uC528\uAC00 \uCC38 \uB9D1\uC744 \uAC83 \uAC19\uC9C0?
+            \uADF8\uB798\uC11C\uC778\uC9C0 \uB0B4 \uAE30\uBD84\uB3C4 \uC88B\uC544!"
+        - index: 1
+          characterIndex: 1
+          leftSide: 0
+          dialog: "\uBB34\uC2A8\uC18C\uB9AC\uC57C \uBC16\uC5D0 \uBE44\uAC00 \uC794\uB729\uC624\uC796\uC544"
+        - index: 2
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uC5C7........\uC9C4\uC9DC\uB124 \uBBF8\uC548\uD574!!"
+        - index: 3
+          characterIndex: 1
+          leftSide: 1
+          dialog: "\uB2E4\uC74C\uBD80\uD134 \uCC3D\uBB38\uC744 \uC798 \uBCF4\uACE0\uB2E4\uB2C8\uB77C\uAD6C"
+      - dialogWrapperName: 1
+        conversationDialogList:
+        - index: 0
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uBB50\uC57C \uB9D0\uC774 \uB108\uBB34 \uC2EC\uD55C\uAC70 \uC544\uB2C8\uC57C?
+            \uC0AC\uACFC\uD574!"
+        - index: 1
+          characterIndex: 1
+          leftSide: 0
+          dialog: "??? \uB2C8\uAC00 \uBA3C\uC800 \uC774\uC0C1\uD55C \uC18C\uB9AC\uB97C
+            \uD55C\uAC70\uC796\uC544"
+        - index: 2
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uC9C0\uAE08 \uB0A0 \uB9CC\uB9CC\uD558\uAC8C \uBCF4\uB294\uAC70\uC57C????"
+        - index: 3
+          characterIndex: 1
+          leftSide: 1
+          dialog: "\uC544 \uC544\uB2C8 \uADF8\uAC8C \uC544\uB2C8\uB77C..."
+      - dialogWrapperName: 2
+        conversationDialogList:
+        - index: 0
+          characterIndex: 0
+          leftSide: 1
+          dialog: "....\uCE74\uB9AC\uC57C...\uC6B0\uB9AC\uC9D1\uC5D0\uB294 \uCC3D\uBB38
+            \uC5C6\uB294\uAC70 \uC54C\uC796\uC544"
+        - index: 1
+          characterIndex: 1
+          leftSide: 0
+          dialog: "\uBB50\uC57C \uB8E8\uC5D8\uB9AC\uC544 \uB108 \uC774\uC0C1\uD574.
+            \uC6B0\uB9AC\uC9D1\uC5D0 \uCC3D\uBB38 \uC788\uC5B4! \uC800\uAE30... \uC5B4
+            \uC5B4\uB514\uAC14\uC9C0......"
+        - index: 2
+          characterIndex: 0
+          leftSide: 1
+          dialog: "\uD751\uD751....\uC774\uB7EC\uC9C0\uB9C8 \uC81C\uBC1C \uB098 \uB108\uBB34
+            \uC2AC\uD37C"
+        - index: 3
+          characterIndex: 1
+          leftSide: 1
+          dialog: ".....\uBBF8\uC548....\uBCD1\uC138\uAC00 \uC880 \uC2EC\uD574\uC9C4\uAC70\uAC19\uC544....."
+      conversationRouter:
+        routingBundleName:
+        - 0
+        - 1
+        routeButtonText:
+        - "(\uADFC\uB370 \uC880 \uC5F4\uBC1B\uB124...)"
+        - "(\uADFC\uB370 \uC6B0\uB9AC\uC9D1\uC5D4 \uCC3D\uBB38\uC774 \uC5C6\uC796\uC544...?)"
+      nextBundleName: testBundle
   symptomDialog:
     symptomDialogArray:
     - dialogArray:
@@ -1697,6 +2031,136 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796702641}
+  m_CullTransparentMesh: 0
+--- !u!1 &1959583326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959583327}
+  - component: {fileID: 1959583330}
+  - component: {fileID: 1959583329}
+  - component: {fileID: 1959583328}
+  m_Layer: 5
+  m_Name: Button (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1959583327
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959583326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1582716797}
+  m_Father: {fileID: 326898175}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 657, y: 458}
+  m_SizeDelta: {x: 400, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1959583328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959583326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1959583329}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1518694977}
+        m_MethodName: LoadSceneButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: StoryScene
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1959583329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959583326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1959583330
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959583326}
   m_CullTransparentMesh: 0
 --- !u!1 &2087491309
 GameObject:

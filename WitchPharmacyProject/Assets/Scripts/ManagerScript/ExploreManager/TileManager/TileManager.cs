@@ -20,6 +20,7 @@ public class TileManager : MonoBehaviour
     virtual public void TileOpen(TileButtonClass tile)
     {
         nowTileButton = tile;
+        tile.opened = true;
     }
 
     virtual public void Initialize(RegionProperty property)

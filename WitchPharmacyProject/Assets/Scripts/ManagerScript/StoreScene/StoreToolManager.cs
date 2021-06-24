@@ -4,13 +4,14 @@ using UnityEngine;
 using System.Text;
 using UnityEngine.UI;
 
-public class StoreToolManager : MonoBehaviour,IStore
+//씨발 이거 타일에서 쓰려고 조부모상속을 해줘야함 ㅡㅡ
+//타일매니저가 좃도아닌거여서 다행이지 ㅋㅋ
+public class StoreToolManager : TileManager,IStore
 {
     const int rQuantityToSell = 10;
-    GameManager gameManager;
-    SaveDataClass saveData;
-    List<StoreToolClass> storeToolDataList;
-    List<OwningToolClass> owningToolList;
+    protected List<StoreToolClass> storeToolDataList;
+    protected List<StoreToolClass> appearingStoreToolList;
+    protected List<OwningToolClass> owningToolList;
     //Dictionary<int, int> owningMedicineDictionary;
     //List<CookedMedicineData> cookedMedicineDataList;
     //위는 기본적인 매니저들 그리고 데이터들
@@ -18,69 +19,81 @@ public class StoreToolManager : MonoBehaviour,IStore
     //스크롤 뷰에 들어가있는 content들 위아래 길이조정 해줘야함.
     //버튼도 이 아래에 생성할거여서 따로 드래그앤드롭 해줘야함. GetChild로 받아왔는데 순서꼬이면 귀찮아짐.
     [SerializeField]
-    RectTransform scrollContent;
+    protected RectTransform scrollContent;
 
     [SerializeField]
-    GameObject toolButtonPrefab;
+    protected GameObject toolButtonPrefab;
 
     //스크롤뷰에 들어가는 약재버튼 하나. 프리팹으로 만들어서 Instantiate해줄거.
     //프리팹들에 들어가는 것들을 다 받아오고, 시작할 때만 설정해주고 Instantiate해주고 그다음 버튼 새로 설정하고 Instantiate해주고 반복.
     [SerializeField]
-    Text prefabButtonName;
+    protected Text prefabButtonName;
     [SerializeField]
-    Image prefabButtonIcon;
+    protected Image prefabButtonIcon;
     [SerializeField]
-    Text prefabButtonQuantity;
+    protected Text prefabButtonQuantity;
     [SerializeField]
-    Text prefabButtonCost;
+    protected Text prefabButtonCost;
     [SerializeField]
-    Text prefabButtonToolTip;
+    protected Text prefabButtonToolTip;
 
 
     [SerializeField]
-    GameObject sliderPopupParent;
+    protected GameObject sliderPopupParent;
     [SerializeField]
-    Text sliderPopupQuantityText;
+    protected Text sliderPopupQuantityText;
     [SerializeField]
-    Slider quantSlider;
+    protected Slider quantSlider;
 
     [SerializeField]
-    GameObject justBuyPopupParent;
+    protected GameObject justBuyPopupParent;
 
     [SerializeField]
-    GameObject notEnoughCoinPopup;
+    protected GameObject notEnoughCoinPopup;
     [SerializeField]
-    Text coinText;
+    protected Text coinText;
 
-    List<StoreToolButton> wholeToolButtonList;
-    int nowButtonIndex;
-    bool nowPopup;
+    protected List<StoreToolButton> wholeToolButtonList;
+    protected int nowButtonIndex;
+    protected bool nowPopup;
 
 
-    // Start is called before the first frame update
-    void Start()
+    //이거 스토어타일 매니저에서 그대로 써올거임.
+    protected virtual void Start()
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         storeToolDataList = gameManager.storeToolDataWrapper.storeToolDataList;
         owningToolList = saveData.owningToolList;
+        appearingStoreToolList = storeToolDataList;
+        StoreStart();
+    }
+    // Start is called before the first frame update
+    protected void StoreStart()
+    {
+
+
         wholeToolButtonList = new List<StoreToolButton>();
         int buttonIndex = 0;
-        for (int i = 0; i < storeToolDataList.Count; i++)
+        for (int i = 0; i < appearingStoreToolList.Count; i++)
         {
 
             int quantity = rQuantityToSell;
-            StoreToolClass tool = storeToolDataList[i];
+            StoreToolClass tool = appearingStoreToolList[i];
             StringBuilder nameBuilder = new StringBuilder(tool.name);
             tool.LoadImage();
             prefabButtonIcon.sprite = tool.toolImage;
             prefabButtonName.text = nameBuilder.ToString();
             prefabButtonToolTip.text = tool.toolTip;
             prefabButtonCost.text = tool.cost.ToString();
-            if (!storeToolDataList[i].usedOnce)
+            if (!appearingStoreToolList[i].usedOnce)
             {
                 prefabButtonQuantity.gameObject.SetActive(false);
                 quantity = 1;
+            }
+            else
+            {
+                prefabButtonQuantity.gameObject.SetActive(true);
             }
             prefabButtonQuantity.text = quantity.ToString();
 
@@ -94,7 +107,7 @@ public class StoreToolManager : MonoBehaviour,IStore
 
 
             StoreToolButton buttonClass = new StoreToolButton(buttonObject, i, quantity, quantText);
-            buttonClass.storeTool = storeToolDataList[i];
+            buttonClass.storeTool = appearingStoreToolList[i];
             wholeToolButtonList.Add(buttonClass);
             //이 위까지가 프리팹들 다 설정해서 whoelMedicineButtonList에 buttonClass를 추가하는거임.
             //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
@@ -121,8 +134,9 @@ public class StoreToolManager : MonoBehaviour,IStore
             return;
         }
         nowPopup = true;
-        
-        if (storeToolDataList[index].usedOnce)
+        nowButtonIndex = index;
+        Debug.Log(nowButtonIndex);
+        if (appearingStoreToolList[index].usedOnce)
         {
             sliderPopupParent.SetActive(true);
         }
@@ -132,14 +146,15 @@ public class StoreToolManager : MonoBehaviour,IStore
         }
         sliderPopupQuantityText.text = "0";
         quantSlider.value = 0;
-        nowButtonIndex = index;
+
     }
 
     public void OnBuyButton()
     {
         nowPopup = false;
+
         int quant = (int)(wholeToolButtonList[nowButtonIndex].toolQuant * quantSlider.value);
-        if (storeToolDataList[nowButtonIndex].usedOnce)
+        if (appearingStoreToolList[nowButtonIndex].usedOnce)
         {
             sliderPopupParent.SetActive(false);
         }
@@ -178,6 +193,7 @@ public class StoreToolManager : MonoBehaviour,IStore
                 tool.quantity = 0;
                 owningToolList.Add(tool);
                 wholeToolButtonList[nowButtonIndex].owningTool = tool;
+                existIndex = owningToolList.Count - 1;
             }
             else
             {
@@ -200,9 +216,10 @@ public class StoreToolManager : MonoBehaviour,IStore
         {
            ListButton();
         }
+        nowButtonIndex = -1;
     }
 
-    void ListButton()
+    protected void ListButton()
     {
         int buttonQuantity = 0;
 
@@ -275,7 +292,7 @@ public class StoreToolManager : MonoBehaviour,IStore
     public void OnPopupBackButton()
     {
         nowPopup = false;
-        if (storeToolDataList[nowButtonIndex].usedOnce)
+        if (appearingStoreToolList[nowButtonIndex].usedOnce)
         {
             sliderPopupParent.SetActive(false);
         }
@@ -284,12 +301,8 @@ public class StoreToolManager : MonoBehaviour,IStore
             justBuyPopupParent.SetActive(false);
         }
         nowButtonIndex = -1;
+
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

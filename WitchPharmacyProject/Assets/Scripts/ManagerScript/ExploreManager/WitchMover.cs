@@ -6,6 +6,11 @@ using System.Text;
 
 public class WitchMover : MonoBehaviour
 {
+
+    //이동하자마자 열어줘야돼서 그럼
+    [SerializeField]
+    RegionManager regionManager;
+
     SceneManager sceneManager;
     //타임키퍼 역할을 해줘야함.
     ExploreManager exploreManager;
@@ -91,7 +96,6 @@ public class WitchMover : MonoBehaviour
         {
             float timer = 0;
             float cost =0;
-            bool awareness = false;
             Vector2 startPos = new Vector2(tileButtonList[pathIndex[i]].xPos, tileButtonList[pathIndex[i]].yPos);
             Vector2 endPos = new Vector2(tileButtonList[pathIndex[i + 1]].xPos, tileButtonList[pathIndex[i + 1]].yPos);
             cost = Mathf.Sqrt(Vector2.SqrMagnitude(startPos - endPos));
@@ -114,10 +118,11 @@ public class WitchMover : MonoBehaviour
         //}
 
         nowTileButton = tileButtonList[targetIndex];
-        if (tileButtonList[targetIndex].tileClass.tileType == TileType.MedicineTile)
-        {
-            tileOpenButton.SetActive(true);
-        }
+        //if (tileButtonList[targetIndex].tileClass.tileType == TileType.MedicineTile)
+        //{
+        //    tileOpenButton.SetActive(true);
+        //}
+        TileOpen();
 
     }
     
@@ -252,22 +257,35 @@ public class WitchMover : MonoBehaviour
 
     }
 
-    void OpenButtonActive()
+    public void TileOpen()
     {
         TileButtonClass nowTile = tileButtonList[nowWitchIndex];
-        if(nowTile.tileClass.tileType == TileType.StartTile)
+        if (!nowTile.opened)
         {
-            tileOpenButton.SetActive(false);
+            regionManager.OnTileOpenButton();
         }
         else
         {
-            tileOpenButton.SetActive(false);
+            if (nowTile.tileClass.tileType == TileType.StartTile)
+            {
+                tileOpenButton.SetActive(false);
+            }
+            else
+            {
+                tileOpenButton.SetActive(true);
+            }
         }
+        
     }
 
     //전장의 안개 걷히는거
-    void AwareTile(TileButtonClass nextTile)
+    //이거 regionManager에서 관리해줘야함
+    public void AwareTile(TileButtonClass nextTile)
     {
+        if (nextTile.awared)
+        {
+            return;
+        }
         nextTile.awared = true;
         for(int i = 0; i < nextTile.adjacentTileList.Count; i++)
         {
@@ -284,7 +302,6 @@ public class WitchMover : MonoBehaviour
                     tile.isOpened = true;
                 }
             }
-            Debug.Log(nextTile.adjacentTileList[i].isOpened);
             nextTile.adjacentTileList[i].isOpened = true;
             if (!nextTile.adjacentTileList[i].adjacentTileButton.tileButtonObject.activeSelf)
             {

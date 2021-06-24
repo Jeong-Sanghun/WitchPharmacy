@@ -86,8 +86,6 @@ public class MedicineTileManager : TileManager
 
         }
 
-
-
     }
 
     public override void Initialize(RegionProperty property)

@@ -43,8 +43,25 @@ public class SceneManager : MonoBehaviour // JH
         inputTextUI.text = builder.ToString();
         yield return null;
     }
+    public IEnumerator FadeModule_Sprite(GameObject i_Object, float i_Alpha_Initial, float i_Alpha_Final, float i_Time)
+    {
+        i_Object.SetActive(true);
+        SpriteRenderer i_image = i_Object.GetComponent<SpriteRenderer>();
+        float miniTimer = 0f;
+        float newAlpha = i_Alpha_Initial;
+        while (miniTimer < i_Time)
+        {
+            newAlpha = Mathf.Lerp(i_Alpha_Initial, i_Alpha_Final, miniTimer / i_Time);
+            i_image.color = new Color(i_image.color.r, i_image.color.g, i_image.color.b, newAlpha);
+            yield return null;
+            miniTimer += Time.deltaTime;
+        }
+        i_image.color = new Color(i_image.color.r, i_image.color.g, i_image.color.b, i_Alpha_Final);
+        yield return null;
+    }
 
-     public IEnumerator FadeModule_Image(GameObject i_Object, float i_Alpha_Initial, float i_Alpha_Final, float i_Time){
+
+    public IEnumerator FadeModule_Image(GameObject i_Object, float i_Alpha_Initial, float i_Alpha_Final, float i_Time){
         i_Object.SetActive(true);
         Image i_image = i_Object.GetComponent<Image>();
         float miniTimer=0f;

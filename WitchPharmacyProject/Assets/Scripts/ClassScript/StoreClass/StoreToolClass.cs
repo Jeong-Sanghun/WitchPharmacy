@@ -12,7 +12,9 @@ public class StoreToolClass
     public int cost;
     //1회용
     public bool usedOnce;
+    public bool usedForExplore;
     public Sprite toolImage;
+
 
     public void LoadImage()
     {
