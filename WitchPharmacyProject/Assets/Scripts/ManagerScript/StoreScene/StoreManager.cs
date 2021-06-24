@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class StoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    [SerializeField]
+    GameObject medicineTab;
+    [SerializeField]
+    GameObject toolTab;
 
-    // Update is called once per frame
-    void Update()
+    public void MedicineTabButton()
     {
-        
+        medicineTab.SetActive(true);
+        toolTab.SetActive(false);
+    }
+    public void ToolTabButton()
+    {
+        medicineTab.SetActive(false);
+        toolTab.SetActive(true);
     }
 }

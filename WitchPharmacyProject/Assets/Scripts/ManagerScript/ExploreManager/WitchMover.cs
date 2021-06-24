@@ -71,6 +71,10 @@ public class WitchMover : MonoBehaviour
         {
             return;
         }
+        if(tileButtonList[index] == nowTileButton)
+        {
+            return;
+        }
         StartCoroutine(WitchMoveCor(index));
     }
 
@@ -96,11 +100,7 @@ public class WitchMover : MonoBehaviour
                 timer += Time.deltaTime * 300/cost;
                 witchRect.anchoredPosition = Vector2.Lerp(startPos, endPos, timer);
                 //중간에 들어서면 보여주기
-                if (timer > 0.5f&& awareness == false)
-                {
-                    awareness = true;
-                    AwareTile(tileButtonList[pathIndex[i + 1]]);
-                }
+
                 yield return null;
             }
             TimeCost(cost);
@@ -140,8 +140,11 @@ public class WitchMover : MonoBehaviour
         {
             for (int i = 0; i < nowTile.adjacentTileList.Count; i++)
             {
-                
-                TileButtonClass nextTile = nowTile.adjacentTileList[i];
+                if(nowTile.adjacentTileList[i].isOpened == false)
+                {
+                    continue;
+                }
+                TileButtonClass nextTile = nowTile.adjacentTileList[i].adjacentTileButton;
                 bool cont = false;
                 for(int j = 0; j < cNodeList.Count; j++)
                 {
@@ -268,14 +271,40 @@ public class WitchMover : MonoBehaviour
         nextTile.awared = true;
         for(int i = 0; i < nextTile.adjacentTileList.Count; i++)
         {
-            if (!nextTile.adjacentTileList[i].tileButtonObject.activeSelf)
+
+            for(int j = 0; j < nextTile.adjacentTileList[i].adjacentTileButton.adjacentTileList.Count; j++)
             {
-                nextTile.adjacentTileList[i].tileButtonObject.SetActive(true);
-                StartCoroutine(sceneManager.FadeModule_Image(nextTile.adjacentTileList[i].tileButtonObject, 0, 1, 600 / nextTile.adjacentCostList[i]));
+                TileButtonAdjacent tile = nextTile.adjacentTileList[i].adjacentTileButton.adjacentTileList[j];
+                if(tile.isOpened == true)
+                {
+                    continue;
+                }
+                if(tile.adjacentTileButton.tileClass.index == nextTile.tileClass.index)
+                {
+                    tile.isOpened = true;
+                }
+            }
+            Debug.Log(nextTile.adjacentTileList[i].isOpened);
+            nextTile.adjacentTileList[i].isOpened = true;
+            if (!nextTile.adjacentTileList[i].adjacentTileButton.tileButtonObject.activeSelf)
+            {
+                nextTile.adjacentTileList[i].adjacentTileButton.tileButtonObject.SetActive(true);
+                StartCoroutine(sceneManager.FadeModule_Image(nextTile.adjacentTileList[i].adjacentTileButton.tileButtonObject, 0, 1, 600 / nextTile.adjacentCostList[i]));
+
             }
             nextTile.adjacentLineList[i].SetActive(true);
 
             
+        }
+        
+    }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AwareTile(nowTileButton);
         }
         
     }

@@ -55,7 +55,7 @@ public class RegionMaker : MonoBehaviour
                 {
                     Vector3[] arr = new Vector3[2];
                     arr[0] = tileButtonList[i].tileButtonObject.transform.position;
-                    arr[1] = tileButtonList[i].adjacentTileList[j].tileButtonObject.transform.position;
+                    arr[1] = tileButtonList[i].adjacentTileList[j].adjacentTileButton.tileButtonObject.transform.position;
                     GameObject edgeObj = GameObject.Instantiate(dumyEdge.gameObject, canvas);
                     tileButtonList[i].adjacentLineList.Add(edgeObj);
                     edgeObj.SetActive(false);

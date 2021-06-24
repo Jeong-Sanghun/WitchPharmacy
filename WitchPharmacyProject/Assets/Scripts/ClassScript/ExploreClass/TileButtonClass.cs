@@ -21,7 +21,7 @@ public class TileButtonClass
     public List<GameObject> adjacentLineList;
 
     [HideInInspector]
-    public List<TileButtonClass> adjacentTileList;
+    public List<TileButtonAdjacent> adjacentTileList;
     public Tile tileClass;
     //public bool adjacentBoolArray;
     public List<float> adjacentCostList;
@@ -38,7 +38,7 @@ public class TileButtonClass
     public TileButtonClass(GameObject button, Tile tile,bool start)
     {
         tileButtonObject = button;
-        adjacentTileList = new List<TileButtonClass>();
+        adjacentTileList = new List<TileButtonAdjacent>();
         adjacentLineList = new List<GameObject>();
         tileClass = tile;
         opened = false;
@@ -65,7 +65,7 @@ public class TileButtonClass
     public TileButtonClass(bool start)
     {
         tileButtonObject = new GameObject();
-        adjacentTileList = new List<TileButtonClass>();
+        adjacentTileList = new List<TileButtonAdjacent>();
         //adjacentBoolArray = new bool[edgeNumber];
         //for (int i = 0; i < edgeNumber; i++)
         //{
@@ -87,19 +87,26 @@ public class TileButtonClass
 
     public void SetEdge(TileButtonClass otherTileButton,GameObject adjacentLine)
     {
-        if (adjacentTileList.Contains(otherTileButton))
+        for(int i = 0; i < adjacentTileList.Count; i++)
         {
-            Debug.Log("진짜좆됐음");
-            return;
+            if (adjacentTileList[i].adjacentTileButton ==(otherTileButton))
+            {
+                Debug.Log("진짜좆됐음");
+                return;
+            }
         }
+        
         float cost = Mathf.Sqrt((otherTileButton.xPos - xPos) * (otherTileButton.xPos - xPos)
            + (otherTileButton.yPos - yPos) * (otherTileButton.yPos - yPos));
-        adjacentTileList.Add(otherTileButton);
+        TileButtonAdjacent adjacentTile = new TileButtonAdjacent(otherTileButton);
+        adjacentTileList.Add(adjacentTile);
         adjacentCostList.Add(cost) ;
         adjacentLineList.Add(adjacentLine);
         nowEdgeNumber++;
 
-        otherTileButton.adjacentTileList.Add(this);
+        TileButtonAdjacent thisTile = new TileButtonAdjacent(this);
+
+        otherTileButton.adjacentTileList.Add(thisTile);
         otherTileButton.adjacentCostList.Add(cost);
         otherTileButton.adjacentLineList.Add(adjacentLine);
         otherTileButton.nowEdgeNumber++;

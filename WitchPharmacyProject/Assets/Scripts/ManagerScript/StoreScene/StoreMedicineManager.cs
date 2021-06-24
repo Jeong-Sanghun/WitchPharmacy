@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Text;
 
-public class StoreMedicineManager : MonoBehaviour {
+public class StoreMedicineManager : MonoBehaviour,IStore {
 
     const int nTypesOfMedicine = 4;
     const int rQuantityToSell = 10;
@@ -57,6 +57,11 @@ public class StoreMedicineManager : MonoBehaviour {
     Text popupQuantityText;
     [SerializeField]
     Slider quantSlider;
+
+    [SerializeField]
+    GameObject notEnoughCoinPopup;
+    [SerializeField]
+    Text coinText;
 
 
     List<MedicineButton> wholeMedicineButtonList;
@@ -215,6 +220,8 @@ public class StoreMedicineManager : MonoBehaviour {
 
         }
 
+        coinText.text = saveData.coin.ToString();
+
     }
 
 
@@ -366,6 +373,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         popupQuantityText.text = ((int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value)).ToString();
     }
 
+    //그 버튼눌러서 1개씩 올라가느넉
     public void OnQuantityChangeButton(bool plus)
     {
         int one;
@@ -398,6 +406,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
 
     }
 
+    //살게요버튼
     public void OnBuyButton()
     {
         int quant = (int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value);
@@ -408,12 +417,20 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         }
         else
         {
+            if(saveData.coin - quant* wholeMedicineButtonList[nowButtonIndex].medicineClass.cost < 0)
+            {
+                //여기서 에러메시지 표출
+                notEnoughCoinPopup.SetActive(true);
+                return;
+            }
+            saveData.coin -= quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
             wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
             if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
             {
                 wholeMedicineButtonList[nowButtonIndex].zeroMedicine = true;
             }
-            
+            coinText.text = saveData.coin.ToString();
+
             wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineQuantity += quant;
             wholeMedicineButtonList[nowButtonIndex].quantityText.text = wholeMedicineButtonList[nowButtonIndex].medicineQuant.ToString();
         }
@@ -431,6 +448,12 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
 
             }
         }
+    }
+
+    public void OnNotEnoughCoinPopupButton()
+    {
+        notEnoughCoinPopup.SetActive(false);
+
     }
 
     public void OnPopupBackButton()

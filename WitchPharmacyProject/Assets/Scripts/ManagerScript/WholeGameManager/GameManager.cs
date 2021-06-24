@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour //SH
     public SaveDataClass saveData;
     public MedicineDataWrapper medicineDataWrapper;
     public RegionPropertyWrapper regionPropertyWrapper;
+    public StoreToolDataWrapper storeToolDataWrapper;
     //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
     
     //이거는 세이브 로드 확인해볼라고
@@ -40,10 +41,11 @@ public class GameManager : MonoBehaviour //SH
 
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
-        //DebugDataJson();
+       // DebugDataJson();
         medicineDataWrapper= jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
+        storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
         saveData = jsonManager.LoadSaveData();
     }
 
@@ -97,10 +99,12 @@ public class GameManager : MonoBehaviour //SH
         }*/
 
         regionPropertyWrapper = new RegionPropertyWrapper();
+        storeToolDataWrapper = new StoreToolDataWrapper();
 
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
         jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
+        jsonManager.SaveJson<StoreToolDataWrapper>(storeToolDataWrapper, "StoreToolDataWrapper");
         jsonManager.SaveJson(saveData);
         
         //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");

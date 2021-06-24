@@ -20,6 +20,7 @@ public class SaveDataClass
     //이거 세이브 할 때 dictionary랑 owningMedicineList랑 동기화 해줘야됨 안그러면 세이브 젓댐
     public List<OwningMedicineClass> owningMedicineList;
     public List<int> unlockedRegionIndex;
+    public List<OwningToolClass> owningToolList;
 
 
 
@@ -31,6 +32,7 @@ public class SaveDataClass
         ownedMedicineList = new List<int>();
         owningMedicineList = new List<OwningMedicineClass>();
         unlockedRegionIndex = new List<int>();
+        owningToolList = new List<OwningToolClass>();
 
     }
 }
