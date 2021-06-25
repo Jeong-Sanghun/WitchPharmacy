@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryManager : MonoBehaviour
+public class StoryManager : TileManager
 {
-    GameManager gameManager;
-    SaveDataClass saveData;
-    SceneManager sceneManager;
 
-    List<ConversationDialogBundle> conversationDialogBundleList;
-    ConversationDialogBundle nowBundle;
-    ConversationDialogWrapper nowWrapper;
+    protected SceneManager sceneManager;
+
+    protected List<ConversationDialogBundle> conversationDialogBundleList;
+    protected ConversationDialogBundle nowBundle;
+    protected ConversationDialogWrapper nowWrapper;
 
     CharacterIndexToName characterIndexToName;
 
@@ -31,16 +30,18 @@ public class StoryManager : MonoBehaviour
 
 
     //어느 번들인지.
-    int nowBundleIndex;
+    //int nowBundleIndex;
     //어디에서 분기해서 어디 래퍼인지.
-    int nowWrapperIndex;
-    int nowConversationIndex;
-    bool checkingRouter;
+    protected int nowWrapperIndex;
+    protected int nowConversationIndex;
+    protected bool checkingRouter;
     bool leftFaded;
     bool rightFaded;
+    protected int routingTime;
     // Start is called before the first frame update
-    void Start()
+    protected virtual new void Start()
     {
+        exploreManager = ExploreManager.inst;
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
@@ -48,16 +49,19 @@ public class StoryManager : MonoBehaviour
         characterIndexToName = new CharacterIndexToName();
         nowBundle = conversationDialogBundleList[0];
         nowWrapper = nowBundle.dialogWrapperList[0];
+        routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
         nowConversationIndex = 0;
         nowWrapperIndex = 0;
-        nowBundleIndex = 0;
+        //nowBundleIndex = 0;
         PrintConversation();
     }
 
+
+    //그 버튼이 뜨는거임. 라우팅 버튼
     void RouteCheck()
     {
-        if (nowBundle.conversationRouter.routingTime <= 0)
+        if (routingTime <= 0)
         {
             conversationText.text = "이야기끝";
             return;
@@ -86,13 +90,13 @@ public class StoryManager : MonoBehaviour
             routingButtonArray[i].SetActive(true);
             routingTextArray[i].text = router.routeButtonText[i];
         }
-
-
-        
     }
 
-    void PrintConversation()
+
+    //한 줄 띄우는거.
+    protected void PrintConversation()
     {
+        //이제 끝나면 RouteCheck가 뜸. 그 wrapper에 있는거 다 쓰면은.
         if (nowConversationIndex >= nowWrapper.conversationDialogList.Count)
         {
             RouteCheck();
@@ -128,6 +132,7 @@ public class StoryManager : MonoBehaviour
 
     }
 
+    //라우터 버튼 눌릴 때
     public void OnRouterButton(int index)
     {
         checkingRouter = false;
@@ -146,7 +151,7 @@ public class StoryManager : MonoBehaviour
                 break;
             }
         }
-        nowBundle.conversationRouter.routingTime--;
+        routingTime--;
         nowWrapperIndex = wrapperIndex;
         nowConversationIndex = 0;
         nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
@@ -156,6 +161,7 @@ public class StoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //입력
         if (Input.GetMouseButtonDown(0))
         {
             if (!checkingRouter)

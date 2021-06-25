@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//어느 버튼이 눌리면 
+//어느 버튼이 눌리면 어디로 갈 지.
 [System.Serializable]
 public class ConversationRouter
 {

@@ -59,7 +59,7 @@ public class StoreToolManager : TileManager,IStore
 
 
     //이거 스토어타일 매니저에서 그대로 써올거임.
-    protected virtual void Start()
+    protected virtual new void Start()
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;

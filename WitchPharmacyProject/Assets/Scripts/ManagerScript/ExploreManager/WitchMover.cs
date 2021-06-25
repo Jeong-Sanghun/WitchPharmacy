@@ -57,9 +57,15 @@ public class WitchMover : MonoBehaviour
             button.onClick.AddListener(() => OnTileButton(delegateIndex));
         }
         witchRect.transform.SetAsLastSibling();
+        //타임코스트는 텍스트 업뎃해줄라고.
         TimeCost(0);
+        //이거는 디버그할때 오류나길래
+        nowTileButton = tileButtonList[0];
+
+        //0번 어웨어해야함.
         AwareTile(tileButtonList[0]);
 
+        //이거는 regionIngame이 exploreManager에서 저장되어잇으니까 그거 aware되어있는건 aware해야됨.
         for(int i = 1; i < tileButtonList.Count; i++)
         {
             if (tileButtonList[i].awared)
@@ -127,7 +133,7 @@ public class WitchMover : MonoBehaviour
     }
     
 
-    //A*알고리즘
+    //A*알고리즘 뭐 읽을필요없음.
     void FindPath(int startIndex, int targetIndex)
     {
         //미확정
@@ -145,6 +151,7 @@ public class WitchMover : MonoBehaviour
         {
             for (int i = 0; i < nowTile.adjacentTileList.Count; i++)
             {
+                //이거는 열어본 타일만 가려고.
                 if(nowTile.adjacentTileList[i].isOpened == false)
                 {
                     continue;
@@ -282,10 +289,10 @@ public class WitchMover : MonoBehaviour
     //이거 regionManager에서 관리해줘야함
     public void AwareTile(TileButtonClass nextTile)
     {
-        if (nextTile.awared)
-        {
-            return;
-        }
+        //if (nextTile.awared)
+        //{
+        //    return;
+        //}
         nextTile.awared = true;
         for(int i = 0; i < nextTile.adjacentTileList.Count; i++)
         {
@@ -319,6 +326,7 @@ public class WitchMover : MonoBehaviour
 
     private void Update()
     {
+        //디버그용
         if (Input.GetKeyDown(KeyCode.Space))
         {
             AwareTile(nowTileButton);

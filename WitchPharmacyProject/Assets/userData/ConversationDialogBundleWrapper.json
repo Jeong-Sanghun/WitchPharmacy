@@ -14,7 +14,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "오늘 날씨가 참 맑을 것 같지? 그래서인지 내 기분도 좋아!"
+                            "dialog": "오늘 날씨가 참 맑을 것 같지? 그래서인지 내 기분도 좋아!",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 1,
@@ -24,7 +25,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "무슨소리야 밖에 비가 잔뜩오잖아"
+                            "dialog": "무슨소리야 밖에 비가 잔뜩오잖아",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 2,
@@ -34,7 +36,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "엇........진짜네 미안해!!"
+                            "dialog": "엇........진짜네 미안해!!",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 3,
@@ -44,7 +47,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "다음부턴 창문을 잘 보고다니라구"
+                            "dialog": "다음부턴 창문을 잘 보고다니라구",
+                            "endOfWrapper": false
                         }
                     ]
                 },
@@ -59,7 +63,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "뭐야 말이 너무 심한거 아니야? 사과해!"
+                            "dialog": "뭐야 말이 너무 심한거 아니야? 사과해!",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 1,
@@ -69,7 +74,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "??? 니가 먼저 이상한 소리를 한거잖아"
+                            "dialog": "??? 니가 먼저 이상한 소리를 한거잖아",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 2,
@@ -79,7 +85,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "지금 날 만만하게 보는거야????"
+                            "dialog": "지금 날 만만하게 보는거야????",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 3,
@@ -89,7 +96,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "아 아니 그게 아니라..."
+                            "dialog": "아 아니 그게 아니라...",
+                            "endOfWrapper": false
                         }
                     ]
                 },
@@ -104,7 +112,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "....카리야...우리집에는 창문 없는거 알잖아"
+                            "dialog": "....카리야...우리집에는 창문 없는거 알잖아",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 1,
@@ -114,7 +123,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "뭐야 루엘리아 너 이상해. 우리집에 창문 있어! 저기... 어 어디갔지......"
+                            "dialog": "뭐야 루엘리아 너 이상해. 우리집에 창문 있어! 저기... 어 어디갔지......",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 2,
@@ -124,7 +134,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "흑흑....이러지마 제발 나 너무 슬퍼"
+                            "dialog": "흑흑....이러지마 제발 나 너무 슬퍼",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 3,
@@ -134,7 +145,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": ".....미안....병세가 좀 심해진거같아....."
+                            "dialog": ".....미안....병세가 좀 심해진거같아.....",
+                            "endOfWrapper": false
                         }
                     ]
                 }
@@ -166,7 +178,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "오늘 날씨가 참 맑을 것 같지? 그래서인지 내 기분도 좋아!"
+                            "dialog": "오늘 날씨가 참 맑을 것 같지? 그래서인지 내 기분도 좋아!",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 1,
@@ -176,7 +189,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "무슨소리야 밖에 비가 잔뜩오잖아"
+                            "dialog": "무슨소리야 밖에 비가 잔뜩오잖아",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 2,
@@ -186,7 +200,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "엇........진짜네 미안해!!"
+                            "dialog": "엇........진짜네 미안해!!",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 3,
@@ -196,7 +211,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "다음부턴 창문을 잘 보고다니라구"
+                            "dialog": "다음부턴 창문을 잘 보고다니라구",
+                            "endOfWrapper": false
                         }
                     ]
                 },
@@ -211,7 +227,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "뭐야 말이 너무 심한거 아니야? 사과해!"
+                            "dialog": "뭐야 말이 너무 심한거 아니야? 사과해!",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 1,
@@ -221,7 +238,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "??? 니가 먼저 이상한 소리를 한거잖아"
+                            "dialog": "??? 니가 먼저 이상한 소리를 한거잖아",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 2,
@@ -231,7 +249,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "지금 날 만만하게 보는거야????"
+                            "dialog": "지금 날 만만하게 보는거야????",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 3,
@@ -241,7 +260,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "아 아니 그게 아니라..."
+                            "dialog": "아 아니 그게 아니라...",
+                            "endOfWrapper": false
                         }
                     ]
                 },
@@ -256,7 +276,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "....카리야...우리집에는 창문 없는거 알잖아"
+                            "dialog": "....카리야...우리집에는 창문 없는거 알잖아",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 1,
@@ -266,7 +287,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "뭐야 루엘리아 너 이상해. 우리집에 창문 있어! 저기... 어 어디갔지......"
+                            "dialog": "뭐야 루엘리아 너 이상해. 우리집에 창문 있어! 저기... 어 어디갔지......",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 2,
@@ -276,7 +298,8 @@
                             "rightFade": true,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": "흑흑....이러지마 제발 나 너무 슬퍼"
+                            "dialog": "흑흑....이러지마 제발 나 너무 슬퍼",
+                            "endOfWrapper": false
                         },
                         {
                             "index": 3,
@@ -286,7 +309,8 @@
                             "rightFade": false,
                             "leftCharacterFeeling": 0,
                             "rightCharacterFeeling": 0,
-                            "dialog": ".....미안....병세가 좀 심해진거같아....."
+                            "dialog": ".....미안....병세가 좀 심해진거같아.....",
+                            "endOfWrapper": false
                         }
                     ]
                 }

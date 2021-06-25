@@ -43,18 +43,13 @@ public class RegionManager : MonoBehaviour
                 case 2:
                     tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<StoreTileManager>();
                     break;
-                //case 3:
-                //    tile = new StoryTile(nowFullArrayIndex);
-                //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
-                //    break;
-                //case 4:
-                //    tile = new TreasureTile(nowFullArrayIndex);
-                //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
-                //    break;
-                //case 5:
-                //    tile = new TrapTile(nowFullArrayIndex);
-                //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
-                //    break;
+                case 3:
+                    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<StoryTileManager>();
+                    break;
+                case 4:
+                case 5:
+                    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<EventTileManager>();
+                    break;
                 //case 6:
                 //    tile = new BarrierTile(nowFullArrayIndex);
                 //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
@@ -84,22 +79,21 @@ public class RegionManager : MonoBehaviour
     {
         TileButtonClass nowTile = witchMover.nowTileButton;
         TileType tileType = nowTile.tileClass.tileType;
-        if (tileType == TileType.StartTile || (tileType !=TileType.StoreTile && tileType != TileType.MedicineTile))
+        if (tileType == TileType.StartTile || (tileType !=TileType.StoreTile && tileType != TileType.MedicineTile && tileType != 
+            TileType.StoryTile && tileType != TileType.TreasureTile && tileType != TileType.TrapTile))
         {
             return;
         }
         int index = (int)tileType;
         tileMapParent.SetActive(false);
 
-        canvasArray[index].SetActive(true);
+
         for(int i = 1; i < canvasArray.Length; i++)
         {
-            if (index == i)
-            {
-                continue;
-            }
             canvasArray[i].SetActive(false);
+
         }
+        canvasArray[index].SetActive(true);
         //            //StartTile, MedicineTile, StoreTile, StoryTile,
         //            //TreasureTile, TrapTile, BarrierTile, SpecialStoreTile
 

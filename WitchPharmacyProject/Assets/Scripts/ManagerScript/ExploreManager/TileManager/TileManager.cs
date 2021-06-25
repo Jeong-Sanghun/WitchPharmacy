@@ -10,7 +10,7 @@ public class TileManager : MonoBehaviour
     protected TileButtonClass nowTileButton;
     protected RegionProperty regionProperty;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         exploreManager = ExploreManager.inst;
         gameManager = GameManager.singleTon;

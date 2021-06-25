@@ -170,9 +170,9 @@ public class RegionMaker : MonoBehaviour
                     buttonColor = Color.cyan;
                     break;
                 case 4:
+                case 5:
                     buttonColor = Color.blue;
                     break;
-                case 5:
                 case 6:
                     buttonColor = new Color(0.3f, 0.3f, 1);
                     break;

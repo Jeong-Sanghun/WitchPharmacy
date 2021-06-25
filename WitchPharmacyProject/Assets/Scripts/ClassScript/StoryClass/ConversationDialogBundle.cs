@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//한 뭉탱이의 다이얼로그
 [System.Serializable]
 public class ConversationDialogBundle
 {
