@@ -109,6 +109,27 @@ public class StoreToolManager : TileManager,IStore
             StoreToolButton buttonClass = new StoreToolButton(buttonObject, i, quantity, quantText);
             buttonClass.storeTool = appearingStoreToolList[i];
             wholeToolButtonList.Add(buttonClass);
+
+            int dataIndex = 0;
+            for(int j = 0; j < storeToolDataList.Count; j++)
+            {
+                if(appearingStoreToolList[i] == storeToolDataList[j])
+                {
+                    dataIndex = j;
+                }
+            }
+            OwningToolClass owningTool = null;
+            for(int j = 0; j < owningToolList.Count;j++)
+            {
+                if(owningToolList[j].index == dataIndex)
+                {
+                    owningTool = owningToolList[j];
+                    break;
+                }
+            }
+            buttonClass.owningTool = owningTool;
+            
+            
             //이 위까지가 프리팹들 다 설정해서 whoelMedicineButtonList에 buttonClass를 추가하는거임.
             //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
             //정훈아 미안해 이거 주석 다 못적겠어. 그냥 그러려니 해. 셋업이야.
@@ -178,7 +199,7 @@ public class StoreToolManager : TileManager,IStore
                 return;
             }
             int existIndex = -1;
-            for(int i = 0; i < saveData.owningToolList.Count; i++)
+            for(int i = 0; i < owningToolList.Count; i++)
             {
                 if(wholeToolButtonList[nowButtonIndex].toolIndex == owningToolList[i].index)
                 {
@@ -188,12 +209,13 @@ public class StoreToolManager : TileManager,IStore
             }
             if(existIndex == -1)
             {
+                Debug.Log("여기되나");
                 OwningToolClass tool = new OwningToolClass();
                 tool.index = wholeToolButtonList[nowButtonIndex].toolIndex;
                 tool.quantity = 0;
                 owningToolList.Add(tool);
                 wholeToolButtonList[nowButtonIndex].owningTool = tool;
-                existIndex = owningToolList.Count - 1;
+                //existIndex = owningToolList.Count - 1;
             }
             else
             {
@@ -217,6 +239,7 @@ public class StoreToolManager : TileManager,IStore
            ListButton();
         }
         nowButtonIndex = -1;
+        gameManager.SaveJson();
     }
 
     protected void ListButton()

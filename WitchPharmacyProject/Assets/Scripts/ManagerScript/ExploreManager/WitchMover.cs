@@ -264,6 +264,8 @@ public class WitchMover : MonoBehaviour
 
     }
 
+    //타일 오픈 되어있으면 이거 입장으로 바꿔야함.
+    //RegionManager의 BackToTileMap할 때 입장 띄울려고 만듦.
     public void TileOpen()
     {
         TileButtonClass nowTile = tileButtonList[nowWitchIndex];

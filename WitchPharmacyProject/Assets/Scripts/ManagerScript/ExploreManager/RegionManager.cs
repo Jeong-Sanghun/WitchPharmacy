@@ -50,10 +50,9 @@ public class RegionManager : MonoBehaviour
                 case 5:
                     tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<EventTileManager>();
                     break;
-                //case 6:
-                //    tile = new BarrierTile(nowFullArrayIndex);
-                //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
-                //    break;
+                case 6:
+                    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<BarrierTileManager>();
+                    break;
                 //case 7:
                 //    tile = new SpecialStoreTile(nowFullArrayIndex);
                 //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
@@ -80,7 +79,7 @@ public class RegionManager : MonoBehaviour
         TileButtonClass nowTile = witchMover.nowTileButton;
         TileType tileType = nowTile.tileClass.tileType;
         if (tileType == TileType.StartTile || (tileType !=TileType.StoreTile && tileType != TileType.MedicineTile && tileType != 
-            TileType.StoryTile && tileType != TileType.TreasureTile && tileType != TileType.TrapTile))
+            TileType.StoryTile && tileType != TileType.TreasureTile && tileType != TileType.TrapTile && tileType != TileType.BarrierTile))
         {
             return;
         }
@@ -112,6 +111,7 @@ public class RegionManager : MonoBehaviour
 
     }
 
+    //각종 뒤로가기 버튼
     public void BackToTileMap()
     {
         tileMapParent.SetActive(true);
@@ -120,6 +120,17 @@ public class RegionManager : MonoBehaviour
             canvasArray[i].SetActive(false);
         }
         witchMover.AwareTile(witchMover.nowTileButton);
+        witchMover.TileOpen();
+    }
+
+    //이거는 배리어에서 뒤로가기 했을 때 나옴.
+    public void BackToTileMapFromBarrier()
+    {
+        tileMapParent.SetActive(true);
+        for (int i = 0; i < canvasArray.Length; i++)
+        {
+            canvasArray[i].SetActive(false);
+        }
         witchMover.TileOpen();
     }
     
