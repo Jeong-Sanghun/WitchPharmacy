@@ -1,6 +1,6 @@
 {
     "name": "initName",
-    "coin": 700,
+    "coin": 510,
     "ownedMedicineList": [
         0,
         1,
@@ -115,7 +115,7 @@
         },
         {
             "medicineIndex": 7,
-            "medicineQuantity": 8
+            "medicineQuantity": 16
         },
         {
             "medicineIndex": 8,
@@ -425,11 +425,11 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 1
+            "quantity": 10
         },
         {
             "index": 1,
-            "quantity": 1
+            "quantity": 4
         }
     ]
 }

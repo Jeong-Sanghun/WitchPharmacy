@@ -317,7 +317,8 @@ public class RegionMaker : MonoBehaviour
             }
             else
             {
-                if (continueOrNot)// && !isTraverse)
+
+                if (continueOrNot && tileButtonList[index].tileClass.tileType != TileType.BarrierTile)// && !isTraverse)
                 {
                     continue;
                 }

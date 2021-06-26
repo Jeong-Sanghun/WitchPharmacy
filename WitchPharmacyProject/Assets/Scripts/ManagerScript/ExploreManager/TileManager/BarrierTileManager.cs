@@ -73,32 +73,46 @@ public class BarrierTileManager : TileManager
             dirtObject.SetActive(true);
             rockObject.SetActive(false);
         }
-        bool exist = false;
-        for (int i = 0; i < owningToolList.Count; i++)
+
+
+        if (nowTile.isUnlocked)
         {
-            if (storeToolDataList[owningToolList[i].index].name == name)
-            {
-                nowTool = owningToolList[i];
-                exist = true;
-            }
-        }
-        if (exist)
-        {
-            nowText.text = nowTool.quantity.ToString();
-            if (nowTool.quantity < 1)
-            {
-                nowButton.interactable = false;
-            }
-            else
-            {
-                nowButton.interactable = true;
-            }
+            nowCanvas.SetActive(false);
+            dirtObject.SetActive(false);
+            rockObject.SetActive(false);
+            unlockedCanvas.SetActive(true);
         }
         else
         {
-            nowText.text = "0";
-            nowButton.interactable = false;
+            //내가 그 도구를 가지고있는지. 도구 자체가 OwningList에 있는지 없는지.
+            bool exist = false;
+            for (int i = 0; i < owningToolList.Count; i++)
+            {
+                if (storeToolDataList[owningToolList[i].index].name == name)
+                {
+                    nowTool = owningToolList[i];
+                    exist = true;
+                }
+            }
+            if (exist)
+            {
+                nowText.text = nowTool.quantity.ToString();
+                if (nowTool.quantity < 1)
+                {
+                    nowButton.interactable = false;
+                }
+                else
+                {
+                    nowButton.interactable = true;
+                }
+            }
+            else
+            {
+                nowText.text = "0";
+                nowButton.interactable = false;
+            }
         }
+        
 
         
     }
