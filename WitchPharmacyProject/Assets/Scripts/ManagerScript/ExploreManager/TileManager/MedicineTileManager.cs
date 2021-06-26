@@ -200,14 +200,28 @@ public class MedicineTileManager : TileManager
         {
             return;
         }
+        OwningMedicineClass owningMedicine = null;
         for(int i = 0; i < saveData.owningMedicineList.Count; i++)
         {
             if(nowMedicineTile.index == saveData.owningMedicineList[i].medicineIndex)
             {
-                saveData.owningMedicineList[i].medicineQuantity++;
+                owningMedicine = saveData.owningMedicineList[i];
                 break;
             }
         }
+
+        if(owningMedicine == null)
+        {
+            owningMedicine = new OwningMedicineClass();
+            saveData.owningMedicineList.Add(owningMedicine);
+            owningMedicine.medicineIndex = nowMedicineStruct.medicine.index;
+            owningMedicine.medicineQuantity = 1;
+        }
+        else
+        {
+            owningMedicine.medicineQuantity++;
+        }
+        
 
         nowMedicineStruct.clickerObject.SetActive(false);
         nowMedicineTile.clickedArray[nowIndex] = true;
@@ -215,6 +229,7 @@ public class MedicineTileManager : TileManager
         {
             nowMedicineStruct.medicineParent.SetActive(false);
         }
+        exploreManager.OnBuyMedicine(nowMedicineStruct.medicine.index, 1);
         exploreManager.TimeChange(60);
 
     }

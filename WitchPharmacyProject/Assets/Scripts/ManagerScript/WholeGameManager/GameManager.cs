@@ -47,6 +47,15 @@ public class GameManager : MonoBehaviour //SH
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
+
+        for(int i = 0; i < storeToolDataWrapper.storeToolDataList.Count; i++)
+        {
+            storeToolDataWrapper.storeToolDataList[i].index = i;
+        }
+        for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
+        {
+            medicineDataWrapper.medicineDataList[i].index = i;
+        }
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
         saveData = jsonManager.LoadSaveData();
     }

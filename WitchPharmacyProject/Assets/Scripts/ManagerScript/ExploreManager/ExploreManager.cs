@@ -14,17 +14,34 @@ public class ExploreManager : MonoBehaviour
     RegionMaker regionMaker;
     RegionPropertyWrapper regionPropertyWrapper;
     RegionIngame[] regionIngameArray;
+    List<MedicineClass> medicineDataList;
+    List<StoreToolClass> storeToolDataList;
     //bool[] visitedRegionArray;
     int nowIndex;
+
+    List<OwningMedicineClass> gainedMedicineList;
+    List<OwningToolClass> gainedToolList;
 
     //이거 타일매니저로 넘겨줘야되는데 regionManager에서 타일매니저로 넘겨줌
     public RegionProperty nowProperty;
     public RegionIngame nowRegionIngame;
 
+    
     //이거 단위 초임.
     public float nowTime;
 
+    //GameObject.find씀
     Text timeText;
+
+    [SerializeField]
+    GameObject gainedItemCanvas;
+
+    [SerializeField]
+    GameObject itemPrefab;
+    [SerializeField]
+    Image prefabItemImage;
+    [SerializeField]
+    Text prefabItemText;
     
     // Start is called before the first frame update
     void Awake()
@@ -33,6 +50,7 @@ public class ExploreManager : MonoBehaviour
         {
             inst = this;
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gainedItemCanvas);
         }
         else
         {
@@ -45,6 +63,14 @@ public class ExploreManager : MonoBehaviour
         sceneManager = SceneManager.inst;
         gameManager = GameManager.singleTon;
         regionPropertyWrapper = gameManager.regionPropertyWrapper;
+
+        medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
+        storeToolDataList = gameManager.storeToolDataWrapper.storeToolDataList;
+
+        gainedMedicineList = new List<OwningMedicineClass>();
+        gainedToolList = new List<OwningToolClass>();
+
+
 
         //이거도 더미. 나중에는 제이슨으로 받아올건데 지금은 임시로 램덤.
         //int roundRobin;
@@ -104,6 +130,84 @@ public class ExploreManager : MonoBehaviour
 
     }
 
+    //MedicineTileManager에서 불러옴
+    public void OnBuyMedicine(int index, int quantity)
+    {
+        OwningMedicineClass gainedMedicine = null;
+        for(int i = 0; i < gainedMedicineList.Count; i++)
+        {
+            if(gainedMedicineList[i].medicineIndex == index)
+            {
+                gainedMedicine = gainedMedicineList[i];
+                break;
+            }
+        }
+
+        if (gainedMedicine == null)
+        {
+            gainedMedicine = new OwningMedicineClass();
+            gainedMedicine.medicineIndex = index;
+            gainedMedicine.medicineQuantity = quantity;
+            gainedMedicineList.Add(gainedMedicine);
+        }
+        else
+        {
+            gainedMedicine.medicineQuantity += quantity;
+        }
+    }
+
+    //StoreTileManager에서불러옴
+    public void OnBuyTool(int index, int quantity)
+    {
+        OwningToolClass gainedTool = null;
+        for (int i = 0; i < gainedToolList.Count; i++)
+        {
+            if (gainedToolList[i].index == index)
+            {
+                gainedTool = gainedToolList[i];
+                break;
+            }
+        }
+
+        if (gainedTool == null)
+        {
+            gainedTool = new OwningToolClass();
+            gainedTool.index = index;
+            gainedTool.quantity = quantity;
+            gainedToolList.Add(gainedTool);
+        }
+        else
+        {
+            gainedTool.quantity += quantity;
+        }
+    }
+
+    public void OnTimeOut()
+    {
+        int nowItemIndex = 0;
+        for(int i = 0; i < gainedMedicineList.Count; i++)
+        {
+            prefabItemImage.sprite = medicineDataList[gainedMedicineList[i].medicineIndex].LoadImage();
+            prefabItemText.text = gainedMedicineList[i].medicineQuantity.ToString();
+            GameObject obj = Instantiate(itemPrefab, gainedItemCanvas.transform);
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
+            nowItemIndex++;
+        }
+        for (int i = 0; i < gainedToolList.Count; i++)
+        {
+            prefabItemImage.sprite = storeToolDataList[gainedToolList[i].index].LoadImage();
+            prefabItemText.text = gainedToolList[i].quantity.ToString();
+            GameObject obj = Instantiate(itemPrefab, gainedItemCanvas.transform);
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
+            nowItemIndex++;
+        }
+        itemPrefab.SetActive(false);
+
+        gainedItemCanvas.SetActive(true);
+
+
+    }
+
     //이거 버튼누를때마다 불러옴.
     //이거 단위 초다.
     public void TimeChange(float plusTime)
@@ -124,6 +228,14 @@ public class ExploreManager : MonoBehaviour
     public RegionIngame GetRegionIngame()
     {
         return regionIngameArray[nowIndex];
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnTimeOut();
+        }
     }
 
 }

@@ -8,6 +8,7 @@ using System.Text;
 [System.Serializable]
 public class MedicineClass  //SH
 {
+    public int index;
     public string firstName;
     public string secondName;
     public Symptom firstSymptom;
@@ -31,11 +32,11 @@ public class MedicineClass  //SH
         medicineImage = null;
     }
 
-    public void LoadImage()
+    public Sprite LoadImage()
     {
         if(medicineImage != null)
         {
-            return;
+            return medicineImage;
         }
         StringBuilder nameBuilder = new StringBuilder(firstName);
         nameBuilder.Append(" ");
@@ -46,5 +47,6 @@ public class MedicineClass  //SH
             builder.Append(nameBuilder.ToString());
             medicineImage = Resources.Load<Sprite>(builder.ToString());
         }
+        return medicineImage;
     }
 }

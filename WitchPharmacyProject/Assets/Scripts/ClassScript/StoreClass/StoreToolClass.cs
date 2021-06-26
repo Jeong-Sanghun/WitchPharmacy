@@ -7,20 +7,22 @@ using System.Text;
 [System.Serializable]
 public class StoreToolClass
 {
+    public int index;
     public string name;
     public string toolTip;
     public int cost;
     //1회용
     public bool usedOnce;
     public bool usedForExplore;
+    public bool isQuestMedicine;
     public Sprite toolImage;
 
 
-    public void LoadImage()
+    public Sprite LoadImage()
     {
         if (toolImage != null)
         {
-            return;
+            return toolImage;
         }
         StringBuilder nameBuilder = new StringBuilder(name);
         if (toolImage == null)
@@ -29,5 +31,6 @@ public class StoreToolClass
             builder.Append(nameBuilder.ToString());
             toolImage = Resources.Load<Sprite>(builder.ToString());
         }
+        return toolImage;
     }
 }

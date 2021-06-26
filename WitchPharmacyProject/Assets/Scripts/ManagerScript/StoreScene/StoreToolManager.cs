@@ -57,6 +57,8 @@ public class StoreToolManager : TileManager,IStore
     protected int nowButtonIndex;
     protected bool nowPopup;
 
+    protected bool isTileStore;
+
 
     //이거 스토어타일 매니저에서 그대로 써올거임.
     protected virtual new void Start()
@@ -67,6 +69,7 @@ public class StoreToolManager : TileManager,IStore
         owningToolList = saveData.owningToolList;
         appearingStoreToolList = storeToolDataList;
         StoreStart();
+        isTileStore = false;
     }
     // Start is called before the first frame update
     protected void StoreStart()
@@ -79,6 +82,18 @@ public class StoreToolManager : TileManager,IStore
         {
 
             int quantity = rQuantityToSell;
+            if (isTileStore)
+            {
+                StoreTile tile = (StoreTile)nowTileButton.tileClass;
+                for(int j = 0; j < tile.selledToolList.Count; j++)
+                {
+                    if(tile.selledToolList[j].index == appearingStoreToolList[i].index)
+                    {
+                        quantity -= tile.selledToolList[j].quantity;
+                    }
+                }
+                
+            }
             StoreToolClass tool = appearingStoreToolList[i];
             StringBuilder nameBuilder = new StringBuilder(tool.name);
             tool.LoadImage();
@@ -107,6 +122,10 @@ public class StoreToolManager : TileManager,IStore
 
 
             StoreToolButton buttonClass = new StoreToolButton(buttonObject, i, quantity, quantText);
+            if (quantity == 0)
+            {
+                buttonClass.zeroTool = true;
+            }
             buttonClass.storeTool = appearingStoreToolList[i];
             wholeToolButtonList.Add(buttonClass);
 
@@ -126,6 +145,13 @@ public class StoreToolManager : TileManager,IStore
                     owningTool = owningToolList[j];
                     break;
                 }
+            }
+            if(owningTool == null)
+            {
+                owningTool = new OwningToolClass();
+                owningTool.index = dataIndex;
+                owningTool.quantity = 0;
+                owningToolList.Add(owningTool);
             }
             buttonClass.owningTool = owningTool;
             
@@ -170,7 +196,7 @@ public class StoreToolManager : TileManager,IStore
 
     }
 
-    public void OnBuyButton()
+    public virtual void OnBuyButton()
     {
         nowPopup = false;
 
@@ -188,52 +214,76 @@ public class StoreToolManager : TileManager,IStore
         {
             return;
         }
+        //돈이없을 때
+        if (saveData.coin - quant * wholeToolButtonList[nowButtonIndex].storeTool.cost < 0)
+        {
+            //여기서 에러메시지 표출
+            notEnoughCoinPopup.SetActive(true);
+            OnPopupBackButton();
+            nowPopup = true;
+            return;
+        }
+        int existIndex = -1;
+        for (int i = 0; i < owningToolList.Count; i++)
+        {
+            if (wholeToolButtonList[nowButtonIndex].toolIndex == owningToolList[i].index)
+            {
+                existIndex = i;
+                break;
+            }
+        }
+        if (existIndex == -1)
+        {
+            Debug.Log("여기되나");
+            OwningToolClass tool = new OwningToolClass();
+            tool.index = wholeToolButtonList[nowButtonIndex].toolIndex;
+            tool.quantity = 0;
+            owningToolList.Add(tool);
+            wholeToolButtonList[nowButtonIndex].owningTool = tool;
+            //existIndex = owningToolList.Count - 1;
+        }
         else
         {
-            if (saveData.coin - quant * wholeToolButtonList[nowButtonIndex].storeTool.cost < 0)
+            wholeToolButtonList[nowButtonIndex].owningTool = owningToolList[existIndex];
+        }
+
+        if (isTileStore)
+        {
+            int existTileIndex = -1;
+            StoreTile tile = (StoreTile)nowTileButton.tileClass;
+            OwningToolClass selledTool;
+            for(int i = 0; i < tile.selledToolList.Count; i++)
             {
-                //여기서 에러메시지 표출
-                notEnoughCoinPopup.SetActive(true);
-                OnPopupBackButton();
-                nowPopup = true;
-                return;
-            }
-            int existIndex = -1;
-            for(int i = 0; i < owningToolList.Count; i++)
-            {
-                if(wholeToolButtonList[nowButtonIndex].toolIndex == owningToolList[i].index)
+                if(wholeToolButtonList[nowButtonIndex].owningTool.index == tile.selledToolList[i].index)
                 {
-                    existIndex = i;
+                    existTileIndex = i;
                     break;
                 }
             }
-            if(existIndex == -1)
+            if(existTileIndex == -1)
             {
-                Debug.Log("여기되나");
-                OwningToolClass tool = new OwningToolClass();
-                tool.index = wholeToolButtonList[nowButtonIndex].toolIndex;
-                tool.quantity = 0;
-                owningToolList.Add(tool);
-                wholeToolButtonList[nowButtonIndex].owningTool = tool;
-                //existIndex = owningToolList.Count - 1;
+                selledTool = new OwningToolClass();
+                selledTool.index = wholeToolButtonList[nowButtonIndex].owningTool.index;
+                selledTool.quantity = quant;
+                tile.selledToolList.Add(selledTool);
             }
             else
             {
-                wholeToolButtonList[nowButtonIndex].owningTool = owningToolList[existIndex];
+                tile.selledToolList[existTileIndex].quantity += quant;
             }
-
-
-            saveData.coin -= quant * wholeToolButtonList[nowButtonIndex].storeTool.cost;
-            wholeToolButtonList[nowButtonIndex].toolQuant -= quant;
-            if (wholeToolButtonList[nowButtonIndex].toolQuant <= 0)
-            {
-                wholeToolButtonList[nowButtonIndex].zeroTool = true;
-            }
-            coinText.text = saveData.coin.ToString();
-
-            wholeToolButtonList[nowButtonIndex].owningTool.quantity += quant;
-            wholeToolButtonList[nowButtonIndex].quantityText.text = wholeToolButtonList[nowButtonIndex].toolQuant.ToString();
+            exploreManager.OnBuyTool(wholeToolButtonList[nowButtonIndex].owningTool.index, quant);
         }
+
+        saveData.coin -= quant * wholeToolButtonList[nowButtonIndex].storeTool.cost;
+        wholeToolButtonList[nowButtonIndex].toolQuant -= quant;
+        if (wholeToolButtonList[nowButtonIndex].toolQuant <= 0)
+        {
+            wholeToolButtonList[nowButtonIndex].zeroTool = true;
+        }
+        coinText.text = saveData.coin.ToString();
+
+        wholeToolButtonList[nowButtonIndex].owningTool.quantity += quant;
+        wholeToolButtonList[nowButtonIndex].quantityText.text = wholeToolButtonList[nowButtonIndex].toolQuant.ToString();
         if (wholeToolButtonList[nowButtonIndex].zeroTool)
         {
            ListButton();
@@ -248,6 +298,13 @@ public class StoreToolManager : TileManager,IStore
 
         for (int i = 0; i < wholeToolButtonList.Count; i++)
         {
+
+            if (wholeToolButtonList[i].owningTool.quantity >= 1 && !wholeToolButtonList[i].storeTool.usedOnce)
+            {
+                wholeToolButtonList[i].buttonObject.SetActive(false);
+                continue;
+            }
+
             if (!wholeToolButtonList[i].zeroTool)
             {
                 wholeToolButtonList[i].buttonObject.SetActive(true);
@@ -258,8 +315,9 @@ public class StoreToolManager : TileManager,IStore
             {
                 wholeToolButtonList[i].buttonObject.SetActive(false);
             }
-            
+
         }
+
 
         scrollContent.sizeDelta = new Vector2(0, 180 * buttonQuantity);
     }

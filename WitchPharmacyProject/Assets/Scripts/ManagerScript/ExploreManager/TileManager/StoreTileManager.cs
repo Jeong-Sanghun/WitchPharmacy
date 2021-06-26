@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StoreTileManager : StoreToolManager
 {
+
+
     protected override void Start()
     {
         exploreManager = ExploreManager.inst;
@@ -11,6 +13,13 @@ public class StoreTileManager : StoreToolManager
         saveData = gameManager.saveData;
         storeToolDataList = gameManager.storeToolDataWrapper.storeToolDataList;
         owningToolList = saveData.owningToolList;
+        isTileStore = true;
+
+    }
+
+    public override void TileOpen(TileButtonClass tile)
+    {
+        base.TileOpen(tile);
         appearingStoreToolList = new List<StoreToolClass>();
         for (int i = 0; i < storeToolDataList.Count; i++)
         {
