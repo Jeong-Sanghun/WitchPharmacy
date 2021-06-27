@@ -137,8 +137,6 @@ public class CounterManager : MonoBehaviour //SH
     int index = 0;
     void SpawnRandomVisitor()
     {
-
-
         if (endSales)
         {
             roomManager.ToCounterButton(false);
@@ -150,6 +148,7 @@ public class CounterManager : MonoBehaviour //SH
         }
         
         nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent);
+        //쫙 뿌려준다
         randomVisitorList.Add(nowVisitor);
         roomManager.VisitorVisits(nowVisitor);
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
