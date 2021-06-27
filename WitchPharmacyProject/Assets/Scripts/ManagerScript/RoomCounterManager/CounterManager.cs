@@ -65,6 +65,14 @@ public class CounterManager : MonoBehaviour //SH
     //2차원배열은 serialize안되네;
     [SerializeField]
     Toggle[] toggleArray;
+
+    [SerializeField]
+    GameObject toNextSceneButton;
+
+    [SerializeField]
+    Text timeText;
+
+    public bool endSales;
     
 
 
@@ -83,7 +91,7 @@ public class CounterManager : MonoBehaviour //SH
             ownedMedicineList.Add(medicineDataList[ownedMedicineIndexList[i]]);
         }
         //owningMedicineDictionary = saveData.owningMedicineDictionary;
-
+        endSales = false;
 
         visitorAppearPos = new Vector3(-7.06f, 0.88f, -1);
         visitorDisappearPos = new Vector3(-7.06f, -12, -1);
@@ -122,13 +130,20 @@ public class CounterManager : MonoBehaviour //SH
 
         //스태틱으로 만들어버려
         RandomVisitorClass.SetOwnedMedicineList(ownedMedicineList);
-
+        TimeTextChange();
         SpawnRandomVisitor();   //이거 나중에 지울거임.
     }
 
     int index = 0;
     void SpawnRandomVisitor()
     {
+
+
+        if (endSales)
+        {
+            roomManager.ToCounterButton(false);
+            return;
+        }
         if (nowVisitor != null)
         {
             nowVisitor.visitorObject.SetActive(false);
@@ -224,11 +239,17 @@ public class CounterManager : MonoBehaviour //SH
 
     IEnumerator VisitorDisapperCoroutine(string dialog)
     {
+
         StartCoroutine(sceneManager.LoadTextOneByOne(dialog, visitorText));
         yield return new WaitForSeconds(4f);
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
         yield return new WaitForSeconds(1.5f);
-        SpawnRandomVisitor();
+        TimeChange(3600);
+        if (!endSales)
+        {
+            SpawnRandomVisitor();
+        }
+        
     }
 
     //측정도구 켜질 때 대화창 꺼주기 위한거
@@ -360,5 +381,44 @@ public class CounterManager : MonoBehaviour //SH
     {
         symptomChartObject.SetActive(active);
     }
+
+    public void TimeChange(float plusTime)
+    {
+        gameManager.TimeChange(plusTime);
+        int hour = (int)gameManager.nowTime / 3600;
+        int minute = ((int)gameManager.nowTime % 3600) / 60;
+        TimeTextChange();
+        if (hour >= 16)
+        {
+            endSales = true;
+            toNextSceneButton.SetActive(true);
+        }
+    }
+
+    void TimeTextChange()
+    {
+        int hour = (int)gameManager.nowTime / 3600;
+        int minute = ((int)gameManager.nowTime % 3600) / 60;
+        StringBuilder builder = new StringBuilder();
+        if (hour / 10 < 1)
+        {
+            builder.Append("0");
+        }
+        builder.Append(hour.ToString());
+        builder.Append(":");
+        if (minute / 10 < 1)
+        {
+            builder.Append("0");
+        }
+        builder.Append(minute.ToString());
+        timeText.text = builder.ToString();
+    }
+
+    public void ToNextSceneButton()
+    {;
+        gameManager.SaveJson();
+        sceneManager.LoadScene("StoryScene");
+    }
+
 
 }

@@ -176,8 +176,8 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
             StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
             nameBuilder.Append(" ");
             nameBuilder.Append(medicine.secondName);
-            medicine.LoadImage();
-            prefabButtonIcon.sprite = medicine.medicineImage;
+
+            prefabButtonIcon.sprite = medicine.LoadImage();
             prefabButtonName.text = nameBuilder.ToString();
             prefabButtonCost.text = medicine.cost.ToString();
             if (medicine.firstSymptom == Symptom.none)

@@ -167,7 +167,7 @@ public class MedicineTileManager : TileManager
                 Vector3 pos = new Vector3(j * 100 - 50, j * 100 - 50, 0);
                 clickObj.GetComponent<RectTransform>().anchoredPosition = pos; 
                 med.clickerObject = clickObj;
-                clickObj.GetComponent<Image>().sprite = med.medicine.medicineImage;
+                clickObj.GetComponent<Image>().sprite = med.medicine.LoadImage();
                 Debug.Log(2 * i + j);
                 tileStruct.medicineArray[2 * i + j] = med;
                 
@@ -214,7 +214,7 @@ public class MedicineTileManager : TileManager
         {
             owningMedicine = new OwningMedicineClass();
             saveData.owningMedicineList.Add(owningMedicine);
-            owningMedicine.medicineIndex = nowMedicineStruct.medicine.index;
+            owningMedicine.medicineIndex = nowMedicineStruct.medicine.GetIndex();
             owningMedicine.medicineQuantity = 1;
         }
         else
@@ -229,7 +229,7 @@ public class MedicineTileManager : TileManager
         {
             nowMedicineStruct.medicineParent.SetActive(false);
         }
-        exploreManager.OnBuyMedicine(nowMedicineStruct.medicine.index, 1);
+        exploreManager.OnBuyMedicine(nowMedicineStruct.medicine.GetIndex(), 1);
         exploreManager.TimeChange(60);
 
     }

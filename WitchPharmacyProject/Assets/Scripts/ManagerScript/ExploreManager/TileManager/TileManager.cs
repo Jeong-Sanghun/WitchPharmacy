@@ -20,6 +20,7 @@ public class TileManager : MonoBehaviour
     virtual public void TileOpen(TileButtonClass tile)
     {
         nowTileButton = tile;
+        Debug.Log("타일오픈됐잖아");
         tile.opened = true;
     }
 

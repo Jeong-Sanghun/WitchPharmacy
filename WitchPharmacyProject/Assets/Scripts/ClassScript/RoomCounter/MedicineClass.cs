@@ -8,18 +8,32 @@ using System.Text;
 [System.Serializable]
 public class MedicineClass  //SH
 {
-    public int index;
+    int index;
+    public string fileName;
     public string firstName;
     public string secondName;
+    public string toolTip;
     public Symptom firstSymptom;
     public Symptom secondSymptom;
     public int firstNumber;
     public int secondNumber;
     public int cost;
 
-    public Sprite medicineImage;
+    Sprite medicineImage;
 
     //public GameObject realGameobject;
+
+
+    public int GetIndex()
+    {
+        return index;
+    }
+
+    public void SetIndex(int _index)
+    {
+        index = _index;
+    }
+
 
     public MedicineClass()
     {
@@ -30,6 +44,7 @@ public class MedicineClass  //SH
         firstNumber = 1;
         secondNumber = 2;
         medicineImage = null;
+        toolTip = "Tooltip missing";
     }
 
     public Sprite LoadImage()
@@ -38,9 +53,9 @@ public class MedicineClass  //SH
         {
             return medicineImage;
         }
-        StringBuilder nameBuilder = new StringBuilder(firstName);
-        nameBuilder.Append(" ");
-        nameBuilder.Append(secondName);
+        StringBuilder nameBuilder = new StringBuilder(fileName);
+        //nameBuilder.Append(" ");
+        //nameBuilder.Append(secondName);
         if (medicineImage == null)
         {
             StringBuilder builder = new StringBuilder("Items/");

@@ -6,6 +6,7 @@ using System.Text;
 
 public enum Symptom
 {
+    //0     1     2     3    4 
     water, fire, dirt, air, spirit, none
 }
 

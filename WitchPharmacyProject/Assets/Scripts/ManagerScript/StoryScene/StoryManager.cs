@@ -28,6 +28,8 @@ public class StoryManager : TileManager
     [SerializeField]
     GameObject[] routingButtonArray;
 
+    [SerializeField]
+    GameObject toNextSceneButton;
 
     //어느 번들인지.
     //int nowBundleIndex;
@@ -38,6 +40,9 @@ public class StoryManager : TileManager
     bool leftFaded;
     bool rightFaded;
     protected int routingTime;
+
+    bool isTile;
+
     // Start is called before the first frame update
     protected virtual new void Start()
     {
@@ -55,8 +60,14 @@ public class StoryManager : TileManager
         nowWrapperIndex = 0;
         //nowBundleIndex = 0;
         PrintConversation();
+        isTile = false;
     }
 
+    public override void TileOpen(TileButtonClass tile)
+    {
+        base.TileOpen(tile);
+        isTile = true;
+    }
 
     //그 버튼이 뜨는거임. 라우팅 버튼
     void RouteCheck()
@@ -64,6 +75,11 @@ public class StoryManager : TileManager
         if (routingTime <= 0)
         {
             conversationText.text = "이야기끝";
+            if (!isTile)
+            {
+                toNextSceneButton.SetActive(true);
+            }
+            
             return;
         }
 
@@ -156,6 +172,37 @@ public class StoryManager : TileManager
         nowConversationIndex = 0;
         nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
         
+    }
+
+    public void ToNextSceneButton()
+    {
+        gameManager.SaveJson();
+
+        if(sceneManager.lastSceneName == null)
+        {
+            sceneManager.LoadScene("StoreScene");
+        }
+        else if(sceneManager.lastSceneName == "StoreScene")
+        {
+            sceneManager.LoadScene("RoomCounterScene");
+        }
+        else if (sceneManager.lastSceneName == "StartScene")
+        {
+            sceneManager.LoadScene("StoreScene");
+        }
+        else if (sceneManager.lastSceneName == "RoomCounterScene")
+        {
+            sceneManager.LoadScene("ExploreScene");
+        }
+        else if (sceneManager.lastSceneName == "ExploreScene")
+        {
+            sceneManager.LoadScene("StoryScene");
+        }
+        else if(sceneManager.lastSceneName == "StoryScene")
+        {
+            sceneManager.LoadScene("StoreScene");
+        }
+
     }
 
     // Update is called once per frame

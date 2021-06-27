@@ -7,7 +7,8 @@ using System.Text;
 [System.Serializable]
 public class StoreToolClass
 {
-    public int index;
+    int index;
+    public string fileName;
     public string name;
     public string toolTip;
     public int cost;
@@ -15,7 +16,19 @@ public class StoreToolClass
     public bool usedOnce;
     public bool usedForExplore;
     public bool isQuestMedicine;
-    public Sprite toolImage;
+
+    
+    Sprite toolImage;
+
+    public int GetIndex()
+    {
+        return index;
+    }
+
+    public void SetIndex(int _index)
+    {
+        index = _index;
+    }
 
 
     public Sprite LoadImage()
@@ -24,7 +37,7 @@ public class StoreToolClass
         {
             return toolImage;
         }
-        StringBuilder nameBuilder = new StringBuilder(name);
+        StringBuilder nameBuilder = new StringBuilder(fileName);
         if (toolImage == null)
         {
             StringBuilder builder = new StringBuilder("Tools/");

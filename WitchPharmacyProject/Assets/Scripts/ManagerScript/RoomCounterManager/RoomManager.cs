@@ -177,8 +177,8 @@ public class RoomManager : MonoBehaviour    //SH
             StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
             nameBuilder.Append(" ");
             nameBuilder.Append(medicine.secondName);
-            medicine.LoadImage();
-            prefabButtonIcon.sprite = medicine.medicineImage;
+
+            prefabButtonIcon.sprite = medicine.LoadImage();
             prefabButtonName.text = nameBuilder.ToString();
             if(medicine.firstSymptom == Symptom.none)
             {
@@ -207,7 +207,7 @@ public class RoomManager : MonoBehaviour    //SH
             EventTrigger propertyEvent = propertyObject.AddComponent<EventTrigger>();
             GameObject medicineObj = Instantiate(medicineObjectPrefab,medicineInstanceParent.transform);
             medicineObj.SetActive(false);
-            medicineObj.GetComponent<SpriteRenderer>().sprite = medicine.medicineImage;
+            medicineObj.GetComponent<SpriteRenderer>().sprite = medicine.LoadImage();
             MedicineButton buttonClass =
                 new MedicineButton(buttonObject, index, quantity,
                 medicine, propertyObject,medicineObj,quantText,propertyQuantText);
@@ -250,6 +250,10 @@ public class RoomManager : MonoBehaviour    //SH
     //약재 떨어뜨릴 때 약재를 꺼줘야해서.
     public void Update()
     {
+        if (counterManager.endSales)
+        {
+            return;
+        }
         if (Input.GetMouseButtonUp(0))
         {
             //손 뗄 때 내가 약을 들고있는 상태인지, 그거를 누구 위에 올려놓았는지 판단.
@@ -316,6 +320,10 @@ public class RoomManager : MonoBehaviour    //SH
     //속성 누르면 그 속성 아이템 뜨게하는 버튼
     public void PropertyListButton(int index)
     {
+        if (counterManager.endSales)
+        {
+            return;
+        }
         int buttonQuantity = 0;
         if (isButtonOn[index] == true)
         {
@@ -520,6 +528,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //버튼 클릭했을 때
     public void OnButtonDown(int index)
     {
+
         wholeMedicineButtonList[index].propertyObject.SetActive(true);
         wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
         if(nowButtonIndex != -1)
@@ -686,6 +695,10 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //룸이 움직일 때 카메라 옮겨줌
     public void ToCounterButton(bool isMedicineOnTray)
     {
+        if (counterManager.endSales)
+        {
+            return;
+        }
         //버튼에서 호출할때는 false, 트레이에올려서 호출할때는 true
         nowInRoom = false;
         cam.transform.position = cameraCounterPos;
@@ -705,6 +718,10 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //카운터에서 조제실 오는 버튼.
     public void ToRoomButton()
     {
+        if (counterManager.endSales)
+        {
+            return;
+        }
         nowInRoom = true;
         cam.transform.position = cameraRoomPos;
         roomUICanvas.SetActive(true);
@@ -719,6 +736,10 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //증상기록 켜는 버튼, 끄는 버튼에서 여는거.
     public void SymptomChartButton(bool turnOn)
     {
+        if (counterManager.endSales)
+        {
+            return;
+        }
         if (turnOn)
         {
             symptomChartObject.SetActive(true);

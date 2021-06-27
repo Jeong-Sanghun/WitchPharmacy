@@ -7,6 +7,8 @@ using UnityEngine;
 public class SaveDataClass
 {
     public string name;
+    public float nowTime;
+    public int nowDay;
     public int coin;
     //public List<int> owningMedicineList;  //현재 가지고있는거
     public List<int> ownedMedicineList;   //딕셔너리
@@ -28,6 +30,8 @@ public class SaveDataClass
     {
         name = "initName";
         coin = 1000;
+        nowDay = 0;
+        nowTime = 0;
         //owningMedicineDictionary = new Dictionary<int, int>();
         ownedMedicineList = new List<int>();
         owningMedicineList = new List<OwningMedicineClass>();

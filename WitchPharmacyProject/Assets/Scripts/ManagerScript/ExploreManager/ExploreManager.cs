@@ -54,6 +54,7 @@ public class ExploreManager : MonoBehaviour
         }
         else
         {
+            Destroy(gainedItemCanvas);
             Destroy(gameObject);
         }
     }
@@ -184,6 +185,7 @@ public class ExploreManager : MonoBehaviour
 
     public void OnTimeOut()
     {
+        sceneManager.LoadScene("ExploreScene");
         int nowItemIndex = 0;
         for(int i = 0; i < gainedMedicineList.Count; i++)
         {
@@ -212,15 +214,19 @@ public class ExploreManager : MonoBehaviour
     //이거 단위 초다.
     public void TimeChange(float plusTime)
     {
-        nowTime += plusTime;
-
-        int hour = (int)nowTime / 3600;
-        int minute = ((int)nowTime % 3600) / 60;
+        gameManager.TimeChange(plusTime);
+        int hour = (int)gameManager.nowTime / 3600;
+        int minute = ((int)gameManager.nowTime % 3600) / 60;
         StringBuilder builder = new StringBuilder(hour.ToString());
         builder.Append("시");
         builder.Append(minute.ToString());
         builder.Append("분");
         timeText.text = builder.ToString();
+        if (hour >= 24)
+        {
+            OnTimeOut();
+            gameManager.NextDay();
+        }
 
     }
 
@@ -228,6 +234,19 @@ public class ExploreManager : MonoBehaviour
     public RegionIngame GetRegionIngame()
     {
         return regionIngameArray[nowIndex];
+    }
+
+    public void DestroyOnEnd()
+    {
+        Destroy(gainedItemCanvas);
+        Destroy(gameObject);
+    }
+
+    public void ToNextSceneButton()
+    {
+        gameManager.SaveJson();
+        DestroyOnEnd();
+        sceneManager.LoadScene("StoryScene");
     }
 
     private void Update()

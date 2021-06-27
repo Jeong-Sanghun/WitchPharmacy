@@ -11,7 +11,7 @@ public class SceneManager : MonoBehaviour // JH
     
     GameManager gameManager;
     public static SceneManager inst;
-
+    public string lastSceneName;
 
     // // Module // //
 
@@ -195,6 +195,8 @@ public class SceneManager : MonoBehaviour // JH
 
     public void LoadScene(string sceneName)
     {
+        lastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 

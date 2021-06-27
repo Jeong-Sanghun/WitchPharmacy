@@ -1001,7 +1001,7 @@ Transform:
   m_Children:
   - {fileID: 2121774867}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &79656267
 GameObject:
@@ -1556,7 +1556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &128121431
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2489,6 +2489,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &243804694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243804695}
+  - component: {fileID: 243804697}
+  - component: {fileID: 243804696}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &243804695
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243804694}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 952912112}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &243804696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243804694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 83
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uB118\uC5B4\uAC00\uAE30"
+--- !u!222 &243804697
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243804694}
+  m_CullTransparentMesh: 0
 --- !u!1 &248993415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,7 +2941,7 @@ Transform:
   - {fileID: 1780136798}
   - {fileID: 561591400}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301074296
 GameObject:
@@ -3106,7 +3184,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &317564436
 BoxCollider2D:
@@ -4617,7 +4695,7 @@ Transform:
   - {fileID: 467814289}
   - {fileID: 1286418197}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &483630515
 GameObject:
@@ -5708,6 +5786,9 @@ MonoBehaviour:
   - {fileID: 715106519}
   - {fileID: 1363152512}
   - {fileID: 699927484}
+  toNextSceneButton: {fileID: 952912108}
+  timeText: {fileID: 1833787535}
+  endSales: 0
 --- !u!4 &561591400
 Transform:
   m_ObjectHideFlags: 0
@@ -8296,7 +8377,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &783929781
 GameObject:
@@ -10092,6 +10173,136 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945533068}
   m_CullTransparentMesh: 0
+--- !u!1 &952912108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952912112}
+  - component: {fileID: 952912111}
+  - component: {fileID: 952912110}
+  - component: {fileID: 952912109}
+  m_Layer: 5
+  m_Name: NextSceneButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &952912109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952912108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 952912110}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 561591399}
+        m_MethodName: ToNextSceneButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &952912110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952912108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &952912111
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952912108}
+  m_CullTransparentMesh: 0
+--- !u!224 &952912112
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952912108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 243804695}
+  m_Father: {fileID: 1561201988}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &953462409
 GameObject:
   m_ObjectHideFlags: 0
@@ -13064,7 +13275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211426574
 GameObject:
@@ -15160,7 +15371,7 @@ Transform:
   - {fileID: 187737011}
   - {fileID: 1151695907}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386541936
 GameObject:
@@ -15860,7 +16071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507cbd8b321d5d54d9f160db111f1bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManagerScirpt: {fileID: 1955705301}
+  GameManagerScirpt: {fileID: 0}
   DebugText: {fileID: 1150310649}
   debugString: "\uC548\uB155\uD558\uC138\uC694 \uC800\uB294 \uC774 \uB514\uC790\uC778\uC774
     \uB054\uCC0D\uD55C\uAC70\uAC19\uC544\uC694!!!"
@@ -15877,6 +16088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359cfac1ae747bc458900e1d81e77b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastSceneName: 
 --- !u!4 &1496457249
 Transform:
   m_ObjectHideFlags: 0
@@ -16735,6 +16947,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 562018579}
+  - {fileID: 952912112}
   m_Father: {fileID: 13833810}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16801,7 +17014,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1563056565
 GameObject:
@@ -17008,7 +17221,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569529408
 GameObject:
@@ -18900,7 +19113,7 @@ Transform:
   - {fileID: 2117945941}
   - {fileID: 1348868}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1780136796
 GameObject:
@@ -20979,942 +21192,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944755334}
   m_CullTransparentMesh: 0
---- !u!1 &1955705300
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1955705302}
-  - component: {fileID: 1955705301}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1955705301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955705300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c1c1111832ee545994e4d1fe600108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneManagerScirpt: {fileID: 1496457248}
-  saveData:
-    name: 
-    ownedMedicineList: 
-    owningMedicineList: []
-  medicineDataWrapper:
-    medicineDataList:
-    - firstName: "\uC544\uBB34\uAC83\uB3C4"
-      secondName: "\uC544\uB2D8"
-      firstSymptom: 1
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 0
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 0
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 0
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 0
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 0
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 0
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 0
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 0
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 0
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 0
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 0
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 0
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 0
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 1
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 1
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 1
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 1
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 1
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 1
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 1
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 1
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 1
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 1
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 1
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 1
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 1
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 2
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 2
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 2
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 2
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 2
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 2
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 3
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 3
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 3
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 3
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 3
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 3
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 4
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 4
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 4
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 4
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 4
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 4
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 4
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 4
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 4
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 4
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 4
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 4
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 5
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 4
-      secondSymptom: 5
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 0
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 0
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 5
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 5
-      secondSymptom: 1
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 5
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uCD95\uCD95\uD55C"
-      secondName: "\uC6D0\uC11D"
-      firstSymptom: 5
-      secondSymptom: 1
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 5
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 5
-      secondSymptom: 2
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 5
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uD750\uB974\uB294"
-      secondName: "\uBD88\uAF43"
-      firstSymptom: 5
-      secondSymptom: 2
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 5
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 5
-      secondSymptom: 3
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 5
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2DC\uB4E0"
-      secondName: "\uC774\uC2AC"
-      firstSymptom: 5
-      secondSymptom: 3
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 4
-      firstNumber: -1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: -2
-      medicineImage: {fileID: 0}
-    - firstName: "\uC2F8\uB298\uD55C"
-      secondName: "\uC5F4\uB9E4"
-      firstSymptom: 5
-      secondSymptom: 4
-      firstNumber: 1
-      secondNumber: 2
-      medicineImage: {fileID: 0}
-  symptomDialog:
-    symptomDialogArray:
-    - dialogArray:
-      - "-2 \uC99D\uC0C1"
-      - "-1 \uC99D\uC0C1"
-      - "1 \uC99D\uC0C1"
-      - "2 \uC99D\uC0C1"
-    - dialogArray:
-      - "-2 \uC99D\uC0C1"
-      - "-1 \uC99D\uC0C1"
-      - "1 \uC99D\uC0C1"
-      - "2 \uC99D\uC0C1"
-    - dialogArray:
-      - "-2 \uC99D\uC0C1"
-      - "-1 \uC99D\uC0C1"
-      - "1 \uC99D\uC0C1"
-      - "2 \uC99D\uC0C1"
-    - dialogArray:
-      - "-2 \uC99D\uC0C1"
-      - "-1 \uC99D\uC0C1"
-      - "1 \uC99D\uC0C1"
-      - "2 \uC99D\uC0C1"
-    - dialogArray:
-      - "-2 \uC99D\uC0C1"
-      - "-1 \uC99D\uC0C1"
-      - "1 \uC99D\uC0C1"
-      - "2 \uC99D\uC0C1"
-    - dialogArray:
-      - "-2 \uC99D\uC0C1"
-      - "-1 \uC99D\uC0C1"
-      - "1 \uC99D\uC0C1"
-      - "2 \uC99D\uC0C1"
-    middleDialog:
-    - "water, \uADF8\uB9AC\uACE0,,,"
-    - "fire, \uADF8\uB9AC\uACE0,,,"
-    - "dirt, \uADF8\uB9AC\uACE0,,,"
-    - "wood, \uADF8\uB9AC\uACE0,,,"
-    - "metal, \uADF8\uB9AC\uACE0,,,"
-    - "light, \uADF8\uB9AC\uACE0,,,"
---- !u!4 &1955705302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955705300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1294.6957, y: 945.36566, z: -250.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1957716544
 GameObject:
   m_ObjectHideFlags: 0
@@ -24266,7 +23543,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 97d8dd718ca1e214bb3306b3cf6d7d35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e285fe715e1878448670490f6ec55a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

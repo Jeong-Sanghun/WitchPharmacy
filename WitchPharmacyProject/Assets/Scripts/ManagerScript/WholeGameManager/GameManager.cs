@@ -8,21 +8,30 @@ public class GameManager : MonoBehaviour //SH
 {
     //singleTon 모든 매니저 스크립트에서 참조
     public static GameManager singleTon;
+    [HideInInspector]
     public SceneManager SceneManagerScirpt;
     //모든 매니저 스크립트에서 참조
+    [HideInInspector]
     public SaveDataClass saveData;
+    [HideInInspector]
     public MedicineDataWrapper medicineDataWrapper;
+    [HideInInspector]
     public RegionPropertyWrapper regionPropertyWrapper;
+    [HideInInspector]
     public StoreToolDataWrapper storeToolDataWrapper;
+    [HideInInspector]
     public ConversationDialogBundleWrapper conversationDialogBundleWrapper;
     //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
-    
+
     //이거는 세이브 로드 확인해볼라고
+    [HideInInspector]
     public SymptomDialog symptomDialog;
 
     //세이브데이터 불러오기 및 딕셔너리 읽기.
     JsonManager jsonManager;
 
+    public float nowTime;
+    public int nowDay;
 
 
     void Awake()
@@ -42,38 +51,40 @@ public class GameManager : MonoBehaviour //SH
 
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
-        //DebugDataJson();
+
         medicineDataWrapper= jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
+        //DebugDataJson();
 
-        for(int i = 0; i < storeToolDataWrapper.storeToolDataList.Count; i++)
+        for (int i = 0; i < storeToolDataWrapper.storeToolDataList.Count; i++)
         {
-            storeToolDataWrapper.storeToolDataList[i].index = i;
+            storeToolDataWrapper.storeToolDataList[i].SetIndex(i);
         }
         for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
-            medicineDataWrapper.medicineDataList[i].index = i;
+            medicineDataWrapper.medicineDataList[i].SetIndex(i);
         }
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
         saveData = jsonManager.LoadSaveData();
+        nowTime = saveData.nowTime;
+        nowDay = saveData.nowDay;
     }
 
     //아마 모든 매니저에서 참조할것.
     public void SaveJson()
     {
-
+        saveData.nowTime = nowTime;
+        saveData.nowDay = nowDay;
         jsonManager.SaveJson(saveData);
     }
 
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.
     void DebugDataJson()
     {
-        
-        medicineDataWrapper = new MedicineDataWrapper();
-        saveData = new SaveDataClass();
-        for(int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
+
+        for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
             saveData.ownedMedicineList.Add(i);
         }
@@ -137,5 +148,22 @@ public class GameManager : MonoBehaviour //SH
                 saveData.owningMedicineDictionary.Add(saveData.owningMedicineList[i].medicineIndex, saveData.owningMedicineList[i].medicineQuantity);
             }
         }*/
+    }
+
+    //이거 버튼누를때마다 불러옴.
+    //이거 단위 초다.
+    public void TimeChange(float plusTime)
+    {
+        nowTime += 4*plusTime;
+
+    }
+
+    public void NextDay()
+    {
+        if (nowTime >= 3600 * 24)
+        {
+            nowTime =0;
+            nowDay++;
+        }
     }
 }

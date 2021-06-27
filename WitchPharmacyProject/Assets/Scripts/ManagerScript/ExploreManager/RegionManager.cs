@@ -114,12 +114,20 @@ public class RegionManager : MonoBehaviour
     //각종 뒤로가기 버튼
     public void BackToTileMap()
     {
+        TileType tileType = witchMover.nowTileButton.tileClass.tileType;
         tileMapParent.SetActive(true);
         for (int i = 0; i < canvasArray.Length; i++)
         {
             canvasArray[i].SetActive(false);
         }
         witchMover.AwareTile(witchMover.nowTileButton);
+
+        if (tileType == TileType.StoryTile)
+        {
+            clockCanvas.SetActive(true);
+
+        }
+
         witchMover.TileOpen();
     }
 

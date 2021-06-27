@@ -87,7 +87,7 @@ public class StoreToolManager : TileManager,IStore
                 StoreTile tile = (StoreTile)nowTileButton.tileClass;
                 for(int j = 0; j < tile.selledToolList.Count; j++)
                 {
-                    if(tile.selledToolList[j].index == appearingStoreToolList[i].index)
+                    if(tile.selledToolList[j].index == appearingStoreToolList[i].GetIndex())
                     {
                         quantity -= tile.selledToolList[j].quantity;
                     }
@@ -96,8 +96,8 @@ public class StoreToolManager : TileManager,IStore
             }
             StoreToolClass tool = appearingStoreToolList[i];
             StringBuilder nameBuilder = new StringBuilder(tool.name);
-            tool.LoadImage();
-            prefabButtonIcon.sprite = tool.toolImage;
+
+            prefabButtonIcon.sprite = tool.LoadImage();
             prefabButtonName.text = nameBuilder.ToString();
             prefabButtonToolTip.text = tool.toolTip;
             prefabButtonCost.text = tool.cost.ToString();

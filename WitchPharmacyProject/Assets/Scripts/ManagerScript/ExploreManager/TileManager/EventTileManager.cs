@@ -31,7 +31,8 @@ public class EventTileManager : TileManager
     public override void TileOpen(TileButtonClass tile)
     {
         base.TileOpen(tile);
-        
+
+        nowClickCount = 0;
 
         switch (nowTileButton.tileClass.tileType)
         {
@@ -40,14 +41,33 @@ public class EventTileManager : TileManager
                 if (trapTile.boxOpened)
                 {
                     rewardCanvas.SetActive(true);
+                    boxImageDebug.gameObject.SetActive(false);
+                    boxOpened = true;
                 }
+                else
+                {
+                    rewardCanvas.SetActive(false);
+                    boxImageDebug.gameObject.SetActive(true);
+                    nowClickCount += trapTile.clickedTime;
+                    boxOpened = false;
+                }
+
                 break;
             case TileType.TreasureTile:
                 TreasureTile treasureTile = (TreasureTile)nowTileButton.tileClass;
                 if (treasureTile.boxOpened)
                 {
                     rewardCanvas.SetActive(true);
+                    boxImageDebug.gameObject.SetActive(false);
+                    boxOpened = true;
                 }
+                else
+                {
+                    rewardCanvas.SetActive(false);
+                    boxImageDebug.gameObject.SetActive(true);
+                    boxOpened = false;
+                }
+                nowClickCount += treasureTile.clickedTime;
                 break;
             default:
                 break;
@@ -61,6 +81,26 @@ public class EventTileManager : TileManager
         {
             return;
         }
+
+        if(nowTileButton == null)
+        {
+            Debug.Log("타일버튼이 널이야");
+        }
+
+        switch (nowTileButton.tileClass.tileType)
+        {
+            case TileType.TrapTile:
+                TrapTile trapTile = (TrapTile)nowTileButton.tileClass;
+                trapTile.clickedTime++;
+                break;
+            case TileType.TreasureTile:
+                TreasureTile treasureTile = (TreasureTile)nowTileButton.tileClass;
+                treasureTile.clickedTime++;
+                break;
+            default:
+                break;
+        }
+        Debug.Log(nowClickCount);
         nowClickCount++;
         if(nowClickCount%3 == 0)
         {
@@ -90,17 +130,16 @@ public class EventTileManager : TileManager
             case TileType.TrapTile:
                 TrapTile trapTile = (TrapTile)nowTileButton.tileClass;
                 trapTile.boxOpened = true;
-                RewardOpen();
                 break;
             case TileType.TreasureTile:
                 TreasureTile treasureTile = (TreasureTile)nowTileButton.tileClass;
                 treasureTile.boxOpened = true;
-                RewardOpen();
                 break;
             default:
-                RewardOpen();
                 break;
+
         }
+        RewardOpen();
     }
 
     //void TreasureOpen()
@@ -121,10 +160,9 @@ public class EventTileManager : TileManager
 
     public void OnBackButton()
     {
-        boxImageDebug.gameObject.SetActive(true);
-        rewardCanvas.SetActive(true);
+        boxImageDebug.gameObject.SetActive(false);
+        rewardCanvas.SetActive(false);
         nowClickCount = 0;
-        boxOpened = false;
     }
 
 

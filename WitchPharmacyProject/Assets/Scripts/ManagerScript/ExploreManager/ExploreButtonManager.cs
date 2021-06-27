@@ -28,6 +28,8 @@ public class ExploreButtonManager : MonoBehaviour
         }
     }
 
+
+
     public void OnButtonLoad(int index)
     {
         exploreManager = ExploreManager.inst;
