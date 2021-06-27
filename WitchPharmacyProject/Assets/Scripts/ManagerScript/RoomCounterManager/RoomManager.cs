@@ -173,6 +173,10 @@ public class RoomManager : MonoBehaviour    //SH
                 continue;
             }
             int quantity = owningMedicine.medicineQuantity;
+            if(quantity == 0)
+            {
+                continue;
+            }
             MedicineClass medicine = medicineDataList[index];
             StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
             nameBuilder.Append(" ");
@@ -340,12 +344,18 @@ public class RoomManager : MonoBehaviour    //SH
             }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-                if (wholeMedicineButtonList[i].zeroMedicine)
+                //if (wholeMedicineButtonList[i].zeroMedicine || wholeMedicineButtonList[i].medicineQuant == 0)
+                //{
+                //    wholeMedicineButtonList[i].isActive = false;
+                //    continue;
+                //}
+
+                if (wholeMedicineButtonList[i].medicineQuant == 0)
                 {
                     wholeMedicineButtonList[i].isActive = false;
                     continue;
                 }
-                if(pushedButton == 0)
+                if (pushedButton == 0)
                 {
                     wholeMedicineButtonList[i].isActive = false;
                     continue;
@@ -718,7 +728,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //카운터에서 조제실 오는 버튼.
     public void ToRoomButton()
     {
-        if (counterManager.endSales)
+        if (counterManager.endSales || counterManager.nowTalking)
         {
             return;
         }

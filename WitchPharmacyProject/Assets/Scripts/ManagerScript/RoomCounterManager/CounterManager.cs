@@ -71,8 +71,10 @@ public class CounterManager : MonoBehaviour //SH
 
     [SerializeField]
     Text timeText;
-
+    [HideInInspector]
     public bool endSales;
+    [HideInInspector]
+    public bool nowTalking;
     
 
 
@@ -176,6 +178,7 @@ public class CounterManager : MonoBehaviour //SH
     //cookedMedicineManager의 pointerUP에서 호출
     public void OnMedicineDelivery(CookedMedicine medicine)
     {
+        nowTalking = true;
         int[] medicineIndexArray = medicine.medicineArray;
         int[] medicineSymptomArray = new int[6];
         int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
@@ -232,13 +235,13 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorAppearPos, 2f));
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(sceneManager.LoadTextOneByOne(randomVisitorList[index-1].fullDialog, visitorText));
-
+        nowTalking = false;
 
     }
 
     IEnumerator VisitorDisapperCoroutine(string dialog)
     {
-
+        nowTalking = true;
         StartCoroutine(sceneManager.LoadTextOneByOne(dialog, visitorText));
         yield return new WaitForSeconds(4f);
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
@@ -257,15 +260,17 @@ public class CounterManager : MonoBehaviour //SH
         dialogPanelObject.SetActive(active);
     }
 
+    //메저툴 드래그
     void OnButtonDrag(PointerEventData data, int index)
     {
         Vector2 mousePos =Input.mousePosition;
         measureToolIconArray[index].transform.position = Input.mousePosition;
     }
 
-    //드래그하고서 클릭 뗐을 때
+    //메저툴 엔드,드래그하고서 클릭 뗐을 때
     void OnButtonUp(PointerEventData data, int index)
     {
+        
         measureToolIconArray[index].transform.position = measureToolOriginPosArray[index];
 
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);

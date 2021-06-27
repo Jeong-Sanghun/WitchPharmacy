@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 28800.0,
-    "nowDay": 2,
-    "coin": 411,
+    "nowTime": 57600.0,
+    "nowDay": 4,
+    "coin": 164,
     "ownedMedicineList": [
         0,
         1,
@@ -21,31 +21,31 @@
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 35
+            "medicineQuantity": 32
         },
         {
             "medicineIndex": 1,
-            "medicineQuantity": 27
+            "medicineQuantity": 31
         },
         {
             "medicineIndex": 2,
-            "medicineQuantity": 30
+            "medicineQuantity": 40
         },
         {
             "medicineIndex": 3,
-            "medicineQuantity": 21
+            "medicineQuantity": 25
         },
         {
             "medicineIndex": 4,
-            "medicineQuantity": 68
+            "medicineQuantity": 81
         },
         {
             "medicineIndex": 5,
-            "medicineQuantity": 19
+            "medicineQuantity": 18
         },
         {
             "medicineIndex": 6,
-            "medicineQuantity": 22
+            "medicineQuantity": 29
         },
         {
             "medicineIndex": 7,
@@ -53,7 +53,7 @@
         },
         {
             "medicineIndex": 10,
-            "medicineQuantity": 32
+            "medicineQuantity": 31
         },
         {
             "medicineIndex": 11,
@@ -61,7 +61,7 @@
         },
         {
             "medicineIndex": 12,
-            "medicineQuantity": 34
+            "medicineQuantity": 41
         },
         {
             "medicineIndex": 9,
@@ -69,7 +69,7 @@
         },
         {
             "medicineIndex": 8,
-            "medicineQuantity": 0
+            "medicineQuantity": 4
         }
     ],
     "unlockedRegionIndex": [
@@ -87,11 +87,11 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 15
+            "quantity": 27
         },
         {
             "index": 1,
-            "quantity": 15
+            "quantity": 17
         },
         {
             "index": 2,

@@ -93,80 +93,90 @@ public class RandomVisitorClass //SH
          * 예를들어 물+ 불--라면, 불- 나무++은 제외, 나무+ 빛--는 넣는 식. +2 위 -2아래로는 다 재낀다.
          * 그 리스트들을 뽑았다 치면 그 다음 루프에서 증상어레이에 값을 다시 더해서 누적계산하는방식.
          */
-        while (symptomNumber > nowMedicineNumber || nowMedicineNumber ==0)
+        bool notHurted = false;
+        do
         {
-
-            //가지고있는 약재 한바퀴 돌면서 가능한 약재 찾기.
-            for (int i = 0; i < ownedMedicineList.Count; i++)
+            while (symptomNumber > nowMedicineNumber || nowMedicineNumber == 0)
             {
-                MedicineClass medicine = ownedMedicineList[i];
-                bool available = false;
-                if(medicine.firstSymptom == Symptom.none)
-                {
-                    continue;
-                }
-                /*
-                if(medicine.firstSymptom == earSymptom || medicine.secondSymptom == earSymptom 
-                    || medicine.firstSymptom == hornSymptom || medicine.secondSymptom == hornSymptom)
-                {
-                    //귀랑 뿔 겹치는거 빼주고
-                    continue;
-                }*/
-                available = true;
-                //만약 증상 합이 2나 -2 넘어가면 그 약은 안되는거니까 다시돌려
-                //여기가 누적계산하는 곳
-                int amount = symptomNumberArray[(int)medicine.firstSymptom] + medicine.firstNumber;
-                if (amount < -2 || amount > 2)
-                {
-                    available = false;
-                }
-                amount = symptomNumberArray[(int)medicine.secondSymptom] + medicine.secondNumber;
-                if (amount < -2 || amount > 2)
-                {
-                    available = false;
-                }
-                if (available)
-                {
-                    //가능리스트 만들기.
-                    availableMedicineList.Add(medicine);
-                }
-            }
-            //Debug.Log(availableMedicineList.Count +"이고 " + forIndex.ToString() +  "번째"); ;
-            if (availableMedicineList.Count == 0)
-            {
-                if(nowMedicineNumber==0)
-                Debug.Log("좃됐따");
-                //되는게 하나도 없을 때는 약이 0개다. 맹물.
-                //이건 첫번째 루프 돌 때는 절대 안일어난다. 약종류가 기본 3개니까.
-                break;
-            }
-            //하나 골라서 심텀에 추가
-            int randomIndex = Random.Range(0, availableMedicineList.Count);
 
-            MedicineClass answerMedicine = availableMedicineList[randomIndex];
-            symptomNumberArray[(int)answerMedicine.firstSymptom] += answerMedicine.firstNumber;
-            symptomNumberArray[(int)answerMedicine.secondSymptom] += answerMedicine.secondNumber;
-            answerMedicineList.Add(answerMedicine);
-            nowMedicineNumber++;
-            availableMedicineList.Clear();
-        }
-        //여기 위까지가 판정, 정답약 넣는거.
-        for(int i = 0; i < symptomNumberArray.Length; i++)
-        {
-            if (symptomNumberArray[i] != 0)
-            {
-                symptomList.Add((Symptom)i);
-                symptomAmountList.Add(-1 * symptomNumberArray[i]);
+                //가지고있는 약재 한바퀴 돌면서 가능한 약재 찾기.
+                for (int i = 0; i < ownedMedicineList.Count; i++)
+                {
+                    MedicineClass medicine = ownedMedicineList[i];
+                    bool available = false;
+                    if (medicine.firstSymptom == Symptom.none)
+                    {
+                        continue;
+                    }
+                    /*
+                    if(medicine.firstSymptom == earSymptom || medicine.secondSymptom == earSymptom 
+                        || medicine.firstSymptom == hornSymptom || medicine.secondSymptom == hornSymptom)
+                    {
+                        //귀랑 뿔 겹치는거 빼주고
+                        continue;
+                    }*/
+                    available = true;
+                    //만약 증상 합이 2나 -2 넘어가면 그 약은 안되는거니까 다시돌려
+                    //여기가 누적계산하는 곳
+                    int amount = symptomNumberArray[(int)medicine.firstSymptom] + medicine.firstNumber;
+                    if (amount < -2 || amount > 2)
+                    {
+                        available = false;
+                    }
+                    amount = symptomNumberArray[(int)medicine.secondSymptom] + medicine.secondNumber;
+                    if (amount < -2 || amount > 2)
+                    {
+                        available = false;
+                    }
+                    if (available)
+                    {
+                        //가능리스트 만들기.
+                        availableMedicineList.Add(medicine);
+                    }
+                }
+                //Debug.Log(availableMedicineList.Count +"이고 " + forIndex.ToString() +  "번째"); ;
+                if (availableMedicineList.Count == 0)
+                {
+                    if (nowMedicineNumber == 0)
+                        Debug.Log("좃됐따");
+                    //되는게 하나도 없을 때는 약이 0개다. 맹물.
+                    //이건 첫번째 루프 돌 때는 절대 안일어난다. 약종류가 기본 3개니까.
+                    break;
+                }
+                //하나 골라서 심텀에 추가
+                int randomIndex = Random.Range(0, availableMedicineList.Count);
 
+                MedicineClass answerMedicine = availableMedicineList[randomIndex];
+                symptomNumberArray[(int)answerMedicine.firstSymptom] += answerMedicine.firstNumber;
+                symptomNumberArray[(int)answerMedicine.secondSymptom] += answerMedicine.secondNumber;
+                answerMedicineList.Add(answerMedicine);
+                nowMedicineNumber++;
+                availableMedicineList.Clear();
             }
-            symptomAmountArray[i] = (-1 * symptomNumberArray[i]);
-        }
-        //아마 절대 안나올 것.
-        if(nowMedicineNumber == 0)
-        {
-            fullDialog = "저는 아픈데가 없는데 왜온거죠";
-            return;
-        }
+            //여기 위까지가 판정, 정답약 넣는거.
+            for (int i = 0; i < symptomNumberArray.Length; i++)
+            {
+                if (symptomNumberArray[i] != 0)
+                {
+                    symptomList.Add((Symptom)i);
+                    symptomAmountList.Add(-1 * symptomNumberArray[i]);
+
+                }
+                symptomAmountArray[i] = (-1 * symptomNumberArray[i]);
+            }
+            //아마 절대 안나올 것.
+            if (nowMedicineNumber == 0)
+            {
+                notHurted = true;
+                fullDialog = "저는 아픈데가 없는데 왜온거죠";
+                return;
+            }
+            else
+            {
+                notHurted = false;
+            }
+        } while (notHurted == true);
+       
 
         
         //솔직히 이 아래 다 디버그용임. 실코드에 안쓸것
@@ -311,7 +321,7 @@ public class RandomVisitorClass //SH
 
     }
 
-    //이걸 어디서 불러오지 씨발;
+    //카운터매니저에서 불러옴.134줄
     public static void SetOwnedMedicineList(List<MedicineClass> ownedMedicineList)
     {
         Debug.Log("어디");

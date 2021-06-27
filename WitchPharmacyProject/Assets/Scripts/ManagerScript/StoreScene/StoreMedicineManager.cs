@@ -120,6 +120,8 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
                         {
                             continue;
                         }
+
+
                         if (ownedMedicineList.Contains(availableMedicineArray[j]))
                         {
                             int rand = Random.Range(0, 2);
@@ -137,6 +139,10 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
             {
                 for (int j = 0; j < availableMedicineArray.Length; j++)
                 {
+                    if (appearingMedicineList.Contains(availableMedicineArray[j]))
+                    {
+                        continue;
+                    }
                     if (ownedMedicineList.Contains(availableMedicineArray[j]))
                     {
                         appearingMedicineList.Add(availableMedicineArray[j]);
