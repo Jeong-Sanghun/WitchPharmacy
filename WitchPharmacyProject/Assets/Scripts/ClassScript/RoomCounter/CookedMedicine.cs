@@ -9,6 +9,7 @@ public class CookedMedicine
     public string name;
     public int[] medicineArray;
     public GameObject medicineObject;
+    public int medicineCount;
 
     public CookedMedicine()
     {

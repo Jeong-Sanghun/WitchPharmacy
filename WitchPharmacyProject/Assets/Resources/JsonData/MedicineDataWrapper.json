@@ -1,17 +1,6 @@
 {
     "medicineDataList": [
         {
-            "fileName": "nothing",
-            "firstName": "아무것도",
-            "secondName": "아님",
-            "toolTip": "Tooltip missing",
-            "firstSymptom": 5,
-            "secondSymptom": 5,
-            "firstNumber": 0,
-            "secondNumber": 0,
-            "cost": 0
-        },
-        {
             "fileName": "burning_certificate",
             "firstName": "타오르는",
             "secondName": "증서",

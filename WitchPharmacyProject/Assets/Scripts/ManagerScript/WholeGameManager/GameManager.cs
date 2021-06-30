@@ -21,7 +21,13 @@ public class GameManager : MonoBehaviour //SH
     public StoreToolDataWrapper storeToolDataWrapper;
     [HideInInspector]
     public ConversationDialogBundleWrapper conversationDialogBundleWrapper;
+    [HideInInspector]
+    public StartDialogClassWrapper randomDialogDataWrapper;
     //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
+    [HideInInspector]
+    public RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
+    [HideInInspector]
+    public RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
 
     //이거는 세이브 로드 확인해볼라고
     [HideInInspector]
@@ -52,11 +58,17 @@ public class GameManager : MonoBehaviour //SH
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
 
-        medicineDataWrapper= jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
+        //DebugDataJson();
+        medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
-        //DebugDataJson();
+        randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
+
+        randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
+        randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
+        
+
 
         for (int i = 0; i < storeToolDataWrapper.storeToolDataList.Count; i++)
         {
@@ -90,7 +102,7 @@ public class GameManager : MonoBehaviour //SH
         }
         for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
-            int quant = Random.Range(1, 50);
+            int quant = Random.Range(1, 13);
             OwningMedicineClass med = new OwningMedicineClass(i, quant);
             saveData.owningMedicineList.Add(med);
             //i += Random.Range(0, 4);
@@ -123,13 +135,15 @@ public class GameManager : MonoBehaviour //SH
         regionPropertyWrapper = new RegionPropertyWrapper();
         storeToolDataWrapper = new StoreToolDataWrapper();
         conversationDialogBundleWrapper = new ConversationDialogBundleWrapper();
+        randomDialogDataWrapper = new StartDialogClassWrapper();
 
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
         jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
         jsonManager.SaveJson<StoreToolDataWrapper>(storeToolDataWrapper, "StoreToolDataWrapper");
         jsonManager.SaveJson<ConversationDialogBundleWrapper>(conversationDialogBundleWrapper, "ConversationDialogBundleWrapper");
-        jsonManager.SaveJson(saveData);
+        jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
+        //jsonManager.SaveJson(saveData);
         
         //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");

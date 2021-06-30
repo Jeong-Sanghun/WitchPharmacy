@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 57600.0,
-    "nowDay": 4,
-    "coin": 164,
+    "nowDay": 2,
+    "coin": 480,
     "ownedMedicineList": [
         0,
         1,
@@ -15,61 +15,56 @@
         8,
         9,
         10,
-        11,
-        12
+        11
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 32
+            "medicineQuantity": 15
         },
         {
             "medicineIndex": 1,
-            "medicineQuantity": 31
+            "medicineQuantity": 11
         },
         {
             "medicineIndex": 2,
-            "medicineQuantity": 40
+            "medicineQuantity": 20
         },
         {
             "medicineIndex": 3,
-            "medicineQuantity": 25
+            "medicineQuantity": 13
         },
         {
             "medicineIndex": 4,
-            "medicineQuantity": 81
-        },
-        {
-            "medicineIndex": 5,
-            "medicineQuantity": 18
-        },
-        {
-            "medicineIndex": 6,
-            "medicineQuantity": 29
-        },
-        {
-            "medicineIndex": 7,
             "medicineQuantity": 17
         },
         {
-            "medicineIndex": 10,
-            "medicineQuantity": 31
+            "medicineIndex": 5,
+            "medicineQuantity": 11
         },
         {
-            "medicineIndex": 11,
-            "medicineQuantity": 49
+            "medicineIndex": 6,
+            "medicineQuantity": 5
         },
         {
-            "medicineIndex": 12,
-            "medicineQuantity": 41
-        },
-        {
-            "medicineIndex": 9,
-            "medicineQuantity": 0
+            "medicineIndex": 7,
+            "medicineQuantity": 10
         },
         {
             "medicineIndex": 8,
-            "medicineQuantity": 4
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 9,
+            "medicineQuantity": 8
+        },
+        {
+            "medicineIndex": 10,
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 11,
+            "medicineQuantity": 12
         }
     ],
     "unlockedRegionIndex": [
@@ -87,11 +82,11 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 27
+            "quantity": 14
         },
         {
             "index": 1,
-            "quantity": 17
+            "quantity": 21
         },
         {
             "index": 2,

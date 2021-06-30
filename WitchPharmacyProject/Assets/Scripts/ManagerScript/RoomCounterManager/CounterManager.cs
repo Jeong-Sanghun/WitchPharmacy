@@ -13,6 +13,8 @@ public class CounterManager : MonoBehaviour //SH
     [SerializeField]
     RoomManager roomManager;
     [SerializeField]
+    CounterDialogManager counterDialogManager;
+    [SerializeField]
     MeasureToolManager measureToolManager;
     SaveDataClass saveData;
     SymptomDialog symptomDialog;
@@ -75,7 +77,8 @@ public class CounterManager : MonoBehaviour //SH
     public bool endSales;
     [HideInInspector]
     public bool nowTalking;
-    
+    int index = 0;
+
 
 
     void Start()
@@ -132,11 +135,17 @@ public class CounterManager : MonoBehaviour //SH
 
         //스태틱으로 만들어버려
         RandomVisitorClass.SetOwnedMedicineList(ownedMedicineList);
+        nowTalking = true;
         TimeTextChange();
-        SpawnRandomVisitor();   //이거 나중에 지울거임.
     }
 
-    int index = 0;
+    //CounterDialogManager에서 불러옴.
+    public void CounterStart()
+    {
+        SpawnRandomVisitor();
+    }
+
+
     void SpawnRandomVisitor()
     {
         if (endSales)
@@ -154,8 +163,9 @@ public class CounterManager : MonoBehaviour //SH
         randomVisitorList.Add(nowVisitor);
         roomManager.VisitorVisits(nowVisitor);
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
-        StartCoroutine(VisitorAppearCoroutine());
         index++;
+        StartCoroutine(VisitorAppearCoroutine());
+
         //기록안했을 떄가 -3임
         for(int i = 0; i < toggleGroupArray.Length; i++)
         {
@@ -182,21 +192,19 @@ public class CounterManager : MonoBehaviour //SH
         int[] medicineIndexArray = medicine.medicineArray;
         int[] medicineSymptomArray = new int[6];
         int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
-        bool goodMedicine = true;
+        bool wrongMedicine = false;
         List<Symptom> badSymptomList = new List<Symptom>();
         for(int i =0; i < 6; i++)
         {
             medicineSymptomArray[i] = 0;
         }
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < medicine.medicineCount; i++)
         {
             MedicineClass med = medicineDataList[medicineIndexArray[i]];
-            if (med.firstSymptom == Symptom.none)
-            {
-                continue;
-            }
-            Debug.Log("메디슨 첫번째 넘버 " + med.firstNumber);
-            Debug.Log("메디슨 두번째 넘버 " + med.secondNumber);
+            //if (med.firstSymptom == Symptom.none)
+            //{
+            //    continue;
+            //}
             medicineSymptomArray[(int)med.firstSymptom] += med.firstNumber;
             medicineSymptomArray[(int)med.secondSymptom] += med.secondNumber;
         }
@@ -204,28 +212,35 @@ public class CounterManager : MonoBehaviour //SH
         {
             if(medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
             {
-                goodMedicine = false;
+                wrongMedicine = true;
                 badSymptomList.Add((Symptom)i);
             }
         }
-        StringBuilder builder;
-        if (goodMedicine)
-        {
-            builder = new StringBuilder("아주 좋은 약이에요!!! 감사합니다!!");
-        }
-        else
-        {
-            builder = new StringBuilder("윽.....어딘가 이상해요......특히 ");
-            for(int i = 0; i < badSymptomList.Count; i++)
-            {
-                builder.Append(badSymptomList[i]);
-                if(i+1 != badSymptomList.Count)
-                    builder.Append("하고 ");
-            }
-            builder.Append(" 쪽이 이상해요...");
-        }
+        counterDialogManager.OnVisitorEnd(wrongMedicine);
+        //StringBuilder builder;
+        //if (goodMedicine)
+        //{
+        //    builder = new StringBuilder("아주 좋은 약이에요!!! 감사합니다!!");
+        //}
+        //else
+        //{
+        //    builder = new StringBuilder("윽.....어딘가 이상해요......특히 ");
+        //    for(int i = 0; i < badSymptomList.Count; i++)
+        //    {
+        //        builder.Append(badSymptomList[i]);
+        //        if(i+1 != badSymptomList.Count)
+        //            builder.Append("하고 ");
+        //    }
+        //    builder.Append(" 쪽이 이상해요...");
+        //}
 
-        StartCoroutine(VisitorDisapperCoroutine(builder.ToString()));
+        //StartCoroutine(VisitorDisapperCoroutine(builder.ToString()));
+    }
+
+    //counterDialogManager에서 호출
+    public void VisitorDisappear()
+    {
+        StartCoroutine(VisitorDisapperCoroutine());
     }
 
     
@@ -234,19 +249,17 @@ public class CounterManager : MonoBehaviour //SH
 
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorAppearPos, 2f));
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(sceneManager.LoadTextOneByOne(randomVisitorList[index-1].fullDialog, visitorText));
+        counterDialogManager.OnVisitorVisit(nowVisitor);
         nowTalking = false;
 
     }
 
-    IEnumerator VisitorDisapperCoroutine(string dialog)
+    IEnumerator VisitorDisapperCoroutine()
     {
         nowTalking = true;
-        StartCoroutine(sceneManager.LoadTextOneByOne(dialog, visitorText));
-        yield return new WaitForSeconds(4f);
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
         yield return new WaitForSeconds(1.5f);
-        TimeChange(3600);
+        //TimeChange(3600);
         if (!endSales)
         {
             SpawnRandomVisitor();
@@ -419,7 +432,7 @@ public class CounterManager : MonoBehaviour //SH
     }
 
     public void ToNextSceneButton()
-    {;
+    {
         gameManager.SaveJson();
         sceneManager.LoadScene("StoryScene");
     }

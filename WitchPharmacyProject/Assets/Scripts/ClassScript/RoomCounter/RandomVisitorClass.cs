@@ -25,7 +25,7 @@ public class RandomVisitorClass //SH
     public GameObject visitorObject;
 
     public string name;
-    public string fullDialog;
+    //public string fullDialog;
     //물 불 흙 나무 금속 빛
 
     public List<Symptom> symptomList;
@@ -34,6 +34,7 @@ public class RandomVisitorClass //SH
     //증상은 무조건 두 개    
     public List<MedicineClass> answerMedicineList;
     static List<MedicineClass> ownedMedicineList;
+    
 
     /*
     public Symptom earSymptom;
@@ -165,11 +166,9 @@ public class RandomVisitorClass //SH
                 symptomAmountArray[i] = (-1 * symptomNumberArray[i]);
             }
             //아마 절대 안나올 것.
-            if (nowMedicineNumber == 0)
+            if (nowMedicineNumber == 0 || symptomList.Count == 0)
             {
                 notHurted = true;
-                fullDialog = "저는 아픈데가 없는데 왜온거죠";
-                return;
             }
             else
             {
@@ -180,56 +179,51 @@ public class RandomVisitorClass //SH
 
         
         //솔직히 이 아래 다 디버그용임. 실코드에 안쓸것
-        string iamString = "저는 ";
-        string andString = ", 하고";
-        string problemString = " 에 문제가 있는거 같아요. \n";
+        //string iamString = "저는 ";
+        //string andString = ", 하고";
+        //string problemString = " 에 문제가 있는거 같아요. \n";
 
-        StringBuilder build = new StringBuilder(iamString);
-        if (symptomList.Count == 0)
-        {
-            fullDialog = "저는 아픈데가 없는데 왜온거죠";
-            return;
-        }
-        build.Append(symptomList[0].ToString());
-        for(int i = 1; i < symptomList.Count; i++)
-        {
-            build.Append(andString);
-            build.Append(symptomList[i]);
-        }
-        build.Append(problemString);
+        //StringBuilder build = new StringBuilder(iamString);
+        //build.Append(symptomList[0].ToString());
+        //for(int i = 1; i < symptomList.Count; i++)
+        //{
+        //    build.Append(andString);
+        //    build.Append(symptomList[i]);
+        //}
+        //build.Append(problemString);
 
-        int symptomIndex = 0;
-        if (symptomAmountList[0] > 0)
-        {
-            symptomIndex = symptomAmountList[0] + 1;
-        }
-        else
-        {
-            symptomIndex = symptomAmountList[0] + 2;
-        }
-        string firstDialog = dialog.symptomDialogArray[(int)symptomList[0]].dialogArray[symptomIndex];
-        build.Append(symptomList[0]);
-        build.Append("의 증상은 ");
-        build.Append(firstDialog);
-        for (int i = 1; i < symptomList.Count; i++)
-        {
-            build.Append(dialog.middleDialog[Random.Range(0, 6)]);
-            build.Append(symptomList[i]);
-            build.Append("의 증상은 ");
-            symptomIndex = 0;
-            if (symptomAmountList[i] > 0)
-            {
-                symptomIndex = symptomAmountList[i] + 1;
-            }
-            else
-            {
-                symptomIndex = symptomAmountList[i] + 2;
-            }
-            build.Append(dialog.symptomDialogArray[(int)symptomList[i]]
-            .dialogArray[symptomIndex]);
-        }
+        //int symptomIndex = 0;
+        //if (symptomAmountList[0] > 0)
+        //{
+        //    symptomIndex = symptomAmountList[0] + 1;
+        //}
+        //else
+        //{
+        //    symptomIndex = symptomAmountList[0] + 2;
+        //}
+        //string firstDialog = dialog.symptomDialogArray[(int)symptomList[0]].dialogArray[symptomIndex];
+        //build.Append(symptomList[0]);
+        //build.Append("의 증상은 ");
+        //build.Append(firstDialog);
+        //for (int i = 1; i < symptomList.Count; i++)
+        //{
+        //    build.Append(dialog.middleDialog[Random.Range(0, 6)]);
+        //    build.Append(symptomList[i]);
+        //    build.Append("의 증상은 ");
+        //    symptomIndex = 0;
+        //    if (symptomAmountList[i] > 0)
+        //    {
+        //        symptomIndex = symptomAmountList[i] + 1;
+        //    }
+        //    else
+        //    {
+        //        symptomIndex = symptomAmountList[i] + 2;
+        //    }
+        //    build.Append(dialog.symptomDialogArray[(int)symptomList[i]]
+        //    .dialogArray[symptomIndex]);
+        //}
 
-        fullDialog = build.ToString();
+        //fullDialog = build.ToString();
         
         RandomPartsGenerator(parent);
     }

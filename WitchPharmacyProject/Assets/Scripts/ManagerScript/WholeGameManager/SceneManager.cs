@@ -11,11 +11,19 @@ public class SceneManager : MonoBehaviour // JH
     
     GameManager gameManager;
     public static SceneManager inst;
+    //이전 씬의 네임. storyScene에서 써먹을라고 만듦......
     public string lastSceneName;
+    //텍스트가 지금 쳐지고 있으면. 여러매니저에서 써먹을듯.
+    public bool nowTexting;
 
+    private void Start()
+    {
+        nowTexting = false;   
+    }
     // // Module // //
 
     public IEnumerator LoadTextOneByOne(string inputTextString, Text inputTextUI, float eachTime = 0.05f, bool canClickSkip = true){
+        nowTexting = true;
         float miniTimer = 0f; //타이머
         float currentTargetNumber=0f; // 해당 Time에 출력을 목표로 하는 최소 글자 수
         int currentNumber=0; // 해당 Time에 출력중인 글자 수
@@ -42,6 +50,7 @@ public class SceneManager : MonoBehaviour // JH
             }
         inputTextUI.text = builder.ToString();
         yield return null;
+        nowTexting = false;
     }
     public IEnumerator FadeModule_Sprite(GameObject i_Object, float i_Alpha_Initial, float i_Alpha_Final, float i_Time)
     {
