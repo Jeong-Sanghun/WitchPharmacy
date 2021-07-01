@@ -33,6 +33,28 @@ public class CounterDialogManager : MonoBehaviour
     Text visitorText;
     [SerializeField]
     Text ruelliaText;
+
+    [SerializeField]
+    GameObject backLogParent;
+    [SerializeField]
+    GameObject visitorTextObjectPrefab;
+    [SerializeField]
+    GameObject ruelliaTextObjectPrefab;
+    [SerializeField]
+    Text visitorTextPrefab;
+    [SerializeField]
+    Text ruelliaTextPrefab;
+    [SerializeField]
+    Transform backLogContent;
+    [SerializeField]
+    ScrollRect backLogScroll;
+    RectTransform contentRect;
+    int nowBackLogIndex;
+    
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,14 +65,54 @@ public class CounterDialogManager : MonoBehaviour
         randomVisitorDiseaseDialogWrapper = gameManager.randomVisitorDiseaseDialogWrapper;
         symptomDialog = gameManager.symptomDialog;
         visitorRuelliaToggle = true;
+        ruelliaText.transform.parent.gameObject.SetActive(true);
+        visitorText.transform.parent.gameObject.SetActive(false);
+        contentRect = backLogContent.GetComponent<RectTransform>();
+        
+
 
         nowDialogIndex = 0;
+        nowBackLogIndex = 0;
         nowDialogClassIndex = Random.Range(0, randomDialogClassList.Count);
         dialogCount = randomDialogClassList[nowDialogClassIndex].dialogList.Count;
-        StartCoroutine(sceneManager.LoadTextOneByOne(randomDialogClassList[nowDialogClassIndex].dialogList[nowDialogIndex].str, counterText));
-        nowDialogIndex++;
+        StartUpdate();
     }
 
+    public void OnBackLogButton()
+    {
+        backLogParent.SetActive(!backLogParent.activeSelf);
+    }
+
+    void MakeBackLog(bool isVisitor,string logStr)
+    {
+        GameObject prefab;
+        Text text;
+        Vector2 rectPos;
+        if (isVisitor)
+        {
+            rectPos = new Vector2(-350,(-400) * (nowBackLogIndex));
+            prefab = visitorTextObjectPrefab;
+            text = visitorTextPrefab;
+        }
+        else
+        {
+            rectPos = new Vector2(350, (-400) * (nowBackLogIndex));
+            prefab = ruelliaTextObjectPrefab;
+            text = ruelliaTextPrefab;
+        }
+        text.text = logStr;
+        GameObject inst = Instantiate(prefab, backLogContent);
+        inst.SetActive(true);
+        inst.GetComponent<RectTransform>().anchoredPosition = rectPos;
+
+        nowBackLogIndex++;
+        contentRect.sizeDelta = new Vector2(0, 400 * (nowBackLogIndex));
+        backLogScroll.verticalScrollbar.value = 0;
+
+
+    }
+
+    //카운터매니저에서 불러옴. 랜덤비지터 스폰하고 들어올 떄.
     public void OnVisitorVisit(RandomVisitorClass visitor)
     {
         visitDialog = new List<string>();
@@ -75,14 +137,17 @@ public class CounterDialogManager : MonoBehaviour
             builder = new StringBuilder();
             builder.Append(symptomDialog.middleDialog[Random.Range(0, 6)]);
         }
+
         nowState = CounterState.Visit;
         nowDialogIndex = 0;
         dialogCount = visitDialog.Count;
         VisitUpdate();
     }
 
+    //메디쓴을 전해줬을 때. 카운터메니저
     public void OnVisitorEnd(bool wrongMedicine)
     {
+        counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
             int rand = Random.Range(0, randomVisitorEndDialogWrapper.wrongDialogList.Count);
@@ -123,24 +188,38 @@ public class CounterDialogManager : MonoBehaviour
         }
     }
     
+    //각 업데이트가 달려있다.
     void VisitUpdate()
     {
         if (nowDialogIndex < dialogCount)
         {
             if (visitorRuelliaToggle)
             {
-                StartCoroutine(sceneManager.LoadTextOneByOne(visitDialog[nowDialogIndex], visitorText));
+                if (!visitorText.transform.parent.gameObject.activeSelf)
+                    visitorText.transform.parent.gameObject.SetActive(true);
+                string str = visitDialog[nowDialogIndex];
+                MakeBackLog(true, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
                 visitorRuelliaToggle = !visitorRuelliaToggle;
+
             }
             else
             {
-                StartCoroutine(sceneManager.LoadTextOneByOne(symptomDialog.ruelliaDialog[Random.Range(0,symptomDialog.ruelliaDialog.Length)], ruelliaText));
+                if (!ruelliaText.transform.parent.gameObject.activeSelf)
+                    ruelliaText.transform.parent.gameObject.SetActive(true);
+                string str = symptomDialog.ruelliaDialog[Random.Range(0, symptomDialog.ruelliaDialog.Length)];
+                MakeBackLog(false, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
                 visitorRuelliaToggle = !visitorRuelliaToggle;
                 nowDialogIndex++;
+
             }
         }
         else
         {
+            counterManager.VisitorTalkEnd();
+            ruelliaText.transform.parent.gameObject.SetActive(false);
+            visitorText.transform.parent.gameObject.SetActive(false);
             ruelliaText.text = "";
             visitorText.text = "";
             nowState = CounterState.NotTalking;
@@ -152,7 +231,9 @@ public class CounterDialogManager : MonoBehaviour
     {
         if (nowDialogIndex < dialogCount)
         {
-            StartCoroutine(sceneManager.LoadTextOneByOne(randomDialogClassList[nowDialogClassIndex].dialogList[nowDialogIndex].str, counterText));
+            string str = randomDialogClassList[nowDialogClassIndex].dialogList[nowDialogIndex].str;
+            MakeBackLog(false, str);
+            StartCoroutine(sceneManager.LoadTextOneByOne(str, counterText));
             nowDialogIndex++;
         }
         else
@@ -169,12 +250,20 @@ public class CounterDialogManager : MonoBehaviour
         {
             if (visitorRuelliaToggle)
             {
-                StartCoroutine(sceneManager.LoadTextOneByOne(nowEndDialog.visitorDialog[nowDialogIndex].str, visitorText));
+                if (!visitorText.transform.parent.gameObject.activeSelf)
+                    visitorText.transform.parent.gameObject.SetActive(true);
+                string str = nowEndDialog.visitorDialog[nowDialogIndex].str;
+                MakeBackLog(true, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
                 visitorRuelliaToggle = !visitorRuelliaToggle;
             }
             else
             {
-                StartCoroutine(sceneManager.LoadTextOneByOne(nowEndDialog.ruelliaDialog[nowDialogIndex].str, ruelliaText));
+                if (!ruelliaText.transform.parent.gameObject.activeSelf)
+                    ruelliaText.transform.parent.gameObject.SetActive(true);
+                string str = nowEndDialog.ruelliaDialog[nowDialogIndex].str;
+                MakeBackLog(false, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
                 visitorRuelliaToggle = !visitorRuelliaToggle;
                 nowDialogIndex++;
             }
@@ -183,6 +272,8 @@ public class CounterDialogManager : MonoBehaviour
         {
             ruelliaText.text = "";
             visitorText.text = "";
+            ruelliaText.transform.parent.gameObject.SetActive(false);
+            visitorText.transform.parent.gameObject.SetActive(false);
             nowState = CounterState.NotTalking;
             counterManager.VisitorDisappear();
             visitorRuelliaToggle = true;

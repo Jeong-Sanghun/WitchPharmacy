@@ -79,6 +79,10 @@ public class CounterManager : MonoBehaviour //SH
     public bool nowTalking;
     int index = 0;
 
+    [SerializeField]
+    GameObject measureToolOpenButton;
+    [SerializeField]
+    GameObject symptomChartOpenButton;
 
 
     void Start()
@@ -107,6 +111,8 @@ public class CounterManager : MonoBehaviour //SH
         symptomCheckArray = new int[6];
         symptomCheckedArray = new bool[6];
         symptomChartObject.SetActive(false);
+        measureToolOpenButton.SetActive(false);
+        symptomChartOpenButton.SetActive(false);
        
         //기록안했을 떄가 -10임
         for(int i = 0; i < symptomCheckArray.Length; i++)
@@ -143,6 +149,18 @@ public class CounterManager : MonoBehaviour //SH
     public void CounterStart()
     {
         SpawnRandomVisitor();
+    }
+
+    public void VisitorTalkEnd()
+    {
+        symptomChartOpenButton.SetActive(true);
+        measureToolOpenButton.SetActive(true);
+    }
+
+    public void VisitorTalkStart()
+    {
+        symptomChartOpenButton.SetActive(false);
+        measureToolOpenButton.SetActive(false);
     }
 
 

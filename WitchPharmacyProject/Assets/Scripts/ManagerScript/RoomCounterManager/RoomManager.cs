@@ -124,7 +124,7 @@ public class RoomManager : MonoBehaviour    //SH
 
     [SerializeField]
     Animator cookAnimator;
-
+    float doubleClickTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -152,6 +152,7 @@ public class RoomManager : MonoBehaviour    //SH
         cookedMedicineCounterPos = new Vector3(-100, -555, 0);
 
         nowInRoom = false;
+        doubleClickTimer = 0;
 
         symptomMeasuredArray = new bool[5];
         for(int i = 0; i < 5; i++)
@@ -266,6 +267,10 @@ public class RoomManager : MonoBehaviour    //SH
         if (counterManager.endSales || counterManager.nowTalking)
         {
             return;
+        }
+        if(nowButtonIndex != -1)
+        {
+            doubleClickTimer += Time.deltaTime;
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -537,7 +542,6 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         {
             return;
         }
-        int buttonIndex = nowButtonIndex;
         //nowButtonIndex = -1;
         dragged = false;
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
@@ -547,39 +551,45 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
             //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
             if (touchedObject.CompareTag("Pot"))
             {
-                MedicineButton nowMedicineButton = wholeMedicineButtonList[buttonIndex];
-                int nowPotIndex = medicineInPotList.Count;
-                if (nowPotIndex >= 3)
-                {
-                    Debug.Log("자리가 없어요");
-                    return;
-                }
-                
-                medicineInPotList.Add(nowMedicineButton);
-                //아무것도 아님이 뜨면 줄여주지 않음
-                if (nowMedicineButton.medicineClass.firstSymptom != Symptom.none)
-                {
-                    nowMedicineButton.medicineQuant--;
-                    nowMedicineButton.quantityText.text = nowMedicineButton.medicineQuant.ToString();
-                }
-                nowMedicineButton.propertyQuantityText.text = nowMedicineButton.medicineQuant.ToString();
-                GameObject medicineObj = nowMedicineButton.medicineObject;
-                GameObject inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
-                //nowMedicineButton.potMedicineObject = inst;
-                potMedicineObjectList.Add(inst);
-                inst.SetActive(true);
-                inst.transform.localPosition = Vector3.zero;
-
-                if(medicineInPotList.Count >=1)
-                {
-                    cookButtonObject.SetActive(true);
-                }
-
-                ChangeSymptomChartText();
-
+                AddMedicineToPot();
             }
         }
     }
+
+    void AddMedicineToPot()
+    {
+        MedicineButton nowMedicineButton = wholeMedicineButtonList[nowButtonIndex];
+        int nowPotIndex = medicineInPotList.Count;
+        if (nowPotIndex >= 3)
+        {
+            Debug.Log("자리가 없어요");
+            return;
+        }
+
+        medicineInPotList.Add(nowMedicineButton);
+        //아무것도 아님이 뜨면 줄여주지 않음
+        if (nowMedicineButton.medicineClass.firstSymptom != Symptom.none)
+        {
+            nowMedicineButton.medicineQuant--;
+            nowMedicineButton.quantityText.text = nowMedicineButton.medicineQuant.ToString();
+        }
+        nowMedicineButton.propertyQuantityText.text = nowMedicineButton.medicineQuant.ToString();
+        GameObject medicineObj = nowMedicineButton.medicineObject;
+        GameObject inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
+        //nowMedicineButton.potMedicineObject = inst;
+        potMedicineObjectList.Add(inst);
+        inst.SetActive(true);
+        inst.transform.localPosition = Vector3.zero;
+
+        if (medicineInPotList.Count >= 1)
+        {
+            cookButtonObject.SetActive(true);
+        }
+
+        ChangeSymptomChartText();
+    }
+
+    
 
     //약재 하나 버튼 클릭했을 때
     public void OnButtonDown(int index)
@@ -595,10 +605,14 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
 
         if(nowButtonIndex == index)
         {
+            //따블클릭
+            if(doubleClickTimer <0.5f)
+                AddMedicineToPot();
             nowButtonIndex = -1;
         }
         else
         {
+            doubleClickTimer = 0;
             nowButtonIndex = index;
         }
 
