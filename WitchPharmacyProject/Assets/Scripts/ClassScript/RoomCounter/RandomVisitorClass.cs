@@ -103,12 +103,25 @@ public class RandomVisitorClass //SH
                 //가지고있는 약재 한바퀴 돌면서 가능한 약재 찾기.
                 for (int i = 0; i < ownedMedicineList.Count; i++)
                 {
-                    MedicineClass medicine = ownedMedicineList[i];
-                    bool available = false;
-                    if (medicine.firstSymptom == Symptom.none)
+                    bool answerCheck = false;
+                    for(int j = 0; j < answerMedicineList.Count; j++)
+                    {
+                        if(ownedMedicineList[i].GetIndex() == answerMedicineList[j].GetIndex())
+                        {
+                            answerCheck = true;
+                            break;
+                        }
+                    }
+                    if (answerCheck)
                     {
                         continue;
                     }
+                    MedicineClass medicine = ownedMedicineList[i];
+                    bool available = true;
+                    //if (medicine.firstSymptom == Symptom.none)
+                    //{
+                    //    continue;
+                    //}
                     /*
                     if(medicine.firstSymptom == earSymptom || medicine.secondSymptom == earSymptom 
                         || medicine.firstSymptom == hornSymptom || medicine.secondSymptom == hornSymptom)
@@ -116,7 +129,6 @@ public class RandomVisitorClass //SH
                         //귀랑 뿔 겹치는거 빼주고
                         continue;
                     }*/
-                    available = true;
                     //만약 증상 합이 2나 -2 넘어가면 그 약은 안되는거니까 다시돌려
                     //여기가 누적계산하는 곳
                     int amount = symptomNumberArray[(int)medicine.firstSymptom] + medicine.firstNumber;
@@ -146,8 +158,23 @@ public class RandomVisitorClass //SH
                 }
                 //하나 골라서 심텀에 추가
                 int randomIndex = Random.Range(0, availableMedicineList.Count);
-
                 MedicineClass answerMedicine = availableMedicineList[randomIndex];
+                bool reChoice = true;
+                while (reChoice)
+                {
+                    if(symptomNumberArray[(int)answerMedicine.firstSymptom] + answerMedicine.firstNumber == 0 &&
+                    symptomNumberArray[(int)answerMedicine.secondSymptom] + answerMedicine.secondNumber == 0)
+                    {
+                        randomIndex = Random.Range(0, availableMedicineList.Count);
+                        answerMedicine = availableMedicineList[randomIndex];
+                    }
+                    else
+                    {
+                        reChoice = false;
+                    }
+
+                }
+
                 symptomNumberArray[(int)answerMedicine.firstSymptom] += answerMedicine.firstNumber;
                 symptomNumberArray[(int)answerMedicine.secondSymptom] += answerMedicine.secondNumber;
                 answerMedicineList.Add(answerMedicine);

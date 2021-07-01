@@ -5,132 +5,132 @@
             "firstName": "타오르는",
             "secondName": "증서",
             "toolTip": "태우려고 해도 약속은 사라지지 않는다.",
-            "firstSymptom": 1,
-            "secondSymptom": 3,
-            "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 2
+            "firstSymptom": "1",
+            "secondSymptom": "3",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "2"
         },
         {
             "fileName": "cursed_tombstone",
             "firstName": "저주받은",
             "secondName": "묘비 조각",
             "toolTip": "누구의 묘비인지는 모르지만, 원한이 담겨있는 것 같습니다.",
-            "firstSymptom": 4,
-            "secondSymptom": 3,
-            "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "firstSymptom": "4",
+            "secondSymptom": "3",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
         },
         {
             "fileName": "growing_promise",
             "firstName": "자라나는",
             "secondName": "약속",
             "toolTip": "약속을 지키기 위해 늘어가는 새로운 약속들.",
-            "firstSymptom": 2,
-            "secondSymptom": 3,
-            "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "firstSymptom": "2",
+            "secondSymptom": "3",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
         },
         {
             "fileName": "dry_plan",
             "firstName": "무미건조한",
             "secondName": "계획",
             "toolTip": "자신과의 의미없는 약속들은 늘어만 간다.",
-            "firstSymptom": 0,
-            "secondSymptom": 3,
-            "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 4
+            "firstSymptom": "0",
+            "secondSymptom": "3",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "4"
         },
         {
             "fileName": "overflowing_pressure",
             "firstName": "흘러넘치는",
             "secondName": "중압감",
             "toolTip": "많은 시선이 느껴진다.",
-            "firstSymptom": 0,
-            "secondSymptom": 3,
-            "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "firstSymptom": "0",
+            "secondSymptom": "3",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
         },
         {
             "fileName": "rationalization_of_Zeohen",
             "firstName": "제오헨의",
             "secondName": "합리화",
             "toolTip": "이건 모두를 위해서야.",
-            "firstSymptom": 1,
-            "secondSymptom": 3,
-            "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 4
+            "firstSymptom": "1",
+            "secondSymptom": "3",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "4"
         },
         {
             "fileName": "shining_bald_grass",
             "firstName": "빛나는",
             "secondName": "대머리풀",
             "toolTip": "가벼워 보이지만 마음만은 무겁다.",
-            "firstSymptom": 4,
-            "secondSymptom": 3,
-            "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 4
+            "firstSymptom": "4",
+            "secondSymptom": "3",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "4"
         },
         {
             "fileName": "spicy_candy",
             "firstName": "불닭맛",
             "secondName": "사탕",
             "toolTip": "맵고달지만 짜지는 않아요",
-            "firstSymptom": 1,
-            "secondSymptom": 2,
-            "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 5
+            "firstSymptom": "1",
+            "secondSymptom": "2",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "5"
         },
         {
             "fileName": "weight_of_city",
             "firstName": "도시인의",
             "secondName": "무게",
             "toolTip": "많은 규칙들과 시선의 무게에 짓눌린 마음.",
-            "firstSymptom": 2,
-            "secondSymptom": 3,
-            "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 4
+            "firstSymptom": "2",
+            "secondSymptom": "3",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "4"
         },
         {
             "fileName": "tea_bottle",
             "firstName": "헤이모프의",
             "secondName": "갈증",
             "toolTip": "이미 많이 마셨습니다.",
-            "firstSymptom": 2,
-            "secondSymptom": 0,
-            "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 5
+            "firstSymptom": "2",
+            "secondSymptom": "0",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "5"
         },
         {
             "fileName": "tea_bottle",
             "firstName": "헤이모프의",
             "secondName": "넥타르",
             "toolTip": "젓지말고 흔들어서.",
-            "firstSymptom": 2,
-            "secondSymptom": 0,
-            "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 5
+            "firstSymptom": "2",
+            "secondSymptom": "0",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "5"
         },
         {
             "fileName": "icefruit",
             "firstName": "얼어붙은",
             "secondName": "열매",
             "toolTip": "이건 못먹겠어",
-            "firstSymptom": 0,
-            "secondSymptom": 2,
-            "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 6
+            "firstSymptom": "0",
+            "secondSymptom": "2",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "6"
         }
     ]
 }
