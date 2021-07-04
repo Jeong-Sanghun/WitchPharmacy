@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour //SH
     public RegionPropertyWrapper regionPropertyWrapper;
     [HideInInspector]
     public StoreToolDataWrapper storeToolDataWrapper;
-    [HideInInspector]
+
     public ConversationDialogBundleWrapper conversationDialogBundleWrapper;
+    public ConversationDialogBundle conversationDialogBundle;
     [HideInInspector]
     public StartDialogClassWrapper randomDialogDataWrapper;
     //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour //SH
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
 
-        //DebugDataJson();
+        DebugDataJson();
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
@@ -82,6 +83,13 @@ public class GameManager : MonoBehaviour //SH
         saveData = jsonManager.LoadSaveData();
         nowTime = saveData.nowTime;
         nowDay = saveData.nowDay;
+    }
+
+    public ConversationDialogBundle LoadBundle(string bundleName)
+    {
+        ConversationDialogBundle bundle;
+        bundle = jsonManager.ResourceDataLoad<ConversationDialogBundle>("StoryBundle/" + bundleName);
+        return bundle;
     }
 
     //아마 모든 매니저에서 참조할것.
@@ -136,12 +144,13 @@ public class GameManager : MonoBehaviour //SH
         storeToolDataWrapper = new StoreToolDataWrapper();
         conversationDialogBundleWrapper = new ConversationDialogBundleWrapper();
         randomDialogDataWrapper = new StartDialogClassWrapper();
+        conversationDialogBundle = new ConversationDialogBundle();
 
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
         jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
         jsonManager.SaveJson<StoreToolDataWrapper>(storeToolDataWrapper, "StoreToolDataWrapper");
-        jsonManager.SaveJson<ConversationDialogBundleWrapper>(conversationDialogBundleWrapper, "ConversationDialogBundleWrapper");
+        jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
         jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
         //jsonManager.SaveJson(saveData);
         

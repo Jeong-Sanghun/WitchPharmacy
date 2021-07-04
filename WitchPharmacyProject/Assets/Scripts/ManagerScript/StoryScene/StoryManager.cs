@@ -8,7 +8,7 @@ public class StoryManager : TileManager
 
     protected SceneManager sceneManager;
 
-    protected List<ConversationDialogBundle> conversationDialogBundleList;
+    //protected List<ConversationDialogBundle> conversationDialogBundleList;
     protected ConversationDialogBundle nowBundle;
     protected ConversationDialogWrapper nowWrapper;
 
@@ -50,9 +50,9 @@ public class StoryManager : TileManager
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
-        conversationDialogBundleList = gameManager.conversationDialogBundleWrapper.conversationDialogBundleList;
+        //conversationDialogBundleList = gameManager.conversationDialogBundleWrapper.conversationDialogBundleList;
         characterIndexToName = new CharacterIndexToName();
-        nowBundle = conversationDialogBundleList[0];
+        nowBundle = gameManager.LoadBundle("testBundle");
         nowWrapper = nowBundle.dialogWrapperList[0];
         routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
@@ -120,8 +120,29 @@ public class StoryManager : TileManager
         }
         ConversationDialog nowConversation = nowWrapper.conversationDialogList[nowConversationIndex];
         conversationText.text = nowConversation.dialog;
-        leftSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.leftCharacterIndex, nowConversation.leftCharacterFeeling);
-        rightSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.rightCharacterIndex, nowConversation.rightCharacterFeeling);
+        if(nowConversationIndex == 0)
+        {
+            leftSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.leftCharacterName, nowConversation.leftCharacterFeeling);
+            rightSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.rightCharacterName, nowConversation.rightCharacterFeeling);
+
+        }
+        else
+        {
+            if (nowWrapper.conversationDialogList[nowConversationIndex - 1].leftCharacterName
+    != nowConversation.leftCharacterName)
+            {
+                leftSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.leftCharacterName, nowConversation.leftCharacterFeeling);
+
+            }
+
+            if (nowWrapper.conversationDialogList[nowConversationIndex - 1].rightCharacterName
+!= nowConversation.rightCharacterName)
+            {
+                rightSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.rightCharacterName, nowConversation.rightCharacterFeeling);
+
+            }
+        }
+       
 
         if (leftFaded && !nowConversation.leftFade)
         {
@@ -171,6 +192,7 @@ public class StoryManager : TileManager
         nowWrapperIndex = wrapperIndex;
         nowConversationIndex = 0;
         nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
+        PrintConversation();
         
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Text;
 
 
+
 //캐릭터 인덱스를 받아서 이름으로 바꿔주는거. 이거 ResourceLoad할떄 씀
 public class CharacterIndexToName
 {
@@ -30,6 +31,32 @@ public class CharacterIndexToName
 
         }
         return characterSprite[index,(int)feeling];
+    }
+
+    public Sprite GetSprite(CharacterName name, CharacterFeeling feeling)
+    {
+        if (characterSprite[(int)name, (int)feeling] == null)
+        {
+            StringBuilder nameBuilder = new StringBuilder("CharacterSprite/");
+            nameBuilder.Append(name);
+            nameBuilder.Append("/");
+            nameBuilder.Append(feeling.ToString());
+            characterSprite[(int)name, (int)feeling] = Resources.Load<Sprite>(nameBuilder.ToString());
+
+        }
+        return characterSprite[(int)name, (int)feeling];
+    }
+
+    public int GetIndex(string name)
+    {
+        for(int i = 0; i < characterNameArray.Length; i++)
+        {
+            if(name == characterNameArray[i])
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public string GetName(int index)

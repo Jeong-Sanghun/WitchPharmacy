@@ -26,7 +26,7 @@ public class StoryTileManager : StoryManager
     }
     protected virtual void ResetOnTile()
     {
-        nowBundle = conversationDialogBundleList[0];
+        nowBundle = gameManager.LoadBundle("testBundle");
         nowWrapper = nowBundle.dialogWrapperList[0];
         routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
