@@ -5,8 +5,8 @@
             "dialogWrapperName": "0",
             "conversationDialogList": [
                 {
-                    "leftCharacterName": 0,
-                    "rightCharacterName": 1,
+                    "leftCharacterName": "Cari",
+                    "rightCharacterName": "Ruellia",
                     "leftFade": false,
                     "rightFade": true,
                     "leftCharacterFeeling": 0,

@@ -1,166 +1,40 @@
 {
     "name": "initName",
     "nowTime": 28800.0,
-    "nowDay": 5,
-    "coin": 0,
+    "nowDay": 9,
+    "coin": 1000,
     "ownedMedicineList": [
         0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
         8,
-        9,
-        10,
-        11
+        7,
+        18,
+        6,
+        10
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 15
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 19
-        },
-        {
-            "medicineIndex": 2,
-            "medicineQuantity": 20
-        },
-        {
-            "medicineIndex": 3,
-            "medicineQuantity": 13
-        },
-        {
-            "medicineIndex": 4,
-            "medicineQuantity": 27
-        },
-        {
-            "medicineIndex": 5,
-            "medicineQuantity": 11
-        },
-        {
-            "medicineIndex": 6,
-            "medicineQuantity": 5
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 26
+            "medicineQuantity": 17
         },
         {
             "medicineIndex": 8,
-            "medicineQuantity": 18
+            "medicineQuantity": 6
         },
         {
-            "medicineIndex": 9,
-            "medicineQuantity": 26
+            "medicineIndex": 7,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 18,
+            "medicineQuantity": 8
+        },
+        {
+            "medicineIndex": 6,
+            "medicineQuantity": 4
         },
         {
             "medicineIndex": 10,
-            "medicineQuantity": 12
-        },
-        {
-            "medicineIndex": 11,
-            "medicineQuantity": 12
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 4,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 4,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 4,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 4,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 4,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 4,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 3,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 3,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 2,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 2,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 2,
-            "medicineQuantity": 1
-        },
-        {
-            "medicineIndex": 2,
-            "medicineQuantity": 1
+            "medicineQuantity": 2
         }
     ],
     "unlockedRegionIndex": [
@@ -178,7 +52,7 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 23
+            "quantity": 20
         },
         {
             "index": 1,

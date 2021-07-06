@@ -163,24 +163,11 @@ public class RoomManager : MonoBehaviour    //SH
 
 
         int buttonIndex = 0;
-        for (int i = 0; i < ownedMedicineList.Count; i++)
+        for (int i = 0; i < owningMedicineList.Count; i++)
         {
             //내가 가졌던거중에 없으면 컨티뉴
-            int index = ownedMedicineList[i];
-            OwningMedicineClass owningMedicine = null;
-            for(int j = 0; j < owningMedicineList.Count; j++)
-            {
-                if(owningMedicineList[j].medicineIndex == index)
-                {
-                    owningMedicine = owningMedicineList[j];
-                    break;
-                }
-                
-            }
-            if(owningMedicine == null)
-            {
-                continue;
-            }
+            int index = owningMedicineList[i].medicineIndex;
+            OwningMedicineClass owningMedicine = owningMedicineList[i];
             int quantity = owningMedicine.medicineQuantity;
             if(quantity == 0)
             {
@@ -362,7 +349,7 @@ public class RoomManager : MonoBehaviour    //SH
             medicineInPotList.RemoveAt(listIndex);
             ChangeSymptomChartText();
 
-            if (medicineInPotList.Count < 3)
+            if (medicineInPotList.Count ==0)
             {
                 cookButtonObject.SetActive(false);
             }

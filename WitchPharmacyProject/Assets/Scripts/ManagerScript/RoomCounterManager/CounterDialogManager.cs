@@ -132,6 +132,8 @@ public class CounterDialogManager : MonoBehaviour
             {
                 symptomIndex = visitor.symptomAmountArray[i] + 1;
             }
+            Debug.Log(randomVisitorDiseaseDialogWrapper.diseaseDialogBundleArray.Length + "렝스 " + randomVisitorDiseaseDialogWrapper.diseaseDialogBundleArray[i].diseaseDialogArray.Length);
+            Debug.Log("i : " + i +"symptomIndex :" + symptomIndex );
             builder.Append(randomVisitorDiseaseDialogWrapper.diseaseDialogBundleArray[i].diseaseDialogArray[symptomIndex].dialogArray[Random.Range(0, 3)].str);
             visitDialog.Add(builder.ToString());
             builder = new StringBuilder();

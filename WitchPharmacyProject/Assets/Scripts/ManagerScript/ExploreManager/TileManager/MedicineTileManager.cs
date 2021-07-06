@@ -203,22 +203,37 @@ public class MedicineTileManager : TileManager
         OwningMedicineClass owningMedicine = null;
         for(int i = 0; i < saveData.owningMedicineList.Count; i++)
         {
-            if(nowMedicineTile.index == saveData.owningMedicineList[i].medicineIndex)
+            if(nowMedicineStruct.medicine.GetIndex() == saveData.owningMedicineList[i].medicineIndex)
             {
                 owningMedicine = saveData.owningMedicineList[i];
                 break;
             }
         }
+        bool notOwned = true;
+        for (int i = 0; i < saveData.ownedMedicineList.Count; i++)
+        {
+            if (nowMedicineStruct.medicine.GetIndex() == saveData.ownedMedicineList[i])
+            {
+                notOwned = false;
+                break;
+            }
+        }
+        if (notOwned)
+        {
+            saveData.ownedMedicineList.Add(nowMedicineStruct.medicine.GetIndex());
+        }
 
-        if(owningMedicine == null)
+        if (owningMedicine == null)
         {
             owningMedicine = new OwningMedicineClass();
             saveData.owningMedicineList.Add(owningMedicine);
             owningMedicine.medicineIndex = nowMedicineStruct.medicine.GetIndex();
             owningMedicine.medicineQuantity = 1;
+            Debug.Log("오우닝 메디슨 추가.");
         }
         else
         {
+            Debug.Log("오우닝 메디슨 인덱스 : " +owningMedicine.medicineIndex);
             owningMedicine.medicineQuantity++;
         }
         

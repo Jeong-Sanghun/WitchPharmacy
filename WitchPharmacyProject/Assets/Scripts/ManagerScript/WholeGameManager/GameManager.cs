@@ -11,9 +11,8 @@ public class GameManager : MonoBehaviour //SH
     [HideInInspector]
     public SceneManager SceneManagerScirpt;
     //모든 매니저 스크립트에서 참조
-    [HideInInspector]
+    
     public SaveDataClass saveData;
-    [HideInInspector]
     public MedicineDataWrapper medicineDataWrapper;
     [HideInInspector]
     public RegionPropertyWrapper regionPropertyWrapper;
@@ -59,7 +58,7 @@ public class GameManager : MonoBehaviour //SH
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
 
-        DebugDataJson();
+        //DebugDataJson();
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");

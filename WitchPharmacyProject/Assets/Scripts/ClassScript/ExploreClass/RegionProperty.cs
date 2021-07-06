@@ -44,7 +44,7 @@ public class RegionProperty
         medicineProbability = new float[MedicineTileManager.appearingMedicine];
         for (int i = 0; i < MedicineTileManager.appearingMedicine; i++)
         {
-            //regionAvailableMedicine[i] = Random.Range(0,13);
+            //regionAvailableMedicine[i] = Random.Range(0,20);
             medicineProbability[i] = 100.0f/ MedicineTileManager.appearingMedicine;
         }
         //regionAvailableMedicine = new RegionAvailableMedicine();

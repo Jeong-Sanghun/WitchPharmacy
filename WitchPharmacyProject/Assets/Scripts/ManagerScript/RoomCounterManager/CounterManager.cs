@@ -277,7 +277,7 @@ public class CounterManager : MonoBehaviour //SH
         nowTalking = true;
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
         yield return new WaitForSeconds(1.5f);
-        //TimeChange(3600);
+        TimeChange(3600);
         if (!endSales)
         {
             SpawnRandomVisitor();

@@ -53,7 +53,25 @@ public class MedicineClass  //SH
         {
             return medicineImage;
         }
-        StringBuilder nameBuilder = new StringBuilder(fileName);
+        StringBuilder nameBuilder = new StringBuilder(firstSymptom.ToString());
+        if(firstNumber== 1)
+        {
+            nameBuilder.Append("+");
+        }
+        else
+        {
+            nameBuilder.Append("-");
+        }
+        nameBuilder.Append(secondSymptom.ToString());
+        if (secondNumber == 2)
+        {
+            nameBuilder.Append("++");
+        }
+        else
+        {
+            nameBuilder.Append("--");
+        }
+
         //nameBuilder.Append(" ");
         //nameBuilder.Append(secondName);
         if (medicineImage == null)
