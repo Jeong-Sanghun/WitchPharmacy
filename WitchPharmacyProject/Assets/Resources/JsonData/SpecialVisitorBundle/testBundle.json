@@ -1,0 +1,87 @@
+{
+    "bundleName": "testBundle",
+    "characterName": "Lily",
+    "conversationRouter": {
+        "routingWrapperName": [
+            "1",
+            "2"
+        ],
+        "routeButtonText": [
+            "뭔 소리야 이건또",
+            "니가 너무 싫긴 하지"
+        ],
+        "routingTime": 1
+    },
+    "specialVisitorDialogWrapperList": [
+        {
+            "wrapperName": "0",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "야 루엘리아야"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog":"너는 내가 싫냐"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "솔직히 얘기해바"
+                }
+            ]
+        },
+        {
+            "wrapperName": "1",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "아 그래?"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "미안하다 야"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "사람이 할 말이 있고 못할말이 있지"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "야 그렇게까지 화낼일은 아니잖아. 약이나 줘봐"
+                }
+            ]
+        },
+        {
+            "wrapperName": "2",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "진짜 열받게 하네"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "면전에다 대고 그딴 소리를 해?"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "니가먼저 시작한거잖아 뭔 말이 이렇게 많아"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "약먹을 시간이 다돼서 그렇구나? 좀만 기다려"
+                }
+            ]
+        }
+    ]
+}

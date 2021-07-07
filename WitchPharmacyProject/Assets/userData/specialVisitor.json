@@ -1,0 +1,92 @@
+{
+    "bundleName": "testBundle",
+    "characterName": "Lily",
+    "conversationRouter": {
+        "routingWrapperName": [
+            "1",
+            "2"
+        ],
+        "routeButtonText": [
+            "(근데 좀 열받네...)",
+            "(근데 우리집엔 창문이 없잖아...?)"
+        ],
+        "routingTime": 1
+    },
+    "specialVisitorDialogWrapperList": [
+        {
+            "wrapperName": "0",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                }
+            ]
+        },
+        {
+            "wrapperName": "1",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                }
+            ]
+        },
+        {
+            "wrapperName": "2",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "다이얼로그"
+                }
+            ]
+        }
+    ]
+}

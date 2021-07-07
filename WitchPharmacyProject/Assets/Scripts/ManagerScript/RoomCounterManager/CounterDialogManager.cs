@@ -7,15 +7,16 @@ using System.Text;
 public class CounterDialogManager : MonoBehaviour
 {
     enum CounterState{
-        Start,Visit, End, NotTalking
+        Start,Visit, End, NotTalking, SpecialVisitor
     }
     GameManager gameManager;
     SceneManager sceneManager;
     List<StartDialogClass> randomDialogClassList;
     RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
     RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
-    
 
+    SpecialVisitorDialogBundle specialVisitorDialogBundle;
+    SpecialVisitorDialogWrapper nowWrapper;
 
     //중간어들 다이얼로그.
     SymptomDialog symptomDialog;
@@ -54,8 +55,11 @@ public class CounterDialogManager : MonoBehaviour
     ScrollRect backLogScroll;
     [SerializeField]
     GameObject dialogMouseEventObject;
+    [SerializeField]
+    GameObject[] routingButtonArray;
     RectTransform contentRect;
     int nowBackLogIndex;
+    bool isRouted = false;
 
     //룸매니저에서 못넘어가게 쓰임.
     public bool nowTalking;
@@ -76,7 +80,7 @@ public class CounterDialogManager : MonoBehaviour
         ruelliaText.transform.parent.gameObject.SetActive(true);
         visitorText.transform.parent.gameObject.SetActive(false);
         contentRect = backLogContent.GetComponent<RectTransform>();
-
+        specialVisitorDialogBundle = gameManager.LoadVisitorBundle(gameManager.saveData.nowCounterDialogBundleName);
 
 
         nowTalking = true;
@@ -173,6 +177,28 @@ public class CounterDialogManager : MonoBehaviour
         VisitUpdate();
     }
 
+    public void OnSpecialVisitorVisit(string bundleName)
+    {
+        specialVisitorDialogBundle = gameManager.LoadVisitorBundle(bundleName);
+        nowTalking = true;
+        roomManager.ToCounterButton(false);
+        InitializeBackLog();
+        nowState = CounterState.SpecialVisitor;
+        nowDialogIndex = 0;
+        isRouted = false;
+        if (specialVisitorDialogBundle.conversationRouter == null)
+        {
+            isRouted = true;
+        }
+        else if(specialVisitorDialogBundle.conversationRouter.routeButtonText.Count == 0)
+        {
+            isRouted = true;
+        }
+        nowWrapper = specialVisitorDialogBundle.specialVisitorDialogWrapperList[0];
+        dialogCount = specialVisitorDialogBundle.specialVisitorDialogWrapperList[0].specialVisitorDialogList.Count;
+        SpecialVisitorUpdate();
+    }
+
     //메디쓴을 전해줬을 때. 카운터메니저
     public void OnVisitorEnd(bool wrongMedicine)
     {
@@ -217,12 +243,94 @@ public class CounterDialogManager : MonoBehaviour
                 case CounterState.Visit:
                     VisitUpdate();
                     break;
+                case CounterState.SpecialVisitor:
+                    SpecialVisitorUpdate();
+                    break;
                 default:
                     break;
             }
         }
     }
+
+    public void OnRouteButton(int index)
+    {
+        ConversationRouter router = specialVisitorDialogBundle.conversationRouter;
+        dialogMouseEventObject.SetActive(true);
+        for(int i = 0; i < 3; i++)
+        {
+            routingButtonArray[i].SetActive(false);
+        }
+        for(int i = 0; i < specialVisitorDialogBundle.specialVisitorDialogWrapperList.Count; i++)
+        {
+            if(router.routingWrapperName[index] == specialVisitorDialogBundle.specialVisitorDialogWrapperList[i].wrapperName)
+            {
+                nowWrapper = specialVisitorDialogBundle.specialVisitorDialogWrapperList[i];
+                break;
+            }
+        }
+        nowDialogIndex = 0;
+        dialogCount = nowWrapper.specialVisitorDialogList.Count;
+        isRouted = true;
+
+        SpecialVisitorUpdate();
+    }
     
+    void SpecialVisitorUpdate()
+    {
+        if (nowDialogIndex < dialogCount)
+        {
+            if (!nowWrapper.specialVisitorDialogList[nowDialogIndex].ruelliaTalking)
+            {
+                if (!visitorText.transform.parent.gameObject.activeSelf)
+                    visitorText.transform.parent.gameObject.SetActive(true);
+                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+                MakeBackLog(true, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
+                nowDialogIndex++;
+            }
+            else
+            {
+                if (!ruelliaText.transform.parent.gameObject.activeSelf)
+                    ruelliaText.transform.parent.gameObject.SetActive(true);
+                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+                MakeBackLog(false, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
+                nowDialogIndex++;
+
+            }
+        }
+        else
+        {
+            if (isRouted)
+            {
+                nowTalking = false;
+                counterManager.VisitorTalkEnd();
+                ruelliaText.transform.parent.gameObject.SetActive(false);
+                visitorText.transform.parent.gameObject.SetActive(false);
+                ruelliaText.text = "";
+                visitorText.text = "";
+                nowState = CounterState.NotTalking;
+                isRouted = false;
+
+            }
+            else
+            {
+                isRouted = true;
+                dialogMouseEventObject.SetActive(false);
+                nowDialogIndex = 0;
+                ConversationRouter router = specialVisitorDialogBundle.conversationRouter;
+                for(int i = 0; i < router.routeButtonText.Count; i++)
+                {
+                    routingButtonArray[i].SetActive(true);
+                    routingButtonArray[i].GetComponentInChildren<Text>().text = router.routeButtonText[i];
+                }
+            }
+            
+        }
+    }
+
+
+
     //각 업데이트가 달려있다.
     void VisitUpdate()
     {
@@ -277,7 +385,7 @@ public class CounterDialogManager : MonoBehaviour
             nowTalking = false;
             counterText.text = "";
             nowState = CounterState.NotTalking;
-            counterManager.CounterStart();
+            counterManager.CounterStart(specialVisitorDialogBundle.characterName);
         }
     }
 

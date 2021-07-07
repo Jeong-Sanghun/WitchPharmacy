@@ -92,6 +92,13 @@ public class GameManager : MonoBehaviour //SH
         return bundle;
     }
 
+    public SpecialVisitorDialogBundle LoadVisitorBundle(string bundleName)
+    {
+        SpecialVisitorDialogBundle bundle;
+        bundle = jsonManager.ResourceDataLoad<SpecialVisitorDialogBundle>("SpecialVisitorBundle/" + bundleName);
+        return bundle;
+    }
+
     //아마 모든 매니저에서 참조할것.
     public void SaveJson()
     {
@@ -146,13 +153,17 @@ public class GameManager : MonoBehaviour //SH
         randomDialogDataWrapper = new StartDialogClassWrapper();
         conversationDialogBundle = new ConversationDialogBundle();
 
+        SpecialVisitorDialogBundle bundle = new SpecialVisitorDialogBundle();
+
+        jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");    
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
         jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
         jsonManager.SaveJson<StoreToolDataWrapper>(storeToolDataWrapper, "StoreToolDataWrapper");
         jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
         jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
-        //jsonManager.SaveJson(saveData);
+
+        jsonManager.SaveJson(saveData);
         
         //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");

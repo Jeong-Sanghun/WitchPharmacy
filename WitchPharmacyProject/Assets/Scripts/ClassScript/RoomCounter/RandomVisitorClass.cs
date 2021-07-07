@@ -256,77 +256,79 @@ public class RandomVisitorClass //SH
         visitor.transform.SetParent(visitorParent);
         visitorObject = visitor;
 
-        if (Random.Range(0, 2) == 0)
+        //if (Random.Range(0, 2) == 0)
+        //{
+        //    //선아누나가 릴리 나오게 해달래서 여기다가 구현.
+        //    StringBuilder builder = new StringBuilder(path);
+        //    builder.Append("Lily");
+        //    GameObject lily = Resources.Load<GameObject>(builder.ToString());
+        //    GameObject part = GameObject.Instantiate(lily, visitor.transform);
+        //    part.transform.position = new Vector3(0, -11.91f, -1);
+        //}
+        //else
+        //{
+
+           
+        //}
+
+        visitorObject.transform.localPosition = Vector3.zero;
+
+        //먼저 래퍼 7개를 만들고.
+        partsIndex = new int[7];
+        partsWrapperArray = new GameObjectWrapper[partsIndex.Length];
+
+        for (int i = 0; i < partsIndex.Length; i++)
         {
-            //선아누나가 릴리 나오게 해달래서 여기다가 구현.
+            partsWrapperArray[i] = new GameObjectWrapper();
+            partsIndex[i] = Random.Range(0, partsNum[i]);
             StringBuilder builder = new StringBuilder(path);
-            builder.Append("Lily");
-            GameObject lily = Resources.Load<GameObject>(builder.ToString());
-            GameObject part = GameObject.Instantiate(lily, visitor.transform);
-            part.transform.position = new Vector3(0, -11.91f, -1);
+            switch (i)
+            {
+                case 0:
+                    builder.Append("body/");
+                    break;
+                case 1:
+                    builder.Append("clothes/");
+                    break;
+                case 2:
+                    builder.Append("head/");
+                    break;
+                case 3:
+                    builder.Append("face/");
+                    break;
+                case 4:
+                    builder.Append("hair/");
+                    break;
+                case 5:
+                    builder.Append("ear/");
+                    break;
+                case 6:
+                    builder.Append("horn/");
+                    break;
+                default:
+                    break;
+
+            }
+            builder.Append(partsIndex[i]);
+            partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
         }
-        else
+
+        for (int i = 0; i < partsWrapperArray.Length; i++)
         {
-
-            visitorObject.transform.localPosition = Vector3.zero;
-
-            //먼저 래퍼 7개를 만들고.
-            partsIndex = new int[7];
-            partsWrapperArray = new GameObjectWrapper[partsIndex.Length];
-
-            for (int i = 0; i < partsIndex.Length; i++)
+            for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
             {
-                partsWrapperArray[i] = new GameObjectWrapper();
-                partsIndex[i] = Random.Range(0, partsNum[i]);
-                StringBuilder builder = new StringBuilder(path);
-                switch (i)
+                GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
+                if (i == 4 && j == 1)
                 {
-                    case 0:
-                        builder.Append("body/");
-                        break;
-                    case 1:
-                        builder.Append("clothes/");
-                        break;
-                    case 2:
-                        builder.Append("head/");
-                        break;
-                    case 3:
-                        builder.Append("face/");
-                        break;
-                    case 4:
-                        builder.Append("hair/");
-                        break;
-                    case 5:
-                        builder.Append("ear/");
-                        break;
-                    case 6:
-                        builder.Append("horn/");
-                        break;
-                    default:
-                        break;
-
+                    part.transform.localPosition = new Vector3(0, 0, 1.5f);
                 }
-                builder.Append(partsIndex[i]);
-                partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
-            }
-
-            for (int i = 0; i < partsWrapperArray.Length; i++)
-            {
-                for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
+                else
                 {
-                    GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
-                    if (i == 4 && j == 1)
-                    {
-                        part.transform.localPosition = new Vector3(0, 0, 1.5f);
-                    }
-                    else
-                    {
-                        part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.1f * (j + 1));
-                    }
-
+                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.1f * (j + 1));
                 }
 
             }
+
         }
 
 

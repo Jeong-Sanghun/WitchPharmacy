@@ -32,7 +32,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 1,
@@ -66,7 +68,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 2,
@@ -100,7 +104,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 3,
@@ -134,7 +140,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 4,
@@ -168,7 +176,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 5,
@@ -202,7 +212,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 6,
@@ -236,7 +248,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 7,
@@ -270,7 +284,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 8,
@@ -304,7 +320,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         },
         {
             "index": 9,
@@ -338,7 +356,9 @@
                 12.5,
                 12.5,
                 12.5
-            ]
+            ],
+            "entranceTime": 0.0,
+            "regionMedicineType": ""
         }
     ]
 }

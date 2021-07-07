@@ -23,8 +23,9 @@ public class CounterManager : MonoBehaviour //SH
     //Dictionary<int,int> owningMedicineDictionary;
     //List<MedicineClass> owningMedicineList;
     List<MedicineClass> medicineDataList;
-   
 
+
+    SpecialVisitorClass nowSpecialVisitor;
     [SerializeField]
     List<RandomVisitorClass> randomVisitorList;
     RandomVisitorClass nowVisitor;
@@ -78,6 +79,7 @@ public class CounterManager : MonoBehaviour //SH
     //[HideInInspector]
     //public bool nowTalking;
     int index = 0;
+    bool isSpecialVisitor = false;
 
     [SerializeField]
     GameObject measureToolOpenButton;
@@ -152,7 +154,14 @@ public class CounterManager : MonoBehaviour //SH
     //CounterDialogManager에서 불러옴.
     public void CounterStart()
     {
+        isSpecialVisitor = false;
         SpawnRandomVisitor();
+    }
+
+    public void CounterStart(string characterName)
+    {
+        isSpecialVisitor = true;
+        SpawnSpecialVisitor(characterName);
     }
 
     public void VisitorTalkEnd()
@@ -167,6 +176,29 @@ public class CounterManager : MonoBehaviour //SH
         measureToolOpenButton.SetActive(false);
     }
 
+    void SpawnSpecialVisitor(string characterName)
+    {
+        if (endSales)
+        {
+            roomManager.ToCounterButton(false);
+            return;
+        }
+        if (nowVisitor != null)
+        {
+            nowVisitor.visitorObject.SetActive(false);
+        }
+        if(nowSpecialVisitor != null)
+        {
+            nowSpecialVisitor.visitorObject.SetActive(false);
+        }
+        counterDialogManager.nowTalking = true;
+
+        nowSpecialVisitor = new SpecialVisitorClass(visitorParent, characterName);
+        //쫙 뿌려준다
+        StartCoroutine(VisitorAppearCoroutine());
+    }
+
+
 
     void SpawnRandomVisitor()
     {
@@ -178,6 +210,10 @@ public class CounterManager : MonoBehaviour //SH
         if (nowVisitor != null)
         {
             nowVisitor.visitorObject.SetActive(false);
+        }
+        if (nowSpecialVisitor != null)
+        {
+            nowSpecialVisitor.visitorObject.SetActive(false);
         }
         counterDialogManager.nowTalking = true;
         
@@ -275,7 +311,17 @@ public class CounterManager : MonoBehaviour //SH
 
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorAppearPos, 2f));
         yield return new WaitForSeconds(1.5f);
-        counterDialogManager.OnVisitorVisit(nowVisitor);
+        if (!isSpecialVisitor)
+        {
+            Debug.Log("왜이게실행됨");
+            counterDialogManager.OnVisitorVisit(nowVisitor);
+        }
+        else
+        {
+            Debug.Log("뭐냐");
+            counterDialogManager.OnSpecialVisitorVisit(saveData.nowCounterDialogBundleName);
+        }
+        
 
     }
 
