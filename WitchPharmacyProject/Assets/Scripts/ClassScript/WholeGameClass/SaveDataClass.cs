@@ -24,6 +24,9 @@ public class SaveDataClass
     public List<int> unlockedRegionIndex;
     public List<OwningToolClass> owningToolList;
 
+    public string nowCounterDialogBundleName;
+    public string nowStoryDialogBundleName;
+
 
 
     public SaveDataClass()

@@ -37,12 +37,6 @@ public class MeasureToolManager : MonoBehaviour
         measureToolExitButtonObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //CounterManager의 SpawnRandomVisitor에서 호출
     public void OnNewVisitor(int[] symptomNumArr)
     {

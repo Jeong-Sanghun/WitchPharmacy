@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+using System;
 
 
 
@@ -35,6 +36,22 @@ public class CharacterIndexToName
 
     public Sprite GetSprite(CharacterName name, CharacterFeeling feeling)
     {
+        if (characterSprite[(int)name, (int)feeling] == null)
+        {
+            StringBuilder nameBuilder = new StringBuilder("CharacterSprite/");
+            nameBuilder.Append(name);
+            nameBuilder.Append("/");
+            nameBuilder.Append(feeling.ToString());
+            characterSprite[(int)name, (int)feeling] = Resources.Load<Sprite>(nameBuilder.ToString());
+
+        }
+        return characterSprite[(int)name, (int)feeling];
+    }
+
+    public Sprite GetSprite(string nameText, string feelingText)
+    {
+        CharacterName name = (CharacterName)Enum.Parse(typeof(CharacterName), nameText);
+        CharacterFeeling feeling = (CharacterFeeling)Enum.Parse(typeof(CharacterFeeling), feelingText);
         if (characterSprite[(int)name, (int)feeling] == null)
         {
             StringBuilder nameBuilder = new StringBuilder("CharacterSprite/");

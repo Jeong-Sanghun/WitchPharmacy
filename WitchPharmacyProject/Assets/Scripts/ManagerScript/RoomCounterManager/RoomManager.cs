@@ -14,6 +14,8 @@ public class RoomManager : MonoBehaviour    //SH
     CounterManager counterManager;
     [SerializeField]
     CookedMedicineManager cookedMedicineManager;
+    [SerializeField]
+    CounterDialogManager counterDialogManager;
 
     GameManager gameManager;
     SaveDataClass saveData;
@@ -121,6 +123,7 @@ public class RoomManager : MonoBehaviour    //SH
     [HideInInspector]
     public bool[] symptomMeasuredArray;
     bool isDraggingMedicineFromPot;
+    bool nowCookingAnimation;
 
     [SerializeField]
     Animator cookAnimator;
@@ -180,7 +183,7 @@ public class RoomManager : MonoBehaviour    //SH
 
             prefabButtonIcon.sprite = medicine.LoadImage();
             prefabButtonName.text = nameBuilder.ToString();
-            if(medicine.firstSymptom == Symptom.none)
+            if(medicine.GetFirstSymptom() == Symptom.none)
             {
                 prefabButtonQuantity.text = null;
             }
@@ -189,8 +192,8 @@ public class RoomManager : MonoBehaviour    //SH
                 prefabButtonQuantity.text = quantity.ToString();
             }
             
-            prefabButtonFirstEffectIcon.text = medicine.firstSymptom.ToString();
-            prefabButtonSecondEffectIcon.text = medicine.secondSymptom.ToString();
+            prefabButtonFirstEffectIcon.text = medicine.GetFirstSymptom().ToString();
+            prefabButtonSecondEffectIcon.text = medicine.GetSecondSymptom().ToString();
             prefabButtonFirstEffectNumber.text = medicine.firstNumber.ToString();
             prefabButtonSecondEffectNumber.text = medicine.secondNumber.ToString();
             //버튼 세팅 다 해서 instantiate하고 리스트에 넣어줌.
@@ -245,13 +248,17 @@ public class RoomManager : MonoBehaviour    //SH
 
         }
 
+
+        PropertyListButton(0);
+        PropertyListButton(0);
+
     }
 
     GameObject draggingObject;
     //약재 떨어뜨릴 때 약재를 꺼줘야해서.
     public void Update()
     {
-        if (counterManager.endSales || counterManager.nowTalking)
+        if (counterManager.endSales || counterDialogManager.nowTalking)
         {
             return;
         }
@@ -290,8 +297,11 @@ public class RoomManager : MonoBehaviour    //SH
         }
         if (Input.GetMouseButton(0) && isPotCooked == false && isDraggingMedicineFromPot == true)
         {
-            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            draggingObject.transform.position = new Vector3(mousePos.x, mousePos.y, touchedObject.transform.position.z);
+            if(touchedObject != null)
+            {
+                Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+                draggingObject.transform.position = new Vector3(mousePos.x, mousePos.y, touchedObject.transform.position.z);
+            }
         }
         if (Input.GetMouseButtonUp(0) && isPotCooked == false && isDraggingMedicineFromPot == true)
         {
@@ -362,7 +372,7 @@ public class RoomManager : MonoBehaviour    //SH
     //속성 누르면 그 속성 아이템 뜨게하는 버튼
     public void PropertyListButton(int index)
     {
-        if (counterManager.endSales || counterManager.nowTalking)
+        if (counterManager.endSales)
         {
             return;
         }
@@ -395,33 +405,34 @@ public class RoomManager : MonoBehaviour    //SH
                 }
                 if (pushedButton == 0)
                 {
-                    wholeMedicineButtonList[i].isActive = false;
+                    wholeMedicineButtonList[i].isActive = true;
                     continue;
                 }
-                //if (wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
+                //if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.none)
                 //{
                 //    wholeMedicineButtonList[i].isActive = true;
                 //    continue;
                 //}
 
                 wholeMedicineButtonList[i].isActive = false;
-
                 if (pushedButton > 1)
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] &&
-    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
+    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                     {
                         wholeMedicineButtonList[i].isActive = true;
                     }
                 }
-                else
-                {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] ||
-isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
-                    {
-                        wholeMedicineButtonList[i].isActive = true;
-                    }
-                }
+                //else
+                //{
+                //    //                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] ||
+                //    //isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
+                //    //                    {
+                //    //                        wholeMedicineButtonList[i].isActive = true;
+                //    //                    }
+
+                //    wholeMedicineButtonList[i].isActive = true;
+                //}
             }
         }
         else
@@ -444,15 +455,15 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                     wholeMedicineButtonList[i].isActive = false;
                     continue;
                 }
-                //if (wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
+                //if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.none)
                 //{
                 //    wholeMedicineButtonList[i].isActive = true;
                 //    continue;
                 //}
                 if (pushedButton > 1)
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] &&
-    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
+    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                     {
                         wholeMedicineButtonList[i].isActive = true;
                     }
@@ -463,8 +474,8 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                 }
                 else
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] ||
-isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] ||
+isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                     {
                         wholeMedicineButtonList[i].isActive = true;
                     }
@@ -472,6 +483,8 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                     {
                         wholeMedicineButtonList[i].isActive = false;
                     }
+
+
                 }
 
 
@@ -555,7 +568,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
 
         medicineInPotList.Add(nowMedicineButton);
         //아무것도 아님이 뜨면 줄여주지 않음
-        if (nowMedicineButton.medicineClass.firstSymptom != Symptom.none)
+        if (nowMedicineButton.medicineClass.GetFirstSymptom() != Symptom.none)
         {
             nowMedicineButton.medicineQuant--;
             nowMedicineButton.quantityText.text = nowMedicineButton.medicineQuant.ToString();
@@ -614,6 +627,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         yield return new WaitForSeconds(1.5f);
         CookFunction();
         cookAnimator.SetBool("isCooking", false);
+        nowCookingAnimation = false;
     }
 
     void CookFunction()
@@ -666,7 +680,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         cookedMedicineManager.CookedMedicineManagerSetting(cookedMedicine);
         for (int i = 0; i < medicineInPotList.Count; i++)
         {
-            //if(medicineInPotList[i].medicineClass.firstSymptom == Symptom.none)
+            //if(medicineInPotList[i].medicineClass.GetFirstSymptom() == Symptom.none)
             //{
             //    continue;
             //}
@@ -689,7 +703,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
 
         medicineInPotList.Clear();
         potMedicineObjectList.Clear();
-        isPotCooked = true;
+
     }
 
     //아시발 코드길어짅다;;;;;;
@@ -700,7 +714,9 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         {
             return;
         }
+        isPotCooked = true;
         cookButtonObject.SetActive(false);
+        nowCookingAnimation = true;
         StartCoroutine(CookAnimationCoroutine());
 
     }
@@ -716,7 +732,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //룸이 움직일 때 카메라 옮겨줌
     public void ToCounterButton(bool isMedicineOnTray)
     {
-        if (counterManager.endSales)
+        if (counterManager.endSales || nowCookingAnimation)
         {
             return;
         }
@@ -739,7 +755,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
     //카운터에서 조제실 오는 버튼.
     public void ToRoomButton()
     {
-        if (counterManager.endSales || counterManager.nowTalking)
+        if (counterManager.endSales || counterDialogManager.nowTalking)
         {
             return;
         }
@@ -812,10 +828,10 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
         }
         for(int i = 0; i < medicineInPotList.Count; i++)
         {
-            int firstSymtpom = (int)medicineInPotList[i].medicineClass.firstSymptom;
+            int firstSymtpom = (int)medicineInPotList[i].medicineClass.GetFirstSymptom();
             array[firstSymtpom] += medicineInPotList[i].medicineClass.firstNumber;
 
-            int secondSymtpom = (int)medicineInPotList[i].medicineClass.secondSymptom;
+            int secondSymtpom = (int)medicineInPotList[i].medicineClass.GetSecondSymptom();
             array[secondSymtpom] += medicineInPotList[i].medicineClass.secondNumber;
         }
 

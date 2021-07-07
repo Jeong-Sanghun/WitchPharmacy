@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+using System;
 
 //약 1개가 가지고 있는 약 클래스 
 //게임 내에서도 쓰일거고, 제이슨 저장용으로도 쓰일것이다.
@@ -13,8 +14,10 @@ public class MedicineClass  //SH
     public string firstName;
     public string secondName;
     public string toolTip;
-    public Symptom firstSymptom;
-    public Symptom secondSymptom;
+    public string firstSymptomText;
+    public string secondSymptomText;
+    Symptom firstSymptom;
+    Symptom secondSymptom;
     public int firstNumber;
     public int secondNumber;
     public int cost;
@@ -32,6 +35,28 @@ public class MedicineClass  //SH
     public void SetIndex(int _index)
     {
         index = _index;
+    }
+
+    public Symptom GetFirstSymptom()
+    {
+        return firstSymptom;
+    }
+
+    public void SetSymptom(Symptom first, Symptom second)
+    {
+        firstSymptom = first;
+        secondSymptom = second;
+    }
+
+    public void ParseSymptom()
+    {
+        firstSymptom = (Symptom)Enum.Parse(typeof(Symptom), firstSymptomText);
+        secondSymptom = (Symptom)Enum.Parse(typeof(Symptom), secondSymptomText);
+    }
+
+    public Symptom GetSecondSymptom()
+    {
+        return secondSymptom;
     }
 
 

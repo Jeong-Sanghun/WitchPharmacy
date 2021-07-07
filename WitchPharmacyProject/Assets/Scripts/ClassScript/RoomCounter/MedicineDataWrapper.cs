@@ -15,14 +15,7 @@ public class MedicineDataWrapper //SH
         medicineDataList = new List<MedicineClass>();
 
         //여기아래부터 디버그용임
-        MedicineClass medicine = new MedicineClass();
-        medicine.firstName = "아무것도";
-        medicine.secondName = "아님";
-        medicine.firstSymptom = Symptom.none;
-        medicine.secondSymptom = Symptom.none;
-        medicine.firstNumber = 0;
-        medicine.secondNumber = 0;
-        medicineDataList.Add(medicine);
+        MedicineClass medicine;
 
         //6 * 6 * 2 * 2
 
@@ -61,8 +54,7 @@ public class MedicineDataWrapper //SH
                             medicine.firstName = "시든";
                             medicine.secondName = "이슬";
                         }
-                        medicine.firstSymptom = (Symptom)i;
-                        medicine.secondSymptom = (Symptom)j;
+                        medicine.SetSymptom((Symptom)i, (Symptom)j);
                         medicine.cost = i + j + k + h + 1;
                         if (k == 0)
                         {

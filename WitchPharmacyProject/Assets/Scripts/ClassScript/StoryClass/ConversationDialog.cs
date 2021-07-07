@@ -20,15 +20,15 @@ public class ConversationDialog
     public string ingameName;
     public string fx;
 
-    public CharacterName leftCharacterName;
-    public CharacterName rightCharacterName;
+    public string leftCharacterName;
+    public string rightCharacterName;
 
     //왼쪽놈 페이드할지 말지. 으론쪽놈 페이드할지 말지
     public bool leftFade;
     public bool rightFade;
     //왼쪽 기분 오른쪽 기분.
-    public CharacterFeeling leftCharacterFeeling;
-    public CharacterFeeling rightCharacterFeeling;
+    public string leftCharacterFeeling;
+    public string rightCharacterFeeling;
 
     //내용.
     public string dialog;
@@ -37,8 +37,8 @@ public class ConversationDialog
 
     public ConversationDialog()
     {
-        leftCharacterFeeling = CharacterFeeling.nothing;
-        rightCharacterFeeling = CharacterFeeling.nothing;
+        //leftCharacterFeeling = CharacterFeeling.nothing;
+        //rightCharacterFeeling = CharacterFeeling.nothing;
     }
 
     //public int GetLeftIndex()

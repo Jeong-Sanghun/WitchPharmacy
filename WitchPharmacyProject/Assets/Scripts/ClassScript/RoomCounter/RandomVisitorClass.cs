@@ -7,7 +7,7 @@ using System.Text;
 public enum Symptom
 {
     //0     1     2     3    4 
-    water, fire, dirt, air, light, none
+    water, fire, earth, air, light, none
 }
 
 //랜덤캐릭터 할 때 한요소가 두개씩 있는경우가 있어서 그럼.
@@ -34,6 +34,7 @@ public class RandomVisitorClass //SH
     //증상은 무조건 두 개    
     public List<MedicineClass> answerMedicineList;
     static List<MedicineClass> ownedMedicineList;
+    public static int gainCoin = 40;
     
 
     /*
@@ -132,12 +133,12 @@ public class RandomVisitorClass //SH
                 }*/
                 //만약 증상 합이 2나 -2 넘어가면 그 약은 안되는거니까 다시돌려
                 //여기가 누적계산하는 곳
-                int amount = symptomNumberArray[(int)medicine.firstSymptom] + medicine.firstNumber;
+                int amount = symptomNumberArray[(int)medicine.GetFirstSymptom()] + medicine.firstNumber;
                 if (amount < -2 || amount > 2)
                 {
                     available = false;
                 }
-                amount = symptomNumberArray[(int)medicine.secondSymptom] + medicine.secondNumber;
+                amount = symptomNumberArray[(int)medicine.GetSecondSymptom()] + medicine.secondNumber;
                 if (amount < -2 || amount > 2)
                 {
                     available = false;
@@ -163,8 +164,8 @@ public class RandomVisitorClass //SH
             bool reChoice = true;
             while (reChoice)
             {
-                if (symptomNumberArray[(int)answerMedicine.firstSymptom] + answerMedicine.firstNumber == 0 &&
-                symptomNumberArray[(int)answerMedicine.secondSymptom] + answerMedicine.secondNumber == 0)
+                if (symptomNumberArray[(int)answerMedicine.GetFirstSymptom()] + answerMedicine.firstNumber == 0 &&
+                symptomNumberArray[(int)answerMedicine.GetSecondSymptom()] + answerMedicine.secondNumber == 0)
                 {
                     randomIndex = Random.Range(0, availableMedicineList.Count);
                     answerMedicine = availableMedicineList[randomIndex];
@@ -176,8 +177,8 @@ public class RandomVisitorClass //SH
 
             }
 
-            symptomNumberArray[(int)answerMedicine.firstSymptom] += answerMedicine.firstNumber;
-            symptomNumberArray[(int)answerMedicine.secondSymptom] += answerMedicine.secondNumber;
+            symptomNumberArray[(int)answerMedicine.GetFirstSymptom()] += answerMedicine.firstNumber;
+            symptomNumberArray[(int)answerMedicine.GetSecondSymptom()] += answerMedicine.secondNumber;
             answerMedicineList.Add(answerMedicine);
             nowMedicineNumber++;
             Debug.Log(nowMedicineNumber);

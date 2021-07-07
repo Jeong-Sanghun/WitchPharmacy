@@ -14,6 +14,8 @@ public class CounterDialogManager : MonoBehaviour
     List<StartDialogClass> randomDialogClassList;
     RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
     RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
+    
+
 
     //중간어들 다이얼로그.
     SymptomDialog symptomDialog;
@@ -27,6 +29,8 @@ public class CounterDialogManager : MonoBehaviour
     
     [SerializeField]
     CounterManager counterManager;
+    [SerializeField]
+    RoomManager roomManager;
     [SerializeField]
     Text counterText;
     [SerializeField]
@@ -48,9 +52,13 @@ public class CounterDialogManager : MonoBehaviour
     Transform backLogContent;
     [SerializeField]
     ScrollRect backLogScroll;
+    [SerializeField]
+    GameObject dialogMouseEventObject;
     RectTransform contentRect;
     int nowBackLogIndex;
-    
+
+    //룸매니저에서 못넘어가게 쓰임.
+    public bool nowTalking;
 
 
 
@@ -68,9 +76,10 @@ public class CounterDialogManager : MonoBehaviour
         ruelliaText.transform.parent.gameObject.SetActive(true);
         visitorText.transform.parent.gameObject.SetActive(false);
         contentRect = backLogContent.GetComponent<RectTransform>();
-        
 
 
+
+        nowTalking = true;
         nowDialogIndex = 0;
         nowBackLogIndex = 0;
         nowDialogClassIndex = Random.Range(0, randomDialogClassList.Count);
@@ -80,7 +89,24 @@ public class CounterDialogManager : MonoBehaviour
 
     public void OnBackLogButton()
     {
+        dialogMouseEventObject.SetActive(!dialogMouseEventObject.activeSelf);
+
         backLogParent.SetActive(!backLogParent.activeSelf);
+        if (nowBackLogIndex >= 3)
+        {
+            backLogContent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 400 * (nowBackLogIndex -3));
+        }
+        
+    }
+
+    void InitializeBackLog()
+    {
+        int childCount = backLogContent.transform.childCount;
+        for(int i = 0; i < childCount; i++)
+        {
+            backLogContent.GetChild(i).gameObject.SetActive(false);
+        }
+        nowBackLogIndex = 0;
     }
 
     void MakeBackLog(bool isVisitor,string logStr)
@@ -107,7 +133,7 @@ public class CounterDialogManager : MonoBehaviour
 
         nowBackLogIndex++;
         contentRect.sizeDelta = new Vector2(0, 400 * (nowBackLogIndex));
-        backLogScroll.verticalScrollbar.value = 0;
+        //backLogScroll.verticalScrollbar.value = 0;
 
 
     }
@@ -115,6 +141,9 @@ public class CounterDialogManager : MonoBehaviour
     //카운터매니저에서 불러옴. 랜덤비지터 스폰하고 들어올 떄.
     public void OnVisitorVisit(RandomVisitorClass visitor)
     {
+        nowTalking = true;
+        roomManager.ToCounterButton(false);
+        InitializeBackLog();
         visitDialog = new List<string>();
         StringBuilder builder = new StringBuilder(symptomDialog.startDialog[Random.Range(0, symptomDialog.startDialog.Length)]);
         for (int i = 0; i < visitor.symptomAmountArray.Length; i++)
@@ -132,8 +161,6 @@ public class CounterDialogManager : MonoBehaviour
             {
                 symptomIndex = visitor.symptomAmountArray[i] + 1;
             }
-            Debug.Log(randomVisitorDiseaseDialogWrapper.diseaseDialogBundleArray.Length + "렝스 " + randomVisitorDiseaseDialogWrapper.diseaseDialogBundleArray[i].diseaseDialogArray.Length);
-            Debug.Log("i : " + i +"symptomIndex :" + symptomIndex );
             builder.Append(randomVisitorDiseaseDialogWrapper.diseaseDialogBundleArray[i].diseaseDialogArray[symptomIndex].dialogArray[Random.Range(0, 3)].str);
             visitDialog.Add(builder.ToString());
             builder = new StringBuilder();
@@ -149,6 +176,7 @@ public class CounterDialogManager : MonoBehaviour
     //메디쓴을 전해줬을 때. 카운터메니저
     public void OnVisitorEnd(bool wrongMedicine)
     {
+        nowTalking = true;
         counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
@@ -171,7 +199,12 @@ public class CounterDialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !sceneManager.nowTexting)
+
+    }
+
+    public void OnDialogMousButtonDown()
+    {
+        if (!sceneManager.nowTexting)
         {
             switch (nowState)
             {
@@ -219,6 +252,7 @@ public class CounterDialogManager : MonoBehaviour
         }
         else
         {
+            nowTalking = false;
             counterManager.VisitorTalkEnd();
             ruelliaText.transform.parent.gameObject.SetActive(false);
             visitorText.transform.parent.gameObject.SetActive(false);
@@ -240,6 +274,7 @@ public class CounterDialogManager : MonoBehaviour
         }
         else
         {
+            nowTalking = false;
             counterText.text = "";
             nowState = CounterState.NotTalking;
             counterManager.CounterStart();
@@ -272,6 +307,7 @@ public class CounterDialogManager : MonoBehaviour
         }
         else
         {
+            nowTalking = false;
             ruelliaText.text = "";
             visitorText.text = "";
             ruelliaText.transform.parent.gameObject.SetActive(false);

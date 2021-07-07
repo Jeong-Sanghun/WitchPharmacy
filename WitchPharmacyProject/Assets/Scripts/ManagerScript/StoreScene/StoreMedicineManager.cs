@@ -186,7 +186,7 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
             prefabButtonIcon.sprite = medicine.LoadImage();
             prefabButtonName.text = nameBuilder.ToString();
             prefabButtonCost.text = medicine.cost.ToString();
-            if (medicine.firstSymptom == Symptom.none)
+            if (medicine.GetFirstSymptom() == Symptom.none)
             {
                 prefabButtonQuantity.text = null;
             }
@@ -195,8 +195,8 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
                 prefabButtonQuantity.text = quantity.ToString();
             }
 
-            prefabButtonFirstEffectIcon.text = medicine.firstSymptom.ToString();
-            prefabButtonSecondEffectIcon.text = medicine.secondSymptom.ToString();
+            prefabButtonFirstEffectIcon.text = medicine.GetFirstSymptom().ToString();
+            prefabButtonSecondEffectIcon.text = medicine.GetSecondSymptom().ToString();
             prefabButtonFirstEffectNumber.text = medicine.firstNumber.ToString();
             prefabButtonSecondEffectNumber.text = medicine.secondNumber.ToString();
             //버튼 세팅 다 해서 instantiate하고 리스트에 넣어줌.
@@ -257,10 +257,10 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
                 }
                 if (pushedButton == 0)
                 {
-                    wholeMedicineButtonList[i].isActive = false;
+                    wholeMedicineButtonList[i].isActive = true;
                     continue;
                 }
-                if (wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
+                if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.none)
                 {
                     wholeMedicineButtonList[i].isActive = true;
                     continue;
@@ -270,16 +270,16 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
 
                 if (pushedButton > 1)
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] &&
-    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
+    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                     {
                         wholeMedicineButtonList[i].isActive = true;
                     }
                 }
                 else
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] ||
-isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] ||
+isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                     {
                         wholeMedicineButtonList[i].isActive = true;
                     }
@@ -306,15 +306,15 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                     wholeMedicineButtonList[i].isActive = false;
                     continue;
                 }
-                if (wholeMedicineButtonList[i].medicineClass.firstSymptom == Symptom.none)
+                if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.none)
                 {
                     wholeMedicineButtonList[i].isActive = true;
                     continue;
                 }
                 if (pushedButton > 1)
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] &&
-    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
+    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                     {
                         wholeMedicineButtonList[i].isActive = true;
                     }
@@ -325,8 +325,8 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
                 }
                 else
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.firstSymptom] ||
-isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.secondSymptom])
+                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] ||
+isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                     {
                         wholeMedicineButtonList[i].isActive = true;
                     }

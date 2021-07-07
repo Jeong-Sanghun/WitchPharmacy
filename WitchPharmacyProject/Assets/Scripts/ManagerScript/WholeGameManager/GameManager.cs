@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour //SH
         randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
         
 
-
+        
         for (int i = 0; i < storeToolDataWrapper.storeToolDataList.Count; i++)
         {
             storeToolDataWrapper.storeToolDataList[i].SetIndex(i);
@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour //SH
         for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
             medicineDataWrapper.medicineDataList[i].SetIndex(i);
+            medicineDataWrapper.medicineDataList[i].ParseSymptom();
         }
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
         saveData = jsonManager.LoadSaveData();

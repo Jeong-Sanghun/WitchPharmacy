@@ -16,6 +16,8 @@ public class RegionProperty
     //}
     public int[] regionAvailableMedicine;
     public float[] medicineProbability;
+    public float entranceTime;
+    public string regionMedicineType;
     
     //더미 생성자
     public RegionProperty(int _index)

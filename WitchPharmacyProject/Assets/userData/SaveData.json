@@ -1,7 +1,7 @@
 {
     "name": "initName",
-    "nowTime": 28800.0,
-    "nowDay": 9,
+    "nowTime": 57600.0,
+    "nowDay": 10,
     "coin": 1000,
     "ownedMedicineList": [
         0,
@@ -9,20 +9,26 @@
         7,
         18,
         6,
-        10
+        10,
+        13,
+        19,
+        14,
+        1,
+        4,
+        12
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 17
+            "medicineQuantity": 16
         },
         {
             "medicineIndex": 8,
-            "medicineQuantity": 6
+            "medicineQuantity": 9
         },
         {
             "medicineIndex": 7,
-            "medicineQuantity": 4
+            "medicineQuantity": 6
         },
         {
             "medicineIndex": 18,
@@ -33,8 +39,32 @@
             "medicineQuantity": 4
         },
         {
-            "medicineIndex": 10,
+            "medicineIndex": 13,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 19,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 14,
             "medicineQuantity": 2
+        },
+        {
+            "medicineIndex": 1,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 4,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 12,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 10,
+            "medicineQuantity": 0
         }
     ],
     "unlockedRegionIndex": [

@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -112,10 +112,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 957
-  m_MinSize: {x: 881, y: 492}
-  m_MaxSize: {x: 16006, y: 14042}
+  m_MinSize: {x: 878, y: 492}
+  m_MaxSize: {x: 16003, y: 14042}
   vertical: 0
-  controlID: 134
+  controlID: 30177
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -137,10 +137,10 @@ MonoBehaviour:
     y: 0
     width: 1479
     height: 957
-  m_MinSize: {x: 605, y: 492}
-  m_MaxSize: {x: 12005, y: 14042}
+  m_MinSize: {x: 602, y: 492}
+  m_MaxSize: {x: 12002, y: 14042}
   vertical: 1
-  controlID: 64
+  controlID: 30257
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,10 +163,10 @@ MonoBehaviour:
     y: 0
     width: 1479
     height: 580
-  m_MinSize: {x: 605, y: 221}
-  m_MaxSize: {x: 12005, y: 4021}
+  m_MinSize: {x: 602, y: 221}
+  m_MaxSize: {x: 12002, y: 4021}
   vertical: 0
-  controlID: 65
+  controlID: 30258
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 251
     height: 580
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -212,8 +212,8 @@ MonoBehaviour:
     y: 0
     width: 239
     height: 580
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -239,8 +239,8 @@ MonoBehaviour:
     y: 0
     width: 989
     height: 580
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -293,8 +293,8 @@ MonoBehaviour:
     y: 0
     width: 441
     height: 957
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_MaximizeOnPlay: 0
+  m_MaximizeOnPlay: 1
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
@@ -421,9 +421,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 223a0000
-      m_LastClickedID: 14882
-      m_ExpandedIDs: 5afaffff50fbfffff4ffffffbc3c0000
+      m_SelectedIDs: a4b40300
+      m_LastClickedID: 0
+      m_ExpandedIDs: c4d0fcffb6d2fcff4ce4fcff7ae7fcff4623fdfff626fdffe227fdffa035fdffd836fdff3e53fdfffc60fdff0071fdff408dfdff3eb8fdff62b9fdff80d4fdff50e3fdff5ce4fdff38e5fdffd4f2fdff44f3fdff6ef4fdff9801fefff801feff6208feff4e09feff2a0afeffca0bfeff345afeff225bfeff8676feff7877feffca93fefff294feff92e9feffce06ffffcc37ffffee37ffffa238ffffce38ffff2a39ffff5a3cffffb23cffffd63dfffff83dffff983ffffffc4cffffae52ffff1458ffff7058ffff8858ffff0459ffff166dffff846fffff4070ffff3075ffff1a76ffff3a76ffff4a76ffff74a1fffffea2ffff7ef9fffff4ffffff047b00005e7d0000d87d00009081000028820000d4830000e28300009eac000034b4000036b80000ceb80000aab900001ad10000a6d2000088d8000094da000044db0000b8db000020dc0000d6e0000002e200006ae20000f4e7000088e9000016120100382c0100f22d01008c5f010080600100de6101004e6201009e6601004a68010058680100ba87010072ae0100e604020002050200f605020008080200d0080200be0a0200d40a0200860b0200140c0200ce0d020094210200c02802004e290200082b0200c23502006c3c0200fa3c0200b43e0200a24f02005c510200c07a020050800200de80020098820200acbe0200b8be020018c00200e6c3020020c50200d4c50200d8c502008ec70200b6cf020070d1020076d20200d6d30200a4d70200ded802004cdb0200a6e502008ce70200d4ea020034ec0200c2ec02007cee0200a6030300c40903007e0b03000641030066420300bc43030076450300ea5903009a5b0300f05f030034610300ee620300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -483,9 +483,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1280, y: 96.03296, z: 0}
+    m_Target: {x: 1598.4, y: 489.8, z: 0}
     speed: 2
-    m_Value: {x: 1280, y: 96.03296, z: 0}
+    m_Value: {x: 1598.4, y: 489.8, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -535,9 +535,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2374.5315
+    m_Target: 462.85056
     speed: 2
-    m_Value: 2374.5315
+    m_Value: 462.85056
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -691,20 +691,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/ExploreScene
+    - Assets/Scripts/ClassScript/RoomCounter/Dialog
   m_ViewMode: 1
   m_StartGridSize: 67
   m_LastFolders:
-  - Assets/Prefabs/ExploreScene
+  - Assets/Scripts/ClassScript/RoomCounter/Dialog
   m_LastFoldersGridSize: 67
   m_LastProjectPath: C:\Users\CafeAlle\Documents\GitHub\WitchPharmacy\WitchPharmacyProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a83a0000
-    m_LastClickedID: 15016
-    m_ExpandedIDs: 00000000883a00008a3a00008c3a00008e3a0000903a0000923a0000943a0000963a0000983a00009a3a00009c3a00009e3a0000a03a000000ca9a3b
+    scrollPos: {x: 0, y: 160}
+    m_SelectedIDs: b63c0000
+    m_LastClickedID: 15542
+    m_ExpandedIDs: 00000000da3a0000dc3a0000de3a0000e03a0000e23a0000e43a0000e63a0000e83a0000ea3a0000ec3a0000ee3a0000f03a0000f23a0000103b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -732,7 +732,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000883a00008a3a00008c3a00008e3a0000903a0000923a0000943a0000963a0000983a00009a3a00009c3a00009e3a0000a03a0000
+    m_ExpandedIDs: 00000000da3a0000dc3a0000de3a0000e03a0000e23a0000e43a0000e63a0000e83a0000ea3a0000ec3a0000ee3a0000f03a0000f23a0000103b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

@@ -75,14 +75,18 @@ public class CounterManager : MonoBehaviour //SH
     Text timeText;
     [HideInInspector]
     public bool endSales;
-    [HideInInspector]
-    public bool nowTalking;
+    //[HideInInspector]
+    //public bool nowTalking;
     int index = 0;
 
     [SerializeField]
     GameObject measureToolOpenButton;
     [SerializeField]
     GameObject symptomChartOpenButton;
+
+    [SerializeField]
+    Text gainedCoinText;
+    Vector3 gainedCoinObjectOriginPos;
 
 
     void Start()
@@ -104,6 +108,7 @@ public class CounterManager : MonoBehaviour //SH
 
         visitorAppearPos = new Vector3(-7.06f, 0.88f, -1);
         visitorDisappearPos = new Vector3(-7.06f, -12, -1);
+        gainedCoinObjectOriginPos = gainedCoinText.transform.position;
 
         randomVisitorList = new List<RandomVisitorClass>();
 
@@ -141,7 +146,6 @@ public class CounterManager : MonoBehaviour //SH
 
         //스태틱으로 만들어버려
         RandomVisitorClass.SetOwnedMedicineList(ownedMedicineList);
-        nowTalking = true;
         TimeTextChange();
     }
 
@@ -175,6 +179,7 @@ public class CounterManager : MonoBehaviour //SH
         {
             nowVisitor.visitorObject.SetActive(false);
         }
+        counterDialogManager.nowTalking = true;
         
         nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent);
         //쫙 뿌려준다
@@ -206,7 +211,6 @@ public class CounterManager : MonoBehaviour //SH
     //cookedMedicineManager의 pointerUP에서 호출
     public void OnMedicineDelivery(CookedMedicine medicine)
     {
-        nowTalking = true;
         int[] medicineIndexArray = medicine.medicineArray;
         int[] medicineSymptomArray = new int[6];
         int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
@@ -223,8 +227,8 @@ public class CounterManager : MonoBehaviour //SH
             //{
             //    continue;
             //}
-            medicineSymptomArray[(int)med.firstSymptom] += med.firstNumber;
-            medicineSymptomArray[(int)med.secondSymptom] += med.secondNumber;
+            medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
+            medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
         }
         for(int i = 0; i < 6; i++)
         {
@@ -233,6 +237,10 @@ public class CounterManager : MonoBehaviour //SH
                 wrongMedicine = true;
                 badSymptomList.Add((Symptom)i);
             }
+        }
+        if (!wrongMedicine)
+        {
+            CoinGain();
         }
         counterDialogManager.OnVisitorEnd(wrongMedicine);
         //StringBuilder builder;
@@ -268,13 +276,11 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorAppearPos, 2f));
         yield return new WaitForSeconds(1.5f);
         counterDialogManager.OnVisitorVisit(nowVisitor);
-        nowTalking = false;
 
     }
 
     IEnumerator VisitorDisapperCoroutine()
     {
-        nowTalking = true;
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
         yield return new WaitForSeconds(1.5f);
         TimeChange(3600);
@@ -447,6 +453,15 @@ public class CounterManager : MonoBehaviour //SH
         }
         builder.Append(minute.ToString());
         timeText.text = builder.ToString();
+    }
+
+    void CoinGain()
+    {
+        saveData.coin += RandomVisitorClass.gainCoin;
+        gainedCoinText.color = Color.black;
+        gainedCoinText.text = "+" + RandomVisitorClass.gainCoin.ToString();
+        gainedCoinText.transform.position = gainedCoinObjectOriginPos;
+        StartCoroutine(sceneManager.FadeModule_Text(gainedCoinText, 1, 0, 3f));
     }
 
     public void ToNextSceneButton()
