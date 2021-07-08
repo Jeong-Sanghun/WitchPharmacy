@@ -12,9 +12,11 @@ public class CookedMedicineManager : MonoBehaviour
     List<MedicineClass> medicineDataList;
     
     [SerializeField]
-    RoomManager roomManager;
+    MedicineManager medicineManager;
     [SerializeField]
     CounterManager counterManager;
+    [SerializeField]
+    RoomManager roomManager;
     CookedMedicine cookedMedicine;
 
     GameObject touchedObject;               //터치한 오브젝트
@@ -100,7 +102,7 @@ public class CookedMedicineManager : MonoBehaviour
 
     void OnMedicinePointerDown(PointerEventData data)
     {
-        if (!roomManager.nowInRoom)
+        if (!medicineManager.nowInRoom)
         {
             return;
         }
@@ -111,7 +113,7 @@ public class CookedMedicineManager : MonoBehaviour
     void OnMedicinePointerUp(PointerEventData data)
     {
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
-        if (roomManager.nowInRoom)
+        if (medicineManager.nowInRoom)
         {
             cookedMedicine.medicineObject.transform.position = medicineOriginPos;
         }
@@ -128,7 +130,7 @@ public class CookedMedicineManager : MonoBehaviour
             touchedObject = hit.collider.gameObject;
             if (touchedObject==binObject)
             {
-                roomManager.CookedMedicineRemoved();
+                medicineManager.CookedMedicineRemoved();
                 cookedMedicine.medicineObject.SetActive(false);
             }
             if (touchedObject== trayObject)
@@ -140,7 +142,7 @@ public class CookedMedicineManager : MonoBehaviour
             {
                 counterManager.OnMedicineDelivery(cookedMedicine);
                 cookedMedicine.medicineObject.transform.position = medicineOriginPos;
-                roomManager.CookedMedicineRemoved();
+                medicineManager.CookedMedicineRemoved();
                 cookedMedicine.medicineObject.SetActive(false);
                 cookedMedicine = null;
             }

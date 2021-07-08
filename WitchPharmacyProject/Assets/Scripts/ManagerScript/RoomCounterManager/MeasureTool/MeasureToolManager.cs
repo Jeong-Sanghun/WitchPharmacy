@@ -8,7 +8,7 @@ public class MeasureToolManager : MonoBehaviour
     [SerializeField]
     CounterManager counterManager;
     [SerializeField]
-    RoomManager roomManager;
+    MedicineManager medicineManager;
 
     [SerializeField]
     GameObject buttonParent;

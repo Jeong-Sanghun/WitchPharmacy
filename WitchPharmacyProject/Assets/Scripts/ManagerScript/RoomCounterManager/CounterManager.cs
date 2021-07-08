@@ -5,17 +5,21 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Text;
 //카운터씬 매니저
-//여기서 증상까지 만들어서 RoomManager로 넘겨줌
+//여기서 증상까지 만들어서 medicineManager로 넘겨줌
 public class CounterManager : MonoBehaviour //SH
 {
     GameManager gameManager;
     SceneManager sceneManager;
     [SerializeField]
-    RoomManager roomManager;
+    MedicineManager medicineManager;
     [SerializeField]
     CounterDialogManager counterDialogManager;
     [SerializeField]
     MeasureToolManager measureToolManager;
+    [SerializeField]
+    SymptomChartManager symptomChartManager;
+    [SerializeField]
+    VisitorTriggerManager visitorTriggerManager;
     SaveDataClass saveData;
     SymptomDialog symptomDialog;
     List<int> ownedMedicineIndexList;
@@ -151,13 +155,13 @@ public class CounterManager : MonoBehaviour //SH
         TimeTextChange();
     }
 
-    //CounterDialogManager에서 불러옴.
+    //트리거매니저에서 불러옴.
     public void CounterStart()
     {
         isSpecialVisitor = false;
         SpawnRandomVisitor();
     }
-
+    //씨발...트리거매니저...
     public void CounterStart(string characterName)
     {
         isSpecialVisitor = true;
@@ -180,7 +184,7 @@ public class CounterManager : MonoBehaviour //SH
     {
         if (endSales)
         {
-            roomManager.ToCounterButton(false);
+            medicineManager.ToCounterButton(false);
             return;
         }
         if (nowVisitor != null)
@@ -192,7 +196,7 @@ public class CounterManager : MonoBehaviour //SH
             nowSpecialVisitor.visitorObject.SetActive(false);
         }
         counterDialogManager.nowTalking = true;
-
+        medicineManager.SpecialVisitorVisits();
         nowSpecialVisitor = new SpecialVisitorClass(visitorParent, characterName);
         //쫙 뿌려준다
         StartCoroutine(VisitorAppearCoroutine());
@@ -204,7 +208,7 @@ public class CounterManager : MonoBehaviour //SH
     {
         if (endSales)
         {
-            roomManager.ToCounterButton(false);
+            medicineManager.ToCounterButton(false);
             return;
         }
         if (nowVisitor != null)
@@ -220,7 +224,7 @@ public class CounterManager : MonoBehaviour //SH
         nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent);
         //쫙 뿌려준다
         randomVisitorList.Add(nowVisitor);
-        roomManager.VisitorVisits(nowVisitor);
+        medicineManager.VisitorVisits(nowVisitor);
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
         index++;
         StartCoroutine(VisitorAppearCoroutine());
@@ -279,24 +283,7 @@ public class CounterManager : MonoBehaviour //SH
             CoinGain();
         }
         counterDialogManager.OnVisitorEnd(wrongMedicine);
-        //StringBuilder builder;
-        //if (goodMedicine)
-        //{
-        //    builder = new StringBuilder("아주 좋은 약이에요!!! 감사합니다!!");
-        //}
-        //else
-        //{
-        //    builder = new StringBuilder("윽.....어딘가 이상해요......특히 ");
-        //    for(int i = 0; i < badSymptomList.Count; i++)
-        //    {
-        //        builder.Append(badSymptomList[i]);
-        //        if(i+1 != badSymptomList.Count)
-        //            builder.Append("하고 ");
-        //    }
-        //    builder.Append(" 쪽이 이상해요...");
-        //}
 
-        //StartCoroutine(VisitorDisapperCoroutine(builder.ToString()));
     }
 
     //counterDialogManager에서 호출
@@ -332,7 +319,7 @@ public class CounterManager : MonoBehaviour //SH
         TimeChange(3600);
         if (!endSales)
         {
-            SpawnRandomVisitor();
+            visitorTriggerManager.TriggerCheck();
         }
         
     }
@@ -433,7 +420,7 @@ public class CounterManager : MonoBehaviour //SH
         }
 
        
-        roomManager.ChangeSymptomChartText();
+        symptomChartManager.ChangeSymptomChartText();
     }
 
     //측정이 끝나면 토글창을 고정시켜줘야돼.

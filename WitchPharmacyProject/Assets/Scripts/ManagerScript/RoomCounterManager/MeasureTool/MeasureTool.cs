@@ -8,9 +8,11 @@ public class MeasureTool : MonoBehaviour    //SH
     [SerializeField]
     MeasureToolManager measureToolManager;
     [SerializeField]
-    RoomManager roomManager;
+    MedicineManager medicineManager;
     [SerializeField]
     CounterManager countermanager;
+    [SerializeField]
+    SymptomChartManager symptomChartManager;
 
     GameObject toolObject;
     protected int symptomNumber;
@@ -49,7 +51,7 @@ public class MeasureTool : MonoBehaviour    //SH
     //상속된것들에서 씀
     protected virtual void MeasureEnd()
     {
-        roomManager.SymptomMeasured(toolIndex);
+        symptomChartManager.SymptomMeasured(toolIndex);
         measureEnd = true;
         countermanager.OnMeasureEnd(toolIndex);
     }

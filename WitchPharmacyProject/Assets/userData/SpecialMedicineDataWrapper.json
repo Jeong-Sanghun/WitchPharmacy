@@ -1,0 +1,28 @@
+{
+    "specialMedicineDataList": [
+        {
+            "fileName": "파일",
+            "firstName": "퍼스트",
+            "secondName": "세컨드",
+            "toolTip": "툴팁"
+        },
+        {
+            "fileName": "파일",
+            "firstName": "퍼스트",
+            "secondName": "세컨드",
+            "toolTip": "툴팁"
+        },
+        {
+            "fileName": "파일",
+            "firstName": "퍼스트",
+            "secondName": "세컨드",
+            "toolTip": "툴팁"
+        },
+        {
+            "fileName": "파일",
+            "firstName": "퍼스트",
+            "secondName": "세컨드",
+            "toolTip": "툴팁"
+        }
+    ]
+}

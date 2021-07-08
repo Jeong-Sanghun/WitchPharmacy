@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour //SH
     public RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
     [HideInInspector]
     public RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
-
+    [HideInInspector]
+    public SpecialMedicineDataWrapper specialMedicineDataWrapper;
     //이거는 세이브 로드 확인해볼라고
     [HideInInspector]
     public SymptomDialog symptomDialog;
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour //SH
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
+        specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
         randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
@@ -79,6 +81,12 @@ public class GameManager : MonoBehaviour //SH
             medicineDataWrapper.medicineDataList[i].SetIndex(i);
             medicineDataWrapper.medicineDataList[i].ParseSymptom();
         }
+
+        for (int i = 0; i < specialMedicineDataWrapper.specialMedicineDataList.Count; i++)
+        {
+            specialMedicineDataWrapper.specialMedicineDataList[i].SetIndex(i);
+        }
+
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
         saveData = jsonManager.LoadSaveData();
         nowTime = saveData.nowTime;
@@ -154,6 +162,7 @@ public class GameManager : MonoBehaviour //SH
         conversationDialogBundle = new ConversationDialogBundle();
 
         SpecialVisitorDialogBundle bundle = new SpecialVisitorDialogBundle();
+        SpecialMedicineDataWrapper wrapper = new SpecialMedicineDataWrapper();
 
         jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");    
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
@@ -162,6 +171,7 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<StoreToolDataWrapper>(storeToolDataWrapper, "StoreToolDataWrapper");
         jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
         jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
+        jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
 
         jsonManager.SaveJson(saveData);
         

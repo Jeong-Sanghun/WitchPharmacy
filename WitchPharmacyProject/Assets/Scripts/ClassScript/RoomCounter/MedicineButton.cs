@@ -12,6 +12,7 @@ public class MedicineButton
     public RectTransform buttonRect;    //버튼 rect 계속 getComponent해주기 귀찮아서
     public GameObject medicineObject;   //드래그앤드롭시 약재 오브젝트
     public OwningMedicineClass owningMedicine;     //owningMedicineList에서 가져오는거
+    
     public int medicineIndex;           //약재 딕셔너리의 인덱스
     public int medicineQuant;           //약재 몇개인지
     public Text quantityText;
@@ -38,6 +39,22 @@ public class MedicineButton
         zeroMedicine = false;
     }
 
+    //public MedicineButton(GameObject obj, int index, int quant,
+    //SpecialMedicineClass medicine, GameObject property, GameObject medicineObj,
+    //Text quantText, Text propertyQuantText)
+    //{
+    //    specialMedicineClass = medicine;
+    //    buttonObject = obj;
+    //    propertyObject = property;
+    //    medicineObject = medicineObj;
+    //    buttonRect = buttonObject.GetComponent<RectTransform>();
+    //    medicineIndex = index;
+    //    medicineQuant = quant;
+    //    quantityText = quantText;
+    //    propertyQuantityText = propertyQuantText;
+    //    isActive = false;
+    //    zeroMedicine = false;
+    //}
 
 
 

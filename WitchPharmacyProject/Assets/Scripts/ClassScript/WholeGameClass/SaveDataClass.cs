@@ -24,6 +24,8 @@ public class SaveDataClass
     public List<int> unlockedRegionIndex;
     public List<OwningToolClass> owningToolList;
 
+    public List<OwningMedicineClass> owningSpecialMedicineList;
+
     public string nowCounterDialogBundleName;
     public string nowStoryDialogBundleName;
 
@@ -38,6 +40,7 @@ public class SaveDataClass
         //owningMedicineDictionary = new Dictionary<int, int>();
         ownedMedicineList = new List<int>();
         owningMedicineList = new List<OwningMedicineClass>();
+        owningSpecialMedicineList = new List<OwningMedicineClass>();
         unlockedRegionIndex = new List<int>();
         owningToolList = new List<OwningToolClass>();
 

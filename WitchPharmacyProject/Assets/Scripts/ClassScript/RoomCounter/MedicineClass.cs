@@ -7,13 +7,13 @@ using System;
 //약 1개가 가지고 있는 약 클래스 
 //게임 내에서도 쓰일거고, 제이슨 저장용으로도 쓰일것이다.
 [System.Serializable]
-public class MedicineClass  //SH
+public class MedicineClass : SpecialMedicineClass  //SH
 {
-    int index;
-    public string fileName;
-    public string firstName;
-    public string secondName;
-    public string toolTip;
+    //int index;
+    //public string fileName;
+    //public string firstName;
+    //public string secondName;
+    //public string toolTip;
     public string firstSymptomText;
     public string secondSymptomText;
     Symptom firstSymptom;
@@ -22,20 +22,20 @@ public class MedicineClass  //SH
     public int secondNumber;
     public int cost;
 
-    Sprite medicineImage;
-
+    //Sprite medicineImage;
+      
     //public GameObject realGameobject;
 
 
-    public int GetIndex()
-    {
-        return index;
-    }
+    //public int GetIndex()
+    //{
+    //    return index;
+    //}
 
-    public void SetIndex(int _index)
-    {
-        index = _index;
-    }
+    //public void SetIndex(int _index)
+    //{
+    //    index = _index;
+    //}
 
     public Symptom GetFirstSymptom()
     {
@@ -71,8 +71,20 @@ public class MedicineClass  //SH
         medicineImage = null;
         toolTip = "Tooltip missing";
     }
+    public MedicineClass(SpecialMedicineClass cast)
+    {
+        SetIndex(cast.GetIndex());
+        firstName = cast.firstName;
+        secondName = cast.secondName;
+        medicineImage = cast.LoadImage();
+        firstSymptom = Symptom.water;
+        secondSymptom = Symptom.fire;
+        firstNumber = 1;
+        secondNumber = 2;
+        toolTip = cast.toolTip;
+    }
 
-    public Sprite LoadImage()
+    public new Sprite LoadImage()
     {
         if(medicineImage != null)
         {

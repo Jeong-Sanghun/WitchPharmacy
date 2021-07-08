@@ -15,7 +15,8 @@ public class CounterDialogManager : MonoBehaviour
     RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
     RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
 
-    SpecialVisitorDialogBundle specialVisitorDialogBundle;
+    //로딩을 여기서 한다음에 쫙 뿌려줘야 돼서.
+    public SpecialVisitorDialogBundle specialVisitorDialogBundle;
     SpecialVisitorDialogWrapper nowWrapper;
 
     //중간어들 다이얼로그.
@@ -31,7 +32,11 @@ public class CounterDialogManager : MonoBehaviour
     [SerializeField]
     CounterManager counterManager;
     [SerializeField]
+    MedicineManager medicineManager;
+    [SerializeField]
     RoomManager roomManager;
+    [SerializeField]
+    VisitorTriggerManager visitorTriggerManager;
     [SerializeField]
     Text counterText;
     [SerializeField]
@@ -385,7 +390,8 @@ public class CounterDialogManager : MonoBehaviour
             nowTalking = false;
             counterText.text = "";
             nowState = CounterState.NotTalking;
-            counterManager.CounterStart(specialVisitorDialogBundle.characterName);
+            //counterManager.CounterStart(specialVisitorDialogBundle.characterName);
+            visitorTriggerManager.TriggerCheck();
         }
     }
 
