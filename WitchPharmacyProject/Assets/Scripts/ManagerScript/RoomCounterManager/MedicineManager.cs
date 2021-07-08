@@ -837,6 +837,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         cookedMedicine.medicineArray = indexArray;
 
         StringBuilder builder;
+
         if (medicineCount == 1)
         {
             builder = new StringBuilder(medicineInPotList[0].medicineClass.firstName);
@@ -858,6 +859,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             builder.Append(medicineInPotList[2].medicineClass.secondName);
         }
         cookedMedicine.name = builder.ToString();
+        //더미임
         cookedMedicineText.text = cookedMedicine.name;
 
         for (int i = 0; i < medicineCount; i++)
@@ -883,13 +885,22 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             }
 
         }
-        for (int i = 0; i < 5; i++)
+        if (!isSpecialMedicine)
         {
-            if (isButtonOn[i] == true)
+            for (int i = 0; i < 5; i++)
             {
-                PropertyListButton(i);
+                if (isButtonOn[i] == true)
+                {
+                    PropertyListButton(i);
+                }
             }
+            cookedMedicine.isSpecialMedicine = false;
         }
+        else
+        {
+            cookedMedicine.isSpecialMedicine = true;
+        }
+
 
         medicineInPotList.Clear();
         potMedicineObjectList.Clear();

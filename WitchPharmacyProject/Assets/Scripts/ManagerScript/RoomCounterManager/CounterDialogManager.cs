@@ -7,7 +7,7 @@ using System.Text;
 public class CounterDialogManager : MonoBehaviour
 {
     enum CounterState{
-        Start,Visit, End, NotTalking, SpecialVisitor
+        Start,Visit, End, NotTalking, SpecialVisitor, SpecialVisitorEnd
     }
     GameManager gameManager;
     SceneManager sceneManager;
@@ -225,6 +225,25 @@ public class CounterDialogManager : MonoBehaviour
         EndUpdate();
     }
 
+    public void OnSpecialVisitorEnd(bool wrongMedicine)
+    {
+        nowTalking = true;
+        counterManager.VisitorTalkStart();
+        if (wrongMedicine)
+        {
+
+            nowWrapper = specialVisitorDialogBundle.wrongDialogWrapper;
+        }
+        else
+        {
+            nowWrapper = specialVisitorDialogBundle.answerDialogWrapper;
+        }
+        nowDialogIndex = 0;
+        dialogCount = nowWrapper.specialVisitorDialogList.Count;
+        nowState = CounterState.SpecialVisitorEnd;
+        SpecialVisitorEndUpdate();
+    }
+
 
 
     // Update is called once per frame
@@ -250,6 +269,9 @@ public class CounterDialogManager : MonoBehaviour
                     break;
                 case CounterState.SpecialVisitor:
                     SpecialVisitorUpdate();
+                    break;
+                case CounterState.SpecialVisitorEnd:
+                    SpecialVisitorEndUpdate();
                     break;
                 default:
                     break;
@@ -429,6 +451,44 @@ public class CounterDialogManager : MonoBehaviour
             nowState = CounterState.NotTalking;
             counterManager.VisitorDisappear();
             visitorRuelliaToggle = true;
+        }
+    }
+
+    void SpecialVisitorEndUpdate()
+    {
+        if (nowDialogIndex < dialogCount)
+        {
+            if (!nowWrapper.specialVisitorDialogList[nowDialogIndex].ruelliaTalking)
+            {
+                if (!visitorText.transform.parent.gameObject.activeSelf)
+                    visitorText.transform.parent.gameObject.SetActive(true);
+                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+                MakeBackLog(true, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
+                nowDialogIndex++;
+            }
+            else
+            {
+                if (!ruelliaText.transform.parent.gameObject.activeSelf)
+                    ruelliaText.transform.parent.gameObject.SetActive(true);
+                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+                MakeBackLog(false, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
+                nowDialogIndex++;
+
+            }
+        }
+        else
+        {
+            nowTalking = false;
+            counterManager.VisitorDisappear();
+            ruelliaText.transform.parent.gameObject.SetActive(false);
+            visitorText.transform.parent.gameObject.SetActive(false);
+            ruelliaText.text = "";
+            visitorText.text = "";
+            nowState = CounterState.NotTalking;
+            isRouted = false;
+
         }
     }
 }

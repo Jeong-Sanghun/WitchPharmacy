@@ -1,6 +1,7 @@
 {
     "bundleName": "testBundle",
     "characterName": "Lily",
+    "answerMedicineName" : "withered_dew",
     "conversationRouter": {
         "routingWrapperName": [
             "1",
@@ -83,5 +84,63 @@
                 }
             ]
         }
-    ]
+    ],
+    "answerDialogWrapper": {
+        "wrapperName": "answer",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "아니 왜이렇게 써? 제대로 준거 맞아?"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "원래 몸에 좋은 약이 쓴 법이야. 일부러 쓰게 만든거도 있긴 하지만"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "진짜 악질이다."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "그래도 좀 낫는거 같네. 고맙다. 잘있고"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "그래 다음에 또 봐"
+                }
+        
+        ]
+    },
+    "wrongDialogWrapper": {
+        "wrapperName": "wrong",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "약이 이렇게 달달해보여도 되는거야? 거의 타이레놀 시럽인데?"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "원래 입에 달면 속에는 안좋은 법인데,.. 너 안나을 수도 있겠다."
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "아 잘못만들었네...."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "뭐하냐 대체...약사 맞아? 어째 낫는 기분이 안든다 했어."
+                }
+        ]
+    }
 }

@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour //SH
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
 
-        //DebugDataJson();
+        DebugDataJson();
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
         jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
 
-        jsonManager.SaveJson(saveData);
+        //jsonManager.SaveJson(saveData);
         
         //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");

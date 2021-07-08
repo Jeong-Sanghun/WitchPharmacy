@@ -77,10 +77,10 @@ public class MedicineClass : SpecialMedicineClass  //SH
         firstName = cast.firstName;
         secondName = cast.secondName;
         medicineImage = cast.LoadImage();
-        firstSymptom = Symptom.water;
-        secondSymptom = Symptom.fire;
-        firstNumber = 1;
-        secondNumber = 2;
+        firstSymptom = Symptom.special;
+        secondSymptom = Symptom.special;
+        firstNumber = 0;
+        secondNumber = 0;
         toolTip = cast.toolTip;
     }
 

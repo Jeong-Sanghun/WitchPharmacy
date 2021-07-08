@@ -1,6 +1,7 @@
 {
     "bundleName": "testBundle",
     "characterName": "Lily",
+    "answerMedicineName": "",
     "conversationRouter": {
         "routingWrapperName": [
             "1",
@@ -88,5 +89,13 @@
                 }
             ]
         }
-    ]
+    ],
+    "answerDialogWrapper": {
+        "wrapperName": "",
+        "specialVisitorDialogList": []
+    },
+    "wrongDialogWrapper": {
+        "wrapperName": "",
+        "specialVisitorDialogList": []
+    }
 }

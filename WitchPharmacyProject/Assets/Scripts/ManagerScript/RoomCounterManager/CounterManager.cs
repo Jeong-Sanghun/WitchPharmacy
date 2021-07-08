@@ -94,6 +94,8 @@ public class CounterManager : MonoBehaviour //SH
     Text gainedCoinText;
     Vector3 gainedCoinObjectOriginPos;
 
+    SpecialVisitorDialogBundle specialVisitorDialogBundle;
+    List<SpecialMedicineClass> specialMedicineDataList;
 
     void Start()
     {
@@ -104,6 +106,7 @@ public class CounterManager : MonoBehaviour //SH
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         ownedMedicineIndexList = saveData.ownedMedicineList;
         measureToolArray = measureToolManager.measureToolArray;
+        specialMedicineDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
         ownedMedicineList = new List<MedicineClass>();
         for(int i = 0; i < ownedMedicineIndexList.Count; i++)
         {
@@ -117,6 +120,7 @@ public class CounterManager : MonoBehaviour //SH
         gainedCoinObjectOriginPos = gainedCoinText.transform.position;
 
         randomVisitorList = new List<RandomVisitorClass>();
+        specialVisitorDialogBundle = counterDialogManager.specialVisitorDialogBundle;
 
         measureToolOriginPosArray = new Vector3[5];
         symptomCheckArray = new int[6];
@@ -168,12 +172,14 @@ public class CounterManager : MonoBehaviour //SH
         SpawnSpecialVisitor(characterName);
     }
 
+    //카운터 다이얼로그 매니저에서 불러옴.
     public void VisitorTalkEnd()
     {
         symptomChartOpenButton.SetActive(true);
         measureToolOpenButton.SetActive(true);
     }
 
+    //카운터 다이얼로그 매니저에서 불러옴
     public void VisitorTalkStart()
     {
         symptomChartOpenButton.SetActive(false);
@@ -251,38 +257,56 @@ public class CounterManager : MonoBehaviour //SH
     //cookedMedicineManager의 pointerUP에서 호출
     public void OnMedicineDelivery(CookedMedicine medicine)
     {
-        int[] medicineIndexArray = medicine.medicineArray;
-        int[] medicineSymptomArray = new int[6];
-        int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
         bool wrongMedicine = false;
-        List<Symptom> badSymptomList = new List<Symptom>();
-        for(int i =0; i < 6; i++)
+        if (medicine.isSpecialMedicine)
         {
-            medicineSymptomArray[i] = 0;
-        }
-        for(int i = 0; i < medicine.medicineCount; i++)
-        {
-            MedicineClass med = medicineDataList[medicineIndexArray[i]];
-            //if (med.firstSymptom == Symptom.none)
-            //{
-            //    continue;
-            //}
-            medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
-            medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
-        }
-        for(int i = 0; i < 6; i++)
-        {
-            if(medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
+            if(specialMedicineDataList[medicine.medicineArray[0]].fileName == specialVisitorDialogBundle.answerMedicineName)
+            {
+                wrongMedicine = false;
+            }
+            else
             {
                 wrongMedicine = true;
-                badSymptomList.Add((Symptom)i);
             }
+            counterDialogManager.OnSpecialVisitorEnd(wrongMedicine);
         }
+        else
+        {
+            int[] medicineIndexArray = medicine.medicineArray;
+            int[] medicineSymptomArray = new int[6];
+            int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
+
+            List<Symptom> badSymptomList = new List<Symptom>();
+            for (int i = 0; i < 6; i++)
+            {
+                medicineSymptomArray[i] = 0;
+            }
+            for (int i = 0; i < medicine.medicineCount; i++)
+            {
+                MedicineClass med = medicineDataList[medicineIndexArray[i]];
+                //if (med.firstSymptom == Symptom.none)
+                //{
+                //    continue;
+                //}
+                medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
+                medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                if (medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
+                {
+                    wrongMedicine = true;
+                    badSymptomList.Add((Symptom)i);
+                }
+            }
+            counterDialogManager.OnVisitorEnd(wrongMedicine);
+        }
+        
         if (!wrongMedicine)
         {
             CoinGain();
         }
-        counterDialogManager.OnVisitorEnd(wrongMedicine);
+
 
     }
 

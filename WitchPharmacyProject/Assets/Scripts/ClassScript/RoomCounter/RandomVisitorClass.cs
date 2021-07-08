@@ -7,7 +7,7 @@ using System.Text;
 public enum Symptom
 {
     //0     1     2     3    4 
-    water, fire, earth, air, light, none
+    water, fire, earth, air, light, none, special
 }
 
 //랜덤캐릭터 할 때 한요소가 두개씩 있는경우가 있어서 그럼.
