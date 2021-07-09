@@ -74,6 +74,7 @@ public class MedicineClass : SpecialMedicineClass  //SH
     public MedicineClass(SpecialMedicineClass cast)
     {
         SetIndex(cast.GetIndex());
+        fileName = cast.fileName;
         firstName = cast.firstName;
         secondName = cast.secondName;
         medicineImage = cast.LoadImage();

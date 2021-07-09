@@ -203,9 +203,28 @@ public class CounterManager : MonoBehaviour //SH
         }
         counterDialogManager.nowTalking = true;
         medicineManager.SpecialVisitorVisits();
+        measureToolManager.OnNewVisitor(specialVisitorDialogBundle.symptomNumberArray);
         nowSpecialVisitor = new SpecialVisitorClass(visitorParent, characterName);
+        symptomChartManager.SpecialVisitorVisits(specialVisitorDialogBundle.symptomNumberArray);
         //쫙 뿌려준다
+        for (int i = 0; i < toggleGroupArray.Length; i++)
+        {
+            for (int j = i * 5; j < i * 5 + 5; j++)
+            {
+                toggleArray[j].isOn = false;
+                toggleArray[j].group = toggleGroupArray[i];
+            }
+            //toggleGroupArray[i].SetAllTogglesOff();
+
+
+        }
+        for (int i = 0; i < symptomCheckArray.Length; i++)
+        {
+            symptomCheckedArray[i] = false;
+            symptomCheckArray[i] = 0;
+        }
         StartCoroutine(VisitorAppearCoroutine());
+        symptomChartManager.ChangeSymptomChartText();
     }
 
 
@@ -232,6 +251,7 @@ public class CounterManager : MonoBehaviour //SH
         randomVisitorList.Add(nowVisitor);
         medicineManager.VisitorVisits(nowVisitor);
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
+        symptomChartManager.VisitorVisits(nowVisitor);
         index++;
         StartCoroutine(VisitorAppearCoroutine());
 
@@ -252,23 +272,77 @@ public class CounterManager : MonoBehaviour //SH
             symptomCheckedArray[i] = false;
             symptomCheckArray[i] = 0;
         }
+        symptomChartManager.ChangeSymptomChartText();
     }
 
     //cookedMedicineManager의 pointerUP에서 호출
     public void OnMedicineDelivery(CookedMedicine medicine)
     {
         bool wrongMedicine = false;
-        if (medicine.isSpecialMedicine)
+        if (isSpecialVisitor)
         {
-            if(specialMedicineDataList[medicine.medicineArray[0]].fileName == specialVisitorDialogBundle.answerMedicineName)
+            bool specialWrong = true;
+            for (int i = 0; i < medicine.medicineCount; i++)
             {
-                wrongMedicine = false;
+                if (medicine.specialArray[i] == false)
+                {
+                    continue;
+                }
+                if (specialVisitorDialogBundle.answerSpecialMedicineName == specialMedicineDataList[medicine.medicineArray[i]].fileName)
+                {
+                    specialWrong = false;
+                    break;
+                }
+            }
+            if(specialWrong == false)
+            {
+
+                int[] medicineIndexArray = medicine.medicineArray;
+                int[] medicineSymptomArray = new int[5];
+                int[] visitorSymptomArray = specialVisitorDialogBundle.symptomNumberArray;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    medicineSymptomArray[i] = 0;
+                }
+                for (int i = 0; i < medicine.medicineCount; i++)
+                {
+                    if (medicine.specialArray[i] == true)
+                    {
+                        continue;
+                    }
+                    MedicineClass med = medicineDataList[medicineIndexArray[i]];
+
+                    medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
+                    medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    if (medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
+                    {
+                        wrongMedicine = true;
+                        break;
+                    }
+                }
+                if (!specialWrong && !wrongMedicine)
+                {
+                    wrongMedicine = false;
+                }
+                else
+                {
+                    wrongMedicine = true;
+                }
+                counterDialogManager.OnSpecialVisitorEnd(wrongMedicine);
             }
             else
             {
+                Debug.Log(specialWrong);
                 wrongMedicine = true;
+                counterDialogManager.OnSpecialVisitorEnd(specialWrong);
             }
-            counterDialogManager.OnSpecialVisitorEnd(wrongMedicine);
+
+           
+
         }
         else
         {
@@ -394,7 +468,17 @@ public class CounterManager : MonoBehaviour //SH
         {
             if (measureToolArray[symptomToggleIndex].measureEnd)
             {
-                int fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
+                int fixedToggle;
+                if (isSpecialVisitor)
+                {
+                    fixedToggle = symptomToggleIndex * 5 + 2 + specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
+
+                }
+                else
+                {
+                    fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
+                }
+                
 
                 for (int i = symptomToggleIndex * 5; i < symptomToggleIndex*5 + 5; i++)
                 {
@@ -412,7 +496,18 @@ public class CounterManager : MonoBehaviour //SH
                 }
 
                 symptomCheckedArray[symptomToggleIndex] = true;
-                symptomCheckArray[symptomToggleIndex] = nowVisitor.symptomAmountArray[symptomToggleIndex];
+
+                if (isSpecialVisitor)
+                {
+                    symptomCheckArray[symptomToggleIndex] = specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
+
+                }
+                else
+                {
+                    symptomCheckArray[symptomToggleIndex] = nowVisitor.symptomAmountArray[symptomToggleIndex];
+                }
+
+
 
             }
             else
@@ -455,7 +550,16 @@ public class CounterManager : MonoBehaviour //SH
 
         Debug.Log("메저 엔드");
         //int pushedToggle = symptomToggleIndex * 5 + 2 + amount;
-        int fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
+        int fixedToggle;
+        if (isSpecialVisitor)
+        {
+            fixedToggle = symptomToggleIndex * 5 + 2 + specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
+        }
+        else
+        {
+            fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
+        }
+         
         toggleGroupArray[symptomToggleIndex].SetAllTogglesOff();
 
         for (int i = symptomToggleIndex * 5; i < symptomToggleIndex*5 + 5; i++)

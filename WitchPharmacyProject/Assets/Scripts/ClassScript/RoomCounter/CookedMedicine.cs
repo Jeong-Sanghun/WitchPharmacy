@@ -7,18 +7,20 @@ public class CookedMedicine
 {
     public string name;
     public int[] medicineArray;
+    public bool[] specialArray;
     public GameObject medicineObject;
     public int medicineCount;
-    public bool isSpecialMedicine;
 
     public CookedMedicine()
     {
         name = "null";
         medicineArray = new int[3];
+        specialArray = new bool[3];
         for(int i = 0; i < 3; i++)
         {
             medicineArray[i] = 0;
+            specialArray[i] = false;
         }
-        isSpecialMedicine = false;
+        
     }
 }

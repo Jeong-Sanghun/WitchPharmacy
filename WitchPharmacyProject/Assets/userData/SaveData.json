@@ -23,56 +23,84 @@
         16,
         17,
         18,
-        19
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 5
-        },
-        {
-            "medicineIndex": 1,
-            "medicineQuantity": 8
-        },
-        {
-            "medicineIndex": 2,
-            "medicineQuantity": 9
-        },
-        {
-            "medicineIndex": 3,
-            "medicineQuantity": 9
-        },
-        {
-            "medicineIndex": 4,
             "medicineQuantity": 4
         },
         {
-            "medicineIndex": 5,
-            "medicineQuantity": 2
+            "medicineIndex": 1,
+            "medicineQuantity": 11
         },
         {
-            "medicineIndex": 6,
-            "medicineQuantity": 3
-        },
-        {
-            "medicineIndex": 7,
-            "medicineQuantity": 8
-        },
-        {
-            "medicineIndex": 8,
+            "medicineIndex": 2,
             "medicineQuantity": 7
         },
         {
-            "medicineIndex": 9,
+            "medicineIndex": 3,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 4,
+            "medicineQuantity": 9
+        },
+        {
+            "medicineIndex": 5,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 6,
             "medicineQuantity": 10
         },
         {
+            "medicineIndex": 7,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 8,
+            "medicineQuantity": 12
+        },
+        {
+            "medicineIndex": 9,
+            "medicineQuantity": 6
+        },
+        {
             "medicineIndex": 10,
-            "medicineQuantity": 2
+            "medicineQuantity": 3
         },
         {
             "medicineIndex": 11,
-            "medicineQuantity": 1
+            "medicineQuantity": 3
         },
         {
             "medicineIndex": 12,
@@ -80,31 +108,143 @@
         },
         {
             "medicineIndex": 13,
-            "medicineQuantity": 2
+            "medicineQuantity": 3
         },
         {
             "medicineIndex": 14,
-            "medicineQuantity": 8
+            "medicineQuantity": 3
         },
         {
             "medicineIndex": 15,
-            "medicineQuantity": 8
-        },
-        {
-            "medicineIndex": 16,
             "medicineQuantity": 11
         },
         {
-            "medicineIndex": 17,
-            "medicineQuantity": 6
+            "medicineIndex": 16,
+            "medicineQuantity": 9
         },
         {
-            "medicineIndex": 18,
+            "medicineIndex": 17,
             "medicineQuantity": 5
         },
         {
+            "medicineIndex": 18,
+            "medicineQuantity": 11
+        },
+        {
             "medicineIndex": 19,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 20,
+            "medicineQuantity": 3
+        },
+        {
+            "medicineIndex": 21,
+            "medicineQuantity": 7
+        },
+        {
+            "medicineIndex": 22,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 23,
+            "medicineQuantity": 7
+        },
+        {
+            "medicineIndex": 24,
+            "medicineQuantity": 3
+        },
+        {
+            "medicineIndex": 25,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 26,
+            "medicineQuantity": 11
+        },
+        {
+            "medicineIndex": 27,
             "medicineQuantity": 12
+        },
+        {
+            "medicineIndex": 28,
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 29,
+            "medicineQuantity": 8
+        },
+        {
+            "medicineIndex": 30,
+            "medicineQuantity": 5
+        },
+        {
+            "medicineIndex": 31,
+            "medicineQuantity": 2
+        },
+        {
+            "medicineIndex": 32,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 33,
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 34,
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 35,
+            "medicineQuantity": 11
+        },
+        {
+            "medicineIndex": 36,
+            "medicineQuantity": 6
+        },
+        {
+            "medicineIndex": 37,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 38,
+            "medicineQuantity": 11
+        },
+        {
+            "medicineIndex": 39,
+            "medicineQuantity": 5
+        },
+        {
+            "medicineIndex": 40,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 41,
+            "medicineQuantity": 3
+        },
+        {
+            "medicineIndex": 42,
+            "medicineQuantity": 11
+        },
+        {
+            "medicineIndex": 43,
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 44,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 45,
+            "medicineQuantity": 7
+        },
+        {
+            "medicineIndex": 46,
+            "medicineQuantity": 3
+        },
+        {
+            "medicineIndex": 47,
+            "medicineQuantity": 3
         }
     ],
     "unlockedRegionIndex": [
@@ -120,23 +260,15 @@
         9
     ],
     "owningToolList": [],
-    "owningSpecialMedicineList":
+    "owningSpecialMedicineList": 
 	[
-	{
+	 {
             "medicineIndex": 0,
-            "medicineQuantity": 5
+            "medicineQuantity": 4
         },
         {
             "medicineIndex": 1,
-            "medicineQuantity": 8
-        },
-        {
-            "medicineIndex": 2,
-            "medicineQuantity": 9
-        },
-        {
-            "medicineIndex": 3,
-            "medicineQuantity": 9
+            "medicineQuantity": 11
         }
 	],
     "nowCounterDialogBundleName": "testBundle",

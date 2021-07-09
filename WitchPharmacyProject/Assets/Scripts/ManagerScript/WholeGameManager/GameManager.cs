@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour //SH
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
 
-        DebugDataJson();
+        //DebugDataJson();
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");

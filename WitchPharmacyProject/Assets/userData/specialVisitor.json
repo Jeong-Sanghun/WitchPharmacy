@@ -1,7 +1,8 @@
 {
     "bundleName": "testBundle",
     "characterName": "Lily",
-    "answerMedicineName": "",
+    "answerSpecialMedicineName": "",
+    "symptomNumberArray": [],
     "conversationRouter": {
         "routingWrapperName": [
             "1",

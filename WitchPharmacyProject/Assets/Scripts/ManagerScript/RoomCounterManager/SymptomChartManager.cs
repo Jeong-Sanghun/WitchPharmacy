@@ -21,7 +21,7 @@ public class SymptomChartManager : MonoBehaviour
 
     List<MedicineButton> medicineInPotList;
     RandomVisitorClass nowVisitor;
-
+    int[] symptomAmountArray;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class SymptomChartManager : MonoBehaviour
         {
             symptomMeasuredArray[i] = false;
         }
-        medicineInPotList = medicineManager.medicineInPotList;
+
     }
 
     //증상기록 켜는 버튼, 끄는 버튼에서 여는거.
@@ -59,17 +59,28 @@ public class SymptomChartManager : MonoBehaviour
         {
             symptomMeasuredArray[i] = false;
         }
+        symptomAmountArray = visitor.symptomAmountArray;
+        medicineInPotList = medicineManager.medicineInPotList;
     }
 
+    public void SpecialVisitorVisits(int[] array)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            symptomMeasuredArray[i] = false;
+        }
+        symptomAmountArray = array;
+        medicineInPotList = medicineManager.medicineInPotList;
+    }
 
 
     //차트가 변할 때 얘도 같이 변해야한다. counterManager의 symptomCheckToggle에서 호출
     public void ChangeSymptomChartText()
     {
-        if (nowVisitor == null)
-        {
-            return;
-        }
+        //if (nowVisitor == null)
+        //{
+        //    return;
+        //}
         int[] array = new int[6];
         for (int i = 0; i < 5; i++)
         {
@@ -81,7 +92,8 @@ public class SymptomChartManager : MonoBehaviour
             //{
             if (symptomMeasuredArray[i] == true)
             {
-                array[i] = nowVisitor.symptomAmountArray[i];
+                
+                array[i] = symptomAmountArray[i];
             }
             else
             {
@@ -91,13 +103,18 @@ public class SymptomChartManager : MonoBehaviour
 
 
         }
-        for (int i = 0; i < medicineInPotList.Count; i++)
+        if(medicineInPotList != null)
         {
-            int firstSymtpom = (int)medicineInPotList[i].medicineClass.GetFirstSymptom();
-            array[firstSymtpom] += medicineInPotList[i].medicineClass.firstNumber;
+            Debug.Log("이거오애ㅏㄴ돼");
+            for (int i = 0; i < medicineInPotList.Count; i++)
+            {
+                int firstSymtpom = (int)medicineInPotList[i].medicineClass.GetFirstSymptom();
+                array[firstSymtpom] += medicineInPotList[i].medicineClass.firstNumber;
 
-            int secondSymtpom = (int)medicineInPotList[i].medicineClass.GetSecondSymptom();
-            array[secondSymtpom] += medicineInPotList[i].medicineClass.secondNumber;
+                int secondSymtpom = (int)medicineInPotList[i].medicineClass.GetSecondSymptom();
+                array[secondSymtpom] += medicineInPotList[i].medicineClass.secondNumber;
+            }
+
         }
 
         for (int i = 0; i < 5; i++)

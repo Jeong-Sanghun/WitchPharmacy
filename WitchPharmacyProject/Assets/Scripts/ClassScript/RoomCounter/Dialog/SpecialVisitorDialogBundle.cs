@@ -7,7 +7,8 @@ public class SpecialVisitorDialogBundle
 {
     public string bundleName;
     public string characterName;
-    public string answerMedicineName;
+    public string answerSpecialMedicineName;
+    public int[] symptomNumberArray;
     public ConversationRouter conversationRouter;
     public List<SpecialVisitorDialogWrapper> specialVisitorDialogWrapperList;
     public SpecialVisitorDialogWrapper answerDialogWrapper;

@@ -34,12 +34,12 @@ public class MedicineManager : MonoBehaviour    //SH
     //버튼도 이 아래에 생성할거여서 따로 드래그앤드롭 해줘야함. GetChild로 받아왔는데 순서꼬이면 귀찮아짐.
     [SerializeField]
     RectTransform regularScrollContent;
-    [SerializeField]
-    RectTransform specialScrollContent;
+    //[SerializeField]
+    //RectTransform specialScrollContent;
     [SerializeField]
     GameObject regularScrollUIParent;
-    [SerializeField]
-    GameObject specialScrollUIParent;
+    //[SerializeField]
+    //GameObject specialScrollUIParent;
 
     [SerializeField]
     GameObject scrollObject;
@@ -74,7 +74,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
 
     List<MedicineButton> wholeMedicineButtonList;
-    List<MedicineButton> wholeSpecialMedicineButtonList;
+    //List<MedicineButton> wholeSpecialMedicineButtonList;
     //int[] contentButtonQuantityArray;
     bool[] isButtonOn;
 
@@ -146,7 +146,7 @@ public class MedicineManager : MonoBehaviour    //SH
         owningSpecialMedicineList = saveData.owningSpecialMedicineList;
         specialMedicineDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
         isDraggingMedicineFromPot = false;
-        isButtonOn = new bool[5];
+        isButtonOn = new bool[6];
         for (int i = 0; i < isButtonOn.Length; i++)
         {
             isButtonOn[i] = false;
@@ -154,7 +154,7 @@ public class MedicineManager : MonoBehaviour    //SH
         wholeMedicineButtonList = new List<MedicineButton>();
         medicineInPotList = new List<MedicineButton>();
         potMedicineObjectList = new List<GameObject>();
-        wholeSpecialMedicineButtonList = new List<MedicineButton>();
+        //wholeSpecialMedicineButtonList = new List<MedicineButton>();
 
         isPotCooked = false;
         cookButtonObject.SetActive(false);
@@ -249,7 +249,6 @@ public class MedicineManager : MonoBehaviour    //SH
             //wholeMedicienButtonList의 index임.
 
         }
-        buttonIndex = 0;
         for (int i = 0; i < owningSpecialMedicineList.Count; i++)
         {
             //내가 가졌던거중에 없으면 컨티뉴
@@ -275,7 +274,7 @@ public class MedicineManager : MonoBehaviour    //SH
             prefabButtonSecondEffectNumber.text = null;
             //버튼 세팅 다 해서 instantiate하고 리스트에 넣어줌.
             //이제 이 리스트에서 active하고 위치바꿔주고 그럴거임.
-            GameObject buttonObject = Instantiate(medicineButtonPrefab, specialScrollContent.transform);
+            GameObject buttonObject = Instantiate(medicineButtonPrefab, regularScrollContent.transform);
             buttonObject.SetActive(true);
             GameObject propertyObject = Instantiate(medicineButtonPrefab, propertyObjectParent);
             propertyObject.SetActive(false);
@@ -294,7 +293,7 @@ public class MedicineManager : MonoBehaviour    //SH
                  cast, propertyObject, medicineObj, quantText, propertyQuantText);
             buttonClass.owningMedicine = owningMedicine;
             buttonClass.isActive = true;
-            wholeSpecialMedicineButtonList.Add(buttonClass);
+            wholeMedicineButtonList.Add(buttonClass);
             //이 위까지가 프리팹들 다 설정해서 whoelMedicineButtonList에 buttonClass를 추가하는거임.
             //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
             //정훈아 미안해 이거 주석 다 못적겠어. 그냥 그러려니 해. 셋업이야.
@@ -327,7 +326,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
         }
 
-        SpecialScrollAlign();
+        //SpecialScrollAlign();
         PropertyListButton(0);
         PropertyListButton(0);
 
@@ -349,6 +348,7 @@ public class MedicineManager : MonoBehaviour    //SH
         {
             //손 뗄 때 내가 약을 들고있는 상태인지, 그거를 누구 위에 올려놓았는지 판단.
             OnButtonUp();
+
         }
         if (Input.GetMouseButtonDown(0) && isPotCooked == false)
         {
@@ -360,24 +360,17 @@ public class MedicineManager : MonoBehaviour    //SH
                 //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
                 if (touchedObject.CompareTag("PotMedicine"))
                 {
-                    bool breaking = false;
                     for (int i = 0; i < medicineInPotList.Count; i++)
                     {
-                        for(int j = 0; j < 3; j++)
+                        if (touchedObject == potMedicineParentArray[i])
                         {
-                            if (touchedObject == potMedicineParentArray[j])
-                            {
-                                draggingObject = medicineInPotList[i].medicineObject;
-                                draggingObject.SetActive(true);
-                                touchedObject.SetActive(false);
-                                breaking = true;
-                                break;
-                            }
-                        }
-                        if (breaking)
-                        {
+                            draggingObject = medicineInPotList[i].medicineObject;
+                            Debug.Log(medicineInPotList[i].medicineClass.fileName);
+                            draggingObject.SetActive(true);
+                            touchedObject.SetActive(false);
                             break;
                         }
+
                     }
                     isDraggingMedicineFromPot = true;
                     Debug.Log("왜안돼");
@@ -413,91 +406,52 @@ public class MedicineManager : MonoBehaviour    //SH
 
     void RemoveMedicineFromPot()
     {
-        if (isSpecialMedicine)
+        int listIndex = touchedObject.transform.GetSiblingIndex();
+        if (medicineInPotList.Count > listIndex)
         {
-            MedicineButton medicine = medicineInPotList[0];
-            potMedicineObjectList[0].SetActive(false);
+            MedicineButton medicine = medicineInPotList[listIndex];
             medicine.medicineQuant++;
             medicine.quantityText.text = medicine.medicineQuant.ToString();
             medicine.propertyQuantityText.text = medicine.medicineQuant.ToString();
-            potMedicineObjectList.Clear();
-            medicineInPotList.Clear();
-            cookButtonObject.SetActive(false);
-        }
-        else
-        {
-            int listIndex = touchedObject.transform.GetSiblingIndex();
-            if (medicineInPotList.Count > listIndex)
+            //potMedicineObjectList[listIndex].SetActive(false);
+            Destroy(potMedicineObjectList[listIndex]);
+
+            if (medicineInPotList.Count == 2)
             {
-                MedicineButton medicine = medicineInPotList[listIndex];
-                medicine.medicineQuant++;
-                medicine.quantityText.text = medicine.medicineQuant.ToString();
-                medicine.propertyQuantityText.text = medicine.medicineQuant.ToString();
-                potMedicineObjectList[listIndex].SetActive(false);
-
-                if (medicineInPotList.Count == 2)
+                if (listIndex == 0)
                 {
-                    if (listIndex == 0)
-                    {
-                        potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
-                        potMedicineObjectList[1].transform.localPosition = Vector3.zero;
-                    }
+                    potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
+                    potMedicineObjectList[1].transform.localPosition = Vector3.zero;
                 }
-                else if (medicineInPotList.Count == 3)
-                {
-                    if (listIndex == 0)
-                    {
-                        potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
-                        potMedicineObjectList[1].transform.localPosition = Vector3.zero;
-                        potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
-                        potMedicineObjectList[2].transform.localPosition = Vector3.zero;
-                    }
-                    else if (listIndex == 1)
-                    {
-                        potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
-                        potMedicineObjectList[2].transform.localPosition = Vector3.zero;
-                    }
-                }
-                potMedicineObjectList.RemoveAt(listIndex);
-                medicineInPotList.RemoveAt(listIndex);
-                symptomChartManager.ChangeSymptomChartText();
-
-                if (medicineInPotList.Count == 0)
-                {
-                    cookButtonObject.SetActive(false);
-                }
-
-
             }
+            else if (medicineInPotList.Count == 3)
+            {
+                if (listIndex == 0)
+                {
+                    potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
+                    potMedicineObjectList[1].transform.localPosition = Vector3.zero;
+                    potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
+                    potMedicineObjectList[2].transform.localPosition = Vector3.zero;
+                }
+                else if (listIndex == 1)
+                {
+                    potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
+                    potMedicineObjectList[2].transform.localPosition = Vector3.zero;
+                }
+            }
+            potMedicineObjectList.RemoveAt(listIndex);
+            medicineInPotList.RemoveAt(listIndex);
+            symptomChartManager.ChangeSymptomChartText();
+
+            if (medicineInPotList.Count == 0)
+            {
+                cookButtonObject.SetActive(false);
+            }
+
+
         }
-       
+
     }
-
-    void SpecialScrollAlign()
-    {
-
-        int buttonQuantity = 0;
-        for (int i = 0; i < wholeSpecialMedicineButtonList.Count; i++)
-        {
-            if(wholeSpecialMedicineButtonList[i].medicineQuant == 0)
-            {
-                wholeSpecialMedicineButtonList[i].isActive = false;
-            }
-            if (wholeSpecialMedicineButtonList[i].isActive)
-            {
-                wholeSpecialMedicineButtonList[i].buttonObject.SetActive(true);
-                wholeSpecialMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -90 - buttonQuantity * 180);
-                buttonQuantity++;
-            }
-            if (wholeSpecialMedicineButtonList[i].isActive == false)
-            {
-                wholeMedicineButtonList[i].buttonObject.SetActive(false);
-            }
-        }
-
-        specialScrollContent.sizeDelta = new Vector2(0, 180 * buttonQuantity);
-    }
-
 
     //속성 누르면 그 속성 아이템 뜨게하는 버튼
     public void PropertyListButton(int index)
@@ -513,7 +467,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
             isButtonOn[index] = false;
             int pushedButton = 0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (isButtonOn[i])
                 {
@@ -545,16 +499,6 @@ public class MedicineManager : MonoBehaviour    //SH
                         wholeMedicineButtonList[i].isActive = true;
                     }
                 }
-                //else
-                //{
-                //    //                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] ||
-                //    //isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
-                //    //                    {
-                //    //                        wholeMedicineButtonList[i].isActive = true;
-                //    //                    }
-
-                //    wholeMedicineButtonList[i].isActive = true;
-                //}
             }
         }
         else
@@ -563,7 +507,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
             isButtonOn[index] = true;
             int pushedButton = 0;
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < 6; i++)
             {
                 if (isButtonOn[i])
                 {
@@ -577,11 +521,6 @@ public class MedicineManager : MonoBehaviour    //SH
                     wholeMedicineButtonList[i].isActive = false;
                     continue;
                 }
-                //if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.none)
-                //{
-                //    wholeMedicineButtonList[i].isActive = true;
-                //    continue;
-                //}
                 if (pushedButton > 1)
                 {
                     if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
@@ -615,6 +554,10 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
 
         for (int i = 0; i < wholeMedicineButtonList.Count; i++)
         {
+            if(wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.special && !isSpecialMedicine)
+            {
+                wholeMedicineButtonList[i].isActive = false;
+            }
             if (wholeMedicineButtonList[i].isActive)
             {
                 wholeMedicineButtonList[i].buttonObject.SetActive(true);
@@ -637,26 +580,14 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
     //버튼을 드래그해서 팟에 넣는거.
     void OnButtonDrag(PointerEventData data, int index)
     {
-        if (isSpecialMedicine)
+
+        if ((wholeMedicineButtonList[index].medicineQuant <= 0) || isPotCooked)
         {
-            if ((wholeSpecialMedicineButtonList[index].medicineQuant <= 0) || isPotCooked)
-            {
-                return;
-            }
-            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
-            wholeSpecialMedicineButtonList[index].medicineObject.SetActive(true);
-            wholeSpecialMedicineButtonList[index].medicineObject.transform.position = new Vector3(mousePos.x, mousePos.y, -8);
+            return;
         }
-        else
-        {
-            if ((wholeMedicineButtonList[index].medicineQuant <= 0) || isPotCooked)
-            {
-                return;
-            }
-            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
-            wholeMedicineButtonList[index].medicineObject.SetActive(true);
-            wholeMedicineButtonList[index].medicineObject.transform.position = new Vector3(mousePos.x, mousePos.y, -8);
-        }
+        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
+        wholeMedicineButtonList[index].medicineObject.SetActive(true);
+        wholeMedicineButtonList[index].medicineObject.transform.position = new Vector3(mousePos.x, mousePos.y, -8);
 
         nowButtonIndex = index;
         dragged = true;
@@ -670,30 +601,16 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         {
             return;
         }
-        if (isSpecialMedicine)
-        {
-            if (nowButtonIndex != -1 && dragged == true)
-            {
-                wholeSpecialMedicineButtonList[nowButtonIndex].medicineObject.SetActive(false);
-            }
-            else
-            {
-                return;
-            }
 
+        if (nowButtonIndex != -1 && dragged == true)
+        {
+            wholeMedicineButtonList[nowButtonIndex].medicineObject.SetActive(false);
         }
         else
         {
-            if (nowButtonIndex != -1 && dragged == true)
-            {
-                wholeMedicineButtonList[nowButtonIndex].medicineObject.SetActive(false);
-            }
-            else
-            {
-                return;
-            }
-
+            return;
         }
+
         //nowButtonIndex = -1;
         dragged = false;
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
@@ -716,28 +633,15 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         int nowPotIndex;
         nowPotIndex = medicineInPotList.Count;
 
-        if (isSpecialMedicine)
+
+        if (nowPotIndex >= 3)
         {
-            if (nowPotIndex >= 1)
-            {
-                Debug.Log("자리가 없어요");
-                return;
-            }
-            nowMedicineButton = wholeSpecialMedicineButtonList[nowButtonIndex];
-            medicineObj = nowMedicineButton.medicineObject;
-            inst = Instantiate(medicineObj, potMedicineParentArray[1].transform);
+            Debug.Log("자리가 없어요");
+            return;
         }
-        else
-        {
-            if (nowPotIndex >= 3)
-            {
-                Debug.Log("자리가 없어요");
-                return;
-            }
-            nowMedicineButton = wholeMedicineButtonList[nowButtonIndex];
-            medicineObj = nowMedicineButton.medicineObject;
-            inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
-        }
+        nowMedicineButton = wholeMedicineButtonList[nowButtonIndex];
+        medicineObj = nowMedicineButton.medicineObject;
+        inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
 
 
 
@@ -757,8 +661,9 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         {
             cookButtonObject.SetActive(true);
         }
-        if (!isSpecialMedicine)
+        if (nowMedicineButton.medicineClass.GetFirstSymptom() != Symptom.special)
         {
+            Debug.Log("뭐야");
             symptomChartManager.ChangeSymptomChartText();
         }
         
@@ -771,29 +676,16 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
     //약재 하나 버튼 클릭했을 때
     public void OnButtonDown(int index)
     {
-        if (isSpecialMedicine)
+        wholeMedicineButtonList[index].propertyObject.SetActive(true);
+        wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
+        if (nowButtonIndex != -1)
         {
-            wholeSpecialMedicineButtonList[index].propertyObject.SetActive(true);
-            wholeSpecialMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
-            if (nowButtonIndex != -1)
-            {
-                wholeSpecialMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
-                wholeSpecialMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
-            }
+            wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
+            wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
         }
-        else
-        {
-            wholeMedicineButtonList[index].propertyObject.SetActive(true);
-            wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
-            if (nowButtonIndex != -1)
-            {
-                wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
-                wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
-            }
-        }
-        
 
-        if(nowButtonIndex == index)
+
+        if (nowButtonIndex == index)
         {
             //따블클릭
             if(doubleClickTimer <0.5f)
@@ -832,6 +724,14 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         for (int i = 0; i < medicineCount; i++)
         {
             medicineInPotList[i].owningMedicine.medicineQuantity--;
+            if(medicineInPotList[i].medicineClass.GetFirstSymptom() == Symptom.special)
+            {
+                cookedMedicine.specialArray[i] = true;
+            }
+            else
+            {
+                cookedMedicine.specialArray[i] = false;
+            }
             indexArray[i] = medicineInPotList[i].medicineIndex;
         }
         cookedMedicine.medicineArray = indexArray;
@@ -885,20 +785,12 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             }
 
         }
-        if (!isSpecialMedicine)
+        for (int i = 0; i < 6; i++)
         {
-            for (int i = 0; i < 5; i++)
+            if (isButtonOn[i] == true)
             {
-                if (isButtonOn[i] == true)
-                {
-                    PropertyListButton(i);
-                }
+                PropertyListButton(i);
             }
-            cookedMedicine.isSpecialMedicine = false;
-        }
-        else
-        {
-            cookedMedicine.isSpecialMedicine = true;
         }
 
 
@@ -934,14 +826,14 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         nowVisitor = visitor;
         isSpecialMedicine = false;
         regularScrollUIParent.SetActive(true);
-        specialScrollUIParent.SetActive(false);
+        //specialScrollUIParent.SetActive(false);
     }
     //카운터매니저
     public void SpecialVisitorVisits()
     {
         isSpecialMedicine = true;
-        regularScrollUIParent.SetActive(false);
-        specialScrollUIParent.SetActive(true);
+        //regularScrollUIParent.SetActive(false);
+        //specialScrollUIParent.SetActive(true);
     }
 
     public void ToCounterButton(bool isMedicineOnTray)
