@@ -15,6 +15,14 @@
             "appearingQuestBundleList": [
                 "Lily"
             ]
+        },
+        {
+            "priority": 0,
+            "bundleName": "Iris",
+            "appearingProgression": 10.0,
+            "appearingQuestBundleList": [
+                "Lily"
+            ]
         }
     ]
 }

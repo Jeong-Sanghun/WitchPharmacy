@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 28800.0,
+    "nowTime": 72000.0,
     "nowDay": 1,
-    "coin": 1080,
+    "coin": 1120,
     "ownedMedicineList": [
         0,
         1,
@@ -56,7 +56,7 @@
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 10
+            "medicineQuantity": 5
         },
         {
             "medicineIndex": 1,
@@ -280,7 +280,7 @@
     "owningSpecialMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 9
+            "medicineQuantity": 8
         },
         {
             "medicineIndex": 1,
@@ -296,7 +296,7 @@
         }
     ],
     "progression": 10.0,
-    "nowCounterDialogBundleName": "Lily",
+    "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "solvedQuestBundleName": [
         "Lily"

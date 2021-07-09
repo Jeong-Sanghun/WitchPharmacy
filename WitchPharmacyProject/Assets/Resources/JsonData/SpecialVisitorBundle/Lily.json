@@ -30,12 +30,12 @@
                 },
                 {
                     "ruelliaTalking": false,
-                    "characterFeeling": "nothing",
+                    "characterFeeling": "angry",
                     "dialog":"너는 내가 싫냐"
                 },
                 {
                     "ruelliaTalking": false,
-                    "characterFeeling": "nothing",
+                    "characterFeeling": "angry",
                     "dialog": "솔직히 얘기해바"
                 }
             ]
@@ -60,7 +60,7 @@
                 },
                 {
                     "ruelliaTalking": false,
-                    "characterFeeling": "nothing",
+                    "characterFeeling": "angry",
                     "dialog": "야 그렇게까지 화낼일은 아니잖아. 약이나 줘봐"
                 }
             ]
@@ -70,12 +70,12 @@
             "specialVisitorDialogList": [
                 {
                     "ruelliaTalking": false,
-                    "characterFeeling": "nothing",
+                    "characterFeeling": "angry",
                     "dialog": "진짜 열받게 하네"
                 },
                 {
                     "ruelliaTalking": false,
-                    "characterFeeling": "nothing",
+                    "characterFeeling": "angry",
                     "dialog": "면전에다 대고 그딴 소리를 해?"
                 },
                 {

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Region
+{
+    Narin,Themnos,Rebav,Mikcha,TreeOfLIfe
+}
+
 [System.Serializable]
 public class SpecialVisitorConditionWrapper
 {

@@ -6,7 +6,7 @@ using UnityEngine;
 public enum CharacterFeeling { nothing, angry }
 public enum CharacterName
 {
-    Ruellia, Cari, Jet,Lily
+    Ruellia, Cari, Jet,Lily ,Iris
 }
 
 [System.Serializable]
