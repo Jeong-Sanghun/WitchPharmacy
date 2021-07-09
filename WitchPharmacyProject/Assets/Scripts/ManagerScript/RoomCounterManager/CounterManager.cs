@@ -263,9 +263,6 @@ public class CounterManager : MonoBehaviour //SH
                 toggleArray[j].isOn = false;
                 toggleArray[j].group = toggleGroupArray[i];
             }
-            //toggleGroupArray[i].SetAllTogglesOff();
-
-            
         }
         for (int i = 0; i < symptomCheckArray.Length; i++)
         {
@@ -384,9 +381,12 @@ public class CounterManager : MonoBehaviour //SH
 
     }
 
-    //counterDialogManager에서 호출
-    public void VisitorDisappear()
+    //counterDialogManager에서 호출, 스킵버튼에서 호출.
+    public void VisitorDisappear(bool skip)
     {
+        if(!skip)
+            TimeChange(3600);
+        VisitorTalkStart();
         StartCoroutine(VisitorDisapperCoroutine());
     }
 
@@ -414,7 +414,7 @@ public class CounterManager : MonoBehaviour //SH
     {
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
         yield return new WaitForSeconds(1.5f);
-        TimeChange(3600);
+
         if (!endSales)
         {
             visitorTriggerManager.TriggerCheck();

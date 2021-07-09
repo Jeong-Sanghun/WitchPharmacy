@@ -102,7 +102,7 @@ public class CookedMedicineManager : MonoBehaviour
 
     void OnMedicinePointerDown(PointerEventData data)
     {
-        if (!medicineManager.nowInRoom)
+        if (!roomManager.nowInRoom)
         {
             return;
         }
@@ -113,7 +113,7 @@ public class CookedMedicineManager : MonoBehaviour
     void OnMedicinePointerUp(PointerEventData data)
     {
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
-        if (medicineManager.nowInRoom)
+        if (roomManager.nowInRoom)
         {
             cookedMedicine.medicineObject.transform.position = medicineOriginPos;
         }

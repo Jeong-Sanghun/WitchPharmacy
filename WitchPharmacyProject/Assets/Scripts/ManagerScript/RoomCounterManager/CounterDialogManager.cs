@@ -449,7 +449,7 @@ public class CounterDialogManager : MonoBehaviour
             ruelliaText.transform.parent.gameObject.SetActive(false);
             visitorText.transform.parent.gameObject.SetActive(false);
             nowState = CounterState.NotTalking;
-            counterManager.VisitorDisappear();
+            counterManager.VisitorDisappear(false);
             visitorRuelliaToggle = true;
         }
     }
@@ -481,7 +481,7 @@ public class CounterDialogManager : MonoBehaviour
         else
         {
             nowTalking = false;
-            counterManager.VisitorDisappear();
+            counterManager.VisitorDisappear(false);
             ruelliaText.transform.parent.gameObject.SetActive(false);
             visitorText.transform.parent.gameObject.SetActive(false);
             ruelliaText.text = "";

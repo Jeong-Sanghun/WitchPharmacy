@@ -115,8 +115,8 @@ public class MedicineManager : MonoBehaviour    //SH
     Vector3 cookedMedicineCounterPos;
 
     //현재 조제실에 있는가.
-    [HideInInspector]
-    public bool nowInRoom;
+    //[HideInInspector]
+    //public bool nowInRoom;
 
     RandomVisitorClass nowVisitor;
     [SerializeField]
@@ -161,8 +161,6 @@ public class MedicineManager : MonoBehaviour    //SH
 
 
         cookedMedicineCounterPos = new Vector3(-100, -555, 0);
-
-        nowInRoom = false;
         doubleClickTimer = 0;
 
 
