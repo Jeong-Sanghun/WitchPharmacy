@@ -6,20 +6,23 @@ using System.Text;
 public class SpecialVisitorClass
 {
     public GameObject visitorObject;
+    public SpriteRenderer spriteRenderer;
 
-    public SpecialVisitorClass(GameObject parent,string characterName)
+    public SpecialVisitorClass(GameObject parent,GameObject prefab,string characterName)
     {
         string path = "RandomCharacter/";
-        Transform visitorParent = parent.transform;
-        GameObject visitor = new GameObject();
-        visitor.transform.SetParent(visitorParent);
-        visitorObject = visitor;
 
 
         StringBuilder builder = new StringBuilder(path);
         builder.Append(characterName);
-        GameObject lily = Resources.Load<GameObject>(builder.ToString());
-        GameObject part = GameObject.Instantiate(lily, visitor.transform);
-        part.transform.position = new Vector3(0, -11.91f, -1);
+        GameObject part = GameObject.Instantiate(prefab, parent.transform);
+        visitorObject = part;
+        spriteRenderer = part.GetComponent<SpriteRenderer>();
+        CharacterIndexToName loader = new CharacterIndexToName();
+
+        spriteRenderer.sprite = loader.GetSprite(characterName, "nothing");
+        //part.transform.position = new Vector3(0, -11.91f, -1);
+        part.SetActive(true);
+        part.transform.localPosition = Vector3.zero;
     }
 }

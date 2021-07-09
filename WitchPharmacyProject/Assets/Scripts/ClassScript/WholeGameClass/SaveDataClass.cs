@@ -26,9 +26,12 @@ public class SaveDataClass
 
     public List<OwningMedicineClass> owningSpecialMedicineList;
 
+    public float progression;
+
     public string nowCounterDialogBundleName;
     public string nowStoryDialogBundleName;
 
+    public List<string> solvedQuestBundleName;
 
 
     public SaveDataClass()
@@ -37,12 +40,17 @@ public class SaveDataClass
         coin = 1000;
         nowDay = 0;
         nowTime = 0;
-        //owningMedicineDictionary = new Dictionary<int, int>();
         ownedMedicineList = new List<int>();
         owningMedicineList = new List<OwningMedicineClass>();
         owningSpecialMedicineList = new List<OwningMedicineClass>();
         unlockedRegionIndex = new List<int>();
         owningToolList = new List<OwningToolClass>();
+        progression = 0;
+        solvedQuestBundleName = new List<string>();
+        nowCounterDialogBundleName = "testBundle";
+        nowStoryDialogBundleName = "testBundle";
+//        solvedQuestBundleName.Add("testBundle");
+
 
     }
 }

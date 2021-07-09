@@ -3,6 +3,11 @@
     "characterName": "Lily",
     "answerSpecialMedicineName": "",
     "symptomNumberArray": [],
+    "appearingProgression": 0.0,
+    "progressingNumber": 10.0,
+    "appearingConditionQuestList": [
+        "testBundle"
+    ],
     "conversationRouter": {
         "routingWrapperName": [
             "1",

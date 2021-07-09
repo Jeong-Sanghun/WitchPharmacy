@@ -43,6 +43,15 @@ public class VisitorTriggerManager : MonoBehaviour
 
     public void TriggerCheck()
     {
-        nowCheckingTrigger = true;
+        if (counterDialogManager.ConditionCheck())
+        {
+            nowCheckingTrigger = true;
+        }
+        else
+        {
+            nowCheckingTrigger = false;
+            counterManager.CounterStart();
+        }
+
     }
 }

@@ -14,6 +14,7 @@ public class CounterDialogManager : MonoBehaviour
     List<StartDialogClass> randomDialogClassList;
     RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
     RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
+    List<SpecialVisitorCondition> specialVisitorConditionDataList;
 
     //로딩을 여기서 한다음에 쫙 뿌려줘야 돼서.
     public SpecialVisitorDialogBundle specialVisitorDialogBundle;
@@ -28,7 +29,8 @@ public class CounterDialogManager : MonoBehaviour
     bool visitorRuelliaToggle;
     CounterState nowState;
     List<string> visitDialog;
-    
+
+    CharacterIndexToName characterIndexToName;
     [SerializeField]
     CounterManager counterManager;
     [SerializeField]
@@ -66,6 +68,8 @@ public class CounterDialogManager : MonoBehaviour
     int nowBackLogIndex;
     bool isRouted = false;
 
+    List<string> todaySpecialVisitorList;
+    
     //룸매니저에서 못넘어가게 쓰임.
     public bool nowTalking;
 
@@ -85,8 +89,10 @@ public class CounterDialogManager : MonoBehaviour
         ruelliaText.transform.parent.gameObject.SetActive(true);
         visitorText.transform.parent.gameObject.SetActive(false);
         contentRect = backLogContent.GetComponent<RectTransform>();
-        specialVisitorDialogBundle = gameManager.LoadVisitorBundle(gameManager.saveData.nowCounterDialogBundleName);
-
+        //specialVisitorDialogBundle = gameManager.LoadVisitorBundle(gameManager.saveData.nowCounterDialogBundleName);
+        specialVisitorConditionDataList = gameManager.specialVisitorConditionWrapper.specialVisitorConditionDataList;
+        todaySpecialVisitorList = new List<string>();
+        characterIndexToName = new CharacterIndexToName();
 
         nowTalking = true;
         nowDialogIndex = 0;
@@ -96,6 +102,53 @@ public class CounterDialogManager : MonoBehaviour
         StartUpdate();
     }
 
+    //triggercheck에서 불러옴. 트루면 트리거체크, 폴스면 그냥 일반손님.
+    public bool ConditionCheck()
+    {
+        float progression = gameManager.saveData.progression;
+        List<string> solvedQuest = gameManager.saveData.solvedQuestBundleName;
+        for(int i =0; i< specialVisitorConditionDataList.Count; i++)
+        {
+            if (solvedQuest.Contains(specialVisitorConditionDataList[i].bundleName))
+            {
+                continue;
+            }
+            if (todaySpecialVisitorList.Contains(specialVisitorConditionDataList[i].bundleName))
+            {
+                continue;
+            }
+            if(progression >= specialVisitorConditionDataList[i].appearingProgression)
+            {
+                bool notContaining = false;
+                //Debug.Log(specialVisitorConditionDataList[i].appearingQuestBundleList[0] + " 그리고 " + i);
+                if (specialVisitorConditionDataList[i].appearingQuestBundleList.Count == 0)
+                {
+                    Debug.Log("왜 여기 실행안됨");
+                    specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
+                    return true;
+                }
+                for (int j = 0; j < specialVisitorConditionDataList[i].appearingQuestBundleList.Count; j++)
+                {
+                    if (!solvedQuest.Contains(specialVisitorConditionDataList[i].appearingQuestBundleList[j]))
+                    {
+                        notContaining = true;
+                        break;
+                    }
+                }
+                if (!notContaining)
+                {
+                    specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
+                    return true;
+                }
+                
+            }
+        }
+        Debug.Log("여기");
+        return false;
+    }
+
+
+        //백로그 버튼 누를떄
     public void OnBackLogButton()
     {
         dialogMouseEventObject.SetActive(!dialogMouseEventObject.activeSelf);
@@ -182,9 +235,10 @@ public class CounterDialogManager : MonoBehaviour
         VisitUpdate();
     }
 
-    public void OnSpecialVisitorVisit(string bundleName)
+    public void OnSpecialVisitorVisit()
     {
-        specialVisitorDialogBundle = gameManager.LoadVisitorBundle(bundleName);
+        //specialVisitorDialogBundle = gameManager.LoadVisitorBundle(bundleName);
+        todaySpecialVisitorList.Add(specialVisitorDialogBundle.bundleName);
         nowTalking = true;
         roomManager.ToCounterButton(false);
         InitializeBackLog();
@@ -231,11 +285,13 @@ public class CounterDialogManager : MonoBehaviour
         counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
-
+            
             nowWrapper = specialVisitorDialogBundle.wrongDialogWrapper;
         }
         else
         {
+            gameManager.saveData.solvedQuestBundleName.Add(specialVisitorDialogBundle.bundleName);
+            gameManager.saveData.progression += specialVisitorDialogBundle.progressingNumber;
             nowWrapper = specialVisitorDialogBundle.answerDialogWrapper;
         }
         nowDialogIndex = 0;
@@ -310,6 +366,7 @@ public class CounterDialogManager : MonoBehaviour
             {
                 if (!visitorText.transform.parent.gameObject.activeSelf)
                     visitorText.transform.parent.gameObject.SetActive(true);
+                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(specialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
                 string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
                 MakeBackLog(true, str);
                 StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
@@ -462,6 +519,7 @@ public class CounterDialogManager : MonoBehaviour
             {
                 if (!visitorText.transform.parent.gameObject.activeSelf)
                     visitorText.transform.parent.gameObject.SetActive(true);
+                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(specialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
                 string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
                 MakeBackLog(true, str);
                 StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));

@@ -6,7 +6,7 @@ using UnityEngine;
 public class RandomVisitorDiseaseDialogWrapper
 {
     public RandomVisitorDiseaseDialogBundle[] diseaseDialogBundleArray;
-
+    
     public RandomVisitorDiseaseDialogWrapper()
     {
         //증상마다 하나씩 있음

@@ -89,6 +89,8 @@ public class CounterManager : MonoBehaviour //SH
     GameObject measureToolOpenButton;
     [SerializeField]
     GameObject symptomChartOpenButton;
+    [SerializeField]
+    GameObject specialVisitorPrefab;
 
     [SerializeField]
     Text gainedCoinText;
@@ -120,7 +122,7 @@ public class CounterManager : MonoBehaviour //SH
         gainedCoinObjectOriginPos = gainedCoinText.transform.position;
 
         randomVisitorList = new List<RandomVisitorClass>();
-        specialVisitorDialogBundle = counterDialogManager.specialVisitorDialogBundle;
+
 
         measureToolOriginPosArray = new Vector3[5];
         symptomCheckArray = new int[6];
@@ -169,6 +171,7 @@ public class CounterManager : MonoBehaviour //SH
     public void CounterStart(string characterName)
     {
         isSpecialVisitor = true;
+        specialVisitorDialogBundle = counterDialogManager.specialVisitorDialogBundle;
         SpawnSpecialVisitor(characterName);
     }
 
@@ -195,7 +198,8 @@ public class CounterManager : MonoBehaviour //SH
         }
         if (nowVisitor != null)
         {
-            nowVisitor.visitorObject.SetActive(false);
+            if(nowVisitor.visitorObject != null)
+                nowVisitor.visitorObject.SetActive(false);
         }
         if(nowSpecialVisitor != null)
         {
@@ -204,7 +208,7 @@ public class CounterManager : MonoBehaviour //SH
         counterDialogManager.nowTalking = true;
         medicineManager.SpecialVisitorVisits();
         measureToolManager.OnNewVisitor(specialVisitorDialogBundle.symptomNumberArray);
-        nowSpecialVisitor = new SpecialVisitorClass(visitorParent, characterName);
+        nowSpecialVisitor = new SpecialVisitorClass(visitorParent,specialVisitorPrefab, characterName);
         symptomChartManager.SpecialVisitorVisits(specialVisitorDialogBundle.symptomNumberArray);
         //쫙 뿌려준다
         for (int i = 0; i < toggleGroupArray.Length; i++)
@@ -225,6 +229,11 @@ public class CounterManager : MonoBehaviour //SH
         }
         StartCoroutine(VisitorAppearCoroutine());
         symptomChartManager.ChangeSymptomChartText();
+    }
+
+    public void ChangeSpecialVisitorSprite(Sprite sprite)
+    {
+        nowSpecialVisitor.spriteRenderer.sprite = sprite;
     }
 
 
@@ -398,13 +407,11 @@ public class CounterManager : MonoBehaviour //SH
         yield return new WaitForSeconds(1.5f);
         if (!isSpecialVisitor)
         {
-            Debug.Log("왜이게실행됨");
             counterDialogManager.OnVisitorVisit(nowVisitor);
         }
         else
         {
-            Debug.Log("뭐냐");
-            counterDialogManager.OnSpecialVisitorVisit(saveData.nowCounterDialogBundleName);
+            counterDialogManager.OnSpecialVisitorVisit();
         }
         
 

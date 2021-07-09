@@ -9,6 +9,9 @@ public class SpecialVisitorDialogBundle
     public string characterName;
     public string answerSpecialMedicineName;
     public int[] symptomNumberArray;
+    public float appearingProgression;
+    public float progressingNumber;
+    public List<string> appearingConditionQuestList;
     public ConversationRouter conversationRouter;
     public List<SpecialVisitorDialogWrapper> specialVisitorDialogWrapperList;
     public SpecialVisitorDialogWrapper answerDialogWrapper;
@@ -18,6 +21,10 @@ public class SpecialVisitorDialogBundle
     {
         bundleName = "testBundle";
         characterName = "Lily";
+        appearingProgression = 0;
+        progressingNumber = 10;
+        appearingConditionQuestList = new List<string>();
+        appearingConditionQuestList.Add("testBundle");
         conversationRouter = new ConversationRouter();
         specialVisitorDialogWrapperList = new List<SpecialVisitorDialogWrapper>();
         for(int i = 0; i < 3; i++)

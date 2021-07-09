@@ -181,7 +181,6 @@ public class RandomVisitorClass //SH
             symptomNumberArray[(int)answerMedicine.GetSecondSymptom()] += answerMedicine.secondNumber;
             answerMedicineList.Add(answerMedicine);
             nowMedicineNumber++;
-            Debug.Log(nowMedicineNumber);
             availableMedicineList.Clear();
         }
         //여기 위까지가 판정, 정답약 넣는거.
