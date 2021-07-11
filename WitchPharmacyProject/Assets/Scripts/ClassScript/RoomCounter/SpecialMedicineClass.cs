@@ -11,6 +11,7 @@ public class SpecialMedicineClass
     public string firstName;
     public string secondName;
     public string toolTip;
+    public int cost;
     protected Sprite medicineImage;
 
     public void SetIndex(int num)
@@ -50,5 +51,6 @@ public class SpecialMedicineClass
         firstName = "퍼스트";
         secondName = "세컨드";
         toolTip = "툴팁";
+        cost = 3;
     }
 }

@@ -20,7 +20,8 @@ public class MedicineClass : SpecialMedicineClass  //SH
     Symptom secondSymptom;
     public int firstNumber;
     public int secondNumber;
-    public int cost;
+    //
+    //public int cost;
 
     //Sprite medicineImage;
       

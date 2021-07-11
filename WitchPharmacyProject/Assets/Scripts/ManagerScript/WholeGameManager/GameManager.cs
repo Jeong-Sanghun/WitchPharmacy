@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour //SH
     //이거 단위 초다.
     public void TimeChange(float plusTime)
     {
-        nowTime += 4*plusTime;
+        nowTime += 0.1f*plusTime;
 
     }
 

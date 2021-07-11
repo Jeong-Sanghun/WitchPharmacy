@@ -53,10 +53,9 @@ public class RegionManager : MonoBehaviour
                 case 6:
                     tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<BarrierTileManager>();
                     break;
-                //case 7:
-                //    tile = new SpecialStoreTile(nowFullArrayIndex);
-                //    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<TileManager>();
-                //    break;
+                case 7:
+                    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<SpecialStoreTileManager>();
+                    break;
                 default:
                     tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<MedicineTileManager>();
                     break;
@@ -78,11 +77,11 @@ public class RegionManager : MonoBehaviour
     {
         TileButtonClass nowTile = witchMover.nowTileButton;
         TileType tileType = nowTile.tileClass.tileType;
-        if (tileType == TileType.StartTile || (tileType !=TileType.StoreTile && tileType != TileType.MedicineTile && tileType != 
-            TileType.StoryTile && tileType != TileType.TreasureTile && tileType != TileType.TrapTile && tileType != TileType.BarrierTile))
-        {
-            return;
-        }
+        //if (tileType == TileType.StartTile || (tileType !=TileType.StoreTile && tileType != TileType.MedicineTile && tileType != 
+        //    TileType.StoryTile && tileType != TileType.TreasureTile && tileType != TileType.TrapTile && tileType != TileType.BarrierTile))
+        //{
+        //    return;
+        //}
         int index = (int)tileType;
         tileMapParent.SetActive(false);
 

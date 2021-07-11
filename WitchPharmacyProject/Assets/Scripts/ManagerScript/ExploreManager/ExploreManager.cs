@@ -16,10 +16,12 @@ public class ExploreManager : MonoBehaviour
     RegionIngame[] regionIngameArray;
     List<MedicineClass> medicineDataList;
     List<StoreToolClass> storeToolDataList;
+    List<SpecialMedicineClass> specialMedicienDataList;
     //bool[] visitedRegionArray;
     int nowIndex;
 
     List<OwningMedicineClass> gainedMedicineList;
+    List<OwningMedicineClass> gainedSpecialMedicineList;
     List<OwningToolClass> gainedToolList;
 
     //이거 타일매니저로 넘겨줘야되는데 regionManager에서 타일매니저로 넘겨줌
@@ -67,9 +69,11 @@ public class ExploreManager : MonoBehaviour
 
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         storeToolDataList = gameManager.storeToolDataWrapper.storeToolDataList;
+        specialMedicienDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
 
         gainedMedicineList = new List<OwningMedicineClass>();
         gainedToolList = new List<OwningToolClass>();
+        gainedSpecialMedicineList = new List<OwningMedicineClass>();
 
 
 
@@ -157,6 +161,31 @@ public class ExploreManager : MonoBehaviour
         }
     }
 
+    public void OnBuySpecialMedicine(int index, int quantity)
+    {
+        OwningMedicineClass gainedSpecialMedicine = null;
+        for (int i = 0; i < gainedSpecialMedicineList.Count; i++)
+        {
+            if (gainedSpecialMedicineList[i].medicineIndex == index)
+            {
+                gainedSpecialMedicine = gainedMedicineList[i];
+                break;
+            }
+        }
+
+        if (gainedSpecialMedicine == null)
+        {
+            gainedSpecialMedicine = new OwningMedicineClass();
+            gainedSpecialMedicine.medicineIndex = index;
+            gainedSpecialMedicine.medicineQuantity = quantity;
+            gainedMedicineList.Add(gainedSpecialMedicine);
+        }
+        else
+        {
+            gainedSpecialMedicine.medicineQuantity += quantity;
+        }
+    }
+
     //StoreTileManager에서불러옴
     public void OnBuyTool(int index, int quantity)
     {
@@ -199,6 +228,15 @@ public class ExploreManager : MonoBehaviour
         {
             prefabItemImage.sprite = storeToolDataList[gainedToolList[i].index].LoadImage();
             prefabItemText.text = gainedToolList[i].quantity.ToString();
+            GameObject obj = Instantiate(itemPrefab, gainedItemCanvas.transform);
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
+            nowItemIndex++;
+        }
+
+        for (int i = 0; i < gainedSpecialMedicineList.Count; i++)
+        {
+            prefabItemImage.sprite = medicineDataList[gainedSpecialMedicineList[i].medicineIndex].LoadImage();
+            prefabItemText.text = gainedSpecialMedicineList[i].medicineQuantity.ToString();
             GameObject obj = Instantiate(itemPrefab, gainedItemCanvas.transform);
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
             nowItemIndex++;
