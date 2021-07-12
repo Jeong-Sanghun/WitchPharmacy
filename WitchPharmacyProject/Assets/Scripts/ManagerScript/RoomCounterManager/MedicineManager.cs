@@ -564,6 +564,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             }
             if (wholeMedicineButtonList[i].isActive == false)
             {
+                wholeMedicineButtonList[i].propertyObject.SetActive(false);
                 wholeMedicineButtonList[i].buttonObject.SetActive(false);
             }
         }
@@ -625,6 +626,10 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
 
     void AddMedicineToPot()
     {
+        if (isPotCooked)
+        {
+            return;
+        }
         MedicineButton nowMedicineButton;
         GameObject inst;
         GameObject medicineObj;
@@ -686,7 +691,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         if (nowButtonIndex == index)
         {
             //따블클릭
-            if(doubleClickTimer <0.5f)
+            if(doubleClickTimer <0.5f && wholeMedicineButtonList[index].medicineQuant>0)
                 AddMedicineToPot();
             nowButtonIndex = -1;
         }
@@ -721,7 +726,8 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         cookedMedicine.medicineCount = medicineCount;
         for (int i = 0; i < medicineCount; i++)
         {
-            medicineInPotList[i].owningMedicine.medicineQuantity--;
+            //medicineInPotList[i].medicineQuant--;
+            //medicineInPotList[i].owningMedicine.medicineQuantity--;
             if(medicineInPotList[i].medicineClass.GetFirstSymptom() == Symptom.special)
             {
                 cookedMedicine.specialArray[i] = true;
@@ -775,6 +781,11 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             //    continue;
             //}
             OwningMedicineClass owningMedicine = medicineInPotList[i].owningMedicine;
+            if(!owningMedicineList.Contains(owningMedicine))
+            {
+                Debug.Log("존나잘햇네 ㅋㅋ");
+                continue;
+            }
             owningMedicine.medicineQuantity = medicineInPotList[i].medicineQuant;
             if (owningMedicine.medicineQuantity <= 0)
             {
@@ -790,7 +801,8 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                 PropertyListButton(i);
             }
         }
-
+        PropertyListButton(0);
+        PropertyListButton(0);
 
         medicineInPotList.Clear();
         potMedicineObjectList.Clear();

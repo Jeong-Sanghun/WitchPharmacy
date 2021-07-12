@@ -33,22 +33,24 @@ public class RegionProperty
             tileTypeArray[i] = 0;
         }
         int roundRobin;
-        for (int i = 1; i< RegionIngame.tileNumber; i++)
+        for (int i = 1; i< RegionIngame.tileNumber-1; i++)
         {
-            roundRobin = i % 8;
+            roundRobin = i % 7;
             if(roundRobin == 0)
             {
                 roundRobin++;
             }
             tileTypeArray[roundRobin]++;
         }
+        tileTypeArray[7] = 1;
         regionAvailableMedicine = new int[MedicineTileManager.appearingMedicine];
         medicineProbability = new float[MedicineTileManager.appearingMedicine];
         for (int i = 0; i < MedicineTileManager.appearingMedicine; i++)
         {
-            //regionAvailableMedicine[i] = Random.Range(0,20);
+            //regionAvailableMedicine[i] = Random.Range(0,48);
             medicineProbability[i] = 100.0f/ MedicineTileManager.appearingMedicine;
         }
+        entranceTime = 600;
         //regionAvailableMedicine = new RegionAvailableMedicine();
     }
 

@@ -5,528 +5,528 @@
             "firstName": "타오르는",
             "secondName": "증서",
             "toolTip": "태우려고 해도 약속은 사라지지 않는다.",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "light-air++",
             "firstName": "저주받은",
             "secondName": "묘비 조각",
             "toolTip": "누구의 묘비인지는 모르지만, 원한이 담겨있는 것 같습니다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "dir+air--",
             "firstName": "자라나는",
             "secondName": "약속",
             "toolTip": "약속을 지키기 위해 늘어가는 새로운 약속들.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "water+air--",
             "firstName": "무미건조한",
             "secondName": "계획",
             "toolTip": "자신과의 의미없는 약속들은 늘어만 간다.",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "water+air--",
             "firstName": "흘러넘치는",
             "secondName": "중압감",
             "toolTip": "많은 시선이 느껴진다.",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "fire-air--",
             "firstName": "제오헨의",
             "secondName": "합리화",
             "toolTip": "이건 모두를 위해서야.",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "light+air--",
             "firstName": "빛나는",
             "secondName": "대머리풀",
             "toolTip": "가벼워 보이지만 마음만은 무겁다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "dirt-air--",
             "firstName": "도시인의",
             "secondName": "무게",
             "toolTip": "많은 규칙들과 시선의 무게에 짓눌린 마음.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "water+air++",
             "firstName": "섬의",
             "secondName": "바람",
             "toolTip": "드넓은 바다의 자유로움을 잠시라도 느껴보세요.",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "water-air++",
             "firstName": "사함의",
             "secondName": "자신감",
             "toolTip": "사함은 자신감에 가득 차 마법진에 대한 설명을 적지 않았다고 전해진다.",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "fire+air++",
             "firstName": "작열하는",
             "secondName": "구름",
             "toolTip": "겨울철 이불 안에 소량 넣으면 따듯합니다.",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "fire-air++",
             "firstName": "설산의",
             "secondName": "바람",
             "toolTip": "찬 바람을 타고 자유롭게 흩어진다.",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "dirt+air++",
             "firstName": "피어나는",
             "secondName": "자유",
             "toolTip": "관상용으로 좋습니다.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "dirt-air++",
             "firstName": "인공적인",
             "secondName": "날개",
             "toolTip": "하늘을 날고 싶어하던 인간의 염원을 이루어냈습니다. 태양과 너무 가까워지지 않도록 조심하세요.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "light+air++",
             "firstName": "신성한",
             "secondName": "구름",
             "toolTip": "폭신폭신합니다.  감성적인 조명으로 사용해보세요.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "air",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "light-air++",
             "firstName": "부패한",
             "secondName": "날개",
             "toolTip": "자유롭지만 사랑받지는 못합니다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "air",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "fire+water--",
             "firstName": "뜨거운",
             "secondName": "가루",
             "toolTip": "매운 것을 넘어 뜨겁습니다. 섭취 시 화상에 주의하세요.",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "fire-water--",
             "firstName": "냉동",
             "secondName": "분말",
             "toolTip": "건조된 분말을 얼렸습니다. 절대 상하지 않겠군요!",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "dirt+water--",
             "firstName": "헤이모프의",
             "secondName": "갈증",
             "toolTip": "누군가가 이미 마셔버렸습니다...",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "dirt-water--",
             "firstName": "인공",
             "secondName": "가뭄",
             "toolTip": "물의 순환을 멈추는 장치입니다. 어떤 결과로 이어질지는 아직 아무도 모릅니다...",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "air+water--",
             "firstName": "흩날리는",
             "secondName": "미세먼지",
             "toolTip": "마스크 착용은 필수!",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "무거운",
             "secondName": "가루",
             "toolTip": "세상에서 가장 부피대비 무거운 물질이라고 합니다.",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "빛나는",
             "secondName": "모래",
             "toolTip": "감성적인 조명 겸 타이머로 사용되곤 합니다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "심연의",
             "secondName": "먼지",
             "toolTip": "이 먼지를 보고 있으면, 먼지도 우리를 보고 있는 것 같은 기분이 듭니다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "온천",
             "secondName": "커피",
             "toolTip": "마음의 평안을 찾는데 도움을 준다고 합니다. 유황 냄새는 덤입니다.",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "서리",
             "secondName": "에이드",
             "toolTip": "마시면 머리가 깨질 듯이 아픕니다. 잡생각을 정리하는데 좋다고 합니다.",
+            "cost": 3,
             "firstSymptomText": "fire",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "헤이모프의",
             "secondName": "넥타르",
             "toolTip": "젓지말고 흔들어서.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "정제된",
             "secondName": "바다",
             "toolTip": "바다 본연의 맛을 그대로 담았습니다! 매우 짜다는 뜻이죠.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "천공의",
             "secondName": "물고기",
             "toolTip": "그저 구름일 뿐이나 비린내가 날 것만 같습니다.",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "견고한",
             "secondName": "음료",
             "toolTip": "철분이 다량 함유되어있습니다. 몸이 무거워질 정도로요!",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "라이제르하의",
             "secondName": "눈물",
             "toolTip": "짜다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "water",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "악마의",
             "secondName": "피",
             "toolTip": "부어먹으면 눅눅해집니다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "water",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "흘러내리는",
             "secondName": "눈사람",
             "toolTip": "이제 작별의 시간입니다.",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "사막의",
             "secondName": "서리",
             "toolTip": "Tooltip missing",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "싹트는",
             "secondName": "눈덩이",
             "toolTip": "눈이 많이 오면 풍년이라는 말이 있습니다. 이 눈덩이에서는 실제로 싹이 자랍니다.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "대량생산",
             "secondName": "아이스크림",
             "toolTip": "다들 올 때 하나씩 사오라고 부탁하곤 합니다.",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "흩날리는",
             "secondName": "냉기",
             "toolTip": "Tooltip missing",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "축적된",
             "secondName": "얼음",
             "toolTip": "오랜 세월의 무게만큼이나 단단한 얼음입니다.",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "정령의",
             "secondName": "무심함",
             "toolTip": "Tooltip missing",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "칠흑같은",
             "secondName": "냉정",
             "toolTip": "생각의 가성비.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": -2,
-            "cost": 3
+            "secondNumber": -2
         },
         {
             "fileName": "파일",
             "firstName": "공감하는",
             "secondName": "불꽃",
             "toolTip": "꼭 내 마음을 알아주는 것 같다니까요.",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "메마른",
             "secondName": "열정",
             "toolTip": "Tooltip missing",
+            "cost": 3,
             "firstSymptomText": "water",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "null",
             "secondName": "null",
             "toolTip": "Tooltip missing",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "null",
             "secondName": "null",
             "toolTip": "Tooltip missing",
+            "cost": 3,
             "firstSymptomText": "earth",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "지오니에의",
             "secondName": "열정",
             "toolTip": "아무도 그녀의 열정을 막을 수는 없었다.",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "계약된",
             "secondName": "불꽃",
             "toolTip": "정해진 기간동안 타오르도록 계약되어있습니다. 이제 389년 남았습니다.",
+            "cost": 3,
             "firstSymptomText": "air",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "null",
             "secondName": "null",
             "toolTip": "Tooltip missing",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "fire",
             "firstNumber": 1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         },
         {
             "fileName": "파일",
             "firstName": "원망의",
             "secondName": "불꽃",
             "toolTip": "꺼지지 않는 원망은 이곳까지 옮겨붙었다.",
+            "cost": 3,
             "firstSymptomText": "light",
             "secondSymptomText": "fire",
             "firstNumber": -1,
-            "secondNumber": 2,
-            "cost": 3
+            "secondNumber": 2
         }
     ]
 }

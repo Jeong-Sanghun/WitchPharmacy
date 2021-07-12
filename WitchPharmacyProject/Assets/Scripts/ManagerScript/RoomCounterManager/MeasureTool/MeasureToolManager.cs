@@ -50,6 +50,7 @@ public class MeasureToolManager : MonoBehaviour
     //measureTool에서 메져링이 끝나면 불러옴
     public void MeasureEnd(int index)
     {
+
         counterManager.DialogActive(true);
         toolObjects[index].SetActive(false);
     }

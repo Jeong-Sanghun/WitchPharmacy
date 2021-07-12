@@ -393,8 +393,7 @@ public class CounterManager : MonoBehaviour //SH
     //counterDialogManager에서 호출, 스킵버튼에서 호출.
     public void VisitorDisappear(bool skip)
     {
-        if(!skip)
-            TimeChange(3600);
+        TimeChange(3600);
         VisitorTalkStart();
         StartCoroutine(VisitorDisapperCoroutine());
     }
@@ -554,7 +553,7 @@ public class CounterManager : MonoBehaviour //SH
     {
         ToggleIndexChecker(symptom);
         SymptomCheckToggle(0);
-
+        TimeChange(1800);
         Debug.Log("메저 엔드");
         //int pushedToggle = symptomToggleIndex * 5 + 2 + amount;
         int fixedToggle;
