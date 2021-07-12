@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 72714.0,
+    "nowTime": 984.0,
     "nowDay": 1,
-    "coin": 726,
+    "coin": 702,
     "ownedMedicineList": [
         0,
         1,
@@ -56,7 +56,7 @@
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 5
+            "medicineQuantity": 4
         },
         {
             "medicineIndex": 1,
@@ -262,11 +262,11 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 17
+            "quantity": 15
         },
         {
             "index": 1,
-            "quantity": 18
+            "quantity": 17
         },
         {
             "index": 2,
@@ -284,15 +284,15 @@
         },
         {
             "medicineIndex": 1,
-            "medicineQuantity": 12
+            "medicineQuantity": 15
         },
         {
             "medicineIndex": 2,
-            "medicineQuantity": 12
+            "medicineQuantity": 15
         },
         {
             "medicineIndex": 3,
-            "medicineQuantity": 10
+            "medicineQuantity": 11
         }
     ],
     "progression": 10.0,
