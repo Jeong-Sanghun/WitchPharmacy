@@ -1,0 +1,12 @@
+{
+	"billTitle" : "장부!!!",
+    "billWholeGain": "총 수입",
+    "billWholeSpend": "총 판매",
+    "billGain": "수입",
+    "billSpend": "지출",
+    "reasonArray": [
+        "약재 판매",
+        "약재 구입",
+        "유지비"
+    ]
+}

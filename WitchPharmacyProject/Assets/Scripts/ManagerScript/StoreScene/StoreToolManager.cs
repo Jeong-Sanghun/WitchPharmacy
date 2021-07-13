@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class StoreToolManager : TileManager,IStore
 {
     const int rQuantityToSell = 10;
+    TabletManager tabletManager;
     protected List<StoreToolClass> storeToolDataList;
     protected List<StoreToolClass> appearingStoreToolList;
     protected List<OwningToolClass> owningToolList;
@@ -69,6 +70,7 @@ public class StoreToolManager : TileManager,IStore
         owningToolList = saveData.owningToolList;
         appearingStoreToolList = storeToolDataList;
         StoreStart();
+        tabletManager = TabletManager.inst;
         isTileStore = false;
     }
     // Start is called before the first frame update
@@ -215,7 +217,8 @@ public class StoreToolManager : TileManager,IStore
             return;
         }
         //돈이없을 때
-        if (saveData.coin - quant * wholeToolButtonList[nowButtonIndex].storeTool.cost < 0)
+        int coinUsed = quant * wholeToolButtonList[nowButtonIndex].storeTool.cost;
+        if (saveData.coin - coinUsed < 0)
         {
             //여기서 에러메시지 표출
             notEnoughCoinPopup.SetActive(true);
@@ -274,7 +277,9 @@ public class StoreToolManager : TileManager,IStore
             exploreManager.OnBuyTool(wholeToolButtonList[nowButtonIndex].owningTool.index, quant);
         }
 
-        saveData.coin -= quant * wholeToolButtonList[nowButtonIndex].storeTool.cost;
+        saveData.coin -= coinUsed;
+        tabletManager.UpdateBill(BillReason.toolBuy, false, coinUsed);
+
         wholeToolButtonList[nowButtonIndex].toolQuant -= quant;
         if (wholeToolButtonList[nowButtonIndex].toolQuant <= 0)
         {

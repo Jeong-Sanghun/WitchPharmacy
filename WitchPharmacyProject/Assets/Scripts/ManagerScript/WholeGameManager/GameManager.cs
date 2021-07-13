@@ -19,9 +19,11 @@ public class GameManager : MonoBehaviour //SH
     [HideInInspector]
     public StoreToolDataWrapper storeToolDataWrapper;
 
-    public ConversationDialogBundleWrapper conversationDialogBundleWrapper;
-    public ConversationDialogBundle conversationDialogBundle;
     [HideInInspector]
+    public ConversationDialogBundleWrapper conversationDialogBundleWrapper;
+    [HideInInspector]
+    public ConversationDialogBundle conversationDialogBundle;
+    //[HideInInspector]
     public StartDialogClassWrapper randomDialogDataWrapper;
     //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
     [HideInInspector]
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour //SH
     public SymptomDialog symptomDialog;
     [HideInInspector]
     public SpecialVisitorConditionWrapper specialVisitorConditionWrapper;
+    [HideInInspector]
+    public UILanguagePack languagePack;
     //세이브데이터 불러오기 및 딕셔너리 읽기.
     JsonManager jsonManager;
 
@@ -59,19 +63,24 @@ public class GameManager : MonoBehaviour //SH
 
         jsonManager = new JsonManager();
         SceneManagerScirpt = SceneManager.inst;
+
+        saveData = jsonManager.LoadSaveData();
+
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         //DebugDataJson();
 
+        languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
+        randomDialogDataWrapper = jsonManager.WrappingTest("RandomDialogDataWrapper");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
         randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
         specialVisitorConditionWrapper = jsonManager.ResourceDataLoad<SpecialVisitorConditionWrapper>("SpecialVisitorConditionWrapper");
-
+        conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
 
 
         for (int i = 0; i < storeToolDataWrapper.storeToolDataList.Count; i++)
@@ -89,10 +98,18 @@ public class GameManager : MonoBehaviour //SH
             specialMedicineDataWrapper.specialMedicineDataList[i].SetIndex(i);
         }
 
-        conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
-        saveData = jsonManager.LoadSaveData();
+
+
         nowTime = saveData.nowTime;
         nowDay = saveData.nowDay;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
+        }
     }
 
     public ConversationDialogBundle LoadBundle(string bundleName)
@@ -120,12 +137,13 @@ public class GameManager : MonoBehaviour //SH
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.
     void DebugDataJson()
     {
+        Debug.Log("이거야");
         saveData = new SaveDataClass();
-        for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
+        for (int i = 0; i < 1; i++)
         {
             saveData.ownedMedicineList.Add(i);
         }
-        for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
+        for (int i = 0; i <1; i++)
         {
             int quant = Random.Range(1, 13);
             OwningMedicineClass med = new OwningMedicineClass(i, quant);
@@ -166,8 +184,10 @@ public class GameManager : MonoBehaviour //SH
         SpecialVisitorDialogBundle bundle = new SpecialVisitorDialogBundle();
         SpecialMedicineDataWrapper wrapper = new SpecialMedicineDataWrapper();
         specialVisitorConditionWrapper = new SpecialVisitorConditionWrapper();
+        languagePack = new UILanguagePack();
 
-        jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");    
+        jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
+        jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
         jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
         jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
@@ -178,10 +198,10 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
 
         //jsonManager.SaveJson(saveData);
-        
-        //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
-        //saveData = jsonManager.LoadSaveData();
+
+        medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
+        symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
+        saveData = jsonManager.LoadSaveData();
 
         /*
         for (int i = 0; i < saveData.owningMedicineList.Count; i++)

@@ -1,0 +1,28 @@
+{
+    "specialVisitorConditionDataList": [
+        {
+            "priority": 0,
+            "bundleName": "Lily",
+            "appearingProgression": 0.0,
+            "appearingQuestBundleList": [
+                
+            ]
+        },
+        {
+            "priority": 0,
+            "bundleName": "Jet",
+            "appearingProgression": 10.0,
+            "appearingQuestBundleList": [
+                "Lily"
+            ]
+        },
+        {
+            "priority": 0,
+            "bundleName": "Iris",
+            "appearingProgression": 10.0,
+            "appearingQuestBundleList": [
+                "Lily"
+            ]
+        }
+    ]
+}

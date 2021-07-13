@@ -1,0 +1,28 @@
+{
+    "specialMedicineDataList": [
+        {
+            "fileName": "withered_dew",
+            "firstName": "시든",
+            "secondName": "이슬",
+            "toolTip": "툴팁"
+        },
+        {
+            "fileName": "moist_ore",
+            "firstName": "축축한",
+            "secondName": "원석",
+            "toolTip": "툴팁"
+        },
+        {
+            "fileName": "meltfire",
+            "firstName": "녹아내린",
+            "secondName": "불꽃",
+            "toolTip": "툴팁"
+        },
+        {
+            "fileName": "icefruit",
+            "firstName": "얼어붙은",
+            "secondName": "사과",
+            "toolTip": "툴팁"
+        }
+    ]
+}

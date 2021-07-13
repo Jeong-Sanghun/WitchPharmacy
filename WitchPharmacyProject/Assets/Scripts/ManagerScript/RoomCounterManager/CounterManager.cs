@@ -628,7 +628,10 @@ public class CounterManager : MonoBehaviour //SH
         gainedCoinText.color = Color.black;
         gainedCoinText.text = "+" + RandomVisitorClass.gainCoin.ToString();
         gainedCoinText.transform.position = gainedCoinObjectOriginPos;
+        TabletManager.inst.UpdateBill(BillReason.medicineSell, true, RandomVisitorClass.gainCoin);
         StartCoroutine(sceneManager.FadeModule_Text(gainedCoinText, 1, 0, 3f));
+        
+
     }
 
     public void ToNextSceneButton()

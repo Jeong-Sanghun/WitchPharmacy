@@ -1,0 +1,36 @@
+{
+    "randomDialogList": [
+        {
+            "dialogList": [
+                {
+                    "str": "I feel dizzy."
+                },
+                {
+                    "str": "May I take a nap now?"
+                },
+                {
+                    "str": "Who on earth do take a nap on working time? I shouldn't do that."
+                },
+                {
+                    "str": "It'll be better than yesterday. It's a cool day!"
+                }
+            ]
+        },
+        {
+            "dialogList": [
+                {
+                    "str":  "I'm starving,,,It means I did my best on harvesting medicines yesterday."
+                },
+                {
+                    "str":  "Is there anything I can eat now?"
+                },
+                {
+                    "str": "HOT spicy candy..? It'll mess my stomach.."
+                },
+                {
+                    "str":  "I should hold it."
+                }
+            ]
+        }
+    ]
+}

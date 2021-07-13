@@ -32,6 +32,8 @@ public class SaveDataClass
     public string nowStoryDialogBundleName;
 
     public List<string> solvedQuestBundleName;
+    public List<OneDayBillWrapper> billWrapperList;
+    public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
 
 
     public SaveDataClass()
@@ -49,6 +51,9 @@ public class SaveDataClass
         solvedQuestBundleName = new List<string>();
         nowCounterDialogBundleName = "testBundle";
         nowStoryDialogBundleName = "testBundle";
+        nowLanguageDirectory = "Korean/";
+        billWrapperList = new List<OneDayBillWrapper>();
+        //billWrapperList.Add(new OneDayBillWrapper());
 //        solvedQuestBundleName.Add("testBundle");
 
 

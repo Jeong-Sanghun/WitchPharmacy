@@ -1,0 +1,364 @@
+{
+    "regionPropertyArray": [
+        {
+            "index": 0,
+            "regionName": "testRegion0",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                26,
+                34,
+                13,
+                35,
+                32,
+                3,
+                39,
+                16
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 1,
+            "regionName": "testRegion1",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                2,
+                6,
+                30,
+                39,
+                15,
+                29,
+                18,
+                18
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 2,
+            "regionName": "testRegion2",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                10,
+                17,
+                41,
+                26,
+                5,
+                7,
+                39,
+                9
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 3,
+            "regionName": "testRegion3",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                7,
+                7,
+                40,
+                23,
+                12,
+                33,
+                31,
+                16
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 4,
+            "regionName": "testRegion4",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                9,
+                13,
+                9,
+                18,
+                10,
+                25,
+                26,
+                18
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 5,
+            "regionName": "testRegion5",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                41,
+                20,
+                27,
+                17,
+                33,
+                11,
+                1,
+                13
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 6,
+            "regionName": "testRegion6",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                25,
+                31,
+                32,
+                17,
+                31,
+                22,
+                37,
+                18
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 7,
+            "regionName": "testRegion7",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                15,
+                45,
+                3,
+                37,
+                22,
+                24,
+                11,
+                21
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 8,
+            "regionName": "testRegion8",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                34,
+                17,
+                46,
+                45,
+                33,
+                31,
+                11,
+                16
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        },
+        {
+            "index": 9,
+            "regionName": "testRegion9",
+            "tileTypeArray": [
+                1,
+                8,
+                4,
+                4,
+                4,
+                4,
+                4,
+                1
+            ],
+            "regionAvailableMedicine": [
+                26,
+                12,
+                15,
+                33,
+                23,
+                26,
+                3,
+                34
+            ],
+            "medicineProbability": [
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5,
+                12.5
+            ],
+            "entranceTime": 600.0,
+            "regionMedicineType": ""
+        }
+    ]
+}

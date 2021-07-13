@@ -11,6 +11,7 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
     const int rQuantityToSell = 10;
     GameManager gameManager;
     SaveDataClass saveData;
+    TabletManager tabletManager;
     RegionProperty[] regionPropertyArray;
     List<int> unlockedRegionIndex;
     List<MedicineClass> medicineDataList;
@@ -78,6 +79,7 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
+        tabletManager = TabletManager.inst;
         unlockedRegionIndex = saveData.unlockedRegionIndex;
         regionPropertyArray = gameManager.regionPropertyWrapper.regionPropertyArray;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
@@ -423,13 +425,22 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         }
         else
         {
-            if(saveData.coin - quant* wholeMedicineButtonList[nowButtonIndex].medicineClass.cost < 0)
+            int coinUsed = quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
+            if (saveData.coin - coinUsed < 0)
             {
                 //여기서 에러메시지 표출
                 notEnoughCoinPopup.SetActive(true);
                 return;
             }
             saveData.coin -= quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
+            //여기 조심. nowDay는 0일차부터 시작하기 때문에 count가 0이면 하루차가 아니라 0일차임. index가 0이어야 하루차.
+            while (saveData.billWrapperList.Count <= saveData.nowDay)
+            {
+                OneDayBillWrapper wrapper = new OneDayBillWrapper();
+                saveData.billWrapperList.Add(wrapper);
+            }
+            tabletManager.UpdateBill(BillReason.medicineBuy,false,coinUsed);
+           
             wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
             if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
             {

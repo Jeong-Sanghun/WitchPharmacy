@@ -123,7 +123,6 @@ public class CounterDialogManager : MonoBehaviour
                 //Debug.Log(specialVisitorConditionDataList[i].appearingQuestBundleList[0] + " 그리고 " + i);
                 if (specialVisitorConditionDataList[i].appearingQuestBundleList.Count == 0)
                 {
-                    Debug.Log("왜 여기 실행안됨");
                     specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
                     return true;
                 }

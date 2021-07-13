@@ -1,6 +1,6 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
+    "nowTime": 7200.0,
     "nowDay": 0,
     "coin": 50,
     "ownedMedicineList": [
@@ -24,10 +24,28 @@
         8,
         9
     ],
-    "owningToolList": [],
+    "owningToolList": [
+        {
+            "index": 0,
+            "quantity": 0
+        },
+        {
+            "index": 1,
+            "quantity": 0
+        },
+        {
+            "index": 2,
+            "quantity": 0
+        },
+        {
+            "index": 3,
+            "quantity": 0
+        }
+    ],
     "owningSpecialMedicineList": [],
     "progression": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "solvedQuestBundleName": []
+    "solvedQuestBundleName": [],
+	"nowLanguageDirectory" : "English/"
 }
