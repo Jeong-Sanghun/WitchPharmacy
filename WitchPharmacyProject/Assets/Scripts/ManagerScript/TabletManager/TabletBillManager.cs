@@ -51,6 +51,10 @@ public class TabletBillManager : MonoBehaviour
     Text prefabOneLineReasonText;
     [SerializeField]
     Text prefabOneLineCoinText;
+    [SerializeField]
+    Text prefabOneLineGainText;
+    [SerializeField]
+    Text prefabOneLineSpentText;
     
 
 
@@ -75,6 +79,8 @@ public class TabletBillManager : MonoBehaviour
     {
         billTitle.text = languagePack.billTitle;
         Debug.Log(languagePack.billTitle);
+        prefabOneLineSpentText.text = languagePack.billSpend;
+        prefabOneLineGainText.text = languagePack.billGain;
         wholeGainTitleText.text = languagePack.billWholeGain;
         wholeSpentTitleText.text = languagePack.billWholeSpend;
         prefabGainTitleText.text = languagePack.billGain;

@@ -3859,6 +3859,8 @@ MonoBehaviour:
   propertyOneLinePrefab: {fileID: 1760382766}
   prefabOneLineReasonText: {fileID: 506550055}
   prefabOneLineCoinText: {fileID: 1600362344}
+  prefabOneLineGainText: {fileID: 1478630220}
+  prefabOneLineSpentText: {fileID: 1493999599}
 --- !u!1 &1147995561
 GameObject:
   m_ObjectHideFlags: 0

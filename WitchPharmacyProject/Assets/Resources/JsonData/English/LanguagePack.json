@@ -8,6 +8,7 @@
     "reasonArray": [
         "Sell Medicine",
         "Buy Medicine",
+        "Buy Tool",
         "Maintenece Fee"
     ]
 }
