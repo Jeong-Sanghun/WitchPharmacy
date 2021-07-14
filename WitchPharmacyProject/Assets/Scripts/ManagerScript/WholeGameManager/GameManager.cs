@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour //SH
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
-        randomDialogDataWrapper = jsonManager.WrappingTest("RandomDialogDataWrapper");
+        //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
         randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
         jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
 
-        //jsonManager.SaveJson(saveData);
+        jsonManager.SaveJson(saveData);
 
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
@@ -222,7 +222,7 @@ public class GameManager : MonoBehaviour //SH
     //이거 단위 초다.
     public void TimeChange(float plusTime)
     {
-        nowTime += plusTime;
+        nowTime += 4*plusTime;
 
     }
 
@@ -232,6 +232,9 @@ public class GameManager : MonoBehaviour //SH
         {
             nowTime =0;
             nowDay++;
+            saveData.nowDay++;
+            saveData.nowTime++;
+            TabletManager.inst.SetTodayBill();
         }
     }
 }

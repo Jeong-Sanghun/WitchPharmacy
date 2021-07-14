@@ -77,11 +77,10 @@ public class RegionManager : MonoBehaviour
     {
         TileButtonClass nowTile = witchMover.nowTileButton;
         TileType tileType = nowTile.tileClass.tileType;
-        //if (tileType == TileType.StartTile || (tileType !=TileType.StoreTile && tileType != TileType.MedicineTile && tileType != 
-        //    TileType.StoryTile && tileType != TileType.TreasureTile && tileType != TileType.TrapTile && tileType != TileType.BarrierTile))
-        //{
-        //    return;
-        //}
+        if (tileType == TileType.StartTile)
+        {
+            return;
+        }
         int index = (int)tileType;
         tileMapParent.SetActive(false);
 

@@ -260,6 +260,7 @@ public class SpecialStoreTileManager : TileManager
         exploreManager.OnBuyTool(wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineIndex, quant);
 
         saveData.coin -= quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
+         TabletManager.inst.UpdateBill(BillReason.medicineBuy, false, quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost);
         wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
         if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
         {

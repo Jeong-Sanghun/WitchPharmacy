@@ -4,6 +4,7 @@
     "billWholeSpend": "Whole Spent",
     "billGain": "Gain",
     "billSpend": "Spent",
+	"billDayth" : "th Day",
     "reasonArray": [
         "Sell Medicine",
         "Buy Medicine",

@@ -10,6 +10,8 @@ public class TabletManager : MonoBehaviour
     SaveDataClass saveData;
     [SerializeField]
     TabletBillManager tabletBillManager;
+    [SerializeField]
+    GameObject tabletCanvasParent;
 
     // Start is called before the first frame update
     void Awake()
@@ -31,37 +33,21 @@ public class TabletManager : MonoBehaviour
         saveData = gameManager.saveData;
     }
 
+    public void OnTabletButton(bool open)
+    {
+        tabletCanvasParent.SetActive(open);
+    }
+
     //웬동네에서 다불러옴.
     public void UpdateBill(BillReason reason, bool isPlus, int coin)
     {
-        if (saveData.billWrapperList.Count <= saveData.nowDay)
-        {
-            OneDayBillWrapper wrapper = new OneDayBillWrapper();
-            saveData.billWrapperList.Add(wrapper);
-        }
-        OneBillClass buyBill = null;
-        for (int i = 0; i < saveData.billWrapperList[saveData.nowDay].billList.Count; i++)
-        {
-            OneBillClass bill = saveData.billWrapperList[saveData.nowDay].billList[i];
-            if (bill.reason == reason)
-            {
-                buyBill = bill;
-                break;
-            }
-        }
-        if (buyBill == null)
-        {
-            buyBill = new OneBillClass();
-            buyBill.changedCoin = coin;
-            buyBill.reason = reason;
-            buyBill.isPlus = false;
-            saveData.billWrapperList[saveData.nowDay].billList.Add(buyBill);
-        }
-        else
-        {
-            buyBill.changedCoin += coin;
-        }
-        tabletBillManager.UpdateBill();
+
+        tabletBillManager.UpdateBill(reason,isPlus,coin);
+    }
+
+    public void SetTodayBill()
+    {
+        tabletBillManager.SetBill();
     }
 
     // Update is called once per frame

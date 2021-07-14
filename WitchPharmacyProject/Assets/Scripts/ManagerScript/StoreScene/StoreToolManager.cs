@@ -70,7 +70,7 @@ public class StoreToolManager : TileManager,IStore
         owningToolList = saveData.owningToolList;
         appearingStoreToolList = storeToolDataList;
         StoreStart();
-        tabletManager = TabletManager.inst;
+
         isTileStore = false;
     }
     // Start is called before the first frame update
@@ -278,6 +278,7 @@ public class StoreToolManager : TileManager,IStore
         }
 
         saveData.coin -= coinUsed;
+        tabletManager = TabletManager.inst;
         tabletManager.UpdateBill(BillReason.toolBuy, false, coinUsed);
 
         wholeToolButtonList[nowButtonIndex].toolQuant -= quant;
@@ -294,7 +295,7 @@ public class StoreToolManager : TileManager,IStore
            ListButton();
         }
         nowButtonIndex = -1;
-        gameManager.SaveJson();
+        //gameManager.SaveJson();
     }
 
     protected void ListButton()

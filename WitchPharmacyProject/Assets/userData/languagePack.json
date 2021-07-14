@@ -1,0 +1,12 @@
+{
+	"billTitle" : "BIll",
+    "billWholeGain": "Whole Gain",
+    "billWholeSpend": "Whole Spent",
+    "billGain": "Gain",
+    "billSpend": "Spent",
+    "reasonArray": [
+        "Sell Medicine",
+        "Buy Medicine",
+        "Maintenece Fee"
+    ]
+}

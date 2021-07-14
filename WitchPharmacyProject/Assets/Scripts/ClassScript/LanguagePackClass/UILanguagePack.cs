@@ -10,6 +10,7 @@ public class UILanguagePack
     public string billWholeSpend;
     public string billGain;
     public string billSpend;
+    public string billDayth;
     public string[] reasonArray;
     //billReason enum으로 값을 받아온다.
     //GameObject symptomChartButtonPrefab;

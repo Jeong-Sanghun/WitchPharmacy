@@ -1,15 +1,36 @@
 {
     "name": "initName",
-    "nowTime": 7200.0,
-    "nowDay": 0,
-    "coin": 50,
+    "nowTime": 57600.0,
+    "nowDay": 4,
+    "coin": 470,
     "ownedMedicineList": [
-        0
+        0,
+        6,
+        18,
+        30,
+        29,
+        15
     ],
     "owningMedicineList": [
         {
-            "medicineIndex": 0,
-            "medicineQuantity": 4
+            "medicineIndex": 6,
+            "medicineQuantity": 8
+        },
+        {
+            "medicineIndex": 18,
+            "medicineQuantity": 12
+        },
+        {
+            "medicineIndex": 30,
+            "medicineQuantity": 8
+        },
+        {
+            "medicineIndex": 29,
+            "medicineQuantity": 6
+        },
+        {
+            "medicineIndex": 15,
+            "medicineQuantity": 6
         }
     ],
     "unlockedRegionIndex": [
@@ -27,11 +48,11 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 0
+            "quantity": 67
         },
         {
             "index": 1,
-            "quantity": 0
+            "quantity": 30
         },
         {
             "index": 2,
@@ -47,5 +68,72 @@
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "solvedQuestBundleName": [],
-	"nowLanguageDirectory" : "English/"
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 2,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 2,
+                    "changedCoin": 120
+                },
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 320
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 120
+                },
+                {
+                    "isPlus": false,
+                    "reason": 2,
+                    "changedCoin": 130
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 2,
+                    "changedCoin": 110
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 2,
+                    "changedCoin": 10
+                }
+            ]
+        }
+    ],
+    "nowLanguageDirectory": "Korean/"
 }

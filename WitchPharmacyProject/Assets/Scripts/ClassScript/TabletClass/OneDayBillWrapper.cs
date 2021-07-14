@@ -14,6 +14,6 @@ public class OneDayBillWrapper
         wholeGainCoin = 0;
         wholeSpentCoin = 0;
         billList = new List<OneBillClass>();
-        billList.Add(new OneBillClass());
+        //billList.Add(new OneBillClass());
     }
 }
