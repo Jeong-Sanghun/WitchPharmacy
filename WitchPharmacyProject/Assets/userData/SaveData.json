@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 28800.0,
-    "nowDay": 1,
-    "coin": 830,
+    "nowTime": 0.0,
+    "nowDay": 6,
+    "coin": 808,
     "ownedMedicineList": [
         0,
         15,
@@ -13,12 +13,16 @@
     ],
     "owningMedicineList": [
         {
+            "medicineIndex": 0,
+            "medicineQuantity": 16
+        },
+        {
             "medicineIndex": 15,
-            "medicineQuantity": 6
+            "medicineQuantity": 5
         },
         {
             "medicineIndex": 2,
-            "medicineQuantity": 6
+            "medicineQuantity": 5
         },
         {
             "medicineIndex": 30,
@@ -48,11 +52,11 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 10
+            "quantity": 22
         },
         {
             "index": 1,
-            "quantity": 10
+            "quantity": 14
         },
         {
             "index": 2,
@@ -63,11 +67,30 @@
             "quantity": 0
         }
     ],
-    "owningSpecialMedicineList": [],
-    "progression": 0.0,
+    "owningSpecialMedicineList": [
+        {
+            "medicineIndex": 0,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 1,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 2,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 3,
+            "medicineQuantity": 1
+        }
+    ],
+    "progression": 10.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "solvedQuestBundleName": [],
+    "solvedQuestBundleName": [
+        "Lily"
+    ],
     "billWrapperList": [
         {
             "wholeGainCoin": 0,
@@ -89,27 +112,70 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 12
+                },
+                {
+                    "isPlus": false,
+                    "reason": 2,
+                    "changedCoin": 90
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         }
     ],
     "owningDocumentList": [
         {
             "name": "Go",
-            "gainedRegion": "testRegion1",
-            "gainedDay": 0,
-            "gainedTime": 0.0
-        },
-        {
-            "name": "TheBeautyOfVoid",
             "gainedRegion": "testRegion2",
-            "gainedDay": 0,
-            "gainedTime": 0.0
+            "gainedDay": 3,
+            "gainedTime": 60000.0
         },
         {
             "name": "Vagabond",
-            "gainedRegion": "testRegion0",
-            "gainedDay": 0,
-            "gainedTime": 0.0
+            "gainedRegion": "testRegion4",
+            "gainedDay": 5,
+            "gainedTime": 73920.0
         }
     ],
+    "readStoryList": [],
     "nowLanguageDirectory": "English/"
 }

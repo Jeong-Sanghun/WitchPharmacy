@@ -6,6 +6,8 @@
     "billSpend": "Spent",
 	"billDayth" : "th Day",
     "documentGainedRegion" : "Gained Region : ",
+    "boxCoinGained" : "You've got $ coins.",
+     "boxGained" : "You've got $.",
     "reasonArray": [
         "Sell Medicine",
         "Buy Medicine",

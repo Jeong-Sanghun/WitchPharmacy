@@ -6,6 +6,8 @@
     "billSpend": "지출",
 	"billDayth": "일차",
     "documentGainedRegion" : "획득장소 : ",
+    "boxCoinGained" : "$만큼의 코인을 얻었습니다!",
+     "boxGained" : "$ 얻었습니다!",
     "reasonArray": [
         "약재 판매",
         "약재 구입",

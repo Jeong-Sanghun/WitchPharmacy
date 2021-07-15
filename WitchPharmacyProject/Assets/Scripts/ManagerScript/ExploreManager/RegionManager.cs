@@ -47,6 +47,8 @@ public class RegionManager : MonoBehaviour
                     tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<StoryTileManager>();
                     break;
                 case 4:
+                    tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<EventTileManager>();
+                    break;
                 case 5:
                     tileManagerArray[i] = tileManagerObjectArray[i].GetComponent<EventTileManager>();
                     break;

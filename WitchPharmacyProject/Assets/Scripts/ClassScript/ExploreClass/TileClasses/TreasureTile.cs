@@ -13,6 +13,8 @@ public class TreasureTile : Tile
 {
     public bool boxOpened;
     public int clickedTime;
+    public string storyFileName;
+    public int gainedThing;
     public TreasureType treasureType;
     public TreasureTile(int i) : base(i)
     {

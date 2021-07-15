@@ -61,7 +61,8 @@ public class TabletDocumentManager : MonoBehaviour
     }
 
     //오우닝 다큐먼트 클래스 하나 넣어서 만듦.
-    void SetupDocument(OwningDocumentClass owningDocument)
+    //tileTreasuremangaer에서 불러옴.
+    public void SetupDocument(OwningDocumentClass owningDocument)
     {
         DocumentFolderButtonClass folderButton = null;
         DocumentCondition conditionData = null;

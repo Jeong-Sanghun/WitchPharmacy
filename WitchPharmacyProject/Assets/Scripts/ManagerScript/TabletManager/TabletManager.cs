@@ -11,6 +11,8 @@ public class TabletManager : MonoBehaviour
     [SerializeField]
     TabletBillManager tabletBillManager;
     [SerializeField]
+    TabletDocumentManager tabletDocumentManager;
+    [SerializeField]
     GameObject tabletCanvasParent;
 
     // Start is called before the first frame update
@@ -43,6 +45,11 @@ public class TabletManager : MonoBehaviour
     {
 
         tabletBillManager.UpdateBill(reason,isPlus,coin);
+    }
+
+    public void UpdateDocument(OwningDocumentClass doc)
+    {
+        tabletDocumentManager.SetupDocument(doc);
     }
 
     public void SetTodayBill()

@@ -19,6 +19,8 @@ public class DocumentCondition
     public string documentGainCondition;
     public string regionCondition;
 
+    Sprite documentSprite;
+
     [System.NonSerialized]
     public List<string> storyGainConditionList;
     [System.NonSerialized]
@@ -39,6 +41,20 @@ public class DocumentCondition
 
     }
 
+
+    public Sprite LoadSprite()
+    {
+        if (documentSprite != null)
+        {
+            return documentSprite;
+        }
+        StringBuilder builder = new StringBuilder("DocumentSprite/");
+        builder.Append(fileName);
+        documentSprite = Resources.Load<Sprite>(builder.ToString());
+        return documentSprite;
+    }
+
+
     public void ConditionStringParse()
     {
         storyGainConditionList = new List<string>();
@@ -55,6 +71,13 @@ public class DocumentCondition
                 Debug.Log(builder.ToString());
                 builder = new StringBuilder();
             }
+            else if(i == regionCondition.Length - 1)
+            {
+                builder.Append(regionCondition[i]);
+                regionGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }
             else
             {
                 builder.Append(regionCondition[i]);
@@ -62,8 +85,14 @@ public class DocumentCondition
         }
         for (int i = 0; i < documentGainCondition.Length; i++)
         {
-            if (documentGainCondition[i] == '/')
+            if (documentGainCondition[i] == '/' )
             {
+                documentGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }else if (i == documentGainCondition.Length - 1)
+            {
+                builder.Append(documentGainCondition[i]);
                 documentGainConditionList.Add(builder.ToString());
                 Debug.Log(builder.ToString());
                 builder = new StringBuilder();
@@ -81,6 +110,13 @@ public class DocumentCondition
                 Debug.Log(builder.ToString());
                 builder = new StringBuilder();
             }
+            else if(i == questGainCondition.Length - 1)
+            {
+                builder.Append(questGainCondition[i]);
+                questGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }
             else
             {
                 builder.Append(questGainCondition[i]);
@@ -90,6 +126,12 @@ public class DocumentCondition
         {
             if (storyGainCondition[i] == '/')
             {
+                storyGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }else if (i == storyGainCondition.Length - 1)
+            {
+                builder.Append(storyGainCondition[i]);
                 storyGainConditionList.Add(builder.ToString());
                 Debug.Log(builder.ToString());
                 builder = new StringBuilder();

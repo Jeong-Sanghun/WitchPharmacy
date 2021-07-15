@@ -162,13 +162,25 @@ public class RandomVisitorClass //SH
             int randomIndex = Random.Range(0, availableMedicineList.Count);
             MedicineClass answerMedicine = availableMedicineList[randomIndex];
             bool reChoice = true;
+            bool justGoForOneMedicine = false;
             while (reChoice)
             {
                 if (symptomNumberArray[(int)answerMedicine.GetFirstSymptom()] + answerMedicine.firstNumber == 0 &&
                 symptomNumberArray[(int)answerMedicine.GetSecondSymptom()] + answerMedicine.secondNumber == 0)
                 {
-                    randomIndex = Random.Range(0, availableMedicineList.Count);
-                    answerMedicine = availableMedicineList[randomIndex];
+                    if(availableMedicineList.Count == 1)
+                    {
+                        justGoForOneMedicine = true;
+                        Debug.LogError("야 진짜진짜 졷됀거니까 조심해라");
+                        break;
+                    }
+                    else
+                    {
+                        randomIndex = Random.Range(0, availableMedicineList.Count);
+                        answerMedicine = availableMedicineList[randomIndex];
+
+                    }
+
                 }
                 else
                 {
@@ -177,10 +189,15 @@ public class RandomVisitorClass //SH
 
             }
 
-            symptomNumberArray[(int)answerMedicine.GetFirstSymptom()] += answerMedicine.firstNumber;
-            symptomNumberArray[(int)answerMedicine.GetSecondSymptom()] += answerMedicine.secondNumber;
-            answerMedicineList.Add(answerMedicine);
-            nowMedicineNumber++;
+            if (!justGoForOneMedicine)
+            {
+                symptomNumberArray[(int)answerMedicine.GetFirstSymptom()] += answerMedicine.firstNumber;
+                symptomNumberArray[(int)answerMedicine.GetSecondSymptom()] += answerMedicine.secondNumber;
+                answerMedicineList.Add(answerMedicine);
+                nowMedicineNumber++;
+                break;
+            }
+
             availableMedicineList.Clear();
         }
         //여기 위까지가 판정, 정답약 넣는거.

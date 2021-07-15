@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour //SH
         for(int i = 0; i < documentConditionWrapper.documentConditionList.Count; i++)
         {
             documentConditionWrapper.documentConditionList[i].ConditionStringParse();
+           
         }
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
