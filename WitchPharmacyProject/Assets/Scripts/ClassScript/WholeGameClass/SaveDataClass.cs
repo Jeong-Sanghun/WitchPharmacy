@@ -34,6 +34,7 @@ public class SaveDataClass
     public List<string> solvedQuestBundleName;
     public List<OneDayBillWrapper> billWrapperList;
     public List<OwningDocumentClass> owningDocumentList;
+    public List<string> readStoryList;
     public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
 
 
@@ -58,6 +59,7 @@ public class SaveDataClass
         owningDocumentList.Add(new OwningDocumentClass());
         owningDocumentList.Add(new OwningDocumentClass());
         owningDocumentList.Add(new OwningDocumentClass());
+        readStoryList = new List<string>();
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
 

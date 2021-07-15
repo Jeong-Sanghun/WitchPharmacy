@@ -5,6 +5,7 @@
     "billGain": "Gain",
     "billSpend": "Spent",
 	"billDayth" : "th Day",
+    "documentGainedRegion" : "Gained Region : ",
     "reasonArray": [
         "Sell Medicine",
         "Buy Medicine",

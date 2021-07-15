@@ -10,6 +10,9 @@ public class EventTileManager : TileManager
     SceneManager sceneManager;
     [SerializeField]
     GameObject rewardCanvas;
+
+    //GameObject nowRewardCanvas;
+    List<DocumentCondition> documentConditionList;
     //[SerializeField]
     //GameObject trapCanvas;
 
@@ -26,6 +29,7 @@ public class EventTileManager : TileManager
         base.Start();
         boxOpened = false;
         sceneManager = SceneManager.inst;
+        documentConditionList = gameManager.documentConditionWrapper.documentConditionList;
     }
 
     public override void TileOpen(TileButtonClass tile)
@@ -40,7 +44,7 @@ public class EventTileManager : TileManager
                 TrapTile trapTile = (TrapTile)nowTileButton.tileClass;
                 if (trapTile.boxOpened)
                 {
-                    rewardCanvas.SetActive(true);
+                    TrapOpen();
                     boxImageDebug.gameObject.SetActive(false);
                     boxOpened = true;
                 }
@@ -57,7 +61,7 @@ public class EventTileManager : TileManager
                 TreasureTile treasureTile = (TreasureTile)nowTileButton.tileClass;
                 if (treasureTile.boxOpened)
                 {
-                    rewardCanvas.SetActive(true);
+                    OpenedTileRewardOpen(treasureTile.treasureType);
                     boxImageDebug.gameObject.SetActive(false);
                     boxOpened = true;
                 }
@@ -130,16 +134,18 @@ public class EventTileManager : TileManager
             case TileType.TrapTile:
                 TrapTile trapTile = (TrapTile)nowTileButton.tileClass;
                 trapTile.boxOpened = true;
+                TrapOpen();
                 break;
             case TileType.TreasureTile:
                 TreasureTile treasureTile = (TreasureTile)nowTileButton.tileClass;
                 treasureTile.boxOpened = true;
+                RewardOpen();
                 break;
             default:
                 break;
 
         }
-        RewardOpen();
+
     }
 
     //void TreasureOpen()
@@ -153,9 +159,112 @@ public class EventTileManager : TileManager
     //    trapCanvas.SetActive(true);
     //}
 
+    void TrapOpen()
+    {
+        //여기는 트랩 세팅 해줄 필요 없음. 트랩은 단일 캔버스임.
+        rewardCanvas.SetActive(true);
+    }
     void RewardOpen()
     {
+        string bundleFileName;
+        bool getStory = DocumentCheck(out bundleFileName);
+        if (getStory)
+        {
+
+        }
+        else
+        {
+
+        }
         rewardCanvas.SetActive(true);
+    }
+
+    void OpenedTileRewardOpen(TreasureType type)
+    {
+
+    }
+
+    bool DocumentCheck(out string bundleFileName)
+    {
+        bundleFileName = null;
+
+        for(int i = 0; i < documentConditionList.Count; i++)
+        {
+            DocumentCondition condition = documentConditionList[i];
+            bool conditioning = true;
+            for (int j = 0; j < condition.regionGainConditionList.Count; j++)
+            {
+                if (exploreManager.nowRegionIngame.regionProperty.regionFileName == condition.regionGainConditionList[j])
+                {
+                    conditioning = true;
+                    break;
+                }
+                else
+                {
+                    conditioning = false;
+                }
+            }
+            if (conditioning == false)
+            {
+                continue;
+            }
+            for (int j = 0; j < condition.questGainConditionList.Count; j++)
+            {
+                if (!saveData.solvedQuestBundleName.Contains(condition.questGainConditionList[j]))
+                {
+                    conditioning = false;
+                    break;
+                }
+            }
+            if(conditioning == false)
+            {
+                continue;
+            }
+            for (int j = 0; j < condition.documentGainConditionList.Count; j++)
+            {
+                bool contains = false;
+                for(int k = 0; k < saveData.owningDocumentList.Count; k++)
+                {
+                    if (saveData.owningDocumentList[k].name == condition.documentGainConditionList[j])
+                    {
+                        contains = true;
+                        break;
+                    }
+                }
+                if(contains == false)
+                {
+                    conditioning = false;
+                    break;
+                }
+                
+            }
+            if (conditioning == false)
+            {
+                continue;
+            }
+            for (int j = 0; j < condition.storyGainConditionList.Count; j++)
+            {
+                if (!saveData.readStoryList.Contains(condition.storyGainConditionList[j]))
+                {
+                    conditioning = false;
+                    break;
+                }
+            }
+            if (conditioning == false)
+            {
+                continue;
+            }
+            else
+            {
+                bundleFileName = condition.fileName;
+                return true;
+            }
+            
+
+
+        }
+        
+        return false;
     }
 
     public void OnBackButton()

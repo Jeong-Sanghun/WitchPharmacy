@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text;
 
 [System.Serializable]
 public class DocumentBundle
@@ -9,6 +10,7 @@ public class DocumentBundle
     public int index;
     public string name;
     public string document;
+    Sprite documentSprite;
 
     public DocumentBundle()
     {
@@ -20,6 +22,18 @@ public class DocumentBundle
             + " 씨눈 빠져라 살아라 포장마차숟가락 꽂은 담 민자들 잡아 놓고영웅담 술 한잔 언제까지 뒤질래군바리 때 얘기 언제까지 뒤질나는 가다, ayy나는 앞으로만 가다, ayy누나를 두고 나는 가다갈까 말까 하다 그냥 가다"
             + "어 가냐 어 가 어 그려, 나는 가다존나 앞으로만 가다너는 뛰거라 노가다이제야 나오냐 나의 가다, 오 가다 가다 가다";
 
+    }
+
+    public Sprite LoadSprite()
+    {
+        if (documentSprite != null)
+        {
+            return documentSprite;
+        }
+        StringBuilder builder = new StringBuilder("DocumentSprite/");
+        builder.Append(name);
+        documentSprite = Resources.Load<Sprite>(builder.ToString());
+        return documentSprite;
     }
 
 }

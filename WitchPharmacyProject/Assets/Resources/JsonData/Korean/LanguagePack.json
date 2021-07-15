@@ -5,6 +5,7 @@
     "billGain": "수입",
     "billSpend": "지출",
 	"billDayth": "일차",
+    "documentGainedRegion" : "획득장소 : ",
     "reasonArray": [
         "약재 판매",
         "약재 구입",

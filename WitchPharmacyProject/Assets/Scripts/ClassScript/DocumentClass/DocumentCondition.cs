@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text;
 
 [System.Serializable]
 public class DocumentCondition
@@ -36,9 +37,67 @@ public class DocumentCondition
         questGainCondition = "Lily";
         documentGainCondition = null;
 
+    }
+
+    public void ConditionStringParse()
+    {
         storyGainConditionList = new List<string>();
         documentGainConditionList = new List<string>();
         questGainConditionList = new List<string>();
         regionGainConditionList = new List<string>();
+
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < regionCondition.Length; i++)
+        {
+            if(regionCondition[i] == '/')
+            {
+                regionGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }
+            else
+            {
+                builder.Append(regionCondition[i]);
+            }
+        }
+        for (int i = 0; i < documentGainCondition.Length; i++)
+        {
+            if (documentGainCondition[i] == '/')
+            {
+                documentGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }
+            else
+            {
+                builder.Append(documentGainCondition[i]);
+            }
+        }
+        for (int i = 0; i < questGainCondition.Length; i++)
+        {
+            if (questGainCondition[i] == '/')
+            {
+                questGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }
+            else
+            {
+                builder.Append(questGainCondition[i]);
+            }
+        }
+        for (int i = 0; i < storyGainCondition.Length; i++)
+        {
+            if (storyGainCondition[i] == '/')
+            {
+                storyGainConditionList.Add(builder.ToString());
+                Debug.Log(builder.ToString());
+                builder = new StringBuilder();
+            }
+            else
+            {
+                builder.Append(storyGainCondition[i]);
+            }
+        }
     }
 }

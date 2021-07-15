@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour //SH
         saveData = jsonManager.LoadSaveData();
 
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        DebugDataJson();
+        //DebugDataJson();
 
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
@@ -79,6 +79,10 @@ public class GameManager : MonoBehaviour //SH
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
         documentConditionWrapper = jsonManager.ResourceDataLoad<DocumentConditionWrapper>("DocumentConditionWrapper");
+        for(int i = 0; i < documentConditionWrapper.documentConditionList.Count; i++)
+        {
+            documentConditionWrapper.documentConditionList[i].ConditionStringParse();
+        }
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
@@ -148,7 +152,6 @@ public class GameManager : MonoBehaviour //SH
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.
     void DebugDataJson()
     {
-        Debug.Log("이거야");
         saveData = new SaveDataClass();
         for (int i = 0; i < 1; i++)
         {
