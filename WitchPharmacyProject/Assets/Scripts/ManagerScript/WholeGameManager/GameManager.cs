@@ -38,7 +38,10 @@ public class GameManager : MonoBehaviour //SH
     [HideInInspector]
     public SpecialVisitorConditionWrapper specialVisitorConditionWrapper;
     [HideInInspector]
+    public DocumentConditionWrapper documentConditionWrapper;
+    [HideInInspector]
     public UILanguagePack languagePack;
+
     //세이브데이터 불러오기 및 딕셔너리 읽기.
     JsonManager jsonManager;
 
@@ -67,7 +70,7 @@ public class GameManager : MonoBehaviour //SH
         saveData = jsonManager.LoadSaveData();
 
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        //DebugDataJson();
+        DebugDataJson();
 
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour //SH
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
+        documentConditionWrapper = jsonManager.ResourceDataLoad<DocumentConditionWrapper>("DocumentConditionWrapper");
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
@@ -123,6 +127,13 @@ public class GameManager : MonoBehaviour //SH
     {
         SpecialVisitorDialogBundle bundle;
         bundle = jsonManager.ResourceDataLoad<SpecialVisitorDialogBundle>("SpecialVisitorBundle/" + bundleName);
+        return bundle;
+    }
+
+    public DocumentBundle LoadDocumentBundle(string bundleName)
+    {
+        DocumentBundle bundle;
+        bundle = jsonManager.ResourceDataLoad<DocumentBundle>("DocumentBundle/" + bundleName);
         return bundle;
     }
 
@@ -180,6 +191,7 @@ public class GameManager : MonoBehaviour //SH
         conversationDialogBundleWrapper = new ConversationDialogBundleWrapper();
         randomDialogDataWrapper = new StartDialogClassWrapper();
         conversationDialogBundle = new ConversationDialogBundle();
+        documentConditionWrapper = new DocumentConditionWrapper();
 
         SpecialVisitorDialogBundle bundle = new SpecialVisitorDialogBundle();
         SpecialMedicineDataWrapper wrapper = new SpecialMedicineDataWrapper();
@@ -196,8 +208,11 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
         jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
         jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
+        jsonManager.SaveJson<DocumentConditionWrapper>(documentConditionWrapper, "DocumentConditionWrapper");
+        DocumentBundle doc = new DocumentBundle();
+        jsonManager.SaveJson<DocumentBundle>(doc, "testDocument");
 
-        jsonManager.SaveJson(saveData);
+        //jsonManager.SaveJson(saveData);
 
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");

@@ -1,0 +1,34 @@
+{
+    "documentConditionList": [
+        {
+            "folderIngameName": "",
+            "folderFileName": "",
+            "fileName": "testDocument",
+            "ingameName": "테스투",
+            "storyGainCondition": "",
+            "questGainCondition": "Lily",
+            "documentGainCondition": "",
+            "regionCondition": ""
+        },
+        {
+            "folderIngameName": "",
+            "folderFileName": "",
+            "fileName": "testDocument",
+            "ingameName": "테스투",
+            "storyGainCondition": "",
+            "questGainCondition": "Lily",
+            "documentGainCondition": "",
+            "regionCondition": ""
+        },
+        {
+            "folderIngameName": "",
+            "folderFileName": "",
+            "fileName": "testDocument",
+            "ingameName": "테스투",
+            "storyGainCondition": "",
+            "questGainCondition": "Lily",
+            "documentGainCondition": "",
+            "regionCondition": ""
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "documentConditionList": [
+        {
+            "folderIngameName": "머쉬베놈",
+						"folderFileName": "MushVenom",
+            "fileName": "Go",
+            "ingameName": "가다(feat. 사이먼 도미닉, The Quiett",
+            "storyGainCondition": "",
+            "questGainCondition": "",
+            "documentGainCondition": "",
+            "regionCondition": "testRegion1/testRegion2/testRegion3"
+        },
+        {
+            "folderIngameName": "하현우",
+						"folderFileName": "Ha-Hyunwoo",
+            "fileName": "Vagabond",
+            "ingameName": "테스투",
+            "storyGainCondition": "",
+            "questGainCondition": "Lily",
+            "documentGainCondition": "",
+            "regionCondition": "testRegion4/testRegion5/testRegion6"
+        },
+        {
+            "folderIngameName": "머쉬베놈",
+						"folderFileName": "MushVenom",
+            "fileName": "TheBeautyOfVoid",
+            "ingameName": "여백의 미(feat. Jessi, Justhis)",
+            "storyGainCondition": "",
+            "questGainCondition": "Lily",
+            "documentGainCondition": "",
+            "regionCondition": "testRegion7/testRegion8"
+        }
+    ]
+}

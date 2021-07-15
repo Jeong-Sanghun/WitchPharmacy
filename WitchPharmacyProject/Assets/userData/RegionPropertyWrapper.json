@@ -2,7 +2,8 @@
     "regionPropertyArray": [
         {
             "index": 0,
-            "regionName": "testRegion0",
+            "regionFileName": "testRegion0",
+            "regionName": "테스트리젼0",
             "tileTypeArray": [
                 1,
                 8,
@@ -38,7 +39,8 @@
         },
         {
             "index": 1,
-            "regionName": "testRegion1",
+            "regionFileName": "testRegion1",
+            "regionName": "테스트리젼1",
             "tileTypeArray": [
                 1,
                 8,
@@ -74,7 +76,8 @@
         },
         {
             "index": 2,
-            "regionName": "testRegion2",
+            "regionFileName": "testRegion2",
+            "regionName": "테스트리젼2",
             "tileTypeArray": [
                 1,
                 8,
@@ -110,7 +113,8 @@
         },
         {
             "index": 3,
-            "regionName": "testRegion3",
+            "regionFileName": "testRegion3",
+            "regionName": "테스트리젼3",
             "tileTypeArray": [
                 1,
                 8,
@@ -146,7 +150,8 @@
         },
         {
             "index": 4,
-            "regionName": "testRegion4",
+            "regionFileName": "testRegion4",
+            "regionName": "테스트리젼4",
             "tileTypeArray": [
                 1,
                 8,
@@ -182,7 +187,8 @@
         },
         {
             "index": 5,
-            "regionName": "testRegion5",
+            "regionFileName": "testRegion5",
+            "regionName": "테스트리젼5",
             "tileTypeArray": [
                 1,
                 8,
@@ -218,7 +224,8 @@
         },
         {
             "index": 6,
-            "regionName": "testRegion6",
+            "regionFileName": "testRegion6",
+            "regionName": "테스트리젼6",
             "tileTypeArray": [
                 1,
                 8,
@@ -254,7 +261,8 @@
         },
         {
             "index": 7,
-            "regionName": "testRegion7",
+            "regionFileName": "testRegion7",
+            "regionName": "테스트리젼7",
             "tileTypeArray": [
                 1,
                 8,
@@ -290,7 +298,8 @@
         },
         {
             "index": 8,
-            "regionName": "testRegion8",
+            "regionFileName": "testRegion8",
+            "regionName": "테스트리젼8",
             "tileTypeArray": [
                 1,
                 8,
@@ -326,7 +335,8 @@
         },
         {
             "index": 9,
-            "regionName": "testRegion9",
+            "regionFileName": "testRegion9",
+            "regionName": "테스트리젼9",
             "tileTypeArray": [
                 1,
                 8,

@@ -1,36 +1,36 @@
 {
     "name": "initName",
-    "nowTime": 57600.0,
-    "nowDay": 4,
-    "coin": 470,
+    "nowTime": 28800.0,
+    "nowDay": 1,
+    "coin": 830,
     "ownedMedicineList": [
         0,
-        6,
-        18,
+        15,
+        2,
         30,
         29,
-        15
+        6
     ],
     "owningMedicineList": [
         {
-            "medicineIndex": 6,
-            "medicineQuantity": 8
+            "medicineIndex": 15,
+            "medicineQuantity": 6
         },
         {
-            "medicineIndex": 18,
-            "medicineQuantity": 12
+            "medicineIndex": 2,
+            "medicineQuantity": 6
         },
         {
             "medicineIndex": 30,
-            "medicineQuantity": 8
+            "medicineQuantity": 2
         },
         {
             "medicineIndex": 29,
-            "medicineQuantity": 6
+            "medicineQuantity": 2
         },
         {
-            "medicineIndex": 15,
-            "medicineQuantity": 6
+            "medicineIndex": 6,
+            "medicineQuantity": 2
         }
     ],
     "unlockedRegionIndex": [
@@ -48,11 +48,11 @@
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 67
+            "quantity": 10
         },
         {
             "index": 1,
-            "quantity": 30
+            "quantity": 10
         },
         {
             "index": 2,
@@ -76,6 +76,11 @@
                 {
                     "isPlus": false,
                     "reason": 2,
+                    "changedCoin": 210
+                },
+                {
+                    "isPlus": true,
+                    "reason": 0,
                     "changedCoin": 40
                 }
             ]
@@ -83,56 +88,27 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 2,
-                    "changedCoin": 120
-                },
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 320
-                }
-            ]
+            "billList": []
+        }
+    ],
+    "owningDocumentList": [
+        {
+            "name": "Go",
+            "gainedRegion": "testRegion1",
+            "gainedDay": 0,
+            "gainedTime": 0.0
         },
         {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 120
-                },
-                {
-                    "isPlus": false,
-                    "reason": 2,
-                    "changedCoin": 130
-                }
-            ]
+            "name": "TheBeautyOfVoid",
+            "gainedRegion": "testRegion2",
+            "gainedDay": 0,
+            "gainedTime": 0.0
         },
         {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 2,
-                    "changedCoin": 110
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 2,
-                    "changedCoin": 10
-                }
-            ]
+            "name": "Vagabond",
+            "gainedRegion": "testRegion0",
+            "gainedDay": 0,
+            "gainedTime": 0.0
         }
     ],
     "nowLanguageDirectory": "English/"

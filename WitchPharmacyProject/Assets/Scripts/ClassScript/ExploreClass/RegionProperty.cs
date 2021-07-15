@@ -7,6 +7,7 @@ using UnityEngine;
 public class RegionProperty
 {
     public int index;
+    public string regionFileName;
     public string regionName;
     public int[] tileTypeArray;
     //public enum TileType
@@ -25,7 +26,8 @@ public class RegionProperty
         //타일개수만큼 타일 타입을 만들어주는 프로퍼티
         //나중에 제이슨 파일로 받아올거임.
         index = _index;
-        regionName = "testRegion" + _index.ToString() ;
+        regionFileName = "testRegion" + _index.ToString();
+        regionName = "테스트리젼" + _index.ToString() ;
         tileTypeArray = new int[8];
         tileTypeArray[0] = 1;
         for(int i = 1; i < 8; i++)
@@ -47,7 +49,7 @@ public class RegionProperty
         medicineProbability = new float[MedicineTileManager.appearingMedicine];
         for (int i = 0; i < MedicineTileManager.appearingMedicine; i++)
         {
-            //regionAvailableMedicine[i] = Random.Range(0,48);
+         //   regionAvailableMedicine[i] = Random.Range(0,48);
             medicineProbability[i] = 100.0f/ MedicineTileManager.appearingMedicine;
         }
         entranceTime = 600;

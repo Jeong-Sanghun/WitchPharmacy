@@ -2,7 +2,7 @@
     "medicineDataList": [
         {
             "fileName": "fire+air--",
-            "firstName": "타오르는",
+            "firstName": "안타오르는",
             "secondName": "증서",
             "toolTip": "태우려고 해도 약속은 사라지지 않는다.",
             "cost": 3,

@@ -1,0 +1,34 @@
+{
+    "documentConditionList": [
+        {
+            "folderIngameName": "MushVenom",
+			"folderFileName": "MushVenom",
+            "fileName": "Go",
+            "ingameName": "Go(feat. Simon Dominiquem, The Quiett)",
+            "storyGainCondition": "",
+            "questGainCondition": "",
+            "documentGainCondition": "",
+            "regionCondition": "testRegion1/testRegion2/testRegion3"
+        },
+        {
+            "folderIngameName": "Ha-Hyunwoo",
+						"folderFileName": "Ha-Hyunwoo",
+            "fileName": "Vagabond",
+            "ingameName": "Vagabond",
+            "storyGainCondition": "",
+            "questGainCondition": "Lily",
+            "documentGainCondition": "",
+            "regionCondition": "testRegion4/testRegion5/testRegion6"
+        },
+        {
+            "folderIngameName": "MushVenom",
+						"folderFileName": "MushVenom",
+            "fileName": "TheBeautyOfVoid",
+            "ingameName": "The Beauty Of Void(feat. Jessi, Justhis)",
+            "storyGainCondition": "",
+            "questGainCondition": "Lily",
+            "documentGainCondition": "",
+            "regionCondition": "testRegion7/testRegion8"
+        }
+    ]
+}

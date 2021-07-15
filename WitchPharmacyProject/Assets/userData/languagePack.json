@@ -1,12 +1,13 @@
 {
-	"billTitle" : "BIll",
-    "billWholeGain": "Whole Gain",
-    "billWholeSpend": "Whole Spent",
-    "billGain": "Gain",
-    "billSpend": "Spent",
+    "billTitle": "",
+    "billWholeGain": "총 수입",
+    "billWholeSpend": "총 판매",
+    "billGain": "수입",
+    "billSpend": "지출",
+    "billDayth": "",
     "reasonArray": [
-        "Sell Medicine",
-        "Buy Medicine",
-        "Maintenece Fee"
+        "약재 판매",
+        "약재 구입",
+        "유지비"
     ]
 }
