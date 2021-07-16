@@ -84,6 +84,7 @@ public class CounterManager : MonoBehaviour //SH
     //public bool nowTalking;
     int index = 0;
     bool isSpecialVisitor = false;
+    bool lastVisitor = false;
 
     [SerializeField]
     GameObject measureToolOpenButton;
@@ -420,7 +421,12 @@ public class CounterManager : MonoBehaviour //SH
     {
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
         yield return new WaitForSeconds(1.5f);
+        if (lastVisitor)
+        {
+            endSales = true;
+            toNextSceneButton.SetActive(true);
 
+        }
         if (!endSales)
         {
             visitorTriggerManager.TriggerCheck();
@@ -596,10 +602,9 @@ public class CounterManager : MonoBehaviour //SH
         int hour = (int)gameManager.nowTime / 3600;
         int minute = ((int)gameManager.nowTime % 3600) / 60;
         TimeTextChange();
-        if (hour >= 16)
+        if (hour >= 18)
         {
-            endSales = true;
-            toNextSceneButton.SetActive(true);
+            lastVisitor = true;
         }
     }
 

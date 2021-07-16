@@ -33,11 +33,12 @@ public class VisitorTriggerManager : MonoBehaviour
                 nowCheckingTrigger = false;
                 counterManager.CounterStart();
             }
-            else if (Input.GetKeyDown(KeyCode.B))
+            else if (Input.GetKeyDown(KeyCode.B) || Input.GetMouseButtonDown(0))
             {
                 nowCheckingTrigger = false;
                 counterManager.CounterStart(counterDialogManager.specialVisitorDialogBundle.characterName);
             }
+           
         }
     }
 

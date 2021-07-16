@@ -45,9 +45,15 @@ public class SaveDataClass
         nowDay = 0;
         nowTime = 0;
         ownedMedicineList = new List<int>();
+        ownedMedicineList.Add(0);
         owningMedicineList = new List<OwningMedicineClass>();
+        owningMedicineList.Add(new OwningMedicineClass(0, 10));
         owningSpecialMedicineList = new List<OwningMedicineClass>();
         unlockedRegionIndex = new List<int>();
+        for(int i = 0; i < 9; i++)
+        {
+            unlockedRegionIndex.Add(i);
+        }
         owningToolList = new List<OwningToolClass>();
         progression = 0;
         solvedQuestBundleName = new List<string>();

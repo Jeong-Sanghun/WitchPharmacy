@@ -8,7 +8,8 @@ using System.Text;
 
 public class SceneManager : MonoBehaviour // JH
 {
-    
+ 
+
     GameManager gameManager;
     public static SceneManager inst;
     //이전 씬의 네임. storyScene에서 써먹을라고 만듦......
@@ -18,6 +19,7 @@ public class SceneManager : MonoBehaviour // JH
 
     private void Start()
     {
+        Screen.SetResolution(2560, 1440, false);
         nowTexting = false;   
     }
     // // Module // //
@@ -205,8 +207,36 @@ public class SceneManager : MonoBehaviour // JH
     public void LoadScene(string sceneName)
     {
         lastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        StartCoroutine(LoadingSceneCoroutine(sceneName));
         
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator LoadingSceneCoroutine(string sceneName)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene");
+        yield return null;
+        Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
+        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+
+        op.allowSceneActivation = false;
+
+        float timer = 0.0f;
+
+        while (!op.isDone)
+        {
+
+            timer += Time.deltaTime;
+            loadText.text = op.progress.ToString();
+            if (timer > 0.5f)
+            {
+                op.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+
+
+
+        
     }
 
 

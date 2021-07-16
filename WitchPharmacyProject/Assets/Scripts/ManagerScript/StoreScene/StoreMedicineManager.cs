@@ -227,6 +227,10 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
             //wholeMedicienButtonList의 index임.
 
         }
+        for(int i = 0; i < 5; i++)
+        {
+            PropertyListButton(i);
+        }
 
         coinText.text = saveData.coin.ToString();
 

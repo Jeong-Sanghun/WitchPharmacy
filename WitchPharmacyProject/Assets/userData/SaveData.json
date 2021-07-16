@@ -1,6 +1,6 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
+    "nowTime": 57600.0,
     "nowDay": 8,
     "coin": 974,
     "ownedMedicineList": [
@@ -21,7 +21,7 @@
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 14
+            "medicineQuantity": 13
         },
         {
             "medicineIndex": 15,
