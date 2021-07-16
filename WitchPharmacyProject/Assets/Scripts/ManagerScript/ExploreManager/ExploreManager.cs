@@ -23,6 +23,9 @@ public class ExploreManager : MonoBehaviour
     List<OwningMedicineClass> gainedMedicineList;
     List<OwningMedicineClass> gainedSpecialMedicineList;
     List<OwningToolClass> gainedToolList;
+    List<string> gainedDocumentNameList;
+    int gainedCoin = 0;
+    
 
     //이거 타일매니저로 넘겨줘야되는데 regionManager에서 타일매니저로 넘겨줌
     public RegionProperty nowProperty;
@@ -34,6 +37,9 @@ public class ExploreManager : MonoBehaviour
 
     //GameObject.find씀
     Text timeText;
+
+    [SerializeField]
+    Sprite coinSprite;
 
     [SerializeField]
     GameObject gainedItemCanvas;
@@ -74,6 +80,7 @@ public class ExploreManager : MonoBehaviour
         gainedMedicineList = new List<OwningMedicineClass>();
         gainedToolList = new List<OwningToolClass>();
         gainedSpecialMedicineList = new List<OwningMedicineClass>();
+        gainedDocumentNameList = new List<string>();
 
 
 
@@ -212,6 +219,21 @@ public class ExploreManager : MonoBehaviour
         }
     }
 
+    public void OnCoinGain(int quantity)
+    {
+        gainedCoin += quantity;
+    }
+
+    public void OnDocumentGain(string fileName)
+    {
+        if (gainedDocumentNameList.Contains(fileName))
+        {
+            Debug.LogError("진짜졷됐음 다큐먼트가 두개 겹쳐뜸");
+            return;
+        }
+        gainedDocumentNameList.Add(fileName);
+    }
+
     public void OnTimeOut()
     {
         sceneManager.LoadScene("ExploreScene");
@@ -241,6 +263,30 @@ public class ExploreManager : MonoBehaviour
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
             nowItemIndex++;
         }
+
+        for (int i = 0; i < gainedDocumentNameList.Count; i++)
+        {
+            DocumentCondition condition = null;
+            for(int j = 0; j < gameManager.documentConditionWrapper.documentConditionList.Count; j++)
+            {
+                if (gameManager.documentConditionWrapper.documentConditionList[j].fileName == gainedDocumentNameList[i])
+                {
+                    condition = gameManager.documentConditionWrapper.documentConditionList[j];
+                    break;
+                }
+            }
+            prefabItemImage.sprite = condition.LoadSprite();
+            prefabItemText.text = null;
+            GameObject obj = Instantiate(itemPrefab, gainedItemCanvas.transform);
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
+            nowItemIndex++;
+        }
+        prefabItemImage.sprite = coinSprite;
+        prefabItemText.text = gainedCoin.ToString();
+        GameObject coinObj = Instantiate(itemPrefab, gainedItemCanvas.transform);
+        coinObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
+        nowItemIndex++;
+
         itemPrefab.SetActive(false);
 
         gainedItemCanvas.SetActive(true);

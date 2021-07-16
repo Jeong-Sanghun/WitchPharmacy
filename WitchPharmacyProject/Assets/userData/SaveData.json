@@ -1,20 +1,27 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 6,
-    "coin": 808,
+    "nowDay": 8,
+    "coin": 974,
     "ownedMedicineList": [
         0,
         15,
         2,
         30,
         29,
-        6
+        6,
+        18,
+        7,
+        39,
+        17,
+        9,
+        10,
+        41
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 16
+            "medicineQuantity": 14
         },
         {
             "medicineIndex": 15,
@@ -34,6 +41,34 @@
         },
         {
             "medicineIndex": 6,
+            "medicineQuantity": 6
+        },
+        {
+            "medicineIndex": 18,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 7,
+            "medicineQuantity": 2
+        },
+        {
+            "medicineIndex": 39,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 17,
+            "medicineQuantity": 2
+        },
+        {
+            "medicineIndex": 9,
+            "medicineQuantity": 2
+        },
+        {
+            "medicineIndex": 10,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 41,
             "medicineQuantity": 2
         }
     ],
@@ -70,26 +105,28 @@
     "owningSpecialMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 1
+            "medicineQuantity": 2
         },
         {
             "medicineIndex": 1,
-            "medicineQuantity": 1
+            "medicineQuantity": 2
         },
         {
             "medicineIndex": 2,
-            "medicineQuantity": 1
+            "medicineQuantity": 2
         },
         {
             "medicineIndex": 3,
-            "medicineQuantity": 1
+            "medicineQuantity": 2
         }
     ],
-    "progression": 10.0,
+    "progression": 40.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "solvedQuestBundleName": [
-        "Lily"
+        "Lily",
+        "Jet",
+        "Iris"
     ],
     "billWrapperList": [
         {
@@ -159,23 +196,50 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 4,
+                    "changedCoin": 98
+                },
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 12
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 80
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
             "billList": []
         }
     ],
     "owningDocumentList": [
         {
             "name": "Go",
-            "gainedRegion": "testRegion2",
-            "gainedDay": 3,
-            "gainedTime": 60000.0
+            "gainedRegion": "testRegion1",
+            "gainedDay": 6,
+            "gainedTime": 5520.0
         },
         {
             "name": "Vagabond",
             "gainedRegion": "testRegion4",
-            "gainedDay": 5,
-            "gainedTime": 73920.0
+            "gainedDay": 7,
+            "gainedTime": 69600.0
         }
     ],
     "readStoryList": [],
-    "nowLanguageDirectory": "English/"
+    "nowLanguageDirectory": "Korean/"
 }

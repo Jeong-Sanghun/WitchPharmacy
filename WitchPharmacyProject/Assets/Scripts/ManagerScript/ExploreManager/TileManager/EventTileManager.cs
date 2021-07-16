@@ -206,6 +206,7 @@ public class EventTileManager : TileManager
             doc.gainedTime = gameManager.nowTime;
             saveData.owningDocumentList.Add(doc);
             tabletManager.UpdateDocument(doc);
+            exploreManager.OnDocumentGain(condition.fileName);
         }
         else
         {
@@ -219,6 +220,7 @@ public class EventTileManager : TileManager
                 rewardText.text = languagePack.Insert(languagePack.boxCoinGained, coin.ToString());
                 tabletManager.UpdateBill(BillReason.exploreBoxGain, true, coin);
                 saveData.coin += coin;
+                exploreManager.OnCoinGain(coin);
             }
             else
             {
@@ -389,6 +391,7 @@ public class EventTileManager : TileManager
                 {
                     //곡괭이 2개를 획득했다.
                     builder = new StringBuilder(storeToolDataList[index].name);
+                    builder.Append(" ");
                     builder.Append(treasureTile.gainedThing.ToString());
                     string josa = "개를";
                     builder.Append(josa);

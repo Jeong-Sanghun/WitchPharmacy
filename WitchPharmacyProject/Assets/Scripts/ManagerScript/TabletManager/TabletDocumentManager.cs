@@ -33,6 +33,12 @@ public class TabletDocumentManager : MonoBehaviour
     Text directoryText;
     [SerializeField]
     Transform directoryCanvas;
+    [SerializeField]
+    GameObject highlightButtonPrefab;
+    [SerializeField]
+    GameObject highlightPopupPrefab;
+    [SerializeField]
+    Camera cam;
 
     // Start is called before the first frame update
     void Start()
@@ -155,7 +161,8 @@ public class TabletDocumentManager : MonoBehaviour
         {
             GameObject canvas = Instantiate(documentParentPrefab, wholeFolderParentObject.transform);
             //Tlqkf zz
-            document.SetupDocument(canvas,gameManager.regionPropertyWrapper,gameManager.languagePack);
+            
+            document.SetupDocument(canvas,gameManager.regionPropertyWrapper,gameManager.languagePack,highlightButtonPrefab,highlightPopupPrefab,cam);
             directoryCanvas.SetAsLastSibling();
         }
         nowOpenedDocumentCanvas = document.documentCanvas;

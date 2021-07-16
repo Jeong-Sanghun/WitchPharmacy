@@ -56,7 +56,7 @@ public class BarrierTileManager : TileManager
         string name;
         if (nowTile.isRock)
         {
-            name = "곡괭이";
+            name = "pickaxe";
             nowText = rockQuantityText;
             nowButton = rockButton;
             nowCanvas = rockCanvas;
@@ -66,7 +66,7 @@ public class BarrierTileManager : TileManager
         }
         else
         {
-            name = "삽";
+            name = "shovel";
             nowText = dirtQuantityText;
             nowButton = dirtButton;
             nowCanvas = dirtCanvas;
@@ -88,7 +88,7 @@ public class BarrierTileManager : TileManager
             bool exist = false;
             for (int i = 0; i < owningToolList.Count; i++)
             {
-                if (storeToolDataList[owningToolList[i].index].name == name)
+                if (storeToolDataList[owningToolList[i].index].fileName == name)
                 {
                     nowTool = owningToolList[i];
                     exist = true;
