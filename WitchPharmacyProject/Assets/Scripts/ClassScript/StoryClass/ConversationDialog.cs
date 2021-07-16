@@ -6,7 +6,7 @@ using UnityEngine;
 public enum CharacterFeeling { nothing, angry }
 public enum CharacterName
 {
-    Ruellia, Cari, Jet,Lily ,Iris
+    Ruellia, Cari, Jet,Lily ,Iris,Ian
 }
 
 [System.Serializable]
@@ -22,6 +22,9 @@ public class ConversationDialog
 
     public string leftCharacterName;
     public string rightCharacterName;
+    public string backGroundSpriteFileName;
+    public bool isCutScene;
+    public string cutSceneFileName;
 
     //왼쪽놈 페이드할지 말지. 으론쪽놈 페이드할지 말지
     public bool leftFade;
@@ -37,6 +40,9 @@ public class ConversationDialog
 
     public ConversationDialog()
     {
+        backGroundSpriteFileName = "test";
+        isCutScene = false;
+        cutSceneFileName = "test";
         //leftCharacterFeeling = CharacterFeeling.nothing;
         //rightCharacterFeeling = CharacterFeeling.nothing;
     }

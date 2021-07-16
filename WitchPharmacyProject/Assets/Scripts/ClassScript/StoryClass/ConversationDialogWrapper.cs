@@ -8,6 +8,8 @@ public class ConversationDialogWrapper
     public string dialogWrapperName;
     public List<ConversationDialog> conversationDialogList;
 
+
+
     public ConversationDialogWrapper(int index)
     {
         dialogWrapperName = index.ToString();

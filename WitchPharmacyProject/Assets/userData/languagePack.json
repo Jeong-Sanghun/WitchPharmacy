@@ -6,6 +6,8 @@
     "billSpend": "지출",
     "billDayth": "",
     "documentGainedRegion": "",
+    "boxCoinGained": "",
+    "boxGained": "",
     "reasonArray": [
         "약재 판매",
         "약재 구입",

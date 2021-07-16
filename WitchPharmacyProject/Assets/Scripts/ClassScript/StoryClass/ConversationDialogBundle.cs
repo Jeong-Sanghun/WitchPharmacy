@@ -13,7 +13,6 @@ public class ConversationDialogBundle
     public string bundleName;
     public List<ConversationDialogWrapper> dialogWrapperList;
     public ConversationRouter conversationRouter;
-    public string nextBundleName;
 
 
     public ConversationDialogBundle()
@@ -31,7 +30,10 @@ public class ConversationDialogBundle
 
         conversationRouter = new ConversationRouter();
 
-        nextBundleName = "testBundle";
+    }
+
+    public void StringParse()
+    {
 
     }
 }

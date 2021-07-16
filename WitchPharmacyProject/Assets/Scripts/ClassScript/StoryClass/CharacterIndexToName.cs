@@ -10,10 +10,10 @@ using System;
 public class CharacterIndexToName
 {
     //스프라이트 여기서 로딩해옴.
-    static string[] characterNameArray = { "Ruelia", "Cari", "Jet", "Lily" ,"Iris"};
+    static string[] characterNameArray = { "Ruelia", "Cari", "Jet", "Lily" ,"Iris","Ian"};
     static Sprite[,] characterSprite;
     //각 스프라이트 뭔지.
-    const int characterNumber = 5;
+    const int characterNumber = 6;
 
     public CharacterIndexToName()
     {

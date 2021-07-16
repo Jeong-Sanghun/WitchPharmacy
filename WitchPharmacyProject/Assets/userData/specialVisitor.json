@@ -9,15 +9,9 @@
         "testBundle"
     ],
     "conversationRouter": {
-        "routingWrapperName": [
-            "1",
-            "2"
-        ],
-        "routeButtonText": [
-            "(근데 좀 열받네...)",
-            "(근데 우리집엔 창문이 없잖아...?)"
-        ],
-        "routingTime": 1
+        "routingWrapperName": [],
+        "routeButtonText": [],
+        "routingTime": 0
     },
     "specialVisitorDialogWrapperList": [
         {

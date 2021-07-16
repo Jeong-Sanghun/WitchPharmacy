@@ -120,8 +120,12 @@ public class StoryManager : TileManager
         }
         ConversationDialog nowConversation = nowWrapper.conversationDialogList[nowConversationIndex];
         conversationText.text = nowConversation.dialog;
+        StartCoroutine( sceneManager.LoadTextOneByOne(nowConversation.dialog, conversationText));
+        
         if(nowConversationIndex == 0)
         {
+            Debug.Log(nowConversation.leftCharacterFeeling);
+            Debug.Log(nowConversation.leftCharacterName);
             leftSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.leftCharacterName, nowConversation.leftCharacterFeeling);
             rightSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.rightCharacterName, nowConversation.rightCharacterFeeling);
 
@@ -227,13 +231,16 @@ public class StoryManager : TileManager
 
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {
         //입력
         if (Input.GetMouseButtonDown(0))
         {
-            if (!checkingRouter)
+            if (!checkingRouter && !sceneManager.nowTexting)
             {
                 PrintConversation();
             }

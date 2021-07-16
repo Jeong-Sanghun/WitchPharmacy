@@ -13,14 +13,14 @@ public class ConversationRouter
 
     public ConversationRouter()
     {
-        routingWrapperName = new List<string>();
-        routingWrapperName.Add("1");
-        routingWrapperName.Add("2");
-        routingTime = 1;
+        //routingWrapperName = new List<string>();
+        //routingWrapperName.Add("1");
+        //routingWrapperName.Add("2");
+        //routingTime = 1;
 
-        routeButtonText = new List<string>();
-        routeButtonText.Add("(근데 좀 열받네...)");
-        routeButtonText.Add("(근데 우리집엔 창문이 없잖아...?)");
+        //routeButtonText = new List<string>();
+        //routeButtonText.Add("(근데 좀 열받네...)");
+        //routeButtonText.Add("(근데 우리집엔 창문이 없잖아...?)");
 
     }
 }

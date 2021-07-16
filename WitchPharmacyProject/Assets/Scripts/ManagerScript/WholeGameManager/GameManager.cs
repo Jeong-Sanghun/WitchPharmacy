@@ -200,6 +200,8 @@ public class GameManager : MonoBehaviour //SH
         SpecialVisitorDialogBundle bundle = new SpecialVisitorDialogBundle();
         SpecialMedicineDataWrapper wrapper = new SpecialMedicineDataWrapper();
         specialVisitorConditionWrapper = new SpecialVisitorConditionWrapper();
+        ConversationDialogBundle storyBundle = new ConversationDialogBundle();
+        jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
         languagePack = new UILanguagePack();
 
         jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
