@@ -91,8 +91,11 @@ public class StoryManager : TileManager
             return;
         } else if (router.routeButtonText.Count == 0)
         {
-            nowWrapperIndex++;
-            nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
+            if(nowWrapperIndex+1 < nowBundle.dialogWrapperList.Count)
+            {
+                nowWrapperIndex++;
+                nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
+            }
             return;
         }
         checkingRouter = true;
@@ -205,12 +208,14 @@ public class StoryManager : TileManager
 
         if(sceneManager.lastSceneName == null)
         {
+            //gameManager.AutoSave("StoreScene");
             sceneManager.LoadScene("StoreScene");
         }
         else if(sceneManager.lastSceneName == "StoreScene")
         {
-            gameManager.ForceSaveButtonActive("RoomCounterScene");
-            //sceneManager.LoadScene("RoomCounterScene");
+            //지금 쓸지말지 모름 여기는.
+            //gameManager.ForceSaveButtonActive("RoomCounterScene");
+            sceneManager.LoadScene("RoomCounterScene");
         }
         else if (sceneManager.lastSceneName == "StartScene")
         {
@@ -218,12 +223,13 @@ public class StoryManager : TileManager
         }
         else if (sceneManager.lastSceneName == "RoomCounterScene")
         {
-            gameManager.ForceSaveButtonActive("ExploreScene");
-            //sceneManager.LoadScene("ExploreScene");
+
+         //   gameManager.ForceSaveButtonActive("ExploreScene");
+            sceneManager.LoadScene("ExploreScene");
         }
         else if (sceneManager.lastSceneName == "ExploreScene")
         {
-            gameManager.ForceSaveButtonActive("StoryScene");
+            gameManager.ForceSaveButtonActive("StoryScene",SaveTime.DayStart);
             //sceneManager.LoadScene("StoryScene");
         }
         else if(sceneManager.lastSceneName == "StoryScene")
@@ -246,6 +252,10 @@ public class StoryManager : TileManager
             {
                 PrintConversation();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            nowConversationIndex = nowWrapper.conversationDialogList.Count;
         }
 
     }

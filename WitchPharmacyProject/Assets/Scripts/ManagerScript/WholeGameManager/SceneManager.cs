@@ -20,6 +20,7 @@ public class SceneManager : MonoBehaviour // JH
     private void Start()
     {
         Screen.SetResolution(2560, 1440, false);
+        gameManager = GameManager.singleTon;
         nowTexting = false;   
     }
     // // Module // //
@@ -214,7 +215,7 @@ public class SceneManager : MonoBehaviour // JH
     public void SaveDataLoadScene(int index)
     {
         lastSceneName = null;
-        gameManager.LoadJson(index);
+        //gameManager.LoadJson(index);
         StartCoroutine(LoadingSceneCoroutine(gameManager.saveData.nextLoadSceneName));
     }
 

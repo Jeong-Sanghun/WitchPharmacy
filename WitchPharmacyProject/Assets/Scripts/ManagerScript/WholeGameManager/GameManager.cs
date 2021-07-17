@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour //SH
     //모든 매니저 스크립트에서 참조
     
     public SaveDataClass saveData;
+    public SaveDataTimeWrapper saveDataTimeWrapper;
     public MedicineDataWrapper medicineDataWrapper;
     [HideInInspector]
     public RegionPropertyWrapper regionPropertyWrapper;
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour //SH
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         //DebugDataJson();
 
+        
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
@@ -108,6 +110,8 @@ public class GameManager : MonoBehaviour //SH
             specialMedicineDataWrapper.specialMedicineDataList[i].SetIndex(i);
         }
 
+        saveDataTimeWrapper = jsonManager.LoadSaveDataTime();
+
         saveData = jsonManager.LoadSaveData(0);
 
     }
@@ -142,20 +146,26 @@ public class GameManager : MonoBehaviour //SH
     }
 
     //아마 모든 매니저에서 참조할것.
-    public void SaveJson(int index)
+    public void SaveJson(int index,SaveTime saveTime)
     {
+        saveDataTimeWrapper.saveDataTimeList[index].day = saveData.nowDay;
+        saveDataTimeWrapper.saveDataTimeList[index].saveTime = saveTime;
+        jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
+
         jsonManager.SaveJson(saveData,index);
     }
 
-    public void AutoSave()
-    {
-        jsonManager.SaveJson(saveData,0);
-    }
+    //public void AutoSave(string nextScene)
+    //{
+    //    saveData.nextLoadSceneName = nextScene;
 
-    public void ForceSaveButtonActive(string nextScene)
+    //}
+
+    public void ForceSaveButtonActive(string nextScene,SaveTime saveTime)
     {
         saveData.nextLoadSceneName = nextScene;
-        tabletManager.ForceSaveButtonActive();
+        jsonManager.SaveJson(saveData, 0);
+        tabletManager.ForceSaveButtonActive(true,saveTime);
     }
 
 
@@ -169,17 +179,6 @@ public class GameManager : MonoBehaviour //SH
     void DebugDataJson()
     {
         saveData = new SaveDataClass();
-        for (int i = 0; i < 1; i++)
-        {
-            saveData.ownedMedicineList.Add(i);
-        }
-        for (int i = 0; i <1; i++)
-        {
-            int quant = Random.Range(1, 13);
-            OwningMedicineClass med = new OwningMedicineClass(i, quant);
-            saveData.owningMedicineList.Add(med);
-            //i += Random.Range(0, 4);
-        }
         for (int i = 0; i < 10; i++)
         {
             saveData.unlockedRegionIndex.Add(i);
@@ -216,28 +215,34 @@ public class GameManager : MonoBehaviour //SH
         SpecialMedicineDataWrapper wrapper = new SpecialMedicineDataWrapper();
         specialVisitorConditionWrapper = new SpecialVisitorConditionWrapper();
         ConversationDialogBundle storyBundle = new ConversationDialogBundle();
-        jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
+        //jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
+        saveDataTimeWrapper = new SaveDataTimeWrapper();
+        
         languagePack = new UILanguagePack();
+        jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
+        //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
+        //jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
+        //jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
+        //jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
+        //jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
+        //jsonManager.SaveJson<StoreToolDataWrapper>(storeToolDataWrapper, "StoreToolDataWrapper");
+        //jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
+        //jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
+        //jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
+        //jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
+        //jsonManager.SaveJson<DocumentConditionWrapper>(documentConditionWrapper, "DocumentConditionWrapper");
+        //DocumentBundle doc = new DocumentBundle();
+        //jsonManager.SaveJson<DocumentBundle>(doc, "testDocument");
 
-        jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
-        jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
-        jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
-        jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
-        jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
-        jsonManager.SaveJson<StoreToolDataWrapper>(storeToolDataWrapper, "StoreToolDataWrapper");
-        jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
-        jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
-        jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
-        jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
-        jsonManager.SaveJson<DocumentConditionWrapper>(documentConditionWrapper, "DocumentConditionWrapper");
-        DocumentBundle doc = new DocumentBundle();
-        jsonManager.SaveJson<DocumentBundle>(doc, "testDocument");
+        for (int i = 0; i < 4; i++)
+        {
+            jsonManager.SaveJson(saveData, i);
+        }
 
-        //jsonManager.SaveJson(saveData);
 
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
-        saveData = jsonManager.LoadSaveData(0);
+        //saveData = jsonManager.LoadSaveData(0);
 
         /*
         for (int i = 0; i < saveData.owningMedicineList.Count; i++)

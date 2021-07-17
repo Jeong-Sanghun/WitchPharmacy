@@ -19,8 +19,8 @@ public class StoreManager : MonoBehaviour
     public void ToNextSceneButton()
     {
         gameManager.TimeChange(7200);
-        gameManager.AutoSave();
-        sceneManager.LoadScene("StoryScene");
+        //gameManager.ForceSaveButtonActive("RoomCounterScene");
+        sceneManager.LoadScene("RoomCounterScene");
     }
 
     public void MedicineTabButton()

@@ -42,10 +42,14 @@ public class TabletManager : MonoBehaviour
         tabletCanvasParent.SetActive(open);
     }
 
-    public void ForceSaveButtonActive()
+    public void ForceSaveButtonActive(bool forceSave,SaveTime saveTime)
     {
         tabletCanvasParent.SetActive(true);
         tabletSaveManager.SaveCanvasActive(true);
+        if (forceSave)
+        {
+            tabletSaveManager.OnOpenedForceSave(saveTime);
+        }
     }
 
     //웬동네에서 다불러옴.

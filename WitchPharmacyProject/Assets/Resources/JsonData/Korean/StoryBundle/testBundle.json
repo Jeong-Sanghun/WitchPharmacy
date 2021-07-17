@@ -482,7 +482,7 @@
         "routeButtonText": [
 
         ],
-        "routingTime": 1
+        "routingTime": 0
     },
     "nextBundleName": "testBundle"
 }

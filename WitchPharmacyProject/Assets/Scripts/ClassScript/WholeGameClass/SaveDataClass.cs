@@ -71,9 +71,6 @@ public class SaveDataClass
         nowLanguageDirectory = "Korean/";
         billWrapperList = new List<OneDayBillWrapper>();
         owningDocumentList = new List<OwningDocumentClass>();
-        owningDocumentList.Add(new OwningDocumentClass());
-        owningDocumentList.Add(new OwningDocumentClass());
-        owningDocumentList.Add(new OwningDocumentClass());
         readStoryList = new List<string>();
         nextLoadSceneName = "StoryScene";
         nowStoryScene = NowStoryScene.DayStart;
