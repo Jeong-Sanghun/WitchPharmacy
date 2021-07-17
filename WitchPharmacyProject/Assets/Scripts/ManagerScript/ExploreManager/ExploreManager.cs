@@ -299,8 +299,8 @@ public class ExploreManager : MonoBehaviour
     public void TimeChange(float plusTime)
     {
         gameManager.TimeChange(plusTime);
-        int hour = (int)gameManager.nowTime / 3600;
-        int minute = ((int)gameManager.nowTime % 3600) / 60;
+        int hour = (int)gameManager.saveData.nowTime / 3600;
+        int minute = ((int)gameManager.saveData.nowTime % 3600) / 60;
         StringBuilder builder = new StringBuilder(hour.ToString());
         builder.Append("시");
         builder.Append(minute.ToString());
@@ -328,17 +328,17 @@ public class ExploreManager : MonoBehaviour
 
     public void ToNextSceneButton()
     {
-        gameManager.SaveJson();
+        gameManager.AutoSave();
         DestroyOnEnd();
         sceneManager.LoadScene("StoryScene");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnTimeOut();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    OnTimeOut();
+        //}
     }
 
 }

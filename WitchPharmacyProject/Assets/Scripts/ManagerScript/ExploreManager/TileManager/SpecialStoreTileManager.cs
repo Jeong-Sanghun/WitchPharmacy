@@ -275,7 +275,7 @@ public class SpecialStoreTileManager : TileManager
             ListButton();
         }
         nowButtonIndex = -1;
-        gameManager.SaveJson();
+        //gameManager.SaveJson();
     }
 
     protected void ListButton()

@@ -13,6 +13,8 @@ public class TabletManager : MonoBehaviour
     [SerializeField]
     TabletDocumentManager tabletDocumentManager;
     [SerializeField]
+    TabletSaveManager tabletSaveManager;
+    [SerializeField]
     GameObject tabletCanvasParent;
 
     // Start is called before the first frame update
@@ -38,6 +40,12 @@ public class TabletManager : MonoBehaviour
     public void OnTabletButton(bool open)
     {
         tabletCanvasParent.SetActive(open);
+    }
+
+    public void ForceSaveButtonActive()
+    {
+        tabletCanvasParent.SetActive(true);
+        tabletSaveManager.SaveCanvasActive(true);
     }
 
     //웬동네에서 다불러옴.

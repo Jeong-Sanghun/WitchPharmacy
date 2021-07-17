@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour //SH
     //singleTon 모든 매니저 스크립트에서 참조
     public static GameManager singleTon;
     [HideInInspector]
-    public SceneManager SceneManagerScirpt;
+    public SceneManager sceneManager;
+    TabletManager tabletManager;
     //모든 매니저 스크립트에서 참조
     
     public SaveDataClass saveData;
@@ -42,11 +43,13 @@ public class GameManager : MonoBehaviour //SH
     [HideInInspector]
     public UILanguagePack languagePack;
 
+    public int nowSaveDataIndex;
+
     //세이브데이터 불러오기 및 딕셔너리 읽기.
     JsonManager jsonManager;
 
-    public float nowTime;
-    public int nowDay;
+    //public float nowTime;
+    //public int nowDay;
 
 
     void Awake()
@@ -65,10 +68,8 @@ public class GameManager : MonoBehaviour //SH
     {
 
         jsonManager = new JsonManager();
-        SceneManagerScirpt = SceneManager.inst;
-
-        saveData = jsonManager.LoadSaveData();
-
+        sceneManager = SceneManager.inst;
+        tabletManager = TabletManager.inst;
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         //DebugDataJson();
 
@@ -107,10 +108,8 @@ public class GameManager : MonoBehaviour //SH
             specialMedicineDataWrapper.specialMedicineDataList[i].SetIndex(i);
         }
 
+        saveData = jsonManager.LoadSaveData(0);
 
-
-        nowTime = saveData.nowTime;
-        nowDay = saveData.nowDay;
     }
 
     private void Update()
@@ -143,11 +142,27 @@ public class GameManager : MonoBehaviour //SH
     }
 
     //아마 모든 매니저에서 참조할것.
-    public void SaveJson()
+    public void SaveJson(int index)
     {
-        saveData.nowTime = nowTime;
-        saveData.nowDay = nowDay;
-        jsonManager.SaveJson(saveData);
+        jsonManager.SaveJson(saveData,index);
+    }
+
+    public void AutoSave()
+    {
+        jsonManager.SaveJson(saveData,0);
+    }
+
+    public void ForceSaveButtonActive(string nextScene)
+    {
+        saveData.nextLoadSceneName = nextScene;
+        tabletManager.ForceSaveButtonActive();
+    }
+
+
+    public void LoadJson(int index)
+    {
+        saveData = jsonManager.LoadSaveData(index);
+        sceneManager.SaveDataLoadScene(index);
     }
 
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.
@@ -222,7 +237,7 @@ public class GameManager : MonoBehaviour //SH
 
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
-        saveData = jsonManager.LoadSaveData();
+        saveData = jsonManager.LoadSaveData(0);
 
         /*
         for (int i = 0; i < saveData.owningMedicineList.Count; i++)
@@ -239,22 +254,21 @@ public class GameManager : MonoBehaviour //SH
         }*/
     }
 
+
     //이거 버튼누를때마다 불러옴.
     //이거 단위 초다.
     public void TimeChange(float plusTime)
     {
-        nowTime += 4*plusTime;
+        saveData.nowTime += 4*plusTime;
 
     }
 
     public void NextDay()
     {
-        if (nowTime >= 3600 * 24)
+        if (saveData.nowTime >= 3600 * 24)
         {
-            nowTime =0;
-            nowDay++;
+            saveData.nowTime =0;
             saveData.nowDay++;
-            saveData.nowTime++;
             TabletManager.inst.SetTodayBill();
         }
     }

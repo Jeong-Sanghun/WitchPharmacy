@@ -68,8 +68,8 @@ public class ExploreButtonManager : MonoBehaviour
             appearingMedicineImageArray[i].sprite = medicineDataList[nowProperty.regionAvailableMedicine[i]].LoadImage();
         }
 
-        int hour = (int)gameManager.nowTime / 3600;
-        int minute = ((int)gameManager.nowTime % 3600) / 60;
+        int hour = (int)gameManager.saveData.nowTime / 3600;
+        int minute = ((int)gameManager.saveData.nowTime % 3600) / 60;
         StringBuilder builder = new StringBuilder(hour.ToString());
         builder.Append("시");
         builder.Append(minute.ToString());

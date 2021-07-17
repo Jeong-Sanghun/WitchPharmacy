@@ -19,7 +19,7 @@ public class StoreManager : MonoBehaviour
     public void ToNextSceneButton()
     {
         gameManager.TimeChange(7200);
-        gameManager.SaveJson();
+        gameManager.AutoSave();
         sceneManager.LoadScene("StoryScene");
     }
 

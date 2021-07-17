@@ -208,7 +208,14 @@ public class SceneManager : MonoBehaviour // JH
     {
         lastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         StartCoroutine(LoadingSceneCoroutine(sceneName));
-        
+    }
+
+    //불러오기 씬.
+    public void SaveDataLoadScene(int index)
+    {
+        lastSceneName = null;
+        gameManager.LoadJson(index);
+        StartCoroutine(LoadingSceneCoroutine(gameManager.saveData.nextLoadSceneName));
     }
 
     IEnumerator LoadingSceneCoroutine(string sceneName)

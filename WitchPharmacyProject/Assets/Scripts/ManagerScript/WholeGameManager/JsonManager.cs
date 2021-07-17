@@ -7,7 +7,7 @@ using System.Text;
 public class JsonManager    //SH
 {
     //세이브데이터를 세이브해줌.
-    public void SaveJson(SaveDataClass saveData)
+    public void SaveJson(SaveDataClass saveData,int index)
     {
         string jsonText;
 
@@ -18,7 +18,9 @@ public class JsonManager    //SH
 
         string savePath = Application.dataPath;
         string appender = "/userData/";
-        string nameString = "SaveData.json";
+        string nameString = "SaveData";
+        string dotJson = ".json";
+        
 #if UNITY_EDITOR_WIN
 
 #endif
@@ -36,6 +38,8 @@ public class JsonManager    //SH
 
         }
         builder.Append(nameString);
+        builder.Append(index.ToString());
+        builder.Append(dotJson);
 
         jsonText = JsonUtility.ToJson(saveData, true);
         //이러면은 일단 데이터가 텍스트로 변환이 된다
@@ -118,14 +122,16 @@ public class JsonManager    //SH
 
 
     //로딩, 게임매니저에서 호출
-    public SaveDataClass LoadSaveData()
+    public SaveDataClass LoadSaveData(int index)
     {
         //이제 우리가 이전에 저장했던 데이터를 꺼내야한다
         //만약 저장한 데이터가 없다면? 이걸 실행 안하고 튜토리얼을 실행하면 그만이다. 그 작업은 씬로더에서 해준다
         SaveDataClass gameData;
         string loadPath = Application.dataPath;
         string directory = "/userData";
-        string appender = "/SaveData.json";
+        string appender = "/SaveData";
+        
+        string dotJson = ".json";
 #if UNITY_EDITOR_WIN
 
 #endif
@@ -147,6 +153,8 @@ public class JsonManager    //SH
 
         }
         builder.Append(appender);
+        builder.Append(index.ToString());
+        builder.Append(dotJson);
 
         if (File.Exists(builder.ToString()))
         {

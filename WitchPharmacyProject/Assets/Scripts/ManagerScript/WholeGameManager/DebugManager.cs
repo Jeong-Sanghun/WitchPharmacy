@@ -12,8 +12,8 @@ public class DebugManager : MonoBehaviour
     public GameObject debug_GameObject;
 
     public void DebugFunction(){
-        StartCoroutine(GameManagerScirpt.SceneManagerScirpt.LoadTextOneByOne(debugString,DebugText.GetComponent<Text>()));
-        StartCoroutine(GameManagerScirpt.SceneManagerScirpt.MoveModule_Accel(debug_GameObject,new Vector3(7f,-1.74f,-1f),0.5f));
+        StartCoroutine(GameManagerScirpt.sceneManager.LoadTextOneByOne(debugString,DebugText.GetComponent<Text>()));
+        StartCoroutine(GameManagerScirpt.sceneManager.MoveModule_Accel(debug_GameObject,new Vector3(7f,-1.74f,-1f),0.5f));
     }
 
     // Start is called before the first frame update

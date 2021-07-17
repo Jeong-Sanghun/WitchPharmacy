@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum NowStoryScene
+{
+    DayStart, AfterCounter, AfterExplore
+}
+
 //게임 전체를 저장하는 세이브데이터 클래스
 [System.Serializable]
 public class SaveDataClass
 {
+
+
     public string name;
     public float nowTime;
     public int nowDay;
@@ -35,6 +42,8 @@ public class SaveDataClass
     public List<OneDayBillWrapper> billWrapperList;
     public List<OwningDocumentClass> owningDocumentList;
     public List<string> readStoryList;
+    public string nextLoadSceneName;
+    public NowStoryScene nowStoryScene;
     public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
 
 
@@ -66,6 +75,8 @@ public class SaveDataClass
         owningDocumentList.Add(new OwningDocumentClass());
         owningDocumentList.Add(new OwningDocumentClass());
         readStoryList = new List<string>();
+        nextLoadSceneName = "StoryScene";
+        nowStoryScene = NowStoryScene.DayStart;
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
 

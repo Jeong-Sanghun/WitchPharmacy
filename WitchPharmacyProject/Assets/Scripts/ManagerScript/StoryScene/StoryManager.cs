@@ -202,7 +202,6 @@ public class StoryManager : TileManager
 
     public void ToNextSceneButton()
     {
-        gameManager.SaveJson();
 
         if(sceneManager.lastSceneName == null)
         {
@@ -210,7 +209,8 @@ public class StoryManager : TileManager
         }
         else if(sceneManager.lastSceneName == "StoreScene")
         {
-            sceneManager.LoadScene("RoomCounterScene");
+            gameManager.ForceSaveButtonActive("RoomCounterScene");
+            //sceneManager.LoadScene("RoomCounterScene");
         }
         else if (sceneManager.lastSceneName == "StartScene")
         {
@@ -218,11 +218,13 @@ public class StoryManager : TileManager
         }
         else if (sceneManager.lastSceneName == "RoomCounterScene")
         {
-            sceneManager.LoadScene("ExploreScene");
+            gameManager.ForceSaveButtonActive("ExploreScene");
+            //sceneManager.LoadScene("ExploreScene");
         }
         else if (sceneManager.lastSceneName == "ExploreScene")
         {
-            sceneManager.LoadScene("StoryScene");
+            gameManager.ForceSaveButtonActive("StoryScene");
+            //sceneManager.LoadScene("StoryScene");
         }
         else if(sceneManager.lastSceneName == "StoryScene")
         {

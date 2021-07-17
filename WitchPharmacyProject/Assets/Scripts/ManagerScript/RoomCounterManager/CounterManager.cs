@@ -599,8 +599,8 @@ public class CounterManager : MonoBehaviour //SH
     public void TimeChange(float plusTime)
     {
         gameManager.TimeChange(plusTime);
-        int hour = (int)gameManager.nowTime / 3600;
-        int minute = ((int)gameManager.nowTime % 3600) / 60;
+        int hour = (int)gameManager.saveData.nowTime / 3600;
+        int minute = ((int)gameManager.saveData.nowTime % 3600) / 60;
         TimeTextChange();
         if (hour >= 18)
         {
@@ -610,8 +610,8 @@ public class CounterManager : MonoBehaviour //SH
 
     void TimeTextChange()
     {
-        int hour = (int)gameManager.nowTime / 3600;
-        int minute = ((int)gameManager.nowTime % 3600) / 60;
+        int hour = (int)gameManager.saveData.nowTime / 3600;
+        int minute = ((int)gameManager.saveData.nowTime % 3600) / 60;
         StringBuilder builder = new StringBuilder();
         if (hour / 10 < 1)
         {
@@ -641,7 +641,7 @@ public class CounterManager : MonoBehaviour //SH
 
     public void ToNextSceneButton()
     {
-        gameManager.SaveJson();
+        gameManager.AutoSave();
         sceneManager.LoadScene("StoryScene");
     }
 

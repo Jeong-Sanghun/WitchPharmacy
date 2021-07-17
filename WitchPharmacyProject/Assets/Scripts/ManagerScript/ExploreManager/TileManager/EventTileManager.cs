@@ -202,8 +202,8 @@ public class EventTileManager : TileManager
             OwningDocumentClass doc = new OwningDocumentClass();
             doc.name = condition.fileName;
             doc.gainedRegion = exploreManager.GetRegionIngame().regionProperty.regionFileName;
-            doc.gainedDay = gameManager.nowDay;
-            doc.gainedTime = gameManager.nowTime;
+            doc.gainedDay = gameManager.saveData.nowDay;
+            doc.gainedTime = gameManager.saveData.nowTime;
             saveData.owningDocumentList.Add(doc);
             tabletManager.UpdateDocument(doc);
             exploreManager.OnDocumentGain(condition.fileName);
