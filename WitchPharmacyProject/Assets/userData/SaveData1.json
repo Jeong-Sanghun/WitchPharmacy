@@ -1,15 +1,15 @@
 {
     "name": "initName",
-    "nowTime": 72000.0,
+    "nowTime": 64800.0,
     "nowDay": 0,
-    "coin": 980,
+    "coin": 1040,
     "ownedMedicineList": [
         0
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 7
+            "medicineQuantity": 5
         }
     ],
     "unlockedRegionIndex": [
@@ -21,26 +21,16 @@
         5,
         6,
         7,
-        8,
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
+        8
     ],
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 10
+            "quantity": 8
         },
         {
             "index": 1,
-            "quantity": 0
+            "quantity": 8
         },
         {
             "index": 2,
@@ -52,10 +42,11 @@
         }
     ],
     "owningSpecialMedicineList": [],
-    "progression": 0.0,
+    "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "solvedQuestBundleName": [],
+    "progressingQuestBundleName": [],
     "billWrapperList": [
         {
             "wholeGainCoin": 0,
@@ -64,12 +55,12 @@
                 {
                     "isPlus": false,
                     "reason": 2,
-                    "changedCoin": 100
+                    "changedCoin": 160
                 },
                 {
                     "isPlus": true,
                     "reason": 0,
-                    "changedCoin": 80
+                    "changedCoin": 200
                 }
             ]
         }
@@ -77,6 +68,5 @@
     "owningDocumentList": [],
     "readStoryList": [],
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 0,
-    "nowLanguageDirectory": "Korean/"
+    "nowSaveTime": 0
 }

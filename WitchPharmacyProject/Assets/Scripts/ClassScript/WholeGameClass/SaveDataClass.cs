@@ -33,12 +33,13 @@ public class SaveDataClass
 
     public List<OwningMedicineClass> owningSpecialMedicineList;
 
-    public float progression;
+    public float chaosMeter;
 
     public string nowCounterDialogBundleName;
     public string nowStoryDialogBundleName;
 
     public List<string> solvedQuestBundleName;
+    public List<string> progressingQuestBundleName;
     public List<OneDayBillWrapper> billWrapperList;
     public List<OwningDocumentClass> owningDocumentList;
     public List<string> readStoryList;
@@ -58,13 +59,14 @@ public class SaveDataClass
         owningMedicineList = new List<OwningMedicineClass>();
         owningMedicineList.Add(new OwningMedicineClass(0, 10));
         owningSpecialMedicineList = new List<OwningMedicineClass>();
+        progressingQuestBundleName = new List<string>();
         unlockedRegionIndex = new List<int>();
         for(int i = 0; i < 9; i++)
         {
             unlockedRegionIndex.Add(i);
         }
         owningToolList = new List<OwningToolClass>();
-        progression = 0;
+        chaosMeter = 0;
         solvedQuestBundleName = new List<string>();
         nowCounterDialogBundleName = "testBundle";
         nowStoryDialogBundleName = "testBundle";

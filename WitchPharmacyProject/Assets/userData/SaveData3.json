@@ -1,35 +1,50 @@
 {
     "name": "initName",
-    "nowTime": 28800.0,
+    "nowTime": 0.0,
     "nowDay": 1,
-    "coin": 956,
+    "coin": 1028,
     "ownedMedicineList": [
         0,
-        5,
-        39,
-        10,
-        41
+        15,
+        2,
+        30,
+        6,
+        18,
+        29,
+        39
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 7
+            "medicineQuantity": 5
         },
         {
-            "medicineIndex": 5,
+            "medicineIndex": 15,
+            "medicineQuantity": 10
+        },
+        {
+            "medicineIndex": 2,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 30,
+            "medicineQuantity": 8
+        },
+        {
+            "medicineIndex": 6,
+            "medicineQuantity": 6
+        },
+        {
+            "medicineIndex": 18,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 29,
             "medicineQuantity": 2
         },
         {
             "medicineIndex": 39,
-            "medicineQuantity": 10
-        },
-        {
-            "medicineIndex": 10,
-            "medicineQuantity": 2
-        },
-        {
-            "medicineIndex": 41,
-            "medicineQuantity": 2
+            "medicineQuantity": 6
         }
     ],
     "unlockedRegionIndex": [
@@ -41,26 +56,16 @@
         5,
         6,
         7,
-        8,
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
+        8
     ],
     "owningToolList": [
         {
             "index": 0,
-            "quantity": 10
+            "quantity": 8
         },
         {
             "index": 1,
-            "quantity": 0
+            "quantity": 7
         },
         {
             "index": 2,
@@ -71,11 +76,29 @@
             "quantity": 0
         }
     ],
-    "owningSpecialMedicineList": [],
-    "progression": 0.0,
+    "owningSpecialMedicineList": [
+        {
+            "medicineIndex": 0,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 1,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 2,
+            "medicineQuantity": 1
+        },
+        {
+            "medicineIndex": 3,
+            "medicineQuantity": 1
+        }
+    ],
+    "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "solvedQuestBundleName": [],
+    "progressingQuestBundleName": [],
     "billWrapperList": [
         {
             "wholeGainCoin": 0,
@@ -84,37 +107,28 @@
                 {
                     "isPlus": false,
                     "reason": 2,
-                    "changedCoin": 100
+                    "changedCoin": 160
                 },
                 {
                     "isPlus": true,
                     "reason": 0,
-                    "changedCoin": 80
+                    "changedCoin": 200
+                },
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 12
                 }
             ]
         },
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 24
-                }
-            ]
+            "billList": []
         }
     ],
-    "owningDocumentList": [
-        {
-            "name": "Go",
-            "gainedRegion": "testRegion2",
-            "gainedDay": 0,
-            "gainedTime": 74400.0
-        }
-    ],
+    "owningDocumentList": [],
     "readStoryList": [],
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
-    "nowLanguageDirectory": "Korean/"
+    "nowSaveTime": 1
 }

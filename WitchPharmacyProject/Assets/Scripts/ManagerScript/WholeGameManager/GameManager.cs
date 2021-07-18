@@ -250,7 +250,7 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
         //jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
         //jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
-        //jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
+        jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
         //jsonManager.SaveJson<DocumentConditionWrapper>(documentConditionWrapper, "DocumentConditionWrapper");
         //DocumentBundle doc = new DocumentBundle();
         //jsonManager.SaveJson<DocumentBundle>(doc, "testDocument");
@@ -285,7 +285,7 @@ public class GameManager : MonoBehaviour //SH
     //이거 단위 초다.
     public void TimeChange(float plusTime)
     {
-        saveData.nowTime += 4*plusTime;
+        saveData.nowTime += 2*plusTime;
 
     }
 

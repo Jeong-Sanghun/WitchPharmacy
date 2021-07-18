@@ -7,16 +7,27 @@ public class SpecialVisitorCondition
 {
     public int priority;
     public string bundleName;
-    public float appearingProgression;
-    public List<string> appearingQuestBundleList;
+    public float appearingChaosMeter;
+    public List<string> appearingSolvedQuestBundleList;
+    public List<string> appearingProgressingQuestBundleList;
+    public List<string> appearingSpecialMedicineList;
+
+    public int appearingLeastDay;
+    public List<string> appearingStoryBundleList;
+
 
     public SpecialVisitorCondition()
     {
         priority = 0;
         bundleName = "Lily";
-        appearingProgression = 0;
-        appearingQuestBundleList = new List<string>();
-        appearingQuestBundleList.Add("none");
+        appearingChaosMeter = 0;
+        appearingSolvedQuestBundleList = new List<string>();
+        appearingProgressingQuestBundleList = new List<string>();
+        appearingSpecialMedicineList = new List<string>();
+        appearingStoryBundleList = new List<string>();
+        appearingLeastDay = 0;
+        //appearingQuestBundleList = new List<string>();
+        //appearingQuestBundleList.Add("none");
     }
 
 }

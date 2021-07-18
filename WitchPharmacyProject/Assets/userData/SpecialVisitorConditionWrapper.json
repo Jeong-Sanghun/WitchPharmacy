@@ -1,0 +1,24 @@
+{
+    "specialVisitorConditionDataList": [
+        {
+            "priority": 0,
+            "bundleName": "Lily",
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": [],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": [],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
+        },
+        {
+            "priority": 0,
+            "bundleName": "Lily",
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": [],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": [],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
+        }
+    ]
+}

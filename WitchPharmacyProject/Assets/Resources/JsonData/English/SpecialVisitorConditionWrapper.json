@@ -3,26 +3,32 @@
         {
             "priority": 0,
             "bundleName": "Lily",
-            "appearingProgression": 0.0,
-            "appearingQuestBundleList": [
-                
-            ]
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": [],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": ["withered_dew"],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
         },
         {
             "priority": 0,
             "bundleName": "Jet",
-            "appearingProgression": 10.0,
-            "appearingQuestBundleList": [
-                "Lily"
-            ]
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": ["Lily"],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": ["icefruit"],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
         },
         {
             "priority": 0,
             "bundleName": "Iris",
-            "appearingProgression": 10.0,
-            "appearingQuestBundleList": [
-                "Lily"
-            ]
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": ["Jet"],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": ["metfire"],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
         }
     ]
 }
