@@ -112,7 +112,15 @@ public class GameManager : MonoBehaviour //SH
 
         saveDataTimeWrapper = jsonManager.LoadSaveDataTime();
 
-        saveData = jsonManager.LoadSaveData(0);
+        if(sceneManager.nowSaveIndex == -1)
+        {
+            saveData = new SaveDataClass();
+        }
+        else
+        {
+            saveData = jsonManager.LoadSaveData(sceneManager.nowSaveIndex);
+        }
+        
 
     }
 

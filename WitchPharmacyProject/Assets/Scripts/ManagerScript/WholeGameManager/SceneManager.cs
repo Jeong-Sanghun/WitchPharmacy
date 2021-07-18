@@ -16,6 +16,7 @@ public class SceneManager : MonoBehaviour // JH
     public string lastSceneName;
     //텍스트가 지금 쳐지고 있으면. 여러매니저에서 써먹을듯.
     public bool nowTexting;
+    public int nowSaveIndex;
 
     private void Start()
     {
@@ -204,6 +205,54 @@ public class SceneManager : MonoBehaviour // JH
 
     // // Module // //
 
+        //최초에 씬을 불러오기...
+    public void VeryFirstStartLoad()
+    {
+        
+        StartCoroutine(StartLoadingSceneCoroutine());
+    }
+
+    IEnumerator StartLoadingSceneCoroutine()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartLoadingScene");
+        yield return null;
+        Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
+        gameManager = GameManager.singleTon;
+        if(gameManager.saveData.nowSaveTime == SaveTime.DayStart)
+        {
+            lastSceneName = "StoryScene";
+        }
+        else
+        {
+            lastSceneName = "RoomCounterScene";
+        }
+        //게임매니저가 여기서 로드할 때 생기거덩 그러면 게임매니저에서 씬매니저의 그 인덱스 번호를 가져가서 스타트에서 로드를 때려버림. 
+        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(gameManager.saveData.nextLoadSceneName);
+
+        op.allowSceneActivation = false;
+
+        float timer = 0.0f;
+
+        while (!op.isDone)
+        {
+
+            timer += Time.deltaTime;
+            loadText.text = op.progress.ToString();
+            if (timer > 0.5f)
+            {
+                op.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+        if (gameManager.saveData.nextLoadSceneName == "StoryScene")
+        {
+            TabletManager.inst.TabletOpenButtonActive(false);
+        }
+        else
+        {
+            TabletManager.inst.TabletOpenButtonActive(true);
+        }
+    }
 
     public void LoadScene(string sceneName)
     {
@@ -221,7 +270,9 @@ public class SceneManager : MonoBehaviour // JH
 
     IEnumerator LoadingSceneCoroutine(string sceneName)
     {
+        TabletManager.inst.TabletOpenButtonActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene");
+
         yield return null;
         Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
         AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
@@ -240,6 +291,14 @@ public class SceneManager : MonoBehaviour // JH
                 op.allowSceneActivation = true;
             }
             yield return null;
+        }
+        if(sceneName == "StoryScene")
+        {
+            TabletManager.inst.TabletOpenButtonActive(false);
+        }
+        else
+        {
+            TabletManager.inst.TabletOpenButtonActive(true);
         }
 
 

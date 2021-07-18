@@ -44,7 +44,7 @@ public class SaveDataClass
     public List<string> readStoryList;
     public string nextLoadSceneName;
     public SaveTime nowSaveTime;
-    public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
+    //public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
 
 
     public SaveDataClass()
@@ -68,7 +68,7 @@ public class SaveDataClass
         solvedQuestBundleName = new List<string>();
         nowCounterDialogBundleName = "testBundle";
         nowStoryDialogBundleName = "testBundle";
-        nowLanguageDirectory = "Korean/";
+        //nowLanguageDirectory = "Korean/";
         billWrapperList = new List<OneDayBillWrapper>();
         owningDocumentList = new List<OwningDocumentClass>();
         readStoryList = new List<string>();

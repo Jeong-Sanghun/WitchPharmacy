@@ -43,7 +43,7 @@ public class TabletDocumentManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InitializeDocument();
     }
 
 
@@ -170,6 +170,19 @@ public class TabletDocumentManager : MonoBehaviour
         wholeFolderButtonList[nowOpenedFolderIndex].folderCanvasObject.SetActive(false);
         nowOpenedFolderIndex = -1;
         UpdateDirectory();
+    }
+
+    public void WholeButtonOff()
+    {
+        wholeFolderParentObject.SetActive(false);
+        if(nowOpenedFolderIndex!= -1)
+        {
+            wholeFolderButtonList[nowOpenedFolderIndex].folderCanvasObject.SetActive(false);
+        }
+        if (nowOpenedDocumentCanvas != null)
+        {
+            nowOpenedDocumentCanvas.SetActive(false);
+        }
     }
 
     void OnDocumentButtonDown(int index)

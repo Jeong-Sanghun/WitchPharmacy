@@ -68,7 +68,7 @@ public class TabletBillManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InitBill();
 
     }
 
@@ -286,6 +286,14 @@ public class TabletBillManager : MonoBehaviour
     public void OnPropertyBackButton()
     {
         nowActivePropertyObject.SetActive(false);
+    }
+
+    public void WholeButtonOff()
+    {
+        if(nowActivePropertyObject!=null)
+            nowActivePropertyObject.SetActive(false);
+
+        billCanvasParent.SetActive(false);
     }
 
     void DayButtonDown(int index)

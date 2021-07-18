@@ -99,6 +99,12 @@ public class TabletSaveManager : MonoBehaviour
         saveButtonCanvas.SetActive(false);
     }
 
+    public void WholeButtonOff()
+    {
+        saveButtonCanvas.SetActive(false);
+        saveLoadCanvas.SetActive(false);
+    }
+
     public void SaveOrLoadButtonDown(int index)
     {
 

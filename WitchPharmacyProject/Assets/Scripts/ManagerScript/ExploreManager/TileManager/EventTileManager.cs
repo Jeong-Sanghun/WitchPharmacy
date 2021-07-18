@@ -12,6 +12,7 @@ public class EventTileManager : TileManager
     TabletManager tabletManager;
     List<StoreToolClass> storeToolDataList;
     List<OwningToolClass> owningToolList;
+    SaveDataTimeWrapper saveDataTimeWrapper;
     [SerializeField]
     GameObject rewardCanvas;
     [SerializeField]
@@ -47,6 +48,7 @@ public class EventTileManager : TileManager
         tabletManager = TabletManager.inst;
         storeToolDataList = gameManager.storeToolDataWrapper.storeToolDataList;
         owningToolList = saveData.owningToolList;
+        saveDataTimeWrapper = gameManager.saveDataTimeWrapper;
     }
 
     public override void TileOpen(TileButtonClass tile)
@@ -193,7 +195,7 @@ public class EventTileManager : TileManager
             treasureTile.storyFileName = condition.fileName;
             rewardImage.sprite = condition.LoadSprite();
             StringBuilder builder = new StringBuilder(condition.ingameName);
-            if (saveData.nowLanguageDirectory.Contains("Korean"))
+            if (saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
             {
                 string josa = languagePack.GetCompleteWord(builder.ToString(), "을", "를");
                 builder.Append(josa);
@@ -257,7 +259,7 @@ public class EventTileManager : TileManager
                 rewardImage.sprite = storeToolDataList[index].LoadImage();
                 exploreManager.OnBuyTool(index, gainedNumber);
                 StringBuilder builder = null;
-                if (saveData.nowLanguageDirectory.Contains("Korean"))
+                if (saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
                 {
                     //곡괭이 2개를 획득했다.
                     builder = new StringBuilder(storeToolDataList[index].name);
@@ -265,7 +267,7 @@ public class EventTileManager : TileManager
                     string josa = "개를";
                     builder.Append(josa);
                 }
-                else if (saveData.nowLanguageDirectory.Contains("English"))
+                else if (saveDataTimeWrapper.nowLanguageDirectory.Contains("English"))
                 {
                     //you got 2 pickaxes
                     builder = new StringBuilder(gainedNumber.ToString());
@@ -325,7 +327,7 @@ public class EventTileManager : TileManager
                 }
                 rewardImage.sprite = condition.LoadSprite();
                 StringBuilder builder = new StringBuilder(condition.ingameName);
-                if (saveData.nowLanguageDirectory.Contains("Korean"))
+                if (saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
                 {
                     string josa = languagePack.GetCompleteWord(builder.ToString(), "을", "를");
                     builder.Append(josa);
@@ -350,7 +352,7 @@ public class EventTileManager : TileManager
                 rewardImage.sprite = storeToolDataList[index].LoadImage();
 
                 builder = null;
-                if (saveData.nowLanguageDirectory.Contains("Korean"))
+                if (saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
                 {
                     //곡괭이 2개를 획득했다.
                     builder = new StringBuilder(storeToolDataList[index].name);
@@ -358,7 +360,7 @@ public class EventTileManager : TileManager
                     string josa = "개를";
                     builder.Append(josa);
                 }
-                else if (saveData.nowLanguageDirectory.Contains("English"))
+                else if (saveDataTimeWrapper.nowLanguageDirectory.Contains("English"))
                 {
                     //you got 2 pickaxes
                     builder = new StringBuilder(treasureTile.gainedThing.ToString());
@@ -387,7 +389,7 @@ public class EventTileManager : TileManager
                 rewardImage.sprite = storeToolDataList[index].LoadImage();
 
                 builder = null;
-                if (saveData.nowLanguageDirectory.Contains("Korean"))
+                if (saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
                 {
                     //곡괭이 2개를 획득했다.
                     builder = new StringBuilder(storeToolDataList[index].name);
@@ -396,7 +398,7 @@ public class EventTileManager : TileManager
                     string josa = "개를";
                     builder.Append(josa);
                 }
-                else if (saveData.nowLanguageDirectory.Contains("English"))
+                else if (saveDataTimeWrapper.nowLanguageDirectory.Contains("English"))
                 {
                     //you got 2 pickaxes
                     builder = new StringBuilder(treasureTile.gainedThing.ToString());

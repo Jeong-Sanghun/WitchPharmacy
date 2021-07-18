@@ -136,15 +136,20 @@ public class CookedMedicineManager : MonoBehaviour
             if (touchedObject== trayObject)
             {
                 roomManager.ToCounterButton(true);
-                cookedMedicine.medicineObject.GetComponent<RectTransform>().anchoredPosition = medicineOriginCounterPos;
-            }
-            if (touchedObject.CompareTag("Visitor"))
-            {
+                //cookedMedicine.medicineObject.GetComponent<RectTransform>().anchoredPosition = medicineOriginCounterPos;
                 counterManager.OnMedicineDelivery(cookedMedicine);
                 cookedMedicine.medicineObject.transform.position = medicineOriginPos;
                 medicineManager.CookedMedicineRemoved();
                 cookedMedicine.medicineObject.SetActive(false);
                 cookedMedicine = null;
+            }
+            if (touchedObject.CompareTag("Visitor"))
+            {
+                //counterManager.OnMedicineDelivery(cookedMedicine);
+                //cookedMedicine.medicineObject.transform.position = medicineOriginPos;
+                //medicineManager.CookedMedicineRemoved();
+                //cookedMedicine.medicineObject.SetActive(false);
+                //cookedMedicine = null;
             }
         }
         binObject.SetActive(false);
