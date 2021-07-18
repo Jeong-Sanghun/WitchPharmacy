@@ -2,13 +2,16 @@
     "name": "initName",
     "nowTime": 0.0,
     "nowDay": 1,
-    "coin": 980,
+    "coin": 1017,
     "ownedMedicineList": [
         0,
-        5,
         39,
-        10,
-        41
+        15,
+        2,
+        6,
+        18,
+        29,
+        30
     ],
     "owningMedicineList": [
         {
@@ -16,19 +19,31 @@
             "medicineQuantity": 7
         },
         {
-            "medicineIndex": 5,
-            "medicineQuantity": 2
-        },
-        {
             "medicineIndex": 39,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 15,
+            "medicineQuantity": 6
+        },
+        {
+            "medicineIndex": 2,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 6,
+            "medicineQuantity": 4
+        },
+        {
+            "medicineIndex": 18,
             "medicineQuantity": 2
         },
         {
-            "medicineIndex": 10,
+            "medicineIndex": 29,
             "medicineQuantity": 2
         },
         {
-            "medicineIndex": 41,
+            "medicineIndex": 30,
             "medicineQuantity": 2
         }
     ],
@@ -90,6 +105,11 @@
                     "isPlus": true,
                     "reason": 0,
                     "changedCoin": 80
+                },
+                {
+                    "isPlus": true,
+                    "reason": 4,
+                    "changedCoin": 37
                 }
             ]
         },
@@ -99,16 +119,8 @@
             "billList": []
         }
     ],
-    "owningDocumentList": [
-        {
-            "name": "Go",
-            "gainedRegion": "testRegion2",
-            "gainedDay": 0,
-            "gainedTime": 74400.0
-        }
-    ],
+    "owningDocumentList": [],
     "readStoryList": [],
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
-    "nowLanguageDirectory": "Korean/"
+    "nowSaveTime": 1
 }

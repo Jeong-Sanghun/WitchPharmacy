@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour //SH
         saveDataTimeWrapper.saveDataTimeList[0].day = saveData.nowDay;
         saveDataTimeWrapper.saveDataTimeList[0].saveTime = saveTime;
         jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
+        tabletManager.TabletOpenButtonActive(true);
         tabletManager.ForceSaveButtonActive(true,saveTime);
     }
 

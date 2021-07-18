@@ -18,6 +18,8 @@ public class TabletSaveManager : MonoBehaviour
     GameObject[] getOutButtons;
     [SerializeField]
     Text[] buttonTextArray;
+    [SerializeField]
+    Button saveButton;
 
     SaveDataTime[] saveDataTimeArray;
     UILanguagePack languagePack;
@@ -69,6 +71,8 @@ public class TabletSaveManager : MonoBehaviour
 
     public void SaveCanvasActive(bool active)
     {
+
+        saveButton.gameObject.SetActive(false);
         saveLoadCanvas.SetActive(active);
     }
 
@@ -76,7 +80,9 @@ public class TabletSaveManager : MonoBehaviour
     {
         isForceSave = true;
         nowSaveTime = saveTime;
-        for(int i = 0; i < 4; i++)
+        //saveButton.enabled = true;
+        saveButton.gameObject.SetActive(true);
+        for (int i = 0; i < 4; i++)
         {
             SetButtonText(i);
         }
