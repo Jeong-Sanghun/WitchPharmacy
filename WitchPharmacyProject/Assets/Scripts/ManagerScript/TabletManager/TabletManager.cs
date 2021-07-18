@@ -69,6 +69,13 @@ public class TabletManager : MonoBehaviour
         tabletBillManager.SetBill();
     }
 
+    //tabletSavemanager에서 불러옴
+    public void SetOnSaveDataLoad()
+    {
+        tabletBillManager.NewLoadedBill();
+        tabletDocumentManager.InitializeDocument();
+    }
+
     // Update is called once per frame
     void Update()
     {

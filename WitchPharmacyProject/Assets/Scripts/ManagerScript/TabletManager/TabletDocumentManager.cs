@@ -43,6 +43,28 @@ public class TabletDocumentManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+
+    public void InitializeDocument()
+    {
+        if(wholeFolderButtonList != null)
+        {
+            for(int i =0;i< wholeFolderButtonList.Count; i++)
+            {
+                Destroy(wholeFolderButtonList[i].folderButtonObject);
+                Destroy(wholeFolderButtonList[i].folderCanvasObject);
+                for(int j = 0; j < wholeFolderButtonList[i].documentButtonList.Count; j++)
+                {
+                    if (wholeFolderButtonList[i].documentButtonList[j].isOpened)
+                    {
+                        Destroy(wholeFolderButtonList[i].documentButtonList[j].documentCanvas);
+                    }
+                }
+
+            }
+        }
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         owningDocumentList = saveData.owningDocumentList;
@@ -58,13 +80,15 @@ public class TabletDocumentManager : MonoBehaviour
         documentBundleList = new List<DocumentBundle>();
         wholeFolderButtonList = new List<DocumentFolderButtonClass>();
         nowFolderButtonIndex = 0;
-        for(int i = 0; i < owningDocumentList.Count; i++)
+        for (int i = 0; i < owningDocumentList.Count; i++)
         {
             //DocumentBundle bundle = gameManager.LoadDocumentBundle(owningDocumentList[i].name);
             //documentBundleList.Add(bundle);
             SetupDocument(owningDocumentList[i]);
         }
     }
+
+
 
     //오우닝 다큐먼트 클래스 하나 넣어서 만듦.
     //tileTreasuremangaer에서 불러옴.
@@ -202,7 +226,6 @@ public class TabletDocumentManager : MonoBehaviour
         directoryText.text = builder.ToString();
         
     }
-
 
 
     // Update is called once per frame

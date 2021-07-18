@@ -18,6 +18,7 @@ public class StoreManager : MonoBehaviour
     }
     public void ToNextSceneButton()
     {
+        gameManager.saveData.nowTime = 0;
         gameManager.TimeChange(7200);
         //gameManager.ForceSaveButtonActive("RoomCounterScene");
         sceneManager.LoadScene("RoomCounterScene");

@@ -212,9 +212,9 @@ public class SceneManager : MonoBehaviour // JH
     }
 
     //불러오기 씬.
-    public void SaveDataLoadScene(int index)
+    public void SaveDataLoadScene()
     {
-        lastSceneName = null;
+        //lastSceneName = null;
         //gameManager.LoadJson(index);
         StartCoroutine(LoadingSceneCoroutine(gameManager.saveData.nextLoadSceneName));
     }

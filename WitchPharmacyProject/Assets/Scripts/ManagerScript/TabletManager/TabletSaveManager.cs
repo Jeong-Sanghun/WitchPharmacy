@@ -58,7 +58,7 @@ public class TabletSaveManager : MonoBehaviour
         }
         else
         {
-            builder.Append(gameManager.saveData.nowDay.ToString());
+            builder.Append((saveDataTimeArray[index].day+1).ToString());
             builder.Append(languagePack.slotDay);
             builder.Append(" ");
             builder.Append(languagePack.saveTimeArray[(int)saveDataTimeArray[index].saveTime]);
@@ -76,10 +76,15 @@ public class TabletSaveManager : MonoBehaviour
     {
         isForceSave = true;
         nowSaveTime = saveTime;
+        for(int i = 0; i < 4; i++)
+        {
+            SetButtonText(i);
+        }
         for (int i = 0; i < getOutButtons.Length; i++)
         {
             getOutButtons[i].SetActive(false);
         }
+
     }
 
     public void SaveOrLoadButtonCanvasActive(bool isSave)
@@ -96,6 +101,7 @@ public class TabletSaveManager : MonoBehaviour
 
     public void SaveOrLoadButtonDown(int index)
     {
+
         if (isSavingMode)
         {
             gameManager.SaveJson(index,nowSaveTime);
@@ -109,6 +115,8 @@ public class TabletSaveManager : MonoBehaviour
                 tabletManager.OnTabletButton(false);
                 SaveOrLoadButtonCanvasGetout();
                 SaveCanvasActive(false);
+               
+               // gameManager.sceneManager.lastSceneName = 
                 gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
 
             }
@@ -119,6 +127,13 @@ public class TabletSaveManager : MonoBehaviour
             SaveOrLoadButtonCanvasGetout();
             SaveCanvasActive(false);
             gameManager.LoadJson(index);
+            tabletManager.SetOnSaveDataLoad();
+
         }
+        for (int i = 0; i < 4; i++)
+        {
+            SetButtonText(i);
+        }
+
     }
 }

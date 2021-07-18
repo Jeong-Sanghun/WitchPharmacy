@@ -164,7 +164,11 @@ public class GameManager : MonoBehaviour //SH
     public void ForceSaveButtonActive(string nextScene,SaveTime saveTime)
     {
         saveData.nextLoadSceneName = nextScene;
+        saveData.nowSaveTime = saveTime;
         jsonManager.SaveJson(saveData, 0);
+        saveDataTimeWrapper.saveDataTimeList[0].day = saveData.nowDay;
+        saveDataTimeWrapper.saveDataTimeList[0].saveTime = saveTime;
+        jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         tabletManager.ForceSaveButtonActive(true,saveTime);
     }
 
@@ -172,7 +176,15 @@ public class GameManager : MonoBehaviour //SH
     public void LoadJson(int index)
     {
         saveData = jsonManager.LoadSaveData(index);
-        sceneManager.SaveDataLoadScene(index);
+        if(saveData.nowSaveTime == SaveTime.ExploreStart)
+        {
+            sceneManager.lastSceneName = "RoomCounterScene";
+        }
+        else if(saveData.nowSaveTime == SaveTime.DayStart)
+        {
+            sceneManager.lastSceneName = "StoryScene";
+        }
+        sceneManager.SaveDataLoadScene();
     }
 
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.

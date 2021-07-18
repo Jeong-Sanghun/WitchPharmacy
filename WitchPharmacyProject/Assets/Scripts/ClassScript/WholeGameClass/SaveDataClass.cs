@@ -43,7 +43,7 @@ public class SaveDataClass
     public List<OwningDocumentClass> owningDocumentList;
     public List<string> readStoryList;
     public string nextLoadSceneName;
-    public NowStoryScene nowStoryScene;
+    public SaveTime nowSaveTime;
     public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
 
 
@@ -73,7 +73,7 @@ public class SaveDataClass
         owningDocumentList = new List<OwningDocumentClass>();
         readStoryList = new List<string>();
         nextLoadSceneName = "StoryScene";
-        nowStoryScene = NowStoryScene.DayStart;
+        nowSaveTime = SaveTime.DayStart;
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
 

@@ -14,6 +14,7 @@ public class OneDayBillButtonClass
     public Transform propertyScrollContent;
     public GameObject propertyGainLineObject;
     public GameObject propertySpentLineObject;
+    public GameObject oneDayButton;
 
     public OneDayBillWrapper wrapper;
 
@@ -21,10 +22,11 @@ public class OneDayBillButtonClass
     public List<OneBillLineClass> spentBillList;
 
 
-    public OneDayBillButtonClass(int _index, Text wholeGain, Text wholeSpent,OneDayBillWrapper _wrapper)
+    public OneDayBillButtonClass(int _index, GameObject oneDayObj, Text wholeGain, Text wholeSpent,OneDayBillWrapper _wrapper)
     {
         propertySetted = false;
         index = _index;
+        oneDayButton = oneDayObj;
         wholeGainText = wholeGain;
         wholeSpentText = wholeSpent;
         gainBillList = new List<OneBillLineClass>();
@@ -35,6 +37,7 @@ public class OneDayBillButtonClass
     public void SetProperty(GameObject parent, Transform scrollContent, GameObject gainLine, GameObject spentLine, GameObject linePrefab, UILanguagePack languagePack)
     {
         propertySetted = true;
+ 
         propertyCanvasParent = parent;
         propertyScrollContent = scrollContent;
         propertyGainLineObject = gainLine;

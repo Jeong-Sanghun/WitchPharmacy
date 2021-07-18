@@ -424,8 +424,7 @@ public class CounterManager : MonoBehaviour //SH
         if (lastVisitor)
         {
             endSales = true;
-            
-            saveData.nowStoryScene = NowStoryScene.AfterCounter;
+
             //gameManager.AutoSave("StoryScene");
             gameManager.ForceSaveButtonActive("StoryScene",SaveTime.ExploreStart);
             //toNextSceneButton.SetActive(true);

@@ -328,7 +328,7 @@ public class ExploreManager : MonoBehaviour
 
     public void ToNextSceneButton()
     {
-        gameManager.saveData.nowStoryScene = NowStoryScene.AfterExplore;
+        //gameManager.saveData.savet = NowStoryScene.AfterExplore;
         //gameManager.AutoSave("StoryScene");
         sceneManager.LoadScene("StoryScene");
         DestroyOnEnd();

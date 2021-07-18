@@ -68,17 +68,20 @@ public class TabletBillManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
-        saveData = gameManager.saveData;
-        languagePack = gameManager.languagePack;
-        wholeBillButtonClass = new List<OneDayBillButtonClass>();
-        InitBill();
+
+
     }
 
     void InitBill()
     {
+        wholeGain = 0;
+        wholeSpent = 0;
+        nowButtonIndex = 0;
+        gameManager = GameManager.singleTon;
+        saveData = gameManager.saveData;
+        languagePack = gameManager.languagePack;
+        wholeBillButtonClass = new List<OneDayBillButtonClass>();
         billTitle.text = languagePack.billTitle;
-        Debug.Log(languagePack.billTitle);
         prefabOneLineSpentText.text = languagePack.billSpend;
         prefabOneLineGainText.text = languagePack.billGain;
         wholeGainTitleText.text = languagePack.billWholeGain;
@@ -86,9 +89,15 @@ public class TabletBillManager : MonoBehaviour
         prefabGainTitleText.text = languagePack.billGain;
         prefabSpentTitleText.text = languagePack.billSpend;
         billWrapperList = saveData.billWrapperList;
+        wholeGainNumberText.text = "0";
+        wholeSpentNumberText.text = "0";
         
         oneDayBillPrefab.SetActive(false);
 
+        while(billWrapperList.Count < saveData.nowDay + 1)
+        {
+            billWrapperList.Add(new OneDayBillWrapper());
+        }
 
         for(int i = 0; i < billWrapperList.Count;i++)
         {
@@ -134,7 +143,7 @@ public class TabletBillManager : MonoBehaviour
         Text spentText = inst.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>();
         spentText.text = daySpent.ToString();
         //spentText.text = "스펜트 택스트";
-        OneDayBillButtonClass billButton = new OneDayBillButtonClass(nowButtonIndex, gainText, spentText,wrapper);
+        OneDayBillButtonClass billButton = new OneDayBillButtonClass(nowButtonIndex,inst, gainText, spentText,wrapper);
         wholeBillButtonClass.Add(billButton);
         inst.GetComponent<RectTransform>().anchoredPosition = new Vector3(-255f, -560 + (-400) * nowButtonIndex, 0);
 
@@ -193,6 +202,21 @@ public class TabletBillManager : MonoBehaviour
         buttonClass.wholeGainText.text = dayGain.ToString();
         buttonClass.wholeSpentText.text = daySpent.ToString();
         
+    }
+
+    public void NewLoadedBill()
+    {
+        if(wholeBillButtonClass!= null)
+        {
+            for (int i = 0; i < wholeBillButtonClass.Count; i++)
+            {
+                Destroy(wholeBillButtonClass[i].oneDayButton);
+                Destroy(wholeBillButtonClass[i].propertyCanvasParent);
+            }
+        }
+        InitBill();
+        
+
     }
 
     public void SetBill()

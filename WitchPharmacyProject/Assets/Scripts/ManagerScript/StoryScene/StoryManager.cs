@@ -205,6 +205,7 @@ public class StoryManager : TileManager
 
     public void ToNextSceneButton()
     {
+        Debug.Log(sceneManager.lastSceneName);
 
         if(sceneManager.lastSceneName == null)
         {
