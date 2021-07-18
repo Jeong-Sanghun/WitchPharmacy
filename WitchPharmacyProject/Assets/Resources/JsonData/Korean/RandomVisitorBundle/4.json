@@ -1,0 +1,152 @@
+{
+    "bundleName": "Lily",
+    "characterName": "Lily",
+    "answerSpecialMedicineName" : "withered_dew",
+	"symptomNumberArray": [0,-1,0,2,0],
+    "appearingProgression": 0.0,
+    "progressingNumber": 10.0,
+    "appearingConditionQuestList": [
+        
+    ],
+    "conversationRouter": {
+        "routingWrapperName": [
+            "1",
+            "2"
+        ],
+        "routeButtonText": [
+            "뭔 소리야 이건또",
+            "니가 너무 싫긴 하지"
+        ],
+        "routingTime": 1
+    },
+    "specialVisitorDialogWrapperList": [
+        {
+            "wrapperName": "0",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "야 루엘리아야"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog":"너는 내가 싫냐"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "솔직히 얘기해바"
+                }
+            ]
+        },
+        {
+            "wrapperName": "1",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "아 그래?"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "미안하다 야"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "사람이 할 말이 있고 못할말이 있지"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "야 그렇게까지 화낼일은 아니잖아. 약이나 줘봐"
+                }
+            ]
+        },
+        {
+            "wrapperName": "2",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "진짜 열받게 하네"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "면전에다 대고 그딴 소리를 해?"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "니가먼저 시작한거잖아 뭔 말이 이렇게 많아"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "약먹을 시간이 다돼서 그렇구나? 좀만 기다려"
+                }
+            ]
+        }
+    ],
+    "answerDialogWrapper": {
+        "wrapperName": "answer",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "아니 왜이렇게 써? 제대로 준거 맞아?"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "원래 몸에 좋은 약이 쓴 법이야. 일부러 쓰게 만든거도 있긴 하지만"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "진짜 악질이다."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "그래도 좀 낫는거 같네. 고맙다. 잘있고"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "그래 다음에 또 봐"
+                }
+        
+        ]
+    },
+    "wrongDialogWrapper": {
+        "wrapperName": "wrong",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "약이 이렇게 달달해보여도 되는거야? 거의 타이레놀 시럽인데?"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "원래 입에 달면 속에는 안좋은 법인데,.. 너 안나을 수도 있겠다."
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "아 잘못만들었네...."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "뭐하냐 대체...약사 맞아? 어째 낫는 기분이 안든다 했어."
+                }
+        ]
+    }
+}
