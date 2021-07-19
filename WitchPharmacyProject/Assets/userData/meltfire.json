@@ -3,51 +3,43 @@
     "startDialogList": [
         {
             "ruelliaTalking": false,
-            "dialog": "그 그리구....저 저 저기... 저기요...."
-        },
-        {
-            "ruelliaTalking": true,
-            "dialog": "네??"
-        },
-        {
-            "ruelliaTalking": true,
-            "dialog": "(무슨일이지...?)"
+            "dialog": "다이얼로그"
         },
         {
             "ruelliaTalking": false,
-            "dialog": "제가 녹아내린 불꽃을 주웠는데....절 고쳐주시면 이걸 드릴게요..."
+            "dialog": "다이얼로그"
         },
         {
-            "ruelliaTalking": true,
-            "dialog": "헉 그거 완전 좋은건데... 무조건 고쳐드리겠습니다."
+            "ruelliaTalking": false,
+            "dialog": "다이얼로그"
         }
     ],
     "wrongDialogList": [
         {
             "ruelliaTalking": false,
-            "dialog": "아직두 아픈디요.."
-        },
-        {
-            "ruelliaTalking": true,
-            "dialog": "헉....."
+            "dialog": "다이얼로그"
         },
         {
             "ruelliaTalking": false,
-            "dialog": "다음에 올게용..."
+            "dialog": "다이얼로그"
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "다이얼로그"
         }
     ],
     "answerDialogList": [
         {
             "ruelliaTalking": false,
-            "dialog": "헉 이제 안아파요"
-        },
-        {
-            "ruelliaTalking": true,
-            "dialog": "다행이당"
+            "dialog": "다이얼로그"
         },
         {
             "ruelliaTalking": false,
-            "dialog": "여기 약 받으세용"
+            "dialog": "다이얼로그"
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "다이얼로그"
         }
     ]
 }

@@ -19,7 +19,7 @@
         ],
         "routingTime": 1
     },
-    "specialVisitorDialogWrapperList": [
+    "secondDialogWrapperList": [
         {
             "wrapperName": "0",
             "specialVisitorDialogList": [

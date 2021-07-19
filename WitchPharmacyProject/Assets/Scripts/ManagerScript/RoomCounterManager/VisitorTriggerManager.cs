@@ -100,6 +100,11 @@ public class VisitorTriggerManager : MonoBehaviour
                 Debug.Log("해결한 퀘스트");
                 continue;
             }
+            if (saveData.progressingQuestBundleName.Contains(specialVisitorConditionDataList[i].bundleName))
+            {
+                Debug.Log("해결한 퀘스트");
+                continue;
+            }
             //if (todaySpecialVisitorList.Contains(specialVisitorConditionDataList[i].bundleName))
             //{
             //    Debug.Log("오늘 이미 방문함");

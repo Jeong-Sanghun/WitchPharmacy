@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour //SH
         sceneManager = SceneManager.inst;
         tabletManager = TabletManager.inst;
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        //DebugDataJson();
+        DebugDataJson();
 
         
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
@@ -248,7 +248,10 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
         saveDataTimeWrapper = new SaveDataTimeWrapper();
         OddVisitorDialogBundle oddBundle = new OddVisitorDialogBundle();
+        QuestDocument doc = new QuestDocument();
+
         languagePack = new UILanguagePack();
+        //jsonManager.SaveJson<QuestDocument>(doc, "Lily");
         jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
