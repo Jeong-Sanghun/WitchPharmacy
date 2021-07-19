@@ -1,5 +1,5 @@
 {
-    "bundleName": "Lily",
+     "bundleName": "Lily",
     "characterName": "Lily",
     "answerSpecialMedicineName" : "withered_dew",
 	"symptomNumberArray": [0,-1,0,2,0],
@@ -146,6 +146,32 @@
                     "ruelliaTalking": false,
                     "characterFeeling": "nothing",
                     "dialog": "뭐하냐 대체...약사 맞아? 어째 낫는 기분이 안든다 했어."
+                }
+        ]
+    },
+    "firstDialogWrapper": {
+        "wrapperName": "wrong",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "나왔엄"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "안녕 우리는 초면이얌"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "구래구래"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "안뇽"
                 }
         ]
     }

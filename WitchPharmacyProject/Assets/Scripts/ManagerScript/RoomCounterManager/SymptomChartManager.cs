@@ -105,7 +105,6 @@ public class SymptomChartManager : MonoBehaviour
         }
         if(medicineInPotList != null)
         {
-            Debug.Log("이거오애ㅏㄴ돼");
             for (int i = 0; i < medicineInPotList.Count; i++)
             {
                 int firstSymtpom = (int)medicineInPotList[i].medicineClass.GetFirstSymptom();

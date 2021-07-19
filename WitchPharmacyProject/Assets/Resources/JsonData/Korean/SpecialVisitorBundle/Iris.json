@@ -143,5 +143,31 @@
                     "dialog": "괜찮아 괜찮아. 기분은 좀 나아진 것 같아! 다음에 또 봐 루엘리아."
                 }
         ]
+    },
+	 "firstDialogWrapper": {
+        "wrapperName": "wrong",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "루엘리아 안뇽"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "안녕 우리는 첫만남이얌"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "뭐줄까"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "약줘"
+                }
+        ]
     }
 }

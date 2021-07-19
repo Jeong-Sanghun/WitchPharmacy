@@ -153,6 +153,13 @@ public class GameManager : MonoBehaviour //SH
         return bundle;
     }
 
+    public OddVisitorDialogBundle LoadOddBundle(string bundleName)
+    {
+        OddVisitorDialogBundle bundle;
+        bundle = jsonManager.ResourceDataLoad<OddVisitorDialogBundle>("OddVisitorDialogBundle/" + bundleName);
+        return bundle;
+    }
+
     //아마 모든 매니저에서 참조할것.
     public void SaveJson(int index,SaveTime saveTime)
     {
@@ -238,11 +245,12 @@ public class GameManager : MonoBehaviour //SH
         ConversationDialogBundle storyBundle = new ConversationDialogBundle();
         //jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
         saveDataTimeWrapper = new SaveDataTimeWrapper();
-        
+        OddVisitorDialogBundle oddBundle = new OddVisitorDialogBundle();
         languagePack = new UILanguagePack();
-        jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
+        //jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
+        //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
-        //jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
+        jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
         //jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         //jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
         //jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");
@@ -250,7 +258,7 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
         //jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
         //jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
-        jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
+        //jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
         //jsonManager.SaveJson<DocumentConditionWrapper>(documentConditionWrapper, "DocumentConditionWrapper");
         //DocumentBundle doc = new DocumentBundle();
         //jsonManager.SaveJson<DocumentBundle>(doc, "testDocument");

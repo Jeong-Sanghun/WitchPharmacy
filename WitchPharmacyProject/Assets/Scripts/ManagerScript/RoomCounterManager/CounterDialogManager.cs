@@ -7,17 +7,14 @@ using System.Text;
 public class CounterDialogManager : MonoBehaviour
 {
     enum CounterState{
-        Start,Visit, End, NotTalking, SpecialVisitor, SpecialVisitorEnd
+        Start,Visit, End, NotTalking,FirstSpecialVisitor, SecondSpecialVisitor, SpecialVisitorEnd
     }
     GameManager gameManager;
     SceneManager sceneManager;
     List<StartDialogClass> randomDialogClassList;
     RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
     RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
-    List<SpecialVisitorCondition> specialVisitorConditionDataList;
-
-    //로딩을 여기서 한다음에 쫙 뿌려줘야 돼서.
-    public SpecialVisitorDialogBundle specialVisitorDialogBundle;
+    SpecialVisitorDialogBundle nowSpecialVisitorDialogBundle;
     SpecialVisitorDialogWrapper nowWrapper;
 
     //중간어들 다이얼로그.
@@ -68,7 +65,7 @@ public class CounterDialogManager : MonoBehaviour
     int nowBackLogIndex;
     bool isRouted = false;
 
-    List<string> todaySpecialVisitorList;
+
     
     //룸매니저에서 못넘어가게 쓰임.
     public bool nowTalking;
@@ -89,9 +86,8 @@ public class CounterDialogManager : MonoBehaviour
         ruelliaText.transform.parent.gameObject.SetActive(true);
         visitorText.transform.parent.gameObject.SetActive(false);
         contentRect = backLogContent.GetComponent<RectTransform>();
-        //specialVisitorDialogBundle = gameManager.LoadVisitorBundle(gameManager.saveData.nowCounterDialogBundleName);
-        specialVisitorConditionDataList = gameManager.specialVisitorConditionWrapper.specialVisitorConditionDataList;
-        todaySpecialVisitorList = new List<string>();
+        //nowSpecialVisitordialogBundle = gameManager.LoadVisitorBundle(gameManager.saveData.nowCounterDialogBundleName);
+
         characterIndexToName = new CharacterIndexToName();
 
         nowTalking = true;
@@ -102,137 +98,7 @@ public class CounterDialogManager : MonoBehaviour
         StartUpdate();
     }
 
-    //triggercheck에서 불러옴. 트루면 트리거체크, 폴스면 그냥 일반손님.
-    public bool ConditionCheck()
-    {
-        float chaosMeter= gameManager.saveData.chaosMeter;
-        List<string> solvedQuest = gameManager.saveData.solvedQuestBundleName;
-        for(int i =0; i< specialVisitorConditionDataList.Count; i++)
-        {
-            if (solvedQuest.Contains(specialVisitorConditionDataList[i].bundleName))
-            {
-                Debug.Log("해결한 퀘스트");
-                continue;
-            }
-            if (todaySpecialVisitorList.Contains(specialVisitorConditionDataList[i].bundleName))
-            {
-                Debug.Log("오늘 이미 방문함");
-                continue;
-            }
-            if(chaosMeter < specialVisitorConditionDataList[i].appearingChaosMeter)
-            {
-                Debug.Log("카오스미터가 안됨");
-                continue;
-            }
-
-            if(gameManager.saveData.nowDay < specialVisitorConditionDataList[i].appearingLeastDay)
-            {
-                Debug.Log("데이가 안됨");
-                continue;
-            }
-            bool notContaining = false;
-            for(int j = 0; j < specialVisitorConditionDataList[i].appearingSolvedQuestBundleList.Count; j++)
-            {
-                if (!gameManager.saveData.solvedQuestBundleName.
-                    Contains(specialVisitorConditionDataList[i].appearingSolvedQuestBundleList[j]))
-                {
-                    notContaining = true;
-                    break;
-                }
-            }
-            if(notContaining == true)
-            {
-                Debug.Log("솔브드퀘스트가 안됨");
-                continue;
-            }
-
-            for (int j = 0; j < specialVisitorConditionDataList[i].appearingProgressingQuestBundleList.Count; j++)
-            {
-                if (!gameManager.saveData.progressingQuestBundleName.
-                    Contains(specialVisitorConditionDataList[i].appearingProgressingQuestBundleList[j]))
-                {
-                    notContaining = true;
-                    break;
-                }
-            }
-            if (notContaining == true)
-            {
-                Debug.Log("프로그레싱퀘스트가 안됨");
-                continue;
-            }
-            List<SpecialMedicineClass> medicineList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
-            List<OwningMedicineClass> owningList = gameManager.saveData.owningSpecialMedicineList;
-            for (int j = 0; j < specialVisitorConditionDataList[i].appearingSpecialMedicineList.Count; j++)
-            {
-
-                for(int k = 0; k < owningList.Count; k++)
-                {
-                    if(medicineList[owningList[i].medicineIndex].fileName 
-                        == specialVisitorConditionDataList[i].appearingSpecialMedicineList[j])
-                    {
-                        notContaining = false;
-                            break;
-                    }
-                    else
-                    {
-                        notContaining = true;
-                    }
-                }
-                if(notContaining == true)
-                {
-                    break;
-                }
-            }
-            if (notContaining == true)
-            {
-                Debug.Log("스페셜메디슨이 안됨");
-                continue;
-            }
-            for (int j = 0; j < specialVisitorConditionDataList[i].appearingStoryBundleList.Count; j++)
-            {
-                if (!gameManager.saveData.readStoryList.
-                    Contains(specialVisitorConditionDataList[i].appearingStoryBundleList[j]))
-                {
-                    notContaining = true;
-                    break;
-                }
-            }
-            if (notContaining == true)
-            {
-                Debug.Log("스토리가 안됨");
-                continue;
-            }
-            if (!notContaining)
-            {
-                specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
-                return true;
-            }
-
-
-            //bool notContaining = false;
-            ////Debug.Log(specialVisitorConditionDataList[i].appearingQuestBundleList[0] + " 그리고 " + i);
-            //if (specialVisitorConditionDataList[i].appearingEndedQuestBundleList.Count == 0)
-            //{
-            //    specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
-            //    return true;
-            //}
-            //for (int j = 0; j < specialVisitorConditionDataList[i].appearingQuestBundleList.Count; j++)
-            //{
-            //    if (!solvedQuest.Contains(specialVisitorConditionDataList[i].appearingQuestBundleList[j]))
-            //    {
-            //        notContaining = true;
-            //        break;
-            //    }
-            //}
-            //if (!notContaining)
-            //{
-            //    specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
-            //    return true;
-            //}
-        }
-        Debug.Log("여기");
-        return false;
-    }
+  
 
 
         //백로그 버튼 누를떄
@@ -322,26 +188,45 @@ public class CounterDialogManager : MonoBehaviour
         VisitUpdate();
     }
 
-    public void OnSpecialVisitorVisit()
+    //트리거 매니저에서 불러옴.
+    public void OnSpecialVisitorVisit(SpecialVisitorDialogBundle bundle,bool isSecond)
     {
-        //specialVisitorDialogBundle = gameManager.LoadVisitorBundle(bundleName);
-        todaySpecialVisitorList.Add(specialVisitorDialogBundle.bundleName);
+        nowSpecialVisitorDialogBundle = bundle;
+
         nowTalking = true;
         roomManager.ToCounterButton(false);
         InitializeBackLog();
-        nowState = CounterState.SpecialVisitor;
+        if (isSecond)
+        {
+            nowState = CounterState.SecondSpecialVisitor;
+        }
+        else
+        {
+            gameManager.saveData.progressingQuestBundleName.Add(bundle.bundleName);
+            nowState = CounterState.FirstSpecialVisitor;
+        }
+        
         nowDialogIndex = 0;
         isRouted = false;
-        if (specialVisitorDialogBundle.conversationRouter == null)
+        if (nowSpecialVisitorDialogBundle.conversationRouter == null)
         {
             isRouted = true;
         }
-        else if(specialVisitorDialogBundle.conversationRouter.routeButtonText.Count == 0)
+        else if(nowSpecialVisitorDialogBundle.conversationRouter.routeButtonText.Count == 0)
         {
             isRouted = true;
         }
-        nowWrapper = specialVisitorDialogBundle.specialVisitorDialogWrapperList[0];
-        dialogCount = specialVisitorDialogBundle.specialVisitorDialogWrapperList[0].specialVisitorDialogList.Count;
+        if (isSecond)
+        {
+            nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[0];
+            dialogCount = nowSpecialVisitorDialogBundle.secondDialogWrapperList[0].specialVisitorDialogList.Count;
+        }
+        else
+        {
+            nowWrapper = nowSpecialVisitorDialogBundle.firstDialogWrapper;
+            dialogCount = nowWrapper.specialVisitorDialogList.Count;
+        }
+
         SpecialVisitorUpdate();
     }
 
@@ -372,14 +257,21 @@ public class CounterDialogManager : MonoBehaviour
         counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
-            
-            nowWrapper = specialVisitorDialogBundle.wrongDialogWrapper;
+            nowWrapper = nowSpecialVisitorDialogBundle.wrongDialogWrapper;
+            if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
+            {
+                gameManager.saveData.progressingQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
+            }
         }
         else
         {
-            gameManager.saveData.solvedQuestBundleName.Add(specialVisitorDialogBundle.bundleName);
-            gameManager.saveData.chaosMeter -= specialVisitorDialogBundle.progressingNumber;
-            nowWrapper = specialVisitorDialogBundle.answerDialogWrapper;
+            if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
+            {
+                gameManager.saveData.progressingQuestBundleName.Remove(nowSpecialVisitorDialogBundle.bundleName);
+            }
+            gameManager.saveData.solvedQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
+            gameManager.saveData.chaosMeter -= nowSpecialVisitorDialogBundle.progressingNumber;
+            nowWrapper = nowSpecialVisitorDialogBundle.answerDialogWrapper;
         }
         nowDialogIndex = 0;
         dialogCount = nowWrapper.specialVisitorDialogList.Count;
@@ -410,7 +302,8 @@ public class CounterDialogManager : MonoBehaviour
                 case CounterState.Visit:
                     VisitUpdate();
                     break;
-                case CounterState.SpecialVisitor:
+                case CounterState.FirstSpecialVisitor:
+                case CounterState.SecondSpecialVisitor:
                     SpecialVisitorUpdate();
                     break;
                 case CounterState.SpecialVisitorEnd:
@@ -424,17 +317,17 @@ public class CounterDialogManager : MonoBehaviour
 
     public void OnRouteButton(int index)
     {
-        ConversationRouter router = specialVisitorDialogBundle.conversationRouter;
+        ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
         dialogMouseEventObject.SetActive(true);
         for(int i = 0; i < 3; i++)
         {
             routingButtonArray[i].SetActive(false);
         }
-        for(int i = 0; i < specialVisitorDialogBundle.specialVisitorDialogWrapperList.Count; i++)
+        for(int i = 0; i < nowSpecialVisitorDialogBundle.secondDialogWrapperList.Count; i++)
         {
-            if(router.routingWrapperName[index] == specialVisitorDialogBundle.specialVisitorDialogWrapperList[i].wrapperName)
+            if(router.routingWrapperName[index] == nowSpecialVisitorDialogBundle.secondDialogWrapperList[i].wrapperName)
             {
-                nowWrapper = specialVisitorDialogBundle.specialVisitorDialogWrapperList[i];
+                nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[i];
                 break;
             }
         }
@@ -453,7 +346,7 @@ public class CounterDialogManager : MonoBehaviour
             {
                 if (!visitorText.transform.parent.gameObject.activeSelf)
                     visitorText.transform.parent.gameObject.SetActive(true);
-                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(specialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
+                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(nowSpecialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
                 string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
                 MakeBackLog(true, str);
                 StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
@@ -472,7 +365,7 @@ public class CounterDialogManager : MonoBehaviour
         }
         else
         {
-            if (isRouted)
+            if (isRouted || nowState == CounterState.FirstSpecialVisitor)
             {
                 nowTalking = false;
                 counterManager.VisitorTalkEnd();
@@ -489,7 +382,7 @@ public class CounterDialogManager : MonoBehaviour
                 isRouted = true;
                 dialogMouseEventObject.SetActive(false);
                 nowDialogIndex = 0;
-                ConversationRouter router = specialVisitorDialogBundle.conversationRouter;
+                ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
                 for(int i = 0; i < router.routeButtonText.Count; i++)
                 {
                     routingButtonArray[i].SetActive(true);
@@ -556,7 +449,7 @@ public class CounterDialogManager : MonoBehaviour
             nowTalking = false;
             counterText.text = "";
             nowState = CounterState.NotTalking;
-            //counterManager.CounterStart(specialVisitorDialogBundle.characterName);
+            //counterManager.CounterStart(nowSpecialVisitorDialogBundle.characterName);
             visitorTriggerManager.TriggerCheck();
         }
     }
@@ -606,7 +499,7 @@ public class CounterDialogManager : MonoBehaviour
             {
                 if (!visitorText.transform.parent.gameObject.activeSelf)
                     visitorText.transform.parent.gameObject.SetActive(true);
-                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(specialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
+                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(nowSpecialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
                 string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
                 MakeBackLog(true, str);
                 StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
@@ -633,7 +526,6 @@ public class CounterDialogManager : MonoBehaviour
             visitorText.text = "";
             nowState = CounterState.NotTalking;
             isRouted = false;
-
         }
     }
 }

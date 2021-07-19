@@ -154,5 +154,31 @@
                     "dialog": "언젠가 보게 될 때가 올거야. 그때 보자고"
                 }
         ]
+    },
+	 "firstDialogWrapper": {
+        "wrapperName": "wrong",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "뭐야"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "뭐 어쩌라고"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "오자마자 뭐야라니"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "미안해"
+                }
+        ]
     }
 }

@@ -13,46 +13,270 @@ public class VisitorTriggerManager : MonoBehaviour
     // Start is called before the first frame update
     bool nowCheckingTrigger;
 
+    OddVisitorDialogBundle nowOddVisitorDialogBundle;
+    List<SpecialVisitorCondition> specialVisitorConditionDataList;
 
-    
+    //로딩을 여기서 한다음에 쫙 뿌려줘야 돼서.
+    SpecialVisitorDialogBundle specialVisitorDialogBundle;
+    OddVisitorDialogBundle oddVisitorDialogBundle;
+    //List<string> todaySpecialVisitorList;
+    int nowVisitorIndex;
+    bool isSecondVisit = false;
+    bool specialVisitorVisited;
+    List<int> specialVisitorAppearingIndex;
+
     void Start()
     {
         nowCheckingTrigger = false;
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
+
+        specialVisitorConditionDataList = gameManager.specialVisitorConditionWrapper.specialVisitorConditionDataList;
+        //todaySpecialVisitorList = new List<string>();
+        specialVisitorAppearingIndex = new List<int>();
+        nowVisitorIndex = 0;
+        for(int i = 0; i < 3; i++)
+        {
+            int index = Random.Range(0, 7);
+            if (specialVisitorAppearingIndex.Contains(index))
+            {
+                i--;
+                continue;
+            }
+            Debug.Log(index);
+            specialVisitorAppearingIndex.Add(index);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (nowCheckingTrigger)
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                nowCheckingTrigger = false;
-                counterManager.CounterStart();
-            }
-            else if (Input.GetKeyDown(KeyCode.B) || Input.GetMouseButtonDown(0))
-            {
-                nowCheckingTrigger = false;
-                counterManager.CounterStart(counterDialogManager.specialVisitorDialogBundle.characterName);
-            }
+        //if (nowCheckingTrigger)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        nowCheckingTrigger = false;
+        //        counterManager.CounterStart();
+        //    }
+        //    else if (Input.GetKeyDown(KeyCode.B) || Input.GetMouseButtonDown(0))
+        //    {
+        //        nowCheckingTrigger = false;
+
+        //    }
            
-        }
+        //}
     }
 
+    //트루면 트리거체크, 폴스면 그냥 일반손님 혹은 띨빵손님.
+    bool SpecialConditionCheck()
+    {
+        if(specialVisitorVisited == true)
+        {
+            return false;
+        }
+        if (!specialVisitorAppearingIndex.Contains(nowVisitorIndex))
+        {
+            return false;
+        }
+        float chaosMeter = gameManager.saveData.chaosMeter;
+        List<string> solvedQuest = gameManager.saveData.solvedQuestBundleName;
+        List<string> calledQuest = gameManager.saveData.calledQuestBundleName;
+        //호출때렸으면 무조건 얘부터 나옴.
+        if(calledQuest.Count > 0)
+        {
+            isSecondVisit = true;
+            specialVisitorDialogBundle = gameManager.LoadVisitorBundle(calledQuest[0]);
+            calledQuest.RemoveAt(0);
+            return true;
+
+        }
+
+        for (int i = 0; i < specialVisitorConditionDataList.Count; i++)
+        {
+            
+            if (solvedQuest.Contains(specialVisitorConditionDataList[i].bundleName))
+            {
+                Debug.Log("해결한 퀘스트");
+                continue;
+            }
+            //if (todaySpecialVisitorList.Contains(specialVisitorConditionDataList[i].bundleName))
+            //{
+            //    Debug.Log("오늘 이미 방문함");
+            //    continue;
+            //}
+            if (chaosMeter < specialVisitorConditionDataList[i].appearingChaosMeter)
+            {
+                Debug.Log("카오스미터가 안됨");
+                continue;
+            }
+
+            if (gameManager.saveData.nowDay < specialVisitorConditionDataList[i].appearingLeastDay)
+            {
+                Debug.Log("데이가 안됨");
+                continue;
+            }
+            bool notContaining = false;
+            for (int j = 0; j < specialVisitorConditionDataList[i].appearingSolvedQuestBundleList.Count; j++)
+            {
+                if (!gameManager.saveData.solvedQuestBundleName.
+                    Contains(specialVisitorConditionDataList[i].appearingSolvedQuestBundleList[j]))
+                {
+                    notContaining = true;
+                    break;
+                }
+            }
+            if (notContaining == true)
+            {
+                Debug.Log("솔브드퀘스트가 안됨");
+                continue;
+            }
+
+            for (int j = 0; j < specialVisitorConditionDataList[i].appearingProgressingQuestBundleList.Count; j++)
+            {
+                if (!gameManager.saveData.progressingQuestBundleName.
+                    Contains(specialVisitorConditionDataList[i].appearingProgressingQuestBundleList[j]))
+                {
+                    notContaining = true;
+                    break;
+                }
+            }
+            if (notContaining == true)
+            {
+                Debug.Log("프로그레싱퀘스트 조건이 안됨");
+                continue;
+            }
+            List<SpecialMedicineClass> medicineList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
+            List<OwningMedicineClass> owningList = gameManager.saveData.owningSpecialMedicineList;
+            for (int j = 0; j < specialVisitorConditionDataList[i].appearingSpecialMedicineList.Count; j++)
+            {
+
+                for (int k = 0; k < owningList.Count; k++)
+                {
+                    if (medicineList[owningList[i].medicineIndex].fileName
+                        == specialVisitorConditionDataList[i].appearingSpecialMedicineList[j])
+                    {
+                        notContaining = false;
+                        break;
+                    }
+                    else
+                    {
+                        notContaining = true;
+                    }
+                }
+                if (notContaining == true)
+                {
+                    break;
+                }
+            }
+            if (notContaining == true)
+            {
+                Debug.Log("스페셜메디슨이 안됨");
+                continue;
+            }
+            for (int j = 0; j < specialVisitorConditionDataList[i].appearingStoryBundleList.Count; j++)
+            {
+                if (!gameManager.saveData.readStoryList.
+                    Contains(specialVisitorConditionDataList[i].appearingStoryBundleList[j]))
+                {
+                    notContaining = true;
+                    break;
+                }
+            }
+            if (notContaining == true)
+            {
+                Debug.Log("스토리가 안됨");
+                continue;
+            }
+            if (!notContaining)
+            {
+                
+                specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
+                if (saveData.progressingQuestBundleName.Contains(specialVisitorDialogBundle.bundleName))
+                {
+                    isSecondVisit = true;
+                }
+                else
+                {
+                    isSecondVisit = false;
+                }
+                return true;
+            }
+        }
+        Debug.Log("여기");
+        return false;
+    }
+
+    bool OddConditionCheck()
+    {
+        if(saveData.progressingQuestBundleName.Count == 0)
+        {
+            return false;
+        }
+        if (!specialVisitorAppearingIndex.Contains(nowVisitorIndex))
+        {
+            return false;
+        }
+        List<SpecialMedicineClass> specialMedicineList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
+        if (saveData.visitedOddVisitorName.Count == specialMedicineList.Count)
+        {
+            return false;
+        }
+
+        int randIndex = Random.Range(0, specialMedicineList.Count);
+        while (true)
+        {
+            bool breaking = false;
+            for (; randIndex < specialMedicineList.Count; randIndex++)
+            {
+                if (!saveData.visitedOddVisitorName.Contains(specialMedicineList[randIndex].fileName))
+                {
+                    //nowOddVisitorDialogBundle = gameManager.LoadOddBundle(specialMedicineList[randIndex].fileName);
+                    breaking = true;
+                    break;
+                }
+            }
+
+            if (breaking)
+            {
+                break;
+            }
+            randIndex = 0;
+        }
+        nowOddVisitorDialogBundle = gameManager.LoadOddBundle("meltfire");
+        saveData.visitedOddVisitorName.Add(nowOddVisitorDialogBundle.rewardSpecialMedicine);
+
+        return true;
+    }
+
+
+
+    //카운터매니저에서 일 다 보고 이거 불러옴. Disappear하면은 이거 불러옴. 다음 손님 나와라~
     public void TriggerCheck()
     {
-        if (counterDialogManager.ConditionCheck())
+        if (SpecialConditionCheck())
         {
-            nowCheckingTrigger = true;
+            specialVisitorVisited = true;
+            //todaySpecialVisitorList.Add(specialVisitorDialogBundle.bundleName);
+            if (isSecondVisit)
+            {
+                counterManager.CounterSecondStart(specialVisitorDialogBundle);
+            }
+            else
+            {
+                counterManager.CounterFirstStart(specialVisitorDialogBundle);
+            }
+            
+        }
+        else if (OddConditionCheck())
+        {
+            counterManager.CounterStart(oddVisitorDialogBundle);
         }
         else
         {
-            nowCheckingTrigger = false;
             counterManager.CounterStart();
         }
+        nowVisitorIndex++;
 
     }
 }

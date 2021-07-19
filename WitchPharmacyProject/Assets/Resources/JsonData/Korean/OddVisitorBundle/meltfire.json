@@ -1,0 +1,25 @@
+{
+    "rewardSpecialMedicine": "meltfire",
+    "dialogList": [
+        {
+            "ruelliaTalking": false,
+            "dialog": "저 저 저기... 저기요...."
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "네??"
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "(무슨일이지...?)"
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "제가 녹아내린 불꽃을 주웠는데....절 고쳐주시면 이걸 드릴게요..."
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "헉 그거 완전 좋은건데... 증상이 어떻게 되시나요?"
+        }
+    ]
+}

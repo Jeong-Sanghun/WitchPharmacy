@@ -40,6 +40,8 @@ public class SaveDataClass
 
     public List<string> solvedQuestBundleName;
     public List<string> progressingQuestBundleName;
+    public List<string> visitedOddVisitorName;
+    public List<string> calledQuestBundleName;
     public List<OneDayBillWrapper> billWrapperList;
     public List<OwningDocumentClass> owningDocumentList;
     public List<string> readStoryList;
@@ -60,6 +62,8 @@ public class SaveDataClass
         owningMedicineList.Add(new OwningMedicineClass(0, 10));
         owningSpecialMedicineList = new List<OwningMedicineClass>();
         progressingQuestBundleName = new List<string>();
+        calledQuestBundleName = new List<string>();
+
         unlockedRegionIndex = new List<int>();
         for(int i = 0; i < 9; i++)
         {
@@ -73,6 +77,7 @@ public class SaveDataClass
         //nowLanguageDirectory = "Korean/";
         billWrapperList = new List<OneDayBillWrapper>();
         owningDocumentList = new List<OwningDocumentClass>();
+        visitedOddVisitorName = new List<string>();
         readStoryList = new List<string>();
         nextLoadSceneName = "StoryScene";
         nowSaveTime = SaveTime.DayStart;

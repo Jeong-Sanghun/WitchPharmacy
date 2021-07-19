@@ -1,0 +1,17 @@
+{
+    "rewardSpecialMedicine": "meltfire",
+    "dialogList": [
+        {
+            "ruelliaTalking": false,
+            "dialog": "다이얼로그"
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "다이얼로그"
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "다이얼로그"
+        }
+    ]
+}

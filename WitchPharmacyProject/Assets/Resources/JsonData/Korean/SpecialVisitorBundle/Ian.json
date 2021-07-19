@@ -148,5 +148,31 @@
                     "dialog": "뭐하냐 대체...약사 맞아? 어째 낫는 기분이 안든다 했어."
                 }
         ]
+    },
+	 "firstDialogWrapper": {
+        "wrapperName": "first",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "약줘"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "인사두 안하고 약부터달래"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "무례해"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "미안 약줘"
+                }
+        ]
     }
 }
