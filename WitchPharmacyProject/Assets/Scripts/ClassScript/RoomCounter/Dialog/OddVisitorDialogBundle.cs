@@ -6,14 +6,28 @@ using UnityEngine;
 public class OddVisitorDialogBundle
 {
     public string rewardSpecialMedicine;
-    public List<OddVisitorDialog> dialogList;
+    public List<OddVisitorDialog> startDialogList;
+    public List<OddVisitorDialog> wrongDialogList;
+    public List<OddVisitorDialog> answerDialogList;
 
     public OddVisitorDialogBundle()
     {
         rewardSpecialMedicine = "meltfire";
-        dialogList = new List<OddVisitorDialog>();
-        dialogList.Add(new OddVisitorDialog());
-        dialogList.Add(new OddVisitorDialog());
-        dialogList.Add(new OddVisitorDialog());
+        startDialogList = new List<OddVisitorDialog>();
+        startDialogList.Add(new OddVisitorDialog());
+        startDialogList.Add(new OddVisitorDialog());
+        startDialogList.Add(new OddVisitorDialog());
+
+        wrongDialogList = new List<OddVisitorDialog>();
+        wrongDialogList.Add(new OddVisitorDialog());
+        wrongDialogList.Add(new OddVisitorDialog());
+        wrongDialogList.Add(new OddVisitorDialog());
+
+        answerDialogList = new List<OddVisitorDialog>();
+        answerDialogList.Add(new OddVisitorDialog());
+        answerDialogList.Add(new OddVisitorDialog());
+        answerDialogList.Add(new OddVisitorDialog());
+
+
     }
 }

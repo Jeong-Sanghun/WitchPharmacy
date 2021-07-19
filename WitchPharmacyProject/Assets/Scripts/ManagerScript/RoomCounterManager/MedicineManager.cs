@@ -249,85 +249,90 @@ public class MedicineManager : MonoBehaviour    //SH
         }
         for (int i = 0; i < owningSpecialMedicineList.Count; i++)
         {
-            //내가 가졌던거중에 없으면 컨티뉴
-            int index = owningSpecialMedicineList[i].medicineIndex;
-            OwningMedicineClass owningMedicine = owningSpecialMedicineList[i];
-            int quantity = owningMedicine.medicineQuantity;
-            if (quantity == 0)
-            {
-                continue;
-            }
-            SpecialMedicineClass medicine = specialMedicineDataList[index];
-            StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
-            nameBuilder.Append(" ");
-            nameBuilder.Append(medicine.secondName);
 
-            prefabButtonIcon.sprite = medicine.LoadImage();
-            prefabButtonName.text = nameBuilder.ToString();
-            prefabButtonQuantity.text = quantity.ToString();
-
-            prefabButtonFirstEffectIcon.text = null;
-            prefabButtonSecondEffectIcon.text = null;
-            prefabButtonFirstEffectNumber.text = null;
-            prefabButtonSecondEffectNumber.text = null;
-            //버튼 세팅 다 해서 instantiate하고 리스트에 넣어줌.
-            //이제 이 리스트에서 active하고 위치바꿔주고 그럴거임.
-            GameObject buttonObject = Instantiate(medicineButtonPrefab, regularScrollContent.transform);
-            buttonObject.SetActive(true);
-            GameObject propertyObject = Instantiate(medicineButtonPrefab, propertyObjectParent);
-            propertyObject.SetActive(false);
-            propertyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-450, 250);
-            propertyObject.GetComponent<Image>().color = Color.grey;
-            propertyObject.GetComponent<Button>().enabled = false;
-            Text quantText = buttonObject.transform.GetChild(2).GetComponent<Text>();
-            Text propertyQuantText = propertyObject.transform.GetChild(2).GetComponent<Text>();
-            EventTrigger propertyEvent = propertyObject.AddComponent<EventTrigger>();
-            GameObject medicineObj = Instantiate(medicineObjectPrefab, medicineInstanceParent.transform);
-            medicineObj.SetActive(false);
-            medicineObj.GetComponent<SpriteRenderer>().sprite = medicine.LoadImage();
-            MedicineClass cast = new MedicineClass(medicine);
-            MedicineButton buttonClass =
-                new MedicineButton(buttonObject, index, quantity,
-                 cast, propertyObject, medicineObj, quantText, propertyQuantText);
-            buttonClass.owningMedicine = owningMedicine;
-            buttonClass.isActive = true;
-            wholeMedicineButtonList.Add(buttonClass);
-            //이 위까지가 프리팹들 다 설정해서 whoelMedicineButtonList에 buttonClass를 추가하는거임.
-            //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
-            //정훈아 미안해 이거 주석 다 못적겠어. 그냥 그러려니 해. 셋업이야.
-
-            int delegateIndex = buttonIndex;
-            Button button = buttonClass.buttonObject.GetComponent<Button>();
-            button.onClick.AddListener(() => OnButtonDown(delegateIndex));
-
-
-            //scrollView의 각 버튼마다 index에 맞는 eventTrigger를 심어줘야함.
-            Transform iconObject = buttonObject.transform.GetChild(0);
-            EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
-
-            //버튼 이벤트
-            EventTrigger.Entry entry2 = new EventTrigger.Entry();
-            entry2.eventID = EventTriggerType.Drag;
-            entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
-            buttonEvent.triggers.Add(entry2);
-
-            //속성창 이벤트
-            EventTrigger.Entry entry3 = new EventTrigger.Entry();
-            entry3.eventID = EventTriggerType.Drag;
-            entry3.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
-            propertyEvent.triggers.Add(entry2);
-
-            propertyEvent.transform.GetChild(0).GetComponent<EventTrigger>().enabled = false;
-
-            buttonIndex++;
-            //wholeMedicienButtonList의 index임.
-
+            AddSpecialMedicineOnOdd(owningSpecialMedicineList[i]);
         }
 
         //SpecialScrollAlign();
         PropertyListButton(0);
         PropertyListButton(0);
 
+    }
+
+    public void AddSpecialMedicineOnOdd(OwningMedicineClass owningMedicine)
+    {
+        //내가 가졌던거중에 없으면 컨티뉴
+        int index = owningMedicine.medicineIndex;
+        int quantity = owningMedicine.medicineQuantity;
+        int buttonIndex = wholeMedicineButtonList.Count;
+        if (quantity == 0)
+        {
+            return;
+        }
+        SpecialMedicineClass medicine = specialMedicineDataList[index];
+        StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
+        nameBuilder.Append(" ");
+        nameBuilder.Append(medicine.secondName);
+
+        prefabButtonIcon.sprite = medicine.LoadImage();
+        prefabButtonName.text = nameBuilder.ToString();
+        prefabButtonQuantity.text = quantity.ToString();
+
+        prefabButtonFirstEffectIcon.text = null;
+        prefabButtonSecondEffectIcon.text = null;
+        prefabButtonFirstEffectNumber.text = null;
+        prefabButtonSecondEffectNumber.text = null;
+        //버튼 세팅 다 해서 instantiate하고 리스트에 넣어줌.
+        //이제 이 리스트에서 active하고 위치바꿔주고 그럴거임.
+        GameObject buttonObject = Instantiate(medicineButtonPrefab, regularScrollContent.transform);
+        buttonObject.SetActive(true);
+        GameObject propertyObject = Instantiate(medicineButtonPrefab, propertyObjectParent);
+        propertyObject.SetActive(false);
+        propertyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-450, 250);
+        propertyObject.GetComponent<Image>().color = Color.grey;
+        propertyObject.GetComponent<Button>().enabled = false;
+        Text quantText = buttonObject.transform.GetChild(2).GetComponent<Text>();
+        Text propertyQuantText = propertyObject.transform.GetChild(2).GetComponent<Text>();
+        EventTrigger propertyEvent = propertyObject.AddComponent<EventTrigger>();
+        GameObject medicineObj = Instantiate(medicineObjectPrefab, medicineInstanceParent.transform);
+        medicineObj.SetActive(false);
+        medicineObj.GetComponent<SpriteRenderer>().sprite = medicine.LoadImage();
+        MedicineClass cast = new MedicineClass(medicine);
+        MedicineButton buttonClass =
+            new MedicineButton(buttonObject, index, quantity,
+             cast, propertyObject, medicineObj, quantText, propertyQuantText);
+        buttonClass.owningMedicine = owningMedicine;
+        buttonClass.isActive = true;
+        wholeMedicineButtonList.Add(buttonClass);
+        //이 위까지가 프리팹들 다 설정해서 whoelMedicineButtonList에 buttonClass를 추가하는거임.
+        //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
+        //정훈아 미안해 이거 주석 다 못적겠어. 그냥 그러려니 해. 셋업이야.
+
+        int delegateIndex = buttonIndex;
+        Button button = buttonClass.buttonObject.GetComponent<Button>();
+        button.onClick.AddListener(() => OnButtonDown(delegateIndex));
+
+
+        //scrollView의 각 버튼마다 index에 맞는 eventTrigger를 심어줘야함.
+        Transform iconObject = buttonObject.transform.GetChild(0);
+        EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
+
+        //버튼 이벤트
+        EventTrigger.Entry entry2 = new EventTrigger.Entry();
+        entry2.eventID = EventTriggerType.Drag;
+        entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+        buttonEvent.triggers.Add(entry2);
+
+        //속성창 이벤트
+        EventTrigger.Entry entry3 = new EventTrigger.Entry();
+        entry3.eventID = EventTriggerType.Drag;
+        entry3.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+        propertyEvent.triggers.Add(entry2);
+
+        propertyEvent.transform.GetChild(0).GetComponent<EventTrigger>().enabled = false;
+
+        buttonIndex++;
+        //wholeMedicienButtonList의 index임.
     }
 
     GameObject draggingObject;

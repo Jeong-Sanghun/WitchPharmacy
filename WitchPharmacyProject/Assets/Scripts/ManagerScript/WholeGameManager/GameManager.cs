@@ -156,7 +156,9 @@ public class GameManager : MonoBehaviour //SH
     public OddVisitorDialogBundle LoadOddBundle(string bundleName)
     {
         OddVisitorDialogBundle bundle;
+        Debug.Log(bundleName);
         bundle = jsonManager.ResourceDataLoad<OddVisitorDialogBundle>("OddVisitorDialogBundle/" + bundleName);
+        Debug.Log(bundle.startDialogList[0].dialog);
         return bundle;
     }
 
@@ -247,10 +249,10 @@ public class GameManager : MonoBehaviour //SH
         saveDataTimeWrapper = new SaveDataTimeWrapper();
         OddVisitorDialogBundle oddBundle = new OddVisitorDialogBundle();
         languagePack = new UILanguagePack();
-        //jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
+        jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
-        jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
+        //jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
         //jsonManager.SaveJson<MedicineDataWrapper>(medicineDataWrapper, "MedicineDataWrapper");
         //jsonManager.SaveJson<SymptomDialog>(symptomDialog, "SymptomDialog");
         //jsonManager.SaveJson<RegionPropertyWrapper>(regionPropertyWrapper, "RegionPropertyWrapper");

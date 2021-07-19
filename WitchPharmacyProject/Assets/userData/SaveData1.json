@@ -1,15 +1,15 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
+    "nowTime": 64800.0,
     "nowDay": 0,
-    "coin": 1000,
+    "coin": 1080,
     "ownedMedicineList": [
         0
     ],
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 10
+            "medicineQuantity": 8
         }
     ],
     "unlockedRegionIndex": [
@@ -21,30 +21,56 @@
         5,
         6,
         7,
-        8,
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
+        8
     ],
-    "owningToolList": [],
-    "owningSpecialMedicineList": [],
+    "owningToolList": [
+        {
+            "index": 0,
+            "quantity": 0
+        },
+        {
+            "index": 1,
+            "quantity": 0
+        },
+        {
+            "index": 2,
+            "quantity": 0
+        },
+        {
+            "index": 3,
+            "quantity": 0
+        }
+    ],
+    "owningSpecialMedicineList": [
+        {
+            "medicineIndex": 0,
+            "medicineQuantity": 2
+        }
+    ],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "solvedQuestBundleName": [],
-    "progressingQuestBundleName": [],
+    "progressingQuestBundleName": [
+        "Lily"
+    ],
     "visitedOddVisitorName": [],
     "calledQuestBundleName": [],
-    "billWrapperList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 80
+                }
+            ]
+        }
+    ],
     "owningDocumentList": [],
     "readStoryList": [],
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1
+    "nowSaveTime": 0
 }

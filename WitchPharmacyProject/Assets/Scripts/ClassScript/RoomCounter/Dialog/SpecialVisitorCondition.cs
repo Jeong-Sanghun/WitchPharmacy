@@ -7,6 +7,7 @@ public class SpecialVisitorCondition
 {
     public int priority;
     public string bundleName;
+    public string specialMedicine;
     public float appearingChaosMeter;
     public List<string> appearingSolvedQuestBundleList;
     public List<string> appearingProgressingQuestBundleList;

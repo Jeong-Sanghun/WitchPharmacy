@@ -1,0 +1,53 @@
+{
+    "rewardSpecialMedicine": "meltfire",
+    "startDialogList": [
+        {
+            "ruelliaTalking": false,
+            "dialog": "그 그리구....저 저 저기... 저기요...."
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "네??"
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "(무슨일이지...?)"
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "제가 녹아내린 불꽃을 주웠는데....절 고쳐주시면 이걸 드릴게요..."
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "헉 그거 완전 좋은건데... 증상이 어떻게 되시나요?"
+        }
+    ],
+    "wrongDialogList": [
+        {
+            "ruelliaTalking": false,
+            "dialog": "아직두 아픈디요.."
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "헉....."
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "다음에 올게용..."
+        }
+    ],
+    "answerDialogList": [
+        {
+            "ruelliaTalking": false,
+            "dialog": "헉 이제 안아파요"
+        },
+        {
+            "ruelliaTalking": true,
+            "dialog": "다행이당"
+        },
+        {
+            "ruelliaTalking": false,
+            "dialog": "여기 약 받으세용"
+        }
+    ]
+}

@@ -103,6 +103,11 @@ public class CounterManager : MonoBehaviour //SH
     Text gainedCoinText;
     Vector3 gainedCoinObjectOriginPos;
 
+    [SerializeField]
+    Image gainedMedicineImage;
+    Vector3 gainedMedicineObjectOriginPos;
+
+
     SpecialVisitorDialogBundle specialVisitorDialogBundle;
     OddVisitorDialogBundle oddVisitorDialogBundle;
     List<SpecialMedicineClass> specialMedicineDataList;
@@ -128,6 +133,7 @@ public class CounterManager : MonoBehaviour //SH
         visitorAppearPos = new Vector3(-7.06f, 0.88f, -1);
         visitorDisappearPos = new Vector3(-7.06f, -12, -1);
         gainedCoinObjectOriginPos = gainedCoinText.transform.position;
+        gainedMedicineObjectOriginPos = gainedMedicineImage.transform.position;
 
         randomVisitorList = new List<RandomVisitorClass>();
 
@@ -189,12 +195,12 @@ public class CounterManager : MonoBehaviour //SH
         specialVisitorDialogBundle = bundle;
         SpawnSpecialVisitor(false);
     }
-
+    //whtflrj~~
     public void CounterStart(OddVisitorDialogBundle bundle)
     {
         nowVisitorType = VisitorType.Odd;
         oddVisitorDialogBundle = bundle;
-        SpawnOddVisitor();
+        SpawnRandomVisitor();
     }
 
     //카운터 다이얼로그 매니저에서 불러옴.
@@ -249,11 +255,6 @@ public class CounterManager : MonoBehaviour //SH
         }
         StartCoroutine(VisitorAppearCoroutine());
         symptomChartManager.ChangeSymptomChartText();
-    }
-
-    void SpawnOddVisitor()
-    {
-
     }
 
     //카운터 다이얼로그 매니저에서 스프라이트 바꿔줘야돼서. 앵그리로.
@@ -376,7 +377,7 @@ public class CounterManager : MonoBehaviour //SH
            
 
         }
-        else if(nowVisitorType == VisitorType.Random)
+        else
         {
             int[] medicineIndexArray = medicine.medicineArray;
             int[] medicineSymptomArray = new int[6];
@@ -405,8 +406,20 @@ public class CounterManager : MonoBehaviour //SH
                     badSymptomList.Add((Symptom)i);
                 }
             }
-            counterDialogManager.OnVisitorEnd(wrongMedicine);
+            if (nowVisitorType == VisitorType.Random)
+                counterDialogManager.OnVisitorEnd(wrongMedicine);
+            if (nowVisitorType == VisitorType.Odd)
+            {
+                counterDialogManager.OnOddVisitorEnd(wrongMedicine);
+                if(wrongMedicine == false)
+                {
+                    SpecialMedicineGain(oddVisitorDialogBundle.rewardSpecialMedicine);
+                    
+                }
+            }
+                
         }
+        
         
         if (!wrongMedicine)
         {
@@ -439,6 +452,9 @@ public class CounterManager : MonoBehaviour //SH
                 break;
             case VisitorType.FirstSpecial:
                 counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle, false);
+                break;
+            case VisitorType.Odd:
+                counterDialogManager.OnOddVisitorVisit(oddVisitorDialogBundle,nowVisitor);
                 break;
         }
 
@@ -666,7 +682,56 @@ public class CounterManager : MonoBehaviour //SH
         gainedCoinText.transform.position = gainedCoinObjectOriginPos;
         TabletManager.inst.UpdateBill(BillReason.medicineSell, true, RandomVisitorClass.gainCoin);
         StartCoroutine(sceneManager.FadeModule_Text(gainedCoinText, 1, 0, 3f));
+        StartCoroutine(sceneManager.MoveModule_Linear(gainedCoinText.gameObject, gainedCoinObjectOriginPos + new Vector3(0, 2, 0), 1));
+    }
+
+    void SpecialMedicineGain(string medicineName)
+    {
         
+        int index = -1;
+        SpecialMedicineClass medicine = null;
+        for (int i = 0; i < specialMedicineDataList.Count; i++)
+        {
+            if (specialMedicineDataList[i].fileName == medicineName)
+            {
+                medicine = specialMedicineDataList[i];
+                index = i;
+                break;
+            }
+        }
+        if (index == -1)
+        {
+            Debug.LogError("좆됐따");
+            return;
+        }
+        bool find = false;
+        for (int i = 0; i < saveData.owningSpecialMedicineList.Count; i++)
+        {
+            if (saveData.owningSpecialMedicineList[i].medicineIndex == index)
+            {
+                if(saveData.owningSpecialMedicineList[i].medicineQuantity == 0)
+                {
+                    medicineManager.AddSpecialMedicineOnOdd(saveData.owningSpecialMedicineList[i]);
+                }
+                saveData.owningSpecialMedicineList[i].medicineQuantity++;
+                find = true;
+                break;
+            }
+        }
+        if (find == false)
+        {
+            OwningMedicineClass med = new OwningMedicineClass();
+            med.medicineIndex = index;
+            med.medicineQuantity = 1;
+            saveData.owningSpecialMedicineList.Add(med);
+            medicineManager.AddSpecialMedicineOnOdd(med);
+        }
+        
+        gainedMedicineImage.sprite = medicine.LoadImage();
+        gainedMedicineImage.transform.position = gainedMedicineObjectOriginPos;
+        StartCoroutine(sceneManager.FadeModule_Image(gainedMedicineImage.gameObject, 1, 0, 3f));
+        StartCoroutine(sceneManager.MoveModule_Linear(gainedMedicineImage.gameObject, gainedMedicineObjectOriginPos + new Vector3(0, 2, 0), 1));
+
 
     }
 

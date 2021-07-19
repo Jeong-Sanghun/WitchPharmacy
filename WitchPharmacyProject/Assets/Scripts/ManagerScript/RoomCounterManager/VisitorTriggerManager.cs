@@ -18,11 +18,11 @@ public class VisitorTriggerManager : MonoBehaviour
 
     //로딩을 여기서 한다음에 쫙 뿌려줘야 돼서.
     SpecialVisitorDialogBundle specialVisitorDialogBundle;
-    OddVisitorDialogBundle oddVisitorDialogBundle;
     //List<string> todaySpecialVisitorList;
     int nowVisitorIndex;
     bool isSecondVisit = false;
     bool specialVisitorVisited;
+    int oddProgressingQuestIndex = 0;
     List<int> specialVisitorAppearingIndex;
 
     void Start()
@@ -213,6 +213,10 @@ public class VisitorTriggerManager : MonoBehaviour
         {
             return false;
         }
+        if(oddProgressingQuestIndex >= saveData.progressingQuestBundleName.Count)
+        {
+            return false;
+        }
         if (!specialVisitorAppearingIndex.Contains(nowVisitorIndex))
         {
             return false;
@@ -222,29 +226,47 @@ public class VisitorTriggerManager : MonoBehaviour
         {
             return false;
         }
+        SpecialVisitorCondition condition = null;
 
-        int randIndex = Random.Range(0, specialMedicineList.Count);
-        while (true)
+        for(int i = 0; i < specialVisitorConditionDataList.Count; i++)
         {
-            bool breaking = false;
-            for (; randIndex < specialMedicineList.Count; randIndex++)
+            if(saveData.progressingQuestBundleName[oddProgressingQuestIndex] == specialVisitorConditionDataList[i].bundleName)
             {
-                if (!saveData.visitedOddVisitorName.Contains(specialMedicineList[randIndex].fileName))
-                {
-                    //nowOddVisitorDialogBundle = gameManager.LoadOddBundle(specialMedicineList[randIndex].fileName);
-                    breaking = true;
-                    break;
-                }
-            }
-
-            if (breaking)
-            {
+                condition = specialVisitorConditionDataList[i];
                 break;
             }
-            randIndex = 0;
         }
-        nowOddVisitorDialogBundle = gameManager.LoadOddBundle("meltfire");
-        saveData.visitedOddVisitorName.Add(nowOddVisitorDialogBundle.rewardSpecialMedicine);
+        if(condition == null)
+        {
+            Debug.LogError("좆됐음");
+            return false;
+        }
+        nowOddVisitorDialogBundle = gameManager.LoadOddBundle(condition.specialMedicine);
+
+        //int randIndex = Random.Range(0, specialMedicineList.Count);
+
+
+        //while (true)
+        //{
+        //    bool breaking = false;
+        //    for (; randIndex < specialMedicineList.Count; randIndex++)
+        //    {
+        //        if (!saveData.visitedOddVisitorName.Contains(specialMedicineList[randIndex].fileName))
+        //        {
+        //            //nowOddVisitorDialogBundle = gameManager.LoadOddBundle(specialMedicineList[randIndex].fileName);
+        //            breaking = true;
+        //            break;
+        //        }
+        //    }
+
+        //    if (breaking)
+        //    {
+        //        break;
+        //    }
+        //    randIndex = 0;
+        //}
+        //nowOddVisitorDialogBundle = gameManager.LoadOddBundle("meltfire");
+        //saveData.visitedOddVisitorName.Add(nowOddVisitorDialogBundle.rewardSpecialMedicine);
 
         return true;
     }
@@ -270,7 +292,7 @@ public class VisitorTriggerManager : MonoBehaviour
         }
         else if (OddConditionCheck())
         {
-            counterManager.CounterStart(oddVisitorDialogBundle);
+            counterManager.CounterStart(nowOddVisitorDialogBundle);
         }
         else
         {

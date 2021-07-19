@@ -3,6 +3,7 @@
         {
             "priority": 0,
             "bundleName": "Lily",
+			"specialMedicine" : "withered_dew",
             "appearingChaosMeter": 0.0,
             "appearingSolvedQuestBundleList": [],
             "appearingProgressingQuestBundleList": [],

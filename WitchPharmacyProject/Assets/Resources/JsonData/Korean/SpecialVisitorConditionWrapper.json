@@ -3,26 +3,46 @@
         {
             "priority": 0,
             "bundleName": "Lily",
-            "appearingProgression": 0.0,
-            "appearingQuestBundleList": [
-                
-            ]
+			"specialMedicine" : "withered_dew",
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": [],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": [],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
         },
         {
             "priority": 0,
             "bundleName": "Jet",
-            "appearingProgression": 10.0,
-            "appearingQuestBundleList": [
-                "Lily"
-            ]
+			"specialMedicine" : "icefruit",
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": ["Lily"],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": [],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
         },
         {
             "priority": 0,
             "bundleName": "Iris",
-            "appearingProgression": 10.0,
-            "appearingQuestBundleList": [
-                "Lily"
-            ]
+			"specialMedicine" : "meltfire",
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": ["Jet"],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": [],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
+        },
+		{
+            "priority": 0,
+            "bundleName": "Ian",
+			"specialMedicine" : "withered_dew",
+            "appearingChaosMeter": 0.0,
+            "appearingSolvedQuestBundleList": ["Lily"],
+            "appearingProgressingQuestBundleList": [],
+            "appearingSpecialMedicineList": [],
+            "appearingLeastDay": 0,
+            "appearingStoryBundleList": []
         }
     ]
 }
