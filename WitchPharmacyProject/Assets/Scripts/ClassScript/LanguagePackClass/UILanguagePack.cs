@@ -20,6 +20,7 @@ public class UILanguagePack
     public string slotEmpty;
     public string[] saveTimeArray;
     public string[] reasonArray;
+    public string[] characterNameArray;
 
     //billReason enum으로 값을 받아온다.
     //GameObject symptomChartButtonPrefab;

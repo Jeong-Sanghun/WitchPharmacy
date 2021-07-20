@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //대사 하나를 위한거. 이걸 Bundle에서 묶어주고 제이슨으로 받을거.
-public enum CharacterFeeling { nothing, angry }
-public enum CharacterName
-{
-    Ruellia, Cari, Jet,Lily ,Iris,Ian
-}
+
 
 [System.Serializable]
 public class ConversationDialog
@@ -21,6 +17,7 @@ public class ConversationDialog
     public string fx;
 
     public string leftCharacterName;
+    public string middleCharacterName;
     public string rightCharacterName;
     public string backGroundSpriteFileName;
     public bool isCutScene;

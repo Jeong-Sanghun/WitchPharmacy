@@ -76,6 +76,7 @@ public class JsonManager    //SH
         //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
     }
 
+    //이거 세이브데이터타임래퍼
     public T ResourceDataLoadBeforeGame<T>(string name,string languageDirectory)
     {
         //이제 우리가 이전에 저장했던 데이터를 꺼내야한다
