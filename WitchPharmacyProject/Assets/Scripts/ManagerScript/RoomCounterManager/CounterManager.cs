@@ -25,6 +25,8 @@ public class CounterManager : MonoBehaviour //SH
     SymptomChartManager symptomChartManager;
     [SerializeField]
     VisitorTriggerManager visitorTriggerManager;
+    [SerializeField]
+    BlurManager blurManager;
     SaveDataClass saveData;
     SymptomDialog symptomDialog;
     List<int> ownedMedicineIndexList;
@@ -440,9 +442,11 @@ public class CounterManager : MonoBehaviour //SH
     
     IEnumerator VisitorAppearCoroutine()
     {
-
+        blurManager.OnBlur(true);
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorAppearPos, 2f));
+
         yield return new WaitForSeconds(1.5f);
+
         switch (nowVisitorType){
             case VisitorType.Random:
                 counterDialogManager.OnVisitorVisit(nowVisitor);
@@ -463,8 +467,11 @@ public class CounterManager : MonoBehaviour //SH
 
     IEnumerator VisitorDisapperCoroutine()
     {
+        blurManager.OnBlur(false);
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
+
         yield return new WaitForSeconds(1.5f);
+
         if (lastVisitor)
         {
             endSales = true;
