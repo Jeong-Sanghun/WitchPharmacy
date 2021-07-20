@@ -5,6 +5,7 @@ using UnityEngine;
 //대사 하나를 위한거. 이걸 Bundle에서 묶어주고 제이슨으로 받을거.
 
 
+
 [System.Serializable]
 public class ConversationDialog
 {
@@ -13,22 +14,15 @@ public class ConversationDialog
     //왼쪽 캐릭터 인덱스 몇번인지. 이걸 CharacterToIndex
     //int leftCharacterIndex;
     //int rightCharacterIndex;
-    public string ingameName;
-    public string fx;
+    public string ingameName;   //누가 얘기하는지.
 
-    public string leftCharacterName;
-    public string middleCharacterName;
-    public string rightCharacterName;
-    public string backGroundSpriteFileName;
     public bool isCutScene;
     public string cutSceneFileName;
 
     //왼쪽놈 페이드할지 말지. 으론쪽놈 페이드할지 말지
-    public bool leftFade;
-    public bool rightFade;
+    public bool[] fade;
     //왼쪽 기분 오른쪽 기분.
-    public string leftCharacterFeeling;
-    public string rightCharacterFeeling;
+
 
     //내용.
     public string dialog;
@@ -37,9 +31,9 @@ public class ConversationDialog
 
     public ConversationDialog()
     {
-        backGroundSpriteFileName = "test";
-        isCutScene = false;
         cutSceneFileName = "test";
+        isCutScene = false;
+        fade = new bool[3];
         //leftCharacterFeeling = CharacterFeeling.nothing;
         //rightCharacterFeeling = CharacterFeeling.nothing;
     }

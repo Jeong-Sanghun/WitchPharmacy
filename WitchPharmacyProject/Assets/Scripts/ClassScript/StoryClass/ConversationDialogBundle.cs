@@ -12,7 +12,7 @@ public class ConversationDialogBundle
     //어떤 식으로 하면 어떻게 분기를 하고 이런 조건을 넣어야하잖아.
     public string bundleName;
     public List<ConversationDialogWrapper> dialogWrapperList;
-    public ConversationRouter conversationRouter;
+    public List<ConversationRouter> conversationRouterList;
 
 
     public ConversationDialogBundle()
@@ -20,15 +20,7 @@ public class ConversationDialogBundle
         bundleName = "testBundle";
 
         dialogWrapperList = new List<ConversationDialogWrapper>();
-
-        ConversationDialogWrapper wrapper = new ConversationDialogWrapper(0);
-        dialogWrapperList.Add(wrapper);
-        wrapper = new ConversationDialogWrapper(1);
-        dialogWrapperList.Add(wrapper);
-        wrapper = new ConversationDialogWrapper(2);
-        dialogWrapperList.Add(wrapper);
-
-        conversationRouter = new ConversationRouter();
+        conversationRouterList = new List<ConversationRouter>();
 
     }
 

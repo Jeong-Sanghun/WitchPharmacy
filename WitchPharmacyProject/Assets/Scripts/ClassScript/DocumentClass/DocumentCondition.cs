@@ -68,14 +68,12 @@ public class DocumentCondition
             if(regionCondition[i] == '/')
             {
                 regionGainConditionList.Add(builder.ToString());
-                Debug.Log(builder.ToString());
                 builder = new StringBuilder();
             }
             else if(i == regionCondition.Length - 1)
             {
                 builder.Append(regionCondition[i]);
                 regionGainConditionList.Add(builder.ToString());
-                Debug.Log(builder.ToString());
                 builder = new StringBuilder();
             }
             else
@@ -107,14 +105,13 @@ public class DocumentCondition
             if (questGainCondition[i] == '/')
             {
                 questGainConditionList.Add(builder.ToString());
-                Debug.Log(builder.ToString());
                 builder = new StringBuilder();
             }
             else if(i == questGainCondition.Length - 1)
             {
                 builder.Append(questGainCondition[i]);
                 questGainConditionList.Add(builder.ToString());
-                Debug.Log(builder.ToString());
+             
                 builder = new StringBuilder();
             }
             else

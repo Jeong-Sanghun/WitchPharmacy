@@ -11,17 +11,18 @@ public class StoryManager : TileManager
     //protected List<ConversationDialogBundle> conversationDialogBundleList;
     protected ConversationDialogBundle nowBundle;
     protected ConversationDialogWrapper nowWrapper;
+    ConversationRouter nowRouter;
+    StoryParser storyParser;
 
     CharacterIndexToName characterIndexToName;
 
     [SerializeField]
-    SpriteRenderer leftSideSprite;
-
-    [SerializeField]
-    SpriteRenderer rightSideSprite;
+    SpriteRenderer[] characterSprite;
 
     [SerializeField]
     Text conversationText;
+    [SerializeField]
+    Text nameText;
 
     [SerializeField]
     Text[] routingTextArray;
@@ -31,15 +32,20 @@ public class StoryManager : TileManager
     [SerializeField]
     GameObject toNextSceneButton;
 
+    float downYpos = -10;
+    float upYpos = 0;
+
     //어느 번들인지.
     //int nowBundleIndex;
     //어디에서 분기해서 어디 래퍼인지.
     protected int nowWrapperIndex;
     protected int nowConversationIndex;
     protected bool checkingRouter;
-    bool leftFaded;
-    bool rightFaded;
-    protected int routingTime;
+    bool[] faded;
+    protected int nowRouterIndex;
+    bool nowInRouterWrapper;
+    int leftRouterWrapper;
+    int nowRouterWrapperIndex;
 
     bool isTile;
 
@@ -52,13 +58,45 @@ public class StoryManager : TileManager
         sceneManager = SceneManager.inst;
         //conversationDialogBundleList = gameManager.conversationDialogBundleWrapper.conversationDialogBundleList;
         characterIndexToName = new CharacterIndexToName();
-        nowBundle = gameManager.LoadBundle("testBundle");
-        nowWrapper = nowBundle.dialogWrapperList[0];
-        routingTime = nowBundle.conversationRouter.routingTime;
+        //nowBundle = gameManager.LoadBundle("testBundle");
+        //nowWrapper = nowBundle.dialogWrapperList[0];
+        //routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
+        faded = new bool[3];
+        for(int i = 0; i < 3; i++)
+        {
+            faded[i] = false;
+            characterSprite[i].color = new Color(1, 1, 1, 0.2f);
+        }
         nowConversationIndex = 0;
         nowWrapperIndex = 0;
-        //nowBundleIndex = 0;
+        nowRouterIndex = 0;
+        storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
+        nowBundle = storyParser.LoadBundle("testBundle", gameManager.saveDataTimeWrapper.nowLanguageDirectory);
+        nowWrapper = nowBundle.dialogWrapperList[0];
+        for (int i = 0; i < 3; i++)
+        {
+            if (nowWrapper.characterName[i] != null)
+                characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
+            else
+                characterSprite[i].sprite = null;
+        }
+        for(int i = 0; i < nowWrapper.startEffectList.Count; i++)
+        {
+            DialogEffect effect = nowWrapper.startEffectList[i];
+            GameObject obj = characterSprite[(int)effect.characterPosition].gameObject;
+            if(effect.effect == DialogFX.Up)
+            {
+                obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
+                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 1));
+            }
+            else if (effect.effect == DialogFX.Down)
+            {
+                obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 1));
+
+            }
+        }
         PrintConversation();
         isTile = false;
     }
@@ -72,18 +110,22 @@ public class StoryManager : TileManager
     //그 버튼이 뜨는거임. 라우팅 버튼
     void RouteCheck()
     {
-        if (routingTime <= 0)
-        {
-            conversationText.text = "이야기끝";
-            if (!isTile)
-            {
-                toNextSceneButton.SetActive(true);
-            }
+        //if (routingTime <= 0)
+        //{
+        //    conversationText.text = "이야기끝";
+        //    if (!isTile)
+        //    {
+        //        toNextSceneButton.SetActive(true);
+        //    }
             
+        //    return;
+        //}
+        if(nowRouterIndex >= nowBundle.conversationRouterList.Count)
+        {
             return;
         }
-
-        ConversationRouter router = nowBundle.conversationRouter;
+        ConversationRouter router = nowBundle.conversationRouterList[nowRouterIndex];
+        nowRouter = router;
         if (router == null)
         {
             nowWrapperIndex++;
@@ -99,6 +141,7 @@ public class StoryManager : TileManager
             return;
         }
         checkingRouter = true;
+        nowInRouterWrapper = true;
         for (int i = 0; i < routingButtonArray.Length; i++)
         {
             routingButtonArray[i].SetActive(false);
@@ -109,8 +152,81 @@ public class StoryManager : TileManager
             routingButtonArray[i].SetActive(true);
             routingTextArray[i].text = router.routeButtonText[i];
         }
+        nowRouterIndex++;
     }
 
+    public void NextWrapper()
+    {
+        if (nowInRouterWrapper)
+        {
+            leftRouterWrapper--;
+            if(leftRouterWrapper <= 0)
+            {
+                nowInRouterWrapper = false;
+                if (nowWrapperIndex >= nowBundle.dialogWrapperList.Count)
+                {
+                    toNextSceneButton.SetActive(true);
+                    return;
+                }
+                nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
+                
+
+            }
+            else
+            {
+                nowRouterWrapperIndex++;
+                nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
+
+            }
+        }
+        else
+        {
+            nowWrapperIndex++;
+            if (nowWrapper.nextWrapperIsRouter)
+            {
+                RouteCheck();
+                return;
+            }
+            if (nowWrapperIndex >= nowBundle.dialogWrapperList.Count)
+            {
+                toNextSceneButton.SetActive(true);
+                return;
+            }
+
+            nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
+        }
+
+        nowConversationIndex = 0;
+        for(int i = 0; i < 3; i++)
+        {
+            if(nowWrapper.characterName[i] != null)
+                characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
+            else
+            {
+                characterSprite[i].sprite = null;
+            }
+        }
+        for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
+        {
+            DialogEffect effect = nowWrapper.startEffectList[i];
+            GameObject obj = characterSprite[(int)effect.characterPosition].gameObject;
+            if (effect.effect == DialogFX.Up)
+            {
+                obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
+                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 1));
+            }
+            else if (effect.effect == DialogFX.Down)
+            {
+                obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 1));
+
+            }
+        }
+        PrintConversation();
+        
+
+
+    }
 
     //한 줄 띄우는거.
     protected void PrintConversation()
@@ -118,60 +234,33 @@ public class StoryManager : TileManager
         //이제 끝나면 RouteCheck가 뜸. 그 wrapper에 있는거 다 쓰면은.
         if (nowConversationIndex >= nowWrapper.conversationDialogList.Count)
         {
-            RouteCheck();
+            NextWrapper();
             return;
         }
         ConversationDialog nowConversation = nowWrapper.conversationDialogList[nowConversationIndex];
         conversationText.text = nowConversation.dialog;
         StartCoroutine( sceneManager.LoadTextOneByOne(nowConversation.dialog, conversationText));
-        
-        if(nowConversationIndex == 0)
+        nameText.text = nowConversation.ingameName;
+        for(int i = 0; i < 3; i++)
         {
-            Debug.Log(nowConversation.leftCharacterFeeling);
-            Debug.Log(nowConversation.leftCharacterName);
-            leftSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.leftCharacterName, nowConversation.leftCharacterFeeling);
-            rightSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.rightCharacterName, nowConversation.rightCharacterFeeling);
-
-        }
-        else
-        {
-            if (nowWrapper.conversationDialogList[nowConversationIndex - 1].leftCharacterName
-    != nowConversation.leftCharacterName)
+            if(faded[i] == nowConversation.fade[i])
             {
-                leftSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.leftCharacterName, nowConversation.leftCharacterFeeling);
+                continue;
+            }
+            else if(!faded[i] && nowConversation.fade[i])
+            {
+                faded[i] = true;
+                StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
 
             }
-
-            if (nowWrapper.conversationDialogList[nowConversationIndex - 1].rightCharacterName
-!= nowConversation.rightCharacterName)
+            else if(faded[i] && !nowConversation.fade[i])
             {
-                rightSideSprite.sprite = characterIndexToName.GetSprite(nowConversation.rightCharacterName, nowConversation.rightCharacterFeeling);
+                faded[i] = false;
+                StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
+                
 
             }
         }
-       
-
-        if (leftFaded && !nowConversation.leftFade)
-        {
-            leftFaded = false;
-            StartCoroutine(sceneManager.FadeModule_Sprite(leftSideSprite.gameObject,0.6f, 1, 0.5f));
-        }
-        else if(!leftFaded && nowConversation.leftFade)
-        {
-            leftFaded = true;
-            StartCoroutine(sceneManager.FadeModule_Sprite(leftSideSprite.gameObject, 1, 0.6f, 0.5f));
-        }
-        if (rightFaded && !nowConversation.rightFade)
-        {
-            rightFaded = false;
-            StartCoroutine(sceneManager.FadeModule_Sprite(rightSideSprite.gameObject, 0.6f, 1, 0.5f));
-        }
-        else if (!rightFaded && nowConversation.rightFade)
-        {
-            rightFaded = true;
-            StartCoroutine(sceneManager.FadeModule_Sprite(rightSideSprite.gameObject, 1, 0.6f, 0.5f));
-        }
-
         nowConversationIndex++;
 
     }
@@ -184,21 +273,21 @@ public class StoryManager : TileManager
         {
             routingButtonArray[i].SetActive(false);
         }
-
-        string name = nowBundle.conversationRouter.routingWrapperName[index];
-        int wrapperIndex = 0;
-        for(int i = 0; i < nowBundle.dialogWrapperList.Count; i++)
+        for(int i = 0; i < nowRouter.routingWrapperIndex.Count; i++)
         {
-            if(name == nowBundle.dialogWrapperList[i].dialogWrapperName)
-            {
-                wrapperIndex = i;
-                break;
-            }
+            Debug.Log(nowRouter.routingWrapperIndex[i]);
         }
-        routingTime--;
-        nowWrapperIndex = wrapperIndex;
+        if(nowRouter.routingWrapperIndex.Count-1 == index)
+        {
+            leftRouterWrapper = nowRouter.routingWrapperIndex.Count - nowRouter.routingWrapperIndex[index];
+        }
+        else
+        {
+            leftRouterWrapper = nowRouter.routingWrapperIndex[index+1] - nowRouter.routingWrapperIndex[index];
+        }
+        nowRouterWrapperIndex = nowRouter.routingWrapperIndex[index];
+        nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
         nowConversationIndex = 0;
-        nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
         PrintConversation();
         
     }

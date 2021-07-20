@@ -28,7 +28,7 @@ public class StoryTileManager : StoryManager
     {
         nowBundle = gameManager.LoadBundle("testBundle");
         nowWrapper = nowBundle.dialogWrapperList[0];
-        routingTime = nowBundle.conversationRouter.routingTime;
+        //routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
         nowConversationIndex = 0;
         nowWrapperIndex = 0;

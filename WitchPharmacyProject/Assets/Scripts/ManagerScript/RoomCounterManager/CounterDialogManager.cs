@@ -369,14 +369,15 @@ public class CounterDialogManager : MonoBehaviour
         {
             routingButtonArray[i].SetActive(false);
         }
-        for(int i = 0; i < nowSpecialVisitorDialogBundle.secondDialogWrapperList.Count; i++)
-        {
-            if(router.routingWrapperName[index] == nowSpecialVisitorDialogBundle.secondDialogWrapperList[i].wrapperName)
-            {
-                nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[i];
-                break;
-            }
-        }
+        //나중에 바꿔야할 부분
+        //for(int i = 0; i < nowSpecialVisitorDialogBundle.secondDialogWrapperList.Count; i++)
+        //{
+        //    if(router.routingWrapperName[index] == nowSpecialVisitorDialogBundle.secondDialogWrapperList[i].wrapperName)
+        //    {
+        //        nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[i];
+        //        break;
+        //    }
+        //}
         nowDialogIndex = 0;
         dialogCount = nowWrapper.specialVisitorDialogList.Count;
         isRouted = true;
@@ -411,8 +412,8 @@ public class CounterDialogManager : MonoBehaviour
         }
         else
         {
-            if (isRouted || nowState == CounterState.FirstSpecialVisitor)
-            {
+            //if (isRouted || nowState == CounterState.FirstSpecialVisitor)
+            //{
                 nowTalking = false;
                 counterManager.VisitorTalkEnd();
                 ruelliaText.transform.parent.gameObject.SetActive(false);
@@ -422,19 +423,19 @@ public class CounterDialogManager : MonoBehaviour
                 nowState = CounterState.NotTalking;
                 isRouted = false;
 
-            }
-            else
-            {
-                isRouted = true;
-                dialogMouseEventObject.SetActive(false);
-                nowDialogIndex = 0;
-                ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
-                for(int i = 0; i < router.routeButtonText.Count; i++)
-                {
-                    routingButtonArray[i].SetActive(true);
-                    routingButtonArray[i].GetComponentInChildren<Text>().text = router.routeButtonText[i];
-                }
-            }
+            //}
+            //else
+            //{
+            //    isRouted = true;
+            //    dialogMouseEventObject.SetActive(false);
+            //    nowDialogIndex = 0;
+            //    ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
+            //    for(int i = 0; i < router.routeButtonText.Count; i++)
+            //    {
+            //        routingButtonArray[i].SetActive(true);
+            //        routingButtonArray[i].GetComponentInChildren<Text>().text = router.routeButtonText[i];
+            //    }
+            //}
             
         }
     }

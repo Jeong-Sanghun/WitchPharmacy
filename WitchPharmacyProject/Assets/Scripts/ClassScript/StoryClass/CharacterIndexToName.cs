@@ -68,6 +68,16 @@ public class CharacterIndexToName
         return characterSprite[(int)name, (int)feeling];
     }
 
+    public string NameTranslator(string fileName, UILanguagePack languagePack)
+    {
+        if(fileName == null)
+        {
+            return null;
+        }
+        CharacterName name = (CharacterName)Enum.Parse(typeof(CharacterName), fileName);
+        return languagePack.characterNameArray[(int)name];
+    }
+
     //public int GetIndex(string name)
     //{
     //    for(int i = 0; i < characterNameArray.Length; i++)
