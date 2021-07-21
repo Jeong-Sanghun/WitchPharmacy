@@ -8,7 +8,7 @@ public enum CharacterPos
 }
 public enum DialogFX
 {
-    Up, Down, Null
+    Up, Down,Blur,Null
 }
 public class DialogEffect
 {
@@ -16,7 +16,7 @@ public class DialogEffect
     public DialogFX effect;
     public DialogEffect()
     {
-        characterPosition = CharacterPos.Left;
-        effect = DialogFX.Up;
+        characterPosition = CharacterPos.Null;
+        effect = DialogFX.Null;
     }
 }

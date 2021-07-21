@@ -1,12 +1,13 @@
 ﻿<bundleName>{testBundle}
 <switch>{Cari,,Ruellia(nothing){up}}
-
+<background>{counter(blur)}
 [카리]
 일어났구나, 주인님.
 [루엘리아]
 주인님이라고 하지 말라 했잖아. 
 [카리]
 하지만 그렇게 프로그래밍 되어 있는걸.
+<background>{testBackGround}
 []
 카리는 뾰로퉁하게 볼멘소리를 한다.
 []
@@ -18,7 +19,7 @@
 []
 메세지-루, 오늘 방문할게요. p.s. 불닭캔디 한통도 들고 가요
 xoxo 릴리
-
+<switch>{,,}
 [루엘리아]
 누가 방문하는 건 귀찮은데...
 [카리]
@@ -35,6 +36,8 @@ xoxo 릴리
 음소거를 누른다) 도대체 히아신스한테서 이런게 어떻게 나온거지?
 
 <switch>{Lily{up},Ian(nothing){up},Ruellia(nothing)}
+<cutscene>{testCutScene(blur)}
+
 
 []
 릴리가 도착한다.
@@ -106,6 +109,7 @@ xoxo 릴리
 
 [루엘리아]
 근데 넌 왜 아까부터 머리에서 웬 분수가 뿜어져 나와?
+<cutscene>{testCutScene}
 []
 한숨을 쉬며 손수건으로 자신의 머리를 꾹 누르는 이안.
 [릴리]
@@ -143,6 +147,7 @@ xoxo 릴리
 <switch>{Cari{up},Cari(nothing){up},Ruellia(nothing)}
 [루엘리아]
 그럼 나보다 몇백살은 어린 니가 어른이겠니?
+<switch>{Cari{down},Cari(nothing){down},Ruellia(nothing)}
 [루엘리아]
 그럼 나보다 몇백살은 어린 니가 어른이겠니?
 )
@@ -162,6 +167,7 @@ xoxo 릴리
 [루엘리아]
 설마 전자 여우의 말을 믿는거야? 나 좀 내버려둬.
 )
+<switch>{Ruellia{up},Ian{down},}
 [릴리]
 루. 이건 아버지의...
 [루엘리아]

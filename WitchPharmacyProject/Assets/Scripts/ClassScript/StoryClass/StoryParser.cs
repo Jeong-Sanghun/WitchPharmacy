@@ -8,7 +8,8 @@ public class StoryParser
     enum ParseMode{
         Clamp,Switch,Route,DialogCharacterName, Dialog,DialogEffect, BundleName,
             ReadMode,ClampCharacterName, ClampFeeling,ClampEffect
-            ,RouteSwitch,RouteText,Null
+            ,RouteSwitch,RouteText,RightAfterRoute,CutScene,CutSceneFileName,CutSceneEffect,Null
+            ,BackGround,BackGroundName,BackGroundEffect
     }
 
     CharacterIndexToName characterIndexToName;
@@ -81,8 +82,11 @@ public class StoryParser
                     else if (modeStr.Contains("switch"))
                     {
                         nowMode = ParseMode.Switch;
-                        nowWrapper = new ConversationDialogWrapper();
-                        nowWrapperList.Add(nowWrapper);
+                        if(nowWrapper == null || nowWrapper.conversationDialogList.Count != 0)
+                        {
+                            nowWrapper = new ConversationDialogWrapper();
+                            nowWrapperList.Add(nowWrapper);
+                        }
                     }
                     else if (modeStr.Contains("route"))
                     {
@@ -100,6 +104,64 @@ public class StoryParser
                             wrapperBeforeRoute.ingameName[j] = nowWrapper.ingameName[j];
                         }
                         isRouting = true;
+                    }
+                    else if (modeStr.Contains("cutscene"))
+                    {
+                        nowMode = ParseMode.CutScene;
+                        ConversationDialogWrapper wrapper;
+
+                        if (nowWrapper == null)
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            wrapper.isCutscene = true;
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
+                        else if (nowWrapper.conversationDialogList.Count == 0)
+                        {
+                            nowWrapper.isCutscene = true;
+                        }
+                        else
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            for (int j = 0; j < 3; j++)
+                            {
+                                wrapper.characterFeeling[j] = nowWrapper.characterFeeling[j];
+                                wrapper.characterName[j] = nowWrapper.characterName[j];
+                                wrapper.ingameName[j] = nowWrapper.ingameName[j];
+                            }
+                            wrapper.isCutscene = true;
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
+                    }
+                    else if (modeStr.Contains("background"))
+                    {
+                        nowMode = ParseMode.BackGround;
+                        ConversationDialogWrapper wrapper;
+
+                        if (nowWrapper == null)
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
+                        else if (nowWrapper.conversationDialogList.Count == 0)
+                        {
+                            nowWrapper.backGroundFileName = "testBackGround1";
+                        }
+                        else
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            for (int j = 0; j < 3; j++)
+                            {
+                                wrapper.characterFeeling[j] = nowWrapper.characterFeeling[j];
+                                wrapper.characterName[j] = nowWrapper.characterName[j];
+                                wrapper.ingameName[j] = nowWrapper.ingameName[j];
+                            }
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
                     }
                     builder.Clear();
                     break;
@@ -138,6 +200,12 @@ public class StoryParser
                             builder.Clear();
                             nowMode = ParseMode.ClampEffect;
                             break;
+                        case ParseMode.CutScene:
+                            nowMode = ParseMode.CutSceneFileName;
+                            break;
+                        case ParseMode.BackGround:
+                            nowMode = ParseMode.BackGroundName;
+                            break;
                         default:
                             builder.Append('{');
                             break;
@@ -169,6 +237,7 @@ public class StoryParser
                                 nowWrapper.ingameName[leftMiddleRight] = characterIndexToName.NameTranslator(name, languagePack);
 
                             }
+                            leftMiddleRight = 0;
                             nowMode = ParseMode.ClampFeeling;
                             builder.Clear();
                             break;
@@ -178,15 +247,21 @@ public class StoryParser
                             break;
                         case ParseMode.ClampEffect:
                             DialogEffect effect = new DialogEffect();
+                            string effectStr = builder.ToString();
                             nowWrapper.startEffectList.Add(effect);
-                            if(builder.ToString() == "up")
+                            if(effectStr.Contains("up") || effectStr.Contains("Up"))
                             {
                                 effect.effect = DialogFX.Up;
                             }
-                            else
+                            else if(effectStr.Contains("down") || effectStr.Contains("Down"))
                             {
                                 effect.effect = DialogFX.Down;
                             }
+                            else if(effectStr.Contains("blur") || effectStr.Contains("Blur"))
+                            {
+                                effect.effect = DialogFX.Blur;
+                            }
+
                             effect.characterPosition = (CharacterPos)leftMiddleRight;
 
                             nowMode = ParseMode.Switch;
@@ -196,6 +271,20 @@ public class StoryParser
                             nowRouter.routeButtonText.Add(builder.ToString());
                             nowMode = ParseMode.Route;
                             break;
+                        case ParseMode.CutSceneFileName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.cutSceneFileName = builder.ToString();
+                            break;
+                        case ParseMode.BackGroundName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.backGroundFileName = builder.ToString();
+                            break;
+                        //여기 파스모드 컷씬 이펙트랑 백그라운드 이펙트는 하나마나 의미없어서..
+                        case ParseMode.CutScene:
+                        case ParseMode.BackGroundEffect:
+                            nowMode = ParseMode.Null;
+                            break;
+
                     }
                     builder.Clear();
                     break;
@@ -206,6 +295,7 @@ public class StoryParser
                             break;
                         case ParseMode.ClampCharacterName:
                             string name = builder.ToString();
+                            Debug.Log(name);
                             if (name.Length < 1)
                             {
                                 nowWrapper.characterName[leftMiddleRight] = null;
@@ -238,6 +328,16 @@ public class StoryParser
                             
                             nowRouter.routingWrapperList.Add(routeWrapper);
                             break;
+                        case ParseMode.CutSceneFileName:
+                            nowWrapper.cutSceneFileName = builder.ToString();
+                            nowMode = ParseMode.CutSceneEffect;
+                            builder.Clear();
+                            break;
+                        case ParseMode.BackGroundName:
+                            nowWrapper.backGroundFileName = builder.ToString();
+                            nowMode = ParseMode.BackGroundEffect;
+                            builder.Clear();
+                            break;
                         case ParseMode.Dialog:
                             builder.Append('(');
                             break;
@@ -254,6 +354,23 @@ public class StoryParser
                             builder.Clear();
                             break;
                         case ParseMode.Route:
+                            builder.Clear();
+                            break;
+                        case ParseMode.CutSceneEffect:
+                            string effect = builder.ToString();
+                            if (effect.Contains("blur") || effect.Contains("Blur"))
+                            {
+                                nowWrapper.cutSceneEffect = CutSceneEffect.Blur;
+                            }
+                            builder.Clear();
+                            break;
+                        case ParseMode.BackGroundEffect:
+                            effect = builder.ToString();
+                            if (effect.Contains("blur") || effect.Contains("Blur"))
+                            {
+                                nowWrapper.backGroundEffect = CutSceneEffect.Blur;
+                            }
+                            builder.Clear();
                             break;
                         case ParseMode.Dialog:
                             if (isRouting)
@@ -276,7 +393,7 @@ public class StoryParser
                                 }
                                 else
                                 {
-                                    nowMode = ParseMode.Null;
+                                    nowMode = ParseMode.RightAfterRoute;
                                     Debug.Log("여기실행되니");
                                     nowWrapperList = gameData.dialogWrapperList;
                                     ConversationDialogWrapper wrapper = new ConversationDialogWrapper();
@@ -289,6 +406,7 @@ public class StoryParser
                                     nowWrapper = wrapper;
                                     nowWrapperList.Add(wrapper);
                                 }
+                                builder.Clear();
                             }
                             else
                             {
@@ -297,7 +415,7 @@ public class StoryParser
                             
                             break;
                     }
-                    builder.Clear();
+
 
                     break;
                 case '[':
@@ -317,7 +435,6 @@ public class StoryParser
                     {
                         if(nowDialog.ingameName.Length > 1)
                         {
-                            Debug.Log(j);
                             if(nowWrapper.ingameName[j] == null)
                             {
                                 nowDialog.fade[j] = false;

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CutSceneEffect
+{
+    None,Blur
+}
 [System.Serializable]
 public class ConversationDialogWrapper
 {
@@ -16,7 +20,11 @@ public class ConversationDialogWrapper
     public List<DialogEffect> startEffectList;
     public List<ConversationDialog> conversationDialogList;
     public bool nextWrapperIsRouter = false;
-
+    public bool isCutscene = false;
+    public string cutSceneFileName;
+    public CutSceneEffect cutSceneEffect;
+    public CutSceneEffect backGroundEffect;
+    public string backGroundFileName;
 
 
     public ConversationDialogWrapper()
@@ -26,6 +34,8 @@ public class ConversationDialogWrapper
         characterName = new string[3];
         ingameName = new string[3];
         characterFeeling = new string[3];
+        cutSceneEffect = CutSceneEffect.None;
+        backGroundEffect = CutSceneEffect.None;
         for(int i = 0; i < 3; i++)
         {
             characterFeeling[i] = "nothing";

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StoryManager : TileManager
 {
-
+    [SerializeField] BlurManager blurManager;
     protected SceneManager sceneManager;
 
     //protected List<ConversationDialogBundle> conversationDialogBundleList;
@@ -18,6 +18,8 @@ public class StoryManager : TileManager
 
     [SerializeField]
     SpriteRenderer[] characterSprite;
+    [SerializeField]
+    SpriteRenderer cutSceneBGSprite;
 
     [SerializeField]
     Text conversationText;
@@ -31,6 +33,7 @@ public class StoryManager : TileManager
 
     [SerializeField]
     GameObject toNextSceneButton;
+    
 
     float downYpos = -10;
     float upYpos = 0;
@@ -42,10 +45,12 @@ public class StoryManager : TileManager
     protected int nowConversationIndex;
     protected bool checkingRouter;
     bool[] faded;
+    bool blurred;
     protected int nowRouterIndex;
     bool nowInRouterWrapper;
     int leftRouterWrapper;
     int nowRouterWrapperIndex;
+    
 
     bool isTile;
 
@@ -62,6 +67,7 @@ public class StoryManager : TileManager
         //nowWrapper = nowBundle.dialogWrapperList[0];
         //routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
+        blurred = false;
         faded = new bool[3];
         for(int i = 0; i < 3; i++)
         {
@@ -76,6 +82,7 @@ public class StoryManager : TileManager
         nowWrapper = nowBundle.dialogWrapperList[0];
         for (int i = 0; i < 3; i++)
         {
+            Debug.Log(nowWrapper.characterName[i]);
             if (nowWrapper.characterName[i] != null)
                 characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
             else
@@ -94,9 +101,28 @@ public class StoryManager : TileManager
             {
                 obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
                 StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 1));
-
             }
         }
+        if (nowWrapper.isCutscene)
+        {
+            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.cutSceneFileName, true);
+            if(nowWrapper.cutSceneEffect == CutSceneEffect.Blur)
+            {
+                blurred = true;
+                blurManager.OnBlur(true);
+            }
+        }
+        else
+        {
+            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.backGroundFileName, false);
+            if(nowWrapper.backGroundEffect == CutSceneEffect.Blur)
+            {
+                blurred = true;
+                blurManager.OnBlur(true);
+            }
+        }
+        
+
         PrintConversation();
         isTile = false;
     }
@@ -157,6 +183,7 @@ public class StoryManager : TileManager
 
     public void NextWrapper()
     {
+        Debug.Log("넥스트래퍼");
         if (nowInRouterWrapper)
         {
             leftRouterWrapper--;
@@ -222,6 +249,35 @@ public class StoryManager : TileManager
 
             }
         }
+        if (nowWrapper.isCutscene)
+        {
+            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.cutSceneFileName, true);
+            if (nowWrapper.cutSceneEffect == CutSceneEffect.Blur && blurred == false)
+            {
+                blurManager.OnBlur(true);
+                blurred = true;
+            }
+            else if (nowWrapper.cutSceneEffect == CutSceneEffect.None && blurred == true)
+            {
+                blurManager.OnBlur(false);
+                blurred = false;
+            }
+        }
+        else
+        {
+            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.backGroundFileName, false);
+            if (nowWrapper.backGroundEffect == CutSceneEffect.Blur && blurred == false)
+            {
+                blurManager.OnBlur(true);
+                blurred = true;
+            }
+            else if(nowWrapper.backGroundEffect == CutSceneEffect.None && blurred == true)
+            {
+                blurManager.OnBlur(false);
+                blurred = false;
+            }
+        }
+
         PrintConversation();
         
 

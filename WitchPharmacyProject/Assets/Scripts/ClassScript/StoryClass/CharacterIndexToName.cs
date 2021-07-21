@@ -10,6 +10,18 @@ public enum CharacterName
     Ruellia, Cari, Jet, Lily, Iris, Ian
 }
 
+public class BackGroundPair
+{
+    public string fileName;
+    public Sprite backGroundSprite;
+
+    public BackGroundPair(string name, Sprite spr)
+    {
+        fileName = name;
+        backGroundSprite = spr;
+    }
+}
+
 //캐릭터 인덱스를 받아서 이름으로 바꿔주는거. 이거 ResourceLoad할떄 씀
 public class CharacterIndexToName
 {
@@ -18,10 +30,14 @@ public class CharacterIndexToName
     static Sprite[,] characterSprite;
     //각 스프라이트 뭔지.
     const int characterNumber = 6;
+    List<BackGroundPair> backGroundList;
+    List<BackGroundPair> cutSceneList;
 
     public CharacterIndexToName()
     {
         characterSprite = new Sprite[characterNumber,2];
+        backGroundList = new List<BackGroundPair>();
+        cutSceneList = new List<BackGroundPair>();
     }
 
     //public Sprite GetSprite(int index,CharacterFeeling feeling)
@@ -66,6 +82,40 @@ public class CharacterIndexToName
 
         }
         return characterSprite[(int)name, (int)feeling];
+    }
+
+    public Sprite GetBackGroundSprite(string nameText,bool isCutscene)
+    {
+        List<BackGroundPair> pairList;
+        if (isCutscene)
+        {
+            pairList = cutSceneList;
+        }
+        else
+        {
+            pairList = backGroundList;
+        }
+        for(int i = 0; i < pairList.Count; i++)
+        {
+            if(pairList[i].fileName == nameText)
+            {
+                return pairList[i].backGroundSprite;
+            }
+        }
+        StringBuilder nameBuilder;
+        if (!isCutscene)
+        {
+            nameBuilder = new StringBuilder("BackGround/");
+        }
+        else
+        {
+            nameBuilder = new StringBuilder("CutScene/");
+        }
+        nameBuilder.Append(nameText);
+        Sprite spr = Resources.Load<Sprite>(nameBuilder.ToString());
+        BackGroundPair pair = new BackGroundPair(nameText, spr);
+        pairList.Add(pair);
+        return spr;
     }
 
     public string NameTranslator(string fileName, UILanguagePack languagePack)
