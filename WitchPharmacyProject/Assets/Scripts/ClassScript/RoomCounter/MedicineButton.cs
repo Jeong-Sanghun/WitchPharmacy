@@ -14,15 +14,15 @@ public class MedicineButton
     public OwningMedicineClass owningMedicine;     //owningMedicineList에서 가져오는거
     
     public int medicineIndex;           //약재 딕셔너리의 인덱스
-    public int medicineQuant;           //약재 몇개인지
+    //public int medicineQuant;           //약재 몇개인지
     public Text quantityText;
     public Text propertyQuantityText;
     public bool isActive;               //지금 activeSelf상태. 속성을 껐다켰다 해줘야해서.
     public bool isOnPot;
-    public bool zeroMedicine;
+    //public bool zeroMedicine;
     public GameObject potMedicineObject;    //팟 위에 둥실둥실 떠있는 오브젝트
 
-    public MedicineButton(GameObject obj, int index, int quant,
+    public MedicineButton(GameObject obj, int index,
         MedicineClass medicine, GameObject property, GameObject medicineObj,
         Text quantText, Text propertyQuantText)
     {
@@ -32,11 +32,10 @@ public class MedicineButton
         medicineObject = medicineObj;
         buttonRect = buttonObject.GetComponent<RectTransform>();
         medicineIndex = index;
-        medicineQuant = quant;
         quantityText = quantText;
         propertyQuantityText = propertyQuantText;
         isActive = false;
-        zeroMedicine = false;
+        //zeroMedicine = false;
     }
 
     //public MedicineButton(GameObject obj, int index, int quant,

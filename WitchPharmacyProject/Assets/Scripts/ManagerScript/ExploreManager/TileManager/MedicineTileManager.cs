@@ -209,32 +209,32 @@ public class MedicineTileManager : TileManager
                 break;
             }
         }
-        bool notOwned = true;
-        for (int i = 0; i < saveData.ownedMedicineList.Count; i++)
-        {
-            if (nowMedicineStruct.medicine.GetIndex() == saveData.ownedMedicineList[i])
-            {
-                notOwned = false;
-                break;
-            }
-        }
-        if (notOwned)
-        {
-            saveData.ownedMedicineList.Add(nowMedicineStruct.medicine.GetIndex());
-        }
+        //bool notOwned = true;
+        //for (int i = 0; i < saveData.ownedMedicineList.Count; i++)
+        //{
+        //    if (nowMedicineStruct.medicine.GetIndex() == saveData.ownedMedicineList[i])
+        //    {
+        //        notOwned = false;
+        //        break;
+        //    }
+        //}
+        //if (notOwned)
+        //{
+        //    saveData.ownedMedicineList.Add(nowMedicineStruct.medicine.GetIndex());
+        //}
 
         if (owningMedicine == null)
         {
             owningMedicine = new OwningMedicineClass();
             saveData.owningMedicineList.Add(owningMedicine);
             owningMedicine.medicineIndex = nowMedicineStruct.medicine.GetIndex();
-            owningMedicine.medicineQuantity = 1;
+            //owningMedicine.medicineQuantity = 1;
             Debug.Log("오우닝 메디슨 추가.");
         }
         else
         {
             Debug.Log("오우닝 메디슨 인덱스 : " +owningMedicine.medicineIndex);
-            owningMedicine.medicineQuantity++;
+            //owningMedicine.medicineQuantity++;
         }
         
 

@@ -83,7 +83,7 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
         unlockedRegionIndex = saveData.unlockedRegionIndex;
         regionPropertyArray = gameManager.regionPropertyWrapper.regionPropertyArray;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
-        ownedMedicineList = saveData.ownedMedicineList;
+        //ownedMedicineList = saveData.ownedMedicineList;
         owningMedicineList = saveData.owningMedicineList;
         isButtonOn = new bool[5];
         for (int i = 0; i < isButtonOn.Length; i++)
@@ -176,7 +176,7 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
             {
                 owningMedicine = new OwningMedicineClass();
                 owningMedicine.medicineIndex = index;
-                owningMedicine.medicineQuantity = 0;
+                //owningMedicine.medicineQuantity = 0;
                 owningMedicineList.Add(owningMedicine);
             }
             int quantity = rQuantityToSell;
@@ -211,7 +211,7 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
 
 
             MedicineButton buttonClass =
-                new MedicineButton(buttonObject, index, quantity,
+                new MedicineButton(buttonObject, index,
                 medicine, null, null, quantText, null);
             buttonClass.owningMedicine = owningMedicine;
             wholeMedicineButtonList.Add(buttonClass);
@@ -256,11 +256,11 @@ public class StoreMedicineManager : MonoBehaviour,IStore {
             }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-                if (wholeMedicineButtonList[i].zeroMedicine)
-                {
-                    wholeMedicineButtonList[i].isActive = false;
-                    continue;
-                }
+                //if (wholeMedicineButtonList[i].zeroMedicine)
+                //{
+                //    wholeMedicineButtonList[i].isActive = false;
+                //    continue;
+                //}
                 if (pushedButton == 0)
                 {
                     wholeMedicineButtonList[i].isActive = true;
@@ -307,11 +307,11 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-                if (wholeMedicineButtonList[i].zeroMedicine)
-                {
-                    wholeMedicineButtonList[i].isActive = false;
-                    continue;
-                }
+                //if (wholeMedicineButtonList[i].zeroMedicine)
+                //{
+                //    wholeMedicineButtonList[i].isActive = false;
+                //    continue;
+                //}
                 if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.none)
                 {
                     wholeMedicineButtonList[i].isActive = true;
@@ -376,13 +376,13 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         nowButtonIndex = index;
         popupQuantityText.text = "0";
         quantSlider.value = 0;
-        if(!wholeMedicineButtonList[index].zeroMedicine)
-            popupParent.SetActive(true);
+        //if(!wholeMedicineButtonList[index].zeroMedicine)
+        //    popupParent.SetActive(true);
     }
 
     public void OnSliderValueChange()
     {
-        popupQuantityText.text = ((int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value)).ToString();
+        //popupQuantityText.text = ((int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value)).ToString();
     }
 
     //그 버튼눌러서 1개씩 올라가느넉
@@ -397,10 +397,10 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         {
             one = -1;
         }
-        float ratio = 1.0f / wholeMedicineButtonList[nowButtonIndex].medicineQuant;
+        float ratio = 1.0f;/// wholeMedicineButtonList[nowButtonIndex].medicineQuant;
         //float value = (int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value) *ratio;
         //quantSlider.value = value;
-        
+
         if(quantSlider.value + one * ratio <0)
         {
             quantSlider.value = 0;
@@ -414,61 +414,61 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             quantSlider.value += one * ratio;
         }
 
-        popupQuantityText.text =((int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value)).ToString();
+       // popupQuantityText.text =((int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value)).ToString();
 
     }
 
     //살게요버튼
     public void OnBuyButton()
     {
-        int quant = (int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value);
-        popupParent.SetActive(false);
-        if (quant == 0)
-        {
-            return;
-        }
-        else
-        {
-            int coinUsed = quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
-            if (saveData.coin - coinUsed < 0)
-            {
-                //여기서 에러메시지 표출
-                notEnoughCoinPopup.SetActive(true);
-                return;
-            }
-            saveData.coin -= quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
-            //여기 조심. nowDay는 0일차부터 시작하기 때문에 count가 0이면 하루차가 아니라 0일차임. index가 0이어야 하루차.
-            while (saveData.billWrapperList.Count <= saveData.nowDay)
-            {
-                OneDayBillWrapper wrapper = new OneDayBillWrapper();
-                saveData.billWrapperList.Add(wrapper);
-            }
-            tabletManager.UpdateBill(BillReason.medicineBuy,false,coinUsed);
+        //int quant = (int)(wholeMedicineButtonList[nowButtonIndex].medicineQuant * quantSlider.value);
+        //popupParent.SetActive(false);
+        //if (quant == 0)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    int coinUsed = quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
+        //    if (saveData.coin - coinUsed < 0)
+        //    {
+        //        //여기서 에러메시지 표출
+        //        notEnoughCoinPopup.SetActive(true);
+        //        return;
+        //    }
+        //    saveData.coin -= quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
+        //    //여기 조심. nowDay는 0일차부터 시작하기 때문에 count가 0이면 하루차가 아니라 0일차임. index가 0이어야 하루차.
+        //    while (saveData.billWrapperList.Count <= saveData.nowDay)
+        //    {
+        //        OneDayBillWrapper wrapper = new OneDayBillWrapper();
+        //        saveData.billWrapperList.Add(wrapper);
+        //    }
+        //    tabletManager.UpdateBill(BillReason.medicineBuy,false,coinUsed);
            
-            wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
-            if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
-            {
-                wholeMedicineButtonList[nowButtonIndex].zeroMedicine = true;
-            }
-            coinText.text = saveData.coin.ToString();
+        //    wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
+        //    if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
+        //    {
+        //        wholeMedicineButtonList[nowButtonIndex].zeroMedicine = true;
+        //    }
+        //    coinText.text = saveData.coin.ToString();
 
-            wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineQuantity += quant;
-            wholeMedicineButtonList[nowButtonIndex].quantityText.text = wholeMedicineButtonList[nowButtonIndex].medicineQuant.ToString();
-        }
-        if (wholeMedicineButtonList[nowButtonIndex].zeroMedicine)
-        {
-            for (int i = 0; i < isButtonOn.Length; i++)
-            {
-                if (isButtonOn[i] == true)
-                {
-                    for (int j = 0; j < 2; j++)
-                    {
-                        PropertyListButton(i);
-                    }
-                }
+        //    //wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineQuantity += quant;
+        //    wholeMedicineButtonList[nowButtonIndex].quantityText.text = wholeMedicineButtonList[nowButtonIndex].medicineQuant.ToString();
+        //}
+        //if (wholeMedicineButtonList[nowButtonIndex].zeroMedicine)
+        //{
+        //    for (int i = 0; i < isButtonOn.Length; i++)
+        //    {
+        //        if (isButtonOn[i] == true)
+        //        {
+        //            for (int j = 0; j < 2; j++)
+        //            {
+        //                PropertyListButton(i);
+        //            }
+        //        }
 
-            }
-        }
+        //    }
+        //}
     }
 
     public void OnNotEnoughCoinPopupButton()

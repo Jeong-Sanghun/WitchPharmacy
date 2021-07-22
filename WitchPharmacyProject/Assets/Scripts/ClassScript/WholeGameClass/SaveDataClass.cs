@@ -18,7 +18,7 @@ public class SaveDataClass
     public int nowDay;
     public int coin;
     //public List<int> owningMedicineList;  //현재 가지고있는거
-    public List<int> ownedMedicineList;   //딕셔너리
+    //public List<int> ownedMedicineList;   //딕셔너리
     //Key값은 medicine종류에 해당하는 medicineDictionary의 index
     //Value값은 그 약을 얼마나 가지고 있는지. 만약 0이라면 Dictionary에서 삭제.
 
@@ -56,10 +56,10 @@ public class SaveDataClass
         coin = 1000;
         nowDay = 0;
         nowTime = 0;
-        ownedMedicineList = new List<int>();
-        ownedMedicineList.Add(0);
+        //ownedMedicineList = new List<int>();
+        //ownedMedicineList.Add(0);
         owningMedicineList = new List<OwningMedicineClass>();
-        owningMedicineList.Add(new OwningMedicineClass(0, 10));
+        owningMedicineList.Add(new OwningMedicineClass(0, 30));
         owningSpecialMedicineList = new List<OwningMedicineClass>();
         progressingQuestBundleName = new List<string>();
         calledQuestBundleName = new List<string>();

@@ -159,12 +159,12 @@ public class ExploreManager : MonoBehaviour
         {
             gainedMedicine = new OwningMedicineClass();
             gainedMedicine.medicineIndex = index;
-            gainedMedicine.medicineQuantity = quantity;
+            //gainedMedicine.medicineQuantity = quantity;
             gainedMedicineList.Add(gainedMedicine);
         }
         else
         {
-            gainedMedicine.medicineQuantity += quantity;
+            //gainedMedicine.medicineQuantity += quantity;
         }
     }
 
@@ -184,12 +184,12 @@ public class ExploreManager : MonoBehaviour
         {
             gainedSpecialMedicine = new OwningMedicineClass();
             gainedSpecialMedicine.medicineIndex = index;
-            gainedSpecialMedicine.medicineQuantity = quantity;
+            //gainedSpecialMedicine.medicineQuantity = quantity;
             gainedMedicineList.Add(gainedSpecialMedicine);
         }
         else
         {
-            gainedSpecialMedicine.medicineQuantity += quantity;
+            //gainedSpecialMedicine.medicineQuantity += quantity;
         }
     }
 
@@ -241,7 +241,7 @@ public class ExploreManager : MonoBehaviour
         for(int i = 0; i < gainedMedicineList.Count; i++)
         {
             prefabItemImage.sprite = medicineDataList[gainedMedicineList[i].medicineIndex].LoadImage();
-            prefabItemText.text = gainedMedicineList[i].medicineQuantity.ToString();
+            //prefabItemText.text = gainedMedicineList[i].medicineQuantity.ToString();
             GameObject obj = Instantiate(itemPrefab, gainedItemCanvas.transform);
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
             nowItemIndex++;
@@ -258,7 +258,7 @@ public class ExploreManager : MonoBehaviour
         for (int i = 0; i < gainedSpecialMedicineList.Count; i++)
         {
             prefabItemImage.sprite = medicineDataList[gainedSpecialMedicineList[i].medicineIndex].LoadImage();
-            prefabItemText.text = gainedSpecialMedicineList[i].medicineQuantity.ToString();
+            //prefabItemText.text = gainedSpecialMedicineList[i].medicineQuantity.ToString();
             GameObject obj = Instantiate(itemPrefab, gainedItemCanvas.transform);
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-800 + (nowItemIndex % 6) * 300, 300 - 300 * (nowItemIndex / 6));
             nowItemIndex++;

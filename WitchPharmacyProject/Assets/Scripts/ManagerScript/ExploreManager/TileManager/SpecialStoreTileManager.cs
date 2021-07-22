@@ -83,7 +83,7 @@ public class SpecialStoreTileManager : TileManager
                 if (tile.selledSpecialMedicineList[j].medicineIndex
                     == appearingSpecialMedicineList[i].GetIndex())
                 {
-                    quantity -= tile.selledSpecialMedicineList[j].medicineQuantity;
+                    //quantity -= tile.selledSpecialMedicineList[j].medicineQuantity;
                 }
             }
             //if(quantity == 0)
@@ -112,10 +112,10 @@ public class SpecialStoreTileManager : TileManager
 
 
             MedicineButton buttonClass = new MedicineButton
-                (buttonObject,buttonIndex,quantity,new MedicineClass(medicine),null,null,quantText,null);
+                (buttonObject,buttonIndex,new MedicineClass(medicine),null,null,quantText,null);
             if (quantity == 0)
             {
-                buttonClass.zeroMedicine = true;
+                //buttonClass.zeroMedicine = true;
             }
             //buttonClass.storeTool = appearingSpecialMedicineList[i];
             wholeMedicineButtonList.Add(buttonClass);
@@ -142,7 +142,7 @@ public class SpecialStoreTileManager : TileManager
             {
                 owningSpecialMedicine = new OwningMedicineClass();
                 owningSpecialMedicine.medicineIndex = dataIndex;
-                owningSpecialMedicine.medicineQuantity = 0;
+                //owningSpecialMedicine.medicineQuantity = 0;
                 owningSpecialMedicineList.Add(owningSpecialMedicine);
             }
             buttonClass.owningMedicine = owningSpecialMedicine;
@@ -250,30 +250,30 @@ public class SpecialStoreTileManager : TileManager
         {
             selledTool = new OwningMedicineClass();
             selledTool.medicineIndex = wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineIndex;
-            selledTool.medicineQuantity = quant;
+            //selledTool.medicineQuantity = quant;
             tile.selledSpecialMedicineList.Add(selledTool);
         }
         else
         {
-            tile.selledSpecialMedicineList[existTileIndex].medicineQuantity += quant;
+            //tile.selledSpecialMedicineList[existTileIndex].medicineQuantity += quant;
         }
         exploreManager.OnBuySpecialMedicine(wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineIndex, quant);
 
         saveData.coin -= quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost;
          TabletManager.inst.UpdateBill(BillReason.medicineBuy, false, quant * wholeMedicineButtonList[nowButtonIndex].medicineClass.cost);
-        wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
-        if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
-        {
-            wholeMedicineButtonList[nowButtonIndex].zeroMedicine = true;
-        }
+        //wholeMedicineButtonList[nowButtonIndex].medicineQuant -= quant;
+        //if (wholeMedicineButtonList[nowButtonIndex].medicineQuant <= 0)
+        //{
+        //    wholeMedicineButtonList[nowButtonIndex].zeroMedicine = true;
+        //}
         coinText.text = saveData.coin.ToString();
 
-        wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineQuantity += quant;
-        wholeMedicineButtonList[nowButtonIndex].quantityText.text = wholeMedicineButtonList[nowButtonIndex].medicineQuant.ToString();
-        if (wholeMedicineButtonList[nowButtonIndex].zeroMedicine)
-        {
-            ListButton();
-        }
+        //wholeMedicineButtonList[nowButtonIndex].owningMedicine.medicineQuantity += quant;
+        //wholeMedicineButtonList[nowButtonIndex].quantityText.text = wholeMedicineButtonList[nowButtonIndex].medicineQuant.ToString();
+        //if (wholeMedicineButtonList[nowButtonIndex].zeroMedicine)
+        //{
+        //    ListButton();
+        //}
         nowButtonIndex = -1;
         //gameManager.SaveJson();
     }
@@ -285,16 +285,16 @@ public class SpecialStoreTileManager : TileManager
         for (int i = 0; i < wholeMedicineButtonList.Count; i++)
         {
 
-            if (!wholeMedicineButtonList[i].zeroMedicine)
-            {
-                wholeMedicineButtonList[i].buttonObject.SetActive(true);
-                wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -90 - buttonQuantity * 180);
-                buttonQuantity++;
-            }
-            else
-            {
-                wholeMedicineButtonList[i].buttonObject.SetActive(false);
-            }
+            //if (!wholeMedicineButtonList[i].zeroMedicine)
+            //{
+            //    wholeMedicineButtonList[i].buttonObject.SetActive(true);
+            //    wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -90 - buttonQuantity * 180);
+            //    buttonQuantity++;
+            //}
+            //else
+            //{
+            //    wholeMedicineButtonList[i].buttonObject.SetActive(false);
+            //}
 
         }
 
