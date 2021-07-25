@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour //SH
     public SaveDataTimeWrapper saveDataTimeWrapper;
     public MedicineDataWrapper medicineDataWrapper;
     [HideInInspector]
-    public RegionPropertyWrapper regionPropertyWrapper;
-    [HideInInspector]
     public StoreToolDataWrapper storeToolDataWrapper;
 
     [HideInInspector]
@@ -72,12 +70,11 @@ public class GameManager : MonoBehaviour //SH
         sceneManager = SceneManager.inst;
         tabletManager = TabletManager.inst;
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        DebugDataJson();
+        //DebugDataJson();
 
         
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
-        regionPropertyWrapper = jsonManager.ResourceDataLoad<RegionPropertyWrapper>("RegionPropertyWrapper");
         storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
@@ -156,9 +153,14 @@ public class GameManager : MonoBehaviour //SH
     public OddVisitorDialogBundle LoadOddBundle(string bundleName)
     {
         OddVisitorDialogBundle bundle;
-        Debug.Log(bundleName);
         bundle = jsonManager.ResourceDataLoad<OddVisitorDialogBundle>("OddVisitorDialogBundle/" + bundleName);
-        Debug.Log(bundle.startDialogList[0].dialog);
+        return bundle;
+    }
+
+    public SymptomBookBundle LoadSymptomBookBundle(string bundleName)
+    {
+        SymptomBookBundle bundle;
+        bundle = jsonManager.ResourceDataLoad<SymptomBookBundle>("SymptomBookBundle/" + bundleName);
         return bundle;
     }
 
@@ -233,8 +235,6 @@ public class GameManager : MonoBehaviour //SH
             }
 
         }*/
-
-        regionPropertyWrapper = new RegionPropertyWrapper();
         storeToolDataWrapper = new StoreToolDataWrapper();
         conversationDialogBundleWrapper = new ConversationDialogBundleWrapper();
         randomDialogDataWrapper = new StartDialogClassWrapper();
@@ -249,9 +249,11 @@ public class GameManager : MonoBehaviour //SH
         saveDataTimeWrapper = new SaveDataTimeWrapper();
         OddVisitorDialogBundle oddBundle = new OddVisitorDialogBundle();
         QuestDocument doc = new QuestDocument();
+        SymptomBookBundle symptomBookBundle = new SymptomBookBundle();
 
         languagePack = new UILanguagePack();
         //jsonManager.SaveJson<QuestDocument>(doc, "Lily");
+        jsonManager.SaveJson<SymptomBookBundle>(symptomBookBundle, "water+");
         jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");

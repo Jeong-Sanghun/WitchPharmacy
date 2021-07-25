@@ -1,0 +1,43 @@
+﻿{
+    "symptomString": "water",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "물이 조금",
+            "explain": "물이 조금 있다"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 1,
+            "title": "나는 강물",
+            "explain": "나는 아름다운 강물"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 2,
+            "title": "나는 물이 좋아",
+            "explain": "정말 물이 좋아~"
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 0,
+            "title": "물의 꿈",
+            "explain": "물묻은 침대에서 일어나 눈을 떠보면"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 1,
+            "title": "물바다가 된 물귀신",
+            "explain": "당신은 물귀신이야"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 2,
+            "title": "꿈을 꾸는 물",
+            "explain": "나는 물~ 꿈을 꾸는 물~"
+        }
+    ]
+}

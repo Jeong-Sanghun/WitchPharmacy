@@ -199,7 +199,7 @@ public class TabletDocumentManager : MonoBehaviour
             GameObject canvas = Instantiate(documentParentPrefab, wholeFolderParentObject.transform);
             //Tlqkf zz
             
-            document.SetupDocument(canvas,gameManager.regionPropertyWrapper,gameManager.languagePack,highlightButtonPrefab,highlightPopupPrefab,cam);
+            document.SetupDocument(canvas,gameManager.languagePack,highlightButtonPrefab,highlightPopupPrefab,cam);
             directoryCanvas.SetAsLastSibling();
         }
         nowOpenedDocumentCanvas = document.documentCanvas;

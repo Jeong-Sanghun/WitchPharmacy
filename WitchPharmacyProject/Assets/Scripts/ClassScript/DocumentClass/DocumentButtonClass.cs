@@ -47,7 +47,7 @@ public class DocumentButtonClass
     }
 
 
-    public void SetupDocument(GameObject canvas, RegionPropertyWrapper regionWrapper,UILanguagePack languagePack,GameObject highlightButtonPref, GameObject highlightPopupPref,Camera cam)
+    public void SetupDocument(GameObject canvas,UILanguagePack languagePack,GameObject highlightButtonPref, GameObject highlightPopupPref,Camera cam)
     {
         isOpened = true;
         documentCanvas = canvas;
@@ -58,15 +58,7 @@ public class DocumentButtonClass
         gainedRegionText = canvas.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(2).GetComponent<Text>();
         documentImage.sprite = bundle.LoadSprite();
         MakeHighlight(highlightButtonPref,highlightPopupPref,cam);
-        string regionName = null;
-        for(int i =0;i < regionWrapper.regionPropertyArray.Length; i++)
-        {
-            if(owningDocumentClass.gainedRegion == regionWrapper.regionPropertyArray[i].regionFileName)
-            {
-                regionName = regionWrapper.regionPropertyArray[i].regionName;
-            }
-        }
-        gainedRegionText.text = languagePack.documentGainedRegion + regionName;
+        gainedRegionText.text = "힝ㄱ구짝";
     }
 
     void MakeHighlight(GameObject buttonPrefab, GameObject popupPrefab,Camera cam)

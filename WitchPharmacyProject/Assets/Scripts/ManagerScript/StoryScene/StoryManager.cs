@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryManager : TileManager
+public class StoryManager : MonoBehaviour
 {
     [SerializeField] BlurManager blurManager;
     protected SceneManager sceneManager;
+    GameManager gameManager;
+    SaveDataClass saveData;
 
     //protected List<ConversationDialogBundle> conversationDialogBundleList;
     protected ConversationDialogBundle nowBundle;
@@ -50,14 +52,9 @@ public class StoryManager : TileManager
     bool nowInRouterWrapper;
     int leftRouterWrapper;
     int nowRouterWrapperIndex;
-    
-
-    bool isTile;
-
     // Start is called before the first frame update
-    protected virtual new void Start()
+    void Start()
     {
-        exploreManager = ExploreManager.inst;
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
@@ -124,14 +121,8 @@ public class StoryManager : TileManager
         
 
         PrintConversation();
-        isTile = false;
     }
 
-    public override void TileOpen(TileButtonClass tile)
-    {
-        base.TileOpen(tile);
-        isTile = true;
-    }
 
     //그 버튼이 뜨는거임. 라우팅 버튼
     void RouteCheck()
@@ -285,7 +276,7 @@ public class StoryManager : TileManager
     }
 
     //한 줄 띄우는거.
-    protected void PrintConversation()
+    void PrintConversation()
     {
         //이제 끝나면 RouteCheck가 뜸. 그 wrapper에 있는거 다 쓰면은.
         if (nowConversationIndex >= nowWrapper.conversationDialogList.Count)
@@ -355,17 +346,17 @@ public class StoryManager : TileManager
         if(sceneManager.lastSceneName == null)
         {
             //gameManager.AutoSave("StoreScene");
-            sceneManager.LoadScene("StoreScene");
-        }
-        else if(sceneManager.lastSceneName == "StoreScene")
-        {
-            //지금 쓸지말지 모름 여기는.
-            //gameManager.ForceSaveButtonActive("RoomCounterScene");
             sceneManager.LoadScene("RoomCounterScene");
         }
+        //else if(sceneManager.lastSceneName == "StoreScene")
+        //{
+        //    //지금 쓸지말지 모름 여기는.
+        //    //gameManager.ForceSaveButtonActive("RoomCounterScene");
+        //    sceneManager.LoadScene("RoomCounterScene");
+        //}
         else if (sceneManager.lastSceneName == "StartScene")
         {
-            sceneManager.LoadScene("StoreScene");
+            sceneManager.LoadScene("RoomCounterScene");
         }
         else if (sceneManager.lastSceneName == "RoomCounterScene")
         {
