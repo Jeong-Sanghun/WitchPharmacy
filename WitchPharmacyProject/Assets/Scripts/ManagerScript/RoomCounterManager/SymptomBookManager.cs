@@ -15,8 +15,8 @@ public class SymptomBookManager : MonoBehaviour
     [SerializeField] Text prefabExplainText;
     [SerializeField] Image prefabImage;
 
-    SymptomBookBundle debugBookBundle;
-
+    List<SymptomBookBundle> bookBundleList;
+    SymptomBookBundle nowBundle;
     GameObject nowPageBundle;
     bool isNewPage;
     int nowPageIndex;
@@ -30,17 +30,27 @@ public class SymptomBookManager : MonoBehaviour
         isNewPage = true;
         nowPageIndex = 0;
         pageBundleList = new List<GameObject>();
-        debugBookBundle = gameManager.LoadSymptomBookBundle("water+");
+        bookBundleList = new List<SymptomBookBundle>();
+        for(int i = 0; i < gameManager.saveData.symptomBookList.Count; i++)
+        {
+            SymptomBookBundle bundle = gameManager.LoadSymptomBookBundle(gameManager.saveData.symptomBookList[i]);
+            bookBundleList.Add(bundle);
+        }
+        for(int j = 0; j < bookBundleList.Count; j++)
+        {
+            nowBundle = bookBundleList[j];
+            for (int i = 0; i < bookBundleList[j].oneSymptomBookList.Count; i++)
+            {
+                MakePages(bookBundleList[j].oneSymptomBookList[i]);
+            }
+            isNewPage = true;
+            for (int i = 0; i < bookBundleList[j].twoSymptomBookList.Count; i++)
+            {
+                MakePages(bookBundleList[j].twoSymptomBookList[i]);
+            }
+            isNewPage = true;
+        }
 
-        for(int i = 0; i < debugBookBundle.oneSymptomBookList.Count; i++)
-        {
-            MakePages(debugBookBundle.oneSymptomBookList[i]);
-        }
-        isNewPage = true;
-        for (int i = 0; i < debugBookBundle.twoSymptomBookList.Count; i++)
-        {
-            MakePages(debugBookBundle.twoSymptomBookList[i]);
-        }
     }
 
     void MakePages(SymptomBook book)
@@ -72,7 +82,7 @@ public class SymptomBookManager : MonoBehaviour
         Transform rightPage = pageBundleInst.transform.GetChild(1);
         prefabTitleText.text = book.title;
         prefabExplainText.text = book.explain;
-        prefabImage.sprite = book.LoadImage(debugBookBundle.symptomString);
+        prefabImage.sprite = book.LoadImage(nowBundle.symptomString);
 
         GameObject pageInst;
         if (isNewPage)

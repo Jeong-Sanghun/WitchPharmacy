@@ -42,6 +42,7 @@ public class SaveDataClass
     //public List<string> calledQuestBundleName;
     public List<OneDayBillWrapper> billWrapperList;
     public List<OwningDocumentClass> owningDocumentList;
+    public List<string> symptomBookList;
     public ResearchSaveData researchSaveData;
     
     //public List<string> readStoryList;
@@ -76,6 +77,11 @@ public class SaveDataClass
         nextLoadSceneName = "StoryScene";
         nowSaveTime = SaveTime.DayStart;
         researchSaveData = new ResearchSaveData();
+        symptomBookList = new List<string>();
+        symptomBookList.Add("water+");
+        symptomBookList.Add("water-");
+        symptomBookList.Add("fire+");
+        symptomBookList.Add("fire-");
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
 

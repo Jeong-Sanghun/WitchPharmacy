@@ -1,0 +1,43 @@
+﻿{
+    "symptomString": "fire",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": -1,
+            "symptomIndexNumber": 0,
+            "title": "불이 없어요!",
+            "explain": "악 추워~"
+        },
+        {
+            "symptomAmountNumber": -1,
+            "symptomIndexNumber": 1,
+            "title": "얼음",
+            "explain": "땡"
+        },
+        {
+            "symptomAmountNumber": -1,
+            "symptomIndexNumber": 2,
+            "title": "얼음 얼음 얼음",
+            "explain": "나 나나 나 나"
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": -2,
+            "symptomIndexNumber": 0,
+            "title": "많은 얼음",
+            "explain": "어름어름 알게되는 지식들"
+        },
+        {
+            "symptomAmountNumber": -2,
+            "symptomIndexNumber": 1,
+            "title": "냉동고",
+            "explain": "당신은 냉동고처럼 겉은 따뜻하고 속은 차갑네요"
+        },
+        {
+            "symptomAmountNumber": -2,
+            "symptomIndexNumber": 2,
+            "title": "메꾸리",
+            "explain": "냉동빔~"
+        }
+    ]
+}

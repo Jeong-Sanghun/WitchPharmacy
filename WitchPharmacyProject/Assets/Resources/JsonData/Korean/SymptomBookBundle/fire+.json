@@ -1,0 +1,43 @@
+﻿{
+    "symptomString": "fire",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "앗뜨거 앗뜨거",
+            "explain": "지금 내가손에 잡고있는 마이크로 폰"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 1,
+            "title": "시끄러 시끄러",
+            "explain": "그 개소리는 너를위해 아껴둬"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 2,
+            "title": "우우우",
+            "explain": "강형욱도 못말리는 개새끼~"
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 0,
+            "title": "여전히 너는 나에게 꽃",
+            "explain": "네 깊은곳 안에 춤을 추다 사라져"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 1,
+            "title": "모두 타버리기 전에",
+            "explain": "나는 네앞에서 놓아버렸어"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 2,
+            "title": "우린 불꽃",
+            "explain": "서로에게 더 큰 화상을 입히고 또 태워 소멸될거야"
+        }
+    ]
+}
