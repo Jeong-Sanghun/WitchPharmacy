@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour //SH
     public SaveDataClass saveData;
     public SaveDataTimeWrapper saveDataTimeWrapper;
     public MedicineDataWrapper medicineDataWrapper;
-    [HideInInspector]
-    public StoreToolDataWrapper storeToolDataWrapper;
 
     [HideInInspector]
     public ConversationDialogBundleWrapper conversationDialogBundleWrapper;
@@ -45,7 +43,7 @@ public class GameManager : MonoBehaviour //SH
     public int nowSaveDataIndex;
 
     //세이브데이터 불러오기 및 딕셔너리 읽기.
-    JsonManager jsonManager;
+    public JsonManager jsonManager;
 
     //public float nowTime;
     //public int nowDay;
@@ -75,7 +73,6 @@ public class GameManager : MonoBehaviour //SH
         
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
         symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
-        storeToolDataWrapper = jsonManager.ResourceDataLoad<StoreToolDataWrapper>("StoreToolDataWrapper");
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
         documentConditionWrapper = jsonManager.ResourceDataLoad<DocumentConditionWrapper>("DocumentConditionWrapper");
@@ -91,11 +88,6 @@ public class GameManager : MonoBehaviour //SH
         specialVisitorConditionWrapper = jsonManager.ResourceDataLoad<SpecialVisitorConditionWrapper>("SpecialVisitorConditionWrapper");
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
 
-
-        for (int i = 0; i < storeToolDataWrapper.storeToolDataList.Count; i++)
-        {
-            storeToolDataWrapper.storeToolDataList[i].SetIndex(i);
-        }
         for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
             medicineDataWrapper.medicineDataList[i].SetIndex(i);
@@ -211,10 +203,6 @@ public class GameManager : MonoBehaviour //SH
     void DebugDataJson()
     {
         saveData = new SaveDataClass();
-        for (int i = 0; i < 10; i++)
-        {
-            saveData.unlockedRegionIndex.Add(i);
-        }
         symptomDialog = new SymptomDialog();
 
         /*
@@ -235,7 +223,6 @@ public class GameManager : MonoBehaviour //SH
             }
 
         }*/
-        storeToolDataWrapper = new StoreToolDataWrapper();
         conversationDialogBundleWrapper = new ConversationDialogBundleWrapper();
         randomDialogDataWrapper = new StartDialogClassWrapper();
         conversationDialogBundle = new ConversationDialogBundle();
@@ -255,6 +242,8 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<QuestDocument>(doc, "Lily");
         jsonManager.SaveJson<SymptomBookBundle>(symptomBookBundle, "water+");
         jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
+        MeasureToolResearchDataWrapper measureToolWrapper = new MeasureToolResearchDataWrapper();
+        jsonManager.SaveJson<MeasureToolResearchDataWrapper>(measureToolWrapper, "MeasureToolResearchDataWrapper");
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
         //jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");
@@ -306,11 +295,12 @@ public class GameManager : MonoBehaviour //SH
 
     public void NextDay()
     {
-        if (saveData.nowTime >= 3600 * 24)
-        {
-            saveData.nowTime =0;
-            saveData.nowDay++;
-            TabletManager.inst.SetTodayBill();
-        }
+        //if (saveData.nowTime >= 3600 * 24)
+        //{
+
+        //}
+        saveData.nowTime = 0;
+        saveData.nowDay++;
+        TabletManager.inst.SetTodayBill();
     }
 }

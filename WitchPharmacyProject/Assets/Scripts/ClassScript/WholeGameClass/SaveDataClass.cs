@@ -26,9 +26,7 @@ public class SaveDataClass
     //public Dictionary<int, int> owningMedicineDictionary;
 
     //그래서 리스트로 저장을 하고 딕셔너리를 만들어줄거임 ㅋㅋ....
-    //이거 세이브 할 때 dictionary랑 owningMedicineList랑 동기화 해줘야됨 안그러면 세이브 젓댐
     public List<OwningMedicineClass> owningMedicineList;
-    public List<int> unlockedRegionIndex;
     public List<OwningToolClass> owningToolList;
 
     public List<OwningMedicineClass> owningSpecialMedicineList;
@@ -38,13 +36,15 @@ public class SaveDataClass
     public string nowCounterDialogBundleName;
     public string nowStoryDialogBundleName;
 
-    public List<string> solvedQuestBundleName;
-    public List<string> progressingQuestBundleName;
-    public List<string> visitedOddVisitorName;
-    public List<string> calledQuestBundleName;
+    //public List<string> solvedQuestBundleName;
+    //public List<string> progressingQuestBundleName;
+    //public List<string> visitedOddVisitorName;
+    //public List<string> calledQuestBundleName;
     public List<OneDayBillWrapper> billWrapperList;
     public List<OwningDocumentClass> owningDocumentList;
-    public List<string> readStoryList;
+    public ResearchSaveData researchSaveData;
+    
+    //public List<string> readStoryList;
     public string nextLoadSceneName;
     public SaveTime nowSaveTime;
     //public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
@@ -61,26 +61,21 @@ public class SaveDataClass
         owningMedicineList = new List<OwningMedicineClass>();
         owningMedicineList.Add(new OwningMedicineClass(0, 30));
         owningSpecialMedicineList = new List<OwningMedicineClass>();
-        progressingQuestBundleName = new List<string>();
-        calledQuestBundleName = new List<string>();
-
-        unlockedRegionIndex = new List<int>();
-        for(int i = 0; i < 9; i++)
-        {
-            unlockedRegionIndex.Add(i);
-        }
+        //progressingQuestBundleName = new List<string>();
+        //calledQuestBundleName = new List<string>();
         owningToolList = new List<OwningToolClass>();
         chaosMeter = 0;
-        solvedQuestBundleName = new List<string>();
+        //solvedQuestBundleName = new List<string>();
         nowCounterDialogBundleName = "testBundle";
         nowStoryDialogBundleName = "testBundle";
         //nowLanguageDirectory = "Korean/";
         billWrapperList = new List<OneDayBillWrapper>();
         owningDocumentList = new List<OwningDocumentClass>();
-        visitedOddVisitorName = new List<string>();
-        readStoryList = new List<string>();
+        //visitedOddVisitorName = new List<string>();
+        //readStoryList = new List<string>();
         nextLoadSceneName = "StoryScene";
         nowSaveTime = SaveTime.DayStart;
+        researchSaveData = new ResearchSaveData();
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
 

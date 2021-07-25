@@ -364,14 +364,14 @@ public class StoryManager : MonoBehaviour
          //   gameManager.ForceSaveButtonActive("ExploreScene");
             sceneManager.LoadScene("ExploreScene");
         }
-        else if (sceneManager.lastSceneName == "ExploreScene")
+        else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene")
         {
             gameManager.ForceSaveButtonActive("StoryScene",SaveTime.DayStart);
             //sceneManager.LoadScene("StoryScene");
         }
         else if(sceneManager.lastSceneName == "StoryScene")
         {
-            sceneManager.LoadScene("StoreScene");
+            sceneManager.LoadScene("RoomCounterScene");
         }
 
     }

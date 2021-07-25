@@ -12,6 +12,8 @@
      "slot" : "슬롯",
      "slotDay" : "일차",
 	 "slotEmpty": "비어있음",
+     "explain": "설명",
+     "neededResearch" : "선행연구",
 	 "saveTimeArray": [
         "탐험 시작",
         "하루 시작"

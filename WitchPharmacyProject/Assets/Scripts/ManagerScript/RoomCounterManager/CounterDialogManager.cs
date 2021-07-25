@@ -223,7 +223,7 @@ public class CounterDialogManager : MonoBehaviour
         }
         else
         {
-            gameManager.saveData.progressingQuestBundleName.Add(bundle.bundleName);
+            //gameManager.saveData.progressingQuestBundleName.Add(bundle.bundleName);
             nowState = CounterState.FirstSpecialVisitor;
         }
         
@@ -298,18 +298,18 @@ public class CounterDialogManager : MonoBehaviour
         if (wrongMedicine)
         {
             nowWrapper = nowSpecialVisitorDialogBundle.wrongDialogWrapper;
-            if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
-            {
-                gameManager.saveData.progressingQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
-            }
+            //if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
+            //{
+            //    gameManager.saveData.progressingQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
+            //}
         }
         else
         {
-            if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
-            {
-                gameManager.saveData.progressingQuestBundleName.Remove(nowSpecialVisitorDialogBundle.bundleName);
-            }
-            gameManager.saveData.solvedQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
+            //if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
+            //{
+            //    gameManager.saveData.progressingQuestBundleName.Remove(nowSpecialVisitorDialogBundle.bundleName);
+            //}
+            //gameManager.saveData.solvedQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
             gameManager.saveData.chaosMeter -= nowSpecialVisitorDialogBundle.progressingNumber;
             nowWrapper = nowSpecialVisitorDialogBundle.answerDialogWrapper;
         }

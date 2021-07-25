@@ -1,0 +1,43 @@
+{
+    "symptomString": "water",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "",
+            "explain": ""
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "",
+            "explain": ""
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "",
+            "explain": ""
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "",
+            "explain": ""
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "",
+            "explain": ""
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "",
+            "explain": ""
+        }
+    ]
+}

@@ -1,50 +1,62 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 0,
-    "coin": 1000,
-    "ownedMedicineList": [
-        0
-    ],
+    "nowDay": 2,
+    "coin": 1020,
     "owningMedicineList": [
         {
             "medicineIndex": 0,
-            "medicineQuantity": 10
+            "medicineCost": 30
         }
-    ],
-    "unlockedRegionIndex": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
     ],
     "owningToolList": [],
     "owningSpecialMedicineList": [],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "solvedQuestBundleName": [],
-    "progressingQuestBundleName": [],
-    "visitedOddVisitorName": [],
-    "calledQuestBundleName": [],
-    "billWrapperList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        }
+    ],
     "owningDocumentList": [],
-    "readStoryList": [],
+    "researchSaveData": {
+        "progressingMeasureToolReaserchList": [
+            {
+                "fileName": "airAuto",
+                "researchedTime": 7
+            }
+        ],
+        "endMeasureToolResearchList": [
+            "airTool",
+            "fireTool",
+            "fireAuto"
+        ]
+    },
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1
 }

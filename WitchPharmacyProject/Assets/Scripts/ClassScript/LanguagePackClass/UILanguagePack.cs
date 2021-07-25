@@ -18,6 +18,8 @@ public class UILanguagePack
     public string slot;
     public string slotDay;
     public string slotEmpty;
+    public string explain;
+    public string neededResearch;
     public string[] saveTimeArray;
     public string[] reasonArray;
     public string[] characterNameArray;
