@@ -29,7 +29,7 @@ public class CounterManager : MonoBehaviour //SH
     BlurManager blurManager;
     SaveDataClass saveData;
     SymptomDialog symptomDialog;
-    List<int> ownedMedicineIndexList;
+    //List<int> ownedMedicineIndexList;
     List<MedicineClass> ownedMedicineList;
     //Dictionary<int,int> owningMedicineDictionary;
     //List<MedicineClass> owningMedicineList;
@@ -121,13 +121,13 @@ public class CounterManager : MonoBehaviour //SH
         symptomDialog = gameManager.symptomDialog;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
-        ownedMedicineIndexList = saveData.ownedMedicineList;
+        //ownedMedicineIndexList = saveData.ownedMedicineList;
         measureToolArray = measureToolManager.measureToolArray;
         specialMedicineDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
         ownedMedicineList = new List<MedicineClass>();
-        for(int i = 0; i < ownedMedicineIndexList.Count; i++)
+        for(int i = 0; i < saveData.owningMedicineList.Count; i++)
         {
-            ownedMedicineList.Add(medicineDataList[ownedMedicineIndexList[i]]);
+            ownedMedicineList.Add(medicineDataList[saveData.owningMedicineList[i].medicineIndex]);
         }
         //owningMedicineDictionary = saveData.owningMedicineDictionary;
         endSales = false;
@@ -716,11 +716,11 @@ public class CounterManager : MonoBehaviour //SH
         {
             if (saveData.owningSpecialMedicineList[i].medicineIndex == index)
             {
-                if(saveData.owningSpecialMedicineList[i].medicineQuantity == 0)
-                {
-                    medicineManager.AddSpecialMedicineOnOdd(saveData.owningSpecialMedicineList[i]);
-                }
-                saveData.owningSpecialMedicineList[i].medicineQuantity++;
+                //if(saveData.owningSpecialMedicineList[i].medicineQuantity == 0)
+                //{
+                //    medicineManager.AddSpecialMedicineOnOdd(saveData.owningSpecialMedicineList[i]);
+                //}
+                //saveData.owningSpecialMedicineList[i].medicineQuantity++;
                 find = true;
                 break;
             }
@@ -729,7 +729,7 @@ public class CounterManager : MonoBehaviour //SH
         {
             OwningMedicineClass med = new OwningMedicineClass();
             med.medicineIndex = index;
-            med.medicineQuantity = 1;
+            med.medicineCost = medicine.cost;
             saveData.owningSpecialMedicineList.Add(med);
             medicineManager.AddSpecialMedicineOnOdd(med);
         }

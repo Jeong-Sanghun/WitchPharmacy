@@ -7,17 +7,17 @@ using UnityEngine;
 public class OwningMedicineClass    //SH
 {
     public int medicineIndex;
-    public int medicineQuantity;
+    public int medicineCost;
 
     public OwningMedicineClass()
     {
         medicineIndex = 0;
-        medicineQuantity = 0;
+        medicineCost = 30;
     }
 
-    public OwningMedicineClass(int index, int quantity)
+    public OwningMedicineClass(int index, int cost)
     {
         medicineIndex = index;
-        medicineQuantity = quantity;
+        medicineCost = cost;
     }
 }

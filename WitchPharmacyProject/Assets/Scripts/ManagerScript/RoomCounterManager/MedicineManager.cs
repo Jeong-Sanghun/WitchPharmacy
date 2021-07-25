@@ -23,7 +23,7 @@ public class MedicineManager : MonoBehaviour    //SH
     SaveDataClass saveData;
     List<MedicineClass> medicineDataList;
     List<SpecialMedicineClass> specialMedicineDataList;
-    List<int> ownedMedicineList;
+    //List<int> ownedMedicineList;
     List<OwningMedicineClass> owningMedicineList;
     List<OwningMedicineClass> owningSpecialMedicineList;
     //Dictionary<int, int> owningMedicineDictionary;
@@ -121,6 +121,8 @@ public class MedicineManager : MonoBehaviour    //SH
     RandomVisitorClass nowVisitor;
     [SerializeField]
     GameObject binObject;
+    [SerializeField]
+    Text usedCoinText;
 
 
     //증상기록창에서 측정도구로 측정한 증상은 토글이 고정이 되어야함
@@ -141,7 +143,7 @@ public class MedicineManager : MonoBehaviour    //SH
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
-        ownedMedicineList = saveData.ownedMedicineList;
+        //ownedMedicineList = saveData.ownedMedicineList;
         owningMedicineList = saveData.owningMedicineList;
         owningSpecialMedicineList = saveData.owningSpecialMedicineList;
         specialMedicineDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
@@ -171,11 +173,12 @@ public class MedicineManager : MonoBehaviour    //SH
             //내가 가졌던거중에 없으면 컨티뉴
             int index = owningMedicineList[i].medicineIndex;
             OwningMedicineClass owningMedicine = owningMedicineList[i];
-            int quantity = owningMedicine.medicineQuantity;
-            if(quantity == 0)
-            {
-                continue;
-            }
+            int cost = owningMedicine.medicineCost;
+            //int quantity = owningMedicine.medicineQuantity;
+            //if(quantity == 0)
+            //{
+            //    continue;
+            //}
             MedicineClass medicine = medicineDataList[index];
             StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
             nameBuilder.Append(" ");
@@ -189,7 +192,7 @@ public class MedicineManager : MonoBehaviour    //SH
             }
             else
             {
-                prefabButtonQuantity.text = quantity.ToString();
+                prefabButtonQuantity.text = cost.ToString();
             }
             
             prefabButtonFirstEffectIcon.text = medicine.GetFirstSymptom().ToString();
@@ -212,7 +215,7 @@ public class MedicineManager : MonoBehaviour    //SH
             medicineObj.SetActive(false);
             medicineObj.GetComponent<SpriteRenderer>().sprite = medicine.LoadImage();
             MedicineButton buttonClass =
-                new MedicineButton(buttonObject, index, quantity,
+                new MedicineButton(buttonObject, index, 
                 medicine, propertyObject,medicineObj,quantText,propertyQuantText);
             buttonClass.owningMedicine = owningMedicine;
             wholeMedicineButtonList.Add(buttonClass);
@@ -263,12 +266,13 @@ public class MedicineManager : MonoBehaviour    //SH
     {
         //내가 가졌던거중에 없으면 컨티뉴
         int index = owningMedicine.medicineIndex;
-        int quantity = owningMedicine.medicineQuantity;
+        //int quantity = owningMedicine.medicineQuantity;
+        int cost = owningMedicine.medicineCost;
         int buttonIndex = wholeMedicineButtonList.Count;
-        if (quantity == 0)
-        {
-            return;
-        }
+        //if (quantity == 0)
+        //{
+        //    return;
+        //}
         SpecialMedicineClass medicine = specialMedicineDataList[index];
         StringBuilder nameBuilder = new StringBuilder(medicine.firstName);
         nameBuilder.Append(" ");
@@ -276,7 +280,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
         prefabButtonIcon.sprite = medicine.LoadImage();
         prefabButtonName.text = nameBuilder.ToString();
-        prefabButtonQuantity.text = quantity.ToString();
+        prefabButtonQuantity.text = cost.ToString();
 
         prefabButtonFirstEffectIcon.text = null;
         prefabButtonSecondEffectIcon.text = null;
@@ -299,7 +303,7 @@ public class MedicineManager : MonoBehaviour    //SH
         medicineObj.GetComponent<SpriteRenderer>().sprite = medicine.LoadImage();
         MedicineClass cast = new MedicineClass(medicine);
         MedicineButton buttonClass =
-            new MedicineButton(buttonObject, index, quantity,
+            new MedicineButton(buttonObject, index,
              cast, propertyObject, medicineObj, quantText, propertyQuantText);
         buttonClass.owningMedicine = owningMedicine;
         buttonClass.isActive = true;
@@ -413,9 +417,9 @@ public class MedicineManager : MonoBehaviour    //SH
         if (medicineInPotList.Count > listIndex)
         {
             MedicineButton medicine = medicineInPotList[listIndex];
-            medicine.medicineQuant++;
-            medicine.quantityText.text = medicine.medicineQuant.ToString();
-            medicine.propertyQuantityText.text = medicine.medicineQuant.ToString();
+            //medicine.medicineQuant++;
+            //medicine.quantityText.text = medicine.medicineQuant.ToString();
+            //medicine.propertyQuantityText.text = medicine.medicineQuant.ToString();
             //potMedicineObjectList[listIndex].SetActive(false);
             Destroy(potMedicineObjectList[listIndex]);
 
@@ -481,11 +485,11 @@ public class MedicineManager : MonoBehaviour    //SH
             {
 
 
-                if (wholeMedicineButtonList[i].medicineQuant == 0)
-                {
-                    wholeMedicineButtonList[i].isActive = false;
-                    continue;
-                }
+                //if (wholeMedicineButtonList[i].medicineQuant == 0)
+                //{
+                //    wholeMedicineButtonList[i].isActive = false;
+                //    continue;
+                //}
                 if (pushedButton == 0)
                 {
                     wholeMedicineButtonList[i].isActive = true;
@@ -519,11 +523,11 @@ public class MedicineManager : MonoBehaviour    //SH
             }
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-                if (wholeMedicineButtonList[i].zeroMedicine)
-                {
-                    wholeMedicineButtonList[i].isActive = false;
-                    continue;
-                }
+                //if (wholeMedicineButtonList[i].zeroMedicine)
+                //{
+                //    wholeMedicineButtonList[i].isActive = false;
+                //    continue;
+                //}
                 if (pushedButton > 1)
                 {
                     if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
@@ -585,7 +589,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
     void OnButtonDrag(PointerEventData data, int index)
     {
 
-        if ((wholeMedicineButtonList[index].medicineQuant <= 0) || isPotCooked)
+        if (isPotCooked)
         {
             return;
         }
@@ -635,6 +639,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         {
             return;
         }
+
         MedicineButton nowMedicineButton;
         GameObject inst;
         GameObject medicineObj;
@@ -648,6 +653,12 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             return;
         }
         nowMedicineButton = wholeMedicineButtonList[nowButtonIndex];
+        if (saveData.coin - nowMedicineButton.owningMedicine.medicineCost < 0)
+        {
+            //error message
+            return;
+        }
+        UseCoin(nowMedicineButton.owningMedicine.medicineCost);
         medicineObj = nowMedicineButton.medicineObject;
         inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
 
@@ -655,9 +666,9 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
 
         medicineInPotList.Add(nowMedicineButton);
         //아무것도 아님이 뜨면 줄여주지 않음
-        nowMedicineButton.medicineQuant--;
-        nowMedicineButton.quantityText.text = nowMedicineButton.medicineQuant.ToString();
-        nowMedicineButton.propertyQuantityText.text = nowMedicineButton.medicineQuant.ToString();
+        //nowMedicineButton.medicineQuant--;
+        //nowMedicineButton.quantityText.text = nowMedicineButton.medicineQuant.ToString();
+        //nowMedicineButton.propertyQuantityText.text = nowMedicineButton.medicineQuant.ToString();
 
         
         //nowMedicineButton.potMedicineObject = inst;
@@ -696,7 +707,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         if (nowButtonIndex == index)
         {
             //따블클릭
-            if(doubleClickTimer <0.5f && wholeMedicineButtonList[index].medicineQuant>0)
+            if(doubleClickTimer <0.5f)
                 AddMedicineToPot();
             nowButtonIndex = -1;
         }
@@ -791,12 +802,12 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                 Debug.Log("존나잘햇네 ㅋㅋ");
                 continue;
             }
-            owningMedicine.medicineQuantity = medicineInPotList[i].medicineQuant;
-            if (owningMedicine.medicineQuantity <= 0)
-            {
-                owningMedicineList.Remove(owningMedicine);
-                medicineInPotList[i].zeroMedicine = true;
-            }
+            //owningMedicine.medicineQuantity = medicineInPotList[i].medicineQuant;
+            //if (owningMedicine.medicineQuantity <= 0)
+            //{
+            //    owningMedicineList.Remove(owningMedicine);
+            //    medicineInPotList[i].zeroMedicine = true;
+            //}
 
         }
         for (int i = 0; i < 6; i++)
@@ -870,5 +881,13 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
             //이거 손님한테 주고 돌아올 때 새롭게해줘야함.
             medicineObjectPrefab.SetActive(true);
         }
+    }
+
+    public void UseCoin(int cost)
+    {
+        saveData.coin -= cost;
+        usedCoinText.text = "-" + cost.ToString();
+        usedCoinText.color = new Color(1, 1, 1, 1);
+        StartCoroutine(SceneManager.inst.FadeModule_Text(usedCoinText, 1, 0, 2));
     }
 }
