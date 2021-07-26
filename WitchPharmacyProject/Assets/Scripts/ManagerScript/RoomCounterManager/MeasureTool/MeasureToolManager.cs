@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeasureToolManager : MonoBehaviour
 {
     enum ToolState {
-        NotResearched,ToolResearched, AutoResearched
+        NotOwned,ToolOwned, AutoOwned
     }
     GameManager gameManager;
     [SerializeField]
@@ -28,7 +28,7 @@ public class MeasureToolManager : MonoBehaviour
     GameObject measureToolButtonParent;
     [SerializeField]
     GameObject[] measureToolButtonArray;
-    ResearchSaveData researchSaveData;
+    SaveDataClass saveData;
 
 
     [SerializeField]
@@ -42,47 +42,34 @@ public class MeasureToolManager : MonoBehaviour
     {
         gameManager = GameManager.singleTon;
         measureToolExitButtonObject.SetActive(false);
-        researchSaveData = gameManager.saveData.researchSaveData;
+        saveData = gameManager.saveData;
         toolStateArray = new ToolState[4];
+
+        
         for(int i = 0; i < toolStateArray.Length; i++)
         {
-            toolStateArray[i] = ToolState.NotResearched;
+            toolStateArray[i] = ToolState.NotOwned;
         }
 
-        for(int i = 0; i < researchSaveData.endMeasureToolResearchList.Count; i++)
+        for(int i = 0; i < saveData.owningMeasureToolList.Count; i++)
         {
-            Symptom containingSymptom = Symptom.none;
-            string nowString = researchSaveData.endMeasureToolResearchList[i];
-            for(int j = 0; j < 4; j++)
+            int symptom;
+            if(saveData.owningMeasureToolList[i] > 3)
             {
-                string contain = ((Symptom)j).ToString();
-                if (nowString.Contains(contain))
-                {
-                    containingSymptom = (Symptom)j;
-                    break;
-                }
+                symptom = saveData.owningMeasureToolList[i] % 4;
+                toolStateArray[symptom] = ToolState.AutoOwned;
             }
-            if(containingSymptom == Symptom.none)
-            {
-                continue;
-            }
-
-            if (nowString.Contains("Tool"))
-            {
-                if(toolStateArray[(int)containingSymptom] == ToolState.NotResearched)
-                {
-                    toolStateArray[(int)containingSymptom] = ToolState.ToolResearched;
-                }
-            }
-            if (nowString.Contains("Auto"))
+            else
             {
                 
-                toolStateArray[(int)containingSymptom] = ToolState.AutoResearched;
+                symptom = saveData.owningMeasureToolList[i];
+                if (toolStateArray[symptom] == ToolState.NotOwned)
+                    toolStateArray[symptom] = ToolState.ToolOwned;
             }
         }
         for(int i = 0; i < toolStateArray.Length; i++)
         {
-            if(toolStateArray[i] == ToolState.NotResearched)
+            if(toolStateArray[i] == ToolState.NotOwned)
             {
                 measureToolButtonArray[i].SetActive(false);
             }
@@ -90,6 +77,11 @@ public class MeasureToolManager : MonoBehaviour
             {
                 measureToolButtonArray[i].SetActive(true);
             }
+        }
+
+        for(int i = 0; i < gameManager.saveData.owningMeasureToolList.Count; i++)
+        {
+            measureToolButtonArray[(int)gameManager.saveData.owningMeasureToolList[i]].SetActive(true);
         }
 
 
@@ -102,11 +94,11 @@ public class MeasureToolManager : MonoBehaviour
         symptomNumberArray = symptomNumArr;
         for (int i = 0; i < measureToolArray.Length; i++)
         {
-            if (toolStateArray[i] == ToolState.AutoResearched)
+            if (toolStateArray[i] == ToolState.AutoOwned)
             {
                 measureToolArray[i].OnNewVisitor(symptomNumberArray[i], i,true);
             }
-            else if (toolStateArray[i] == ToolState.ToolResearched)
+            else if (toolStateArray[i] == ToolState.ToolOwned)
             {
                 measureToolArray[i].OnNewVisitor(symptomNumberArray[i], i, false);
             }

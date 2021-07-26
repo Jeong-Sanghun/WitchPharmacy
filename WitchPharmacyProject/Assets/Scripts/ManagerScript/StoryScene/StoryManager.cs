@@ -364,7 +364,7 @@ public class StoryManager : MonoBehaviour
          //   gameManager.ForceSaveButtonActive("ExploreScene");
             sceneManager.LoadScene("ExploreScene");
         }
-        else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene")
+        else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene" || sceneManager.lastSceneName == "StoreScene")
         {
             gameManager.ForceSaveButtonActive("StoryScene",SaveTime.DayStart);
             //sceneManager.LoadScene("StoryScene");

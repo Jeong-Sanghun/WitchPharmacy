@@ -1,0 +1,52 @@
+{
+    "measureToolDataList": [
+        {
+            "fileName": "waterTool",
+            "ingameName": "측청도구(물)",
+            "toolTip": "환자의 몸에 물이 흥건해요",
+            "cost": 100
+        },
+        {
+            "fileName": "fireTool",
+            "ingameName": "측정도구(불)",
+            "toolTip": "불이얏~~~~~~~~",
+            "cost": 100
+        },
+        {
+            "fileName": "earthTool",
+            "ingameName": "측정도구(대지)",
+            "toolTip": "대지돼지대지 ㅋㅋ",
+            "cost": 100
+        },
+        {
+            "fileName": "airTool",
+            "ingameName": "측정도구(공기)",
+            "toolTip": "공깃밥!",
+            "cost": 100
+        },
+		{
+            "fileName": "waterAuto",
+            "ingameName": "자동측정도구(물)",
+            "toolTip": "이젠 자동으로 물을 본다",
+            "cost": 100
+        },
+        {
+            "fileName": "fireAuto",
+            "ingameName": "자동측정도구(불)",
+            "toolTip": "나는 화권의 에이스~",
+            "cost": 100
+        },
+        {
+            "fileName": "earthAuto",
+            "ingameName": "자동측정도구(대지)",
+            "toolTip": "대지는 돼지돼지 ㅋㅋ",
+            "cost": 100
+        },
+        {
+            "fileName": "airAuto",
+            "ingameName": "자동측정도구(공기)",
+            "toolTip": "공기밥ㅋㅋㅋ",
+            "cost": 100
+        }
+    ]
+}

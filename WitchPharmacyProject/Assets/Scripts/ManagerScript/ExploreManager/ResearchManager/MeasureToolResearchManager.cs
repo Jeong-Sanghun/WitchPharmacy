@@ -193,6 +193,11 @@ public class MeasureToolResearchManager : MonoBehaviour
         wholeCanvasList[openedButtonIndex].SetActive(true);
     }
 
+    public void BackButton()
+    {
+        SceneManager.inst.LoadScene("ExploreScene");
+    }
+
     // Update is called once per frame
     void Update()
     {

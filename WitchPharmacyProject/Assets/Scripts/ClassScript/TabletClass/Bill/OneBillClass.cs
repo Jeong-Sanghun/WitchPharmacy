@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum BillReason
 {
-   medicineSell,medicineBuy, toolBuy, mainteneceFee,exploreBoxGain
+   medicineSell,medicineBuy, toolBuy, mainteneceFee,exploreBoxGain,measureToolBuy
 }
 
 [System.Serializable]

@@ -1,20 +1,52 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 0,
-    "coin": 1000,
+    "nowDay": 2,
+    "coin": 720,
     "owningMedicineList": [
         {
             "medicineIndex": 0,
             "medicineCost": 30
         }
     ],
-    "owningToolList": [],
     "owningSpecialMedicineList": [],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                },
+                {
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 300
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        }
+    ],
     "owningDocumentList": [],
     "symptomBookList": [
         "water+",
@@ -22,11 +54,29 @@
         "fire+",
         "fire-"
     ],
+    "owningMeasureToolList": [
+        0,
+        1,
+        4
+    ],
     "researchSaveData": {
-        "progressingMeasureToolReaserchList": [],
-        "endMeasureToolResearchList": []
+        "progressingMeasureToolReaserchList": [
+            {
+                "fileName": "fireAuto",
+                "researchedTime": 7
+            },
+            {
+                "fileName": "airTool",
+                "researchedTime": 3
+            }
+        ],
+        "endMeasureToolResearchList": [
+            "waterTool",
+            "fireTool",
+            "waterAuto"
+        ]
     },
-    "bookMarkNumber": 1,
+    "bookMarkNumber": 3,
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1
 }

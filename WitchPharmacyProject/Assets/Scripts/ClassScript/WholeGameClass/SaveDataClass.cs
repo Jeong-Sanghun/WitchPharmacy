@@ -27,7 +27,6 @@ public class SaveDataClass
 
     //그래서 리스트로 저장을 하고 딕셔너리를 만들어줄거임 ㅋㅋ....
     public List<OwningMedicineClass> owningMedicineList;
-    public List<OwningToolClass> owningToolList;
 
     public List<OwningMedicineClass> owningSpecialMedicineList;
 
@@ -36,13 +35,10 @@ public class SaveDataClass
     public string nowCounterDialogBundleName;
     public string nowStoryDialogBundleName;
 
-    //public List<string> solvedQuestBundleName;
-    //public List<string> progressingQuestBundleName;
-    //public List<string> visitedOddVisitorName;
-    //public List<string> calledQuestBundleName;
     public List<OneDayBillWrapper> billWrapperList;
     public List<OwningDocumentClass> owningDocumentList;
     public List<string> symptomBookList;
+    public List<int> owningMeasureToolList;
     public ResearchSaveData researchSaveData;
     public int bookMarkNumber;
     
@@ -65,7 +61,6 @@ public class SaveDataClass
         owningSpecialMedicineList = new List<OwningMedicineClass>();
         //progressingQuestBundleName = new List<string>();
         //calledQuestBundleName = new List<string>();
-        owningToolList = new List<OwningToolClass>();
         chaosMeter = 0;
         //solvedQuestBundleName = new List<string>();
         nowCounterDialogBundleName = "testBundle";
@@ -83,7 +78,8 @@ public class SaveDataClass
         symptomBookList.Add("water-");
         symptomBookList.Add("fire+");
         symptomBookList.Add("fire-");
-        bookMarkNumber = 1;
+        bookMarkNumber = 3;
+        owningMeasureToolList = new List<int>();
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
 

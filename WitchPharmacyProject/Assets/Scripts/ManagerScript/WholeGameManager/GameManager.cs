@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour //SH
         sceneManager = SceneManager.inst;
         tabletManager = TabletManager.inst;
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        DebugDataJson();
+        //DebugDataJson();
 
         
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
@@ -233,10 +233,12 @@ public class GameManager : MonoBehaviour //SH
         specialVisitorConditionWrapper = new SpecialVisitorConditionWrapper();
         ConversationDialogBundle storyBundle = new ConversationDialogBundle();
         //jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
-        saveDataTimeWrapper = new SaveDataTimeWrapper();
+
         OddVisitorDialogBundle oddBundle = new OddVisitorDialogBundle();
         QuestDocument doc = new QuestDocument();
         SymptomBookBundle symptomBookBundle = new SymptomBookBundle();
+        MeasureToolDataWrapper measureToolDataWrapper = new MeasureToolDataWrapper();
+        jsonManager.SaveJson<MeasureToolDataWrapper>(measureToolDataWrapper, "MeasureToolDataWrapper");
 
         languagePack = new UILanguagePack();
         //jsonManager.SaveJson<QuestDocument>(doc, "Lily");
@@ -263,6 +265,8 @@ public class GameManager : MonoBehaviour //SH
         {
             jsonManager.SaveJson(saveData, i);
         }
+        saveDataTimeWrapper = new SaveDataTimeWrapper();
+        jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
 
 
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");

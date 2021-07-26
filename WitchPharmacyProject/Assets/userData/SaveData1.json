@@ -1,20 +1,36 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 0,
-    "coin": 1000,
+    "nowDay": 1,
+    "coin": 1010,
     "owningMedicineList": [
         {
             "medicineIndex": 0,
             "medicineCost": 30
         }
     ],
-    "owningToolList": [],
     "owningSpecialMedicineList": [],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        }
+    ],
     "owningDocumentList": [],
     "symptomBookList": [
         "water+",
@@ -22,11 +38,15 @@
         "fire+",
         "fire-"
     ],
+    "owningMeasureToolList": [],
     "researchSaveData": {
         "progressingMeasureToolReaserchList": [],
-        "endMeasureToolResearchList": []
+        "endMeasureToolResearchList": [
+            "waterTool",
+            "fireTool"
+        ]
     },
-    "bookMarkNumber": 1,
+    "bookMarkNumber": 3,
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1
 }

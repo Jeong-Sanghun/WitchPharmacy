@@ -1,0 +1,28 @@
+{
+    "measureToolDataList": [
+        {
+            "fileName": "water",
+            "ingameName": "물 측정도구",
+            "toolTip": "물이얏~~~~",
+            "cost": 100
+        },
+        {
+            "fileName": "water",
+            "ingameName": "물 측정도구",
+            "toolTip": "물이얏~~~~",
+            "cost": 100
+        },
+        {
+            "fileName": "water",
+            "ingameName": "물 측정도구",
+            "toolTip": "물이얏~~~~",
+            "cost": 100
+        },
+        {
+            "fileName": "water",
+            "ingameName": "물 측정도구",
+            "toolTip": "물이얏~~~~",
+            "cost": 100
+        }
+    ]
+}

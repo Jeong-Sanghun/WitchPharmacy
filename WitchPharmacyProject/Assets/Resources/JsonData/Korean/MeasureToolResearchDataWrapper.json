@@ -34,7 +34,7 @@
         },
         {
             "fileName": "waterAuto",
-            "ingameName": "측정도구(물)",
+            "ingameName": "자동측정도구(물)",
             "symptomString": "water",
             "explain": "물이얏~~~~",
             "researchEndTime": 10,
@@ -42,7 +42,7 @@
         },
         {
             "fileName": "fireAuto",
-            "ingameName": "측정도구(불)",
+            "ingameName": "자동측정도구(불)",
             "symptomString": "fire",
             "explain": "불이얏~~~",
             "researchEndTime": 10,
@@ -50,7 +50,7 @@
         },
         {
             "fileName": "earthAuto",
-            "ingameName": "측정도구(대지)",
+            "ingameName": "자동측정도구(대지)",
             "symptomString": "earth",
             "explain": "돼지돼지",
             "researchEndTime": 10,
@@ -58,7 +58,7 @@
         },
         {
             "fileName": "airAuto",
-            "ingameName": "측정도구(공기)",
+            "ingameName": "자동측정도구(공기)",
             "symptomString": "air",
             "explain": "공기밥~",
             "researchEndTime": 10,

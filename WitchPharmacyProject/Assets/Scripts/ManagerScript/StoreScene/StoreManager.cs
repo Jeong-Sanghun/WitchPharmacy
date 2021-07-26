@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class StoreManager : MonoBehaviour
     [SerializeField]
     GameObject toolTab;
 
+    [SerializeField]
+    Text coinText;
+
     private void Start()
     {
         sceneManager = SceneManager.inst;
@@ -18,12 +22,18 @@ public class StoreManager : MonoBehaviour
     }
     public void ToNextSceneButton()
     {
-        gameManager.saveData.nowTime = 0;
-        gameManager.TimeChange(7200);
+        //gameManager.saveData.nowTime = 0;
+        //gameManager.TimeChange(7200);
         //gameManager.ForceSaveButtonActive("RoomCounterScene");
-        sceneManager.LoadScene("RoomCounterScene");
+        sceneManager.LoadScene("ExploreScene");
     }
 
+
+    public void ChangeCoinText()
+    {
+        
+        coinText.text = gameManager.saveData.coin.ToString();
+    }
     public void MedicineTabButton()
     {
         medicineTab.SetActive(true);

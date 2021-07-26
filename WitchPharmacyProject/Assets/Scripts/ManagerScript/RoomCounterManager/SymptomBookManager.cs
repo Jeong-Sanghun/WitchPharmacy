@@ -49,7 +49,7 @@ public class SymptomBookManager : MonoBehaviour
 
         for(int j = 0; j < bookBundleList.Count; j++)
         {
-            if(bookMarkNumber < 6)
+            if (bookMarkNumber < gameManager.saveData.bookMarkNumber)
             {
                 bookMarkIndexList.Add(pageBundleList.Count);
                 Debug.Log(nowPages);

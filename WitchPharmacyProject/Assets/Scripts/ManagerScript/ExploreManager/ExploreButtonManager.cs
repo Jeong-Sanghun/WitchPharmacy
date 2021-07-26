@@ -18,6 +18,11 @@ public class ExploreButtonManager : MonoBehaviour
         sceneManager.LoadScene("ResearchScene");
     }
 
+    public void StoreSceneButton()
+    {
+        sceneManager.LoadScene("StoreScene");
+    }
+
     // Update is called once per frame
     void Update()
     {
