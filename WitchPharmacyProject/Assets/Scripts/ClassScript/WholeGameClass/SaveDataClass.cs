@@ -44,6 +44,7 @@ public class SaveDataClass
     public List<OwningDocumentClass> owningDocumentList;
     public List<string> symptomBookList;
     public ResearchSaveData researchSaveData;
+    public int bookMarkNumber;
     
     //public List<string> readStoryList;
     public string nextLoadSceneName;
@@ -82,6 +83,7 @@ public class SaveDataClass
         symptomBookList.Add("water-");
         symptomBookList.Add("fire+");
         symptomBookList.Add("fire-");
+        bookMarkNumber = 1;
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
 

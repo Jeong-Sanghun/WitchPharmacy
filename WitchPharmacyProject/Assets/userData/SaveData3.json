@@ -26,6 +26,7 @@
         "progressingMeasureToolReaserchList": [],
         "endMeasureToolResearchList": []
     },
+    "bookMarkNumber": 1,
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1
 }

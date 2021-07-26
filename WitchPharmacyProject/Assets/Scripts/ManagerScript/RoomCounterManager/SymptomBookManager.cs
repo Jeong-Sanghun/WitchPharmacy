@@ -14,30 +14,63 @@ public class SymptomBookManager : MonoBehaviour
     [SerializeField] Text prefabTitleText;
     [SerializeField] Text prefabExplainText;
     [SerializeField] Image prefabImage;
+    [SerializeField] GameObject bookMarkPrefab;
 
     List<SymptomBookBundle> bookBundleList;
     SymptomBookBundle nowBundle;
     GameObject nowPageBundle;
     bool isNewPage;
     int nowPageIndex;
-
+    int nowLeftBookMarkIndex;
+    int nowRightBookMarkIndex;
+    List<int> bookMarkIndexList;
+    List<RectTransform> bookMarkRectList;
     List<GameObject> pageBundleList;
     // Start is called before the first frame update
     void Start()
     {
+        int bookMarkNumber = 0;
+        int nowPages = 0;
         gameManager = GameManager.singleTon;
         //연구할 때 이걸 받아와야함.
         isNewPage = true;
         nowPageIndex = 0;
+        nowLeftBookMarkIndex = 0;
+        nowRightBookMarkIndex = 1;
         pageBundleList = new List<GameObject>();
         bookBundleList = new List<SymptomBookBundle>();
-        for(int i = 0; i < gameManager.saveData.symptomBookList.Count; i++)
+        bookMarkRectList = new List<RectTransform>();
+        bookMarkIndexList = new List<int>();
+        for (int i = 0; i < gameManager.saveData.symptomBookList.Count; i++)
         {
             SymptomBookBundle bundle = gameManager.LoadSymptomBookBundle(gameManager.saveData.symptomBookList[i]);
             bookBundleList.Add(bundle);
         }
+
         for(int j = 0; j < bookBundleList.Count; j++)
         {
+            if(bookMarkNumber < 6)
+            {
+                bookMarkIndexList.Add(pageBundleList.Count);
+                Debug.Log(nowPages);
+                GameObject inst = Instantiate(bookMarkPrefab, pageBundleParent);
+                int dele = bookMarkNumber;
+                inst.GetComponent<Button>().onClick.AddListener(() => BookMarkButton(dele));
+                inst.GetComponentInChildren<Text>().text = bookBundleList[j].symptomString;
+                inst.SetActive(true);
+                RectTransform rect = inst.GetComponent<RectTransform>();
+                if (j == 0)
+                {
+                    rect.anchoredPosition = new Vector3(-1100, 450, 0);
+                }
+                else
+                {
+                    rect.anchoredPosition = new Vector3(1100, 450 - j*100, 0);
+                }
+                bookMarkRectList.Add(rect);
+                bookMarkNumber++;
+            }
+            nowPages += bookBundleList[j].oneSymptomBookList.Count + bookBundleList[j].twoSymptomBookList.Count;
             nowBundle = bookBundleList[j];
             for (int i = 0; i < bookBundleList[j].oneSymptomBookList.Count; i++)
             {
@@ -110,7 +143,16 @@ public class SymptomBookManager : MonoBehaviour
             }
             pageBundleList[nowPageIndex].SetActive(false);
             pageBundleList[nowPageIndex - 1].SetActive(true);
+
+            if (nowPageIndex <= bookMarkIndexList[nowLeftBookMarkIndex])
+            {
+                bookMarkRectList[nowLeftBookMarkIndex].anchoredPosition = new Vector3(1100, bookMarkRectList[nowLeftBookMarkIndex].anchoredPosition.y, 0);
+                nowLeftBookMarkIndex--;
+                nowRightBookMarkIndex--;
+
+            }
             nowPageIndex--;
+
         }
         else
         {
@@ -120,8 +162,41 @@ public class SymptomBookManager : MonoBehaviour
             }
             pageBundleList[nowPageIndex].SetActive(false);
             pageBundleList[nowPageIndex + 1].SetActive(true);
+
+
             nowPageIndex++;
+            if (nowRightBookMarkIndex >= bookMarkIndexList.Count)
+            {
+                return;
+            }
+            if (nowPageIndex >= bookMarkIndexList[nowRightBookMarkIndex])
+            {
+                bookMarkRectList[nowRightBookMarkIndex].anchoredPosition = new Vector3(-1100, bookMarkRectList[nowRightBookMarkIndex].anchoredPosition.y, 0);
+                
+                nowRightBookMarkIndex++;
+                nowLeftBookMarkIndex++;
+            }
+
         }
+    }
+
+    public void BookMarkButton(int index)
+    {
+        pageBundleList[nowPageIndex].SetActive(false);
+        nowPageIndex = bookMarkIndexList[index];
+        pageBundleList[nowPageIndex].SetActive(true);
+        nowRightBookMarkIndex = index + 1;
+        nowLeftBookMarkIndex = index;
+
+        for(int i = 0; i <= nowLeftBookMarkIndex; i++)
+        {
+            bookMarkRectList[i].anchoredPosition = new Vector3(-1100, bookMarkRectList[i].anchoredPosition.y, 0);
+        }
+        for(int i = nowRightBookMarkIndex; i< bookMarkRectList.Count; i++)
+        {
+            bookMarkRectList[i].anchoredPosition = new Vector3(1100, bookMarkRectList[i].anchoredPosition.y, 0);
+        }
+
     }
 
     public void BookCanvasActive(bool active)
