@@ -12,6 +12,8 @@ public class MeasureToolManager : MonoBehaviour
     CounterManager counterManager;
     [SerializeField]
     MedicineManager medicineManager;
+    [SerializeField]
+    BlurManager blurManager;
 
     [SerializeField]
     GameObject buttonParent;
@@ -29,7 +31,11 @@ public class MeasureToolManager : MonoBehaviour
     [SerializeField]
     GameObject[] measureToolButtonArray;
     SaveDataClass saveData;
-
+    [SerializeField]
+    GameObject visitorParent;
+    [SerializeField]
+    GameObject counterTable;
+    
 
     [SerializeField]
    public MeasureTool[] measureToolArray;
@@ -116,6 +122,9 @@ public class MeasureToolManager : MonoBehaviour
 
     public void BackButton()
     {
+        //blurManager.OnBlur(false);
+        blurManager.ChangeLayer(false, visitorParent);
+        blurManager.ChangeLayer(false, counterTable);
         counterManager.DialogActive(true);
         measureToolArray[nowMeasureToolIndex].ToolActive(false);
         for (int i = 0; i < existingUIObjects.Length; i++)
@@ -128,6 +137,9 @@ public class MeasureToolManager : MonoBehaviour
     //드래그앤드롭하면 이거 실행됨. 카운터매니저에서 실행
     public void ToolOpenButton(int index)
     {
+        //blurManager.OnBlur(true);
+        blurManager.ChangeLayer(true, visitorParent);
+        blurManager.ChangeLayer(true, counterTable);
         nowMeasureToolIndex = index;
         counterManager.DialogActive(false);
         measureToolArray[index].ToolActive(true);

@@ -27,6 +27,37 @@ public class BlurManager : MonoBehaviour
     }
     bool running = false;
 
+    public void ChangeLayer(bool blur,GameObject obj)
+    {
+        int targetLayer;
+        if (blur)
+        {
+            targetLayer = blurLayer;
+        }
+        else
+        {
+            targetLayer = defaultLayer;
+        }
+
+        RecursiveLayerChange(targetLayer, obj.transform);
+    }
+
+    void RecursiveLayerChange(int layer, Transform obj)
+    {
+        obj.gameObject.layer = layer;
+        if (obj.childCount == 0)
+        {
+            return;
+        }
+        else
+        {
+            for(int i = 0; i < obj.childCount; i++)
+            {
+                RecursiveLayerChange(layer, obj.GetChild(i));
+            }
+        }
+    }
+
     IEnumerator BlurCoroutine(bool blur)
     {
         if(running == true)

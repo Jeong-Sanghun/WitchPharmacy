@@ -15,7 +15,7 @@ public class MeasureTool : MonoBehaviour    //SH
     SymptomChartManager symptomChartManager;
 
     [SerializeField]
-    GameObject toolObject;
+    protected GameObject toolObject;
     protected int symptomNumber;
     protected bool isAuto;
 

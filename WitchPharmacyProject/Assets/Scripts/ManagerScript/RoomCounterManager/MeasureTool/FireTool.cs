@@ -74,7 +74,7 @@ public class FireTool : MeasureTool
     {
         base.ToolActive(active);
         measureStarted = true;
-        if (active == isAuto && measureEnd == false)
+        if (isAuto == true && measureEnd == false)
         {
             for (int i = 0; i < dustQuantity; i++)
             {
@@ -82,7 +82,10 @@ public class FireTool : MeasureTool
             }
             MeasureEnd();
         }
+        StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
     }
+
+    
 
     public override void OnNewVisitor(int symptomNum,int index,bool auto)
     {
