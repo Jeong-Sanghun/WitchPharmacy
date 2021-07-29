@@ -237,9 +237,10 @@ public class CounterManager : MonoBehaviour //SH
         }
         counterDialogManager.nowTalking = true;
         medicineManager.SpecialVisitorVisits();
+        symptomChartManager.SpecialVisitorVisits(specialVisitorDialogBundle.symptomNumberArray);
         measureToolManager.OnNewVisitor(specialVisitorDialogBundle.symptomNumberArray);
         nowSpecialVisitor = new SpecialVisitorClass(visitorParent,specialVisitorPrefab, specialVisitorDialogBundle.characterName);
-        symptomChartManager.SpecialVisitorVisits(specialVisitorDialogBundle.symptomNumberArray);
+        
         //쫙 뿌려준다
         for (int i = 0; i < toggleGroupArray.Length; i++)
         {
@@ -287,9 +288,10 @@ public class CounterManager : MonoBehaviour //SH
         nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent);
         //쫙 뿌려준다
         randomVisitorList.Add(nowVisitor);
+        symptomChartManager.VisitorVisits(nowVisitor);
         medicineManager.VisitorVisits(nowVisitor);
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
-        symptomChartManager.VisitorVisits(nowVisitor);
+        
         index++;
         StartCoroutine(VisitorAppearCoroutine());
 

@@ -18,14 +18,14 @@ public class FireTool : MeasureTool
 
     [SerializeField]
     Text symptomText;
-    bool measureStarted = false;
 
     
     int dustQuantity = 50;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         dustObjectArray = new GameObject[dustQuantity];
         dustPrefab.SetActive(false);
         for (int i = 0; i < dustQuantity; i++)

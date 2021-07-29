@@ -87,7 +87,7 @@ public class MeasureToolManager : MonoBehaviour
 
         for(int i = 0; i < gameManager.saveData.owningMeasureToolList.Count; i++)
         {
-            measureToolButtonArray[(int)gameManager.saveData.owningMeasureToolList[i]].SetActive(true);
+            measureToolButtonArray[gameManager.saveData.owningMeasureToolList[i]%4].SetActive(true);
         }
 
 

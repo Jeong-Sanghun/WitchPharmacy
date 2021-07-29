@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 1,
-    "coin": 910,
+    "nowDay": 2,
+    "coin": 710,
     "owningMedicineList": [
         {
             "medicineIndex": 0,
@@ -33,6 +33,17 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 200
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
             "billList": []
         }
     ],
@@ -44,13 +55,17 @@
         "fire-"
     ],
     "owningMeasureToolList": [
-        3
+        3,
+        0,
+        2
     ],
     "researchSaveData": {
         "progressingMeasureToolReaserchList": [],
         "endMeasureToolResearchList": [
             "airTool",
-            "earthTool"
+            "earthTool",
+            "waterTool",
+            "earthAuto"
         ]
     },
     "bookMarkNumber": 3,

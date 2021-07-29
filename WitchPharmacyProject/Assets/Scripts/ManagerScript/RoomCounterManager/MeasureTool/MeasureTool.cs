@@ -21,10 +21,11 @@ public class MeasureTool : MonoBehaviour    //SH
 
     //CounterManager에서 측정이 끝났는지 알아야 토글을 못하게 막는다.
     public bool measureEnd = false;
+    protected bool measureStarted = false;
     int toolIndex = 1;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         gameManager = GameManager.singleTon;
         measureEnd = false;
