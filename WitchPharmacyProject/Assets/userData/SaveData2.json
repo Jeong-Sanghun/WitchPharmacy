@@ -2,7 +2,7 @@
     "name": "initName",
     "nowTime": 0.0,
     "nowDay": 2,
-    "coin": 720,
+    "coin": 800,
     "owningMedicineList": [
         {
             "medicineIndex": 0,
@@ -19,9 +19,9 @@
             "wholeSpentCoin": 0,
             "billList": [
                 {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 40
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 100
                 }
             ]
         },
@@ -30,14 +30,9 @@
             "wholeSpentCoin": 0,
             "billList": [
                 {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 40
-                },
-                {
                     "isPlus": false,
                     "reason": 5,
-                    "changedCoin": 300
+                    "changedCoin": 100
                 }
             ]
         },
@@ -56,24 +51,15 @@
     ],
     "owningMeasureToolList": [
         0,
-        1,
-        4
+        1
     ],
     "researchSaveData": {
-        "progressingMeasureToolReaserchList": [
-            {
-                "fileName": "fireAuto",
-                "researchedTime": 7
-            },
-            {
-                "fileName": "airTool",
-                "researchedTime": 3
-            }
-        ],
+        "progressingMeasureToolReaserchList": [],
         "endMeasureToolResearchList": [
             "waterTool",
             "fireTool",
-            "waterAuto"
+            "earthTool",
+            "airTool"
         ]
     },
     "bookMarkNumber": 3,

@@ -34,6 +34,7 @@ public class FireTool : MeasureTool
             dust.SetActive(true);
             dustObjectArray[i] = dust;
         }
+        ExplainLoad();
 
     }
 
@@ -110,6 +111,14 @@ public class FireTool : MeasureTool
             }
         }
         symptomText.gameObject.SetActive(false);
+
+    }
+
+    protected override void ExplainLoad()
+    {
+        base.ExplainLoad();
+        explainData = gameManager.jsonManager.ResourceDataLoad<MeasureToolExplain>("MeasureToolExplain/Fire");
+        ExplainSet();
     }
 
     protected override void MeasureEnd()

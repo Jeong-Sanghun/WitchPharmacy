@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeasureTool : MonoBehaviour    //SH
 {
-    GameManager gameManager;
+    protected GameManager gameManager;
     [SerializeField]
     MeasureToolManager measureToolManager;
     [SerializeField]
@@ -13,6 +14,19 @@ public class MeasureTool : MonoBehaviour    //SH
     CounterManager countermanager;
     [SerializeField]
     SymptomChartManager symptomChartManager;
+    protected MeasureToolExplain explainData;
+
+    [SerializeField]
+    GameObject explainOpenButton;
+    [SerializeField]
+    GameObject explainCanvas;
+    [SerializeField]
+    Text explainTitle;
+    [SerializeField]
+    Text explainExplain;
+    [SerializeField]
+    Image explainSprite;
+
 
     [SerializeField]
     protected GameObject toolObject;
@@ -37,10 +51,29 @@ public class MeasureTool : MonoBehaviour    //SH
         
     }
 
+    protected virtual void ExplainLoad()
+    {
+
+    }
+
+    protected virtual void ExplainSet()
+    {
+        explainTitle.text = explainData.title;
+        explainExplain.text = explainData.explain;
+        explainSprite.sprite = explainData.LoadImage();
+    }
+
+    public void ExplainActive(bool active)
+    {
+        explainCanvas.SetActive(active);
+        explainOpenButton.SetActive(!active);
+    }
+
     //measureToolManager에서 켜줄거임. MeasurTool[5]개로 받아올거
     public virtual void ToolActive(bool active)
     {
         toolObject.SetActive(active);
+        ExplainActive(!active);
     }
 
     //measureToolManager에서 불러줌씨발;
@@ -51,6 +84,8 @@ public class MeasureTool : MonoBehaviour    //SH
         toolIndex = index;
         isAuto = auto;
     }
+
+    
 
     //상속된것들에서 씀
     protected virtual void MeasureEnd()

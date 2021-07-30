@@ -9,6 +9,7 @@ TagManager:
   - RecycleBin
   - Visitor
   - Dust
+  - Glyph
   layers:
   - Default
   - TransparentFX

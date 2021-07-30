@@ -17,7 +17,7 @@ public class WaterTool : MeasureTool
     protected override void Start()
     {
         base.Start();
-
+        ExplainLoad();
     }
 
 
@@ -83,6 +83,12 @@ public class WaterTool : MeasureTool
             MeasureEnd();
         }
 
+    }
+    protected override void ExplainLoad()
+    {
+        base.ExplainLoad();
+        explainData = gameManager.jsonManager.ResourceDataLoad<MeasureToolExplain>("MeasureToolExplain/Water");
+        ExplainSet();
     }
 
     protected override void MeasureEnd()
