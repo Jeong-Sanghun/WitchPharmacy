@@ -18,6 +18,8 @@ public class TabletManager : MonoBehaviour
     GameObject tabletCanvasParent;
     [SerializeField]
     GameObject wholeTabletParent;
+    [SerializeField]
+    GameObject homeButton;
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,6 +49,7 @@ public class TabletManager : MonoBehaviour
     public void TabletOpenButtonActive(bool active)
     {
         wholeTabletParent.SetActive(active);
+        homeButton.SetActive(true);
         if (active == false)
         {
             tabletBillManager.WholeButtonOff();
@@ -55,12 +58,22 @@ public class TabletManager : MonoBehaviour
         }
     }
 
+    public void OnHomeButton()
+    {
+        wholeTabletParent.SetActive(true);
+        tabletBillManager.WholeButtonOff();
+        tabletDocumentManager.WholeButtonOff();
+        tabletSaveManager.WholeButtonOff();
+    }
+
     public void ForceSaveButtonActive(bool forceSave,SaveTime saveTime)
     {
+
         tabletCanvasParent.SetActive(true);
         tabletSaveManager.SaveCanvasActive(true);
         if (forceSave)
         {
+            homeButton.SetActive(false);
             tabletSaveManager.OnOpenedForceSave(saveTime);
         }
     }

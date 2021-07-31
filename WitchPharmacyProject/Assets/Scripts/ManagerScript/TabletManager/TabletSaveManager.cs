@@ -17,13 +17,27 @@ public class TabletSaveManager : MonoBehaviour
     [SerializeField]
     GameObject[] getOutButtons;
     [SerializeField]
+    GameObject loadButton;
+    [SerializeField]
     Text[] buttonTextArray;
     [SerializeField]
     Button saveButton;
+    [SerializeField]
+    GameObject alertCanvas;
+
+    [SerializeField]
+    Text alertTitle;
+    [SerializeField]
+    Text alertText;
+    [SerializeField]
+    Text yesText;
+    [SerializeField]
+    Text noText;
 
     SaveDataTime[] saveDataTimeArray;
     UILanguagePack languagePack;
 
+    int nowAlertSaveIndex = -1;
     bool isSavingMode = false;
     bool isForceSave = false;
     SaveTime nowSaveTime;
@@ -34,6 +48,10 @@ public class TabletSaveManager : MonoBehaviour
         tabletManager = TabletManager.inst;
         languagePack = gameManager.languagePack;
         saveDataTimeArray = gameManager.saveDataTimeWrapper.saveDataTimeList;
+        alertTitle.text = languagePack.alertTitle;
+        alertText.text = languagePack.alertText;
+        yesText.text = languagePack.yes;
+        noText.text = languagePack.no;
         for(int i = 0; i < 4; i++)
         {
             SetButtonText(i);
@@ -73,6 +91,7 @@ public class TabletSaveManager : MonoBehaviour
     {
 
         saveButton.gameObject.SetActive(false);
+        loadButton.SetActive(true);
         saveLoadCanvas.SetActive(active);
     }
 
@@ -82,6 +101,7 @@ public class TabletSaveManager : MonoBehaviour
         nowSaveTime = saveTime;
         //saveButton.enabled = true;
         saveButton.gameObject.SetActive(true);
+        loadButton.SetActive(false);
         for (int i = 0; i < 4; i++)
         {
             SetButtonText(i);
@@ -108,7 +128,17 @@ public class TabletSaveManager : MonoBehaviour
     public void WholeButtonOff()
     {
         saveButtonCanvas.SetActive(false);
+        alertCanvas.SetActive(false);
         saveLoadCanvas.SetActive(false);
+    }
+
+    public void DontSaveGoAheadButton()
+    {
+        tabletManager.OnTabletButton(false);
+        SaveOrLoadButtonCanvasGetout();
+        SaveCanvasActive(false);
+        gameManager.LoadJson(0);
+        tabletManager.SetOnSaveDataLoad();
     }
 
     public void SaveOrLoadButtonDown(int index)
@@ -116,22 +146,31 @@ public class TabletSaveManager : MonoBehaviour
 
         if (isSavingMode)
         {
-            gameManager.SaveJson(index,nowSaveTime);
-            if (isForceSave)
+            if(saveDataTimeArray[index].day == -1)
             {
-                for (int i = 0; i < getOutButtons.Length; i++)
+                gameManager.SaveJson(index, nowSaveTime);
+                if (isForceSave)
                 {
-                    getOutButtons[i].SetActive(true);
-                }
-                isForceSave = false;
-                tabletManager.OnTabletButton(false);
-                SaveOrLoadButtonCanvasGetout();
-                SaveCanvasActive(false);
-               
-               // gameManager.sceneManager.lastSceneName = 
-                gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
+                    for (int i = 0; i < getOutButtons.Length; i++)
+                    {
+                        getOutButtons[i].SetActive(true);
+                    }
+                    isForceSave = false;
+                    tabletManager.OnTabletButton(false);
+                    SaveOrLoadButtonCanvasGetout();
+                    SaveCanvasActive(false);
 
+                    // gameManager.sceneManager.lastSceneName = 
+                    gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
+
+                }
             }
+            else
+            {
+                nowAlertSaveIndex = index;
+                alertCanvas.SetActive(true);
+            }
+           
         }
         else
         {
@@ -147,5 +186,29 @@ public class TabletSaveManager : MonoBehaviour
             SetButtonText(i);
         }
 
+    }
+
+    public void AlertYesButton()
+    {
+        alertCanvas.SetActive(false);
+        gameManager.SaveJson(nowAlertSaveIndex, nowSaveTime);
+
+        for (int i = 0; i < getOutButtons.Length; i++)
+        {
+            getOutButtons[i].SetActive(true);
+        }
+        isForceSave = false;
+        tabletManager.OnTabletButton(false);
+        SaveOrLoadButtonCanvasGetout();
+        SaveCanvasActive(false);
+
+        // gameManager.sceneManager.lastSceneName = 
+        gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
+
+    }
+
+    public void AlertNoButton()
+    {
+        alertCanvas.SetActive(false);
     }
 }

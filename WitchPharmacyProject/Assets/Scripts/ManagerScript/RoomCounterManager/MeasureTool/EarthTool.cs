@@ -48,6 +48,7 @@ public class EarthTool : MeasureTool
         ExplainLoad();
     }
 
+    
 
     // Update is called once per frame
     void Update()
@@ -115,7 +116,7 @@ public class EarthTool : MeasureTool
                         }
                         else
                         {
-                            glyphArray[chosenGlyphIndex].rigid.AddForce((glyphArray[chosenGlyphIndex].obj.transform.position - Vector3.zero).normalized * 2, ForceMode2D.Impulse);
+                            glyphArray[chosenGlyphIndex].rigid.AddForce((glyphArray[chosenGlyphIndex].obj.transform.position - Vector3.zero).normalized * 20, ForceMode2D.Impulse);
                         }
                     }
                    
@@ -132,17 +133,24 @@ public class EarthTool : MeasureTool
             BoundGlyphs();
             
         }
-        
     }
 
     public override void ToolActive(bool active)
     {
         base.ToolActive(active);
         measureStarted = true;
+
         if (isAuto == true && measureEnd == false)
         {
 
             MeasureEnd();
+        }
+        else
+        {
+            if (active == true)
+            {
+                MoveGlyphs();
+            }
         }
         StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
     }
@@ -158,7 +166,7 @@ public class EarthTool : MeasureTool
         else
         {
             GenerateGlyphs();
-            
+            MoveGlyphs();
         }
     }
 

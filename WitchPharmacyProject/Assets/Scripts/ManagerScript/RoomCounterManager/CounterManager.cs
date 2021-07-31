@@ -132,8 +132,8 @@ public class CounterManager : MonoBehaviour //SH
         //owningMedicineDictionary = saveData.owningMedicineDictionary;
         endSales = false;
 
-        visitorAppearPos = new Vector3(-7.06f, 0.88f, -1);
-        visitorDisappearPos = new Vector3(-7.06f, -12, -1);
+        visitorAppearPos = new Vector3(-7.06f, 0.88f, 2f);
+        visitorDisappearPos = new Vector3(-7.06f, -12, 2f);
         gainedCoinObjectOriginPos = gainedCoinText.transform.position;
         gainedMedicineObjectOriginPos = gainedMedicineImage.transform.position;
 

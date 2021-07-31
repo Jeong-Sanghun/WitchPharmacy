@@ -1,7 +1,7 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 3,
+    "nowDay": 4,
     "coin": 700,
     "owningMedicineList": [
         {
@@ -51,6 +51,11 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         }
     ],
     "owningDocumentList": [],
@@ -66,14 +71,20 @@
         2
     ],
     "researchSaveData": {
-        "progressingMeasureToolReaserchList": [],
+        "progressingMeasureToolReaserchList": [
+            {
+                "fileName": "earthAuto",
+                "researchedTime": 6
+            }
+        ],
         "endMeasureToolResearchList": [
             "waterTool",
             "fireTool",
             "earthTool",
             "airTool",
             "airAuto",
-            "fireAuto"
+            "fireAuto",
+            "waterAuto"
         ]
     },
     "bookMarkNumber": 3,

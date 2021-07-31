@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 7200.0,
-    "nowDay": 1,
-    "coin": 900,
+    "nowDay": 0,
+    "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 0,
@@ -17,17 +17,6 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
             "billList": []
         }
     ],
@@ -38,15 +27,10 @@
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [
-        0
-    ],
+    "owningMeasureToolList": [],
     "researchSaveData": {
         "progressingMeasureToolReaserchList": [],
-        "endMeasureToolResearchList": [
-            "waterTool",
-            "fireTool"
-        ]
+        "endMeasureToolResearchList": []
     },
     "bookMarkNumber": 3,
     "nextLoadSceneName": "StoryScene",

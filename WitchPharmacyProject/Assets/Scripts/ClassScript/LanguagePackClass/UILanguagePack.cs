@@ -20,6 +20,10 @@ public class UILanguagePack
     public string slotEmpty;
     public string explain;
     public string neededResearch;
+    public string alertTitle;
+    public string alertText;
+    public string yes;
+    public string no;
     public string[] saveTimeArray;
     public string[] reasonArray;
     public string[] characterNameArray;
