@@ -52,7 +52,6 @@ public class SymptomBookManager : MonoBehaviour
             if (bookMarkNumber < gameManager.saveData.bookMarkNumber)
             {
                 bookMarkIndexList.Add(pageBundleList.Count);
-                Debug.Log(nowPages);
                 GameObject inst = Instantiate(bookMarkPrefab, pageBundleParent);
                 int dele = bookMarkNumber;
                 inst.GetComponent<Button>().onClick.AddListener(() => BookMarkButton(dele));

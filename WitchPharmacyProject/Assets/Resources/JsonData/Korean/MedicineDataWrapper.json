@@ -1,73 +1,6 @@
 {
     "medicineDataList": [
         {
-            "fileName": "fire+air--",
-            "firstName": "타오르는",
-            "secondName": "증서",
-            "toolTip": "태우려고 해도 약속은 사라지지 않는다.",
-            "firstSymptomText": "fire",
-            "secondSymptomText": "air",
-            "firstNumber": "1",
-            "secondNumber": "-2",
-            "cost": "3"
-        },
-        {
-            "fileName": "light-air++",
-            "firstName": "저주받은",
-            "secondName": "묘비 조각",
-            "toolTip": "누구의 묘비인지는 모르지만, 원한이 담겨있는 것 같습니다.",
-            "firstSymptomText": "light",
-            "secondSymptomText": "air",
-            "firstNumber": "-1",
-            "secondNumber": "2",
-            "cost": "3"
-        },
-        {
-            "fileName": "dir+air--",
-            "firstName": "자라나는",
-            "secondName": "약속",
-            "toolTip": "약속을 지키기 위해 늘어가는 새로운 약속들.",
-            "firstSymptomText": "earth",
-            "secondSymptomText": "air",
-            "firstNumber": "1",
-            "secondNumber": "-2",
-            "cost": "3"
-        },
-        {
-            "fileName": "water+air--",
-            "firstName": "무미건조한",
-            "secondName": "계획",
-            "toolTip": "자신과의 의미없는 약속들은 늘어만 간다.",
-            "firstSymptomText": "water",
-            "secondSymptomText": "air",
-            "firstNumber": "-1",
-            "secondNumber": "-2",
-            "cost": "3"
-        },
-        {
-            "fileName": "water+air--",
-            "firstName": "흘러넘치는",
-            "secondName": "중압감",
-            "toolTip": "많은 시선이 느껴진다.",
-            "firstSymptomText": "water",
-            "secondSymptomText": "air",
-            "firstNumber": "1",
-            "secondNumber": "-2",
-            "cost": "3"
-        },
-        {
-            "fileName": "fire-air--",
-            "firstName": "제오헨의",
-            "secondName": "합리화",
-            "toolTip": "이건 모두를 위해서야.",
-            "firstSymptomText": "fire",
-            "secondSymptomText": "air",
-            "firstNumber": "-1",
-            "secondNumber": "-2",
-            "cost": "3"
-        },
-        {
-            "fileName": "light+air--",
             "firstName": "빛나는",
             "secondName": "대머리풀",
             "toolTip": "가벼워 보이지만 마음만은 무겁다.",
@@ -78,7 +11,66 @@
             "cost": "3"
         },
         {
-            "fileName": "dirt-air--",
+            "firstName": "저주받은",
+            "secondName": "묘비 조각",
+            "toolTip": "누구의 묘비인지는 모르지만, 원한이 담겨있는 것 같습니다.",
+            "firstSymptomText": "light",
+            "secondSymptomText": "air",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "타오르는",
+            "secondName": "증서",
+            "toolTip": "태우려고 해도 약속은 사라지지 않는다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "air",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "제오헨의",
+            "secondName": "합리화",
+            "toolTip": "이건 모두를 위해서야.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "air",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "흘러넘치는",
+            "secondName": "시선",
+            "toolTip": "많은 시선이 느껴진다.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "air",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "무미건조한",
+            "secondName": "계획",
+            "toolTip": "자신과의 의미없는 약속들은 늘어만 간다.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "air",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "자라나는",
+            "secondName": "약속",
+            "toolTip": "약속을 지키기 위해 늘어가는 새로운 약속들.",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "air",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
             "firstName": "도시인의",
             "secondName": "무게",
             "toolTip": "많은 규칙들과 시선의 무게에 짓눌린 마음.",
@@ -89,73 +81,6 @@
             "cost": "3"
         },
         {
-            "fileName": "water+air++",
-            "firstName": "섬의",
-            "secondName": "바람",
-            "toolTip": "드넓은 바다의 자유로움을 잠시라도 느껴보세요.",
-            "firstSymptomText": "water",
-            "secondSymptomText": "air",
-            "firstNumber": "1",
-            "secondNumber": "2",
-            "cost": "3"
-        },
-        {
-            "fileName": "water-air++",
-            "firstName": "사함의",
-            "secondName": "자신감",
-            "toolTip": "사함은 자신감에 가득 차 마법진에 대한 설명을 적지 않았다고 전해진다.",
-            "firstSymptomText": "water",
-            "secondSymptomText": "air",
-            "firstNumber": "-1",
-            "secondNumber": "2",
-            "cost": "3"
-        },
-        {
-            "fileName": "fire+air++",
-            "firstName": "작열하는",
-            "secondName": "구름",
-            "toolTip": "겨울철 이불 안에 소량 넣으면 따듯합니다.",
-            "firstSymptomText": "fire",
-            "secondSymptomText": "air",
-            "firstNumber": "1",
-            "secondNumber": "2",
-            "cost": "3"
-        },
-        {
-            "fileName": "fire-air++",
-            "firstName": "설산의",
-            "secondName": "바람",
-            "toolTip": "찬 바람을 타고 자유롭게 흩어진다.",
-            "firstSymptomText": "fire",
-            "secondSymptomText": "air",
-            "firstNumber": "-1",
-            "secondNumber": "2",
-            "cost": "3"
-        },
-        {
-            "fileName": "dirt+air++",
-            "firstName": "피어나는",
-            "secondName": "자유",
-            "toolTip": "관상용으로 좋습니다.",
-            "firstSymptomText": "earth",
-            "secondSymptomText": "air",
-            "firstNumber": "1",
-            "secondNumber": "2",
-            "cost": "3"
-        },
-        {
-            "fileName": "dirt-air++",
-            "firstName": "인공적인",
-            "secondName": "날개",
-            "toolTip": "하늘을 날고 싶어하던 인간의 염원을 이루어냈습니다. 태양과 너무 가까워지지 않도록 조심하세요.",
-            "firstSymptomText": "earth",
-            "secondSymptomText": "air",
-            "firstNumber": "-1",
-            "secondNumber": "2",
-            "cost": "3"
-        },
-        {
-            "fileName": "light+air++",
             "firstName": "신성한",
             "secondName": "구름",
             "toolTip": "폭신폭신합니다.  감성적인 조명으로 사용해보세요.",
@@ -166,7 +91,6 @@
             "cost": "3"
         },
         {
-            "fileName": "light-air++",
             "firstName": "부패한",
             "secondName": "날개",
             "toolTip": "자유롭지만 사랑받지는 못합니다.",
@@ -177,68 +101,223 @@
             "cost": "3"
         },
         {
-            "fileName": "fire+water--",
-            "firstName": "뜨거운",
-            "secondName": "가루",
-            "toolTip": "매운 것을 넘어 뜨겁습니다. 섭취 시 화상에 주의하세요.",
+            "firstName": "작열하는",
+            "secondName": "구름",
+            "toolTip": "겨울철 이불 안에 소량 넣으면 따듯합니다.",
             "firstSymptomText": "fire",
-            "secondSymptomText": "water",
+            "secondSymptomText": "air",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "설산의",
+            "secondName": "바람",
+            "toolTip": "찬 바람을 타고 자유롭게 흩어진다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "air",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "섬의",
+            "secondName": "바람",
+            "toolTip": "드넓은 바다의 자유로움을 잠시라도 느껴보세요.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "air",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "사함의",
+            "secondName": "자신감",
+            "toolTip": "사함은 자신감에 가득 차 마법진에 대한 설명을 적지 않았다고 전해진다.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "air",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "피어나는",
+            "secondName": "자유",
+            "toolTip": "관상용으로 좋습니다.",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "air",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "인공적인",
+            "secondName": "날개",
+            "toolTip": "하늘을 날고 싶어하던 인간의 염원을 이루어냈습니다. 태양과 너무 가까워지지 않도록 조심하세요.",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "air",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "마법소녀",
+            "secondName": "시리얼",
+            "toolTip": "마법약사 루엘리아도 좋아하는 시리얼!",
+            "firstSymptomText": "light",
+            "secondSymptomText": "earth",
             "firstNumber": "1",
             "secondNumber": "-2",
             "cost": "3"
         },
         {
-            "fileName": "fire-water--",
-            "firstName": "냉동",
-            "secondName": "분말",
-            "toolTip": "건조된 분말을 얼렸습니다. 절대 상하지 않겠군요!",
-            "firstSymptomText": "fire",
-            "secondSymptomText": "water",
+            "firstName": "어둠의",
+            "secondName": "데이터칩",
+            "toolTip": "그들은 돌아올 것입니다.",
+            "firstSymptomText": "light",
+            "secondSymptomText": "earth",
             "firstNumber": "-1",
             "secondNumber": "-2",
             "cost": "3"
         },
         {
-            "fileName": "dirt+water--",
-            "firstName": "헤이모프의",
-            "secondName": "갈증",
-            "toolTip": "누군가가 이미 마셔버렸습니다...",
-            "firstSymptomText": "earth",
-            "secondSymptomText": "water",
+            "firstName": "불닭맛",
+            "secondName": "사탕",
+            "toolTip": "맵고달지만 짜지는 않습니다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "earth",
             "firstNumber": "1",
             "secondNumber": "-2",
             "cost": "3"
         },
         {
-            "fileName": "dirt-water--",
-            "firstName": "인공",
-            "secondName": "가뭄",
-            "toolTip": "물의 순환을 멈추는 장치입니다. 어떤 결과로 이어질지는 아직 아무도 모릅니다...",
-            "firstSymptomText": "earth",
-            "secondSymptomText": "water",
+            "firstName": "얼어붙은",
+            "secondName": "기계상자",
+            "toolTip": "더운 날이면 상자를 열어놓고 찬 바람을 느끼고 싶어집니다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "earth",
             "firstNumber": "-1",
             "secondNumber": "-2",
             "cost": "3"
         },
         {
-            "fileName": "air+water--",
+            "firstName": "소나의",
+            "secondName": "물레",
+            "toolTip": "물흐르듯 수월하게 도자기를 만들 수 있습니다.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "earth",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "건조한",
+            "secondName": "가공식품",
+            "toolTip": "별사탕은 안들어있습니다.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "earth",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "공기가득",
+            "secondName": "스낵",
+            "toolTip": "공기를 구매하시면 과자를 사은품으로 드립니다!",
+            "firstSymptomText": "air",
+            "secondSymptomText": "earth",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "통제된",
+            "secondName": "코어장치",
+            "toolTip": "주인의 명령을 거부한 자동인형의 최후",
+            "firstSymptomText": "air",
+            "secondSymptomText": "earth",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "호박빛",
+            "secondName": "고구마",
+            "toolTip": "고구마빛 호박 아닙니다.",
+            "firstSymptomText": "light",
+            "secondSymptomText": "earth",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "그림자",
+            "secondName": "꽃",
+            "toolTip": "밤에는 찾기 힘듭니다.",
+            "firstSymptomText": "light",
+            "secondSymptomText": "earth",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "불타는",
+            "secondName": "잎사귀",
+            "toolTip": "잡내 제거에 좋습니다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "earth",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "얼어붙은",
+            "secondName": "열매",
+            "toolTip": "급하게 먹으면 머리가 아픕니다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "earth",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "흐름의",
+            "secondName": "물고기",
+            "toolTip": "말그대로 물만난 물고기입니다.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "earth",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "건조된",
+            "secondName": "열매",
+            "toolTip": "빵 속에 잔뜩 들어있었습니다.",
+            "firstSymptomText": "water",
+            "secondSymptomText": "earth",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
             "firstName": "흩날리는",
-            "secondName": "미세먼지",
-            "toolTip": "마스크 착용은 필수!",
+            "secondName": "꽃잎",
+            "toolTip": "흩날려라!",
             "firstSymptomText": "air",
-            "secondSymptomText": "water",
+            "secondSymptomText": "earth",
             "firstNumber": "1",
-            "secondNumber": "-2",
+            "secondNumber": "2",
             "cost": "3"
         },
         {
-            "firstName": "무거운",
-            "secondName": "가루",
-            "toolTip": "세상에서 가장 부피대비 무거운 물질이라고 합니다.",
+            "firstName": "유이젤의",
+            "secondName": "머리카락",
+            "toolTip": "색이 계속하여 변하는 신비로운 실",
             "firstSymptomText": "air",
-            "secondSymptomText": "water",
+            "secondSymptomText": "earth",
             "firstNumber": "-1",
-            "secondNumber": "-2",
+            "secondNumber": "2",
             "cost": "3"
         },
         {
@@ -259,6 +338,86 @@
             "secondSymptomText": "water",
             "firstNumber": "-1",
             "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "뜨거운",
+            "secondName": "가루",
+            "toolTip": "매운 것을 넘어 뜨겁습니다. 섭취 시 화상에 주의하세요.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "water",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "냉동",
+            "secondName": "분말",
+            "toolTip": "건조된 분말을 얼렸습니다. 절대 상하지 않겠군요!",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "water",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "헤이모프의",
+            "secondName": "갈증",
+            "toolTip": "누군가가 이미 마셔버렸습니다...",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "water",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "인공",
+            "secondName": "가뭄",
+            "toolTip": "물의 순환을 멈추는 장치입니다. 어떤 결과로 이어질지는 아직 아무도 모릅니다...",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "water",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "흩날리는",
+            "secondName": "미세먼지",
+            "toolTip": "마스크 착용은 필수!",
+            "firstSymptomText": "air",
+            "secondSymptomText": "water",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "무거운",
+            "secondName": "가루",
+            "toolTip": "세상에서 가장 부피대비 무거운 물질이라고 합니다.",
+            "firstSymptomText": "air",
+            "secondSymptomText": "water",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "라이제르하의",
+            "secondName": "눈물",
+            "toolTip": "짜다.",
+            "firstSymptomText": "light",
+            "secondSymptomText": "water",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "악마의",
+            "secondName": "피",
+            "toolTip": "부어먹으면 눅눅해집니다.",
+            "firstSymptomText": "light",
+            "secondSymptomText": "water",
+            "firstNumber": "-1",
+            "secondNumber": "2",
             "cost": "3"
         },
         {
@@ -322,23 +481,23 @@
             "cost": "3"
         },
         {
-            "firstName": "라이제르하의",
-            "secondName": "눈물",
-            "toolTip": "짜다.",
+            "firstName": "정령의",
+            "secondName": "냉소",
+            "toolTip": "무심한듯 시크합니다.",
             "firstSymptomText": "light",
-            "secondSymptomText": "water",
+            "secondSymptomText": "fire",
             "firstNumber": "1",
-            "secondNumber": "2",
+            "secondNumber": "-2",
             "cost": "3"
         },
         {
-            "firstName": "악마의",
-            "secondName": "피",
-            "toolTip": "부어먹으면 눅눅해집니다.",
+            "firstName": "칠흑같은",
+            "secondName": "냉정",
+            "toolTip": "생각의 가성비를 찾게 해줍니다.",
             "firstSymptomText": "light",
-            "secondSymptomText": "water",
+            "secondSymptomText": "fire",
             "firstNumber": "-1",
-            "secondNumber": "2",
+            "secondNumber": "-2",
             "cost": "3"
         },
         {
@@ -354,6 +513,7 @@
         {
             "firstName": "사막의",
             "secondName": "서리",
+            "toolTip": "춥고 건조한 겨울입니다. 정전기가 많이 나겠네요.",
             "firstSymptomText": "water",
             "secondSymptomText": "fire",
             "firstNumber": "-1",
@@ -383,6 +543,7 @@
         {
             "firstName": "흩날리는",
             "secondName": "냉기",
+            "toolTip": "여름철 가장 잘팔리는 제품 1위입니다.",
             "firstSymptomText": "air",
             "secondSymptomText": "fire",
             "firstNumber": "1",
@@ -392,7 +553,7 @@
         {
             "firstName": "축적된",
             "secondName": "얼음",
-            "toolTip": "오랜 세월의 무게만큼이나 단단한 얼음입니다.",
+            "toolTip": "오랜 기간동안 녹지 않은 얼음입니다. 세월의 무게만큼이나 단단한 얼음입니다.",
             "firstSymptomText": "air",
             "secondSymptomText": "fire",
             "firstNumber": "-1",
@@ -400,28 +561,29 @@
             "cost": "3"
         },
         {
-            "firstName": "정령의",
-            "secondName": "무심함",
+            "firstName": "찬란한",
+            "secondName": "화염",
+            "toolTip": "별똥별을 보고 소원을 빌기에는 너무 시간이 짧았나요? 이제 여유롭게 생각하셔도 좋습니다.",
             "firstSymptomText": "light",
             "secondSymptomText": "fire",
             "firstNumber": "1",
-            "secondNumber": "-2",
+            "secondNumber": "2",
             "cost": "3"
         },
         {
-            "firstName": "칠흑같은",
-            "secondName": "냉정",
-            "toolTip": "생각의 가성비.",
+            "firstName": "원망의",
+            "secondName": "불꽃",
+            "toolTip": "샤라이에서는 원망이 당신을 불꽃합니다!",
             "firstSymptomText": "light",
             "secondSymptomText": "fire",
             "firstNumber": "-1",
-            "secondNumber": "-2",
+            "secondNumber": "2",
             "cost": "3"
         },
         {
             "firstName": "공감하는",
             "secondName": "불꽃",
-            "toolTip": "꼭 내 마음을 알아주는 것 같다니까요.",
+            "toolTip": "당신의 마음처럼 타들어갑니다. 그것이 불꽃이니까.",
             "firstSymptomText": "water",
             "secondSymptomText": "fire",
             "firstNumber": "1",
@@ -429,8 +591,9 @@
             "cost": "3"
         },
         {
-            "firstName": "메마른",
-            "secondName": "열정",
+            "firstName": "갈증의",
+            "secondName": "열망",
+            "toolTip": "욕망을 향한 갈증은 채워지지 않는다.",
             "firstSymptomText": "water",
             "secondSymptomText": "fire",
             "firstNumber": "-1",
@@ -438,6 +601,9 @@
             "cost": "3"
         },
         {
+            "firstName": "피어난",
+            "secondName": "화염",
+            "toolTip": "아주아주 뜨거운 열매입니다.",
             "firstSymptomText": "earth",
             "secondSymptomText": "fire",
             "firstNumber": "1",
@@ -445,6 +611,9 @@
             "cost": "3"
         },
         {
+            "firstName": "휴대용",
+            "secondName": "용의숨결",
+            "toolTip": "우리는 이것을 \"라이터\"라고 부르기로 약속했습니다.",
             "firstSymptomText": "earth",
             "secondSymptomText": "fire",
             "firstNumber": "-1",
@@ -454,7 +623,7 @@
         {
             "firstName": "지오니에의",
             "secondName": "열정",
-            "toolTip": "아무도 그녀의 열정을 막을 수는 없었다.",
+            "toolTip": "불처럼 타오르는 열정",
             "firstSymptomText": "air",
             "secondSymptomText": "fire",
             "firstNumber": "1",
@@ -472,18 +641,161 @@
             "cost": "3"
         },
         {
-            "firstSymptomText": "light",
-            "secondSymptomText": "fire",
+            "firstName": "가비아의",
+            "secondName": "재앙",
+            "toolTip": "스스로 불러온 재앙에 짓눌려",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "light",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "한기서린",
+            "secondName": "공허",
+            "toolTip": "주변의 열기를 삼켜버립니다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "light",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "축축한",
+            "secondName": "그림자",
+            "toolTip": "바닥에 비친 눅눅해진 자신의 모습",
+            "firstSymptomText": "water",
+            "secondSymptomText": "light",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "사함의",
+            "secondName": "악의",
+            "toolTip": "악의만 없다면 용서할 수 있지만...",
+            "firstSymptomText": "water",
+            "secondSymptomText": "light",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "숲의",
+            "secondName": "악몽",
+            "toolTip": "현실과 꿈을 구분하기 힘듭니다",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "light",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "1회용",
+            "secondName": "어둠",
+            "toolTip": "편리하게 사용할 수 있도록 포장된 어둠입니다.",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "light",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "자유로운",
+            "secondName": "그림자",
+            "toolTip": "스스로를 자유롭다고 생각하지만 결국 약재로 쓰일 뿐입니다.",
+            "firstSymptomText": "air",
+            "secondSymptomText": "light",
+            "firstNumber": "1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "억압된",
+            "secondName": "저주",
+            "toolTip": "\"봉인되었다\" 라고도 표현합니다.",
+            "firstSymptomText": "air",
+            "secondSymptomText": "light",
+            "firstNumber": "-1",
+            "secondNumber": "-2",
+            "cost": "3"
+        },
+        {
+            "firstName": "열렬한",
+            "secondName": "희망",
+            "toolTip": "타오르는 이 회로의 이름은 \"행복회로\"입니다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "light",
             "firstNumber": "1",
             "secondNumber": "2",
             "cost": "3"
         },
         {
-            "firstName": "원망의",
-            "secondName": "불꽃",
-            "toolTip": "꺼지지 않는 원망은 이곳까지 옮겨붙었다.",
-            "firstSymptomText": "light",
-            "secondSymptomText": "fire",
+            "firstName": "차가운",
+            "secondName": "별조각",
+            "toolTip": "이제 술잔 밑에 조명을 비출 필요가 없습니다.",
+            "firstSymptomText": "fire",
+            "secondSymptomText": "light",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "물에 녹은",
+            "secondName": "별빛",
+            "toolTip": "당신의 오늘은 어떤 색인가요?",
+            "firstSymptomText": "water",
+            "secondSymptomText": "light",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "사막의",
+            "secondName": "달빛",
+            "toolTip": "양 한마리를 그려주세요",
+            "firstSymptomText": "water",
+            "secondSymptomText": "light",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "결실의",
+            "secondName": "프리즘",
+            "toolTip": "무지개열매라고도 불립니다.",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "light",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "인공",
+            "secondName": "무지개",
+            "toolTip": "고대의 기계들은 이 무지개를 먹었다고 합니다.",
+            "firstSymptomText": "earth",
+            "secondSymptomText": "light",
+            "firstNumber": "-1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "하늘의",
+            "secondName": "섬광",
+            "toolTip": "이 빛은 여자를 밝힙니다",
+            "firstSymptomText": "air",
+            "secondSymptomText": "light",
+            "firstNumber": "1",
+            "secondNumber": "2",
+            "cost": "3"
+        },
+        {
+            "firstName": "묵직한",
+            "secondName": "햇살",
+            "toolTip": "너무 오래 들여다보면 눈이 멀 수도 있습니다.",
+            "firstSymptomText": "air",
+            "secondSymptomText": "light",
             "firstNumber": "-1",
             "secondNumber": "2",
             "cost": "3"

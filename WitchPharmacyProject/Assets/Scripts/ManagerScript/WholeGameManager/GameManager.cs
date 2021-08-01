@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour //SH
         if(sceneManager.nowSaveIndex == -1)
         {
             saveData = new SaveDataClass();
+            saveData.AddMedicineBySymptom(medicineDataWrapper, Symptom.water, Symptom.fire);
         }
         else
         {

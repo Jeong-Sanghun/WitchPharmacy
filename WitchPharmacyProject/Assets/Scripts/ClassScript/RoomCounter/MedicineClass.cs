@@ -51,6 +51,25 @@ public class MedicineClass : SpecialMedicineClass  //SH
 
     public void ParseSymptom()
     {
+        StringBuilder nameBuilder = new StringBuilder(firstSymptom.ToString());
+        if (firstNumber == 1)
+        {
+            nameBuilder.Append("+");
+        }
+        else
+        {
+            nameBuilder.Append("-");
+        }
+        nameBuilder.Append(secondSymptom.ToString());
+        if (secondNumber == 2)
+        {
+            nameBuilder.Append("++");
+        }
+        else
+        {
+            nameBuilder.Append("--");
+        }
+        fileName = nameBuilder.ToString();
         firstSymptom = (Symptom)Enum.Parse(typeof(Symptom), firstSymptomText);
         secondSymptom = (Symptom)Enum.Parse(typeof(Symptom), secondSymptomText);
     }
@@ -92,31 +111,32 @@ public class MedicineClass : SpecialMedicineClass  //SH
         {
             return medicineImage;
         }
-        StringBuilder nameBuilder = new StringBuilder(firstSymptom.ToString());
-        if(firstNumber== 1)
-        {
-            nameBuilder.Append("+");
-        }
-        else
-        {
-            nameBuilder.Append("-");
-        }
-        nameBuilder.Append(secondSymptom.ToString());
-        if (secondNumber == 2)
-        {
-            nameBuilder.Append("++");
-        }
-        else
-        {
-            nameBuilder.Append("--");
-        }
+        //StringBuilder nameBuilder = new StringBuilder(firstSymptom.ToString());
+        //if(firstNumber== 1)
+        //{
+        //    nameBuilder.Append("+");
+        //}
+        //else
+        //{
+        //    nameBuilder.Append("-");
+        //}
+        //nameBuilder.Append(secondSymptom.ToString());
+        //if (secondNumber == 2)
+        //{
+        //    nameBuilder.Append("++");
+        //}
+        //else
+        //{
+        //    nameBuilder.Append("--");
+        //}
+        //fileName = nameBuilder.ToString();
 
         //nameBuilder.Append(" ");
         //nameBuilder.Append(secondName);
         if (medicineImage == null)
         {
             StringBuilder builder = new StringBuilder("Items/");
-            builder.Append(nameBuilder.ToString());
+            builder.Append(fileName);
             medicineImage = Resources.Load<Sprite>(builder.ToString());
         }
         return medicineImage;

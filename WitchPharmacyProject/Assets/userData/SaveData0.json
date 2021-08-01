@@ -1,12 +1,40 @@
 {
     "name": "initName",
-    "nowTime": 7200.0,
-    "nowDay": 4,
-    "coin": 700,
+    "nowTime": 43200.0,
+    "nowDay": 0,
+    "coin": 1034,
     "owningMedicineList": [
         {
-            "medicineIndex": 0,
-            "medicineCost": 30
+            "medicineIndex": 34,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 35,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 42,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 43,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 50,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 51,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 58,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 59,
+            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -19,43 +47,11 @@
             "wholeSpentCoin": 0,
             "billList": [
                 {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
                 }
             ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
         }
     ],
     "owningDocumentList": [],
@@ -65,27 +61,10 @@
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [
-        0,
-        1,
-        2
-    ],
+    "owningMeasureToolList": [],
     "researchSaveData": {
-        "progressingMeasureToolReaserchList": [
-            {
-                "fileName": "earthAuto",
-                "researchedTime": 6
-            }
-        ],
-        "endMeasureToolResearchList": [
-            "waterTool",
-            "fireTool",
-            "earthTool",
-            "airTool",
-            "airAuto",
-            "fireAuto",
-            "waterAuto"
-        ]
+        "progressingMeasureToolReaserchList": [],
+        "endMeasureToolResearchList": []
     },
     "bookMarkNumber": 3,
     "nextLoadSceneName": "StoryScene",

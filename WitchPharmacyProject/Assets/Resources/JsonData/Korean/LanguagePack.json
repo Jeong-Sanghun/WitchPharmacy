@@ -18,6 +18,8 @@
      "alertText" : "정말로 이 슬롯에 저장할까요?\n기존의 데이터가 삭제됩니다.",
      "yes" : "예",
      "no" : "아니오",
+	 "doResearch" : "연구하기",
+	 "priorResearchNeeded" : "선행 연구 필요",
 	 "saveTimeArray": [
         "탐험 시작",
         "하루 시작"

@@ -208,7 +208,6 @@ public class VisitorTriggerManager : MonoBehaviour
         //        return true;
         //    }
         //}
-        Debug.Log("여기");
         return false;
     }
 

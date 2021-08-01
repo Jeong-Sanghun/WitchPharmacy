@@ -57,7 +57,6 @@ public class SaveDataClass
         //ownedMedicineList = new List<int>();
         //ownedMedicineList.Add(0);
         owningMedicineList = new List<OwningMedicineClass>();
-        owningMedicineList.Add(new OwningMedicineClass(0, 30));
         owningSpecialMedicineList = new List<OwningMedicineClass>();
         //progressingQuestBundleName = new List<string>();
         //calledQuestBundleName = new List<string>();
@@ -82,7 +81,26 @@ public class SaveDataClass
         owningMeasureToolList = new List<int>();
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
+    }
 
+    public void AddMedicineBySymptom(MedicineDataWrapper dataWrapper, Symptom firstSymptom,Symptom secondSymptom)
+    {
+        List<MedicineClass> dataList = dataWrapper.medicineDataList;
+        for(int  i = 0; i < dataList.Count; i++)
+        {
+            if(dataList[i].GetFirstSymptom() == firstSymptom && dataList[i].GetSecondSymptom() == secondSymptom)
+            {
+                OwningMedicineClass owningMedicine = new OwningMedicineClass(i,dataList[i].cost);
+                owningMedicineList.Add(owningMedicine);
+            }
+            else if (dataList[i].GetFirstSymptom() == secondSymptom && dataList[i].GetSecondSymptom() == firstSymptom)
+            {
+
+                OwningMedicineClass owningMedicine = new OwningMedicineClass(i, dataList[i].cost);
+                owningMedicineList.Add(owningMedicine);
+            }
+        }
+        
 
     }
 }

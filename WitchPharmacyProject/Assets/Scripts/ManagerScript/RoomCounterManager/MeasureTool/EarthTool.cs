@@ -140,18 +140,22 @@ public class EarthTool : MeasureTool
         base.ToolActive(active);
         measureStarted = true;
 
-        if (isAuto == true && measureEnd == false)
+        if(measureEnd == false)
         {
-
-            MeasureEnd();
-        }
-        else
-        {
-            if (active == true)
+            if (isAuto == true)
             {
-                MoveGlyphs();
+
+                MeasureEnd();
+            }
+            else
+            {
+                if (active == true)
+                {
+                    MoveGlyphs();
+                }
             }
         }
+ 
         StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
     }
 
@@ -255,10 +259,14 @@ public class EarthTool : MeasureTool
     protected override void MeasureEnd()
     {
         base.MeasureEnd();
-        for(int i = 0; i < glyphArray.Length; i++)
+        if(glyphArray != null)
         {
-            glyphArray[i].obj.SetActive(false);
+            for (int i = 0; i < glyphArray.Length; i++)
+            {
+                glyphArray[i].obj.SetActive(false);
+            }
         }
+
         symptomText.gameObject.SetActive(true);
         symptomText.text = symptomNumber.ToString();
     }

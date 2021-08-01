@@ -83,6 +83,7 @@ public class RandomVisitorClass //SH
             symptomNumberArray[i] = 0;
         }
         int symptomNumber = Random.Range(1, 4);
+        //int symptomNumber = 3;
         if(symptomNumber > ownedMedicineList.Count)
         {
             symptomNumber = ownedMedicineList.Count;
@@ -149,6 +150,8 @@ public class RandomVisitorClass //SH
                     availableMedicineList.Add(medicine);
                 }
             }
+            Debug.Log(availableMedicineList.Count + "어베일 카운트");
+            Debug.Log(nowMedicineNumber+" : 나우 메디슨 넘버");
             //Debug.Log(availableMedicineList.Count +"이고 " + forIndex.ToString() +  "번째"); ;
             if (availableMedicineList.Count == 0)
             {
@@ -195,7 +198,7 @@ public class RandomVisitorClass //SH
                 symptomNumberArray[(int)answerMedicine.GetSecondSymptom()] += answerMedicine.secondNumber;
                 answerMedicineList.Add(answerMedicine);
                 nowMedicineNumber++;
-                break;
+                //  break;
             }
 
             availableMedicineList.Clear();

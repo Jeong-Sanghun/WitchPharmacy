@@ -107,7 +107,11 @@ public class CounterDialogManager : MonoBehaviour
         //백로그 버튼 누를떄
     public void OnBackLogButton()
     {
-        dialogMouseEventObject.SetActive(!dialogMouseEventObject.activeSelf);
+        if (nowTalking)
+        {
+            dialogMouseEventObject.SetActive(!dialogMouseEventObject.activeSelf);
+        }
+        
 
         backLogParent.SetActive(!backLogParent.activeSelf);
         if (nowBackLogIndex >= 3)
@@ -178,6 +182,7 @@ public class CounterDialogManager : MonoBehaviour
     public void OnVisitorVisit(RandomVisitorClass visitor)
     {
         nowTalking = true;
+        dialogMouseEventObject.SetActive(true);
         roomManager.ToCounterButton(false);
         InitializeBackLog();
         visitDialog = new List<string>();
@@ -213,7 +218,7 @@ public class CounterDialogManager : MonoBehaviour
     public void OnSpecialVisitorVisit(SpecialVisitorDialogBundle bundle,bool isSecond)
     {
         nowSpecialVisitorDialogBundle = bundle;
-
+        dialogMouseEventObject.SetActive(true);
         nowTalking = true;
         roomManager.ToCounterButton(false);
         InitializeBackLog();
@@ -255,6 +260,7 @@ public class CounterDialogManager : MonoBehaviour
     public void OnVisitorEnd(bool wrongMedicine)
     {
         nowTalking = true;
+        dialogMouseEventObject.SetActive(true);
         counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
@@ -275,6 +281,7 @@ public class CounterDialogManager : MonoBehaviour
     public void OnOddVisitorEnd(bool wrongMedicine)
     {
         nowTalking = true;
+        dialogMouseEventObject.SetActive(true);
         counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
@@ -294,6 +301,7 @@ public class CounterDialogManager : MonoBehaviour
     public void OnSpecialVisitorEnd(bool wrongMedicine)
     {
         nowTalking = true;
+        dialogMouseEventObject.SetActive(true);
         counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
@@ -422,7 +430,7 @@ public class CounterDialogManager : MonoBehaviour
                 visitorText.text = "";
                 nowState = CounterState.NotTalking;
                 isRouted = false;
-
+            dialogMouseEventObject.SetActive(false);
             //}
             //else
             //{
@@ -436,7 +444,7 @@ public class CounterDialogManager : MonoBehaviour
             //        routingButtonArray[i].GetComponentInChildren<Text>().text = router.routeButtonText[i];
             //    }
             //}
-            
+
         }
     }
 
@@ -473,6 +481,7 @@ public class CounterDialogManager : MonoBehaviour
             ruelliaText.text = "";
             visitorText.text = "";
             nowState = CounterState.NotTalking;
+            dialogMouseEventObject.SetActive(false);
             isOddVisitor = false;
 
         }
@@ -519,6 +528,7 @@ public class CounterDialogManager : MonoBehaviour
                 visitorText.transform.parent.gameObject.SetActive(false);
                 ruelliaText.text = "";
                 visitorText.text = "";
+                dialogMouseEventObject.SetActive(false);
                 nowState = CounterState.NotTalking;
                 visitorRuelliaToggle = true;
             }
@@ -540,6 +550,7 @@ public class CounterDialogManager : MonoBehaviour
             nowTalking = false;
             counterText.text = "";
             nowState = CounterState.NotTalking;
+            dialogMouseEventObject.SetActive(false);
             //counterManager.CounterStart(nowSpecialVisitorDialogBundle.characterName);
             visitorTriggerManager.TriggerCheck();
         }
@@ -576,6 +587,7 @@ public class CounterDialogManager : MonoBehaviour
             visitorText.text = "";
             ruelliaText.transform.parent.gameObject.SetActive(false);
             visitorText.transform.parent.gameObject.SetActive(false);
+            dialogMouseEventObject.SetActive(false);
             nowState = CounterState.NotTalking;
             counterManager.VisitorDisappear(false);
             visitorRuelliaToggle = true;
@@ -615,6 +627,7 @@ public class CounterDialogManager : MonoBehaviour
             visitorText.transform.parent.gameObject.SetActive(false);
             ruelliaText.text = "";
             visitorText.text = "";
+            dialogMouseEventObject.SetActive(false);
             nowState = CounterState.NotTalking;
             isRouted = false;
         }
@@ -653,6 +666,7 @@ public class CounterDialogManager : MonoBehaviour
             visitorText.transform.parent.gameObject.SetActive(false);
             ruelliaText.text = "";
             visitorText.text = "";
+            dialogMouseEventObject.SetActive(false);
             nowState = CounterState.NotTalking;
             isRouted = false;
         }

@@ -24,6 +24,8 @@ public class UILanguagePack
     public string alertText;
     public string yes;
     public string no;
+    public string doResearch;
+    public string priorResearchNeeded;
     public string[] saveTimeArray;
     public string[] reasonArray;
     public string[] characterNameArray;

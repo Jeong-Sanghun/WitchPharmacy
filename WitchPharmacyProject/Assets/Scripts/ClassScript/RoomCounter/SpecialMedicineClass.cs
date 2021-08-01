@@ -7,6 +7,7 @@ using System.Text;
 public class SpecialMedicineClass
 {
     int index;
+    [System.NonSerialized]
     public string fileName;
     public string firstName;
     public string secondName;

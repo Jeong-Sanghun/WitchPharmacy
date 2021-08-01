@@ -59,18 +59,22 @@ public class MeasureToolResearchManager : MonoBehaviour
 
     }
 
+    //버
     void MakeButtonCanvas()
     {
+        //끝난 연구
         List<string> researchEndTool = researchSaveData.endMeasureToolResearchList;
+        //제이슨 데이터
         List<MeasureToolResearchData> dataList = dataWrapper.measureToolResearchDataList;
         int nowButtonIndex = 0;
         for (int i = 0; i < dataList.Count; i++)
         {
-            
+            //끝났으면 안만들어줌.
             if (researchEndTool.Contains(dataList[i].fileName))
             {
                 continue;
             }
+            //만약 요구사항을 충족하지 않았으면 락걸어줌.
             bool contain = true;
             for(int j = 0; j < dataList[i].neededResearchList.Count;j++)
             {
@@ -90,15 +94,8 @@ public class MeasureToolResearchManager : MonoBehaviour
             int dele = nowButtonIndex;
             Button menuButton = inst.GetComponent<Button>();
             menuButton.onClick.AddListener(() => OnButtonClick(dele));
-            if (!contain)
-            {
-                menuButton.interactable = false;
-                inst.transform.GetChild(0).gameObject.SetActive(true);
-            }
-            else
-            {
-                inst.transform.GetChild(0).gameObject.SetActive(false);
-            }
+            inst.transform.GetChild(0).gameObject.SetActive(!contain);
+            //컨테인 안하면은 락 오브젝트 활성화.
             canvasImage.sprite = dataList[i].LoadImage();
             canvasTitleText.text = dataList[i].ingameName;
             explainTitleText.text = languagePack.explain;
@@ -117,17 +114,60 @@ public class MeasureToolResearchManager : MonoBehaviour
             neededResearchText.text = builder.ToString();
             GameObject canvasInst = Instantiate(canvasPrefab, canvasParent);
 
-            Button researchButton = canvasInst.transform.GetChild(0).GetComponent<Button>();
+            Button researchButton = canvasInst.transform.GetChild(2).GetComponent<Button>();
             researchButton.onClick.AddListener(() => ResearchButonClick(dele));
             wholeCanvasList.Add(canvasInst);
             canvasInst.SetActive(false);
 
             ResearchButtonClass buttonClass = new ResearchButtonClass();
-            buttonClass.buttonComponent = researchButton;
+            buttonClass.filledImage = canvasInst.transform.GetChild(3).GetChild(0).GetComponent<Image>();
+            buttonClass.menuButtonObj = inst;
+            buttonClass.menuButtonComponent = menuButton;
+            buttonClass.researchButtonComponent = researchButton;
+            buttonClass.researchButtonText = researchButton.transform.GetChild(0).GetComponent<Text>();
             buttonClass.data = dataList[i];
-            buttonClass.researchProgressText = researchButton.GetComponentInChildren<Text>();
+            buttonClass.locked = !contain;
+            buttonClass.researchProgressText = canvasInst.transform.GetChild(3).GetChild(1).GetComponent<Text>();
             buttonClass.canvas = canvasInst;
             wholeButtonList.Add(buttonClass);
+
+            buttonClass.researchButtonComponent.interactable = contain;
+            if (contain)
+            {
+                buttonClass.researchButtonText.text = languagePack.doResearch;
+            }
+            else
+            {
+                buttonClass.researchButtonText.text = languagePack.priorResearchNeeded;
+            }
+            
+
+            ResearchData data = buttonClass.data;
+            OneMeasureToolResearch research = null;
+            for (int j = 0; j < researchSaveData.progressingMeasureToolReaserchList.Count; j++)
+            {
+                if (data.fileName == researchSaveData.progressingMeasureToolReaserchList[j].fileName)
+                {
+                    research = researchSaveData.progressingMeasureToolReaserchList[j];
+                    break;
+                }
+            }
+            if (research == null)
+            {
+                buttonClass.researchProgressText.text = "0 / " + data.researchEndTime;
+                buttonClass.filledImage.fillAmount = 0;
+            }
+            else
+            {
+                if (research.researchedTime >= data.researchEndTime)
+                {
+                    researchSaveData.progressingMeasureToolReaserchList.Remove(research);
+                    researchSaveData.endMeasureToolResearchList.Add(research.fileName);
+                    buttonClass.researchButtonComponent.interactable = false;
+                }
+                buttonClass.researchProgressText.text = research.researchedTime + "/" + data.researchEndTime;
+                buttonClass.filledImage.fillAmount = (float)research.researchedTime / data.researchEndTime;
+            }
             nowButtonIndex++;
 
             
@@ -135,6 +175,7 @@ public class MeasureToolResearchManager : MonoBehaviour
         buttonContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 180 * nowButtonIndex);
     }
 
+    //파일네임을 통해서 인게임네임을 가져옴.
     string FindIngmaeTitleByFileName(string fileName)
     {
         List<MeasureToolResearchData> dataList = dataWrapper.measureToolResearchDataList;
@@ -148,9 +189,10 @@ public class MeasureToolResearchManager : MonoBehaviour
         return null;
     }
 
+    //연구버튼 클릭.
     void ResearchButonClick(int index)
     {
-        ResearchData data = wholeButtonList[index].data;
+        MeasureToolResearchData data = (MeasureToolResearchData)wholeButtonList[index].data;
         OneMeasureToolResearch research = null;
         for(int i = 0; i < researchSaveData.progressingMeasureToolReaserchList.Count; i++)
         {
@@ -176,13 +218,37 @@ public class MeasureToolResearchManager : MonoBehaviour
         {
             researchSaveData.progressingMeasureToolReaserchList.Remove(research);
             researchSaveData.endMeasureToolResearchList.Add(research.fileName);
-            wholeButtonList[index].buttonComponent.interactable = false;
+            wholeButtonList[index].researchButtonComponent.interactable = false;
+
+            int containingIndex = -1;
+            for(int i = 0; i < wholeButtonList.Count; i++)
+            {
+                MeasureToolResearchData researchData  = (MeasureToolResearchData)wholeButtonList[i].data; ;
+                for(int j =0;j< researchData.neededResearchList.Count; j++)
+                {
+                    if (researchData.neededResearchList[j].Contains(data.fileName))
+                    {
+                        containingIndex = i;
+                        break;
+                    }
+                }
+            }
+            if(containingIndex != -1)
+            {
+                wholeButtonList[containingIndex].locked = false;
+                wholeButtonList[containingIndex].researchButtonComponent.interactable = true;
+                wholeButtonList[containingIndex].researchButtonText.text = languagePack.doResearch;
+                wholeButtonList[containingIndex].menuButtonObj.transform.GetChild(0).gameObject.SetActive(false);
+            }
+
         }
         exploreManager.TimeChange(1200);
-        wholeButtonList[index].researchProgressText.text = research.researchedTime + "/" + data.researchEndTime;
+        wholeButtonList[index].researchProgressText.text = research.researchedTime + " / " + data.researchEndTime;
+        wholeButtonList[index].filledImage.fillAmount = (float)research.researchedTime / data.researchEndTime;
         
     }
 
+    //메뉴버튼 클릭
     void OnButtonClick(int index)
     {
         if(openedButtonIndex != -1)

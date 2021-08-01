@@ -473,7 +473,6 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;
@@ -658,7 +657,7 @@ public class CounterManager : MonoBehaviour //SH
         int hour = (int)gameManager.saveData.nowTime / 3600;
         int minute = ((int)gameManager.saveData.nowTime % 3600) / 60;
         TimeTextChange();
-        if (hour >= 18)
+        if (hour >= 12)
         {
             lastVisitor = true;
         }

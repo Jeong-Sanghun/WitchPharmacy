@@ -11,6 +11,8 @@ public class StoreMeasureToolManager : MonoBehaviour
         public MeasureToolData data;
         public RectTransform buttonRect;
         public Button buttonComponent;
+        public GameObject lockObject;
+        public bool researched;
         public bool isActive;
     }
     GameManager gameManager;
@@ -54,11 +56,13 @@ public class StoreMeasureToolManager : MonoBehaviour
         for(int i = 0; i < dataWrapper.measureToolDataList.Count; i++)
         {
             MeasureToolData data = dataWrapper.measureToolDataList[i];
+
             if (saveData.owningMeasureToolList.Contains(i))
             {
                 continue;
             }
-            
+            MeasureToolButton buttonClass = new MeasureToolButton();
+            buttonClass.researched = false;
             prefabTitleText.text = data.ingameName;
             prefabToolTipText.text = data.toolTip;
             prefabImage.sprite = data.LoadImage();
@@ -69,6 +73,7 @@ public class StoreMeasureToolManager : MonoBehaviour
                 if (saveData.researchSaveData.endMeasureToolResearchList[j].Contains(data.fileName))
                 {
                     locked = false;
+                    buttonClass.researched = true;
                     break;
                 }
             }
@@ -93,7 +98,8 @@ public class StoreMeasureToolManager : MonoBehaviour
             inst.SetActive(true);
             Button comp = inst.GetComponent<Button>();
             RectTransform rect = inst.GetComponent<RectTransform>();
-            MeasureToolButton buttonClass = new MeasureToolButton();
+
+            buttonClass.lockObject = inst.transform.GetChild(4).gameObject;
             buttonClass.dataIndex = i;
             buttonClass.buttonComponent = comp;
             buttonClass.buttonRect = rect;
@@ -153,6 +159,20 @@ public class StoreMeasureToolManager : MonoBehaviour
         storeManager.ChangeCoinText();
         TabletManager.inst.UpdateBill(BillReason.measureToolBuy, false, wholeButtonList[nowButtonIndex].data.cost);
 
+        for(int i = 0; i < wholeButtonList.Count; i++)
+        {
+            if(wholeButtonList[i].dataIndex > 4)
+            {
+                if(wholeButtonList[i].dataIndex - 4 == wholeButtonList[nowButtonIndex].dataIndex)
+                {
+                    if(wholeButtonList[i].researched == true)
+                    {
+                        wholeButtonList[i].buttonComponent.interactable = true;
+                        wholeButtonList[i].lockObject.SetActive(false);
+                    }
+                }
+            }
+        }
         PopupDown();
     }
 
