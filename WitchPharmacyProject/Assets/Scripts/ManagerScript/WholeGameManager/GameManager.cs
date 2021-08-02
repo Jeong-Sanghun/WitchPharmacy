@@ -249,6 +249,9 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<MeasureToolResearchDataWrapper>(measureToolWrapper, "MeasureToolResearchDataWrapper");
         MeasureToolExplain explain = new MeasureToolExplain();
         jsonManager.SaveJson<MeasureToolExplain>(explain, "Fire");
+        //MedicineResearchDataWrapper medicineResearchWrapper = new MedicineResearchDataWrapper();
+        //jsonManager.SaveJson<MedicineResearchDataWrapper>(medicineResearchWrapper, "MedicineResearchDataWrapper");
+
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
         //jsonManager.SaveJson<SpecialVisitorDialogBundle>(bundle, "specialVisitor");

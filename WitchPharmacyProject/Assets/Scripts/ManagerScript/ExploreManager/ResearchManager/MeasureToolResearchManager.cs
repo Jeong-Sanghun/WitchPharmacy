@@ -4,59 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 
-public class MeasureToolResearchManager : MonoBehaviour
+public class MeasureToolResearchManager : ResearchManagerParent
 {
 
 
-    GameManager gameManager;
-    SaveDataClass saveData;
-    ResearchSaveData researchSaveData;
-    UILanguagePack languagePack;
-    ExploreManager exploreManager;
-    
     MeasureToolResearchDataWrapper dataWrapper;
-    [SerializeField]
-    Transform buttonContent;
-    [SerializeField]
-    GameObject buttonPrefab;
-    [SerializeField]
-    Text prefabButtonText;
-
-    [SerializeField]
-    Transform canvasParent;
-    [SerializeField]
-    GameObject canvasPrefab;
-    [SerializeField]
-    Image canvasImage;
-    [SerializeField]
-    Text canvasTitleText;
-    [SerializeField]
-    Text explainTitleText;
-    [SerializeField]
-    Text explainText;
-    [SerializeField]
-    Text neededResearchTitleText;
-    [SerializeField]
-    Text neededResearchText;
-
-    int openedButtonIndex;
-    List<GameObject> wholeCanvasList;
-    List<ResearchButtonClass> wholeButtonList;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        gameManager = GameManager.singleTon;
-        languagePack = gameManager.languagePack;
-        exploreManager = ExploreManager.inst;
+        base.Start();
         dataWrapper = gameManager.jsonManager.ResourceDataLoad<MeasureToolResearchDataWrapper>("MeasureToolResearchDataWrapper");
-        saveData = gameManager.saveData;
-        researchSaveData = saveData.researchSaveData;
-        openedButtonIndex = -1;
-        wholeCanvasList = new List<GameObject>();
-        wholeButtonList = new List<ResearchButtonClass>();
         MakeButtonCanvas();
-
     }
 
     //버
@@ -104,7 +63,7 @@ public class MeasureToolResearchManager : MonoBehaviour
             StringBuilder builder = new StringBuilder();
             for (int j = 0; j < dataList[i].neededResearchList.Count; j++)
             {
-                builder.Append(dataList[i].neededResearchList[j]);
+                builder.Append(FindIngmaeTitleByFileName(dataList[i].neededResearchList[j]));
                 if(j != dataList[i].neededResearchList.Count - 1)
                 {
                     builder.Append(",");
@@ -143,7 +102,7 @@ public class MeasureToolResearchManager : MonoBehaviour
             
 
             ResearchData data = buttonClass.data;
-            OneMeasureToolResearch research = null;
+            OneResearch research = null;
             for (int j = 0; j < researchSaveData.progressingMeasureToolReaserchList.Count; j++)
             {
                 if (data.fileName == researchSaveData.progressingMeasureToolReaserchList[j].fileName)
@@ -175,6 +134,7 @@ public class MeasureToolResearchManager : MonoBehaviour
         buttonContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 180 * nowButtonIndex);
     }
 
+
     //파일네임을 통해서 인게임네임을 가져옴.
     string FindIngmaeTitleByFileName(string fileName)
     {
@@ -193,7 +153,7 @@ public class MeasureToolResearchManager : MonoBehaviour
     void ResearchButonClick(int index)
     {
         MeasureToolResearchData data = (MeasureToolResearchData)wholeButtonList[index].data;
-        OneMeasureToolResearch research = null;
+        OneResearch research = null;
         for(int i = 0; i < researchSaveData.progressingMeasureToolReaserchList.Count; i++)
         {
             if(data.fileName == researchSaveData.progressingMeasureToolReaserchList[i].fileName)
@@ -204,7 +164,7 @@ public class MeasureToolResearchManager : MonoBehaviour
         }
         if(research == null)
         {
-            research = new OneMeasureToolResearch();
+            research = new OneResearch();
             research.fileName = data.fileName;
             research.researchedTime = 1;
             researchSaveData.progressingMeasureToolReaserchList.Add(research);

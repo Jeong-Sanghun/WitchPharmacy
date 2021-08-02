@@ -1,0 +1,85 @@
+{
+    "medicineResearchDataList": [
+        {
+            "fileName": "waterearth",
+            "ingameName": "물, 대지 약재연구",
+            "explain": "물과 대지 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": [],
+            "firstSymptomString": "water",
+            "secondSymptomString": "earth"
+        },
+        {
+            "fileName": "fireearth",
+            "ingameName": "불, 대지 약재연구",
+            "explain": "불과 대지 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": [],
+            "firstSymptomString": "fire",
+            "secondSymptomString": "earth"
+        },
+        {
+            "fileName": "waterair",
+            "ingameName": "물, 공기 약재연구",
+            "explain": "물과 공기 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": [],
+            "firstSymptomString": "water",
+            "secondSymptomString": "air"
+        },
+        {
+            "fileName": "fireair",
+            "ingameName": "불, 공기 약재연구",
+            "explain": "불과 공기 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": [],
+            "firstSymptomString": "fire",
+            "secondSymptomString": "air"
+        },
+        {
+            "fileName": "waterlight",
+            "ingameName": "물, 빛 약재연구",
+            "explain": "물과 빛 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": [],
+            "firstSymptomString": "water",
+            "secondSymptomString": "light"
+        },
+        {
+            "fileName": "firelight",
+            "ingameName": "불, 빛 약재연구",
+            "explain": "불과 빛 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": [],
+            "firstSymptomString": "fire",
+            "secondSymptomString": "light"
+        },
+        {
+            "fileName": "earthair",
+            "ingameName": "대지, 공기 약재연구",
+            "explain": "대지와 공기 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": ["waterearth","fireearth","waterair","fireair"],
+            "firstSymptomString": "earth",
+            "secondSymptomString": "air"
+        },
+        {
+            "fileName": "earthlight",
+            "ingameName": "대지, 빛 약재연구",
+            "explain": "대지와 빛 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": ["waterearth","fireearth","waterlight","firelight"],
+            "firstSymptomString": "earth",
+            "secondSymptomString": "light"
+        },
+        {
+            "fileName": "airlight",
+            "ingameName": "공기, 빛 약재연구",
+            "explain": "공기와 빛 약재 연구입니다.",
+            "researchEndTime": 10,
+            "neededResearchList": ["waterair","fireair","waterlight","firelight"],
+            "firstSymptomString": "air",
+            "secondSymptomString": "light"
+        }
+    ]
+}

@@ -473,6 +473,7 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
+        lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;
@@ -531,7 +532,7 @@ public class CounterManager : MonoBehaviour //SH
 
     public void SymptomCheckToggle(int amount)
     {
-        if(symptomToggleIndex != 5)
+        if(symptomToggleIndex != 4)
         {
             if (measureToolArray[symptomToggleIndex].measureEnd)
             {

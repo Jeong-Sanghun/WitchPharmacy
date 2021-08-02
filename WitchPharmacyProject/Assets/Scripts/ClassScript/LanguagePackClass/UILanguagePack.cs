@@ -68,6 +68,23 @@ public class UILanguagePack
         return origin;
     }
 
+    public string StarInsert(string org, string insertString)
+    {
+        string origin = string.Copy(org);
+        for (int i = 0; i < origin.Length; i++)
+        {
+            if (origin[i] == '*')
+            {
+                origin = origin.Remove(i, 1);
+                origin = origin.Insert(i, insertString);
+
+                break;
+            }
+        }
+        Debug.Log(origin);
+        return origin;
+    }
+
     //받침있는게 first, 받침없는게 second.
     public string GetCompleteWord(string name, string firstVal, string secondVal)
     {

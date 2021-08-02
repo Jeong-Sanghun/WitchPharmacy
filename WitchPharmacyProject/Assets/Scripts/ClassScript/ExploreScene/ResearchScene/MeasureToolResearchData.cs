@@ -10,11 +10,7 @@ public class MeasureToolResearchData : ResearchData
     public string symptomString;
     [NonSerialized]
     public Symptom symptom;
-    
-    Sprite toolImage;
 
-
-    public List<string> neededResearchList;
 
     public MeasureToolResearchData()
     {
@@ -24,18 +20,17 @@ public class MeasureToolResearchData : ResearchData
         explain = "도구설명";
         researchEndTime = 10;
         neededResearchList = new List<string>();
-
     }
 
     public Sprite LoadImage()
     {
-        if(toolImage!= null)
+        if(image!= null)
         {
-            return toolImage;
+            return image;
         }
 
-        toolImage = Resources.Load<Sprite>("MeasureToolImage/" + fileName);
-        return toolImage;
+        image = Resources.Load<Sprite>("MeasureToolImage/" + fileName);
+        return image;
     }
 
     public void ParseSymptomString()

@@ -11,12 +11,18 @@ public class ResearchData
 
     public int researchEndTime;
 
+    public List<string> neededResearchList;
+
+    protected Sprite image;
+
+
     public ResearchData()
     {
         fileName = "water";
         ingameName = "측정도구(물)";
         explain = "도구설명";
         researchEndTime = 10;
+        neededResearchList = new List<string>();
 
 
     }
