@@ -20,7 +20,7 @@ public class StoryParser
         languagePack = language;
     }
 
-    public ConversationDialogBundle LoadBundle(string bundleName,string languageDirectory)
+    public ConversationDialogBundle LoadBundle(string bundleName,string languageDirectory,bool isRegion)
     {
         string originText;
 
@@ -32,7 +32,15 @@ public class StoryParser
         string appender1 = bundleName;
         StringBuilder builder = new StringBuilder(directory);
         builder.Append(language);
-        builder.Append("StoryBundle/");
+        if (isRegion)
+        {
+            builder.Append("RegionStoryBundle/");
+        }
+        else
+        {
+            builder.Append("StoryBundle/");
+        }
+        
         builder.Append(appender1);
 
         TextAsset jsonString = Resources.Load<TextAsset>(builder.ToString());

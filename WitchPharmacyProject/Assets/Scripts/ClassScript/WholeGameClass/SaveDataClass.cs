@@ -42,6 +42,8 @@ public class SaveDataClass
     public List<string> owningOtherToolList;
     public ResearchSaveData researchSaveData;
     public int bookMarkNumber;
+    public List<RoutePair> routePairList;
+    public List<RegionSaveData> regionSaveDataList;
     
     //public List<string> readStoryList;
     public string nextLoadSceneName;
@@ -79,7 +81,10 @@ public class SaveDataClass
         symptomBookList.Add("fire+");
         symptomBookList.Add("fire-");
         bookMarkNumber = 3;
+        routePairList = new List<RoutePair>();
+        regionSaveDataList = new List<RegionSaveData>();
         owningMeasureToolList = new List<int>();
+
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");
     }

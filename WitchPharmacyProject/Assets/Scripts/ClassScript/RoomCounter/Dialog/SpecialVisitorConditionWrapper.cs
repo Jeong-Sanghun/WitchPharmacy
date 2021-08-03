@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Region
+public enum StoryRegion
 {
     Narin,Themnos,Rebav,Mikcha,TreeOfLIfe
 }

@@ -11,8 +11,8 @@ public class StoryManager : MonoBehaviour
     SaveDataClass saveData;
 
     //protected List<ConversationDialogBundle> conversationDialogBundleList;
-    protected ConversationDialogBundle nowBundle;
-    protected ConversationDialogWrapper nowWrapper;
+    ConversationDialogBundle nowBundle;
+    ConversationDialogWrapper nowWrapper;
     ConversationRouter nowRouter;
     StoryParser storyParser;
 
@@ -75,7 +75,7 @@ public class StoryManager : MonoBehaviour
         nowWrapperIndex = 0;
         nowRouterIndex = 0;
         storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
-        nowBundle = storyParser.LoadBundle("testBundle", gameManager.saveDataTimeWrapper.nowLanguageDirectory);
+        nowBundle = storyParser.LoadBundle("testBundle", gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
         nowWrapper = nowBundle.dialogWrapperList[0];
         for (int i = 0; i < 3; i++)
         {
@@ -332,6 +332,30 @@ public class StoryManager : MonoBehaviour
         {
             leftRouterWrapper = nowRouter.routingWrapperIndex[index+1] - nowRouter.routingWrapperIndex[index];
         }
+        RoutePair routePair = null;
+        for (int i = 0; i < saveData.routePairList.Count; i++)
+        {
+            if (saveData.routePairList[i].storyName.Contains(nowBundle.bundleName))
+            {
+                
+                if (routePair.pickedRouteList.Count >= nowBundle.conversationRouterList.Count)
+                {
+                    saveData.routePairList.RemoveAt(i);
+                }
+                else
+                {
+                    routePair = saveData.routePairList[i];
+                }
+                break;
+            }
+        }
+        if(routePair == null)
+        {
+            routePair = new RoutePair();
+            routePair.storyName = nowBundle.bundleName;
+        }
+        routePair.pickedRouteList.Add(index);
+
         nowRouterWrapperIndex = nowRouter.routingWrapperIndex[index];
         nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
         nowConversationIndex = 0;
