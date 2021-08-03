@@ -5,18 +5,32 @@ using UnityEngine;
 public class ResearchButtonManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject medicineTab;
-    [SerializeField]
-    GameObject measureToolTab;
+    GameObject[] tabArray;
     [SerializeField]
     Transform mainCanvasTransform;
 
-
-    
-    public void MedicineTabButton()
+    void Start()
     {
-        medicineTab.SetActive(true);
-        measureToolTab.SetActive(false);
+        tabArray[0].SetActive(true);
+        tabArray[1].SetActive(false);
+        tabArray[2].SetActive(false);
+    }
+
+
+    public void TabButton(int index)
+    {
+        tabArray[index].SetActive(true);
+        for(int i = 0; i < tabArray.Length; i++)
+        {
+            if(i == index)
+            {
+                continue;
+            }
+            if(tabArray[i].activeSelf == true)
+            {
+                tabArray[i].SetActive(false);
+            }
+        }
         for(int i = 0; i < mainCanvasTransform.childCount; i++)
         {
             if(mainCanvasTransform.GetChild(i).gameObject.activeSelf == true)
@@ -27,18 +41,5 @@ public class ResearchButtonManager : MonoBehaviour
         }
     }
 
-    public void MeasureToolTabButton()
-    {
 
-        medicineTab.SetActive(false);
-        measureToolTab.SetActive(true);
-        for (int i = 0; i < mainCanvasTransform.childCount; i++)
-        {
-            if (mainCanvasTransform.GetChild(i).gameObject.activeSelf == true)
-            {
-                mainCanvasTransform.GetChild(i).gameObject.SetActive(false);
-
-            }
-        }
-    }
 }

@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 3,
-    "coin": 1000,
+    "nowDay": 2,
+    "coin": 900,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -67,166 +67,6 @@
         {
             "medicineIndex": 45,
             "medicineCost": 3
-        },
-        {
-            "medicineIndex": 18,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 19,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 26,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 27,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 52,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 53,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 60,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 61,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 4,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 5,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 12,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 13,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 38,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 39,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 46,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 47,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 2,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 3,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 10,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 11,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 54,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 55,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 62,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 63,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 6,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 7,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 14,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 15,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 22,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 23,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 30,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 31,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 48,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 49,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 56,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 57,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 64,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 65,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 72,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 73,
-            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -242,12 +82,13 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 6,
+                    "changedCoin": 100
+                }
+            ]
         },
         {
             "wholeGainCoin": 0,
@@ -263,17 +104,20 @@
         "fire-"
     ],
     "owningMeasureToolList": [],
+    "owningOtherToolList": [
+        "opticalLens"
+    ],
     "researchSaveData": {
-        "progressingMeasureToolReaserchList": [],
+        "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [
-            "waterearth",
-            "fireearth",
-            "waterair",
-            "fireair",
-            "earthair",
-            "firelight"
+            "waterearth"
+        ],
+        "progressingOtherToolResearchList": [],
+        "endOtherToolResearchList": [
+            "energyDrink",
+            "opticalLens"
         ]
     },
     "bookMarkNumber": 3,

@@ -171,16 +171,17 @@ public class MedicineResearchManager : ResearchManagerParent
         {
             research = new OneResearch();
             research.fileName = data.fileName;
-            research.researchedTime = 1;
+            research.researchedTime = researchCount;
             researchSaveData.progressingMedicineResearchList.Add(research);
         }
         else
         {
-            research.researchedTime++;
+            research.researchedTime+= researchCount;
         }
 
         if (research.researchedTime >= data.researchEndTime)
         {
+            research.researchedTime = data.researchEndTime;
             researchSaveData.progressingMedicineResearchList.Remove(research);
             researchSaveData.endMedicineResearchList.Add(research.fileName);
             saveData.AddMedicineBySymptom(gameManager.medicineDataWrapper, data.firstSymptom, data.secondSymptom);
@@ -208,7 +209,8 @@ public class MedicineResearchManager : ResearchManagerParent
             }
 
         }
-        exploreManager.TimeChange(1200);
+        //exploreManager.TimeChange(1200);
+        exploreManager.NextTime();
         wholeButtonList[index].researchProgressText.text = research.researchedTime + " / " + data.researchEndTime;
         wholeButtonList[index].filledImage.fillAmount = (float)research.researchedTime / data.researchEndTime;
 

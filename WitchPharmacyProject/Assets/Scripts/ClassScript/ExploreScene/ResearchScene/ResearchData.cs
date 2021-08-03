@@ -15,6 +15,10 @@ public class ResearchData
 
     protected Sprite image;
 
+    public virtual Sprite LoadImage()
+    {
+        return null;
+    }
 
     public ResearchData()
     {

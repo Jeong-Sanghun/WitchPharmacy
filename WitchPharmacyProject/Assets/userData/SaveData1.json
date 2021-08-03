@@ -2,7 +2,7 @@
     "name": "initName",
     "nowTime": 0.0,
     "nowDay": 2,
-    "coin": 1000,
+    "coin": 900,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -35,134 +35,6 @@
         {
             "medicineIndex": 59,
             "medicineCost": 3
-        },
-        {
-            "medicineIndex": 20,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 21,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 28,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 29,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 36,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 37,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 44,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 45,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 18,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 19,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 26,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 27,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 52,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 53,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 60,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 61,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 4,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 5,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 12,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 13,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 38,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 39,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 46,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 47,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 2,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 3,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 10,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 11,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 54,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 55,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 62,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 63,
-            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -178,7 +50,13 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 6,
+                    "changedCoin": 100
+                }
+            ]
         },
         {
             "wholeGainCoin": 0,
@@ -194,15 +72,19 @@
         "fire-"
     ],
     "owningMeasureToolList": [],
+    "owningOtherToolList": [
+        "opticalLens"
+    ],
     "researchSaveData": {
-        "progressingMeasureToolReaserchList": [],
+        "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [
-            "waterearth",
-            "fireearth",
-            "waterair",
-            "fireair"
+        "endMedicineResearchList": [],
+        "progressingOtherToolResearchList": [],
+        "endOtherToolResearchList": [
+            "energyDrink",
+            "opticalLens",
+            "improvement"
         ]
     },
     "bookMarkNumber": 3,

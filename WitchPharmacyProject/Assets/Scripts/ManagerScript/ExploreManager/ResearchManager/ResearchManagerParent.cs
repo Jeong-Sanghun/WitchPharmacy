@@ -40,6 +40,7 @@ public class ResearchManagerParent : MonoBehaviour
     protected int openedButtonIndex;
     protected List<GameObject> wholeCanvasList;
     protected List<ResearchButtonClass> wholeButtonList;
+    protected int researchCount;
 
     protected virtual void Start()
     {
@@ -52,5 +53,15 @@ public class ResearchManagerParent : MonoBehaviour
         openedButtonIndex = -1;
         wholeCanvasList = new List<GameObject>();
         wholeButtonList = new List<ResearchButtonClass>();
+        researchCount = 10;
+        for(int i = 0; i < saveData.owningOtherToolList.Count; i++)
+        {
+            if (saveData.owningOtherToolList[i].Contains("improvement"))
+            {
+                researchCount = 2;
+                break;
+            }
+        }
+        
     }
 }

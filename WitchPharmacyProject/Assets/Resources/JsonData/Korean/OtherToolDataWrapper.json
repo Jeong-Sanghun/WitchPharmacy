@@ -1,0 +1,16 @@
+{
+    "otherToolDataList": [
+        {
+            "fileName": "improvement",
+            "ingameName": "연구 설비 개선",
+            "toolTip": "이거만 있으면 돼~",
+            "cost": 100
+        },
+        {
+            "fileName": "opticalLens",
+            "ingameName": "광학렌즈",
+            "toolTip": "탐험을 더욱 효과적으로!",
+            "cost": 100
+        }
+    ]
+}

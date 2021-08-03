@@ -1,7 +1,7 @@
 {
     "name": "initName",
     "nowTime": 7200.0,
-    "nowDay": 2,
+    "nowDay": 0,
     "coin": 1000,
     "owningMedicineList": [
         {
@@ -35,134 +35,6 @@
         {
             "medicineIndex": 59,
             "medicineCost": 3
-        },
-        {
-            "medicineIndex": 20,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 21,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 28,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 29,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 36,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 37,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 44,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 45,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 18,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 19,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 26,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 27,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 52,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 53,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 60,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 61,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 4,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 5,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 12,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 13,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 38,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 39,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 46,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 47,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 2,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 3,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 10,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 11,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 54,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 55,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 62,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 63,
-            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -170,16 +42,6 @@
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "billWrapperList": [
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
@@ -194,16 +56,14 @@
         "fire-"
     ],
     "owningMeasureToolList": [],
+    "owningOtherToolList": [],
     "researchSaveData": {
-        "progressingMeasureToolReaserchList": [],
+        "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [
-            "waterearth",
-            "fireearth",
-            "waterair",
-            "fireair"
-        ]
+        "endMedicineResearchList": [],
+        "progressingOtherToolResearchList": [],
+        "endOtherToolResearchList": []
     },
     "bookMarkNumber": 3,
     "nextLoadSceneName": "StoryScene",

@@ -243,14 +243,18 @@ public class GameManager : MonoBehaviour //SH
 
         languagePack = new UILanguagePack();
         //jsonManager.SaveJson<QuestDocument>(doc, "Lily");
-        jsonManager.SaveJson<SymptomBookBundle>(symptomBookBundle, "water+");
-        jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
-        MeasureToolResearchDataWrapper measureToolWrapper = new MeasureToolResearchDataWrapper();
-        jsonManager.SaveJson<MeasureToolResearchDataWrapper>(measureToolWrapper, "MeasureToolResearchDataWrapper");
-        MeasureToolExplain explain = new MeasureToolExplain();
-        jsonManager.SaveJson<MeasureToolExplain>(explain, "Fire");
+        //jsonManager.SaveJson<SymptomBookBundle>(symptomBookBundle, "water+");
+        //jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
+        //MeasureToolResearchDataWrapper measureToolWrapper = new MeasureToolResearchDataWrapper();
+        //jsonManager.SaveJson<MeasureToolResearchDataWrapper>(measureToolWrapper, "MeasureToolResearchDataWrapper");
+        //MeasureToolExplain explain = new MeasureToolExplain();
+        //jsonManager.SaveJson<MeasureToolExplain>(explain, "Fire");
         //MedicineResearchDataWrapper medicineResearchWrapper = new MedicineResearchDataWrapper();
         //jsonManager.SaveJson<MedicineResearchDataWrapper>(medicineResearchWrapper, "MedicineResearchDataWrapper");
+        //OtherToolResearchDataWrapper otherToolResearchWrapper = new OtherToolResearchDataWrapper();
+        //jsonManager.SaveJson<OtherToolResearchDataWrapper>(otherToolResearchWrapper, "OtherToolResearchDataWrapper");
+        OtherToolDataWrapper otherToolWrapper = new OtherToolDataWrapper();
+        jsonManager.SaveJson<OtherToolDataWrapper>(otherToolWrapper, "OtherToolDataWrapper");
 
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");

@@ -5,18 +5,24 @@ using UnityEngine;
 [System.Serializable]
 public class ResearchSaveData
 {
-    public List<OneResearch> progressingMeasureToolReaserchList;
+    public List<OneResearch> progressingMeasureToolResearchList;
     public List<string> endMeasureToolResearchList;
 
     public List<OneResearch> progressingMedicineResearchList;
     public List<string> endMedicineResearchList;
+
+    public List<OneResearch> progressingOtherToolResearchList;
+    public List<string> endOtherToolResearchList;
 
     public ResearchSaveData()
     {
         progressingMedicineResearchList = new List<OneResearch>();
         endMedicineResearchList = new List<string>();
 
-        progressingMeasureToolReaserchList = new List<OneResearch>();
+        progressingMeasureToolResearchList = new List<OneResearch>();
         endMeasureToolResearchList = new List<string>();
+
+        progressingOtherToolResearchList = new List<OneResearch>();
+        endOtherToolResearchList = new List<string>();
     }
 }

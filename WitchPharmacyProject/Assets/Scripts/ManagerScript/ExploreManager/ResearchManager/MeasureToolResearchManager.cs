@@ -103,11 +103,11 @@ public class MeasureToolResearchManager : ResearchManagerParent
 
             ResearchData data = buttonClass.data;
             OneResearch research = null;
-            for (int j = 0; j < researchSaveData.progressingMeasureToolReaserchList.Count; j++)
+            for (int j = 0; j < researchSaveData.progressingMeasureToolResearchList.Count; j++)
             {
-                if (data.fileName == researchSaveData.progressingMeasureToolReaserchList[j].fileName)
+                if (data.fileName == researchSaveData.progressingMeasureToolResearchList[j].fileName)
                 {
-                    research = researchSaveData.progressingMeasureToolReaserchList[j];
+                    research = researchSaveData.progressingMeasureToolResearchList[j];
                     break;
                 }
             }
@@ -120,7 +120,7 @@ public class MeasureToolResearchManager : ResearchManagerParent
             {
                 if (research.researchedTime >= data.researchEndTime)
                 {
-                    researchSaveData.progressingMeasureToolReaserchList.Remove(research);
+                    researchSaveData.progressingMeasureToolResearchList.Remove(research);
                     researchSaveData.endMeasureToolResearchList.Add(research.fileName);
                     buttonClass.researchButtonComponent.interactable = false;
                 }
@@ -154,11 +154,11 @@ public class MeasureToolResearchManager : ResearchManagerParent
     {
         MeasureToolResearchData data = (MeasureToolResearchData)wholeButtonList[index].data;
         OneResearch research = null;
-        for(int i = 0; i < researchSaveData.progressingMeasureToolReaserchList.Count; i++)
+        for(int i = 0; i < researchSaveData.progressingMeasureToolResearchList.Count; i++)
         {
-            if(data.fileName == researchSaveData.progressingMeasureToolReaserchList[i].fileName)
+            if(data.fileName == researchSaveData.progressingMeasureToolResearchList[i].fileName)
             {
-                research = researchSaveData.progressingMeasureToolReaserchList[i];
+                research = researchSaveData.progressingMeasureToolResearchList[i];
                 break;
             }
         }
@@ -166,17 +166,18 @@ public class MeasureToolResearchManager : ResearchManagerParent
         {
             research = new OneResearch();
             research.fileName = data.fileName;
-            research.researchedTime = 1;
-            researchSaveData.progressingMeasureToolReaserchList.Add(research);
+            research.researchedTime = researchCount;
+            researchSaveData.progressingMeasureToolResearchList.Add(research);
         }
         else
         {
-            research.researchedTime++;
+            research.researchedTime+= researchCount;
         }
 
         if (research.researchedTime >= data.researchEndTime)
         {
-            researchSaveData.progressingMeasureToolReaserchList.Remove(research);
+            research.researchedTime = data.researchEndTime;
+            researchSaveData.progressingMeasureToolResearchList.Remove(research);
             researchSaveData.endMeasureToolResearchList.Add(research.fileName);
             wholeButtonList[index].researchButtonComponent.interactable = false;
 
@@ -202,7 +203,8 @@ public class MeasureToolResearchManager : ResearchManagerParent
             }
 
         }
-        exploreManager.TimeChange(1200);
+        //exploreManager.TimeChange(1200);
+        exploreManager.NextTime();
         wholeButtonList[index].researchProgressText.text = research.researchedTime + " / " + data.researchEndTime;
         wholeButtonList[index].filledImage.fillAmount = (float)research.researchedTime / data.researchEndTime;
         

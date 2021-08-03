@@ -8,6 +8,7 @@ public class ExploreManager : MonoBehaviour
     TabletManager tabletManager;
     GameManager gameManager;
     SaveDataClass saveData;
+    int timeCount = 1;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -27,6 +28,14 @@ public class ExploreManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         tabletManager = TabletManager.inst;
         saveData = gameManager.saveData;
+        for(int  i = 0; i < saveData.researchSaveData.endOtherToolResearchList.Count; i++)
+        {
+            if (saveData.researchSaveData.endOtherToolResearchList[i].Contains("energyDrink"))
+            {
+                timeCount = 2;
+            }
+        }
+        
     }
 
     public void TimeChange(float time)
@@ -37,6 +46,21 @@ public class ExploreManager : MonoBehaviour
             gameManager.NextDay();
             SceneManager.inst.LoadScene("StoryScene");
             Destroy(gameObject);
+        }
+    }
+
+    public void NextTime()
+    {
+        timeCount--;
+        if (timeCount == 0)
+        {
+            gameManager.NextDay();
+            SceneManager.inst.LoadScene("StoryScene");
+            Destroy(gameObject);
+        }
+        else
+        {
+            SceneManager.inst.LoadScene("ExploreScene");
         }
     }
 

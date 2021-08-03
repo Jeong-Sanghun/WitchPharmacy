@@ -1,0 +1,25 @@
+{
+    "otherToolResearchDataList": [
+        {
+            "fileName": "improvement",
+            "ingameName": "연구 설비 개선 연구",
+            "explain": "이것만 있으면 연구를 더 빠르게 진행할 수 있어..!",
+            "researchEndTime": 5,
+            "neededResearchList": []
+        },
+        {
+            "fileName": "energyDrink",
+            "ingameName": "피로 회복제 연구",
+            "explain": "나는 이제 잠을 더 못잘 것 같아.",
+            "researchEndTime": 5,
+            "neededResearchList": []
+        },
+        {
+            "fileName": "opticalLens",
+            "ingameName": "광학렌즈 연구",
+            "explain": "탐험에서 더 많은 보상을 얻을 수 있음",
+            "researchEndTime": 5,
+            "neededResearchList": []
+        }
+    ]
+}

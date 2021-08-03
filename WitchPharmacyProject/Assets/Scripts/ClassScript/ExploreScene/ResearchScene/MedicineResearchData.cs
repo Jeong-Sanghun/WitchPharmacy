@@ -25,7 +25,7 @@ public class MedicineResearchData : ResearchData
     }
 
 
-    public Sprite LoadImage()
+    public override Sprite LoadImage()
     {
         if (image != null)
         {

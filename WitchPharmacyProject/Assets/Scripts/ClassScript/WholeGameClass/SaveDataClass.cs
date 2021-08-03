@@ -39,6 +39,7 @@ public class SaveDataClass
     public List<OwningDocumentClass> owningDocumentList;
     public List<string> symptomBookList;
     public List<int> owningMeasureToolList;
+    public List<string> owningOtherToolList;
     public ResearchSaveData researchSaveData;
     public int bookMarkNumber;
     

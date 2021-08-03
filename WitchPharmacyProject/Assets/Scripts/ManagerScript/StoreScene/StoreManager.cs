@@ -8,9 +8,9 @@ public class StoreManager : MonoBehaviour
     GameManager gameManager;
     SceneManager sceneManager;
     [SerializeField]
-    GameObject medicineTab;
+    GameObject otherToolTab;
     [SerializeField]
-    GameObject toolTab;
+    GameObject measureToolTab;
 
     [SerializeField]
     Text coinText;
@@ -19,6 +19,8 @@ public class StoreManager : MonoBehaviour
     {
         sceneManager = SceneManager.inst;
         gameManager = GameManager.singleTon;
+        otherToolTab.SetActive(false);
+        measureToolTab.SetActive(true);
     }
     public void ToNextSceneButton()
     {
@@ -31,17 +33,18 @@ public class StoreManager : MonoBehaviour
 
     public void ChangeCoinText()
     {
-        
         coinText.text = gameManager.saveData.coin.ToString();
     }
-    public void MedicineTabButton()
+    public void OtherToolTabButton()
     {
-        medicineTab.SetActive(true);
-        toolTab.SetActive(false);
+        otherToolTab.SetActive(true);
+        measureToolTab.SetActive(false);
     }
     public void ToolTabButton()
     {
-        medicineTab.SetActive(false);
-        toolTab.SetActive(true);
+        otherToolTab.SetActive(false);
+        measureToolTab.SetActive(true);
     }
+
+    
 }

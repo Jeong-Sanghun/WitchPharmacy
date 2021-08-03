@@ -22,7 +22,7 @@ public class MeasureToolResearchData : ResearchData
         neededResearchList = new List<string>();
     }
 
-    public Sprite LoadImage()
+    public override Sprite LoadImage()
     {
         if(image!= null)
         {
