@@ -18,6 +18,7 @@
     ],
     "owningMeasureToolList": [],
     "owningOtherToolList": [],
+    "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
@@ -27,6 +28,8 @@
         "endOtherToolResearchList": []
     },
     "bookMarkNumber": 3,
+    "routePairList": [],
+    "regionSaveDataList": [],
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1
 }

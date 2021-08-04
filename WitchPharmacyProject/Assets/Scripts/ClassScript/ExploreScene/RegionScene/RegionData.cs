@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum RegularEvent
+public enum RegionEvent
 {
-    MedicineDiscount, ResearchProgress, DocumnetMedicine, DocumentResearch
+    MedicineDiscount, ResearchProgress, DocumentMedicine, DocumentResearch, RandomCoin,SpecialEvent
 }
+
+
 [System.Serializable]
 public class RegionData
 {
     public string fileName;
     public string ingameName;
     public List<SpecialEventCondition> specialEventConditionList;
+    public int[] appearingMedicineArray;
     public int[] eventTimeArray;
-    public string[] appearingDocumentList;
+    public string[] appearingDocumentArray;
+    public string[] appearingResearchArray;
 
     public RegionData()
     {
@@ -24,10 +28,15 @@ public class RegionData
         specialEventConditionList.Add(new SpecialEventCondition());
         specialEventConditionList.Add(new SpecialEventCondition());
         eventTimeArray = new int[4];
-        appearingDocumentList = new string[3];
+        appearingDocumentArray = new string[3];
+        appearingMedicineArray = new int[10];
+        for(int i = 0; i < 10; i++)
+        {
+            appearingMedicineArray[i] = i;
+        }
         for(int i = 0; i < 3; i++)
         {
-            appearingDocumentList[i] = "null";
+            appearingDocumentArray[i] = "null";
         }
         
     }

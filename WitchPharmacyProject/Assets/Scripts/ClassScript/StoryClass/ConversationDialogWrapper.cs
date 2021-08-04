@@ -31,12 +31,12 @@ public class ConversationDialogWrapper
     {
         conversationDialogList = new List<ConversationDialog>();
         startEffectList = new List<DialogEffect>();
-        characterName = new string[3];
-        ingameName = new string[3];
-        characterFeeling = new string[3];
+        characterName = new string[4];
+        ingameName = new string[4];
+        characterFeeling = new string[4];
         cutSceneEffect = CutSceneEffect.None;
         backGroundEffect = CutSceneEffect.None;
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
             characterFeeling[i] = "nothing";
         }

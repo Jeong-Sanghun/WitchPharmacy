@@ -40,6 +40,7 @@ public class SaveDataClass
     public List<string> symptomBookList;
     public List<int> owningMeasureToolList;
     public List<string> owningOtherToolList;
+    public List<string> endQuestList;
     public ResearchSaveData researchSaveData;
     public int bookMarkNumber;
     public List<RoutePair> routePairList;
@@ -84,6 +85,8 @@ public class SaveDataClass
         routePairList = new List<RoutePair>();
         regionSaveDataList = new List<RegionSaveData>();
         owningMeasureToolList = new List<int>();
+        owningOtherToolList = new List<string>();
+        endQuestList = new List<string>();
 
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");

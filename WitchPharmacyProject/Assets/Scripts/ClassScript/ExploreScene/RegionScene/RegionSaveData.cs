@@ -9,6 +9,7 @@ public class RegionSaveData
     public List<int> firstDiscountedMedicineIndex;
     public List<int> secondDiscountedMedicineIndex;
     public int[] eventTimeArray;
+    public List<string> seenSpecialEventList;
 
     public RegionSaveData()
     {
@@ -16,6 +17,7 @@ public class RegionSaveData
         firstDiscountedMedicineIndex = new List<int>();
         secondDiscountedMedicineIndex = new List<int>();
         eventTimeArray = new int[4];
+        seenSpecialEventList = new List<string>();
 
     }
 

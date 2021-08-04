@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 2,
-    "coin": 900,
+    "nowTime": 7200.0,
+    "nowDay": 5,
+    "coin": 996,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -10,7 +10,7 @@
         },
         {
             "medicineIndex": 35,
-            "medicineCost": 3
+            "medicineCost": 1
         },
         {
             "medicineIndex": 42,
@@ -26,7 +26,7 @@
         },
         {
             "medicineIndex": 51,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 58,
@@ -34,39 +34,7 @@
         },
         {
             "medicineIndex": 59,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 20,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 21,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 28,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 29,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 36,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 37,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 44,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 45,
-            "medicineCost": 3
+            "medicineCost": 2
         }
     ],
     "owningSpecialMedicineList": [],
@@ -82,13 +50,22 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 6,
-                    "changedCoin": 100
-                }
-            ]
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         },
         {
             "wholeGainCoin": 0,
@@ -96,7 +73,14 @@
             "billList": []
         }
     ],
-    "owningDocumentList": [],
+    "owningDocumentList": [
+        {
+            "name": "Go",
+            "gainedRegion": 0,
+            "gainedDay": 1,
+            "gainedTime": 7200.0
+        }
+    ],
     "symptomBookList": [
         "water+",
         "water-",
@@ -104,23 +88,52 @@
         "fire-"
     ],
     "owningMeasureToolList": [],
-    "owningOtherToolList": [
-        "opticalLens"
-    ],
+    "owningOtherToolList": [],
+    "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [],
+        "progressingMeasureToolResearchList": [
+            {
+                "fileName": "waterAuto",
+                "researchedTime": 6
+            },
+            {
+                "fileName": "waterTool",
+                "researchedTime": 3
+            },
+            {
+                "fileName": "fireTool",
+                "researchedTime": 3
+            }
+        ],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [
-            "waterearth"
-        ],
+        "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": [
-            "energyDrink",
-            "opticalLens"
+            "energyDrink"
         ]
     },
     "bookMarkNumber": 3,
+    "routePairList": [],
+    "regionSaveDataList": [
+        {
+            "regionIndex": 0,
+            "firstDiscountedMedicineIndex": [
+                51,
+                59
+            ],
+            "secondDiscountedMedicineIndex": [
+                35
+            ],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        }
+    ],
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1
+    "nowSaveTime": 0
 }

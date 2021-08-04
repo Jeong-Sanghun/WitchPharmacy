@@ -33,7 +33,7 @@ public class ConversationDialog
     {
         cutSceneFileName = "test";
         isCutScene = false;
-        fade = new bool[3];
+        fade = new bool[4];
         //leftCharacterFeeling = CharacterFeeling.nothing;
         //rightCharacterFeeling = CharacterFeeling.nothing;
     }

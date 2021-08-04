@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text;
+
+public enum ResearchType
+{
+    Medicine,MeasureTool,OtherTool
+}
 
 public class RegionManager : MonoBehaviour
 {
@@ -33,9 +39,6 @@ public class RegionManager : MonoBehaviour
     [SerializeField]
     GameObject[] routingButtonArray;
 
-    [SerializeField]
-    GameObject toNextSceneButton;
-
 
     float downYpos = -10;
     float upYpos = 0;
@@ -52,21 +55,65 @@ public class RegionManager : MonoBehaviour
     bool nowInRouterWrapper;
     int leftRouterWrapper;
     int nowRouterWrapperIndex;
+
+    RegionDataWrapper regionDataWrapper;
+    List<RegionSaveData> regionSaveDataList;
+    ExploreManager exploreManager;
+    RegionName nowRegion;
+    RegionSaveData nowRegionSaveData;
+    RegionEvent nowRegionEvent;
+    DocumentConditionWrapper documentConditionWrapper;
+    SpecialEventCondition nowSpecialEvent;
+    string nowDocument;
+    int nowMedicineIndex;
+    bool isFirstDiscount;
+    string nowStoryBundleName;
+    string nowResearch;
+    ResearchType nowResearchType;
+
+    [SerializeField]
+    Image[] iconArray;
+    [SerializeField]
+    Text[] bigTextArray;
+    [SerializeField]
+    Text[] smallTextArray;
+
+    [SerializeField]
+    GameObject popupParent;
+    [SerializeField]
+    Sprite coinSprite;
+
+
+    const int progressingResearchTime = 3;
+    const float discountRate = 0.7f;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
-        //conversationDialogBundleList = gameManager.conversationDialogBundleWrapper.conversationDialogBundleList;
+        regionDataWrapper = gameManager.regionDataWrapper;
+        documentConditionWrapper = gameManager.documentConditionWrapper;
+        regionSaveDataList = saveData.regionSaveDataList;
+        exploreManager = ExploreManager.inst;
+        nowRegion = exploreManager.nowRegion;
+        //여기서 조건체크 다 해주고 아래에서 그거에 맞는 스토리 표출해야함
+        if (CheckSpecialEvent())
+        {
+            nowStoryBundleName = nowSpecialEvent.fileName;
+        }
+        else
+        {
+            GenerateRegularReward();
+        }
+
         characterIndexToName = new CharacterIndexToName();
-        //nowBundle = gameManager.LoadBundle("testBundle");
-        //nowWrapper = nowBundle.dialogWrapperList[0];
-        //routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
         blurred = false;
-        faded = new bool[3];
-        for (int i = 0; i < 3; i++)
+        faded = new bool[4];
+        for (int i = 0; i < 4; i++)
         {
             faded[i] = false;
             characterSprite[i].color = new Color(1, 1, 1, 0.2f);
@@ -75,9 +122,9 @@ public class RegionManager : MonoBehaviour
         nowWrapperIndex = 0;
         nowRouterIndex = 0;
         storyParser = new StoryParser(characterIndexToName, gameManager.languagePack);
-        nowBundle = storyParser.LoadBundle("testBundle", gameManager.saveDataTimeWrapper.nowLanguageDirectory,true);
+        nowBundle = storyParser.LoadBundle(nowStoryBundleName, gameManager.saveDataTimeWrapper.nowLanguageDirectory,true);
         nowWrapper = nowBundle.dialogWrapperList[0];
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             Debug.Log(nowWrapper.characterName[i]);
             if (nowWrapper.characterName[i] != null)
@@ -118,10 +165,521 @@ public class RegionManager : MonoBehaviour
                 blurManager.OnBlur(true);
             }
         }
-
-
         PrintConversation();
+
     }
+
+    bool CheckSpecialEvent()
+    {
+        RegionData data = regionDataWrapper.regionDataList[(int)nowRegion];
+        nowSpecialEvent = null;
+        for(int  i = 0; i < data.specialEventConditionList.Count; i++)
+        {
+            SpecialEventCondition condition = data.specialEventConditionList[i];
+            bool cont = false;
+
+            for(int j = 0; j < nowRegionSaveData.seenSpecialEventList.Count; j++)
+            {
+                if (nowRegionSaveData.seenSpecialEventList[j].Contains(condition.fileName))
+                {
+                    continue;
+                }
+            }
+            
+
+            if(saveData.nowDay< condition.leastDayCondition)
+            {
+                continue;
+            }
+            for (int k = 0; k < condition.questConditionList.Count; k++)
+            {
+                bool contain = false;
+                for (int j = 0; j < saveData.endQuestList.Count; j++)
+                {
+                    if (saveData.endQuestList[j].Contains(condition.questConditionList[k]))
+                    {
+                        contain = true;
+                        break;
+                    }
+                }
+                if (contain == false)
+                {
+                    cont = true;
+                    break;
+                }
+            }
+            if (cont)
+            {
+                continue;
+            }
+            for (int k = 0; k < condition.routeConditionList.Count; k++)
+            {
+                bool contain = false;
+                for (int j = 0; j < saveData.routePairList.Count; j++)
+                {
+                    if (saveData.routePairList[j].storyName.Contains(condition.routeConditionList[k].storyName))
+                    {
+                        bool pick = true;
+                        for(int m = 0; m < saveData.routePairList[j].pickedRouteList.Count; m++)
+                        {
+                            if(saveData.routePairList[j].pickedRouteList[m] != condition.routeConditionList[k].pickedRouteList[m])
+                            {
+                                pick = false;
+                                break;
+                            }
+                        }
+                        if(pick == false)
+                        {
+                            contain = false;
+                            break;
+                        }
+                        else
+                        {
+                            contain = true;
+                        }
+                    }
+                }
+                if (contain == false)
+                {
+                    cont = true;
+                    break;
+                }
+            }
+            if (cont)
+            {
+                continue;
+            }
+            nowSpecialEvent = condition;
+            nowMedicineIndex = condition.rewardSpecialMedicineIndex;
+            nowRegionEvent = RegionEvent.SpecialEvent;
+            return true;
+        }
+        return false;
+    }
+
+    //여기서 조건 체크해주고 보상이 뭔지 다 보내버림.
+    void GenerateRegularReward()
+    {
+        RegionData data = regionDataWrapper.regionDataList[(int)nowRegion];
+        List<int> rewardNumPool = new List<int>();
+        int rewardIndex = -1;
+        List<int> discountableMedicine = new List<int>();
+        List<string> progressableResearchList = new List<string>();
+
+        for(int i = 0; i< regionSaveDataList.Count; i++)
+        {
+            if((int)nowRegion == regionSaveDataList[i].regionIndex)
+            {
+                nowRegionSaveData = regionSaveDataList[i];
+                break;
+            }
+        }
+        if(nowRegionSaveData== null)
+        {
+            nowRegionSaveData = new RegionSaveData();
+            regionSaveDataList.Add(nowRegionSaveData);
+            nowRegionSaveData.regionIndex = (int)nowRegion;
+        }
+
+        nowMedicineIndex = -1;
+        for(int i = 0; i < data.appearingMedicineArray.Length; i++)
+        {
+            for(int j = 0; j < saveData.owningMedicineList.Count; j++)
+            {
+                if(saveData.owningMedicineList[j].medicineIndex == data.appearingMedicineArray[i])
+                {
+                    if (!nowRegionSaveData.secondDiscountedMedicineIndex.Contains(data.appearingMedicineArray[i]))
+                    {
+                        discountableMedicine.Add(data.appearingMedicineArray[i]);
+                    }
+                }
+            }
+        }
+        if (discountableMedicine.Count > 0)
+        {
+            nowMedicineIndex = discountableMedicine[Random.Range(0, discountableMedicine.Count)];
+        }
+
+        ResearchSaveData researchSaveData = saveData.researchSaveData;
+        nowResearch = null;
+
+
+        for (int i = 0; i < data.appearingResearchArray.Length; i++)
+        {
+            bool find = false;
+            for (int j = 0; j < researchSaveData.endMeasureToolResearchList.Count; j++)
+            {
+                if (researchSaveData.endMeasureToolResearchList[j].Contains(data.appearingResearchArray[i]))
+                {
+                    find = true;
+                    break;
+                }
+                    
+            }
+            if (!find)
+            {
+
+                for (int j = 0; j < researchSaveData.endMedicineResearchList.Count; j++)
+                {
+                    if (researchSaveData.endMedicineResearchList[j].Contains(data.appearingResearchArray[i]))
+                    {
+                        find = true;
+                        break;
+                    }
+                        
+                }
+            }
+            if (!find)
+            {
+                for (int j = 0; j < researchSaveData.endOtherToolResearchList.Count; j++)
+                {
+                    if (researchSaveData.endOtherToolResearchList[j].Contains(data.appearingResearchArray[i]))
+                    {
+                        find = true;
+                        break;
+                    }
+                        
+                }
+            }
+            if(find == true)
+            {
+                continue;
+            }
+            progressableResearchList.Add(data.appearingResearchArray[i]);
+        }
+        if (progressableResearchList.Count > 0)
+        {
+            nowResearch = progressableResearchList[Random.Range(0, progressableResearchList.Count)];
+        }
+
+
+
+        nowDocument = null;
+        for (int j = 0; j < data.appearingDocumentArray.Length; j++)
+        {
+            bool notContain = true;
+            for (int i = 0; i < saveData.owningDocumentList.Count; i++)
+            {
+                if (saveData.owningDocumentList[i].name.Contains(data.appearingDocumentArray[j]))
+                {
+                    notContain = false;
+                    break;
+                }
+            }
+            if (notContain)
+            {
+                nowDocument = data.appearingDocumentArray[j];
+                break;
+            }
+        }
+
+
+        for (int i = 0; i < data.eventTimeArray.Length; i++)
+        {
+            if(nowDocument == null && ( (RegionEvent)i == RegionEvent.DocumentResearch || (RegionEvent)i == RegionEvent.DocumentMedicine))
+            {
+                continue;
+            }
+            if(nowMedicineIndex == -1 && ((RegionEvent)i == RegionEvent.MedicineDiscount || (RegionEvent)i == RegionEvent.DocumentMedicine))
+            {
+                continue;
+            }
+            if (nowResearch == null && ((RegionEvent)i == RegionEvent.DocumentResearch || (RegionEvent)i == RegionEvent.ResearchProgress))
+            {
+                continue;
+            }
+            if (data.eventTimeArray[i] - nowRegionSaveData.eventTimeArray[i] > 0)
+            {
+                rewardNumPool.Add(i);
+            }
+        }
+        if(rewardNumPool.Count > 0)
+        {
+            rewardIndex = rewardNumPool[Random.Range(0, rewardNumPool.Count)];
+        }
+        if (rewardIndex == -1)
+        {
+            nowRegionEvent = RegionEvent.RandomCoin;
+        }
+        else
+        {
+            nowRegionEvent = (RegionEvent)rewardIndex;
+        }
+        StringBuilder builder = new StringBuilder(nowRegion.ToString());
+        builder.Append(nowRegionEvent.ToString());
+        builder.Append(Random.Range(0, 3).ToString());
+        nowStoryBundleName = builder.ToString();
+    }
+
+
+    void RegionEndPopup()
+    {
+        switch (nowRegionEvent)
+        {
+            case RegionEvent.DocumentMedicine:
+            case RegionEvent.MedicineDiscount:
+                for(int i = 0; i < saveData.owningMedicineList.Count; i++)
+                {
+                    if(saveData.owningMedicineList[i].medicineIndex == nowMedicineIndex)
+                    {
+                        saveData.owningMedicineList[i].medicineCost = (int)(discountRate * saveData.owningMedicineList[i].medicineCost);
+                        break;
+                    }
+                }
+                if (nowRegionSaveData.firstDiscountedMedicineIndex.Contains(nowMedicineIndex))
+                {
+                    nowRegionSaveData.firstDiscountedMedicineIndex.Remove(nowMedicineIndex);
+                    nowRegionSaveData.secondDiscountedMedicineIndex.Add(nowMedicineIndex);
+                }
+                else
+                {
+                    nowRegionSaveData.firstDiscountedMedicineIndex.Add(nowMedicineIndex);
+                }
+                MedicineClass nowMedicineData = gameManager.medicineDataWrapper.medicineDataList[nowMedicineIndex];
+                iconArray[0].sprite = nowMedicineData.LoadImage();
+                StringBuilder name = new StringBuilder(nowMedicineData.firstName);
+                name.Append(" ");
+                name.Append(nowMedicineData.secondName);
+                name.Append("(");
+                name.Append(gameManager.languagePack.symptomArray[(int)nowMedicineData.GetFirstSymptom()]);
+                if(nowMedicineData.firstNumber == 1)
+                {
+                    name.Append("+");
+                }
+                else if (nowMedicineData.firstNumber == 2)
+                {
+                    name.Append("++");
+                }
+                else if (nowMedicineData.firstNumber == -1)
+                {
+                    name.Append("-");
+                }
+                else if (nowMedicineData.firstNumber == -2)
+                {
+                    name.Append("--");
+                }
+                name.Append(gameManager.languagePack.symptomArray[(int)nowMedicineData.GetSecondSymptom()]);
+                if (nowMedicineData.secondNumber == 1)
+                {
+                    name.Append("+");
+                }
+                else if (nowMedicineData.secondNumber == 2)
+                {
+                    name.Append("++");
+                }
+                else if (nowMedicineData.secondNumber == -1)
+                {
+                    name.Append("-");
+                }
+                else if (nowMedicineData.secondNumber == -2)
+                {
+                    name.Append("--");
+                }
+                bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.whatMedicineDiscount, name.ToString());
+                smallTextArray[0].text = gameManager.languagePack.medicineDiscount;
+                if(nowRegionEvent == RegionEvent.DocumentMedicine)
+                {
+                    DocumentCondition nowCondition = null;
+                    OwningDocumentClass doc = new OwningDocumentClass();
+                    doc.name = nowDocument;
+                    doc.gainedDay = saveData.nowDay;
+                    doc.gainedTime = saveData.nowTime;
+                    doc.gainedRegion = nowRegion;
+                    saveData.owningDocumentList.Add(doc);
+                    TabletManager.inst.UpdateDocument(doc);
+                    for(int  i =0;i< gameManager.documentConditionWrapper.documentConditionList.Count; i++)
+                    {
+                        if (gameManager.documentConditionWrapper.documentConditionList[i].fileName.Contains(doc.name))
+                        {
+                            nowCondition = documentConditionWrapper.documentConditionList[i];
+                        }
+                    }
+
+                    iconArray[1].sprite = nowCondition.LoadSprite();
+                    bigTextArray[1].text = gameManager.languagePack.Insert(gameManager.languagePack.whatDocumentGained, nowCondition.ingameName);
+                    smallTextArray[1].text = gameManager.languagePack.documentGained;
+                }
+                else
+                {
+                    iconArray[1].gameObject.SetActive(false);
+                    bigTextArray[1].gameObject.SetActive(false);
+                    smallTextArray[1].gameObject.SetActive(false);
+                }
+                break;
+
+            case RegionEvent.DocumentResearch:
+            case RegionEvent.ResearchProgress:
+                bool find = false;
+                ResearchData researchData = null;
+                for (int i = 0; i < gameManager.otherToolResearchDataWrapper.otherToolResearchDataList.Count; i++)
+                {
+                    if (gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[i].fileName.Contains(nowResearch))
+                    {
+                        nowResearchType = ResearchType.OtherTool;
+                        researchData = gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[i];
+                        find = true;
+                        break;
+                    }
+                }
+                if (!find)
+                {
+                    for (int i = 0; i < gameManager.measureToolResearchDataWrapper.measureToolResearchDataList.Count; i++)
+                    {
+                        if (gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[i].fileName.Contains(nowResearch))
+                        {
+                            nowResearchType = ResearchType.MeasureTool;
+                            researchData = gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[i];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!find)
+                {
+                    for (int i = 0; i < gameManager.medicineResearchDataWrapper.medicineResearchDataList.Count; i++)
+                    {
+                        if (gameManager.medicineResearchDataWrapper.medicineResearchDataList[i].fileName.Contains(nowResearch))
+                        {
+                            nowResearchType = ResearchType.Medicine;
+                            researchData = gameManager.medicineResearchDataWrapper.medicineResearchDataList[i];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+                ResearchSaveData researchSaveData = saveData.researchSaveData;
+                
+                OneResearch research = null;
+                List<OneResearch> oneResearchList = null;
+                List<string> endReserachList = null;
+                switch (nowResearchType)
+                {
+                    case ResearchType.Medicine:
+                        iconArray[0].sprite = ((MedicineResearchData)researchData).LoadImage();
+                        oneResearchList = researchSaveData.progressingMedicineResearchList;
+                        endReserachList = researchSaveData.endMedicineResearchList;
+                        break;
+                    case ResearchType.MeasureTool:
+                        iconArray[0].sprite = ((MeasureToolResearchData)researchData).LoadImage();
+                        oneResearchList = researchSaveData.progressingMeasureToolResearchList;
+                        endReserachList = researchSaveData.endMeasureToolResearchList;
+                        break;
+                    case ResearchType.OtherTool:
+                        iconArray[0].sprite = ((OtherToolResearchData)researchData).LoadImage();
+                        oneResearchList = researchSaveData.progressingOtherToolResearchList;
+                        endReserachList = researchSaveData.endOtherToolResearchList;
+                        break;
+                }
+                for (int i = 0; i < oneResearchList.Count; i++)
+                {
+                    if (oneResearchList[i].fileName.Contains(nowResearch))
+                    {
+                        research = oneResearchList[i];
+                        break;
+                    }
+                }
+                
+                if (research == null)
+                {
+                    research = new OneResearch();
+                    research.fileName = nowResearch;
+                    research.researchedTime = progressingResearchTime;
+                    if(research.researchedTime >= researchData.researchEndTime)
+                    {
+                        endReserachList.Add(nowResearch);
+                    }
+                    else
+                    {
+                        oneResearchList.Add(research);
+                    }
+                    
+                }
+                else
+                {
+                    research.researchedTime += progressingResearchTime;
+                    if (research.researchedTime >= researchData.researchEndTime)
+                    {
+                        research.researchedTime = researchData.researchEndTime;
+                        oneResearchList.Remove(research);
+                        endReserachList.Add(nowResearch);
+                    }
+                }
+                bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.whatResearchProgressed, researchData.ingameName);
+                smallTextArray[0].text = gameManager.languagePack.researchProgressed;
+
+                if (nowRegionEvent == RegionEvent.DocumentResearch)
+                {
+                    DocumentCondition nowCondition = null;
+                    OwningDocumentClass doc = new OwningDocumentClass();
+                    doc.name = nowDocument;
+                    doc.gainedDay = saveData.nowDay;
+                    doc.gainedTime = saveData.nowTime;
+                    doc.gainedRegion = nowRegion;
+                    saveData.owningDocumentList.Add(doc);
+                    TabletManager.inst.UpdateDocument(doc);
+                    for (int i = 0; i < gameManager.documentConditionWrapper.documentConditionList.Count; i++)
+                    {
+                        if (gameManager.documentConditionWrapper.documentConditionList[i].fileName.Contains(doc.name))
+                        {
+                            nowCondition = documentConditionWrapper.documentConditionList[i];
+                        }
+                    }
+
+                    iconArray[1].sprite = nowCondition.LoadSprite();
+                    bigTextArray[1].text = gameManager.languagePack.Insert(gameManager.languagePack.whatDocumentGained, nowCondition.ingameName);
+                    smallTextArray[1].text = gameManager.languagePack.documentGained;
+                }
+                else
+                {
+                    iconArray[1].gameObject.SetActive(false);
+                    bigTextArray[1].gameObject.SetActive(false);
+                    smallTextArray[1].gameObject.SetActive(false);
+                }
+
+
+                break;
+
+
+            case RegionEvent.RandomCoin:
+                int coin = Random.Range(100, 200);
+                saveData.coin += coin;
+                bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.boxCoinGained, coin);
+                smallTextArray[0].text = gameManager.languagePack.coinGained;
+                iconArray[0].sprite = coinSprite;
+                iconArray[1].gameObject.SetActive(false);
+                bigTextArray[1].gameObject.SetActive(false);
+                smallTextArray[1].gameObject.SetActive(false);
+                break;
+
+            case RegionEvent.SpecialEvent:
+                OwningMedicineClass medicine = new OwningMedicineClass();
+                SpecialMedicineClass med = gameManager.specialMedicineDataWrapper.specialMedicineDataList[nowMedicineIndex];
+                medicine.medicineIndex = nowMedicineIndex;
+                medicine.medicineCost = med.cost;
+                saveData.owningSpecialMedicineList.Add(medicine);
+                
+                StringBuilder medName = new StringBuilder(med.firstName);
+                medName.Append(" ");
+                medName.Append(med.secondName);
+                if (gameManager.saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
+                {
+                    string josa = gameManager.languagePack.GetCompleteWord(medName.ToString(), "을", "를");
+                    medName.Append(josa);
+                }
+                bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.boxGained, medName.ToString());
+                smallTextArray[0].gameObject.SetActive(false);
+                iconArray[0].sprite = med.LoadImage();
+                iconArray[1].gameObject.SetActive(false);
+                bigTextArray[1].gameObject.SetActive(false);
+                smallTextArray[1].gameObject.SetActive(false);
+                break;
+
+        }
+
+        popupParent.SetActive(true);
+    }
+
 
 
     //그 버튼이 뜨는거임. 라우팅 버튼
@@ -184,8 +742,7 @@ public class RegionManager : MonoBehaviour
                 nowInRouterWrapper = false;
                 if (nowWrapperIndex >= nowBundle.dialogWrapperList.Count)
                 {
-                    //여기가 끝나는 지점임.
-                    toNextSceneButton.SetActive(true);
+                    RegionEndPopup();
                     return;
                 }
                 nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
@@ -209,7 +766,7 @@ public class RegionManager : MonoBehaviour
             }
             if (nowWrapperIndex >= nowBundle.dialogWrapperList.Count)
             {
-                toNextSceneButton.SetActive(true);
+                RegionEndPopup();
                 return;
             }
 
@@ -217,7 +774,7 @@ public class RegionManager : MonoBehaviour
         }
 
         nowConversationIndex = 0;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (nowWrapper.characterName[i] != null)
                 characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
@@ -290,7 +847,7 @@ public class RegionManager : MonoBehaviour
         conversationText.text = nowConversation.dialog;
         StartCoroutine(sceneManager.LoadTextOneByOne(nowConversation.dialog, conversationText));
         nameText.text = nowConversation.ingameName;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (faded[i] == nowConversation.fade[i])
             {
@@ -364,4 +921,28 @@ public class RegionManager : MonoBehaviour
         PrintConversation();
 
     }
+
+    public void EndButton()
+    {
+        exploreManager.NextTime();
+    }
+
+    public void OnTouch()
+    {
+        if (!checkingRouter && !sceneManager.nowTexting)
+        {
+            PrintConversation();
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            nowConversationIndex = nowWrapper.conversationDialogList.Count;
+        }
+
+    }
+
+
 }

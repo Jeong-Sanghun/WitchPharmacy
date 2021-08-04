@@ -65,8 +65,8 @@ public class StoryManager : MonoBehaviour
         //routingTime = nowBundle.conversationRouter.routingTime;
         checkingRouter = false;
         blurred = false;
-        faded = new bool[3];
-        for(int i = 0; i < 3; i++)
+        faded = new bool[4];
+        for(int i = 0; i < 4; i++)
         {
             faded[i] = false;
             characterSprite[i].color = new Color(1, 1, 1, 0.2f);
@@ -77,9 +77,8 @@ public class StoryManager : MonoBehaviour
         storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
         nowBundle = storyParser.LoadBundle("testBundle", gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
         nowWrapper = nowBundle.dialogWrapperList[0];
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
-            Debug.Log(nowWrapper.characterName[i]);
             if (nowWrapper.characterName[i] != null)
                 characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
             else
@@ -288,7 +287,7 @@ public class StoryManager : MonoBehaviour
         conversationText.text = nowConversation.dialog;
         StartCoroutine( sceneManager.LoadTextOneByOne(nowConversation.dialog, conversationText));
         nameText.text = nowConversation.ingameName;
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
             if(faded[i] == nowConversation.fade[i])
             {
@@ -388,7 +387,7 @@ public class StoryManager : MonoBehaviour
          //   gameManager.ForceSaveButtonActive("ExploreScene");
             sceneManager.LoadScene("ExploreScene");
         }
-        else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene" || sceneManager.lastSceneName == "StoreScene")
+        else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene" || sceneManager.lastSceneName == "StoreScene" || sceneManager.lastSceneName == "RegionScene")
         {
             gameManager.ForceSaveButtonActive("StoryScene",SaveTime.DayStart);
             //sceneManager.LoadScene("StoryScene");
@@ -400,7 +399,13 @@ public class StoryManager : MonoBehaviour
 
     }
 
-
+    public void OnTouchScreen()
+    {
+        if (!checkingRouter && !sceneManager.nowTexting)
+        {
+            PrintConversation();
+        }
+    }
 
 
     // Update is called once per frame
@@ -409,10 +414,7 @@ public class StoryManager : MonoBehaviour
         //입력
         if (Input.GetMouseButtonDown(0))
         {
-            if (!checkingRouter && !sceneManager.nowTexting)
-            {
-                PrintConversation();
-            }
+
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {

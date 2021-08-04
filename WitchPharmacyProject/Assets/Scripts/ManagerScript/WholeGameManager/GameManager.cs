@@ -39,6 +39,15 @@ public class GameManager : MonoBehaviour //SH
     public DocumentConditionWrapper documentConditionWrapper;
     [HideInInspector]
     public UILanguagePack languagePack;
+    [HideInInspector]
+    public RegionDataWrapper regionDataWrapper;
+    [HideInInspector]
+    public OtherToolResearchDataWrapper otherToolResearchDataWrapper;
+    [HideInInspector]
+    public MeasureToolResearchDataWrapper measureToolResearchDataWrapper;
+    [HideInInspector]
+    public MedicineResearchDataWrapper medicineResearchDataWrapper;
+
 
     public int nowSaveDataIndex;
 
@@ -76,17 +85,22 @@ public class GameManager : MonoBehaviour //SH
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
         documentConditionWrapper = jsonManager.ResourceDataLoad<DocumentConditionWrapper>("DocumentConditionWrapper");
+
         for(int i = 0; i < documentConditionWrapper.documentConditionList.Count; i++)
         {
             documentConditionWrapper.documentConditionList[i].ConditionStringParse();
            
         }
+        regionDataWrapper = jsonManager.ResourceDataLoad<RegionDataWrapper>("RegionDataWrapper");
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
         randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
         specialVisitorConditionWrapper = jsonManager.ResourceDataLoad<SpecialVisitorConditionWrapper>("SpecialVisitorConditionWrapper");
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
+        measureToolResearchDataWrapper = jsonManager.ResourceDataLoad<MeasureToolResearchDataWrapper>("MeasureToolResearchDataWrapper");
+        medicineResearchDataWrapper = jsonManager.ResourceDataLoad<MedicineResearchDataWrapper>("MedicineResearchDataWrapper");
+        otherToolResearchDataWrapper = jsonManager.ResourceDataLoad<OtherToolResearchDataWrapper>("OtherToolResearchDataWrapper");
 
         for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
@@ -253,8 +267,10 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<MedicineResearchDataWrapper>(medicineResearchWrapper, "MedicineResearchDataWrapper");
         //OtherToolResearchDataWrapper otherToolResearchWrapper = new OtherToolResearchDataWrapper();
         //jsonManager.SaveJson<OtherToolResearchDataWrapper>(otherToolResearchWrapper, "OtherToolResearchDataWrapper");
-        OtherToolDataWrapper otherToolWrapper = new OtherToolDataWrapper();
-        jsonManager.SaveJson<OtherToolDataWrapper>(otherToolWrapper, "OtherToolDataWrapper");
+        //OtherToolDataWrapper otherToolWrapper = new OtherToolDataWrapper();
+        //jsonManager.SaveJson<OtherToolDataWrapper>(otherToolWrapper, "OtherToolDataWrapper");
+        RegionDataWrapper region = new RegionDataWrapper();
+        jsonManager.SaveJson<RegionDataWrapper>(region, "RegionDataWrapper");
 
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");

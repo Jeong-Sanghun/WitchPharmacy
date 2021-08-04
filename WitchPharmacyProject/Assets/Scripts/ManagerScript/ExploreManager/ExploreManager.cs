@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RegionName
+{
+    Library, Forest, Market, AntiqueShop, Research, Store
+}
+
 public class ExploreManager : MonoBehaviour
 {
     public static ExploreManager inst;
     TabletManager tabletManager;
     GameManager gameManager;
     SaveDataClass saveData;
+
+    public RegionName nowRegion;
     int timeCount = 1;
     // Start is called before the first frame update
     private void Awake()

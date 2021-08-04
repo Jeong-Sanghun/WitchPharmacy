@@ -13,7 +13,7 @@ public class MedicineResearchManager : ResearchManagerParent
     protected override void Start()
     {
         base.Start();
-        dataWrapper = gameManager.jsonManager.ResourceDataLoad<MedicineResearchDataWrapper>("MedicineResearchDataWrapper");
+        dataWrapper = gameManager.medicineResearchDataWrapper;
         List<MedicineResearchData> dataList = dataWrapper.medicineResearchDataList;
         for (int i = 0; i < dataList.Count; i++)
         {

@@ -97,9 +97,9 @@ public class TabletDocumentManager : MonoBehaviour
         DocumentFolderButtonClass folderButton = null;
         DocumentCondition conditionData = null;
         DocumentBundle bundle = null;
-        for(int i = 0; i < documentConditionList.Count; i++)
+        for (int i = 0; i < documentConditionList.Count; i++)
         {
-            if(owningDocument.name == documentConditionList[i].fileName)
+            if(documentConditionList[i].fileName == owningDocument.name)
             {
                 conditionData = documentConditionList[i];
                 break;

@@ -1,7 +1,7 @@
 {
     "name": "initName",
-    "nowTime": 7200.0,
-    "nowDay": 0,
+    "nowTime": 0.0,
+    "nowDay": 2,
     "coin": 1000,
     "owningMedicineList": [
         {
@@ -46,6 +46,16 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         }
     ],
     "owningDocumentList": [],
@@ -57,8 +67,14 @@
     ],
     "owningMeasureToolList": [],
     "owningOtherToolList": [],
+    "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [],
+        "progressingMeasureToolResearchList": [
+            {
+                "fileName": "waterAuto",
+                "researchedTime": 6
+            }
+        ],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
@@ -66,6 +82,21 @@
         "endOtherToolResearchList": []
     },
     "bookMarkNumber": 3,
+    "routePairList": [],
+    "regionSaveDataList": [
+        {
+            "regionIndex": 0,
+            "firstDiscountedMedicineIndex": [],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        }
+    ],
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 0
+    "nowSaveTime": 1
 }

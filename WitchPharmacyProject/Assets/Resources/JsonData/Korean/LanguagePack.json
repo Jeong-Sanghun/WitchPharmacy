@@ -20,6 +20,13 @@
      "no" : "아니오",
 	 "doResearch" : "연구하기",
 	 "priorResearchNeeded" : "선행 연구 필요",
+	 "whatMedicineDiscount" : "$ 구매처 확보!",
+     "medicineDiscount" : "해당 약재 가격 30% 감소!",
+    "whatResearchProgressed" :"$ 연구 진전!",
+     "researchProgressed" : " 기쁘다! ",
+     "whatDocumentGained" : "$ 문서 확보!",
+     "documentGained" : "너무좋아용",
+     "coinGained" :"달달하당",
 	 "saveTimeArray": [
         "탐험 시작",
         "하루 시작"
@@ -40,5 +47,12 @@
         "릴리",
 		"아이리스",
 		"이안"
+    ],
+	"symptomArray": [
+        "물",
+		"불",
+		"대지",
+		"공기",
+		"빛"
     ]
 }

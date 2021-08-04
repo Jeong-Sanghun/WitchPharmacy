@@ -13,7 +13,7 @@ public class OtherToolResearchManager : ResearchManagerParent
     protected override void Start()
     {
         base.Start();
-        dataWrapper = gameManager.jsonManager.ResourceDataLoad<OtherToolResearchDataWrapper>("OtherToolResearchDataWrapper");
+        dataWrapper = gameManager.otherToolResearchDataWrapper;
         List<OtherToolResearchData> dataList = dataWrapper.otherToolResearchDataList;
         MakeButtonCanvas();
     }

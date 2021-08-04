@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ExploreScene.unity
     guid: feac5cad11ed6d54e880a073fbefc076
   - enabled: 1
+    path: Assets/Scenes/RegionScene.unity
+    guid: a0af7607f723426468a6ffa023afcaf6
+  - enabled: 1
     path: Assets/Scenes/ResearchScene.unity
     guid: 53258fa0235da6a4d83b208a64e86df4
   m_configObjects: {}

@@ -1,0 +1,12 @@
+﻿<bundleName>{testBundle}
+<switch>{Lily,,Ruellia(nothing){up}}
+<background>{counter(blur)}
+[]
+책 사이에 누가 돈을 끼워놨다
+[]
+대박~
+[릴리]
+무야호~
+[루엘리아]
+대박이넹
+

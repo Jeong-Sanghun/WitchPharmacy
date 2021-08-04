@@ -14,7 +14,7 @@ public class MeasureToolResearchManager : ResearchManagerParent
     protected override void Start()
     {
         base.Start();
-        dataWrapper = gameManager.jsonManager.ResourceDataLoad<MeasureToolResearchDataWrapper>("MeasureToolResearchDataWrapper");
+        dataWrapper = gameManager.measureToolResearchDataWrapper;
         MakeButtonCanvas();
     }
 

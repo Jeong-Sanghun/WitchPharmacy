@@ -26,9 +26,18 @@ public class UILanguagePack
     public string no;
     public string doResearch;
     public string priorResearchNeeded;
+    public string whatMedicineDiscount;
+    public string medicineDiscount;
+    public string whatResearchProgressed;
+    public string researchProgressed;
+    public string whatDocumentGained;
+    public string documentGained;
+    public string whatCoinGained;
+    public string coinGained;
     public string[] saveTimeArray;
     public string[] reasonArray;
     public string[] characterNameArray;
+    public string[] symptomArray;
 
     //billReason enum으로 값을 받아온다.
     //GameObject symptomChartButtonPrefab;

@@ -5,7 +5,8 @@ using UnityEngine;
 public class ExploreButtonManager : MonoBehaviour
 {
     SceneManager sceneManager;
-
+    [SerializeField]
+    ExploreManager exploreManager;
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,12 @@ public class ExploreButtonManager : MonoBehaviour
     public void StoreSceneButton()
     {
         sceneManager.LoadScene("StoreScene");
+    }
+
+    public void RegionSceneButton(int index)
+    {
+        exploreManager.nowRegion = (RegionName)index;
+        sceneManager.LoadScene("RegionScene");
     }
 
     // Update is called once per frame

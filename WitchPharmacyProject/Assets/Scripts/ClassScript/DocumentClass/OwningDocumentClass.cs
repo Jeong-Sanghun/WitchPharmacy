@@ -6,14 +6,14 @@ using UnityEngine;
 public class OwningDocumentClass
 {
     public string name;
-    public string gainedRegion;
+    public RegionName gainedRegion;
     public int gainedDay;
     public float gainedTime;
 
     public OwningDocumentClass()
     {
         name = null;
-        gainedRegion = null;
+        gainedRegion = RegionName.AntiqueShop;
         gainedDay = 0;
         gainedTime = 0;
     }
