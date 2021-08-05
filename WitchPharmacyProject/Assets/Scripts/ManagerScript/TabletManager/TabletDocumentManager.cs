@@ -38,7 +38,7 @@ public class TabletDocumentManager : MonoBehaviour
     [SerializeField]
     GameObject highlightPopupPrefab;
     [SerializeField]
-    Camera cam;
+    GameObject imageOpenCanvasPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -199,7 +199,7 @@ public class TabletDocumentManager : MonoBehaviour
             GameObject canvas = Instantiate(documentParentPrefab, wholeFolderParentObject.transform);
             //Tlqkf zz
             
-            document.SetupDocument(canvas,gameManager.languagePack,highlightButtonPrefab,highlightPopupPrefab,cam);
+            document.SetupDocument(canvas,gameManager.languagePack,highlightButtonPrefab,highlightPopupPrefab,imageOpenCanvasPrefab);
             directoryCanvas.SetAsLastSibling();
         }
         nowOpenedDocumentCanvas = document.documentCanvas;

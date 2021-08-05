@@ -52,6 +52,7 @@ public class StoryManager : MonoBehaviour
     bool nowInRouterWrapper;
     int leftRouterWrapper;
     int nowRouterWrapperIndex;
+    string nextStory;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +64,7 @@ public class StoryManager : MonoBehaviour
         //nowBundle = gameManager.LoadBundle("testBundle");
         //nowWrapper = nowBundle.dialogWrapperList[0];
         //routingTime = nowBundle.conversationRouter.routingTime;
+        nextStory = null;
         checkingRouter = false;
         blurred = false;
         faded = new bool[4];
@@ -75,8 +77,13 @@ public class StoryManager : MonoBehaviour
         nowWrapperIndex = 0;
         nowRouterIndex = 0;
         storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
-        nowBundle = storyParser.LoadBundle("testBundle", gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
+        saveData.readStoryList.Add(saveData.nextStory);
+        nowBundle = storyParser.LoadBundle(saveData.nextStory, gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
         nowWrapper = nowBundle.dialogWrapperList[0];
+        if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
+        {
+            saveData.nextStory = nowWrapper.nextStory;
+        }
         for (int i = 0; i < 4; i++)
         {
             if (nowWrapper.characterName[i] != null)
@@ -212,9 +219,14 @@ public class StoryManager : MonoBehaviour
 
             nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
         }
-
+        if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length>0)
+        {
+            Debug.Log("저장");
+            saveData.nextStory = nowWrapper.nextStory;
+        }
+        
         nowConversationIndex = 0;
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
             if(nowWrapper.characterName[i] != null)
                 characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
@@ -319,10 +331,6 @@ public class StoryManager : MonoBehaviour
         {
             routingButtonArray[i].SetActive(false);
         }
-        for(int i = 0; i < nowRouter.routingWrapperIndex.Count; i++)
-        {
-            Debug.Log(nowRouter.routingWrapperIndex[i]);
-        }
         if(nowRouter.routingWrapperIndex.Count-1 == index)
         {
             leftRouterWrapper = nowRouter.routingWrapperIndex.Count - nowRouter.routingWrapperIndex[index];
@@ -358,6 +366,11 @@ public class StoryManager : MonoBehaviour
         nowRouterWrapperIndex = nowRouter.routingWrapperIndex[index];
         nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
         nowConversationIndex = 0;
+        if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
+        {
+            Debug.Log("저장");
+            saveData.nextStory = nowWrapper.nextStory;
+        }
         PrintConversation();
         
     }

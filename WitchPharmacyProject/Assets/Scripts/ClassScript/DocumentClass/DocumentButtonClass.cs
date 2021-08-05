@@ -19,6 +19,9 @@ public class DocumentButtonClass
     public Text documentText;
     public Text gainedRegionText;
     public DocumentCondition documentCondition;
+    public GameObject imageOpenCanvas;
+    public Image imageOpenImage;
+    public Text imageOpenText;
     public bool isOpened;
     //public List<GameObject> highlightButtonList;
     //public List<GameObject> highlightPopupList;
@@ -47,7 +50,7 @@ public class DocumentButtonClass
     }
 
 
-    public void SetupDocument(GameObject canvas,UILanguagePack languagePack,GameObject highlightButtonPref, GameObject highlightPopupPref,Camera cam)
+    public void SetupDocument(GameObject canvas, UILanguagePack languagePack, GameObject highlightButtonPref, GameObject highlightPopupPref, GameObject imageOpenPrefab)
     {
         isOpened = true;
         documentCanvas = canvas;
@@ -56,12 +59,53 @@ public class DocumentButtonClass
         documentImage = canvas.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
         documentText = canvas.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>();
         gainedRegionText = canvas.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(2).GetComponent<Text>();
-        documentImage.sprite = bundle.LoadSprite();
-        MakeHighlight(highlightButtonPref,highlightPopupPref,cam);
-        gainedRegionText.text = "힝ㄱ구짝";
+        if(documentCondition.printSprite == true)
+        {
+            documentImage.sprite = bundle.LoadSprite();
+
+            EventTrigger trigger = documentImage.GetComponent<EventTrigger>();
+
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerUp;
+            entry.callback.AddListener((data) => { OpenImage(); });
+            trigger.triggers.Add(entry);
+
+            imageOpenCanvas = GameObject.Instantiate(imageOpenPrefab, TabletManager.inst.transform);
+            imageOpenCanvas.SetActive(false);
+            imageOpenImage = imageOpenCanvas.transform.GetChild(1).GetComponent<Image>();
+            imageOpenText = imageOpenCanvas.transform.GetChild(2).GetComponent<Text>();
+            imageOpenImage.sprite = bundle.LoadSprite();
+            imageOpenText.text = documentCondition.ingameName;
+
+            EventTrigger shutdown = imageOpenCanvas.transform.GetChild(3).GetComponent<EventTrigger>();
+            EventTrigger.Entry entry1 = new EventTrigger.Entry();
+            entry1.eventID = EventTriggerType.PointerUp;
+            entry1.callback.AddListener((data) => { ShutImage(); });
+            shutdown.triggers.Add(entry1);
+
+        }
+        else
+        {
+            documentImage.gameObject.SetActive(false);
+            documentText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -280);
+        }
+        
+        MakeHighlight(highlightButtonPref,highlightPopupPref);
+        gainedRegionText.text = languagePack.documentGainedRegion + languagePack.regionNameArray[(int)owningDocumentClass.gainedRegion];
     }
 
-    void MakeHighlight(GameObject buttonPrefab, GameObject popupPrefab,Camera cam)
+    void OpenImage()
+    {
+        imageOpenCanvas.SetActive(true);
+        
+    }
+
+    void ShutImage()
+    {
+        imageOpenCanvas.SetActive(false);
+    }
+
+    void MakeHighlight(GameObject buttonPrefab, GameObject popupPrefab)
     {
 
         List<string> highlightedText = new List<string>();
@@ -128,7 +172,15 @@ public class DocumentButtonClass
         Vector2 extents = documentText.gameObject.GetComponent<RectTransform>().rect.size;
         textGen.Populate(documentBuilder.ToString(), documentText.GetGenerationSettings(extents));
 
-        scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 2*documentText.fontSize+1100 - textGen.lines[textGen.lineCount - 1].topY);
+        if(documentCondition.printSprite == true)
+        {
+            scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 2 * documentText.fontSize + 1100 - textGen.lines[textGen.lineCount - 1].topY);
+        }
+        else
+        {
+            scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 2 * documentText.fontSize + 280 - textGen.lines[textGen.lineCount - 1].topY);
+        }
+        
 
         for (int i = 0; i < highlightList.Count; i++)
         {

@@ -38,6 +38,7 @@ public class UILanguagePack
     public string[] reasonArray;
     public string[] characterNameArray;
     public string[] symptomArray;
+    public string[] regionNameArray;
 
     //billReason enum으로 값을 받아온다.
     //GameObject symptomChartButtonPrefab;

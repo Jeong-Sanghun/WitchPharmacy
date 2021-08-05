@@ -1,16 +1,16 @@
 {
     "saveDataTimeList": [
         {
-            "day": 5,
+            "day": 3,
             "saveTime": 0
         },
         {
-            "day": 1,
-            "saveTime": 1
+            "day": -1,
+            "saveTime": 0
         },
         {
-            "day": 2,
-            "saveTime": 1
+            "day": -1,
+            "saveTime": 0
         },
         {
             "day": -1,

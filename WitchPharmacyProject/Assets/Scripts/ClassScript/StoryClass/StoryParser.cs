@@ -9,7 +9,7 @@ public class StoryParser
         Clamp,Switch,Route,DialogCharacterName, Dialog,DialogEffect, BundleName,
             ReadMode,ClampCharacterName, ClampFeeling,ClampEffect
             ,RouteSwitch,RouteText,RightAfterRoute,CutScene,CutSceneFileName,CutSceneEffect,Null
-            ,BackGround,BackGroundName,BackGroundEffect
+            ,BackGround,BackGroundName,BackGroundEffect, NextStory, NextStoryName
     }
 
     CharacterIndexToName characterIndexToName;
@@ -60,10 +60,7 @@ public class StoryParser
         int leftMiddleRight = 0;
         for (int i = 0; i < originText.Length; i++)
         {
-            if(i == originText.Length - 1)
-            {
-                nowDialog.dialog = builder.ToString();
-            }
+
             switch (originText[i])
             {
                 case '<':
@@ -157,6 +154,36 @@ public class StoryParser
                         else if (nowWrapper.conversationDialogList.Count == 0)
                         {
                             nowWrapper.backGroundFileName = "testBackGround1";
+                            //기본 백그라운드.
+                        }
+                        else
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            for (int j = 0; j < 3; j++)
+                            {
+                                wrapper.characterFeeling[j] = nowWrapper.characterFeeling[j];
+                                wrapper.characterName[j] = nowWrapper.characterName[j];
+                                wrapper.ingameName[j] = nowWrapper.ingameName[j];
+                            }
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
+                    }
+                    else if (modeStr.Contains("nextStory"))
+                    {
+                        nowMode = ParseMode.NextStory;
+                        ConversationDialogWrapper wrapper;
+
+                        if (nowWrapper == null)
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
+                        else if (nowWrapper.conversationDialogList.Count == 0)
+                        {
+                            //의미없는 코드.
+                            nowWrapper.nextStory = null;
                         }
                         else
                         {
@@ -214,6 +241,9 @@ public class StoryParser
                         case ParseMode.BackGround:
                             nowMode = ParseMode.BackGroundName;
                             break;
+                        case ParseMode.NextStory:
+                            nowMode = ParseMode.NextStoryName;
+                            break;
                         default:
                             builder.Append('{');
                             break;
@@ -232,7 +262,6 @@ public class StoryParser
                             break;
                         case ParseMode.ClampCharacterName:
                             string name = builder.ToString();
-                            Debug.Log(name);
                             if (name.Length < 1)
                             {
                                 nowWrapper.characterName[leftMiddleRight] = null;
@@ -291,6 +320,11 @@ public class StoryParser
                         case ParseMode.CutScene:
                         case ParseMode.BackGroundEffect:
                             nowMode = ParseMode.Null;
+                            break;
+                        case ParseMode.NextStoryName:
+                            nowMode = ParseMode.Null;
+                            Debug.Log(builder.ToString());
+                            nowWrapper.nextStory = builder.ToString();
                             break;
 
                     }
@@ -439,7 +473,7 @@ public class StoryParser
                     break;
                 case ']':
                     nowDialog.ingameName = builder.ToString();
-                    for(int j = 0; j < 3; j++)
+                    for(int j = 0; j < 4; j++)
                     {
                         if(nowDialog.ingameName.Length > 1)
                         {
@@ -507,8 +541,14 @@ public class StoryParser
                     builder.Append(originText[i]);
                     break;
 
+
             }
-            
+            if (i == originText.Length - 1)
+            {
+
+                nowDialog.dialog = builder.ToString();
+            }
+
         }
 
         return gameData;

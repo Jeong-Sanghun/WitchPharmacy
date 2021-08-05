@@ -1,0 +1,10 @@
+﻿<bundleName>{fifthDay}
+<switch>{Cari,Ian,Lily,Ruellia}
+<nextStory>{firstDay}
+<background>{counter(blur)}
+[카리]
+우리 다과회하자
+[릴리]
+앙 맛있겠다 과자 좋아
+[루엘리아]
+히히

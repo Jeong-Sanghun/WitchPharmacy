@@ -45,8 +45,9 @@ public class SaveDataClass
     public int bookMarkNumber;
     public List<RoutePair> routePairList;
     public List<RegionSaveData> regionSaveDataList;
-    
-    //public List<string> readStoryList;
+
+    public List<string> readStoryList;
+    public string nextStory;
     public string nextLoadSceneName;
     public SaveTime nowSaveTime;
     //public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
@@ -82,6 +83,8 @@ public class SaveDataClass
         symptomBookList.Add("fire+");
         symptomBookList.Add("fire-");
         bookMarkNumber = 3;
+        nextStory = "firstDay";
+        readStoryList = new List<string>();
         routePairList = new List<RoutePair>();
         regionSaveDataList = new List<RegionSaveData>();
         owningMeasureToolList = new List<int>();

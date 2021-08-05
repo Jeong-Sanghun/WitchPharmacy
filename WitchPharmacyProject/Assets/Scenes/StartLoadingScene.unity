@@ -2373,6 +2373,94 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &337136131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 337136132}
+  - component: {fileID: 337136135}
+  - component: {fileID: 337136134}
+  - component: {fileID: 337136133}
+  m_Layer: 0
+  m_Name: touch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &337136132
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337136131}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359649187}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2560, y: 1440}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &337136133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337136131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+--- !u!114 &337136134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337136131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &337136135
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337136131}
+  m_CullTransparentMesh: 0
 --- !u!1 &339157414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,6 +2539,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339157414}
   m_CullTransparentMesh: 0
+--- !u!1 &359649186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 359649187}
+  - component: {fileID: 359649190}
+  - component: {fileID: 359649189}
+  - component: {fileID: 359649188}
+  m_Layer: 0
+  m_Name: ImageOpenCanvasPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &359649187
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359649186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1525326339}
+  - {fileID: 1394437858}
+  - {fileID: 793620530}
+  - {fileID: 337136132}
+  m_Father: {fileID: 1560275832}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &359649188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359649186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &359649189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359649186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &359649190
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359649186}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 3
+  m_TargetDisplay: 0
 --- !u!1 &363868696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,7 +4545,7 @@ RectTransform:
   - {fileID: 267506565}
   - {fileID: 135859573}
   m_Father: {fileID: 1560275832}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5729,6 +5919,84 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &793620529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 793620530}
+  - component: {fileID: 793620532}
+  - component: {fileID: 793620531}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &793620530
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793620529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359649187}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 409.1, y: -549}
+  m_SizeDelta: {x: 900.22485, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &793620531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793620529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 64
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 73
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &793620532
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793620529}
+  m_CullTransparentMesh: 0
 --- !u!1 &811115388
 GameObject:
   m_ObjectHideFlags: 0
@@ -9803,15 +10071,15 @@ MonoBehaviour:
     billWrapperList: []
     owningDocumentList:
     - name: 
-      gainedRegion: 
+      gainedRegion: 0
       gainedDay: 0
       gainedTime: 0
     - name: 
-      gainedRegion: 
+      gainedRegion: 0
       gainedDay: 0
       gainedTime: 0
     - name: 
-      gainedRegion: 
+      gainedRegion: 0
       gainedDay: 0
       gainedTime: 0
     symptomBookList:
@@ -9820,10 +10088,20 @@ MonoBehaviour:
     - fire+
     - fire-
     owningMeasureToolList: 
+    owningOtherToolList: []
+    endQuestList: []
     researchSaveData:
-      progressingMeasureToolReaserchList: []
+      progressingMeasureToolResearchList: []
       endMeasureToolResearchList: []
+      progressingMedicineResearchList: []
+      endMedicineResearchList: []
+      progressingOtherToolResearchList: []
+      endOtherToolResearchList: []
     bookMarkNumber: 3
+    routePairList: []
+    regionSaveDataList: []
+    readStoryList: []
+    nextStory: firstDay
     nextLoadSceneName: StoryScene
     nowSaveTime: 1
   saveDataTimeWrapper:
@@ -9839,8 +10117,7 @@ MonoBehaviour:
     nowLanguageDirectory: Korean/
   medicineDataWrapper:
     medicineDataList:
-    - fileName: 
-      firstName: "\uC544\uBB34\uAC83\uB3C4"
+    - firstName: "\uC544\uBB34\uAC83\uB3C4"
       secondName: "\uC544\uB2D8"
       toolTip: Tooltip missing
       cost: 0
@@ -9848,8 +10125,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 0
       secondNumber: 0
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 2
@@ -9857,8 +10133,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 3
@@ -9866,8 +10141,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 3
@@ -9875,8 +10149,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 4
@@ -9884,8 +10157,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 3
@@ -9893,8 +10165,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 4
@@ -9902,8 +10173,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 4
@@ -9911,8 +10181,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 5
@@ -9920,8 +10189,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 4
@@ -9929,8 +10197,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 5
@@ -9938,8 +10205,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 5
@@ -9947,8 +10213,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 6
@@ -9956,8 +10221,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 5
@@ -9965,8 +10229,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 6
@@ -9974,8 +10237,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 6
@@ -9983,8 +10245,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 7
@@ -9992,8 +10253,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 2
@@ -10001,8 +10261,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 3
@@ -10010,8 +10269,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 3
@@ -10019,8 +10277,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 4
@@ -10028,8 +10285,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 4
@@ -10037,8 +10293,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 5
@@ -10046,8 +10301,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 5
@@ -10055,8 +10309,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 6
@@ -10064,8 +10317,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 5
@@ -10073,8 +10325,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 6
@@ -10082,8 +10333,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 6
@@ -10091,8 +10341,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 7
@@ -10100,8 +10349,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 6
@@ -10109,8 +10357,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 7
@@ -10118,8 +10365,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 7
@@ -10127,8 +10373,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 8
@@ -10136,8 +10381,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 3
@@ -10145,8 +10389,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 4
@@ -10154,8 +10397,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 4
@@ -10163,8 +10405,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 5
@@ -10172,8 +10413,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 4
@@ -10181,8 +10421,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 5
@@ -10190,8 +10429,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 5
@@ -10199,8 +10437,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 6
@@ -10208,8 +10445,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 6
@@ -10217,8 +10453,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 7
@@ -10226,8 +10461,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 7
@@ -10235,8 +10469,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 8
@@ -10244,8 +10477,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 7
@@ -10253,8 +10485,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 8
@@ -10262,8 +10493,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 8
@@ -10271,8 +10501,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 9
@@ -10280,8 +10509,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 4
@@ -10289,8 +10517,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 5
@@ -10298,8 +10525,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 5
@@ -10307,8 +10533,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 6
@@ -10316,8 +10541,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 5
@@ -10325,8 +10549,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 6
@@ -10334,8 +10557,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 6
@@ -10343,8 +10565,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 7
@@ -10352,8 +10573,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 6
@@ -10361,8 +10581,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 7
@@ -10370,8 +10589,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 7
@@ -10379,8 +10597,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 8
@@ -10388,8 +10605,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 8
@@ -10397,8 +10613,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 9
@@ -10406,8 +10621,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 9
@@ -10415,8 +10629,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 10
@@ -10424,8 +10637,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 5
@@ -10433,8 +10645,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 6
@@ -10442,8 +10653,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 6
@@ -10451,8 +10661,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2F8\uB298\uD55C"
+    - firstName: "\uC2F8\uB298\uD55C"
       secondName: "\uC5F4\uB9E4"
       toolTip: Tooltip missing
       cost: 7
@@ -10460,8 +10669,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 6
@@ -10469,8 +10677,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 7
@@ -10478,8 +10685,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 7
@@ -10487,8 +10693,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uCD95\uCD95\uD55C"
+    - firstName: "\uCD95\uCD95\uD55C"
       secondName: "\uC6D0\uC11D"
       toolTip: Tooltip missing
       cost: 8
@@ -10496,8 +10701,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 7
@@ -10505,8 +10709,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 8
@@ -10514,8 +10717,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 8
@@ -10523,8 +10725,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uD750\uB974\uB294"
+    - firstName: "\uD750\uB974\uB294"
       secondName: "\uBD88\uAF43"
       toolTip: Tooltip missing
       cost: 9
@@ -10532,8 +10733,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 8
@@ -10541,8 +10741,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 9
@@ -10550,8 +10749,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: -1
       secondNumber: 2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 9
@@ -10559,8 +10757,7 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: -2
-    - fileName: 
-      firstName: "\uC2DC\uB4E0"
+    - firstName: "\uC2DC\uB4E0"
       secondName: "\uC774\uC2AC"
       toolTip: Tooltip missing
       cost: 10
@@ -10571,6 +10768,7 @@ MonoBehaviour:
   conversationDialogBundleWrapper:
     conversationDialogBundleList:
     - bundleName: bundle
+      nextStory: 
       dialogWrapperList:
       - wrapperIndex: 0
         characterName:
@@ -10585,6 +10783,7 @@ MonoBehaviour:
         - nothing
         - nothing
         - nothing
+        nextStory: 
         conversationDialogList:
         - ingameName: 
           isCutScene: 0
@@ -10626,6 +10825,7 @@ MonoBehaviour:
         - nothing
         - nothing
         - nothing
+        nextStory: 
         conversationDialogList:
         - ingameName: 
           isCutScene: 0
@@ -10668,6 +10868,7 @@ MonoBehaviour:
         - nothing
         - nothing
         - nothing
+        nextStory: 
         conversationDialogList:
         - ingameName: 
           isCutScene: 0
@@ -10701,6 +10902,7 @@ MonoBehaviour:
         backGroundFileName: 
       conversationRouterList: []
     - bundleName: testBundle
+      nextStory: 
       dialogWrapperList:
       - wrapperIndex: 0
         characterName:
@@ -10715,6 +10917,7 @@ MonoBehaviour:
         - nothing
         - nothing
         - nothing
+        nextStory: 
         conversationDialogList:
         - ingameName: 
           isCutScene: 0
@@ -10756,6 +10959,7 @@ MonoBehaviour:
         - nothing
         - nothing
         - nothing
+        nextStory: 
         conversationDialogList:
         - ingameName: 
           isCutScene: 0
@@ -10798,6 +11002,7 @@ MonoBehaviour:
         - nothing
         - nothing
         - nothing
+        nextStory: 
         conversationDialogList:
         - ingameName: 
           isCutScene: 0
@@ -10832,6 +11037,7 @@ MonoBehaviour:
       conversationRouterList: []
   conversationDialogBundle:
     bundleName: testBundle
+    nextStory: 
     dialogWrapperList:
     - wrapperIndex: 0
       characterName:
@@ -10846,6 +11052,7 @@ MonoBehaviour:
       - nothing
       - nothing
       - nothing
+      nextStory: 
       conversationDialogList:
       - ingameName: 
         isCutScene: 0
@@ -10887,6 +11094,7 @@ MonoBehaviour:
       - nothing
       - nothing
       - nothing
+      nextStory: 
       conversationDialogList:
       - ingameName: 
         isCutScene: 0
@@ -10929,6 +11137,7 @@ MonoBehaviour:
       - nothing
       - nothing
       - nothing
+      nextStory: 
       conversationDialogList:
       - ingameName: 
         isCutScene: 0
@@ -11103,23 +11312,19 @@ MonoBehaviour:
         - str: "\uC0BC\uBC88"
   specialMedicineDataWrapper:
     specialMedicineDataList:
-    - fileName: "\uD30C\uC77C"
-      firstName: "\uD37C\uC2A4\uD2B8"
+    - firstName: "\uD37C\uC2A4\uD2B8"
       secondName: "\uC138\uCEE8\uB4DC"
       toolTip: "\uD234\uD301"
       cost: 3
-    - fileName: "\uD30C\uC77C"
-      firstName: "\uD37C\uC2A4\uD2B8"
+    - firstName: "\uD37C\uC2A4\uD2B8"
       secondName: "\uC138\uCEE8\uB4DC"
       toolTip: "\uD234\uD301"
       cost: 3
-    - fileName: "\uD30C\uC77C"
-      firstName: "\uD37C\uC2A4\uD2B8"
+    - firstName: "\uD37C\uC2A4\uD2B8"
       secondName: "\uC138\uCEE8\uB4DC"
       toolTip: "\uD234\uD301"
       cost: 3
-    - fileName: "\uD30C\uC77C"
-      firstName: "\uD37C\uC2A4\uD2B8"
+    - firstName: "\uD37C\uC2A4\uD2B8"
       secondName: "\uC138\uCEE8\uB4DC"
       toolTip: "\uD234\uD301"
       cost: 3
@@ -11166,6 +11371,7 @@ MonoBehaviour:
       folderFileName: 
       fileName: testDocument
       ingameName: "\uD14C\uC2A4\uD22C"
+      printSprite: 1
       storyGainCondition: 
       questGainCondition: Lily
       documentGainCondition: 
@@ -11174,6 +11380,7 @@ MonoBehaviour:
       folderFileName: 
       fileName: testDocument
       ingameName: "\uD14C\uC2A4\uD22C"
+      printSprite: 1
       storyGainCondition: 
       questGainCondition: Lily
       documentGainCondition: 
@@ -11182,6 +11389,7 @@ MonoBehaviour:
       folderFileName: 
       fileName: testDocument
       ingameName: "\uD14C\uC2A4\uD22C"
+      printSprite: 1
       storyGainCondition: 
       questGainCondition: Lily
       documentGainCondition: 
@@ -11206,12 +11414,265 @@ MonoBehaviour:
     alertText: 
     yes: 
     no: 
+    doResearch: 
+    priorResearchNeeded: 
+    whatMedicineDiscount: 
+    medicineDiscount: 
+    whatResearchProgressed: 
+    researchProgressed: 
+    whatDocumentGained: 
+    documentGained: 
+    whatCoinGained: 
+    coinGained: 
     saveTimeArray: []
     reasonArray:
     - "\uC57D\uC7AC \uD310\uB9E4"
     - "\uC57D\uC7AC \uAD6C\uC785"
     - "\uC720\uC9C0\uBE44"
     characterNameArray: []
+    symptomArray: []
+    regionNameArray: []
+  regionDataWrapper:
+    regionDataList:
+    - fileName: null
+      ingameName: "\uB110"
+      specialEventConditionList:
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+      eventTimeArray: 00000000000000000000000000000000
+      appearingDocumentArray:
+      - null
+      - null
+      - null
+      appearingResearchArray: []
+    - fileName: null
+      ingameName: "\uB110"
+      specialEventConditionList:
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+      eventTimeArray: 00000000000000000000000000000000
+      appearingDocumentArray:
+      - null
+      - null
+      - null
+      appearingResearchArray: []
+    - fileName: null
+      ingameName: "\uB110"
+      specialEventConditionList:
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+      eventTimeArray: 00000000000000000000000000000000
+      appearingDocumentArray:
+      - null
+      - null
+      - null
+      appearingResearchArray: []
+    - fileName: null
+      ingameName: "\uB110"
+      specialEventConditionList:
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      - fileName: null
+        leastDayCondition: 0
+        questConditionList:
+        - null
+        routeConditionList:
+        - storyName: null
+          pickedRouteList: 
+        rewardSpecialMedicineIndex: 0
+      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+      eventTimeArray: 00000000000000000000000000000000
+      appearingDocumentArray:
+      - null
+      - null
+      - null
+      appearingResearchArray: []
+  otherToolResearchDataWrapper:
+    otherToolResearchDataList:
+    - fileName: improvement
+      ingameName: "\uC5F0\uAD6C \uC124\uBE44 \uAC1C\uC120 \uC5F0\uAD6C"
+      explain: "\uC774\uAC83\uB9CC \uC788\uC73C\uBA74 \uC5F0\uAD6C\uB97C \uB354 \uBE60\uB974\uAC8C
+        \uC9C4\uD589\uD560 \uC218 \uC788\uC5B4..!"
+      researchEndTime: 5
+      neededResearchList: []
+    - fileName: improvement
+      ingameName: "\uC5F0\uAD6C \uC124\uBE44 \uAC1C\uC120 \uC5F0\uAD6C"
+      explain: "\uC774\uAC83\uB9CC \uC788\uC73C\uBA74 \uC5F0\uAD6C\uB97C \uB354 \uBE60\uB974\uAC8C
+        \uC9C4\uD589\uD560 \uC218 \uC788\uC5B4..!"
+      researchEndTime: 5
+      neededResearchList: []
+    - fileName: improvement
+      ingameName: "\uC5F0\uAD6C \uC124\uBE44 \uAC1C\uC120 \uC5F0\uAD6C"
+      explain: "\uC774\uAC83\uB9CC \uC788\uC73C\uBA74 \uC5F0\uAD6C\uB97C \uB354 \uBE60\uB974\uAC8C
+        \uC9C4\uD589\uD560 \uC218 \uC788\uC5B4..!"
+      researchEndTime: 5
+      neededResearchList: []
+  measureToolResearchDataWrapper:
+    measureToolResearchDataList:
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
+      explain: "\uB3C4\uAD6C\uC124\uBA85"
+      researchEndTime: 10
+      neededResearchList: []
+      symptomString: water
+  medicineResearchDataWrapper:
+    medicineResearchDataList:
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
+    - fileName: earthwater
+      ingameName: "\uB300\uC9C0, \uBB3C \uC57D\uC7AC\uC5F0\uAD6C"
+      explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
+      researchEndTime: 10
+      neededResearchList: []
+      firstSymptomString: earth
+      secondSymptomString: water
   nowSaveDataIndex: 0
 --- !u!4 &1386205292
 Transform:
@@ -11227,6 +11688,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1394437857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1394437858}
+  - component: {fileID: 1394437861}
+  - component: {fileID: 1394437860}
+  m_Layer: 0
+  m_Name: sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1394437858
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394437857}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359649187}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -670}
+  m_SizeDelta: {x: 1000, y: 1000}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1394437860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394437857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fbaf469d9b3e2734a868710511f6231b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1394437861
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394437857}
+  m_CullTransparentMesh: 0
 --- !u!1 &1413712419
 GameObject:
   m_ObjectHideFlags: 0
@@ -11988,6 +12523,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521767204}
   m_CullTransparentMesh: 0
+--- !u!1 &1525326338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1525326339}
+  - component: {fileID: 1525326341}
+  - component: {fileID: 1525326340}
+  m_Layer: 0
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1525326339
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525326338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359649187}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2560, y: 1440}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1525326340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525326338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.43137255}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1525326341
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525326338}
+  m_CullTransparentMesh: 0
 --- !u!1 &1526992150
 GameObject:
   m_ObjectHideFlags: 0
@@ -12486,6 +13095,7 @@ Transform:
   - {fileID: 1280309815}
   - {fileID: 1954067608}
   - {fileID: 1445468278}
+  - {fileID: 359649187}
   - {fileID: 650611834}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -13538,7 +14148,7 @@ MonoBehaviour:
   directoryCanvas: {fileID: 331420367}
   highlightButtonPrefab: {fileID: 1547936170}
   highlightPopupPrefab: {fileID: 1850901426}
-  cam: {fileID: 0}
+  imageOpenCanvasPrefab: {fileID: 359649186}
 --- !u!4 &1704496321
 Transform:
   m_ObjectHideFlags: 0
@@ -14777,6 +15387,7 @@ GameObject:
   - component: {fileID: 1925507449}
   - component: {fileID: 1925507451}
   - component: {fileID: 1925507450}
+  - component: {fileID: 1925507452}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -14840,6 +15451,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925507448}
   m_CullTransparentMesh: 0
+--- !u!114 &1925507452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925507448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1926327119
 GameObject:
   m_ObjectHideFlags: 0

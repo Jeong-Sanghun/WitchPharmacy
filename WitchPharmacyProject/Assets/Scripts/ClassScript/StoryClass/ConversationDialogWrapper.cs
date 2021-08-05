@@ -16,6 +16,7 @@ public class ConversationDialogWrapper
     public string[] ingameName;
 
     public string[] characterFeeling;
+    public string nextStory;
 
     public List<DialogEffect> startEffectList;
     public List<ConversationDialog> conversationDialogList;
@@ -36,6 +37,7 @@ public class ConversationDialogWrapper
         characterFeeling = new string[4];
         cutSceneEffect = CutSceneEffect.None;
         backGroundEffect = CutSceneEffect.None;
+        nextStory = null;
         for(int i = 0; i < 4; i++)
         {
             characterFeeling[i] = "nothing";

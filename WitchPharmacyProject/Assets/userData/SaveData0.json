@@ -1,20 +1,20 @@
 {
     "name": "initName",
     "nowTime": 7200.0,
-    "nowDay": 5,
-    "coin": 996,
+    "nowDay": 3,
+    "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 35,
-            "medicineCost": 1
+            "medicineCost": 3
         },
         {
             "medicineIndex": 42,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 43,
@@ -34,7 +34,7 @@
         },
         {
             "medicineIndex": 59,
-            "medicineCost": 2
+            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -61,23 +61,13 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
         }
     ],
     "owningDocumentList": [
         {
             "name": "Go",
             "gainedRegion": 0,
-            "gainedDay": 1,
+            "gainedDay": 0,
             "gainedTime": 7200.0
         }
     ],
@@ -91,27 +81,12 @@
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [
-            {
-                "fileName": "waterAuto",
-                "researchedTime": 6
-            },
-            {
-                "fileName": "waterTool",
-                "researchedTime": 3
-            },
-            {
-                "fileName": "fireTool",
-                "researchedTime": 3
-            }
-        ],
+        "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [
-            "energyDrink"
-        ]
+        "endOtherToolResearchList": []
     },
     "bookMarkNumber": 3,
     "routePairList": [],
@@ -119,12 +94,11 @@
         {
             "regionIndex": 0,
             "firstDiscountedMedicineIndex": [
+                42,
                 51,
-                59
+                34
             ],
-            "secondDiscountedMedicineIndex": [
-                35
-            ],
+            "secondDiscountedMedicineIndex": [],
             "eventTimeArray": [
                 0,
                 0,
@@ -134,6 +108,19 @@
             "seenSpecialEventList": []
         }
     ],
+    "readStoryList": [
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay1",
+        "fifthDay",
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay"
+    ],
+    "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 0
 }

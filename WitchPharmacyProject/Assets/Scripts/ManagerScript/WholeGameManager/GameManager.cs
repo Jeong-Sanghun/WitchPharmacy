@@ -86,11 +86,11 @@ public class GameManager : MonoBehaviour //SH
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
         documentConditionWrapper = jsonManager.ResourceDataLoad<DocumentConditionWrapper>("DocumentConditionWrapper");
 
-        for(int i = 0; i < documentConditionWrapper.documentConditionList.Count; i++)
-        {
-            documentConditionWrapper.documentConditionList[i].ConditionStringParse();
+        //for(int i = 0; i < documentConditionWrapper.documentConditionList.Count; i++)
+        //{
+        //    documentConditionWrapper.documentConditionList[i].ConditionStringParse();
            
-        }
+        //}
         regionDataWrapper = jsonManager.ResourceDataLoad<RegionDataWrapper>("RegionDataWrapper");
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 

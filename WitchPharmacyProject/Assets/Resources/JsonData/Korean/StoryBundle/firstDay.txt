@@ -1,0 +1,17 @@
+﻿<bundleName>{testBundle}
+<switch>{Cari,,Ruellia(nothing){up}}
+<nextStory>{secondDay}
+<background>{counter(blur)}
+[카리]
+야 오늘은 첫날이야!
+[루엘리아]
+잉 너무 좋당
+[카리]
+잉 뭐가 좋아
+<switch>{Cari,Lily{up},Ruellia,Ian}
+[릴리]
+안뇽
+[이안]
+안뇽 ㅋㅋ
+[루엘리아]
+안뇽 ㅎㅎ
