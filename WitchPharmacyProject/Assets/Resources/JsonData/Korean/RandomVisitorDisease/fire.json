@@ -3,162 +3,150 @@
         {
             "sympotmString": "fire",
             "symptomNumber": "-2",
-            "effectString": "GrayScale",
-            "dialog": "콩하",
-            "firstSpriteName": "4",
-            "secondSpriteName": "4",
-            "firstSpriteLayer": "0.8",
-            "secondSpriteLayer": "0.8"
+            "effectString": "Shiny",
+            "dialog": "피부에 얼음이 얼고 있어요...",
+            "firstSpriteName": "frozen1",
+            "secondSpriteName": "frozen2",
+            "firstSpriteLayer": "0.3",
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "-2",
             "effectString": "Shiny",
-            "dialog": "콩이안녕",
-            "firstSpriteName": "5",
-            "secondSpriteName": "5",
-            "firstSpriteLayer": "0.9",
-            "secondSpriteLayer": "0.9"
+            "dialog": "이거 얼음 뭐에요..?",
+            "firstSpriteName": "frozen1",
+            "secondSpriteName": "frozen2",
+            "firstSpriteLayer": "0.3",
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "-2",
-            "effectString": "Transparent",
-            "dialog": "콩이다",
-            "firstSpriteName": "6",
-            "secondSpriteName": "6",
-            "firstSpriteLayer": "1",
-            "secondSpriteLayer": "1"
+            "effectString": "Shiny",
+            "dialog": "저 얼고 있잖아요",
+            "firstSpriteName": "frozen1",
+            "secondSpriteName": "frozen2",
+            "firstSpriteLayer": "0.3",
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "-2",
-            "effectString": "GrayScale",
-            "dialog": "콩이야콩이",
-            "firstSpriteName": "7",
-            "secondSpriteName": "7",
-            "firstSpriteLayer": "1.5",
+            "effectString": "Shiny",
+            "dialog": "피부가 얼고있어요!",
+            "firstSpriteName": "frozen1",
+            "secondSpriteName": "frozen2",
+            "firstSpriteLayer": "0.3",
             "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "-1",
-            "effectString": "Shiny",
-            "dialog": "콩이래요~",
-            "firstSpriteName": "8",
-            "secondSpriteName": "8",
-            "firstSpriteLayer": "1.2",
-            "secondSpriteLayer": "1.2"
+            "effectString": "None",
+            "dialog": "저체온증인 것 같아요",
+            "firstSpriteName": "lowTemperatureSkin",
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "-1",
-            "effectString": "Transparent",
-            "dialog": "콩이가 이렇게 귀여워",
-            "firstSpriteName": "9",
-            "secondSpriteName": "9",
-            "firstSpriteLayer": "1.2",
-            "secondSpriteLayer": "1.2"
+            "effectString": "None",
+            "dialog": "저체온증인가봐요",
+            "firstSpriteName": "lowTemperatureSkin",
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "-1",
-            "effectString": "GrayScale",
-            "dialog": "콩이콩이 ㅎㅎ",
-            "firstSpriteName": "10",
-            "secondSpriteName": "10",
+            "effectString": "None",
+            "dialog": "저 너무 추워요....",
+            "firstSpriteName": "lowTemperatureSkin",
+            "firstSpriteLayer": "0.5"
+        },
+        {
+            "sympotmString": "fire",
+            "symptomNumber": "-1",
+            "effectString": "None",
+            "dialog": "으실으실 몸이 떨려요",
+            "firstSpriteName": "lowTemperatureSkin",
+            "firstSpriteLayer": "0.5"
+        },
+        {
+            "sympotmString": "fire",
+            "symptomNumber": "1",
+            "effectString": "None",
+            "dialog": "저 열이 엄청나요",
+            "firstSpriteName": "feverSkin",
+            "secondSpriteName": "fever",
             "firstSpriteLayer": "0.5",
-            "secondSpriteLayer": "0.5"
-        },
-        {
-            "sympotmString": "fire",
-            "symptomNumber": "-1",
-            "effectString": "Shiny",
-            "dialog": "콩이바이",
-            "firstSpriteName": "11",
-            "secondSpriteName": "11",
-            "firstSpriteLayer": "0.63",
-            "secondSpriteLayer": "0.63"
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "1",
-            "effectString": "Transparent",
-            "dialog": "윽 콩이냄새",
-            "firstSpriteName": "12",
-            "secondSpriteName": "12",
-            "firstSpriteLayer": "0.4",
-            "secondSpriteLayer": "0.4"
+            "effectString": "None",
+            "dialog": "열이 심해요",
+            "firstSpriteName": "feverSkin",
+            "secondSpriteName": "fever",
+            "firstSpriteLayer": "0.5",
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "1",
-            "effectString": "GrayScale",
-            "dialog": "콩이 좋아",
-            "firstSpriteName": "sweat",
-            "secondSpriteName": "sweat",
-            "firstSpriteLayer": "0.8",
-            "secondSpriteLayer": "0.8"
+            "effectString": "None",
+            "dialog": "열이 나고 있어요",
+            "firstSpriteName": "feverSkin",
+            "secondSpriteName": "fever",
+            "firstSpriteLayer": "0.5",
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "1",
-            "effectString": "Shiny",
-            "dialog": "콩이최고",
-            "firstSpriteName": "sweat",
-            "secondSpriteName": "sweat",
-            "firstSpriteLayer": "0.7",
-            "secondSpriteLayer": "0.7"
-        },
-        {
-            "sympotmString": "fire",
-            "symptomNumber": "1",
-            "effectString": "Transparent",
-            "dialog": "콩이까지마",
-            "firstSpriteName": "sweat",
-            "secondSpriteName": "sweat",
-            "firstSpriteLayer": "0.98",
-            "secondSpriteLayer": "0.98"
+            "effectString": "None",
+            "dialog": "열이 나요",
+            "firstSpriteName": "feverSkin",
+            "secondSpriteName": "fever",
+            "firstSpriteLayer": "0.5",
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "2",
-            "effectString": "GrayScale",
-            "dialog": "콩까지마",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.55",
-            "secondSpriteLayer": "0.55"
+            "effectString": "None",
+            "dialog": "제 머리위에 이거 뭐에요",
+            "firstSpriteName": "volcano",
+            "firstSpriteLayer": "0.3"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "2",
-            "effectString": "Shiny",
-            "dialog": "콩콩",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.78",
-            "secondSpriteLayer": "0.78"
+            "effectString": "None",
+            "dialog": "머리위에 불이 나잖아요",
+            "firstSpriteName": "volcano",
+            "firstSpriteLayer": "0.3"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "2",
-            "effectString": "Transparent",
-            "dialog": "콩이커여워",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.56",
-            "secondSpriteLayer": "0.56"
+            "effectString": "None",
+            "dialog": "뭐야 제 주변에 불이 있어요",
+            "firstSpriteName": "flame1",
+            "secondSpriteName": "flame2",
+            "firstSpriteLayer": "0.3",
+            "secondSpriteLayer": "1.5"
         },
         {
             "sympotmString": "fire",
             "symptomNumber": "2",
-            "effectString": "GrayScale",
-            "dialog": "콩이짱",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.54",
-            "secondSpriteLayer": "0.54"
+            "effectString": "None",
+            "dialog": "불이 나고 있어요!",
+            "firstSpriteName": "flame1",
+            "secondSpriteName": "flame2",
+            "firstSpriteLayer": "0.3",
+            "secondSpriteLayer": "1.5"
         }
     ]
 }

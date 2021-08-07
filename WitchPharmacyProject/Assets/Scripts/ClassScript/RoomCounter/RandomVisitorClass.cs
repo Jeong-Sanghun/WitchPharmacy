@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+using UnityEngine.UI;
 
 [System.Serializable]
 public enum Symptom
@@ -366,14 +367,8 @@ public class RandomVisitorClass //SH
             partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
         }
 
-        for(int i = 0; i < diseaseList.Count; i++)
-        {
-            GameObject obj = new GameObject();
-            obj.transform.SetParent(visitor.transform);
-            obj.AddComponent<SpriteRenderer>().sprite = diseaseList[i].LoadImage(true);
-            obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetFirstLayer());
-        }
-
+        GameObject headPart = null;
+        GameObject[] facePart = new GameObject[2];
         for (int i = 0; i < partsWrapperArray.Length; i++)
         {
             if(partsWrapperArray[i].partsArray == null)
@@ -383,6 +378,14 @@ public class RandomVisitorClass //SH
             for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
             {
                 GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
+                if (i == 3)
+                {
+                    facePart[j] = part;
+                }
+                if (i == 2)
+                {
+                    headPart = part;
+                }
                 if (i == 4 && j == 1)
                 {
                     part.transform.localPosition = new Vector3(0, 0, 1.5f);
@@ -392,6 +395,67 @@ public class RandomVisitorClass //SH
                     part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.01f * (j + 1));
                 }
             }
+        }
+
+        //partsWrapperArray[2].partsArray[0] 이게 헤드임.
+        for (int i = 0; i < diseaseList.Count; i++)
+        {
+
+            if (diseaseList[i].firstSpriteName != null)
+            {
+                GameObject obj = new GameObject();
+
+                if (diseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
+                {
+                    for (int j = 0; j < facePart.Length; j++)
+                    {
+                        facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                    }
+                    obj.transform.SetParent(headPart.transform.GetChild(0));
+                    obj.transform.SetAsLastSibling();
+                    obj.transform.localScale = Vector3.one;
+                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
+                    obj.AddComponent<Image>().sprite = diseaseList[i].LoadImage(true);
+                    obj.transform.localPosition = Vector3.zero;
+
+
+                }
+                else
+                {
+                    obj.transform.SetParent(visitor.transform);
+                    obj.AddComponent<SpriteRenderer>().sprite = diseaseList[i].LoadImage(true);
+                    obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetFirstLayer());
+
+                }
+
+
+            }
+            if (diseaseList[i].secondSpriteName != null)
+            {
+                GameObject obj = new GameObject();
+                if (diseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
+                {
+                    for (int j = 0; j < facePart.Length; j++)
+                    {
+                        facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                    }
+                    obj.transform.SetParent(headPart.transform.GetChild(0).transform);
+                    obj.transform.SetAsLastSibling();
+                    obj.transform.localScale = Vector3.one;
+                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
+                    obj.AddComponent<Image>().sprite = diseaseList[i].LoadImage(false);
+                    obj.transform.localPosition = Vector3.zero;
+                }
+                else
+                {
+                    obj.transform.SetParent(visitor.transform);
+                    obj.AddComponent<SpriteRenderer>().sprite = diseaseList[i].LoadImage(false);
+                    obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetSecondLayer());
+
+                }
+
+            }
+
         }
 
 

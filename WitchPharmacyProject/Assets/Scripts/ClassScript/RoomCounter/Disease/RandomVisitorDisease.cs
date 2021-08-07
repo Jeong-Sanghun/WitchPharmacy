@@ -95,11 +95,11 @@ public class RandomVisitorDisease
         symptomNumber = -2;
         effect = RandomVisitorFX.None;
         dialog = "대본인데요";
-        firstSpriteName = "fish";
+        firstSpriteName = null;
         firstSpriteLayer = "0";
         firstSpriteLayerNumber = -1;
 
-        secondSpriteName = "fish";
+        secondSpriteName = null;
         secondSpriteLayer = "0";
         secondSpriteLayerNumber = -1;
         firstParsed = false;

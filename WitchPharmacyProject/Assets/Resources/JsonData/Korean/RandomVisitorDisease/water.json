@@ -3,162 +3,122 @@
         {
             "sympotmString": "water",
             "symptomNumber": "-2",
-            "effectString": "Shiny",
-            "dialog": "뭐야 이 물고기 뭐에요",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.8",
-            "secondSpriteLayer": "0.8"
+            "effectString": "None",
+            "dialog": "피부가 건조해서 갈라지잖아요.",
+            "firstSpriteName": "drySkin",
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "-2",
-            "effectString": "Shiny",
-            "dialog": "뭐지 이  물고기",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.9",
-            "secondSpriteLayer": "0.9"
+            "effectString": "None",
+            "dialog": "지금 제 피부좀 봐봐요!",
+            "firstSpriteName": "drySkin",
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "-2",
-            "effectString": "GrayScale",
-            "dialog": "물고기다!",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "1",
-            "secondSpriteLayer": "1"
+            "effectString": "None",
+            "dialog": "제 주변에 이거 바람부는거좀 봐요",
+            "firstSpriteName": "dustWind",
+            "firstSpriteLayer": "1.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "-2",
-            "effectString": "GrayScale",
-            "dialog": "무 물고기야 물고기",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "1.5",
-            "secondSpriteLayer": "1.5"
+            "effectString": "None",
+            "dialog": "주변에 막 흙먼지가 있어요",
+            "firstSpriteName": "dustWind",
+            "firstSpriteLayer": "1.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "-1",
-            "effectString": "GrayScale",
-            "dialog": "고래야 고래",
-            "firstSpriteName": "whale",
-            "secondSpriteName": "whale",
-            "firstSpriteLayer": "1.2",
-            "secondSpriteLayer": "1.2"
+            "effectString": "None",
+            "dialog": "지금 저 탈수온거 같아요"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "-1",
-            "effectString": "GrayScale",
-            "dialog": "고래고래 소리질러",
-            "firstSpriteName": "whale",
-            "secondSpriteName": "whale",
-            "firstSpriteLayer": "1.2",
-            "secondSpriteLayer": "1.2"
+            "effectString": "None",
+            "dialog": "탈수가 있어요..."
         },
         {
             "sympotmString": "water",
             "symptomNumber": "-1",
-            "effectString": "GrayScale",
-            "dialog": "고래가아니라 콩이인데요",
-            "firstSpriteName": "whale",
-            "secondSpriteName": "whale",
-            "firstSpriteLayer": "0.5",
-            "secondSpriteLayer": "0.5"
+            "effectString": "None",
+            "dialog": "목이 너무 말라요"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "-1",
-            "effectString": "GrayScale",
-            "dialog": "고래야~~~",
-            "firstSpriteName": "whale",
-            "secondSpriteName": "whale",
-            "firstSpriteLayer": "0.63",
-            "secondSpriteLayer": "0.63"
+            "effectString": "None",
+            "dialog": "너무 목이 말라서 미칠거같아요"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "1",
-            "effectString": "GrayScale",
-            "dialog": "땀나요",
+            "effectString": "None",
+            "dialog": "땀이 너무 많이나요",
             "firstSpriteName": "sweat",
-            "secondSpriteName": "sweat",
-            "firstSpriteLayer": "0.4",
-            "secondSpriteLayer": "0.4"
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "1",
-            "effectString": "GrayScale",
-            "dialog": "윽 땀내",
+            "effectString": "None",
+            "dialog": "땀이 비오듯이 와요",
             "firstSpriteName": "sweat",
-            "secondSpriteName": "sweat",
-            "firstSpriteLayer": "0.8",
-            "secondSpriteLayer": "0.8"
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "1",
-            "effectString": "Transparent",
+            "effectString": "None",
             "dialog": "땀냄새!",
             "firstSpriteName": "sweat",
-            "secondSpriteName": "sweat",
-            "firstSpriteLayer": "0.7",
-            "secondSpriteLayer": "0.7"
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "1",
-            "effectString": "Transparent",
+            "effectString": "None",
             "dialog": "땀이 너무 많아요",
             "firstSpriteName": "sweat",
-            "secondSpriteName": "sweat",
-            "firstSpriteLayer": "0.98",
-            "secondSpriteLayer": "0.98"
+            "firstSpriteLayer": "0.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "2",
-            "effectString": "Transparent",
-            "dialog": "물구기~",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.55",
-            "secondSpriteLayer": "0.55"
+            "effectString": "None",
+            "dialog": "머리에서 물이 튀어나오고 있어요!",
+            "firstSpriteName": "whale",
+            "firstSpriteLayer": "0.3"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "2",
-            "effectString": "Transparent",
-            "dialog": "짝퉁물고기",
-            "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.78",
-            "secondSpriteLayer": "0.78"
+            "effectString": "None",
+            "dialog": "정수리에서 물이 튀어나와요!",
+            "firstSpriteName": "whale",
+            "firstSpriteLayer": "0.3"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "2",
-            "effectString": "Shiny",
-            "dialog": "물고기 짭이당",
+            "effectString": "None",
+            "dialog": "이 이물고기 뭐에요??",
             "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.56",
-            "secondSpriteLayer": "0.56"
+            "firstSpriteLayer": "1.5"
         },
         {
             "sympotmString": "water",
             "symptomNumber": "2",
-            "effectString": "Shiny",
-            "dialog": "물고기 짭",
+            "effectString": "None",
+            "dialog": "물고기가 자꾸 주변에 돌아다녀요",
             "firstSpriteName": "fish",
-            "secondSpriteName": "fish",
-            "firstSpriteLayer": "0.54",
-            "secondSpriteLayer": "0.54"
+            "firstSpriteLayer": "1.5"
         }
     ]
 }
