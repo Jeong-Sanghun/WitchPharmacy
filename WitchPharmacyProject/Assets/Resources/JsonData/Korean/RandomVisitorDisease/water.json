@@ -1,0 +1,164 @@
+{
+    "randomVisitorDiseaseArray": [
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "effectString": "Shiny",
+            "dialog": "뭐야 이 물고기 뭐에요",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "0.8",
+            "secondSpriteLayer": "0.8"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "effectString": "Shiny",
+            "dialog": "뭐지 이  물고기",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "0.9",
+            "secondSpriteLayer": "0.9"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "effectString": "GrayScale",
+            "dialog": "물고기다!",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "1",
+            "secondSpriteLayer": "1"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "effectString": "GrayScale",
+            "dialog": "무 물고기야 물고기",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "1.5",
+            "secondSpriteLayer": "1.5"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "effectString": "GrayScale",
+            "dialog": "고래야 고래",
+            "firstSpriteName": "whale",
+            "secondSpriteName": "whale",
+            "firstSpriteLayer": "1.2",
+            "secondSpriteLayer": "1.2"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "effectString": "GrayScale",
+            "dialog": "고래고래 소리질러",
+            "firstSpriteName": "whale",
+            "secondSpriteName": "whale",
+            "firstSpriteLayer": "1.2",
+            "secondSpriteLayer": "1.2"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "effectString": "GrayScale",
+            "dialog": "고래가아니라 콩이인데요",
+            "firstSpriteName": "whale",
+            "secondSpriteName": "whale",
+            "firstSpriteLayer": "0.5",
+            "secondSpriteLayer": "0.5"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "effectString": "GrayScale",
+            "dialog": "고래야~~~",
+            "firstSpriteName": "whale",
+            "secondSpriteName": "whale",
+            "firstSpriteLayer": "0.63",
+            "secondSpriteLayer": "0.63"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "effectString": "GrayScale",
+            "dialog": "땀나요",
+            "firstSpriteName": "sweat",
+            "secondSpriteName": "sweat",
+            "firstSpriteLayer": "0.4",
+            "secondSpriteLayer": "0.4"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "effectString": "GrayScale",
+            "dialog": "윽 땀내",
+            "firstSpriteName": "sweat",
+            "secondSpriteName": "sweat",
+            "firstSpriteLayer": "0.8",
+            "secondSpriteLayer": "0.8"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "effectString": "Transparent",
+            "dialog": "땀냄새!",
+            "firstSpriteName": "sweat",
+            "secondSpriteName": "sweat",
+            "firstSpriteLayer": "0.7",
+            "secondSpriteLayer": "0.7"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "effectString": "Transparent",
+            "dialog": "땀이 너무 많아요",
+            "firstSpriteName": "sweat",
+            "secondSpriteName": "sweat",
+            "firstSpriteLayer": "0.98",
+            "secondSpriteLayer": "0.98"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "effectString": "Transparent",
+            "dialog": "물구기~",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "0.55",
+            "secondSpriteLayer": "0.55"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "effectString": "Transparent",
+            "dialog": "짝퉁물고기",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "0.78",
+            "secondSpriteLayer": "0.78"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "effectString": "Shiny",
+            "dialog": "물고기 짭이당",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "0.56",
+            "secondSpriteLayer": "0.56"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "effectString": "Shiny",
+            "dialog": "물고기 짭",
+            "firstSpriteName": "fish",
+            "secondSpriteName": "fish",
+            "firstSpriteLayer": "0.54",
+            "secondSpriteLayer": "0.54"
+        }
+    ]
+}

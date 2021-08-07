@@ -26,8 +26,10 @@ public class GameManager : MonoBehaviour //SH
     //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
     [HideInInspector]
     public RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
+    //[HideInInspector]
+    //public RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
     [HideInInspector]
-    public RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
+    public RandomVisitorDiseaseBundle randomVisitorDiseaseBundle;
     [HideInInspector]
     public SpecialMedicineDataWrapper specialMedicineDataWrapper;
     //이거는 세이브 로드 확인해볼라고
@@ -85,7 +87,8 @@ public class GameManager : MonoBehaviour //SH
         randomDialogDataWrapper = jsonManager.ResourceDataLoad<StartDialogClassWrapper>("RandomDialogDataWrapper");
         specialMedicineDataWrapper = jsonManager.ResourceDataLoad<SpecialMedicineDataWrapper>("SpecialMedicineDataWrapper");
         documentConditionWrapper = jsonManager.ResourceDataLoad<DocumentConditionWrapper>("DocumentConditionWrapper");
-
+        randomVisitorDiseaseBundle = new RandomVisitorDiseaseBundle();
+        randomVisitorDiseaseBundle.LoadWrapper(jsonManager);
         //for(int i = 0; i < documentConditionWrapper.documentConditionList.Count; i++)
         //{
         //    documentConditionWrapper.documentConditionList[i].ConditionStringParse();
@@ -95,7 +98,7 @@ public class GameManager : MonoBehaviour //SH
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
-        randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
+        //randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
         specialVisitorConditionWrapper = jsonManager.ResourceDataLoad<SpecialVisitorConditionWrapper>("SpecialVisitorConditionWrapper");
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
         measureToolResearchDataWrapper = jsonManager.ResourceDataLoad<MeasureToolResearchDataWrapper>("MeasureToolResearchDataWrapper");
@@ -269,8 +272,10 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<OtherToolResearchDataWrapper>(otherToolResearchWrapper, "OtherToolResearchDataWrapper");
         //OtherToolDataWrapper otherToolWrapper = new OtherToolDataWrapper();
         //jsonManager.SaveJson<OtherToolDataWrapper>(otherToolWrapper, "OtherToolDataWrapper");
-        RegionDataWrapper region = new RegionDataWrapper();
-        jsonManager.SaveJson<RegionDataWrapper>(region, "RegionDataWrapper");
+        //RegionDataWrapper region = new RegionDataWrapper();
+        //jsonManager.SaveJson<RegionDataWrapper>(region, "RegionDataWrapper");
+        RandomVisitorDiseaseWrapper diseaseWrapper = new RandomVisitorDiseaseWrapper();
+        jsonManager.SaveJson<RandomVisitorDiseaseWrapper>(diseaseWrapper, "water");
 
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");

@@ -13,7 +13,7 @@ public class CounterDialogManager : MonoBehaviour
     SceneManager sceneManager;
     List<StartDialogClass> randomDialogClassList;
     RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
-    RandomVisitorDiseaseDialogWrapper randomVisitorDiseaseDialogWrapper;
+    RandomVisitorDiseaseBundle randomVisitorDiseaseBundle;
     SpecialVisitorDialogBundle nowSpecialVisitorDialogBundle;
     SpecialVisitorDialogWrapper nowWrapper;
     OddVisitorDialogBundle oddVisitorDialogBundle;
@@ -83,7 +83,7 @@ public class CounterDialogManager : MonoBehaviour
         sceneManager = SceneManager.inst;
         randomDialogClassList = gameManager.randomDialogDataWrapper.randomDialogList;
         randomVisitorEndDialogWrapper = gameManager.randomVisitorEndDialogWrapper;
-        randomVisitorDiseaseDialogWrapper = gameManager.randomVisitorDiseaseDialogWrapper;
+        randomVisitorDiseaseBundle = gameManager.randomVisitorDiseaseBundle;
         symptomDialog = gameManager.symptomDialog;
         visitorRuelliaToggle = true;
         ruelliaText.transform.parent.gameObject.SetActive(true);
@@ -187,26 +187,37 @@ public class CounterDialogManager : MonoBehaviour
         InitializeBackLog();
         visitDialog = new List<string>();
         StringBuilder builder = new StringBuilder(symptomDialog.startDialog[Random.Range(0, symptomDialog.startDialog.Length)]);
-        for (int i = 0; i < visitor.symptomAmountArray.Length; i++)
+        
+        for(int i = 0; i < visitor.diseaseList.Count; i++)
         {
-            if (visitor.symptomAmountArray[i] == 0)
-            {
-                continue;
-            }
-            int symptomIndex;
-            if (visitor.symptomAmountArray[i] < 0)
-            {
-                symptomIndex = visitor.symptomAmountArray[i] + 2;
-            }
-            else
-            {
-                symptomIndex = visitor.symptomAmountArray[i] + 1;
-            }
-            builder.Append(randomVisitorDiseaseDialogWrapper.diseaseDialogBundleArray[i].diseaseDialogArray[symptomIndex].dialogArray[Random.Range(0, 3)].str);
+            builder.Append(visitor.diseaseList[i].dialog);
             visitDialog.Add(builder.ToString());
             builder = new StringBuilder();
             builder.Append(symptomDialog.middleDialog[Random.Range(0, 6)]);
+
         }
+        //for (int i = 0; i < visitor.symptomAmountArray.Length; i++)
+        //{
+        //    if (visitor.symptomAmountArray[i] == 0)
+        //    {
+        //        continue;
+        //    }
+        //    int symptomIndex;
+        //    if (visitor.symptomAmountArray[i] < 0)
+        //    {
+        //        symptomIndex = visitor.symptomAmountArray[i] + 2;
+        //    }
+        //    else
+        //    {
+        //        symptomIndex = visitor.symptomAmountArray[i] + 1;
+        //    }
+        //    //여기 바꿔야됨.
+        //    builder.Append(visitor.diseaseList)
+        //    builder.Append(randomVisitorDiseaseBundle.wrapperList[i].randomVisitorDiseaseArray[Random.Range(0, 3)].dialog);
+        //    visitDialog.Add(builder.ToString());
+        //    builder = new StringBuilder();
+        //    builder.Append(symptomDialog.middleDialog[Random.Range(0, 6)]);
+        //}
 
         nowState = CounterState.Visit;
         nowDialogIndex = 0;

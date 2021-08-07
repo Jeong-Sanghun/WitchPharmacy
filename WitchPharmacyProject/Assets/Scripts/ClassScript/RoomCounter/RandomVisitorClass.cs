@@ -34,8 +34,9 @@ public class RandomVisitorClass //SH
     //증상은 무조건 두 개    
     public List<MedicineClass> answerMedicineList;
     static List<MedicineClass> ownedMedicineList;
+    static RandomVisitorDiseaseBundle diseaseBundle;
     public static int gainCoin = 40;
-    
+    public List<RandomVisitorDisease> diseaseList;
 
     /*
     public Symptom earSymptom;
@@ -43,9 +44,10 @@ public class RandomVisitorClass //SH
     */
     //body clothes head face hair ear horn
     //인덱스별로 레이어가 있음. 각 파츠가 몇개까지 있는지 미리 저장해두고 그 인덱스에서 뽑아옴.
-    static int[] partsNum = { 1, 2, 2, 2, 2, 4, 4 };
+    static int[] partsNum = { 1, 2, 2, 2, 4, 4, 4 };
     int[] partsIndex;
     public GameObjectWrapper[] partsWrapperArray;
+
 
 
 
@@ -69,13 +71,14 @@ public class RandomVisitorClass //SH
 
     //약재의 종류는 최대 3개
     //약재 개수는 같은거는 최대 2개.
-    public RandomVisitorClass(SymptomDialog dialog,GameObject parent)
+    public RandomVisitorClass(SymptomDialog dialog,GameObject parent,StoryRegion region)
     {
         //earSymptom = (Symptom)Random.Range(0, 6);
         //hornSymptom = (Symptom)Random.Range(0, 6);
         symptomList = new List<Symptom>();
         symptomAmountList = new List<int>();
         symptomAmountArray = new int[6];
+        diseaseList = new List<RandomVisitorDisease>();
         List<MedicineClass> availableMedicineList = new List<MedicineClass>();
         int[] symptomNumberArray = new int[5];
         for(int i = 0; i < symptomNumberArray.Length; i++)
@@ -120,6 +123,7 @@ public class RandomVisitorClass //SH
                     continue;
                 }
                 MedicineClass medicine = ownedMedicineList[i];
+                Debug.Log(medicine.firstNumber);
                 bool available = true;
                 //if (medicine.firstSymptom == Symptom.none)
                 //{
@@ -261,46 +265,82 @@ public class RandomVisitorClass //SH
         //}
 
         //fullDialog = build.ToString();
+        SetDiseaseList();
+        RandomPartsGenerator(parent,region);
+    }
 
-        RandomPartsGenerator(parent);
+    void SetDiseaseList()
+    {
+        for(int i = 0; i < symptomAmountArray.Length; i++)
+        {
+            int amount = symptomAmountArray[i];
+            if(amount == 0)
+            {
+                continue;
+            }
+            List<int> diseaseIndexList = new List<int>();
+            for(int j = 0; j < diseaseBundle.wrapperList[i].randomVisitorDiseaseArray.Length; j++)
+            {
+                if (amount == diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[j].symptomNumber)
+                {
+                    diseaseIndexList.Add(j);
+                }
+            }
+            int index = diseaseIndexList[Random.Range(0, diseaseIndexList.Count)];
+            diseaseList.Add(diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[index]);
+            
+        }
     }
 
 
     //랜덤캐릭터 만드는 함수
-    void RandomPartsGenerator(GameObject parent)
+    void RandomPartsGenerator(GameObject parent,StoryRegion region)
     {
-        string path = "RandomCharacter/";
+        string path = "RandomCharacter/" + region.ToString()+"/";
         Transform visitorParent = parent.transform;
         GameObject visitor = new GameObject();
         visitor.transform.SetParent(visitorParent);
         visitorObject = visitor;
 
-        //if (Random.Range(0, 2) == 0)
-        //{
-        //    //선아누나가 릴리 나오게 해달래서 여기다가 구현.
-        //    StringBuilder builder = new StringBuilder(path);
-        //    builder.Append("Lily");
-        //    GameObject lily = Resources.Load<GameObject>(builder.ToString());
-        //    GameObject part = GameObject.Instantiate(lily, visitor.transform);
-        //    part.transform.position = new Vector3(0, -11.91f, -1);
-        //}
-        //else
-        //{
-
-           
-        //}
-
         visitorObject.transform.localPosition = Vector3.zero;
 
         //먼저 래퍼 7개를 만들고.
-        partsIndex = new int[7];
+        partsIndex = new int[5];
         partsWrapperArray = new GameObjectWrapper[partsIndex.Length];
+        RandomVisitorFX effect = RandomVisitorFX.None;
+        for(int i = 0; i < diseaseList.Count; i++)
+        {
+            if(diseaseList[i].GetEffect() != RandomVisitorFX.None)
+            {
+                effect = diseaseList[i].GetEffect();
+            }
+            if(effect == RandomVisitorFX.GrayScale && diseaseList[i].GetEffect() == RandomVisitorFX.Shiny)
+            {
+                effect = diseaseList[i].GetEffect();
+            }
+
+        }
 
         for (int i = 0; i < partsIndex.Length; i++)
         {
             partsWrapperArray[i] = new GameObjectWrapper();
             partsIndex[i] = Random.Range(0, partsNum[i]);
             StringBuilder builder = new StringBuilder(path);
+            if(effect == RandomVisitorFX.GrayScale)
+            {
+                builder.Append("gray");
+            }
+            else if (effect == RandomVisitorFX.Shiny)
+            {
+                builder.Append("shiny");
+            }
+            else if (effect == RandomVisitorFX.Transparent)
+            {
+                if(i != 1)
+                {
+                    continue;
+                }
+            }
             switch (i)
             {
                 case 0:
@@ -318,12 +358,6 @@ public class RandomVisitorClass //SH
                 case 4:
                     builder.Append("hair/");
                     break;
-                case 5:
-                    builder.Append("ear/");
-                    break;
-                case 6:
-                    builder.Append("horn/");
-                    break;
                 default:
                     break;
 
@@ -332,8 +366,20 @@ public class RandomVisitorClass //SH
             partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
         }
 
+        for(int i = 0; i < diseaseList.Count; i++)
+        {
+            GameObject obj = new GameObject();
+            obj.transform.SetParent(visitor.transform);
+            obj.AddComponent<SpriteRenderer>().sprite = diseaseList[i].LoadImage(true);
+            obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetFirstLayer());
+        }
+
         for (int i = 0; i < partsWrapperArray.Length; i++)
         {
+            if(partsWrapperArray[i].partsArray == null)
+            {
+                continue;
+            }
             for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
             {
                 GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
@@ -343,11 +389,9 @@ public class RandomVisitorClass //SH
                 }
                 else
                 {
-                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.1f * (j + 1));
+                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.01f * (j + 1));
                 }
-
             }
-
         }
 
 
@@ -355,9 +399,11 @@ public class RandomVisitorClass //SH
     }
 
     //카운터매니저에서 불러옴.134줄
-    public static void SetOwnedMedicineList(List<MedicineClass> ownedMedicineList)
+    public static void SetStaticData(List<MedicineClass> ownedMedicineList,
+        RandomVisitorDiseaseBundle bundle )
     {
         RandomVisitorClass.ownedMedicineList = ownedMedicineList;
+        RandomVisitorClass.diseaseBundle = bundle;
     }
 
 

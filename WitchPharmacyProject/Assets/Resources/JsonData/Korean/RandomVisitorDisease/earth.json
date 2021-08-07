@@ -1,0 +1,116 @@
+{
+    "randomVisitorDiseaseArray": [
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "dialog": "뭐야 이 물고기 뭐에요",
+            "spriteName": "fish",
+            "spriteLayer": "0.8"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "dialog": "뭐지 이  물고기",
+            "spriteName": "fish",
+            "spriteLayer": "0.9"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "dialog": "물고기다!",
+            "spriteName": "fish",
+            "spriteLayer": "1"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-2",
+            "dialog": "무 물고기야 물고기",
+            "spriteName": "fish",
+            "spriteLayer": "1.5"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "dialog": "고래야 고래",
+            "spriteName": "whale",
+            "spriteLayer": "1.2"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "dialog": "고래고래 소리질러",
+            "spriteName": "whale",
+            "spriteLayer": "1.2"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "dialog": "고래가아니라 콩이인데요",
+            "spriteName": "whale",
+            "spriteLayer": "0.5"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "-1",
+            "dialog": "고래야~~~",
+            "spriteName": "whale",
+            "spriteLayer": "0.63"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "dialog": "땀나요",
+            "spriteName": "sweat",
+            "spriteLayer": "0.4"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "dialog": "윽 땀내",
+            "spriteName": "sweat",
+            "spriteLayer": "0.8"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "dialog": "땀냄새!",
+            "spriteName": "sweat",
+            "spriteLayer": "0.7"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "1",
+            "dialog": "땀이 너무 많아요",
+            "spriteName": "sweat",
+            "spriteLayer": "0.98"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "dialog": "물구기~",
+            "spriteName": "fish",
+            "spriteLayer": "0.55"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "dialog": "짝퉁물고기",
+            "spriteName": "fish",
+            "spriteLayer": "0.78"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "dialog": "물고기 짭이당",
+            "spriteName": "fish",
+            "spriteLayer": "0.56"
+        },
+        {
+            "sympotmString": "water",
+            "symptomNumber": "2",
+            "dialog": "물고기 짭",
+            "spriteName": "fish",
+            "spriteLayer": "0.54"
+        }
+    ]
+}

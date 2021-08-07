@@ -1,12 +1,12 @@
 {
     "name": "initName",
-    "nowTime": 7200.0,
-    "nowDay": 3,
+    "nowTime": 43200.0,
+    "nowDay": 0,
     "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 35,
@@ -14,7 +14,7 @@
         },
         {
             "medicineIndex": 42,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 43,
@@ -26,7 +26,7 @@
         },
         {
             "medicineIndex": 51,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 58,
@@ -46,31 +46,9 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
         }
     ],
-    "owningDocumentList": [
-        {
-            "name": "Go",
-            "gainedRegion": 0,
-            "gainedDay": 0,
-            "gainedTime": 7200.0
-        }
-    ],
+    "owningDocumentList": [],
     "symptomBookList": [
         "water+",
         "water-",
@@ -90,37 +68,11 @@
     },
     "bookMarkNumber": 3,
     "routePairList": [],
-    "regionSaveDataList": [
-        {
-            "regionIndex": 0,
-            "firstDiscountedMedicineIndex": [
-                42,
-                51,
-                34
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        }
-    ],
+    "regionSaveDataList": [],
     "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay1",
-        "fifthDay",
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay"
+        "firstDay"
     ],
-    "nextStory": "firstDay",
+    "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 0
 }

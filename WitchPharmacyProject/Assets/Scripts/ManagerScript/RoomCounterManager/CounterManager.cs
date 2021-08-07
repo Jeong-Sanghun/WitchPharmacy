@@ -173,7 +173,7 @@ public class CounterManager : MonoBehaviour //SH
         }
 
         //스태틱으로 만들어버려
-        RandomVisitorClass.SetOwnedMedicineList(ownedMedicineList);
+        RandomVisitorClass.SetStaticData(ownedMedicineList,gameManager.randomVisitorDiseaseBundle);
         TimeTextChange();
     }
 
@@ -285,7 +285,7 @@ public class CounterManager : MonoBehaviour //SH
         }
         counterDialogManager.nowTalking = true;
         
-        nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent);
+        nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent,StoryRegion.Narin);
         //쫙 뿌려준다
         randomVisitorList.Add(nowVisitor);
         symptomChartManager.VisitorVisits(nowVisitor);
@@ -473,7 +473,7 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        lastVisitor = true;
+        //lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;
