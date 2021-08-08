@@ -473,7 +473,7 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        //lastVisitor = true;
+        lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;

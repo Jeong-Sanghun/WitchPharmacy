@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour //SH
         sceneManager = SceneManager.inst;
         tabletManager = TabletManager.inst;
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        DebugDataJson();
+        //DebugDataJson();
 
         
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
@@ -343,6 +343,7 @@ public class GameManager : MonoBehaviour //SH
         //}
         saveData.nowTime = 0;
         saveData.nowDay++;
-        TabletManager.inst.SetTodayBill();
+        Debug.Log(saveData.nowDay);
+        TabletManager.inst.OnNextDay();
     }
 }

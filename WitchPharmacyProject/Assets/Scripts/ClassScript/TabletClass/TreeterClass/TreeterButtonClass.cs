@@ -28,12 +28,11 @@ public class TreeterButtonClass
     public List<TreeterIngameComment> commentList;
 
     public bool liked;
-    public bool printSprite;
 
     public TreeterButtonClass()
     {
         liked = false;
-        printSprite = false;
+        commentList = new List<TreeterIngameComment>();
     }
 
     public void SetTreeterButton(TreeterCondition cond, TreeterData dat,GameObject canvasPrefab, Transform prefabParent, GameObject openedImagePrefab, Transform openedImageParent
@@ -42,24 +41,42 @@ public class TreeterButtonClass
         condition = cond;
         data = dat;
         wholeCanvasObject = GameObject.Instantiate(canvasPrefab, prefabParent);
+        //wholeCanvasObject.SetActive(true);
         wholeContentRect = wholeCanvasObject.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>();
         GameObject mainPost = GameObject.Instantiate(mainPostPrefab, wholeContentRect);
-        titleText = mainPost.transform.GetChild(1).GetComponent<Text>();
-        treeterImage = mainPost.transform.GetChild(2).GetComponent<Image>();
-        profileNameText  = mainPost.transform.GetChild(3).GetComponent<Text>();
-        profileImage = mainPost.transform.GetChild(4).GetComponent<Image>();
-        dialogText = mainPost.transform.GetChild(5).GetComponent<Text>();
+        mainPost.SetActive(true);
+        profileNameText = mainPost.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        profileImage = mainPost.transform.GetChild(0).GetComponent<Image>();
+        titleText = mainPost.transform.GetChild(1).GetChild(0).GetComponent<Text>();
+        treeterImage = mainPost.transform.GetChild(1).GetChild(1).GetComponent<Image>();
+        dialogText = mainPost.transform.GetChild(1).GetChild(2).GetComponent<Text>();
+        likeText = mainPost.transform.GetChild(1).GetChild(3).GetChild(1).GetComponent<Text>();
+        likeButton = mainPost.transform.GetChild(1).GetChild(3).GetComponent<Button>();
+        likeButton.onClick.AddListener(() => LikeButton());
 
-        mainPostRect = mainPost.GetComponent<RectTransform>();
-        bgRect = mainPost.transform.GetChild(0).GetComponent<RectTransform>();
+        profileNameText.text = data.profileIngameName;
+        profileImage.sprite = data.LoadSprite(true);
+        titleText.text = data.titleIngameText;
+        dialogText.text = data.dialog;
 
-
+        if (GameManager.singleTon.saveData.likedTreeterIndexList.Contains(data.index))
+        {
+            likeText.text = (data.likeNumber + 1).ToString();
+        }
+        else
+        {
+            likeText.text = data.likeNumber.ToString();
+        }
 
         if (cond.printSprite)
         {
+            treeterImage.sprite = data.LoadSprite(false);
+            treeterImage.rectTransform.sizeDelta = new Vector2(treeterImage.sprite.rect.width, treeterImage.rectTransform.sizeDelta.y);
             openedImageCanvas = GameObject.Instantiate(openedImagePrefab, openedImageParent);
             openedImage = openedImageCanvas.transform.GetChild(1).GetComponent<Image>();
             openedImageText = openedImageCanvas.transform.GetChild(2).GetComponent<Text>();
+            openedImage.sprite = data.LoadSprite(false);
+            openedImageText.text = data.titleIngameText;
             EventTrigger trigger1 = treeterImage.GetComponent<EventTrigger>();
 
             EventTrigger.Entry entry1 = new EventTrigger.Entry();
@@ -74,6 +91,34 @@ public class TreeterButtonClass
             entry.callback.AddListener((data) => {ActiveImage(false); });
             trigger.triggers.Add(entry);
         }
+        else
+        {
+            treeterImage.gameObject.SetActive(false);
+        }
+
+        for(int i = 0; i < data.commentDataList.Count; i++)
+        {
+            TreeterIngameComment comment = new TreeterIngameComment();
+            comment.SetButton(data.commentDataList[i], commentPrefab, wholeContentRect);
+            commentList.Add(comment);
+        }
+    }
+    
+
+    void LikeButton()
+    {
+        SaveDataClass saveData = GameManager.singleTon.saveData;
+        if (saveData.likedTreeterIndexList.Contains(data.index))
+        {
+            saveData.likedTreeterIndexList.Remove(data.index);
+            likeText.text = data.likeNumber.ToString();
+        }
+        else
+        {
+            saveData.likedTreeterIndexList.Add(data.index);
+            likeText.text = (data.likeNumber+1).ToString();
+        }
+        
     }
 
     void ActiveImage(bool active)

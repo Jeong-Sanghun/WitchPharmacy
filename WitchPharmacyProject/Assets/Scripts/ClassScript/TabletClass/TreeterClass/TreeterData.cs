@@ -38,14 +38,17 @@ public class TreeterData
     {
         Sprite nowSprite = null;
         string path = null;
+        string name = null;
         if (isProfile)
         {
             nowSprite = profileSprite;
+            name = profileFileName;
             path = "Profile/";
         }
         else
         {
             nowSprite = treeterSprite;
+            name = fileName;
             path = "Treeter/";
         }
         if (nowSprite != null)
@@ -54,7 +57,7 @@ public class TreeterData
         }
         StringBuilder builder = new StringBuilder("TreeterSprite/");
         builder.Append(path);
-        builder.Append(fileName);
+        builder.Append(name);
         nowSprite = Resources.Load<Sprite>(builder.ToString());
         return nowSprite;
     }

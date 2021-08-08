@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class TreeterIngameComment
 {
-    public RectTransform commentRect;
-    public RectTransform bgRect;
     public GameObject commentObject;
 
     public TreeterIngameComment()
@@ -17,16 +15,14 @@ public class TreeterIngameComment
     public void SetButton(TreeterCommentData data, GameObject prefab,Transform prefabParent)
     {
         commentObject = GameObject.Instantiate(prefab, prefabParent);
-        Text profileNameText = commentObject.transform.GetChild(1).GetComponent<Text>();
-        Image profileImage = commentObject.transform.GetChild(2).GetComponent<Image>();
-        Text dialogText = commentObject.transform.GetChild(3).GetComponent<Text>();
+        commentObject.SetActive(true);
+        Text profileNameText = commentObject.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        Image profileImage = commentObject.transform.GetChild(0).GetComponent<Image>();
+        Text dialogText = commentObject.transform.GetChild(1).GetChild(0).GetComponent<Text>();
 
         profileNameText.text = data.profileIngameName;
         profileImage.sprite = data.LoadSprite();
         dialogText.text = data.dialog;
-
-        commentRect = commentObject.GetComponent<RectTransform>();
-        bgRect = commentObject.transform.GetChild(0).GetComponent<RectTransform>();
 
     }
 }
