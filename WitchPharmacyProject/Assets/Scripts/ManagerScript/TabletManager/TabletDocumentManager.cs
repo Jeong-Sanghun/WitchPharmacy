@@ -39,7 +39,7 @@ public class TabletDocumentManager : MonoBehaviour
     GameObject highlightPopupPrefab;
     [SerializeField]
     GameObject imageOpenCanvasPrefab;
-
+    bool isInit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,12 +80,14 @@ public class TabletDocumentManager : MonoBehaviour
         documentBundleList = new List<DocumentBundle>();
         wholeFolderButtonList = new List<DocumentFolderButtonClass>();
         nowFolderButtonIndex = 0;
+        isInit = true;
         for (int i = 0; i < owningDocumentList.Count; i++)
         {
             //DocumentBundle bundle = gameManager.LoadDocumentBundle(owningDocumentList[i].name);
             //documentBundleList.Add(bundle);
             SetupDocument(owningDocumentList[i]);
         }
+        isInit = false;
     }
 
 
@@ -94,6 +96,10 @@ public class TabletDocumentManager : MonoBehaviour
     //tileTreasuremangaer에서 불러옴.
     public void SetupDocument(OwningDocumentClass owningDocument)
     {
+        if (!isInit)
+        {
+            TabletManager.inst.ButtonHighlightActive(TabletComponent.Document, true);
+        }
         DocumentFolderButtonClass folderButton = null;
         DocumentCondition conditionData = null;
         DocumentBundle bundle = null;
@@ -220,6 +226,10 @@ public class TabletDocumentManager : MonoBehaviour
 
     public void WholeDocumentOpenButton(bool active)
     {
+        if (active)
+        {
+            TabletManager.inst.ButtonHighlightActive(TabletComponent.Document, false);
+        }
         wholeFolderParentObject.SetActive(active);
     }
 

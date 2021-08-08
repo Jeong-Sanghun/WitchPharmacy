@@ -46,6 +46,7 @@ public class SaveDataClass
     public List<RoutePair> routePairList;
     public List<RegionSaveData> regionSaveDataList;
     public List<int> likedTreeterIndexList;
+    public bool[] highlightedButton;
 
     public List<string> readStoryList;
     public string nextStory;
@@ -94,6 +95,11 @@ public class SaveDataClass
         endQuestList = new List<string>();
         nowRegion = StoryRegion.Narin;
         likedTreeterIndexList = new List<int>();
+        highlightedButton = new bool[3];
+        for(int i = 0; i < highlightedButton.Length;i++)
+        {
+            highlightedButton[i] = false;
+        }
 
         //billWrapperList.Add(new OneDayBillWrapper());
         //        solvedQuestBundleName.Add("testBundle");

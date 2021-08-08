@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 1,
-    "coin": 1000,
+    "nowTime": 7200.0,
+    "nowDay": 0,
+    "coin": 994,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -26,7 +26,7 @@
         },
         {
             "medicineIndex": 51,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 58,
@@ -45,12 +45,13 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 6
+                }
+            ]
         }
     ],
     "owningDocumentList": [],
@@ -73,30 +74,18 @@
     },
     "bookMarkNumber": 3,
     "routePairList": [],
-    "regionSaveDataList": [
-        {
-            "regionIndex": 0,
-            "firstDiscountedMedicineIndex": [
-                51
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        }
-    ],
+    "regionSaveDataList": [],
     "likedTreeterIndexList": [],
-    "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay"
+    "highlightedButton": [
+        true,
+        false,
+        false
     ],
-    "nextStory": "fourthDay2",
+    "readStoryList": [
+        "firstDay"
+    ],
+    "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 0
 }

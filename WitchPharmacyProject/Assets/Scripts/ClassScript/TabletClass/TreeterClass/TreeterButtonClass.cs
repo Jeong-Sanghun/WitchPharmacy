@@ -17,6 +17,7 @@ public class TreeterButtonClass
     public Text profileNameText;
     public Button likeButton;
     public Text likeText;
+    public GameObject oneButtonObj;
 
     public GameObject openedImageCanvas;
     public Image openedImage;

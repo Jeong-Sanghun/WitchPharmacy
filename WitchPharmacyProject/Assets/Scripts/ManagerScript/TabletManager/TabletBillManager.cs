@@ -235,6 +235,7 @@ public class TabletBillManager : MonoBehaviour
     //외부에서 불러옴. 타블렛매니저 통해서 다들어옴. 무언가 살 때 이루어짐.
     public void UpdateBill(BillReason reason, bool isPlus, int coin)
     {
+        TabletManager.inst.ButtonHighlightActive(TabletComponent.Bill, true);
         while (saveData.billWrapperList.Count < saveData.nowDay + 1)
         {
             OneDayBillWrapper wrapper = new OneDayBillWrapper();
@@ -280,6 +281,10 @@ public class TabletBillManager : MonoBehaviour
 
     public void BillOpenCloseButton(bool open)
     {
+        if (open)
+        {
+            TabletManager.inst.ButtonHighlightActive(TabletComponent.Bill, false);
+        }
         billCanvasParent.SetActive(open);
     }
 

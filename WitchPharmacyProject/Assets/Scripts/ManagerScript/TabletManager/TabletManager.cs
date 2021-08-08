@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TabletComponent
+{
+    Bill,Document, Treeter
+}
 public class TabletManager : MonoBehaviour
 {
     static public TabletManager inst;
@@ -22,6 +26,9 @@ public class TabletManager : MonoBehaviour
     GameObject wholeTabletParent;
     [SerializeField]
     GameObject homeButton;
+    [SerializeField]
+    GameObject[] buttonHighlightObject;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -41,6 +48,8 @@ public class TabletManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         wholeTabletParent.SetActive(false);
+        SetHighlightButton();
+
     }
 
     public void OnTabletButton(bool open)
@@ -103,8 +112,25 @@ public class TabletManager : MonoBehaviour
     //tabletSavemanager에서 불러옴
     public void SetOnSaveDataLoad()
     {
+        saveData = gameManager.saveData;
         tabletBillManager.NewLoadedBill();
         tabletDocumentManager.InitializeDocument();
+        SetHighlightButton();
+        tabletTreeterManager.InitializeButtons();
+    }
+
+    public void ButtonHighlightActive(TabletComponent component, bool active)
+    {
+        saveData.highlightedButton[(int)component] = active;
+        buttonHighlightObject[(int)component].SetActive(active);
+    }
+
+    public void SetHighlightButton()
+    {
+        for (int i = 0; i < saveData.highlightedButton.Length; i++)
+        {
+            buttonHighlightObject[i].SetActive(saveData.highlightedButton[i]);
+        }
     }
 
     // Update is called once per frame

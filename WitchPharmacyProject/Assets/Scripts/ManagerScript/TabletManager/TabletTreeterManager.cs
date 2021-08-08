@@ -41,6 +41,7 @@ public class TabletTreeterManager : MonoBehaviour
 
     List<TreeterButtonClass> wholeTreeterButton;
     int nowButtonIndex;
+    bool isInit = false;
     
     void Start()
     {
@@ -50,12 +51,25 @@ public class TabletTreeterManager : MonoBehaviour
 
 
         wholeTreeterButton = new List<TreeterButtonClass>();
-        MakeButtons();
+
+        InitializeButtons();
+
 
     }
 
-    void MakeButtons()
+    //불러오기할때 초기화해야돼서;
+    public void InitializeButtons()
     {
+        isInit = true;
+        if (wholeTreeterButton.Count > 0)
+        {
+            for(int  i = 0; i < wholeTreeterButton.Count; i++)
+            {
+                Destroy(wholeTreeterButton[i].wholeCanvasObject);
+                Destroy(wholeTreeterButton[i].oneButtonObj);
+            }
+        }
+        wholeTreeterButton.Clear();
         List<TreeterCondition> conditionList = wrapper.treeterConditionList;
         for (int i = 0; i < conditionList.Count; i++)
         {
@@ -67,10 +81,15 @@ public class TabletTreeterManager : MonoBehaviour
             MakeOneButton(conditionList[i]);
 
         }
+        isInit = false;
     }
 
     void MakeOneButton(TreeterCondition condition)
     {
+        if (!isInit)
+        {
+            TabletManager.inst.ButtonHighlightActive(TabletComponent.Treeter, true);
+        }
         TreeterButtonClass buttonClass = new TreeterButtonClass();
         wholeTreeterButton.Add(buttonClass);
         
@@ -81,6 +100,7 @@ public class TabletTreeterManager : MonoBehaviour
         prefabTitleText.text = data.titleIngameText;
         GameObject buttonObj = Instantiate(oneTitleButtonPrefab, contentRect);
         buttonObj.SetActive(true);
+        buttonClass.oneButtonObj = buttonObj;
         Button button = buttonObj.transform.GetChild(1).GetComponent<Button>();
         int dele = wholeTreeterButton.Count - 1;
         button.onClick.AddListener(() => TreeterButtonActive(dele));
@@ -92,10 +112,6 @@ public class TabletTreeterManager : MonoBehaviour
         saveData = gameManager.saveData;
         for (int i = 0; i < conditionList.Count; i++)
         {
-            if (1 < 1)
-            {
-
-            }
             if (saveData.nowDay < conditionList[i].dayCondition)
             {
                 Debug.Log(saveData.nowDay + " 세이브데이터 데이랑  컨디션 데이 " + conditionList[i].dayCondition);
@@ -141,6 +157,10 @@ public class TabletTreeterManager : MonoBehaviour
 
     public void WholeTreeterActive(bool active)
     {
+        if (active)
+        {
+            TabletManager.inst.ButtonHighlightActive(TabletComponent.Treeter, false);
+        }
         wholeTreeterCanvas.SetActive(active);
     }
 
