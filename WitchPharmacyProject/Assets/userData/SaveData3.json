@@ -30,8 +30,10 @@
     "bookMarkNumber": 3,
     "routePairList": [],
     "regionSaveDataList": [],
+    "likedTreeterIndexList": [],
     "readStoryList": [],
     "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1
+    "nowSaveTime": 1,
+    "nowRegion": 0
 }

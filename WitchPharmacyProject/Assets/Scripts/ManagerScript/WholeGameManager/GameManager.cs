@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour //SH
     public MeasureToolResearchDataWrapper measureToolResearchDataWrapper;
     [HideInInspector]
     public MedicineResearchDataWrapper medicineResearchDataWrapper;
+    [HideInInspector]
+    public TreeterConditionWrapper treeterConditionWrapper;
 
 
     public int nowSaveDataIndex;
@@ -79,7 +81,7 @@ public class GameManager : MonoBehaviour //SH
         sceneManager = SceneManager.inst;
         tabletManager = TabletManager.inst;
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        //DebugDataJson();
+        DebugDataJson();
 
         
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour //SH
            
         //}
         regionDataWrapper = jsonManager.ResourceDataLoad<RegionDataWrapper>("RegionDataWrapper");
+        treeterConditionWrapper = jsonManager.ResourceDataLoad<TreeterConditionWrapper>("TreeterConditionWrapper");
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
@@ -274,8 +277,12 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<OtherToolDataWrapper>(otherToolWrapper, "OtherToolDataWrapper");
         //RegionDataWrapper region = new RegionDataWrapper();
         //jsonManager.SaveJson<RegionDataWrapper>(region, "RegionDataWrapper");
-        RandomVisitorDiseaseWrapper diseaseWrapper = new RandomVisitorDiseaseWrapper();
-        jsonManager.SaveJson<RandomVisitorDiseaseWrapper>(diseaseWrapper, "water");
+        //RandomVisitorDiseaseWrapper diseaseWrapper = new RandomVisitorDiseaseWrapper();
+        //jsonManager.SaveJson<RandomVisitorDiseaseWrapper>(diseaseWrapper, "water");
+        treeterConditionWrapper = new TreeterConditionWrapper();
+        jsonManager.SaveJson<TreeterConditionWrapper>(treeterConditionWrapper, "TreeterConditionWrapper");
+        TreeterData treeterData = new TreeterData();
+        jsonManager.SaveJson<TreeterData>(treeterData, "TreeterData");
 
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");

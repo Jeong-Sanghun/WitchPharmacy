@@ -26,6 +26,7 @@ public class ConversationDialogWrapper
     public CutSceneEffect cutSceneEffect;
     public CutSceneEffect backGroundEffect;
     public string backGroundFileName;
+    public string nextRegion;
 
 
     public ConversationDialogWrapper()
@@ -42,6 +43,7 @@ public class ConversationDialogWrapper
         {
             characterFeeling[i] = "nothing";
         }
+        nextRegion = null;
     //    if (index == 0)
     //    {
     //        ConversationDialog dialog = new ConversationDialog();

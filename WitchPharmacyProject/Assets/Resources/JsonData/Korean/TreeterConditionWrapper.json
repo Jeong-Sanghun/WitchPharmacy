@@ -1,0 +1,24 @@
+{
+    "treeterConditionList": [
+        {
+            "fileName": "testDocument",
+            "printSprite": true,
+            "dayCondition": 0
+        },
+        {
+            "fileName": "testDocument",
+            "printSprite": true,
+            "dayCondition": 0
+        },
+        {
+            "fileName": "testDocument",
+            "printSprite": true,
+            "dayCondition": 0
+        },
+        {
+            "fileName": "testDocument",
+            "printSprite": true,
+            "dayCondition": 0
+        }
+    ]
+}

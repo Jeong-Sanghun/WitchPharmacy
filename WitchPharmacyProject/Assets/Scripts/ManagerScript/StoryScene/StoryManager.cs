@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class StoryManager : MonoBehaviour
 {
@@ -83,6 +84,14 @@ public class StoryManager : MonoBehaviour
         if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
         {
             saveData.nextStory = nowWrapper.nextStory;
+        }
+        if(nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
+        {
+            StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
+            if(region != saveData.nowRegion)
+            {
+                saveData.nowRegion = region;
+            }
         }
         for (int i = 0; i < 4; i++)
         {
@@ -224,7 +233,15 @@ public class StoryManager : MonoBehaviour
             Debug.Log("저장");
             saveData.nextStory = nowWrapper.nextStory;
         }
-        
+        if (nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
+        {
+            StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
+            if (region != saveData.nowRegion)
+            {
+                saveData.nowRegion = region;
+            }
+        }
+
         nowConversationIndex = 0;
         for(int i = 0; i < 4; i++)
         {
@@ -370,6 +387,14 @@ public class StoryManager : MonoBehaviour
         {
             Debug.Log("저장");
             saveData.nextStory = nowWrapper.nextStory;
+        }
+        if (nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
+        {
+            StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
+            if (region != saveData.nowRegion)
+            {
+                saveData.nowRegion = region;
+            }
         }
         PrintConversation();
         

@@ -10,6 +10,7 @@ public class StoryParser
             ReadMode,ClampCharacterName, ClampFeeling,ClampEffect
             ,RouteSwitch,RouteText,RightAfterRoute,CutScene,CutSceneFileName,CutSceneEffect,Null
             ,BackGround,BackGroundName,BackGroundEffect, NextStory, NextStoryName
+            ,NextRegion, NextRegionName
     }
 
     CharacterIndexToName characterIndexToName;
@@ -198,6 +199,35 @@ public class StoryParser
                             nowWrapperList.Add(wrapper);
                         }
                     }
+                    else if (modeStr.Contains("Region"))
+                    {
+                        nowMode = ParseMode.NextRegion;
+                        ConversationDialogWrapper wrapper;
+
+                        if (nowWrapper == null)
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
+                        else if (nowWrapper.conversationDialogList.Count == 0)
+                        {
+                            //의미없는 코드.
+                            nowWrapper.nextRegion = null;
+                        }
+                        else
+                        {
+                            wrapper = new ConversationDialogWrapper();
+                            for (int j = 0; j < 3; j++)
+                            {
+                                wrapper.characterFeeling[j] = nowWrapper.characterFeeling[j];
+                                wrapper.characterName[j] = nowWrapper.characterName[j];
+                                wrapper.ingameName[j] = nowWrapper.ingameName[j];
+                            }
+                            nowWrapper = wrapper;
+                            nowWrapperList.Add(wrapper);
+                        }
+                    }
                     builder.Clear();
                     break;
 
@@ -243,6 +273,9 @@ public class StoryParser
                             break;
                         case ParseMode.NextStory:
                             nowMode = ParseMode.NextStoryName;
+                            break;
+                        case ParseMode.NextRegion:
+                            nowMode = ParseMode.NextRegionName;
                             break;
                         default:
                             builder.Append('{');
@@ -325,6 +358,10 @@ public class StoryParser
                             nowMode = ParseMode.Null;
                             Debug.Log(builder.ToString());
                             nowWrapper.nextStory = builder.ToString();
+                            break;
+                        case ParseMode.NextRegionName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.nextRegion = builder.ToString();
                             break;
 
                     }
