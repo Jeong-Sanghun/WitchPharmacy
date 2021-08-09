@@ -124,7 +124,6 @@ public class RandomVisitorClass //SH
                     continue;
                 }
                 MedicineClass medicine = ownedMedicineList[i];
-                Debug.Log(medicine.firstNumber);
                 bool available = true;
                 //if (medicine.firstSymptom == Symptom.none)
                 //{
@@ -155,8 +154,6 @@ public class RandomVisitorClass //SH
                     availableMedicineList.Add(medicine);
                 }
             }
-            Debug.Log(availableMedicineList.Count + "어베일 카운트");
-            Debug.Log(nowMedicineNumber+" : 나우 메디슨 넘버");
             //Debug.Log(availableMedicineList.Count +"이고 " + forIndex.ToString() +  "번째"); ;
             if (availableMedicineList.Count == 0)
             {
@@ -396,7 +393,7 @@ public class RandomVisitorClass //SH
                 }
             }
         }
-
+        bool childSetParented = false;
         //partsWrapperArray[2].partsArray[0] 이게 헤드임.
         for (int i = 0; i < diseaseList.Count; i++)
         {
@@ -407,10 +404,15 @@ public class RandomVisitorClass //SH
 
                 if (diseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
                 {
-                    for (int j = 0; j < facePart.Length; j++)
+                    if (childSetParented == false)
                     {
-                        facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                        for (int j = 0; j < facePart.Length; j++)
+                        {
+                      
+                            facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                        }
                     }
+                    childSetParented = true;
                     obj.transform.SetParent(headPart.transform.GetChild(0));
                     obj.transform.SetAsLastSibling();
                     obj.transform.localScale = Vector3.one;

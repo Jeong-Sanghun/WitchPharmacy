@@ -733,7 +733,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
 
     void CookFunction()
     {
-
+        cookedMedicineText.gameObject.SetActive(true);
         int medicineCount = medicineInPotList.Count;
         int[] indexArray = new int[medicineCount];
         bool[] noneMedicineArray = new bool[medicineCount];
@@ -845,6 +845,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
     {
         isPotCooked = false;
         cookedMedicine = null;
+        cookedMedicineText.gameObject.SetActive(false);
     }
     //카운터매니저에서 불러옴.
     public void VisitorVisits(RandomVisitorClass visitor)

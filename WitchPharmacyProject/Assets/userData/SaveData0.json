@@ -1,12 +1,12 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 3,
-    "coin": 992,
+    "nowDay": 5,
+    "coin": 800,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 35,
@@ -14,7 +14,7 @@
         },
         {
             "medicineIndex": 42,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 43,
@@ -26,7 +26,7 @@
         },
         {
             "medicineIndex": 51,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 58,
@@ -34,6 +34,38 @@
         },
         {
             "medicineIndex": 59,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 18,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 19,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 26,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 27,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 52,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 53,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 60,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 61,
             "medicineCost": 3
         }
     ],
@@ -45,13 +77,7 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 6
-                }
-            ]
+            "billList": []
         },
         {
             "wholeGainCoin": 0,
@@ -59,8 +85,8 @@
             "billList": [
                 {
                     "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 2
+                    "reason": 5,
+                    "changedCoin": 100
                 }
             ]
         },
@@ -73,30 +99,47 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
-        }
-    ],
-    "owningDocumentList": [
+        },
         {
-            "name": "Go",
-            "gainedRegion": 0,
-            "gainedDay": 2,
-            "gainedTime": 7200.0
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 100
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         }
     ],
+    "owningDocumentList": [],
     "symptomBookList": [
         "water+",
         "water-",
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [],
+    "owningMeasureToolList": [
+        3,
+        7
+    ],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [],
+        "endMeasureToolResearchList": [
+            "airTool",
+            "airAuto"
+        ],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [],
+        "endMedicineResearchList": [
+            "fireearth"
+        ],
         "progressingOtherToolResearchList": [
             {
                 "fileName": "energyDrink",
@@ -111,8 +154,7 @@
         {
             "regionIndex": 0,
             "firstDiscountedMedicineIndex": [
-                34,
-                42
+                51
             ],
             "secondDiscountedMedicineIndex": [],
             "eventTimeArray": [
@@ -126,9 +168,9 @@
     ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        false,
         true,
-        false
+        false,
+        true
     ],
     "readStoryList": [
         "firstDay",
@@ -139,9 +181,15 @@
         "firstDay",
         "secondDay",
         "thirdDay",
-        "fourthDay2"
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay"
     ],
-    "nextStory": "fifthDay",
+    "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0

@@ -89,8 +89,8 @@ public class CookedMedicineManager : MonoBehaviour
         {
             return;
         }
-        cookedMedicine.medicineObject.SetActive(!cookedMedicine.medicineObject.activeSelf);
-        cookedMedicine.medicineObject.GetComponent<RectTransform>().anchoredPosition = medicineOriginCounterPos;
+        cookedMedicine.medicineObject.SetActive(false);
+        //cookedMedicine.medicineObject.GetComponent<RectTransform>().anchoredPosition = medicineOriginCounterPos;
     }
     
 
@@ -132,6 +132,7 @@ public class CookedMedicineManager : MonoBehaviour
             {
                 medicineManager.CookedMedicineRemoved();
                 cookedMedicine.medicineObject.SetActive(false);
+                cookedMedicine = null;
             }
             if (touchedObject== trayObject)
             {
