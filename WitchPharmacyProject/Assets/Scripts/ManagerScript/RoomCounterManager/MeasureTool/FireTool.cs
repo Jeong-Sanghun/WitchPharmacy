@@ -20,7 +20,7 @@ public class FireTool : MeasureTool
     Text symptomText;
 
     
-    int dustQuantity = 50;
+    int dustQuantity = 100;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -98,8 +98,8 @@ public class FireTool : MeasureTool
             for (int i = 0; i < dustQuantity; i++)
             {
                 dustObjectArray[i].SetActive(true);
-                x = Random.Range(-2.75f, 2.75f);
-                y = Random.Range(0.53f - Mathf.Sqrt(7.5625f - x * x), 0.53f + Mathf.Sqrt(7.5625f - x * x));
+                x = Random.Range(-3.5f, 3.5f);
+                y = Random.Range(1.995f - Mathf.Sqrt(12.25f - x * x), 1.995f + Mathf.Sqrt(12.25f - x * x));
                 dustObjectArray[i].transform.localPosition = new Vector3(x, y, 0);
             }
         }

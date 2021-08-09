@@ -14621,7 +14621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.81}
+  m_AnchoredPosition: {x: 0, y: 2.04}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953462411
@@ -25672,7 +25672,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1c336027aed7b564e869ba26db13ac73, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5dfe60c8134643e4d9d94b6f2ffcf053, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -32971,6 +32971,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1665595963}
     m_Modifications:
+    - target: {fileID: 1482374247598206195, guid: ea3a01bb9473b7242ad26d738ef6e902,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 852931cdee3cd854a8b84a51fc1189e6,
+        type: 3}
+    - target: {fileID: 3514236446199005092, guid: ea3a01bb9473b7242ad26d738ef6e902,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514236446199005092, guid: ea3a01bb9473b7242ad26d738ef6e902,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
     - target: {fileID: 6180901500055179343, guid: ea3a01bb9473b7242ad26d738ef6e902,
         type: 3}
       propertyPath: m_Name

@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 5,
-    "coin": 800,
+    "nowDay": 2,
+    "coin": 900,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -26,7 +26,7 @@
         },
         {
             "medicineIndex": 51,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 58,
@@ -35,38 +35,6 @@
         {
             "medicineIndex": 59,
             "medicineCost": 3
-        },
-        {
-            "medicineIndex": 18,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 19,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 26,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 27,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 52,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 53,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 60,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 61,
-            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -74,27 +42,6 @@
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
     "billWrapperList": [
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
@@ -125,47 +72,24 @@
         "fire-"
     ],
     "owningMeasureToolList": [
-        3,
-        7
+        1
     ],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [
-            "airTool",
-            "airAuto"
+            "fireTool",
+            "fireAuto"
         ],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [
-            "fireearth"
-        ],
-        "progressingOtherToolResearchList": [
-            {
-                "fileName": "energyDrink",
-                "researchedTime": 3
-            }
-        ],
+        "endMedicineResearchList": [],
+        "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": []
     },
     "bookMarkNumber": 3,
     "routePairList": [],
-    "regionSaveDataList": [
-        {
-            "regionIndex": 0,
-            "firstDiscountedMedicineIndex": [
-                51
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        }
-    ],
+    "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
         true,
@@ -178,18 +102,9 @@
         "thirdDay",
         "fourthDay2",
         "fifthDay",
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay"
+        "firstDay"
     ],
-    "nextStory": "firstDay",
+    "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0
