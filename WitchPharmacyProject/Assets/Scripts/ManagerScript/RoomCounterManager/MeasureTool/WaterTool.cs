@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class WaterTool : MeasureTool
 {
-
+    [SerializeField]
+    GameObject movingTool;
     [SerializeField]
     Text symptomTextDumy;
     [SerializeField]
-    RectTransform barRect;
+    GameObject symptomObj;
+    //[SerializeField]
+    //RectTransform barRect;
+    [SerializeField]
+    Image barImage;
     float nowGauge;
 
 
@@ -33,8 +38,8 @@ public class WaterTool : MeasureTool
                 {
                     nowGauge = 0;
                 }
-               
-                barRect.sizeDelta = new Vector2(nowGauge, barRect.sizeDelta.y);
+                barImage.fillAmount = nowGauge / 1000;
+                //barRect.sizeDelta = new Vector2(nowGauge, barRect.sizeDelta.y);
             }
         }
     }
@@ -47,7 +52,7 @@ public class WaterTool : MeasureTool
         {
             nowGauge = 1000;
         }
-        StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
+        StartCoroutine(SceneManager.inst.MoveModuleRect_Linear(movingTool, Vector3.zero, 2));
     }
 
     public void OnTouch()
@@ -61,7 +66,7 @@ public class WaterTool : MeasureTool
                 nowGauge = 1000;
                 MeasureEnd();
             }
-            barRect.sizeDelta = new Vector2(nowGauge, barRect.sizeDelta.y);
+            barImage.fillAmount = nowGauge / 1000;
         }
     }
 
@@ -73,13 +78,13 @@ public class WaterTool : MeasureTool
         if (!isAuto)
         {
             nowGauge = 0;
-            barRect.sizeDelta = new Vector2(nowGauge, barRect.sizeDelta.y);
-            symptomTextDumy.gameObject.SetActive(false);
+            barImage.fillAmount = nowGauge / 1000;
+            symptomObj.SetActive(false);
         }
         else
         {
             nowGauge = 1000;
-            barRect.sizeDelta = new Vector2(nowGauge, barRect.sizeDelta.y);
+            barImage.fillAmount = nowGauge / 1000;
             MeasureEnd();
         }
 
@@ -94,7 +99,7 @@ public class WaterTool : MeasureTool
     protected override void MeasureEnd()
     {
         base.MeasureEnd();
-        symptomTextDumy.gameObject.SetActive(true);
+        symptomObj.SetActive(true);
         symptomTextDumy.text = symptomNumber.ToString();
     }
 }

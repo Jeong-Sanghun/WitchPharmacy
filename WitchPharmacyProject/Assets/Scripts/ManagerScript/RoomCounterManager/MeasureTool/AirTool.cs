@@ -12,7 +12,6 @@ public class AirTool : MeasureTool
     UIEffect textPixelEffect;
     [SerializeField]
     RectTransform handleRect;
-    float nowGauge;
     const float radius = 150;
     Vector2 startPos = new Vector2(-150, 0);
     Vector2 targetPos;
@@ -96,9 +95,9 @@ public class AirTool : MeasureTool
         measureStarted = true;
         if (isAuto == true && measureEnd == false)
         {
-            nowGauge = 1000;
+
         }
-        StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
+        //StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
     }
 
     public override void OnNewVisitor(int symptomNum, int index, bool auto)
@@ -107,8 +106,12 @@ public class AirTool : MeasureTool
         symptomTextDumy.text = symptomNumber.ToString();
         if (!isAuto)
         {
-            targetPos = (new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))).normalized * radius;
-            handleRect.anchoredPosition = (new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))).normalized * radius;
+            float targetX = Random.Range(-1f, 1f);
+            float targetY = Random.Range(-1f, 1f);
+            float handleX = targetX * (-1) + Random.Range(-0.4f,0.4f);
+            float handleY = targetY * (-1) + Random.Range(-0.4f, 0.4f);
+            targetPos = (new Vector2(targetX, targetY)).normalized * radius;
+            handleRect.anchoredPosition = (new Vector2(handleX,handleY )).normalized * radius;
             textPixelEffect.effectFactor = 0.8f + 0.2f * ((targetPos - handleRect.anchoredPosition).magnitude) / (radius * 2);
         }
         else

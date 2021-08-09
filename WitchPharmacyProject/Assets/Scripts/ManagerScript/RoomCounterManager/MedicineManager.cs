@@ -887,6 +887,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
     public void UseCoin(int cost)
     {
         saveData.coin -= cost;
+        counterManager.CoinTextChange();
         TabletManager.inst.UpdateBill(BillReason.medicineBuy, false, cost);
         usedCoinText.text = "-" + cost.ToString();
         usedCoinText.color = new Color(1, 1, 1, 1);

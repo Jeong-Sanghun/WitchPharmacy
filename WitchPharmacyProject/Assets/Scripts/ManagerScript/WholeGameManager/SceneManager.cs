@@ -137,6 +137,27 @@ public class SceneManager : MonoBehaviour // JH
         yield return null;
     }
 
+    public IEnumerator MoveModuleRect_Linear(GameObject i_Object, Vector3 i_Vector, float i_Time)
+    {
+        float miniTimer = 0f;
+        Vector2 newVector = new Vector2(0f, 0f);
+        float newX = 0f, newY = 0f;
+        RectTransform rect = i_Object.GetComponent<RectTransform>();
+        while (miniTimer < i_Time)
+        {
+            newX = Mathf.Lerp(rect.anchoredPosition.x, i_Vector.x, miniTimer / i_Time);
+            newY = Mathf.Lerp(rect.anchoredPosition.y, i_Vector.y, miniTimer / i_Time);
+            //newZ = Mathf.Lerp(rect.anchoredPosition.z, i_Vector.z, miniTimer / i_Time);
+            newVector = new Vector2(newX, newY);
+            rect.anchoredPosition = newVector;
+            yield return null;
+            miniTimer += Time.deltaTime;
+        }
+        rect.anchoredPosition = i_Vector;
+        yield return null;
+    }
+
+
     // 가속이동모듈 (움직일 오브젝트, 목표벡터값, 이동시간, 초기가속여부, 후기가속여부, 이동후제거)
     public IEnumerator MoveModule_Accel(GameObject i_Object, Vector3 i_Vector, float i_Time, bool i_firstAccel=true, bool i_lastAccel=true, bool i_afterDestroy = false){
         float miniTimer = 0f;

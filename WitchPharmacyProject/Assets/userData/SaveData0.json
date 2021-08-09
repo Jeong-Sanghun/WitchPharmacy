@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 2,
-    "coin": 900,
+    "nowDay": 1,
+    "coin": 994,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -34,7 +34,7 @@
         },
         {
             "medicineIndex": 59,
-            "medicineCost": 3
+            "medicineCost": 2
         }
     ],
     "owningSpecialMedicineList": [],
@@ -45,16 +45,11 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
             "billList": [
                 {
                     "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
+                    "reason": 1,
+                    "changedCoin": 6
                 }
             ]
         },
@@ -71,17 +66,12 @@
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [
-        1
-    ],
+    "owningMeasureToolList": [],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [
-            "fireTool",
-            "fireAuto"
-        ],
+        "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
@@ -89,22 +79,34 @@
     },
     "bookMarkNumber": 3,
     "routePairList": [],
-    "regionSaveDataList": [],
+    "regionSaveDataList": [
+        {
+            "regionIndex": 0,
+            "firstDiscountedMedicineIndex": [
+                59
+            ],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        }
+    ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
+        false,
         false,
         true
     ],
     "readStoryList": [
         "firstDay",
         "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
-        "firstDay"
+        "thirdDay"
     ],
-    "nextStory": "secondDay",
+    "nextStory": "fourthDay1",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0

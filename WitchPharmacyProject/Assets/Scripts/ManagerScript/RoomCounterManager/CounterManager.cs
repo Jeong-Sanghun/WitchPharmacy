@@ -109,6 +109,9 @@ public class CounterManager : MonoBehaviour //SH
     Image gainedMedicineImage;
     Vector3 gainedMedicineObjectOriginPos;
 
+    [SerializeField]
+    Text wholeCoinText;
+
 
     SpecialVisitorDialogBundle specialVisitorDialogBundle;
     OddVisitorDialogBundle oddVisitorDialogBundle;
@@ -139,6 +142,7 @@ public class CounterManager : MonoBehaviour //SH
 
         randomVisitorList = new List<RandomVisitorClass>();
 
+        wholeCoinText.text = saveData.coin.ToString();
 
         measureToolOriginPosArray = new Vector3[5];
         symptomCheckArray = new int[6];
@@ -686,6 +690,7 @@ public class CounterManager : MonoBehaviour //SH
     void CoinGain()
     {
         saveData.coin += RandomVisitorClass.gainCoin;
+        CoinTextChange();
         gainedCoinText.color = Color.black;
         gainedCoinText.text = "+" + RandomVisitorClass.gainCoin.ToString();
         gainedCoinText.transform.position = gainedCoinObjectOriginPos;
@@ -750,5 +755,9 @@ public class CounterManager : MonoBehaviour //SH
         sceneManager.LoadScene("StoryScene");
     }
 
+    public void CoinTextChange()
+    {
+        wholeCoinText.text = saveData.coin.ToString();
+    }
 
 }
