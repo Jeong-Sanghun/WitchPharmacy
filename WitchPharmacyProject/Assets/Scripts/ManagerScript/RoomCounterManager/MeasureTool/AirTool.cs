@@ -104,7 +104,7 @@ public class AirTool : MeasureTool
             //Vector2 handlePos = mousePos.normalized * radius;
             //handleRect.anchoredPosition = handlePos;
             //textPixelEffect.effectFactor = 0.8f + 0.2f * ((targetPos - handlePos).magnitude) / (radius * 2);
-            textPixelEffect.effectFactor = 0.8f + 0.2f * Mathf.Abs((targetAngle - angle)) / 180;
+            textPixelEffect.effectFactor = 0.9f + 0.1f * Mathf.Abs((targetAngle - angle)) / 180;
             touched = true;
             if (endCoroutineRunning == true)
             {
@@ -125,7 +125,7 @@ public class AirTool : MeasureTool
             {
                 touchedDuringCoroutine = false;
             }
-            if (textPixelEffect.effectFactor < 0.85f)
+            if (textPixelEffect.effectFactor < 0.93f)
             {
                 StartCoroutine(EndCoroutine());
             }
@@ -141,7 +141,7 @@ public class AirTool : MeasureTool
             yield return new WaitForSeconds(1f);
             if (!touched && !touchedDuringCoroutine)
             {
-                if (textPixelEffect.effectFactor < 0.85f)
+                if (textPixelEffect.effectFactor < 0.93f)
                 {
                     textPixelEffect.effectFactor = 0;
                     MeasureEnd();
@@ -179,13 +179,13 @@ public class AirTool : MeasureTool
             targetAngle = Random.Range(-90f, 180f);
             //handleRect.anchoredPosition = (new Vector2(handleX,handleY )).normalized * radius;
             float angle = targetAngle * (-1) + Random.Range(-20f, 20f);
-            if (angle > -90 && angle < 180)
+            if (angle < -90 && angle > -180)
             {
-                angle = 90;
+                angle = -90;
             }
             handleParentTransform.localEulerAngles = new Vector3(0, 0, angle);
             //textPixelEffect.effectFactor = 0.8f + 0.2f * ((targetPos - handleRect.anchoredPosition).magnitude) / (radius * 2);
-            textPixelEffect.effectFactor = 0.8f + 0.2f * Mathf.Abs((targetAngle - angle)) / 180;
+            textPixelEffect.effectFactor = 0.9f + 0.1f * Mathf.Abs((targetAngle - angle)) / 180;
         }
         else
         {
