@@ -12,10 +12,15 @@ public class AirTool : MeasureTool
     UIEffect textPixelEffect;
     [SerializeField]
     RectTransform handleRect;
+    [SerializeField]
+    Transform handleParentTransform;
     const float radius = 150;
     Vector2 startPos = new Vector2(-150, 0);
     Vector2 targetPos;
     Vector3 screenPos;
+    Vector2 handleParentPos;
+    float targetAngle;
+
     bool endCoroutineRunning = false;
     bool touched = false;
     bool touchedDuringCoroutine = false;
@@ -25,6 +30,8 @@ public class AirTool : MeasureTool
         screenPos = new Vector3(Screen.width / 2, Screen.height / 2,0);
         base.Start();
         targetPos = (new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))).normalized * radius;
+        targetAngle = Random.Range(-90f, 180f);
+        handleParentPos = handleParentTransform.GetComponent<RectTransform>().anchoredPosition;
         ExplainLoad();
     }
 
@@ -35,25 +42,80 @@ public class AirTool : MeasureTool
 
     }
 
+    int touchState = 0;
+    float lastAngle;
     public void HandleDrag()
     {
         if(!isAuto && !measureEnd && measureStarted)
         {
             Vector2 mousePos = Input.mousePosition - screenPos;
-            Vector2 handlePos = mousePos.normalized * radius;
-            handleRect.anchoredPosition = handlePos;
-            textPixelEffect.effectFactor = 0.8f + 0.2f * ((targetPos - handlePos).magnitude) / (radius * 2);
+            Vector2 handleVector = (mousePos - handleParentPos);
+            float angle = Vector2.SignedAngle(Vector2.left,handleVector);
+
+            bool outOfBounds = false;
+            if(touchState == -1)
+            {
+                if((angle<-90 && angle > -180) || (angle<180 && angle>0) || (angle<0 && angle>-85))
+                {
+                    outOfBounds = true;
+                }
+            }
+
+            if(touchState == 1)
+            {
+                if ((angle < -90 && angle > -180) || (angle> -90 && angle < 0) || (angle < 175 && angle >0 ))
+                {
+                    outOfBounds = true;
+                }
+            }
+            if (outOfBounds == true)
+            {
+                return;
+            }
+
+            if (outOfBounds == false)
+            {
+                if (angle > -90 && angle < 180)
+                {
+                    touchState = 0;
+                }
+                else if (angle < -90 && lastAngle > -90 && lastAngle < 0)
+                {
+                    touchState = -1;
+                }
+                else if (angle > -180 && lastAngle > 0 && lastAngle < 180)
+                {
+                    touchState = 1;
+                }
+            }
+
+            if(touchState == -1)
+            {
+                angle = -90;
+            }
+            else if(touchState == 1)
+            {
+                angle = 180;
+            }
+            handleParentTransform.localRotation = Quaternion.Euler(0, 0, angle);
+
+            //Vector2 handlePos = mousePos.normalized * radius;
+            //handleRect.anchoredPosition = handlePos;
+            //textPixelEffect.effectFactor = 0.8f + 0.2f * ((targetPos - handlePos).magnitude) / (radius * 2);
+            textPixelEffect.effectFactor = 0.8f + 0.2f * Mathf.Abs((targetAngle - angle)) / 180;
             touched = true;
             if (endCoroutineRunning == true)
             {
                 touchedDuringCoroutine = true;
             }
+            lastAngle = angle;
         }
 
     }
 
     public void HandleCheck()
     {
+        touchState = 0;
         if (!isAuto && !measureEnd && measureStarted)
         {
             touched = false;
@@ -106,19 +168,29 @@ public class AirTool : MeasureTool
         symptomTextDumy.text = symptomNumber.ToString();
         if (!isAuto)
         {
-            float targetX = Random.Range(-1f, 1f);
-            float targetY = Random.Range(-1f, 1f);
-            float handleX = targetX * (-1) + Random.Range(-0.4f,0.4f);
-            float handleY = targetY * (-1) + Random.Range(-0.4f, 0.4f);
-            targetPos = (new Vector2(targetX, targetY)).normalized * radius;
-            handleRect.anchoredPosition = (new Vector2(handleX,handleY )).normalized * radius;
-            textPixelEffect.effectFactor = 0.8f + 0.2f * ((targetPos - handleRect.anchoredPosition).magnitude) / (radius * 2);
+            //float targetX = Random.Range(-1f, 1f);
+            //float targetY = Random.Range(-1f, 1f);
+            //float handleX = targetX * (-1) + Random.Range(-0.4f,0.4f);
+            //float handleY = targetY * (-1) + Random.Range(-0.4f, 0.4f);
+            //targetPos = (new Vector2(targetX, targetY)).normalized * radius;
+            targetAngle = Random.Range(-90f, 180f);
+            //handleRect.anchoredPosition = (new Vector2(handleX,handleY )).normalized * radius;
+            float angle = targetAngle * (-1) + Random.Range(-20f, 20f);
+            if (angle > -90 && angle < 180)
+            {
+                angle = 90;
+            }
+            handleParentTransform.localEulerAngles = new Vector3(0, 0, angle);
+            //textPixelEffect.effectFactor = 0.8f + 0.2f * ((targetPos - handleRect.anchoredPosition).magnitude) / (radius * 2);
+            textPixelEffect.effectFactor = 0.8f + 0.2f * Mathf.Abs((targetAngle - angle)) / 180;
         }
         else
         {
             Debug.Log("오토");
             targetPos = (new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f))).normalized * radius;
-            handleRect.anchoredPosition = targetPos;
+            targetAngle = Random.Range(-90f, 180f);
+            //handleRect.anchoredPosition = targetPos;
+            handleParentTransform.localRotation = Quaternion.Euler(0, 0, targetAngle);
 
             MeasureEnd();
         }

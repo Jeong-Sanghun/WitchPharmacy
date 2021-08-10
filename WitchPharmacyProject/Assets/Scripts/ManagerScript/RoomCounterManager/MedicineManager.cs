@@ -18,6 +18,8 @@ public class MedicineManager : MonoBehaviour    //SH
     CounterDialogManager counterDialogManager;
     [SerializeField]
     SymptomChartManager symptomChartManager;
+    [SerializeField]
+    PotAnimationManager potAnimationManager;
 
     GameManager gameManager;
     SaveDataClass saveData;
@@ -133,8 +135,8 @@ public class MedicineManager : MonoBehaviour    //SH
     //룸매니저에서 투 카운터버튼에서 사용
     public bool nowCookingAnimation;
 
-    [SerializeField]
-    Animator cookAnimator;
+    //[SerializeField]
+    //Animator cookAnimator;
     float doubleClickTimer;
 
     // Start is called before the first frame update
@@ -422,6 +424,10 @@ public class MedicineManager : MonoBehaviour    //SH
             //medicine.propertyQuantityText.text = medicine.medicineQuant.ToString();
             //potMedicineObjectList[listIndex].SetActive(false);
             Destroy(potMedicineObjectList[listIndex]);
+            if (medicineInPotList.Count == 1)
+            {
+                potAnimationManager.UnSetPotColor(0);
+            }
 
             if (medicineInPotList.Count == 2)
             {
@@ -429,6 +435,8 @@ public class MedicineManager : MonoBehaviour    //SH
                 {
                     potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
                     potMedicineObjectList[1].transform.localPosition = Vector3.zero;
+                    potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.LoadImage(), 0);
+                    potAnimationManager.UnSetPotColor(1);
                 }
             }
             else if (medicineInPotList.Count == 3)
@@ -437,13 +445,21 @@ public class MedicineManager : MonoBehaviour    //SH
                 {
                     potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
                     potMedicineObjectList[1].transform.localPosition = Vector3.zero;
+
+                    potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.LoadImage(), 0);
+
                     potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
                     potMedicineObjectList[2].transform.localPosition = Vector3.zero;
+
+                    potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.LoadImage(), 1);
+                    potAnimationManager.UnSetPotColor(2);
                 }
                 else if (listIndex == 1)
                 {
                     potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
                     potMedicineObjectList[2].transform.localPosition = Vector3.zero;
+                    potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.LoadImage(), 1);
+                    potAnimationManager.UnSetPotColor(2);
                 }
             }
             potMedicineObjectList.RemoveAt(listIndex);
@@ -663,7 +679,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
 
 
-
+        potAnimationManager.SetPotColor(nowMedicineButton.medicineClass.LoadImage(), medicineInPotList.Count);
         medicineInPotList.Add(nowMedicineButton);
         //아무것도 아님이 뜨면 줄여주지 않음
         //nowMedicineButton.medicineQuant--;
@@ -724,10 +740,17 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
 
     IEnumerator CookAnimationCoroutine()
     {
-        cookAnimator.SetBool("isCooking", true);
-        yield return new WaitForSeconds(1.5f);
+        potAnimationManager.PotWorldAnimation(true);
+        yield return new WaitForSeconds(1f);
+        potAnimationManager.PotUIAnimation(true);
+        for (int i = 0; i <potMedicineObjectList.Count; i++)
+        {
+            potMedicineObjectList[i].SetActive(false);
+        }
+        potAnimationManager.PotWorldAnimation(false);
+        yield return new WaitForSeconds(3.8f);
         CookFunction();
-        cookAnimator.SetBool("isCooking", false);
+        potAnimationManager.PotUIAnimation(false);
         nowCookingAnimation = false;
     }
 
@@ -737,6 +760,11 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         int medicineCount = medicineInPotList.Count;
         int[] indexArray = new int[medicineCount];
         bool[] noneMedicineArray = new bool[medicineCount];
+
+        for (int i = 0; i < 3; i++)
+        {
+            potAnimationManager.UnSetPotColor(i);
+        }
 
         cookedMedicine = new CookedMedicine();
         cookedMedicine.medicineCount = medicineCount;
@@ -846,6 +874,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         isPotCooked = false;
         cookedMedicine = null;
         cookedMedicineText.gameObject.SetActive(false);
+
     }
     //카운터매니저에서 불러옴.
     public void VisitorVisits(RandomVisitorClass visitor)

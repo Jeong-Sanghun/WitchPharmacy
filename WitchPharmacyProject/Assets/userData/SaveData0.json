@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 1,
-    "coin": 994,
+    "nowDay": 4,
+    "coin": 800,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -34,7 +34,7 @@
         },
         {
             "medicineIndex": 59,
-            "medicineCost": 2
+            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -45,11 +45,32 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
             "billList": [
                 {
                     "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 6
+                    "reason": 5,
+                    "changedCoin": 100
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 100
                 }
             ]
         },
@@ -66,47 +87,50 @@
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [],
+    "owningMeasureToolList": [
+        1,
+        3
+    ],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [],
+        "endMeasureToolResearchList": [
+            "fireTool",
+            "fireAuto",
+            "airTool"
+        ],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": []
+        "endOtherToolResearchList": [
+            "energyDrink"
+        ]
     },
     "bookMarkNumber": 3,
     "routePairList": [],
-    "regionSaveDataList": [
-        {
-            "regionIndex": 0,
-            "firstDiscountedMedicineIndex": [
-                59
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        }
-    ],
+    "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        false,
+        true,
         false,
         true
     ],
     "readStoryList": [
         "firstDay",
         "secondDay",
-        "thirdDay"
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay"
     ],
-    "nextStory": "fourthDay1",
+    "nextStory": "thirdDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0

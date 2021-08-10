@@ -331,7 +331,7 @@ namespace Coffee.UIExtensions
 				{
 					color = Color.LerpUnclamped(
 						Color.LerpUnclamped(m_Color1, m_Color2, nomalizedPos.x),
-						Color.LerpUnclamped(m_Color3, m_Color4, nomalizedPos.x),
+						Color.LerpUnclamped(m_Color2, m_Color3, nomalizedPos.x),
 						nomalizedPos.y);
 				}
 				else
