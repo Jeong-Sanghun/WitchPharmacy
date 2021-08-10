@@ -184,29 +184,33 @@ public class MedicineResearchManager : ResearchManagerParent
             research.researchedTime = data.researchEndTime;
             researchSaveData.progressingMedicineResearchList.Remove(research);
             researchSaveData.endMedicineResearchList.Add(research.fileName);
+            
             saveData.AddMedicineBySymptom(gameManager.medicineDataWrapper, data.firstSymptom, data.secondSymptom);
             wholeButtonList[index].researchButtonComponent.interactable = false;
 
-            int containingIndex = -1;
-            for (int i = 0; i < wholeButtonList.Count; i++)
-            {
-                MedicineResearchData researchData = (MedicineResearchData)wholeButtonList[i].data; ;
-                for (int j = 0; j < researchData.neededResearchList.Count; j++)
-                {
-                    if (researchData.neededResearchList[j].Contains(data.fileName))
-                    {
-                        containingIndex = i;
-                        break;
-                    }
-                }
-            }
-            if (containingIndex != -1)
-            {
-                wholeButtonList[containingIndex].locked = false;
-                wholeButtonList[containingIndex].researchButtonComponent.interactable = true;
-                wholeButtonList[containingIndex].researchButtonText.text = languagePack.doResearch;
-                wholeButtonList[containingIndex].menuButtonObj.transform.GetChild(0).gameObject.SetActive(false);
-            }
+            //List<int> containingIndexList = new List<int>();
+            //for (int i = 0; i < wholeButtonList.Count; i++)
+            //{
+            //    MedicineResearchData researchData = (MedicineResearchData)wholeButtonList[i].data; ;
+            //    for (int j = 0; j < researchData.neededResearchList.Count; j++)
+            //    {
+            //        if (researchData.neededResearchList[j].Contains(data.fileName))
+            //        {
+            //            containingIndexList.Add(i);
+            //        }
+            //    }
+            //}
+            //if (containingIndexList.Count > 0)
+            //{
+            //    for(int  i = 0; i < containingIndexList.Count; i++)
+            //    {
+            //        wholeButtonList[containingIndex].locked = false;
+            //        wholeButtonList[containingIndex].researchButtonComponent.interactable = true;
+            //        wholeButtonList[containingIndex].researchButtonText.text = languagePack.doResearch;
+            //        wholeButtonList[containingIndex].menuButtonObj.transform.GetChild(0).gameObject.SetActive(false);
+            //    }
+                
+            //}
 
         }
         //exploreManager.TimeChange(1200);

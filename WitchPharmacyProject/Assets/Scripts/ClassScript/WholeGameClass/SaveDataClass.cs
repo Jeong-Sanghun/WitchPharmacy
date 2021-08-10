@@ -122,7 +122,32 @@ public class SaveDataClass
                 owningMedicineList.Add(owningMedicine);
             }
         }
-        
+
+        bool firstContain = false;
+        bool secondContain = false;
+        for(int i = 0; i < symptomBookList.Count; i++)
+        {
+            if (symptomBookList[i].Contains(firstSymptom.ToString()))
+            {
+                firstContain = true;
+            }
+            if (symptomBookList[i].Contains(secondSymptom.ToString()))
+            {
+                secondContain = true;
+            }
+        }
+        if(firstContain == false)
+        {
+            symptomBookList.Add(firstSymptom.ToString() + "+");
+            symptomBookList.Add(firstSymptom.ToString() + "-");
+        }
+        if (secondContain == false)
+        {
+            symptomBookList.Add(secondSymptom.ToString() + "+");
+            symptomBookList.Add(secondSymptom.ToString() + "-");
+
+        }
+
 
     }
 }

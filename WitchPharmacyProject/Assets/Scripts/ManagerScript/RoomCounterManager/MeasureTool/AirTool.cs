@@ -14,6 +14,8 @@ public class AirTool : MeasureTool
     RectTransform handleRect;
     [SerializeField]
     Transform handleParentTransform;
+    [SerializeField]
+    GameObject movingTool;
     const float radius = 150;
     Vector2 startPos = new Vector2(-150, 0);
     Vector2 targetPos;
@@ -160,6 +162,7 @@ public class AirTool : MeasureTool
 
         }
         //StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
+        StartCoroutine(SceneManager.inst.MoveModuleRect_Linear(movingTool, Vector3.zero, 2));
     }
 
     public override void OnNewVisitor(int symptomNum, int index, bool auto)

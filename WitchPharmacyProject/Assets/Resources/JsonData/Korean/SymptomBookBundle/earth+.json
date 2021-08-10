@@ -1,0 +1,43 @@
+﻿{
+    "symptomString": "earth",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "대지돼지",
+            "explain": "대지는돼지"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 1,
+            "title": "대지가무너지고",
+            "explain": "대지가 무너져요"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 2,
+            "title": "구글어쓰",
+            "explain": "어쓰어쓰"
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 0,
+            "title": "대지가많아요",
+            "explain": "맛있는 대지 아니 돼지"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 1,
+            "title": "대지귀신이 생기다",
+            "explain": "이건 대지야"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 2,
+            "title": "이 대지야",
+            "explain": "아니 돼지야!"
+        }
+    ]
+}

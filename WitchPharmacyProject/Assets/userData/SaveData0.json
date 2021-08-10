@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 4,
-    "coin": 800,
+    "nowDay": 1,
+    "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -35,6 +35,38 @@
         {
             "medicineIndex": 59,
             "medicineCost": 3
+        },
+        {
+            "medicineIndex": 20,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 21,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 28,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 29,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 36,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 37,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 44,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 45,
+            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -50,33 +82,6 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
             "billList": []
         }
     ],
@@ -85,52 +90,38 @@
         "water+",
         "water-",
         "fire+",
-        "fire-"
+        "fire-",
+        "earth+",
+        "earth-"
     ],
-    "owningMeasureToolList": [
-        1,
-        3
-    ],
+    "owningMeasureToolList": [],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [
-            "fireTool",
-            "fireAuto",
-            "airTool"
-        ],
+        "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [],
+        "endMedicineResearchList": [
+            "waterearth"
+        ],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [
-            "energyDrink"
-        ]
+        "endOtherToolResearchList": []
     },
     "bookMarkNumber": 3,
     "routePairList": [],
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
+        false,
         false,
         true
     ],
     "readStoryList": [
         "firstDay",
         "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
-        "firstDay",
-        "secondDay"
+        "thirdDay"
     ],
-    "nextStory": "thirdDay",
+    "nextStory": "fourthDay2",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0
