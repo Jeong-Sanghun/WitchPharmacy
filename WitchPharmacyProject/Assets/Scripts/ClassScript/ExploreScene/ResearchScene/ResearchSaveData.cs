@@ -17,6 +17,10 @@ public class ResearchSaveData
     public List<OneResearch> progressingBookResearchList;
     public List<string> endBookResearchList;
 
+    public List<OneResearch> progressingSpecialResearchList;
+    public List<string> endSpecialResearchList;
+    public List<string> appearingSpecialResearchList;
+
     public ResearchSaveData()
     {
         progressingMedicineResearchList = new List<OneResearch>();
@@ -31,6 +35,9 @@ public class ResearchSaveData
         progressingBookResearchList = new List<OneResearch>();
         endBookResearchList = new List<string>();
 
+        progressingSpecialResearchList = new List<OneResearch>();
+        endSpecialResearchList = new List<string>();
+        appearingSpecialResearchList = new List<string>();
 
     }
 }

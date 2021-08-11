@@ -13,11 +13,9 @@ public class VisitorTriggerManager : MonoBehaviour
     // Start is called before the first frame update
     bool nowCheckingTrigger;
 
-    OddVisitorDialogBundle nowOddVisitorDialogBundle;
+    
     List<SpecialVisitorCondition> specialVisitorConditionDataList;
 
-    //로딩을 여기서 한다음에 쫙 뿌려줘야 돼서.
-    SpecialVisitorDialogBundle specialVisitorDialogBundle;
     //List<string> todaySpecialVisitorList;
     int nowVisitorIndex;
     bool isSecondVisit = false;
@@ -296,7 +294,7 @@ public class VisitorTriggerManager : MonoBehaviour
         }
         else if (OddConditionCheck())
         {
-            counterManager.CounterStart(nowOddVisitorDialogBundle);
+            //counterManager.CounterStart(nowOddVisitorDialogBundle);
         }
         else
         {

@@ -25,6 +25,7 @@ public class SceneManager : MonoBehaviour // JH
         nowTexting = false;   
     }
     // // Module // //
+    GameObject linearMovingObj;
 
     public IEnumerator LoadTextOneByOne(string inputTextString, Text inputTextUI, float eachTime = 0.05f, bool canClickSkip = true){
         nowTexting = true;
@@ -120,9 +121,17 @@ public class SceneManager : MonoBehaviour // JH
         yield return null;
     }
 
+    bool moveModuleLinearRunning = false;
+    bool moveModuleInterrupt = false;
     public IEnumerator MoveModule_Linear(GameObject i_Object, Vector3 i_Vector, float i_Time){
         float miniTimer = 0f;
+        if(moveModuleLinearRunning == true && linearMovingObj == i_Object)
+        {
+            moveModuleInterrupt = true;    
+        }
+        moveModuleLinearRunning = true;
         Vector3 newVector = new Vector3(0f,0f,0f);
+        linearMovingObj = i_Object;
         float newX=0f, newY=0f, newZ=0f;
         while(miniTimer<i_Time){
             newX= Mathf.Lerp(i_Object.transform.position.x,i_Vector.x,miniTimer/i_Time);
@@ -131,10 +140,20 @@ public class SceneManager : MonoBehaviour // JH
             newVector = new Vector3(newX,newY,newZ);
             i_Object.transform.position = newVector;
             yield return null;
-            miniTimer+=Time.deltaTime;
+            if (moveModuleInterrupt)
+            {
+                moveModuleInterrupt = false;
+                break;
+            }
+            miniTimer +=Time.deltaTime;
         }
-        i_Object.transform.position = i_Vector;
+        if(linearMovingObj == i_Object)
+        {
+            i_Object.transform.position = i_Vector;
+        }
+        
         yield return null;
+        moveModuleLinearRunning = false;
     }
 
     public IEnumerator MoveModuleRect_Linear(GameObject i_Object, Vector3 i_Vector, float i_Time)

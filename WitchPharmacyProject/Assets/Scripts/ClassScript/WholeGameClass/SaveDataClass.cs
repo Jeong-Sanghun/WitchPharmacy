@@ -27,8 +27,8 @@ public class SaveDataClass
 
     //그래서 리스트로 저장을 하고 딕셔너리를 만들어줄거임 ㅋㅋ....
     public List<OwningMedicineClass> owningMedicineList;
-
     public List<OwningMedicineClass> owningSpecialMedicineList;
+
 
     public float chaosMeter;
 
