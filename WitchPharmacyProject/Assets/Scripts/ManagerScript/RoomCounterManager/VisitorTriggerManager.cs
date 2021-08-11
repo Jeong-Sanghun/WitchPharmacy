@@ -284,14 +284,14 @@ public class VisitorTriggerManager : MonoBehaviour
         {
             specialVisitorVisited = true;
             //todaySpecialVisitorList.Add(specialVisitorDialogBundle.bundleName);
-            if (isSecondVisit)
-            {
-                counterManager.CounterSecondStart(specialVisitorDialogBundle);
-            }
-            else
-            {
-                counterManager.CounterFirstStart(specialVisitorDialogBundle);
-            }
+            //if (isSecondVisit)
+            //{
+            //    counterManager.CounterSecondStart(specialVisitorDialogBundle);
+            //}
+            //else
+            //{
+            //    counterManager.CounterFirstStart(specialVisitorDialogBundle);
+            //}
             
         }
         else if (OddConditionCheck())

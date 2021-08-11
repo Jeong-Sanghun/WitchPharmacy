@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 1,
-    "coin": 1000,
+    "nowTime": 7200.0,
+    "nowDay": 0,
+    "coin": 997,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -35,38 +35,6 @@
         {
             "medicineIndex": 59,
             "medicineCost": 3
-        },
-        {
-            "medicineIndex": 20,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 21,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 28,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 29,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 36,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 37,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 44,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 45,
-            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -77,12 +45,13 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
+                }
+            ]
         }
     ],
     "owningDocumentList": [],
@@ -90,9 +59,7 @@
         "water+",
         "water-",
         "fire+",
-        "fire-",
-        "earth+",
-        "earth-"
+        "fire-"
     ],
     "owningMeasureToolList": [],
     "owningOtherToolList": [],
@@ -101,28 +68,26 @@
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [
-            "waterearth"
-        ],
+        "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": []
+        "endOtherToolResearchList": [],
+        "progressingBookResearchList": [],
+        "endBookResearchList": []
     },
     "bookMarkNumber": 3,
     "routePairList": [],
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
+        true,
         false,
-        false,
-        true
+        false
     ],
     "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay"
+        "firstDay"
     ],
-    "nextStory": "fourthDay2",
+    "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 0
 }

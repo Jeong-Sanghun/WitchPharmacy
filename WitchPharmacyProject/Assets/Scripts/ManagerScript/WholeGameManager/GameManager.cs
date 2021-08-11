@@ -50,7 +50,10 @@ public class GameManager : MonoBehaviour //SH
     [HideInInspector]
     public MedicineResearchDataWrapper medicineResearchDataWrapper;
     [HideInInspector]
+    public BookResearchDataWrapper bookResearchDataWrapper;
+    [HideInInspector]
     public TreeterConditionWrapper treeterConditionWrapper;
+    
 
 
     public int nowSaveDataIndex;
@@ -104,9 +107,11 @@ public class GameManager : MonoBehaviour //SH
         //randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
         specialVisitorConditionWrapper = jsonManager.ResourceDataLoad<SpecialVisitorConditionWrapper>("SpecialVisitorConditionWrapper");
         conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
-        measureToolResearchDataWrapper = jsonManager.ResourceDataLoad<MeasureToolResearchDataWrapper>("MeasureToolResearchDataWrapper");
-        medicineResearchDataWrapper = jsonManager.ResourceDataLoad<MedicineResearchDataWrapper>("MedicineResearchDataWrapper");
-        otherToolResearchDataWrapper = jsonManager.ResourceDataLoad<OtherToolResearchDataWrapper>("OtherToolResearchDataWrapper");
+        measureToolResearchDataWrapper = jsonManager.ResourceDataLoad<MeasureToolResearchDataWrapper>("ResearchData/MeasureToolResearchDataWrapper");
+        medicineResearchDataWrapper = jsonManager.ResourceDataLoad<MedicineResearchDataWrapper>("ResearchData/MedicineResearchDataWrapper");
+        otherToolResearchDataWrapper = jsonManager.ResourceDataLoad<OtherToolResearchDataWrapper>("ResearchData/OtherToolResearchDataWrapper");
+        bookResearchDataWrapper = jsonManager.ResourceDataLoad<BookResearchDataWrapper>("ResearchData/BookResearchDataWrapper");
+
 
         for (int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
         {
@@ -283,6 +288,8 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<TreeterConditionWrapper>(treeterConditionWrapper, "TreeterConditionWrapper");
         TreeterData treeterData = new TreeterData();
         jsonManager.SaveJson<TreeterData>(treeterData, "TreeterData");
+        bookResearchDataWrapper = new BookResearchDataWrapper();
+        jsonManager.SaveJson<BookResearchDataWrapper>(bookResearchDataWrapper, "BookResearchDataWrapper");
 
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");

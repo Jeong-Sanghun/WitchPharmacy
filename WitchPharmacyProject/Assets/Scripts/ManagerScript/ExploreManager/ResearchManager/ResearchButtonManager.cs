@@ -14,6 +14,7 @@ public class ResearchButtonManager : MonoBehaviour
         tabArray[0].SetActive(true);
         tabArray[1].SetActive(false);
         tabArray[2].SetActive(false);
+        tabArray[3].SetActive(false);
     }
 
 

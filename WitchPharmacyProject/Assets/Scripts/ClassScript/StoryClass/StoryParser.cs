@@ -586,10 +586,327 @@ public class StoryParser
                 nowDialog.dialog = builder.ToString();
             }
 
+
         }
 
         return gameData;
         //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
     }
-    
+
+    public VisitorDialogBundle LoadBundle(string bundleName, string languageDirectory,VisitorType visitorType,int symptomNumber = 0)
+    {
+        string originText;
+
+        VisitorDialogBundle gameData = new VisitorDialogBundle();
+
+        string language = languageDirectory;
+        string directory = "JsonData/";
+
+        string appender1 = bundleName;
+        StringBuilder builder = new StringBuilder(directory);
+        builder.Append(language);
+        builder.Append("VisitorStoryBundle/");
+        switch (visitorType)
+        {
+            case VisitorType.Random:
+                builder.Append("Random/");
+                builder.Append(symptomNumber.ToString());
+                builder.Append("/");
+                break;
+            case VisitorType.Odd:
+                builder.Append("Odd/");
+                break;
+            case VisitorType.Special:
+                builder.Append("Special/");
+                break;
+            case VisitorType.RuelliaStart:
+                builder.Append("RuelliaStart/");
+                break;
+            default:
+                break;
+
+        }
+
+        builder.Append(appender1);
+
+        TextAsset jsonString = Resources.Load<TextAsset>(builder.ToString());
+        originText = jsonString.text;
+
+        gameData.bundleName = bundleName;
+
+        builder = new StringBuilder();
+        ParseMode nowMode = ParseMode.Null;
+        VisitorDialogWrapper nowWrapper = null;
+        List<VisitorDialogWrapper> nowWrapperList = gameData.startWrapperList;
+        string beforeName=null;
+        string beforeFeeling=null;
+        VisitorDialog nowDialog = null;
+        bool isRouting = false;
+        bool isRightRoute = false;
+        for (int i = 0; i < originText.Length; i++)
+        {
+
+            switch (originText[i])
+            {
+                case '<':
+                    if (nowMode == ParseMode.Dialog)
+                    {
+                        nowDialog.dialog = builder.ToString();
+                    }
+                    builder.Clear();
+                    nowMode = ParseMode.ReadMode;
+                    break;
+
+                case '>':
+                    if (nowMode != ParseMode.ReadMode)
+                    {
+                        builder.Append(originText[i]);
+                        break;
+                    }
+                    string modeStr = builder.ToString();
+                    if (modeStr.Contains("bundleName"))
+                    {
+                        nowMode = ParseMode.BundleName;
+                        nowWrapperList = gameData.startWrapperList;
+                        nowWrapper = new VisitorDialogWrapper();
+                        nowWrapperList.Add(nowWrapper);
+                    }
+                    else if (modeStr.Contains("switch"))
+                    {
+                        nowMode = ParseMode.Switch;
+                        if (nowWrapper == null || nowWrapper.dialogList.Count != 0)
+                        {
+                            nowWrapper = new VisitorDialogWrapper();
+                            nowWrapperList.Add(nowWrapper);
+                        }
+                    }
+                    else if (modeStr.Contains("route"))
+                    {
+                        nowMode = ParseMode.Route;
+ 
+                        nowWrapper = new VisitorDialogWrapper();
+                        nowWrapper.characterName = beforeName;
+                        nowWrapper.characterFeeling = beforeFeeling;
+                        nowWrapperList = gameData.rightWrapperList;
+                        nowWrapperList.Add(nowWrapper);
+                        isRouting = true;
+                        isRightRoute = true;
+                    }
+                    else if (modeStr.Contains("forceEnd"))
+                    {
+                        nowWrapper.forceEnd = true;
+                    }
+                    builder.Clear();
+                    break;
+
+                case '{':
+
+                    switch (nowMode)
+                    {
+                        case ParseMode.DialogCharacterName:
+                            nowMode = ParseMode.DialogEffect;
+                            break;
+                        case ParseMode.BundleName:
+                            break;
+                        case ParseMode.Switch:
+                            //string name = builder.ToString();
+                            //if (nowWrapper.characterName[leftMiddleRight] == null && name.Length>1)
+                            //{
+                            //    nowWrapper.characterName[leftMiddleRight] = name;
+                            //    nowWrapper.ingameName[leftMiddleRight] = characterIndexToName.NameTranslator(name, languagePack);
+
+                            //}
+                            //builder.Clear();
+                            nowMode = ParseMode.ClampCharacterName;
+                            break;
+                        case ParseMode.ClampFeeling:
+                            nowMode = ParseMode.ClampEffect;
+                            break;
+                        case ParseMode.ClampCharacterName:
+                            string name = builder.ToString();
+                            if (name.Length < 1)
+                            {
+                                nowWrapper.characterName = null;
+                            }
+                            else
+                            {
+                                nowWrapper.characterName = name;
+                            }
+                            
+                            builder.Clear();
+                            nowMode = ParseMode.ClampEffect;
+                            break;
+                        default:
+                            builder.Append('{');
+                            break;
+
+                    }
+                    break;
+                case '}':
+                    switch (nowMode)
+                    {
+                        case ParseMode.BundleName:
+                            gameData.bundleName = builder.ToString();
+                            break;
+                        case ParseMode.Switch:
+                            nowMode = ParseMode.DialogCharacterName;
+                            break;
+                        case ParseMode.ClampCharacterName:
+                            string name = builder.ToString();
+                            if (name.Length < 1)
+                            {
+                                nowWrapper.characterName = null;
+                            }
+                            else
+                            {
+                                nowWrapper.characterName = name;
+
+                            }
+                            nowMode = ParseMode.ClampFeeling;
+                            builder.Clear();
+                            break;
+                        case ParseMode.ClampFeeling:
+                            nowMode = ParseMode.DialogCharacterName;
+                            break;
+                        case ParseMode.ClampEffect:
+                            string effectStr = builder.ToString();
+                            if (effectStr.Contains("up") || effectStr.Contains("Up"))
+                            {
+                                nowWrapper.dialogFX = DialogFX.Up;
+                            }
+                            else if (effectStr.Contains("down") || effectStr.Contains("Down"))
+                            {
+                                nowWrapper.dialogFX = DialogFX.Down;
+                            }
+                            //else if (effectStr.Contains("blur") || effectStr.Contains("Blur"))
+                            //{
+                            //    nowWrapper.dialogFX = DialogFX.Blur;
+                            //}
+
+                            nowMode = ParseMode.Switch;
+                            break;
+                        //여기 파스모드 컷씬 이펙트랑 백그라운드 이펙트는 하나마나 의미없어서..
+                        case ParseMode.CutScene:
+                        case ParseMode.BackGroundEffect:
+                            nowMode = ParseMode.Null;
+                            break;
+
+                    }
+                    builder.Clear();
+                    break;
+                case '(':
+                    switch (nowMode)
+                    {
+                        case ParseMode.Switch:
+                            break;
+                        case ParseMode.ClampCharacterName:
+                            string name = builder.ToString();
+                            if (name.Length < 1)
+                            {
+                                nowWrapper.characterName = null;
+
+                            }
+                            else
+                            {
+                                nowWrapper.characterName = name;
+                            }
+                            nowMode = ParseMode.ClampFeeling;
+                            builder.Clear();
+                            break;
+                        case ParseMode.ClampEffect:
+                        case ParseMode.ClampFeeling:
+                            break;
+                        case ParseMode.Route:
+                            //라우트 해야함.
+                            if (isRightRoute)
+                            {
+                                nowMode = ParseMode.Null;
+                                isRightRoute = false;
+                            }
+                            else
+                            {
+                                nowWrapperList = gameData.wrongWrapperList;
+                                nowWrapper = new VisitorDialogWrapper();
+                                nowWrapper.characterName = beforeName;
+                                nowWrapper.characterFeeling = beforeFeeling;
+                                nowWrapperList.Add(nowWrapper);
+                                nowMode = ParseMode.Null;
+                            }
+                            break;
+
+                        case ParseMode.Dialog:
+                            builder.Append('(');
+                            break;
+                    }
+
+                    break;
+                case ')':
+                    switch (nowMode)
+                    {
+                        case ParseMode.ClampFeeling:
+                            string feeling = builder.ToString();
+                            nowWrapper.characterFeeling = feeling;
+                            //nowMode = ParseMode.Switch;
+                            builder.Clear();
+                            break;
+                        case ParseMode.Dialog:
+                            if (isRouting)
+                            {
+                                nowDialog.dialog = builder.ToString();
+                                Debug.Log(builder.ToString());
+                                nowMode = ParseMode.Route;
+                                builder.Clear();
+                            }
+                            else
+                            {
+                                builder.Append(')');
+                            }
+
+                            break;
+                    }
+
+
+
+                    break;
+                case '[':
+                    if (nowMode == ParseMode.Dialog)
+                    {
+                        nowDialog.dialog = builder.ToString();
+                    }
+                    builder.Clear();
+                    nowMode = ParseMode.DialogCharacterName;
+                    VisitorDialog dialog = new VisitorDialog();
+                    nowDialog = dialog;
+                    nowWrapper.dialogList.Add(dialog);
+                    break;
+                case ']':
+                    if (builder.ToString().Contains("Ruellia"))
+                        nowDialog.ruelliaTalking = true;
+                    else
+                        nowDialog.ruelliaTalking = false;
+                    nowMode = ParseMode.Dialog;
+                    builder.Clear();
+                    break;
+                case '\n':
+                    break;
+                default:
+                    builder.Append(originText[i]);
+
+                    break;
+
+
+            }
+            if (i == originText.Length - 1 && isRouting == false)
+            {
+
+                nowDialog.dialog = builder.ToString();
+            }
+
+
+        }
+
+        return gameData;
+        //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
+    }
+
 }

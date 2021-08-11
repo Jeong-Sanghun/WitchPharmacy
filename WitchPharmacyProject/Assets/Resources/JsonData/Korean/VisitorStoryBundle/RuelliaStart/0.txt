@@ -1,0 +1,19 @@
+﻿<bundleName>{0}
+[Ruellia]
+뭐냐구 왜 아무도 없냐구
+[Ruellia]
+야 아무나 와바
+[Ruellia]
+심심하넹...
+<switch>{Ian{up}}
+[]
+나왔엄
+[]
+안뇽
+[Ruellia]
+안뇽
+[]
+다시갈게
+[Ruellia]
+안뇽
+

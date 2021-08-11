@@ -72,7 +72,7 @@ public class RandomVisitorClass //SH
 
     //약재의 종류는 최대 3개
     //약재 개수는 같은거는 최대 2개.
-    public RandomVisitorClass(SymptomDialog dialog,GameObject parent,StoryRegion region)
+    public RandomVisitorClass(GameObject parent,StoryRegion region)
     {
         //earSymptom = (Symptom)Random.Range(0, 6);
         //hornSymptom = (Symptom)Random.Range(0, 6);

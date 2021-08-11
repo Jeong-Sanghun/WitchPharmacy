@@ -1,69 +1,14 @@
 {
     "name": "initName",
-    "nowTime": 7200.0,
-    "nowDay": 2,
-    "coin": 900,
-    "owningMedicineList": [
-        {
-            "medicineIndex": 34,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 35,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 42,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 43,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 50,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 51,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 58,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 59,
-            "medicineCost": 3
-        }
-    ],
+    "nowTime": 0.0,
+    "nowDay": 0,
+    "coin": 1000,
+    "owningMedicineList": [],
     "owningSpecialMedicineList": [],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        }
-    ],
+    "billWrapperList": [],
     "owningDocumentList": [],
     "symptomBookList": [
         "water+",
@@ -71,17 +16,12 @@
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [
-        1
-    ],
+    "owningMeasureToolList": [],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [
-            "fireTool",
-            "fireAuto"
-        ],
+        "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
@@ -92,21 +32,13 @@
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
         false,
-        true
+        false,
+        false
     ],
-    "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
-        "firstDay",
-        "secondDay"
-    ],
-    "nextStory": "thirdDay",
+    "readStoryList": [],
+    "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 0,
+    "nowSaveTime": 1,
     "nowRegion": 0
 }

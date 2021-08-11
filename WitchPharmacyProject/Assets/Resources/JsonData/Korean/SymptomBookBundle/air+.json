@@ -1,0 +1,43 @@
+﻿{
+    "symptomString": "air",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": -1,
+            "symptomIndexNumber": 0,
+            "title": "때지",
+            "explain": "대지가 부족해"
+        },
+        {
+            "symptomAmountNumber": -1,
+            "symptomIndexNumber": 1,
+            "title": "공기가 부족하대",
+            "explain": "그ㅐㄹ서 ㅓ어쩌라고"
+        },
+        {
+            "symptomAmountNumber": -1,
+            "symptomIndexNumber": 2,
+            "title": "무시마라날 잠에서나와잇",
+            "explain": "공기에요 공기"
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": -2,
+            "symptomIndexNumber": 0,
+            "title": "콩이야 보고싶아",
+            "explain": "콩이는 개야"
+        },
+        {
+            "symptomAmountNumber": -2,
+            "symptomIndexNumber": 1,
+            "title": "공기는 흙이 싫었따",
+            "explain": "흙아 달아나자"
+        },
+        {
+            "symptomAmountNumber": -2,
+            "symptomIndexNumber": 2,
+            "title": "공기되지",
+            "explain": "공기가 부족한 돼지"
+        }
+    ]
+}

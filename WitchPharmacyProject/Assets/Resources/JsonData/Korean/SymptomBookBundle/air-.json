@@ -1,0 +1,43 @@
+﻿{
+    "symptomString": "air",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "공기돼지",
+            "explain": "공기는돼지"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 1,
+            "title": "공기가무너지고",
+            "explain": "공기가 무너져요"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 2,
+            "title": "구글어쓰",
+            "explain": "어쓰어쓰"
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 0,
+            "title": "공기가많아요",
+            "explain": "맛있는 공기 아니 돼지"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 1,
+            "title": "공기귀신이 생기다",
+            "explain": "이건 공기야"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 2,
+            "title": "이 공기야",
+            "explain": "아니 돼지야!"
+        }
+    ]
+}

@@ -7,7 +7,7 @@ using System.Text;
 
 public enum VisitorType
 {
-    Random,Odd,FirstSpecial,SecondSpecial
+    Random,Odd,Special,RuelliaStart
 }
 //카운터씬 매니저
 //여기서 증상까지 만들어서 medicineManager로 넘겨줌
@@ -28,7 +28,7 @@ public class CounterManager : MonoBehaviour //SH
     [SerializeField]
     BlurManager blurManager;
     SaveDataClass saveData;
-    SymptomDialog symptomDialog;
+    //SymptomDialog symptomDialog;
     //List<int> ownedMedicineIndexList;
     List<MedicineClass> ownedMedicineList;
     //Dictionary<int,int> owningMedicineDictionary;
@@ -113,15 +113,12 @@ public class CounterManager : MonoBehaviour //SH
     Text wholeCoinText;
 
 
-    SpecialVisitorDialogBundle specialVisitorDialogBundle;
-    OddVisitorDialogBundle oddVisitorDialogBundle;
     List<SpecialMedicineClass> specialMedicineDataList;
 
     void Start()
     {
         gameManager = GameManager.singleTon;
         sceneManager = SceneManager.inst;
-        symptomDialog = gameManager.symptomDialog;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         //ownedMedicineIndexList = saveData.ownedMedicineList;
@@ -187,25 +184,24 @@ public class CounterManager : MonoBehaviour //SH
         nowVisitorType = VisitorType.Random;
         SpawnRandomVisitor();
     }
-    //씨발...트리거매니저...
-    public void CounterSecondStart(SpecialVisitorDialogBundle bundle)
-    {
-        nowVisitorType = VisitorType.SecondSpecial;
-        specialVisitorDialogBundle = bundle;
-        SpawnSpecialVisitor(true);
-    }
-    //좃리거 메니저~
-    public void CounterFirstStart(SpecialVisitorDialogBundle bundle)
-    {
-        nowVisitorType = VisitorType.FirstSpecial;
-        specialVisitorDialogBundle = bundle;
-        SpawnSpecialVisitor(false);
-    }
+    ////씨발...트리거매니저...
+    //public void CounterSecondStart(SpecialVisitorDialogBundle bundle)
+    //{
+    //    nowVisitorType = VisitorType.SecondSpecial;
+    //    specialVisitorDialogBundle = bundle;
+    //    SpawnSpecialVisitor(true);
+    //}
+    ////좃리거 메니저~
+    //public void CounterFirstStart(SpecialVisitorDialogBundle bundle)
+    //{
+    //    nowVisitorType = VisitorType.FirstSpecial;
+    //    specialVisitorDialogBundle = bundle;
+    //    SpawnSpecialVisitor(false);
+    //}
     //whtflrj~~
     public void CounterStart(OddVisitorDialogBundle bundle)
     {
         nowVisitorType = VisitorType.Odd;
-        oddVisitorDialogBundle = bundle;
         SpawnRandomVisitor();
     }
 
@@ -241,9 +237,9 @@ public class CounterManager : MonoBehaviour //SH
         }
         counterDialogManager.nowTalking = true;
         medicineManager.SpecialVisitorVisits();
-        symptomChartManager.SpecialVisitorVisits(specialVisitorDialogBundle.symptomNumberArray);
-        measureToolManager.OnNewVisitor(specialVisitorDialogBundle.symptomNumberArray);
-        nowSpecialVisitor = new SpecialVisitorClass(visitorParent,specialVisitorPrefab, specialVisitorDialogBundle.characterName);
+        //symptomChartManager.SpecialVisitorVisits(specialVisitorDialogBundle.symptomNumberArray);
+        //measureToolManager.OnNewVisitor(specialVisitorDialogBundle.symptomNumberArray);
+        //nowSpecialVisitor = new SpecialVisitorClass(visitorParent,specialVisitorPrefab, specialVisitorDialogBundle.characterName,CharacterFeeling.nothing);
         
         //쫙 뿌려준다
         for (int i = 0; i < toggleGroupArray.Length; i++)
@@ -279,22 +275,10 @@ public class CounterManager : MonoBehaviour //SH
             medicineManager.ToCounterButton(false);
             return;
         }
-        if (nowVisitor != null)
-        {
-            nowVisitor.visitorObject.SetActive(false);
-        }
-        if (nowSpecialVisitor != null)
-        {
-            nowSpecialVisitor.visitorObject.SetActive(false);
-        }
+
         counterDialogManager.nowTalking = true;
         
-        nowVisitor = new RandomVisitorClass(symptomDialog,visitorParent,StoryRegion.Narin);
-        //쫙 뿌려준다
-        randomVisitorList.Add(nowVisitor);
-        symptomChartManager.VisitorVisits(nowVisitor);
-        medicineManager.VisitorVisits(nowVisitor);
-        measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
+
         
         index++;
         StartCoroutine(VisitorAppearCoroutine());
@@ -320,73 +304,73 @@ public class CounterManager : MonoBehaviour //SH
     public void OnMedicineDelivery(CookedMedicine medicine)
     {
         bool wrongMedicine = false;
-        if (nowVisitorType == VisitorType.SecondSpecial || nowVisitorType == VisitorType.FirstSpecial)
-        {
-            bool specialWrong = true;
-            for (int i = 0; i < medicine.medicineCount; i++)
-            {
-                if (medicine.specialArray[i] == false)
-                {
-                    continue;
-                }
-                if (specialVisitorDialogBundle.answerSpecialMedicineName == specialMedicineDataList[medicine.medicineArray[i]].fileName)
-                {
-                    specialWrong = false;
-                    break;
-                }
-            }
-            if(specialWrong == false)
-            {
+        //if (nowVisitorType == VisitorType.SecondSpecial || nowVisitorType == VisitorType.FirstSpecial)
+        //{
+        //    bool specialWrong = true;
+        //    for (int i = 0; i < medicine.medicineCount; i++)
+        //    {
+        //        if (medicine.specialArray[i] == false)
+        //        {
+        //            continue;
+        //        }
+        //        if (specialVisitorDialogBundle.answerSpecialMedicineName == specialMedicineDataList[medicine.medicineArray[i]].fileName)
+        //        {
+        //            specialWrong = false;
+        //            break;
+        //        }
+        //    }
+        //    if(specialWrong == false)
+        //    {
 
-                int[] medicineIndexArray = medicine.medicineArray;
-                int[] medicineSymptomArray = new int[5];
-                int[] visitorSymptomArray = specialVisitorDialogBundle.symptomNumberArray;
+        //        int[] medicineIndexArray = medicine.medicineArray;
+        //        int[] medicineSymptomArray = new int[5];
+        //        int[] visitorSymptomArray = specialVisitorDialogBundle.symptomNumberArray;
 
-                for (int i = 0; i < 5; i++)
-                {
-                    medicineSymptomArray[i] = 0;
-                }
-                for (int i = 0; i < medicine.medicineCount; i++)
-                {
-                    if (medicine.specialArray[i] == true)
-                    {
-                        continue;
-                    }
-                    MedicineClass med = medicineDataList[medicineIndexArray[i]];
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            medicineSymptomArray[i] = 0;
+        //        }
+        //        for (int i = 0; i < medicine.medicineCount; i++)
+        //        {
+        //            if (medicine.specialArray[i] == true)
+        //            {
+        //                continue;
+        //            }
+        //            MedicineClass med = medicineDataList[medicineIndexArray[i]];
 
-                    medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
-                    medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    if (medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
-                    {
-                        wrongMedicine = true;
-                        break;
-                    }
-                }
-                if (!specialWrong && !wrongMedicine)
-                {
-                    wrongMedicine = false;
-                }
-                else
-                {
-                    wrongMedicine = true;
-                }
-                counterDialogManager.OnSpecialVisitorEnd(wrongMedicine);
-            }
-            else
-            {
-                Debug.Log(specialWrong);
-                wrongMedicine = true;
-                counterDialogManager.OnSpecialVisitorEnd(specialWrong);
-            }
+        //            medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
+        //            medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
+        //        }
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            if (medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
+        //            {
+        //                wrongMedicine = true;
+        //                break;
+        //            }
+        //        }
+        //        if (!specialWrong && !wrongMedicine)
+        //        {
+        //            wrongMedicine = false;
+        //        }
+        //        else
+        //        {
+        //            wrongMedicine = true;
+        //        }
+        //        counterDialogManager.OnSpecialVisitorEnd(wrongMedicine);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(specialWrong);
+        //        wrongMedicine = true;
+        //        counterDialogManager.OnSpecialVisitorEnd(specialWrong);
+        //    }
 
            
 
-        }
-        else
-        {
+        //}
+        //else
+        //{
             int[] medicineIndexArray = medicine.medicineArray;
             int[] medicineSymptomArray = new int[6];
             int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
@@ -414,21 +398,21 @@ public class CounterManager : MonoBehaviour //SH
                     badSymptomList.Add((Symptom)i);
                 }
             }
-            if (nowVisitorType == VisitorType.Random)
-                counterDialogManager.OnVisitorEnd(wrongMedicine);
-            if (nowVisitorType == VisitorType.Odd)
-            {
-                counterDialogManager.OnOddVisitorEnd(wrongMedicine);
-                if(wrongMedicine == false)
-                {
-                    SpecialMedicineGain(oddVisitorDialogBundle.rewardSpecialMedicine);
-                    
-                }
-            }
-                
-        }
-        
-        
+        if (nowVisitorType == VisitorType.Random)
+            counterDialogManager.OnVisitorEnd(wrongMedicine);
+        //if (nowVisitorType == VisitorType.Odd)
+        //{
+        //    counterDialogManager.OnOddVisitorEnd(wrongMedicine);
+        //    if(wrongMedicine == false)
+        //    {
+        //        SpecialMedicineGain(oddVisitorDialogBundle.rewardSpecialMedicine);
+
+        //    }
+        //}
+
+        //}
+
+
         if (!wrongMedicine)
         {
             CoinGain();
@@ -445,9 +429,50 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(VisitorDisapperCoroutine());
     }
 
+    public void SetSpecialVisitor(string characterName, string feeling)
+    {
+        if(nowSpecialVisitor != null)
+        {
+            nowSpecialVisitor.visitorObject.SetActive(false);
+        }
+        SpecialVisitorClass visitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, characterName, feeling);
+        nowSpecialVisitor = visitor;
+    }
+
+    //카운터 다이얼로그 매니저에서 불러옴.
+    public void VisitorUpFx()
+    {
+        StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorAppearPos, 2f));
+    }
+
+    public void VisitorDownFx()
+    {
+        StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
+    }
+
     
     IEnumerator VisitorAppearCoroutine()
     {
+        if(visitorParent.transform.position != visitorDisappearPos)
+        {
+            VisitorDownFx();
+            yield return new WaitForSeconds(2);
+        }
+        if (nowVisitor != null)
+        {
+            nowVisitor.visitorObject.SetActive(false);
+        }
+        if (nowSpecialVisitor != null)
+        {
+            nowSpecialVisitor.visitorObject.SetActive(false);
+        }
+        nowVisitor = new RandomVisitorClass(visitorParent, StoryRegion.Narin);
+        //쫙 뿌려준다
+        randomVisitorList.Add(nowVisitor);
+        symptomChartManager.VisitorVisits(nowVisitor);
+        medicineManager.VisitorVisits(nowVisitor);
+        measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
+
         blurManager.OnBlur(true);
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorAppearPos, 2f));
 
@@ -457,15 +482,15 @@ public class CounterManager : MonoBehaviour //SH
             case VisitorType.Random:
                 counterDialogManager.OnVisitorVisit(nowVisitor);
                 break;
-            case VisitorType.SecondSpecial:
-                counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle,true);
-                break;
-            case VisitorType.FirstSpecial:
-                counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle, false);
-                break;
-            case VisitorType.Odd:
-                counterDialogManager.OnOddVisitorVisit(oddVisitorDialogBundle,nowVisitor);
-                break;
+            //case VisitorType.SecondSpecial:
+            //    counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle,true);
+            //    break;
+            //case VisitorType.FirstSpecial:
+            //    counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle, false);
+            //    break;
+            //case VisitorType.Odd:
+            //    counterDialogManager.OnOddVisitorVisit(oddVisitorDialogBundle,nowVisitor);
+                //break;
         }
 
 
@@ -477,7 +502,7 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Accel2(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        lastVisitor = true;
+        //lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;
@@ -541,15 +566,15 @@ public class CounterManager : MonoBehaviour //SH
             if (measureToolArray[symptomToggleIndex].measureEnd)
             {
                 int fixedToggle;
-                if (nowVisitorType == VisitorType.SecondSpecial)
-                {
-                    fixedToggle = symptomToggleIndex * 5 + 2 + specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
+                //if (nowVisitorType == VisitorType.SecondSpecial)
+                //{
+                //    fixedToggle = symptomToggleIndex * 5 + 2 + specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
 
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
-                }
+                //}
                 
 
                 for (int i = symptomToggleIndex * 5; i < symptomToggleIndex*5 + 5; i++)
@@ -569,15 +594,15 @@ public class CounterManager : MonoBehaviour //SH
 
                 symptomCheckedArray[symptomToggleIndex] = true;
 
-                if (nowVisitorType== VisitorType.SecondSpecial)
-                {
-                    symptomCheckArray[symptomToggleIndex] = specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
+                //if (nowVisitorType== VisitorType.SecondSpecial)
+                //{
+                //    symptomCheckArray[symptomToggleIndex] = specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
 
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     symptomCheckArray[symptomToggleIndex] = nowVisitor.symptomAmountArray[symptomToggleIndex];
-                }
+                //}
 
 
 
@@ -623,14 +648,14 @@ public class CounterManager : MonoBehaviour //SH
         Debug.Log("메저 엔드");
         //int pushedToggle = symptomToggleIndex * 5 + 2 + amount;
         int fixedToggle;
-        if (nowVisitorType== VisitorType.SecondSpecial)
-        {
-            fixedToggle = symptomToggleIndex * 5 + 2 + specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
-        }
-        else
-        {
+        //if (nowVisitorType== VisitorType.SecondSpecial)
+        //{
+        //    fixedToggle = symptomToggleIndex * 5 + 2 + specialVisitorDialogBundle.symptomNumberArray[symptomToggleIndex];
+        //}
+        //else
+        //{
             fixedToggle = symptomToggleIndex * 5 + 2 + nowVisitor.symptomAmountArray[symptomToggleIndex];
-        }
+        //}
          
         toggleGroupArray[symptomToggleIndex].SetAllTogglesOff();
 

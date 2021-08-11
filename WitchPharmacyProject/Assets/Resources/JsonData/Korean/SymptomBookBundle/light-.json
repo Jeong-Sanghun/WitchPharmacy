@@ -1,0 +1,43 @@
+﻿{
+    "symptomString": "light",
+    "oneSymptomBookList": [
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 0,
+            "title": "빛.돼지",
+            "explain": "빛.는돼지"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 1,
+            "title": "빛.가무너지고",
+            "explain": "빛.가 무너져요"
+        },
+        {
+            "symptomAmountNumber": 1,
+            "symptomIndexNumber": 2,
+            "title": "구글어쓰",
+            "explain": "어쓰어쓰"
+        }
+    ],
+    "twoSymptomBookList": [
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 0,
+            "title": "빛.가많아요",
+            "explain": "맛있는 빛. 아니 돼지"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 1,
+            "title": "빛.귀신이 생기다",
+            "explain": "이건 빛.야"
+        },
+        {
+            "symptomAmountNumber": 2,
+            "symptomIndexNumber": 2,
+            "title": "이 빛.야",
+            "explain": "아니 돼지야!"
+        }
+    ]
+}

@@ -10550,7 +10550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619332187}
   - component: {fileID: 619332186}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SpecialPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

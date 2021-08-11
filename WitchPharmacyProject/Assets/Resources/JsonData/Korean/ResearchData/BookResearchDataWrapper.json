@@ -1,0 +1,28 @@
+{
+    "bookResearchDataList": [
+        {
+            "fileName": "earth",
+            "ingameName": "대지 증상 책자",
+            "explain": "대지가 돼지",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "earth"
+        },
+        {
+            "fileName": "air",
+            "ingameName": "공기 증상 책자",
+            "explain": "공기이공기공기",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "air"
+        },
+        {
+            "fileName": "light",
+            "ingameName": "빛 증상 책자",
+            "explain": "빛이빛빛",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "light"
+        }
+    ]
+}

@@ -74,7 +74,6 @@ public class UILanguagePack
                 break;
             }
         }
-        Debug.Log(origin);
         return origin;
     }
 

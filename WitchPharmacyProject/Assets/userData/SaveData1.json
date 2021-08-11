@@ -1,96 +1,14 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 1,
-    "coin": 988,
-    "owningMedicineList": [
-        {
-            "medicineIndex": 34,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 35,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 42,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 43,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 50,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 51,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 58,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 59,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 20,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 21,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 28,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 29,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 36,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 37,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 44,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 45,
-            "medicineCost": 3
-        }
-    ],
+    "nowDay": 0,
+    "coin": 1000,
+    "owningMedicineList": [],
     "owningSpecialMedicineList": [],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 12
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        }
-    ],
+    "billWrapperList": [],
     "owningDocumentList": [],
     "symptomBookList": [
         "water+",
@@ -105,9 +23,7 @@
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [
-            "waterearth"
-        ],
+        "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": []
     },
@@ -116,16 +32,12 @@
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
         false,
-        true
+        false,
+        false
     ],
-    "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay"
-    ],
-    "nextStory": "fourthDay2",
+    "readStoryList": [],
+    "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0

@@ -22,6 +22,7 @@ public class ResearchData
 
     public ResearchData()
     {
+        
         fileName = "water";
         ingameName = "측정도구(물)";
         explain = "도구설명";

@@ -11,23 +11,32 @@ public class CounterDialogManager : MonoBehaviour
     }
     GameManager gameManager;
     SceneManager sceneManager;
-    List<StartDialogClass> randomDialogClassList;
-    RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
-    RandomVisitorDiseaseBundle randomVisitorDiseaseBundle;
-    SpecialVisitorDialogBundle nowSpecialVisitorDialogBundle;
-    SpecialVisitorDialogWrapper nowWrapper;
-    OddVisitorDialogBundle oddVisitorDialogBundle;
-    List<OddVisitorDialog> nowOddVisitorWrapper;
+    //List<StartDialogClass> randomDialogClassList;
+    //RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
+    //RandomVisitorDiseaseBundle randomVisitorDiseaseBundle;
+    //SpecialVisitorDialogBundle nowSpecialVisitorDialogBundle;
+    //SpecialVisitorDialogWrapper nowWrapper;
+    //OddVisitorDialogBundle oddVisitorDialogBundle;
+    //List<OddVisitorDialog> nowOddVisitorWrapper;
+    VisitorDialogBundle nowBundle;
+    VisitorDialogWrapper nowWrapper;
+    List<VisitorDialogWrapper> nowWrapperList;
+    VisitorDialogWrapper lastWrapper;
+    StoryParser storyParser;
+
+
 
     //중간어들 다이얼로그.
-    SymptomDialog symptomDialog;
-    RandomVisitorEndDialog nowEndDialog;
+    //SymptomDialog symptomDialog;
+    //RandomVisitorEndDialog nowEndDialog;
     int nowDialogIndex;
-    int nowDialogClassIndex;
-    int dialogCount;
-    bool visitorRuelliaToggle;
+    int nowSymptomInsertIndex;
+    int nowWrapperIndex;
     CounterState nowState;
-    List<string> visitDialog;
+    VisitorType nowVisitorType;
+    RandomVisitorClass nowRandomVisitor;
+    
+    //List<string> visitDialog;
 
     CharacterIndexToName characterIndexToName;
     [SerializeField]
@@ -68,7 +77,7 @@ public class CounterDialogManager : MonoBehaviour
     bool isRouted = false;
     bool isOddVisitor = false;
 
-
+    string languageDirectory;
     
     //룸매니저에서 못넘어가게 쓰임.
     public bool nowTalking;
@@ -81,24 +90,26 @@ public class CounterDialogManager : MonoBehaviour
     {
         gameManager = GameManager.singleTon;
         sceneManager = SceneManager.inst;
-        randomDialogClassList = gameManager.randomDialogDataWrapper.randomDialogList;
-        randomVisitorEndDialogWrapper = gameManager.randomVisitorEndDialogWrapper;
-        randomVisitorDiseaseBundle = gameManager.randomVisitorDiseaseBundle;
-        symptomDialog = gameManager.symptomDialog;
-        visitorRuelliaToggle = true;
+        //randomDialogClassList = gameManager.randomDialogDataWrapper.randomDialogList;
+        //randomVisitorEndDialogWrapper = gameManager.randomVisitorEndDialogWrapper;
+        //randomVisitorDiseaseBundle = gameManager.randomVisitorDiseaseBundle;
         ruelliaText.transform.parent.gameObject.SetActive(true);
         visitorText.transform.parent.gameObject.SetActive(false);
         contentRect = backLogContent.GetComponent<RectTransform>();
         //nowSpecialVisitordialogBundle = gameManager.LoadVisitorBundle(gameManager.saveData.nowCounterDialogBundleName);
-
+        languageDirectory = gameManager.saveDataTimeWrapper.nowLanguageDirectory;
         characterIndexToName = new CharacterIndexToName();
+        storyParser = new StoryParser(characterIndexToName, gameManager.languagePack);
 
         nowTalking = true;
         nowDialogIndex = 0;
+        nowSymptomInsertIndex = 0;
+        nowWrapperIndex = 0;
         nowBackLogIndex = 0;
-        nowDialogClassIndex = Random.Range(0, randomDialogClassList.Count);
-        dialogCount = randomDialogClassList[nowDialogClassIndex].dialogList.Count;
-        StartUpdate();
+        OnStart();
+        //nowDialogClassIndex = Random.Range(0, randomDialogClassList.Count);
+        //dialogCount = randomDialogClassList[nowDialogClassIndex].dialogList.Count;
+
     }
 
   
@@ -160,114 +171,134 @@ public class CounterDialogManager : MonoBehaviour
 
     }
 
-    public void OnOddVisitorVisit(OddVisitorDialogBundle bundle, RandomVisitorClass visitor)
-    {
-        isOddVisitor = true;
-        oddVisitorDialogBundle = bundle;
+    //public void OnOddVisitorVisit(OddVisitorDialogBundle bundle, RandomVisitorClass visitor)
+    //{
+    //    isOddVisitor = true;
+    //    oddVisitorDialogBundle = bundle;
         
-        OnVisitorVisit(visitor);
-    }
+    //    OnVisitorVisit(visitor);
+    //}
 
 
-    public void OddVisitorDialogChange()
+    //public void OddVisitorDialogChange()
+    //{
+    //    nowOddVisitorWrapper = oddVisitorDialogBundle.startDialogList;
+    //    nowState = CounterState.OddVisit;
+    //    nowDialogIndex = 0;
+    //    dialogCount = nowOddVisitorWrapper.Count;
+    //    OddVisitUpdate();
+    //}
+
+    void OnStart()
     {
-        nowOddVisitorWrapper = oddVisitorDialogBundle.startDialogList;
-        nowState = CounterState.OddVisit;
-        nowDialogIndex = 0;
-        dialogCount = nowOddVisitorWrapper.Count;
-        OddVisitUpdate();
+        nowState = CounterState.Start;
+        nowWrapperIndex = 0;
+        nowVisitorType = VisitorType.RuelliaStart;
+        nowBundle = storyParser.LoadBundle(Random.Range(0, 2).ToString(), languageDirectory,VisitorType.RuelliaStart);
+        nowWrapperList = nowBundle.startWrapperList;
+
+        nowWrapper = nowBundle.startWrapperList[0];
+        if (nowWrapper.characterName != null)
+        {
+
+            if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
+            {
+                counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
+            }
+        }
+
+        if (nowWrapper.dialogFX == DialogFX.Up)
+        {
+            counterManager.VisitorUpFx();
+        }
+        else if (nowWrapper.dialogFX == DialogFX.Down)
+        {
+            counterManager.VisitorDownFx();
+        }
+        VisitUpdate();
     }
 
     //카운터매니저에서 불러옴. 랜덤비지터 스폰하고 들어올 떄.
     public void OnVisitorVisit(RandomVisitorClass visitor)
     {
         nowTalking = true;
+        nowVisitorType = VisitorType.Random;
+        nowBundle = storyParser.LoadBundle(Random.Range(0, 3).ToString(), languageDirectory, nowVisitorType,visitor.diseaseList.Count);
+        nowWrapperList = nowBundle.startWrapperList;
+        nowWrapper = nowBundle.startWrapperList[0];
+        
         dialogMouseEventObject.SetActive(true);
         roomManager.ToCounterButton(false);
         InitializeBackLog();
-        visitDialog = new List<string>();
-        StringBuilder builder = new StringBuilder(symptomDialog.startDialog[Random.Range(0, symptomDialog.startDialog.Length)]);
-        
-        for(int i = 0; i < visitor.diseaseList.Count; i++)
+        nowRandomVisitor = visitor;
+        nowSymptomInsertIndex = 0;
+        nowWrapperIndex = 0;
+        if (nowWrapper.characterName != null)
         {
-            builder.Append(visitor.diseaseList[i].dialog);
-            visitDialog.Add(builder.ToString());
-            builder = new StringBuilder();
-            builder.Append(symptomDialog.middleDialog[Random.Range(0, 6)]);
 
+            if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
+            {
+                counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
+            }
         }
-        //for (int i = 0; i < visitor.symptomAmountArray.Length; i++)
-        //{
-        //    if (visitor.symptomAmountArray[i] == 0)
-        //    {
-        //        continue;
-        //    }
-        //    int symptomIndex;
-        //    if (visitor.symptomAmountArray[i] < 0)
-        //    {
-        //        symptomIndex = visitor.symptomAmountArray[i] + 2;
-        //    }
-        //    else
-        //    {
-        //        symptomIndex = visitor.symptomAmountArray[i] + 1;
-        //    }
-        //    //여기 바꿔야됨.
-        //    builder.Append(visitor.diseaseList)
-        //    builder.Append(randomVisitorDiseaseBundle.wrapperList[i].randomVisitorDiseaseArray[Random.Range(0, 3)].dialog);
-        //    visitDialog.Add(builder.ToString());
-        //    builder = new StringBuilder();
-        //    builder.Append(symptomDialog.middleDialog[Random.Range(0, 6)]);
-        //}
+
+        if (nowWrapper.dialogFX == DialogFX.Up)
+        {
+            counterManager.VisitorUpFx();
+        }
+        else if (nowWrapper.dialogFX == DialogFX.Down)
+        {
+            counterManager.VisitorDownFx();
+        }
 
         nowState = CounterState.Visit;
         nowDialogIndex = 0;
-        dialogCount = visitDialog.Count;
         VisitUpdate();
     }
 
-    //트리거 매니저에서 불러옴.
-    public void OnSpecialVisitorVisit(SpecialVisitorDialogBundle bundle,bool isSecond)
-    {
-        nowSpecialVisitorDialogBundle = bundle;
-        dialogMouseEventObject.SetActive(true);
-        nowTalking = true;
-        roomManager.ToCounterButton(false);
-        InitializeBackLog();
-        if (isSecond)
-        {
-            nowState = CounterState.SecondSpecialVisitor;
-        }
-        else
-        {
-            //gameManager.saveData.progressingQuestBundleName.Add(bundle.bundleName);
-            nowState = CounterState.FirstSpecialVisitor;
-        }
-        
-        nowDialogIndex = 0;
-        isRouted = false;
-        if (nowSpecialVisitorDialogBundle.conversationRouter == null)
-        {
-            isRouted = true;
-        }
-        else if(nowSpecialVisitorDialogBundle.conversationRouter.routeButtonText.Count == 0)
-        {
-            isRouted = true;
-        }
-        if (isSecond)
-        {
-            nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[0];
-            dialogCount = nowSpecialVisitorDialogBundle.secondDialogWrapperList[0].specialVisitorDialogList.Count;
-        }
-        else
-        {
-            nowWrapper = nowSpecialVisitorDialogBundle.firstDialogWrapper;
-            dialogCount = nowWrapper.specialVisitorDialogList.Count;
-        }
+    ////트리거 매니저에서 불러옴.
+    //public void OnSpecialVisitorVisit(SpecialVisitorDialogBundle bundle,bool isSecond)
+    //{
+    //    nowSpecialVisitorDialogBundle = bundle;
+    //    dialogMouseEventObject.SetActive(true);
+    //    nowTalking = true;
+    //    roomManager.ToCounterButton(false);
+    //    InitializeBackLog();
+    //    if (isSecond)
+    //    {
+    //        nowState = CounterState.SecondSpecialVisitor;
+    //    }
+    //    else
+    //    {
+    //        //gameManager.saveData.progressingQuestBundleName.Add(bundle.bundleName);
+    //        nowState = CounterState.FirstSpecialVisitor;
+    //    }
 
-        SpecialVisitorUpdate();
-    }
+    //    nowDialogIndex = 0;
+    //    isRouted = false;
+    //    if (nowSpecialVisitorDialogBundle.conversationRouter == null)
+    //    {
+    //        isRouted = true;
+    //    }
+    //    else if(nowSpecialVisitorDialogBundle.conversationRouter.routeButtonText.Count == 0)
+    //    {
+    //        isRouted = true;
+    //    }
+    //    if (isSecond)
+    //    {
+    //        nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[0];
+    //        dialogCount = nowSpecialVisitorDialogBundle.secondDialogWrapperList[0].specialVisitorDialogList.Count;
+    //    }
+    //    else
+    //    {
+    //        nowWrapper = nowSpecialVisitorDialogBundle.firstDialogWrapper;
+    //        dialogCount = nowWrapper.specialVisitorDialogList.Count;
+    //    }
 
-    //메디쓴을 전해줬을 때. 카운터메니저
+    //    SpecialVisitorUpdate();
+    //}
+
+    ////메디쓴을 전해줬을 때. 카운터메니저
     public void OnVisitorEnd(bool wrongMedicine)
     {
         nowTalking = true;
@@ -275,68 +306,87 @@ public class CounterDialogManager : MonoBehaviour
         counterManager.VisitorTalkStart();
         if (wrongMedicine)
         {
-            int rand = Random.Range(0, randomVisitorEndDialogWrapper.wrongDialogList.Count);
-            nowEndDialog = randomVisitorEndDialogWrapper.wrongDialogList[rand];
+            nowWrapperList = nowBundle.wrongWrapperList;
+            
         }
         else
         {
-            int rand = Random.Range(0, randomVisitorEndDialogWrapper.rightDialogList.Count);
-            nowEndDialog = randomVisitorEndDialogWrapper.rightDialogList[rand];
+            nowWrapperList = nowBundle.rightWrapperList;
         }
+        nowWrapper = nowWrapperList[0];
         nowDialogIndex = 0;
-        dialogCount = nowEndDialog.ruelliaDialog.Length;
         nowState = CounterState.End;
-        EndUpdate();
-    }
-
-    public void OnOddVisitorEnd(bool wrongMedicine)
-    {
-        nowTalking = true;
-        dialogMouseEventObject.SetActive(true);
-        counterManager.VisitorTalkStart();
-        if (wrongMedicine)
-        {
-            nowOddVisitorWrapper = oddVisitorDialogBundle.wrongDialogList;
-        }
-        else
-        {
-            nowOddVisitorWrapper = oddVisitorDialogBundle.answerDialogList;
-        }
-        nowDialogIndex = 0;
-        dialogCount = nowOddVisitorWrapper.Count;
-        nowState = CounterState.OddEnd;
-        OddEndUpdate();
-    }
 
 
-    public void OnSpecialVisitorEnd(bool wrongMedicine)
-    {
-        nowTalking = true;
-        dialogMouseEventObject.SetActive(true);
-        counterManager.VisitorTalkStart();
-        if (wrongMedicine)
+        if (nowWrapper.characterName != null)
         {
-            nowWrapper = nowSpecialVisitorDialogBundle.wrongDialogWrapper;
-            //if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
-            //{
-            //    gameManager.saveData.progressingQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
-            //}
+
+            if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
+            {
+                counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
+            }
         }
-        else
+
+        if (nowWrapper.dialogFX == DialogFX.Up)
         {
-            //if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
-            //{
-            //    gameManager.saveData.progressingQuestBundleName.Remove(nowSpecialVisitorDialogBundle.bundleName);
-            //}
-            //gameManager.saveData.solvedQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
-            gameManager.saveData.chaosMeter -= nowSpecialVisitorDialogBundle.progressingNumber;
-            nowWrapper = nowSpecialVisitorDialogBundle.answerDialogWrapper;
+            counterManager.VisitorUpFx();
         }
-        nowDialogIndex = 0;
-        dialogCount = nowWrapper.specialVisitorDialogList.Count;
-        nowState = CounterState.SpecialVisitorEnd;
-        SpecialVisitorEndUpdate();
+        else if (nowWrapper.dialogFX == DialogFX.Down)
+        {
+            counterManager.VisitorDownFx();
+        }
+
+        VisitUpdate();
     }
+
+    //public void OnOddVisitorEnd(bool wrongMedicine)
+    //{
+    //    nowTalking = true;
+    //    dialogMouseEventObject.SetActive(true);
+    //    counterManager.VisitorTalkStart();
+    //    if (wrongMedicine)
+    //    {
+    //        nowOddVisitorWrapper = oddVisitorDialogBundle.wrongDialogList;
+    //    }
+    //    else
+    //    {
+    //        nowOddVisitorWrapper = oddVisitorDialogBundle.answerDialogList;
+    //    }
+    //    nowDialogIndex = 0;
+    //    dialogCount = nowOddVisitorWrapper.Count;
+    //    nowState = CounterState.OddEnd;
+    //    OddEndUpdate();
+    //}
+
+
+    //public void OnSpecialVisitorEnd(bool wrongMedicine)
+    //{
+    //    nowTalking = true;
+    //    dialogMouseEventObject.SetActive(true);
+    //    counterManager.VisitorTalkStart();
+    //    if (wrongMedicine)
+    //    {
+    //        nowWrapper = nowSpecialVisitorDialogBundle.wrongDialogWrapper;
+    //        //if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
+    //        //{
+    //        //    gameManager.saveData.progressingQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
+    //        //}
+    //    }
+    //    else
+    //    {
+    //        //if (gameManager.saveData.progressingQuestBundleName.Contains(nowSpecialVisitorDialogBundle.bundleName))
+    //        //{
+    //        //    gameManager.saveData.progressingQuestBundleName.Remove(nowSpecialVisitorDialogBundle.bundleName);
+    //        //}
+    //        //gameManager.saveData.solvedQuestBundleName.Add(nowSpecialVisitorDialogBundle.bundleName);
+    //        gameManager.saveData.chaosMeter -= nowSpecialVisitorDialogBundle.progressingNumber;
+    //        nowWrapper = nowSpecialVisitorDialogBundle.answerDialogWrapper;
+    //    }
+    //    nowDialogIndex = 0;
+    //    dialogCount = nowWrapper.specialVisitorDialogList.Count;
+    //    nowState = CounterState.SpecialVisitorEnd;
+    //    SpecialVisitorEndUpdate();
+    //}
 
 
 
@@ -350,336 +400,387 @@ public class CounterDialogManager : MonoBehaviour
     {
         if (!sceneManager.nowTexting)
         {
+            VisitUpdate();
+            //switch (nowState)
+            //{
+            //    case CounterState.Start:
+            //        StartUpdate();
+            //        break;
+            //    case CounterState.End:
+            //        EndUpdate();
+            //        break;
+            //    case CounterState.OddVisit:
+            //        OddVisitUpdate();
+            //        break;
+            //    case CounterState.Visit:
+            //        VisitUpdate();
+            //        break;
+            //    case CounterState.FirstSpecialVisitor:
+            //    case CounterState.SecondSpecialVisitor:
+            //        SpecialVisitorUpdate();
+            //        break;
+            //    case CounterState.SpecialVisitorEnd:
+            //        SpecialVisitorEndUpdate();
+            //        break;
+            //    case CounterState.OddEnd:
+            //        OddEndUpdate();
+            //        break;
+            //    default:
+            //        break;
+            //}
+        }
+    }
+
+    //public void OnRouteButton(int index)
+    //{
+    //    ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
+    //    dialogMouseEventObject.SetActive(true);
+    //    for(int i = 0; i < 3; i++)
+    //    {
+    //        routingButtonArray[i].SetActive(false);
+    //    }
+    //    //나중에 바꿔야할 부분
+    //    //for(int i = 0; i < nowSpecialVisitorDialogBundle.secondDialogWrapperList.Count; i++)
+    //    //{
+    //    //    if(router.routingWrapperName[index] == nowSpecialVisitorDialogBundle.secondDialogWrapperList[i].wrapperName)
+    //    //    {
+    //    //        nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[i];
+    //    //        break;
+    //    //    }
+    //    //}
+    //    nowDialogIndex = 0;
+    //    dialogCount = nowWrapper.specialVisitorDialogList.Count;
+    //    isRouted = true;
+
+    //    SpecialVisitorUpdate();
+    //}
+    
+    //void SpecialVisitorUpdate()
+    //{
+    //    if (nowDialogIndex < dialogCount)
+    //    {
+    //        if (!nowWrapper.specialVisitorDialogList[nowDialogIndex].ruelliaTalking)
+    //        {
+    //            if (!visitorText.transform.parent.gameObject.activeSelf)
+    //                visitorText.transform.parent.gameObject.SetActive(true);
+    //            counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(nowSpecialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
+    //            string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+    //            MakeBackLog(true, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
+    //            nowDialogIndex++;
+    //        }
+    //        else
+    //        {
+    //            if (!ruelliaText.transform.parent.gameObject.activeSelf)
+    //                ruelliaText.transform.parent.gameObject.SetActive(true);
+    //            string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+    //            MakeBackLog(false, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
+    //            nowDialogIndex++;
+
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //if (isRouted || nowState == CounterState.FirstSpecialVisitor)
+    //        //{
+    //            nowTalking = false;
+    //            counterManager.VisitorTalkEnd();
+    //            ruelliaText.transform.parent.gameObject.SetActive(false);
+    //            visitorText.transform.parent.gameObject.SetActive(false);
+    //            ruelliaText.text = "";
+    //            visitorText.text = "";
+    //            nowState = CounterState.NotTalking;
+    //            isRouted = false;
+    //        dialogMouseEventObject.SetActive(false);
+    //        //}
+    //        //else
+    //        //{
+    //        //    isRouted = true;
+    //        //    dialogMouseEventObject.SetActive(false);
+    //        //    nowDialogIndex = 0;
+    //        //    ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
+    //        //    for(int i = 0; i < router.routeButtonText.Count; i++)
+    //        //    {
+    //        //        routingButtonArray[i].SetActive(true);
+    //        //        routingButtonArray[i].GetComponentInChildren<Text>().text = router.routeButtonText[i];
+    //        //    }
+    //        //}
+
+    //    }
+    //}
+
+    //void OddVisitUpdate()
+    //{
+    //    if (nowDialogIndex < dialogCount)
+    //    {
+    //        if (!nowOddVisitorWrapper[nowDialogIndex].ruelliaTalking)
+    //        {
+    //            if (!visitorText.transform.parent.gameObject.activeSelf)
+    //                visitorText.transform.parent.gameObject.SetActive(true);
+    //            string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
+    //            MakeBackLog(true, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
+    //            nowDialogIndex++;
+    //        }
+    //        else
+    //        {
+    //            if (!ruelliaText.transform.parent.gameObject.activeSelf)
+    //                ruelliaText.transform.parent.gameObject.SetActive(true);
+    //            string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
+    //            MakeBackLog(false, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
+    //            nowDialogIndex++;
+
+    //        }
+    //    }
+    //    else
+    //    {
+    //        nowTalking = false;
+    //        counterManager.VisitorTalkEnd();
+    //        ruelliaText.transform.parent.gameObject.SetActive(false);
+    //        visitorText.transform.parent.gameObject.SetActive(false);
+    //        ruelliaText.text = "";
+    //        visitorText.text = "";
+    //        nowState = CounterState.NotTalking;
+    //        dialogMouseEventObject.SetActive(false);
+    //        isOddVisitor = false;
+
+    //    }
+    //}
+
+    void NextWrapper()
+    {
+        nowDialogIndex = 0;
+        if(nowWrapperIndex < nowWrapperList.Count-1)
+        {
+            nowWrapperIndex++;
+            lastWrapper = nowWrapper;
+            nowWrapper = nowWrapperList[nowWrapperIndex];
+
+            if (lastWrapper != null && nowWrapper.characterName  != null)
+            {
+                
+                if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
+                {
+                    counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
+                }
+            }
+
+            if (nowWrapper.dialogFX == DialogFX.Up)
+            {
+                counterManager.VisitorUpFx();
+            }
+            else if (nowWrapper.dialogFX == DialogFX.Down)
+            {
+                counterManager.VisitorDownFx();
+            }
+
+
+            VisitUpdate();
+        }
+        else
+        {
             switch (nowState)
             {
                 case CounterState.Start:
-                    StartUpdate();
-                    break;
-                case CounterState.End:
-                    EndUpdate();
-                    break;
-                case CounterState.OddVisit:
-                    OddVisitUpdate();
+                    visitorTriggerManager.TriggerCheck();
                     break;
                 case CounterState.Visit:
-                    VisitUpdate();
+                    counterManager.VisitorTalkEnd();
+                    nowState = CounterState.NotTalking;
                     break;
-                case CounterState.FirstSpecialVisitor:
-                case CounterState.SecondSpecialVisitor:
-                    SpecialVisitorUpdate();
+                case CounterState.End:
+                    counterManager.VisitorDisappear(false);
                     break;
-                case CounterState.SpecialVisitorEnd:
-                    SpecialVisitorEndUpdate();
-                    break;
-                case CounterState.OddEnd:
-                    OddEndUpdate();
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
-    public void OnRouteButton(int index)
-    {
-        ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
-        dialogMouseEventObject.SetActive(true);
-        for(int i = 0; i < 3; i++)
-        {
-            routingButtonArray[i].SetActive(false);
-        }
-        //나중에 바꿔야할 부분
-        //for(int i = 0; i < nowSpecialVisitorDialogBundle.secondDialogWrapperList.Count; i++)
-        //{
-        //    if(router.routingWrapperName[index] == nowSpecialVisitorDialogBundle.secondDialogWrapperList[i].wrapperName)
-        //    {
-        //        nowWrapper = nowSpecialVisitorDialogBundle.secondDialogWrapperList[i];
-        //        break;
-        //    }
-        //}
-        nowDialogIndex = 0;
-        dialogCount = nowWrapper.specialVisitorDialogList.Count;
-        isRouted = true;
-
-        SpecialVisitorUpdate();
-    }
-    
-    void SpecialVisitorUpdate()
-    {
-        if (nowDialogIndex < dialogCount)
-        {
-            if (!nowWrapper.specialVisitorDialogList[nowDialogIndex].ruelliaTalking)
-            {
-                if (!visitorText.transform.parent.gameObject.activeSelf)
-                    visitorText.transform.parent.gameObject.SetActive(true);
-                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(nowSpecialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
-                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
-                MakeBackLog(true, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
-                nowDialogIndex++;
-            }
-            else
-            {
-                if (!ruelliaText.transform.parent.gameObject.activeSelf)
-                    ruelliaText.transform.parent.gameObject.SetActive(true);
-                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
-                MakeBackLog(false, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
-                nowDialogIndex++;
 
             }
-        }
-        else
-        {
-            //if (isRouted || nowState == CounterState.FirstSpecialVisitor)
-            //{
-                nowTalking = false;
-                counterManager.VisitorTalkEnd();
-                ruelliaText.transform.parent.gameObject.SetActive(false);
-                visitorText.transform.parent.gameObject.SetActive(false);
-                ruelliaText.text = "";
-                visitorText.text = "";
-                nowState = CounterState.NotTalking;
-                isRouted = false;
-            dialogMouseEventObject.SetActive(false);
-            //}
-            //else
-            //{
-            //    isRouted = true;
-            //    dialogMouseEventObject.SetActive(false);
-            //    nowDialogIndex = 0;
-            //    ConversationRouter router = nowSpecialVisitorDialogBundle.conversationRouter;
-            //    for(int i = 0; i < router.routeButtonText.Count; i++)
-            //    {
-            //        routingButtonArray[i].SetActive(true);
-            //        routingButtonArray[i].GetComponentInChildren<Text>().text = router.routeButtonText[i];
-            //    }
-            //}
-
-        }
-    }
-
-    void OddVisitUpdate()
-    {
-        if (nowDialogIndex < dialogCount)
-        {
-            if (!nowOddVisitorWrapper[nowDialogIndex].ruelliaTalking)
-            {
-                if (!visitorText.transform.parent.gameObject.activeSelf)
-                    visitorText.transform.parent.gameObject.SetActive(true);
-                string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
-                MakeBackLog(true, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
-                nowDialogIndex++;
-            }
-            else
-            {
-                if (!ruelliaText.transform.parent.gameObject.activeSelf)
-                    ruelliaText.transform.parent.gameObject.SetActive(true);
-                string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
-                MakeBackLog(false, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
-                nowDialogIndex++;
-
-            }
-        }
-        else
-        {
             nowTalking = false;
-            counterManager.VisitorTalkEnd();
+
             ruelliaText.transform.parent.gameObject.SetActive(false);
             visitorText.transform.parent.gameObject.SetActive(false);
             ruelliaText.text = "";
             visitorText.text = "";
-            nowState = CounterState.NotTalking;
             dialogMouseEventObject.SetActive(false);
-            isOddVisitor = false;
-
+            
         }
     }
 
     //각 업데이트가 달려있다.
     void VisitUpdate()
     {
-        if (nowDialogIndex < dialogCount)
+        
+        if (nowDialogIndex < nowWrapper.dialogList.Count)
         {
-            if (visitorRuelliaToggle)
+            VisitorDialog nowDialog = nowWrapper.dialogList[nowDialogIndex];
+            string str = nowDialog.dialog;
+            if(nowVisitorType == VisitorType.Random)
             {
-                if (!visitorText.transform.parent.gameObject.activeSelf)
-                    visitorText.transform.parent.gameObject.SetActive(true);
-                string str = visitDialog[nowDialogIndex];
-                MakeBackLog(true, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
-                visitorRuelliaToggle = !visitorRuelliaToggle;
+                while (str.Contains("$"))
+                {
+                    if (nowSymptomInsertIndex < nowRandomVisitor.diseaseList.Count)
+                    {
+                        str = gameManager.languagePack.Insert(str, nowRandomVisitor.diseaseList[nowSymptomInsertIndex].dialog);
+                        nowSymptomInsertIndex++;
 
+                    }
+                }
             }
-            else
+            
+
+            if (nowWrapper.dialogList[nowDialogIndex].ruelliaTalking)
             {
                 if (!ruelliaText.transform.parent.gameObject.activeSelf)
                     ruelliaText.transform.parent.gameObject.SetActive(true);
-                string str = symptomDialog.ruelliaDialog[Random.Range(0, symptomDialog.ruelliaDialog.Length)];
                 MakeBackLog(false, str);
                 StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
-                visitorRuelliaToggle = !visitorRuelliaToggle;
-                nowDialogIndex++;
-
-            }
-        }
-        else
-        {
-            if(isOddVisitor)
-            {
-                OddVisitorDialogChange();
             }
             else
             {
-                nowTalking = false;
-                counterManager.VisitorTalkEnd();
-                ruelliaText.transform.parent.gameObject.SetActive(false);
-                visitorText.transform.parent.gameObject.SetActive(false);
-                ruelliaText.text = "";
-                visitorText.text = "";
-                dialogMouseEventObject.SetActive(false);
-                nowState = CounterState.NotTalking;
-                visitorRuelliaToggle = true;
+                if (!visitorText.transform.parent.gameObject.activeSelf)
+                    visitorText.transform.parent.gameObject.SetActive(true);
+                MakeBackLog(true, str);
+                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
             }
+
+            nowDialogIndex++;
+        }
+        else
+        {
+            NextWrapper();
 
         }
     }
 
     void StartUpdate()
     {
-        if (nowDialogIndex < dialogCount)
+        if (nowDialogIndex < nowWrapper.dialogList.Count)
         {
-            string str = randomDialogClassList[nowDialogClassIndex].dialogList[nowDialogIndex].str;
+            string str = nowWrapper.dialogList[nowDialogIndex].dialog;
             MakeBackLog(false, str);
             StartCoroutine(sceneManager.LoadTextOneByOne(str, counterText));
             nowDialogIndex++;
         }
         else
         {
-            nowTalking = false;
-            counterText.text = "";
-            nowState = CounterState.NotTalking;
-            dialogMouseEventObject.SetActive(false);
-            //counterManager.CounterStart(nowSpecialVisitorDialogBundle.characterName);
-            visitorTriggerManager.TriggerCheck();
+            NextWrapper();
+
         }
     }
 
-    void EndUpdate()
-    {
-        if (nowDialogIndex < dialogCount)
-        {
-            if (visitorRuelliaToggle)
-            {
-                if (!visitorText.transform.parent.gameObject.activeSelf)
-                    visitorText.transform.parent.gameObject.SetActive(true);
-                string str = nowEndDialog.visitorDialog[nowDialogIndex].str;
-                MakeBackLog(true, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
-                visitorRuelliaToggle = !visitorRuelliaToggle;
-            }
-            else
-            {
-                if (!ruelliaText.transform.parent.gameObject.activeSelf)
-                    ruelliaText.transform.parent.gameObject.SetActive(true);
-                string str = nowEndDialog.ruelliaDialog[nowDialogIndex].str;
-                MakeBackLog(false, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
-                visitorRuelliaToggle = !visitorRuelliaToggle;
-                nowDialogIndex++;
-            }
-        }
-        else
-        {
-            nowTalking = false;
-            ruelliaText.text = "";
-            visitorText.text = "";
-            ruelliaText.transform.parent.gameObject.SetActive(false);
-            visitorText.transform.parent.gameObject.SetActive(false);
-            dialogMouseEventObject.SetActive(false);
-            nowState = CounterState.NotTalking;
-            counterManager.VisitorDisappear(false);
-            visitorRuelliaToggle = true;
-        }
-    }
+    //void EndUpdate()
+    //{
+    //    if (nowDialogIndex < dialogCount)
+    //    {
+    //        if (visitorRuelliaToggle)
+    //        {
+    //            if (!visitorText.transform.parent.gameObject.activeSelf)
+    //                visitorText.transform.parent.gameObject.SetActive(true);
+    //            string str = nowEndDialog.visitorDialog[nowDialogIndex].str;
+    //            MakeBackLog(true, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
+    //            visitorRuelliaToggle = !visitorRuelliaToggle;
+    //        }
+    //        else
+    //        {
+    //            if (!ruelliaText.transform.parent.gameObject.activeSelf)
+    //                ruelliaText.transform.parent.gameObject.SetActive(true);
+    //            string str = nowEndDialog.ruelliaDialog[nowDialogIndex].str;
+    //            MakeBackLog(false, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
+    //            visitorRuelliaToggle = !visitorRuelliaToggle;
+    //            nowDialogIndex++;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        nowTalking = false;
+    //        ruelliaText.text = "";
+    //        visitorText.text = "";
+    //        ruelliaText.transform.parent.gameObject.SetActive(false);
+    //        visitorText.transform.parent.gameObject.SetActive(false);
+    //        dialogMouseEventObject.SetActive(false);
+    //        nowState = CounterState.NotTalking;
+    //        counterManager.VisitorDisappear(false);
+    //        visitorRuelliaToggle = true;
+    //    }
+    //}
 
-    void SpecialVisitorEndUpdate()
-    {
-        if (nowDialogIndex < dialogCount)
-        {
-            if (!nowWrapper.specialVisitorDialogList[nowDialogIndex].ruelliaTalking)
-            {
-                if (!visitorText.transform.parent.gameObject.activeSelf)
-                    visitorText.transform.parent.gameObject.SetActive(true);
-                counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(nowSpecialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
-                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
-                MakeBackLog(true, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
-                nowDialogIndex++;
-            }
-            else
-            {
-                if (!ruelliaText.transform.parent.gameObject.activeSelf)
-                    ruelliaText.transform.parent.gameObject.SetActive(true);
-                string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
-                MakeBackLog(false, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
-                nowDialogIndex++;
+    //void SpecialVisitorEndUpdate()
+    //{
+    //    if (nowDialogIndex < dialogCount)
+    //    {
+    //        if (!nowWrapper.specialVisitorDialogList[nowDialogIndex].ruelliaTalking)
+    //        {
+    //            if (!visitorText.transform.parent.gameObject.activeSelf)
+    //                visitorText.transform.parent.gameObject.SetActive(true);
+    //            counterManager.ChangeSpecialVisitorSprite(characterIndexToName.GetSprite(nowSpecialVisitorDialogBundle.characterName, nowWrapper.specialVisitorDialogList[nowDialogIndex].characterFeeling));
+    //            string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+    //            MakeBackLog(true, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
+    //            nowDialogIndex++;
+    //        }
+    //        else
+    //        {
+    //            if (!ruelliaText.transform.parent.gameObject.activeSelf)
+    //                ruelliaText.transform.parent.gameObject.SetActive(true);
+    //            string str = nowWrapper.specialVisitorDialogList[nowDialogIndex].dialog;
+    //            MakeBackLog(false, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
+    //            nowDialogIndex++;
 
-            }
-        }
-        else
-        {
-            nowTalking = false;
-            counterManager.VisitorDisappear(false);
-            ruelliaText.transform.parent.gameObject.SetActive(false);
-            visitorText.transform.parent.gameObject.SetActive(false);
-            ruelliaText.text = "";
-            visitorText.text = "";
-            dialogMouseEventObject.SetActive(false);
-            nowState = CounterState.NotTalking;
-            isRouted = false;
-        }
-    }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        nowTalking = false;
+    //        counterManager.VisitorDisappear(false);
+    //        ruelliaText.transform.parent.gameObject.SetActive(false);
+    //        visitorText.transform.parent.gameObject.SetActive(false);
+    //        ruelliaText.text = "";
+    //        visitorText.text = "";
+    //        dialogMouseEventObject.SetActive(false);
+    //        nowState = CounterState.NotTalking;
+    //        isRouted = false;
+    //    }
+    //}
 
-    void OddEndUpdate()
-    {
-        if (nowDialogIndex < dialogCount)
-        {
-            if (!nowOddVisitorWrapper[nowDialogIndex].ruelliaTalking)
-            {
-                if (!visitorText.transform.parent.gameObject.activeSelf)
-                    visitorText.transform.parent.gameObject.SetActive(true);
+    //void OddEndUpdate()
+    //{
+    //    if (nowDialogIndex < dialogCount)
+    //    {
+    //        if (!nowOddVisitorWrapper[nowDialogIndex].ruelliaTalking)
+    //        {
+    //            if (!visitorText.transform.parent.gameObject.activeSelf)
+    //                visitorText.transform.parent.gameObject.SetActive(true);
                 
-                string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
-                MakeBackLog(true, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
-                nowDialogIndex++;
-            }
-            else
-            {
-                if (!ruelliaText.transform.parent.gameObject.activeSelf)
-                    ruelliaText.transform.parent.gameObject.SetActive(true);
-                string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
-                MakeBackLog(false, str);
-                StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
-                nowDialogIndex++;
+    //            string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
+    //            MakeBackLog(true, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));
+    //            nowDialogIndex++;
+    //        }
+    //        else
+    //        {
+    //            if (!ruelliaText.transform.parent.gameObject.activeSelf)
+    //                ruelliaText.transform.parent.gameObject.SetActive(true);
+    //            string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
+    //            MakeBackLog(false, str);
+    //            StartCoroutine(sceneManager.LoadTextOneByOne(str, ruelliaText));
+    //            nowDialogIndex++;
 
-            }
-        }
-        else
-        {
-            nowTalking = false;
-            counterManager.VisitorDisappear(false);
-            ruelliaText.transform.parent.gameObject.SetActive(false);
-            visitorText.transform.parent.gameObject.SetActive(false);
-            ruelliaText.text = "";
-            visitorText.text = "";
-            dialogMouseEventObject.SetActive(false);
-            nowState = CounterState.NotTalking;
-            isRouted = false;
-        }
-    }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        nowTalking = false;
+    //        counterManager.VisitorDisappear(false);
+    //        ruelliaText.transform.parent.gameObject.SetActive(false);
+    //        visitorText.transform.parent.gameObject.SetActive(false);
+    //        ruelliaText.text = "";
+    //        visitorText.text = "";
+    //        dialogMouseEventObject.SetActive(false);
+    //        nowState = CounterState.NotTalking;
+    //        isRouted = false;
+    //    }
+    //}
 }
