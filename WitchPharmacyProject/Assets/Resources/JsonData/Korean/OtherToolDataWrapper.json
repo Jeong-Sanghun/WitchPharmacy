@@ -4,13 +4,22 @@
             "fileName": "improvement",
             "ingameName": "연구 설비 개선",
             "toolTip": "이거만 있으면 돼~",
-            "cost": 100
+            "cost": 100,
+			"needResearch" : true
         },
         {
             "fileName": "opticalLens",
             "ingameName": "광학렌즈",
             "toolTip": "탐험을 더욱 효과적으로!",
-            "cost": 100
+            "cost": 100,
+			"needResearch" : true
+        },
+		{
+            "fileName": "bookMark",
+            "ingameName": "책갈피",
+            "toolTip": "이제 책 안넘겨도 된다 ㅋㅋ",
+            "cost": 100,
+			"needResearch" : false
         }
     ]
 }

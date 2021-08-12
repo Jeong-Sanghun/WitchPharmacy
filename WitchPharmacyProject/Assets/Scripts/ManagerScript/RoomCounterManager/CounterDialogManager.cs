@@ -584,7 +584,8 @@ public class CounterDialogManager : MonoBehaviour
             switch (nowState)
             {
                 case CounterState.Start:
-                    visitorTriggerManager.TriggerCheck();
+                    counterManager.VisitorDownFx();
+                    roomManager.FadeShopOpen();
                     break;
                 case CounterState.Visit:
                     counterManager.VisitorTalkEnd();

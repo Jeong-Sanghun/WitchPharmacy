@@ -42,7 +42,6 @@ public class SaveDataClass
     public List<string> owningOtherToolList;
     public List<string> endQuestList;
     public ResearchSaveData researchSaveData;
-    public int bookMarkNumber;
     public List<RoutePair> routePairList;
     public List<RegionSaveData> regionSaveDataList;
     public List<int> likedTreeterIndexList;
@@ -85,7 +84,6 @@ public class SaveDataClass
         symptomBookList.Add("water-");
         symptomBookList.Add("fire+");
         symptomBookList.Add("fire-");
-        bookMarkNumber = 3;
         nextStory = "firstDay";
         readStoryList = new List<string>();
         routePairList = new List<RoutePair>();

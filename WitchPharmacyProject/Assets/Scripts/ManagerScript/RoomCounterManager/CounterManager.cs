@@ -366,40 +366,47 @@ public class CounterManager : MonoBehaviour //SH
         //        counterDialogManager.OnSpecialVisitorEnd(specialWrong);
         //    }
 
-           
+
 
         //}
         //else
         //{
-            int[] medicineIndexArray = medicine.medicineArray;
-            int[] medicineSymptomArray = new int[6];
-            int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
+        int[] medicineIndexArray = medicine.medicineArray;
+        int[] medicineSymptomArray = new int[6];
+        int[] finalSymptomArray = new int[6];
+        int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
 
-            List<Symptom> badSymptomList = new List<Symptom>();
-            for (int i = 0; i < 6; i++)
+        List<Symptom> badSymptomList = new List<Symptom>();
+        for (int i = 0; i < 6; i++)
+        {
+            finalSymptomArray[i] = 0;
+            medicineSymptomArray[i] = 0;
+        }
+        for (int i = 0; i < medicine.medicineCount; i++)
+        {
+            MedicineClass med = medicineDataList[medicineIndexArray[i]];
+            //if (med.firstSymptom == Symptom.none)
+            //{
+            //    continue;
+            //}
+            medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
+            medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
+        }
+        for (int i = 0; i < 6; i++)
+        {
+            finalSymptomArray[i] = medicineSymptomArray[i] + visitorSymptomArray[i];
+            if (finalSymptomArray[i] != 0)
             {
-                medicineSymptomArray[i] = 0;
+                wrongMedicine = true;
+                badSymptomList.Add((Symptom)i);
             }
-            for (int i = 0; i < medicine.medicineCount; i++)
-            {
-                MedicineClass med = medicineDataList[medicineIndexArray[i]];
-                //if (med.firstSymptom == Symptom.none)
-                //{
-                //    continue;
-                //}
-                medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
-                medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                if (medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
-                {
-                    wrongMedicine = true;
-                    badSymptomList.Add((Symptom)i);
-                }
-            }
+        }
         if (nowVisitorType == VisitorType.Random)
+        {
             counterDialogManager.OnVisitorEnd(wrongMedicine);
+            nowVisitor.FinalSymptomSpriteUpdate(finalSymptomArray);
+        }
+
         //if (nowVisitorType == VisitorType.Odd)
         //{
         //    counterDialogManager.OnOddVisitorEnd(wrongMedicine);
@@ -502,7 +509,7 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        //lastVisitor = true;
+        lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;
@@ -720,7 +727,7 @@ public class CounterManager : MonoBehaviour //SH
         gainedCoinText.text = "+" + RandomVisitorClass.gainCoin.ToString();
         gainedCoinText.transform.position = gainedCoinObjectOriginPos;
         TabletManager.inst.UpdateBill(BillReason.medicineSell, true, RandomVisitorClass.gainCoin);
-        StartCoroutine(sceneManager.FadeModule_Text(gainedCoinText, 1, 0, 3f));
+        StartCoroutine(sceneManager.FadeModule_Text(gainedCoinText, 1, 0, 2f));
         StartCoroutine(sceneManager.MoveModule_Linear(gainedCoinText.gameObject, gainedCoinObjectOriginPos + new Vector3(0, 2, 0), 1));
     }
 
@@ -768,7 +775,7 @@ public class CounterManager : MonoBehaviour //SH
         
         gainedMedicineImage.sprite = medicine.LoadImage();
         gainedMedicineImage.transform.position = gainedMedicineObjectOriginPos;
-        StartCoroutine(sceneManager.FadeModule_Image(gainedMedicineImage.gameObject, 1, 0, 3f));
+        StartCoroutine(sceneManager.FadeModule_Image(gainedMedicineImage.gameObject, 1, 0, 2f));
         StartCoroutine(sceneManager.MoveModule_Linear(gainedMedicineImage.gameObject, gainedMedicineObjectOriginPos + new Vector3(0, 2, 0), 1));
 
 

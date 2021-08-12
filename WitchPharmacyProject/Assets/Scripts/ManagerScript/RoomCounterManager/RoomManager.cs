@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
+    GameManager gameManager;
+    SaveDataClass saveData;
+    SceneManager sceneManager;
     [SerializeField]
     CounterManager counterManager;
     [SerializeField]
     MedicineManager medicineManager;
     [SerializeField]
     CounterDialogManager counterDialogManager;
+    [SerializeField]
+    VisitorTriggerManager visitorTriggerManager;
+    UILanguagePack languagePack;
 
     [HideInInspector]
     public bool nowInRoom;
@@ -19,12 +26,28 @@ public class RoomManager : MonoBehaviour
     GameObject roomUICanvas;
     [SerializeField]
     GameObject counterUICanvas;
+    [SerializeField]
+    GameObject shopOpenCanvas;
+    [SerializeField]
+    Text dayText;
+    [SerializeField]
+    Text dayNumberText;
+    [SerializeField]
+    Text shopOpenText;
+    [SerializeField]
+    Image shopOpenBG;
     Vector3 cameraCounterPos;
     Vector3 cameraRoomPos;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        gameManager = GameManager.singleTon;
+        languagePack = gameManager.languagePack;
+        saveData = gameManager.saveData;
+        sceneManager = SceneManager.inst;
         cameraRoomPos = new Vector3(51.2f, 0, -10);
         cameraCounterPos = new Vector3(0, 0, -10);
     }
@@ -33,6 +56,32 @@ public class RoomManager : MonoBehaviour
     public void VisitorVisits(RandomVisitorClass visitor)
     {
 
+    }
+
+    //카운터 다이얼로그 매니저에서 스타트 끝나면 불러옴
+    public void FadeShopOpen()
+    {
+        dayNumberText.text = saveData.nowDay.ToString();
+        shopOpenText.text = languagePack.shopOpen;
+        StartCoroutine(ShopOpenFade());
+    }
+
+    IEnumerator ShopOpenFade()
+    {
+        StartCoroutine(sceneManager.FadeModule_Image(shopOpenBG.gameObject, 0, 0.7f, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(shopOpenText, 0, 1, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(dayNumberText, 0, 1, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(dayText, 0, 1, 1));
+        yield return null;
+        shopOpenCanvas.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(sceneManager.FadeModule_Image(shopOpenBG.gameObject, 0.7f, 0, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(shopOpenText, 1, 0, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(dayNumberText, 1, 0, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(dayText, 1, 0, 1));
+        yield return new WaitForSeconds(1.2f);
+        shopOpenCanvas.SetActive(false);
+        visitorTriggerManager.TriggerCheck();
     }
 
 

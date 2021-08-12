@@ -12963,6 +12963,11 @@ MonoBehaviour:
       endMedicineResearchList: []
       progressingOtherToolResearchList: []
       endOtherToolResearchList: []
+      progressingBookResearchList: []
+      endBookResearchList: []
+      progressingSpecialResearchList: []
+      endSpecialResearchList: []
+      appearingSpecialResearchList: []
     bookMarkNumber: 3
     routePairList: []
     regionSaveDataList: []
@@ -14119,23 +14124,6 @@ MonoBehaviour:
       secondName: "\uC138\uCEE8\uB4DC"
       toolTip: "\uD234\uD301"
       cost: 3
-  symptomDialog:
-    startDialog:
-    - "\uC548\uB155\uD558\uC138\uC694. \uC800\uB294\uC694 "
-    - "\uB8E8\uC5D8\uB9AC\uC544 \uC120\uC0DD\uB2D8 \uC548\uB155\uD558\uC138\uC694.
-      \uC81C\uAC00 \uC880 \uC544\uD508\uB370\uC694.."
-    - "\uC81C\uAC00 \uC880 \uC544\uD30C\uC694.."
-    middleDialog:
-    - ", \uADF8\uB9AC\uACE0,,,"
-    - ", \uC544\uB9DE\uC5B4 \uB610,,,"
-    - ", \uB354 \uC544\uD508\uB370\uB294,,,"
-    - ", \uB2E4\uC74C\uC73C\uB85C\uB294,,,"
-    - ", \uB610\uD55C,,,"
-    - ", \uADF8\uB9AC\uAD6C\uC694,,,"
-    ruelliaDialog:
-    - "\uC74C...\uADF8\uB807\uAD70\uC694."
-    - "\uD655\uC778\uD588\uC2B5\uB2C8\uB2E4"
-    - "\uC544\uD558"
   specialVisitorConditionWrapper:
     specialVisitorConditionDataList:
     - priority: 0
@@ -14452,6 +14440,38 @@ MonoBehaviour:
       neededResearchList: []
       firstSymptomString: earth
       secondSymptomString: water
+  bookResearchDataWrapper:
+    bookResearchDataList:
+    - fileName: water
+      ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
+      explain: "\uBB3C\uC774\uBB3C\uBB3C"
+      researchEndTime: 2
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
+      explain: "\uBB3C\uC774\uBB3C\uBB3C"
+      researchEndTime: 2
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
+      explain: "\uBB3C\uC774\uBB3C\uBB3C"
+      researchEndTime: 2
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
+      explain: "\uBB3C\uC774\uBB3C\uBB3C"
+      researchEndTime: 2
+      neededResearchList: []
+      symptomString: water
+    - fileName: water
+      ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
+      explain: "\uBB3C\uC774\uBB3C\uBB3C"
+      researchEndTime: 2
+      neededResearchList: []
+      symptomString: water
   treeterConditionWrapper:
     treeterConditionList:
     - fileName: testDocument

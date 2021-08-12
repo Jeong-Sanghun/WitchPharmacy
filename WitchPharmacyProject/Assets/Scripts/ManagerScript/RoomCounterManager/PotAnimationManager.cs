@@ -12,6 +12,8 @@ public class PotAnimationManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     UIGradient gradient;
+    [SerializeField]
+    UIGradient bottleGradient;
 
     public void PotWorldAnimation(bool active)
     {
@@ -56,28 +58,37 @@ public class PotAnimationManager : MonoBehaviour
         switch (index)
         {
             case 0:
+                bottleGradient.color1 = color;
                 gradient.color1 = color;
                 break;
             case 1:
+                bottleGradient.color2 = color;
                 gradient.color2 = color;
                 break;
             case 2:
+                bottleGradient.color3 = color;
                 gradient.color3 = color;
                 break;
         }
     }
 
-    public void UnSetPotColor(int index)
+    public void UnSetPotColor(int index,bool bottle)
     {
         switch (index)
         {
             case 0:
+                if(bottle)
+                    bottleGradient.color1 = Color.white;
                 gradient.color1 = Color.white;
                 break;
             case 1:
+                if (bottle)
+                    bottleGradient.color2 = Color.white;
                 gradient.color2 = Color.white;
                 break;
             case 2:
+                if (bottle)
+                    bottleGradient.color3 = Color.white;
                 gradient.color3 = Color.white;
                 break;
         }

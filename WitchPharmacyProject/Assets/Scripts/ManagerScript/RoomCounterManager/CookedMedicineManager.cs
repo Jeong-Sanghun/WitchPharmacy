@@ -139,7 +139,7 @@ public class CookedMedicineManager : MonoBehaviour
                 roomManager.ToCounterButton(true);
                 //cookedMedicine.medicineObject.GetComponent<RectTransform>().anchoredPosition = medicineOriginCounterPos;
                 counterManager.OnMedicineDelivery(cookedMedicine);
-                cookedMedicine.medicineObject.transform.position = medicineOriginPos;
+                //cookedMedicine.medicineObject.transform.position = medicineOriginPos;
                 medicineManager.CookedMedicineRemoved();
                 cookedMedicine.medicineObject.SetActive(false);
                 cookedMedicine = null;

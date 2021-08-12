@@ -34,6 +34,7 @@ public class UILanguagePack
     public string documentGained;
     public string whatCoinGained;
     public string coinGained;
+    public string shopOpen;
     public string[] saveTimeArray;
     public string[] reasonArray;
     public string[] characterNameArray;

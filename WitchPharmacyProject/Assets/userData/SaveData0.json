@@ -2,7 +2,7 @@
     "name": "initName",
     "nowTime": 7200.0,
     "nowDay": 0,
-    "coin": 997,
+    "coin": 991,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -49,7 +49,7 @@
                 {
                     "isPlus": false,
                     "reason": 1,
-                    "changedCoin": 3
+                    "changedCoin": 9
                 }
             ]
         }
@@ -72,9 +72,11 @@
         "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": [],
         "progressingBookResearchList": [],
-        "endBookResearchList": []
+        "endBookResearchList": [],
+        "progressingSpecialResearchList": [],
+        "endSpecialResearchList": [],
+        "appearingSpecialResearchList": []
     },
-    "bookMarkNumber": 3,
     "routePairList": [],
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],

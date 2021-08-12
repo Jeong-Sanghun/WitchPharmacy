@@ -31,6 +31,7 @@ public class SymptomBookManager : MonoBehaviour
     {
         int bookMarkNumber = 0;
         int nowPages = 0;
+        bool bookMark = false;
         gameManager = GameManager.singleTon;
         //연구할 때 이걸 받아와야함.
         isNewPage = true;
@@ -46,10 +47,18 @@ public class SymptomBookManager : MonoBehaviour
             SymptomBookBundle bundle = gameManager.LoadSymptomBookBundle(gameManager.saveData.symptomBookList[i]);
             bookBundleList.Add(bundle);
         }
+        for(int i  =0; i< gameManager.saveData.owningOtherToolList.Count; i++)
+        {
+            if (gameManager.saveData.owningOtherToolList[i].Contains("bookMark"))
+            {
+                bookMark = true;
+                break;
+            }
+        }
 
         for(int j = 0; j < bookBundleList.Count; j++)
         {
-            if (bookMarkNumber < gameManager.saveData.bookMarkNumber)
+            if (bookMark)
             {
                 bookMarkIndexList.Add(pageBundleList.Count);
                 GameObject inst = Instantiate(bookMarkPrefab, pageBundleParent);

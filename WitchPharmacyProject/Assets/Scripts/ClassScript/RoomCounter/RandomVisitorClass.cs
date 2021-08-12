@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using UnityEngine.UI;
+using Coffee.UIExtensions;
 
 [System.Serializable]
 public enum Symptom
@@ -17,6 +18,20 @@ public class GameObjectWrapper
     public GameObject[] partsArray;
 }
 
+public class SymptomObject
+{
+    public GameObject obj;
+    public Symptom symptom;
+    public bool dissolve;
+    public UIDissolve dissolveComponent;
+
+    public SymptomObject()
+    {
+        symptom = Symptom.water;
+        dissolve = false;
+    }
+}
+
 //이거 제이슨으로 저장하는게 아님
 //랜덤손님 1명이 가지고 있는 클래스
 [System.Serializable]
@@ -29,11 +44,13 @@ public class RandomVisitorClass //SH
     //public string fullDialog;
     //물 불 흙 나무 금속 빛
 
+    
     public List<Symptom> symptomList;
     public List<int> symptomAmountList;
     public int[] symptomAmountArray;
     //증상은 무조건 두 개    
     public List<MedicineClass> answerMedicineList;
+    
     static List<MedicineClass> ownedMedicineList;
     static RandomVisitorDiseaseBundle diseaseBundle;
     public static int gainCoin = 40;
@@ -49,7 +66,13 @@ public class RandomVisitorClass //SH
     int[] partsIndex;
     public GameObjectWrapper[] partsWrapperArray;
 
+    List<SymptomObject> symptomObjectList;
+    List<SymptomObject> finalSymptomObjectList;
+    StoryRegion nowRegion;
+    bool childSetParented;
 
+    GameObject headPart;
+    GameObject[] facePart;
 
 
     /*body	_00	_01    	
@@ -80,6 +103,8 @@ public class RandomVisitorClass //SH
         symptomAmountList = new List<int>();
         symptomAmountArray = new int[6];
         diseaseList = new List<RandomVisitorDisease>();
+        symptomObjectList = new List<SymptomObject>();
+        finalSymptomObjectList = new List<SymptomObject>();
         List<MedicineClass> availableMedicineList = new List<MedicineClass>();
         int[] symptomNumberArray = new int[5];
         for(int i = 0; i < symptomNumberArray.Length; i++)
@@ -364,8 +389,8 @@ public class RandomVisitorClass //SH
             partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
         }
 
-        GameObject headPart = null;
-        GameObject[] facePart = new GameObject[2];
+        headPart = null;
+        facePart = new GameObject[2];
         for (int i = 0; i < partsWrapperArray.Length; i++)
         {
             if(partsWrapperArray[i].partsArray == null)
@@ -393,7 +418,7 @@ public class RandomVisitorClass //SH
                 }
             }
         }
-        bool childSetParented = false;
+        childSetParented = false;
         //partsWrapperArray[2].partsArray[0] 이게 헤드임.
         for (int i = 0; i < diseaseList.Count; i++)
         {
@@ -401,7 +426,12 @@ public class RandomVisitorClass //SH
             if (diseaseList[i].firstSpriteName != null)
             {
                 GameObject obj = new GameObject();
-
+                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                dissolve.effectFactor = 0;
+                SymptomObject symptomObject = new SymptomObject();
+                symptomObject.obj = obj;
+                symptomObject.dissolveComponent = dissolve;
+                symptomObjectList.Add(symptomObject);
                 if (diseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
                 {
                     if (childSetParented == false)
@@ -435,6 +465,12 @@ public class RandomVisitorClass //SH
             if (diseaseList[i].secondSpriteName != null)
             {
                 GameObject obj = new GameObject();
+                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                dissolve.effectFactor = 0;
+                SymptomObject symptomObject = new SymptomObject();
+                symptomObject.obj = obj;
+                symptomObject.dissolveComponent = dissolve;
+                symptomObjectList.Add(symptomObject);
                 if (diseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
                 {
                     for (int j = 0; j < facePart.Length; j++)
@@ -464,6 +500,135 @@ public class RandomVisitorClass //SH
 
     }
 
+    public void FinalSymptomSpriteUpdate(int[] finalSymptomArray)
+    {
+        List<RandomVisitorDisease> finalDiseaseList = new List<RandomVisitorDisease>();
+        //for(int i = 0; i < symptomObjectList.Count; i++)
+        //{
+        //    symptomObjectList[i].SetActive(false);
+        //}
+        for (int i = 0; i < finalSymptomArray.Length; i++)
+        {
+            int amount = finalSymptomArray[i];
+            if(amount == symptomAmountArray[i])
+            {
+                continue;
+            }
+            if(amount < -2)
+            {
+                amount = -2;
+            }
+            else if(amount > 2)
+            {
+                amount = 2;
+            }
+            if (amount == 0)
+            {
+                continue;
+            }
+            List<int> diseaseIndexList = new List<int>();
+            for (int j = 0; j < diseaseBundle.wrapperList[i].randomVisitorDiseaseArray.Length; j++)
+            {
+                if (amount == diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[j].symptomNumber)
+                {
+                    
+                    diseaseIndexList.Add(j);
+                }
+            }
+            if(diseaseIndexList.Count == 0)
+            {
+                return;
+            }
+            int index = diseaseIndexList[Random.Range(0, diseaseIndexList.Count)];
+            finalDiseaseList.Add(diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[index]);
+        }
+
+        
+        for (int i = 0; i < finalDiseaseList.Count; i++)
+        {
+
+            if (finalDiseaseList[i].firstSpriteName != null)
+            {
+                GameObject obj = new GameObject();
+                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                dissolve.effectFactor = 1;
+                SymptomObject symptomObject = new SymptomObject();
+                symptomObject.obj = obj;
+                symptomObject.dissolveComponent = dissolve;
+                symptomObject.dissolve = true;
+                finalSymptomObjectList.Add(symptomObject);
+                if (finalDiseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
+                {
+                    if (childSetParented == false)
+                    {
+                        for (int j = 0; j < facePart.Length; j++)
+                        {
+
+                            facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                        }
+                    }
+                    childSetParented = true;
+                    obj.transform.SetParent(headPart.transform.GetChild(0));
+                    obj.transform.SetAsLastSibling();
+                    obj.transform.localScale = Vector3.one;
+                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
+                    obj.AddComponent<Image>().sprite = finalDiseaseList[i].LoadImage(true);
+                    obj.transform.localPosition = Vector3.zero;
+
+
+                }
+                else
+                {
+                    obj.transform.SetParent(visitorObject.transform);
+                    obj.AddComponent<SpriteRenderer>().sprite = finalDiseaseList[i].LoadImage(true);
+                    obj.transform.localPosition = new Vector3(0, 0, finalDiseaseList[i].GetFirstLayer());
+
+                }
+
+
+            }
+            if (finalDiseaseList[i].secondSpriteName != null)
+            {
+                GameObject obj = new GameObject();
+                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                dissolve.effectFactor = 1;
+                SymptomObject symptomObject = new SymptomObject();
+                symptomObject.obj = obj;
+                symptomObject.dissolveComponent = dissolve;
+                symptomObject.dissolve = true;
+                finalSymptomObjectList.Add(symptomObject);
+                if (finalDiseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
+                {
+                    for (int j = 0; j < facePart.Length; j++)
+                    {
+                        facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                    }
+                    obj.transform.SetParent(headPart.transform.GetChild(0).transform);
+                    obj.transform.SetAsLastSibling();
+                    obj.transform.localScale = Vector3.one;
+                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
+                    obj.AddComponent<Image>().sprite = finalDiseaseList[i].LoadImage(false);
+                    obj.transform.localPosition = Vector3.zero;
+                }
+                else
+                {
+                    obj.transform.SetParent(visitorObject.transform);
+                    obj.AddComponent<SpriteRenderer>().sprite = finalDiseaseList[i].LoadImage(false);
+                    obj.transform.localPosition = new Vector3(0, 0, finalDiseaseList[i].GetSecondLayer());
+
+                }
+
+            }
+
+        }
+
+
+    }
+
+    IEnumerator FinalDissolve()
+    {
+
+    }
     //카운터매니저에서 불러옴.134줄
     public static void SetStaticData(List<MedicineClass> ownedMedicineList,
         RandomVisitorDiseaseBundle bundle )

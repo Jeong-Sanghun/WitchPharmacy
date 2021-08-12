@@ -68,15 +68,23 @@ public class StoreOtherToolManager : MonoBehaviour
             prefabImage.sprite = data.LoadImage();
             prefabCostText.text = data.cost.ToString();
             bool locked = true;
-            for (int j = 0; j < saveData.researchSaveData.endOtherToolResearchList.Count; j++)
+            if(data.needResearch == true)
             {
-                if (saveData.researchSaveData.endOtherToolResearchList[j].Contains(data.fileName))
+                for (int j = 0; j < saveData.researchSaveData.endOtherToolResearchList.Count; j++)
                 {
-                    locked = false;
-                    buttonClass.researched = true;
-                    break;
+                    if (saveData.researchSaveData.endOtherToolResearchList[j].Contains(data.fileName))
+                    {
+                        locked = false;
+                        buttonClass.researched = true;
+                        break;
+                    }
                 }
             }
+            else
+            {
+                locked = false;
+            }
+
 
             if (!locked)
             {

@@ -27,6 +27,7 @@
      "whatDocumentGained" : "$ 문서 확보!",
      "documentGained" : "너무좋아용",
      "coinGained" :"달달하당",
+	 "shopOpen" : "영업 시작",
 	 "saveTimeArray": [
         "탐험 시작",
         "하루 시작"

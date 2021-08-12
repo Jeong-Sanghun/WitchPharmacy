@@ -9,6 +9,7 @@ public class OtherToolData
     public string ingameName;
     public string toolTip;
     public int cost;
+    public bool needResearch;
     Sprite toolImage;
 
     public Sprite LoadImage()
