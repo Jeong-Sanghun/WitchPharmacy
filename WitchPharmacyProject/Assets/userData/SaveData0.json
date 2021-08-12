@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 43200.0,
-    "nowDay": 0,
-    "coin": 988,
+    "nowTime": 10800.0,
+    "nowDay": 3,
+    "coin": 928,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -49,28 +49,99 @@
                 {
                     "isPlus": false,
                     "reason": 1,
-                    "changedCoin": 12
+                    "changedCoin": 3
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
+                },
+                {
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 100
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
+                },
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 40
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
                 }
             ]
         }
     ],
-    "owningDocumentList": [],
+    "owningDocumentList": [
+        {
+            "name": "Go",
+            "gainedRegion": 0,
+            "gainedDay": 1,
+            "gainedTime": 7200.0
+        },
+        {
+            "name": "Octopus",
+            "gainedRegion": 0,
+            "gainedDay": 2,
+            "gainedTime": 10800.0
+        }
+    ],
     "symptomBookList": [
         "water+",
         "water-",
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [],
+    "owningMeasureToolList": [
+        2
+    ],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [],
+        "progressingMeasureToolResearchList": [
+            {
+                "fileName": "waterAuto",
+                "researchedTime": 3
+            },
+            {
+                "fileName": "fireTool",
+                "researchedTime": 6
+            }
+        ],
+        "endMeasureToolResearchList": [
+            "earthTool"
+        ],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [],
+        "endOtherToolResearchList": [
+            "energyDrink"
+        ],
         "progressingBookResearchList": [],
         "endBookResearchList": [],
         "progressingSpecialResearchList": [],
@@ -78,17 +149,39 @@
         "appearingSpecialResearchList": []
     },
     "routePairList": [],
-    "regionSaveDataList": [],
+    "regionSaveDataList": [
+        {
+            "regionIndex": 0,
+            "firstDiscountedMedicineIndex": [],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        }
+    ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
         true,
-        false,
-        false
+        true,
+        true
     ],
     "readStoryList": [
-        "firstDay"
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay"
     ],
-    "nextStory": "secondDay",
+    "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 0,
     "nowRegion": 0

@@ -31,6 +31,8 @@ public class EarthTool : MeasureTool
     Transform glyphParent;
     [SerializeField]
     SpriteRenderer correctSprite;
+    [SerializeField]
+    GameObject movingObject;
 
     Glyph[] glyphArray;
     Sprite[] spriteArray;
@@ -51,7 +53,7 @@ public class EarthTool : MeasureTool
     
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(measureEnd == false && measureStarted == true)
         {
@@ -89,7 +91,7 @@ public class EarthTool : MeasureTool
             {
                 if (chosenGlyphIndex != -1)
                 {
-                    if (glyphArray[chosenGlyphIndex].obj.transform.position.magnitude < 1.5)
+                    if ((glyphArray[chosenGlyphIndex].obj.transform.position - new Vector3(0,1.5f,0)).magnitude < 1.5)
                     {
                         if (glyphArray[chosenGlyphIndex].glyphType == correctGlyphType)
                         {
@@ -116,7 +118,7 @@ public class EarthTool : MeasureTool
                         }
                         else
                         {
-                            glyphArray[chosenGlyphIndex].rigid.AddForce((glyphArray[chosenGlyphIndex].obj.transform.position - Vector3.zero).normalized * 20, ForceMode2D.Impulse);
+                            glyphArray[chosenGlyphIndex].rigid.AddForce((glyphArray[chosenGlyphIndex].obj.transform.position - new Vector3(0,1.5f,0)).normalized * 20, ForceMode2D.Impulse);
                         }
                     }
                    
@@ -156,7 +158,7 @@ public class EarthTool : MeasureTool
             }
         }
  
-        StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
+        StartCoroutine(SceneManager.inst.MoveModule_Linear(movingObject, new Vector3(0,1.5f,0), 2));
     }
 
     public override void OnNewVisitor(int symptomNum, int index, bool auto)
