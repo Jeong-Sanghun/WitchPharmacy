@@ -138,6 +138,7 @@ public class MedicineManager : MonoBehaviour    //SH
     //[SerializeField]
     //Animator cookAnimator;
     float doubleClickTimer;
+    int doubleClickIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -349,9 +350,13 @@ public class MedicineManager : MonoBehaviour    //SH
         {
             return;
         }
-        if(nowButtonIndex != -1)
+        if(doubleClickIndex != -1)
         {
             doubleClickTimer += Time.deltaTime;
+            if (doubleClickTimer > 0.5f)
+            {
+                doubleClickIndex = -1;
+            }
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -446,7 +451,7 @@ public class MedicineManager : MonoBehaviour    //SH
         inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
 
 
-        potAnimationManager.SetPotColor(nowMedicineButton.medicineClass.LoadImage(), medicineInPotList.Count);
+        potAnimationManager.SetPotColor(nowMedicineButton.medicineClass.LoadImage(), nowPotIndex);
         medicineInPotList.Add(nowMedicineButton);
         //아무것도 아님이 뜨면 줄여주지 않음
         //nowMedicineButton.medicineQuant--;
@@ -463,11 +468,11 @@ public class MedicineManager : MonoBehaviour    //SH
         {
             cookButtonObject.SetActive(true);
         }
-        if (nowMedicineButton.medicineClass.GetFirstSymptom() != Symptom.special)
-        {
-            Debug.Log("뭐야");
-            symptomChartManager.ChangeSymptomChartText();
-        }
+        //if (nowMedicineButton.medicineClass.GetFirstSymptom() != Symptom.special)
+        //{
+        //    Debug.Log("뭐야");
+        //    symptomChartManager.ChangeSymptomChartText();
+        //}
 
 
 
@@ -496,8 +501,9 @@ public class MedicineManager : MonoBehaviour    //SH
                     potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
                     potMedicineObjectList[1].transform.localPosition = Vector3.zero;
                     potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.LoadImage(), 0);
-                    potAnimationManager.UnSetPotColor(1, true);
+                    
                 }
+                potAnimationManager.UnSetPotColor(1, true);
             }
             else if (medicineInPotList.Count == 3)
             {
@@ -512,15 +518,16 @@ public class MedicineManager : MonoBehaviour    //SH
                     potMedicineObjectList[2].transform.localPosition = Vector3.zero;
 
                     potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.LoadImage(), 1);
-                    potAnimationManager.UnSetPotColor(2, true);
+                    
                 }
                 else if (listIndex == 1)
                 {
                     potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
                     potMedicineObjectList[2].transform.localPosition = Vector3.zero;
                     potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.LoadImage(), 1);
-                    potAnimationManager.UnSetPotColor(2, true);
+                    
                 }
+                potAnimationManager.UnSetPotColor(2, true);
             }
             potMedicineObjectList.RemoveAt(listIndex);
             medicineInPotList.RemoveAt(listIndex);
@@ -723,18 +730,18 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         //    wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
         //}
 
-
-        if (nowButtonIndex == index)
+        nowButtonIndex = index;
+        if (doubleClickIndex == index)
         {
             //따블클릭
             if(doubleClickTimer <0.5f)
                 AddMedicineToPot();
-            nowButtonIndex = -1;
+            doubleClickIndex = -1;
         }
         else
         {
             doubleClickTimer = 0;
-            nowButtonIndex = index;
+            doubleClickIndex = index;
         }
 
         dragged = false;

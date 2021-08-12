@@ -61,7 +61,7 @@ public class RoomManager : MonoBehaviour
     //카운터 다이얼로그 매니저에서 스타트 끝나면 불러옴
     public void FadeShopOpen()
     {
-        dayNumberText.text = saveData.nowDay.ToString();
+        dayNumberText.text = (saveData.nowDay+1).ToString();
         shopOpenText.text = languagePack.shopOpen;
         StartCoroutine(ShopOpenFade());
     }
