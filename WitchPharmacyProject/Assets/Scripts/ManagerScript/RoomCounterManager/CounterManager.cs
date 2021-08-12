@@ -405,6 +405,7 @@ public class CounterManager : MonoBehaviour //SH
         {
             counterDialogManager.OnVisitorEnd(wrongMedicine);
             nowVisitor.FinalSymptomSpriteUpdate(finalSymptomArray);
+            StartCoroutine(nowVisitor.FinalDissolve());
         }
 
         //if (nowVisitorType == VisitorType.Odd)
@@ -509,7 +510,7 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        lastVisitor = true;
+        //lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;

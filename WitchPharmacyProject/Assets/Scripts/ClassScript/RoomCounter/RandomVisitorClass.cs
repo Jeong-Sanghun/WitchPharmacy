@@ -24,11 +24,13 @@ public class SymptomObject
     public Symptom symptom;
     public bool dissolve;
     public UIDissolve dissolveComponent;
+    public string disease;
+    public int amount;
 
     public SymptomObject()
     {
         symptom = Symptom.water;
-        dissolve = false;
+        dissolve = true;
     }
 }
 
@@ -55,6 +57,7 @@ public class RandomVisitorClass //SH
     static RandomVisitorDiseaseBundle diseaseBundle;
     public static int gainCoin = 40;
     public List<RandomVisitorDisease> diseaseList;
+
 
     /*
     public Symptom earSymptom;
@@ -425,11 +428,14 @@ public class RandomVisitorClass //SH
 
             if (diseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = new GameObject();
-                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(true),visitor.transform).transform.GetChild(0).gameObject;
+                UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
                 symptomObject.obj = obj;
+                symptomObject.dissolve = true;
+                symptomObject.disease = diseaseList[i].sympotmString;
+                symptomObject.amount = diseaseList[i].symptomNumber;
                 symptomObject.dissolveComponent = dissolve;
                 symptomObjectList.Add(symptomObject);
                 if (diseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
@@ -438,7 +444,6 @@ public class RandomVisitorClass //SH
                     {
                         for (int j = 0; j < facePart.Length; j++)
                         {
-                      
                             facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
                         }
                     }
@@ -446,16 +451,13 @@ public class RandomVisitorClass //SH
                     obj.transform.SetParent(headPart.transform.GetChild(0));
                     obj.transform.SetAsLastSibling();
                     obj.transform.localScale = Vector3.one;
-                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
-                    obj.AddComponent<Image>().sprite = diseaseList[i].LoadImage(true);
                     obj.transform.localPosition = Vector3.zero;
 
 
                 }
                 else
                 {
-                    obj.transform.SetParent(visitor.transform);
-                    obj.AddComponent<SpriteRenderer>().sprite = diseaseList[i].LoadImage(true);
+                    obj.transform.parent.SetParent(visitor.transform);
                     obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetFirstLayer());
 
                 }
@@ -464,12 +466,15 @@ public class RandomVisitorClass //SH
             }
             if (diseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = new GameObject();
-                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(false), visitor.transform).transform.GetChild(0).gameObject;
+                UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
                 symptomObject.obj = obj;
+                symptomObject.dissolve = true;
                 symptomObject.dissolveComponent = dissolve;
+                symptomObject.disease = diseaseList[i].sympotmString;
+                symptomObject.amount = diseaseList[i].symptomNumber;
                 symptomObjectList.Add(symptomObject);
                 if (diseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
                 {
@@ -480,14 +485,11 @@ public class RandomVisitorClass //SH
                     obj.transform.SetParent(headPart.transform.GetChild(0).transform);
                     obj.transform.SetAsLastSibling();
                     obj.transform.localScale = Vector3.one;
-                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
-                    obj.AddComponent<Image>().sprite = diseaseList[i].LoadImage(false);
                     obj.transform.localPosition = Vector3.zero;
                 }
                 else
                 {
-                    obj.transform.SetParent(visitor.transform);
-                    obj.AddComponent<SpriteRenderer>().sprite = diseaseList[i].LoadImage(false);
+                    obj.transform.parent.SetParent(visitor.transform);
                     obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetSecondLayer());
 
                 }
@@ -510,22 +512,31 @@ public class RandomVisitorClass //SH
         for (int i = 0; i < finalSymptomArray.Length; i++)
         {
             int amount = finalSymptomArray[i];
-            if(amount == symptomAmountArray[i])
-            {
-                continue;
-            }
-            if(amount < -2)
-            {
-                amount = -2;
-            }
-            else if(amount > 2)
-            {
-                amount = 2;
-            }
             if (amount == 0)
             {
                 continue;
             }
+            if (amount < -2)
+            {
+                amount = -2;
+            }
+            else if (amount > 2)
+            {
+                amount = 2;
+            }
+
+            if (amount == symptomAmountArray[i])
+            {
+                for (int j = 0; j < symptomObjectList.Count; j++)
+                {
+                    if(symptomObjectList[j].disease.Contains(((Symptom)i).ToString()))
+                    {
+                        symptomObjectList[j].dissolve = false;
+                    }
+                }
+                continue;
+            }
+
             List<int> diseaseIndexList = new List<int>();
             for (int j = 0; j < diseaseBundle.wrapperList[i].randomVisitorDiseaseArray.Length; j++)
             {
@@ -549,13 +560,13 @@ public class RandomVisitorClass //SH
 
             if (finalDiseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = new GameObject();
-                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
+                UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();
                 symptomObject.obj = obj;
-                symptomObject.dissolveComponent = dissolve;
                 symptomObject.dissolve = true;
+                symptomObject.dissolveComponent = dissolve;
                 finalSymptomObjectList.Add(symptomObject);
                 if (finalDiseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
                 {
@@ -571,16 +582,13 @@ public class RandomVisitorClass //SH
                     obj.transform.SetParent(headPart.transform.GetChild(0));
                     obj.transform.SetAsLastSibling();
                     obj.transform.localScale = Vector3.one;
-                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
-                    obj.AddComponent<Image>().sprite = finalDiseaseList[i].LoadImage(true);
                     obj.transform.localPosition = Vector3.zero;
 
 
                 }
                 else
                 {
-                    obj.transform.SetParent(visitorObject.transform);
-                    obj.AddComponent<SpriteRenderer>().sprite = finalDiseaseList[i].LoadImage(true);
+                    obj.transform.parent.SetParent(visitorObject.transform);
                     obj.transform.localPosition = new Vector3(0, 0, finalDiseaseList[i].GetFirstLayer());
 
                 }
@@ -589,8 +597,8 @@ public class RandomVisitorClass //SH
             }
             if (finalDiseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = new GameObject();
-                UIDissolve dissolve = obj.AddComponent<UIDissolve>();
+                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
+                UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();
                 symptomObject.obj = obj;
@@ -606,14 +614,11 @@ public class RandomVisitorClass //SH
                     obj.transform.SetParent(headPart.transform.GetChild(0).transform);
                     obj.transform.SetAsLastSibling();
                     obj.transform.localScale = Vector3.one;
-                    obj.AddComponent<RectTransform>().sizeDelta = new Vector2(1100, 1300);
-                    obj.AddComponent<Image>().sprite = finalDiseaseList[i].LoadImage(false);
                     obj.transform.localPosition = Vector3.zero;
                 }
                 else
                 {
-                    obj.transform.SetParent(visitorObject.transform);
-                    obj.AddComponent<SpriteRenderer>().sprite = finalDiseaseList[i].LoadImage(false);
+                    obj.transform.parent.SetParent(visitorObject.transform);
                     obj.transform.localPosition = new Vector3(0, 0, finalDiseaseList[i].GetSecondLayer());
 
                 }
@@ -621,13 +626,35 @@ public class RandomVisitorClass //SH
             }
 
         }
-
-
     }
 
-    IEnumerator FinalDissolve()
+    public IEnumerator FinalDissolve()
     {
+        yield return null;
+        float timer = 0;
 
+        while (timer < 1)
+        {
+            timer += Time.deltaTime/3f;
+            Debug.Log(timer);
+            for(int  i = 0; i < symptomObjectList.Count; i++)
+            {
+                if(symptomObjectList[i].dissolve == false)
+                {
+                    continue;
+                }
+                symptomObjectList[i].dissolveComponent.effectFactor = timer;
+            }
+            for (int i = 0; i < finalSymptomObjectList.Count; i++)
+            {
+                if (finalSymptomObjectList[i].dissolve == false)
+                {
+                    continue;
+                }
+                finalSymptomObjectList[i].dissolveComponent.effectFactor = 1-timer;
+            }
+            yield return null;
+        }
     }
     //카운터매니저에서 불러옴.134줄
     public static void SetStaticData(List<MedicineClass> ownedMedicineList,

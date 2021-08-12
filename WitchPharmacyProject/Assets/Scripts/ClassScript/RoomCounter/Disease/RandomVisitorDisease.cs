@@ -20,6 +20,8 @@ public class RandomVisitorDisease
     public string dialog;
     public string firstSpriteName;
     Sprite firstSprite;
+    GameObject firstObj;
+    GameObject secondObj;
 
 
     public string secondSpriteName;
@@ -54,6 +56,30 @@ public class RandomVisitorDisease
         builder.Append(spriteName);
         nowSprite = Resources.Load<Sprite>(builder.ToString());
         return nowSprite;
+    }
+
+    public GameObject LoadObject(bool first)
+    {
+        GameObject nowObject = null;
+        string objectName;
+        if (first == true)
+        {
+            objectName = firstSpriteName;
+            nowObject = firstObj;
+        }
+        else
+        {
+            objectName = secondSpriteName;
+            nowObject = secondObj;
+        }
+        if (nowObject != null)
+        {
+            return nowObject;
+        }
+        StringBuilder builder = new StringBuilder("RandomCharacter/Disease/");
+        builder.Append(objectName);
+        nowObject = Resources.Load<GameObject>(builder.ToString());
+        return nowObject;
     }
 
     public RandomVisitorFX GetEffect()
