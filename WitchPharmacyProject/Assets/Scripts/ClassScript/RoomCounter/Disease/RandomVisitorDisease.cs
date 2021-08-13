@@ -12,10 +12,12 @@ public enum RandomVisitorFX
 [System.Serializable]
 public class RandomVisitorDisease
 {
-    public string sympotmString;
+    public string symptomName;
     public int symptomNumber;
     [System.NonSerialized]
     RandomVisitorFX effect;
+    [System.NonSerialized]
+    public Symptom symptom;
     public string effectString;
     public string dialog;
     public string firstSpriteName;
@@ -117,7 +119,7 @@ public class RandomVisitorDisease
 
     public RandomVisitorDisease()
     {
-        sympotmString = "water";
+        symptomName = null;
         symptomNumber = -2;
         effect = RandomVisitorFX.None;
         dialog = "대본인데요";

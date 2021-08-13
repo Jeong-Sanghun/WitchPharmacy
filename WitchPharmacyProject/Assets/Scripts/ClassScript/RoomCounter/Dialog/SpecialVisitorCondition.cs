@@ -5,20 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class SpecialVisitorCondition
 {
-    public int priority;
+    public int appearingSequence;
     public string bundleName;
-    public string characterName;
     //public string specialMedicine;
-    public int[] symptomNumberArray;
-    public int appearingLeastDay;
+    public int appearingDay;
 
 
     public SpecialVisitorCondition()
     {
-        priority = 0;
+        appearingSequence = 0;
         bundleName = "Lily";
-        appearingLeastDay = 0;
-        symptomNumberArray = new int[5] { -1, 2, 0, 0, 0 };
+        appearingDay = 0;
         //appearingQuestBundleList = new List<string>();
         //appearingQuestBundleList.Add("none");
     }

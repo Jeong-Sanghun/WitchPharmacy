@@ -494,11 +494,12 @@ public class CounterManager : MonoBehaviour //SH
         }
         else
         {
-            if (nowVisitor == null)
+            if (nowVisitor != null)
             {
-                SpecialVisitorClass visitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, characterName, feeling);
-                nowVisitor = visitor;
+                nowVisitor.visitorObject.gameObject.SetActive(false);
             }
+            SpecialVisitorClass visitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, characterName, feeling);
+            nowVisitor = visitor;
         }
     }
 
@@ -531,8 +532,9 @@ public class CounterManager : MonoBehaviour //SH
         }
         else if(nowVisitorType== VisitorType.Special)
         {
-            nowVisitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, nowSpecialVisitorCondition);
-            VisitorDialogWrapper wrapper = counterDialogManager.LoadSpecialBundle(nowVisitor);
+            VisitorDialogBundle bundle = counterDialogManager.LoadSpecialBundle(nowSpecialVisitorCondition);
+            nowVisitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, bundle);
+            VisitorDialogWrapper wrapper = bundle.startWrapperList[0];
             ((SpecialVisitorClass)nowVisitor).SetObjectImage(wrapper.characterName,wrapper.characterFeeling);
         }
         
@@ -575,7 +577,7 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        lastVisitor = true;
+        //lastVisitor = true;
         if (lastVisitor)
         {
             endSales = true;

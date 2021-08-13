@@ -11,6 +11,7 @@ public class StoryParser
             ,RouteSwitch,RouteText,RightAfterRoute,CutScene,CutSceneFileName,CutSceneEffect,Null
             ,BackGround,BackGroundName,BackGroundEffect, NextStory, NextStoryName
             ,NextRegion, NextRegionName,RightMedicine,WrongMedicine,SkipVisitor,GiveCoin,CoinNumber
+            ,Symptom,SymptomNumber,Disease,DiseaseName
     }
 
     CharacterIndexToName characterIndexToName;
@@ -641,6 +642,7 @@ public class StoryParser
         string beforeName=null;
         string beforeFeeling=null;
         VisitorDialog nowDialog = null;
+        int nowSymptomIndex = 0;
         for (int i = 0; i < originText.Length; i++)
         {
 
@@ -744,6 +746,14 @@ public class StoryParser
                         nowWrapperList = gameData.skipWrapperList;
                         nowWrapperList.Add(nowWrapper);
                     }
+                    else if (modeStr.Contains("symptom"))
+                    {
+                        nowMode = ParseMode.Symptom;
+                    }
+                    else if (modeStr.Contains("disease"))
+                    {
+                        nowMode = ParseMode.Disease;
+                    }
                     builder.Clear();
                     break;
 
@@ -786,6 +796,12 @@ public class StoryParser
                             break;
                         case ParseMode.GiveCoin:
                             nowMode = ParseMode.CoinNumber;
+                            break;
+                        case ParseMode.Symptom:
+                            nowMode = ParseMode.SymptomNumber;
+                            break;
+                        case ParseMode.Disease:
+                            nowMode = ParseMode.DiseaseName;
                             break;
                         default:
                             builder.Append('{');
@@ -846,9 +862,65 @@ public class StoryParser
                             string num = builder.ToString();
                             nowWrapper.coin = int.Parse(num);
                             break;
+                        case ParseMode.SymptomNumber:
+                            nowMode = ParseMode.Null;
+                            if (nowSymptomIndex >= gameData.symptomNumberArray.Length)
+                            {
+                                break;
+                            }
+                            string strNum = builder.ToString();
+                            int intNum;
+                            if (strNum.Length > 0)
+                            {
+                                intNum = int.Parse(strNum);
+                            }
+                            else
+                            {
+                                intNum = 0;
+                            }
+                            gameData.symptomNumberArray[nowSymptomIndex] = intNum;
+                            nowSymptomIndex++;
+                            break;
+                        case ParseMode.DiseaseName:
+                            nowMode = ParseMode.Null;
+                            string disease = builder.ToString();
+                            gameData.diseaseNameList.Add(disease);
+                            break;
 
                     }
                     builder.Clear();
+                    break;
+                case ',':
+                    switch (nowMode)
+                    {
+                        case ParseMode.SymptomNumber:
+                            string strNum = builder.ToString();
+                            if (nowSymptomIndex >= gameData.symptomNumberArray.Length)
+                            {
+                                break;
+                            }
+                            int intNum;
+                            if (strNum.Length>0)
+                            {
+                                intNum = int.Parse(strNum);
+                            }
+                            else
+                            {
+                                intNum = 0;
+                            }
+                            gameData.symptomNumberArray[nowSymptomIndex] = intNum;
+                            nowSymptomIndex++;
+                            builder.Clear();
+                            break;
+                        case ParseMode.DiseaseName:
+                            string disease = builder.ToString();
+                            gameData.diseaseNameList.Add(disease);
+                            builder.Clear();
+                            break;
+                        default:
+                            builder.Append(',');
+                            break;
+                    }
                     break;
                 case '(':
                     switch (nowMode)

@@ -128,9 +128,13 @@ public class VisitorTriggerManager : MonoBehaviour
                 continue;
             }
 
-            if (gameManager.saveData.nowDay < specialVisitorConditionDataList[i].appearingLeastDay)
+            if (gameManager.saveData.nowDay != specialVisitorConditionDataList[i].appearingDay)
             {
                 Debug.Log("데이가 안됨");
+                continue;
+            }
+            if(specialVisitorConditionDataList[i].appearingSequence != nowVisitorIndex)
+            {
                 continue;
             }
             saveData.readSpecialVisitorBundleList.Add(specialVisitorConditionDataList[i].bundleName);

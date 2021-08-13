@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 1200.0,
-    "nowDay": 2,
-    "coin": 1047,
+    "nowTime": 7320.0,
+    "nowDay": 0,
+    "coin": 1017,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -26,11 +26,11 @@
         },
         {
             "medicineIndex": 51,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 58,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 59,
@@ -57,38 +57,9 @@
                     "changedCoin": 3
                 }
             ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 10
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 20
-                }
-            ]
         }
     ],
-    "owningDocumentList": [
-        {
-            "name": "Go",
-            "gainedRegion": 0,
-            "gainedDay": 0,
-            "gainedTime": 3480.0
-        }
-    ],
+    "owningDocumentList": [],
     "symptomBookList": [
         "water+",
         "water-",
@@ -112,43 +83,20 @@
         "appearingSpecialResearchList": []
     },
     "routePairList": [],
-    "regionSaveDataList": [
-        {
-            "regionIndex": 0,
-            "firstDiscountedMedicineIndex": [
-                51,
-                58
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        }
-    ],
+    "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
         true,
-        true,
-        true
+        false,
+        false
     ],
     "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
-        "firstDay",
-        "secondDay"
+        "firstDay"
     ],
     "readSpecialVisitorBundleList": [
-        "Lily1",
-        "Ian1"
+        "Lily1"
     ],
-    "nextStory": "thirdDay",
+    "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 0,
     "nowRegion": 0

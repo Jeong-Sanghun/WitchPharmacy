@@ -17,6 +17,10 @@ public class RandomVisitorDiseaseBundle
         {
             wrapperList[i] = jsonManager.ResourceDataLoad<RandomVisitorDiseaseWrapper>("RandomVisitorDisease/"
                 + (Symptom)i);
+            for(int j = 0; j < wrapperList[i].randomVisitorDiseaseArray.Length; j++)
+            {
+                wrapperList[i].randomVisitorDiseaseArray[j].symptom = (Symptom)i;
+            }
         }
     }
 }

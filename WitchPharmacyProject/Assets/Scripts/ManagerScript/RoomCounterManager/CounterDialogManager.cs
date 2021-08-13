@@ -222,12 +222,12 @@ public class CounterDialogManager : MonoBehaviour
         VisitUpdate();
     }
 
-    public VisitorDialogWrapper LoadSpecialBundle(VisitorClass visitor)
+    public VisitorDialogBundle LoadSpecialBundle(SpecialVisitorCondition condition)
     {
-        nowVisitor = visitor;
-        nowVisitorType = visitor.visitorType;
-        nowBundle = storyParser.LoadBundle(((SpecialVisitorClass)visitor).condition.bundleName, languageDirectory, visitor.visitorType);
-        return nowBundle.startWrapperList[0];
+        //nowVisitor = visitor;
+        //nowVisitorType = visitor.visitorType;
+        nowBundle = storyParser.LoadBundle(condition.bundleName, languageDirectory,VisitorType.Special);
+        return nowBundle;
     }
 
 
@@ -676,7 +676,7 @@ public class CounterDialogManager : MonoBehaviour
         {
             VisitorDialog nowDialog = nowWrapper.dialogList[nowDialogIndex];
             string str = nowDialog.dialog;
-            while (str.Contains("$"))
+            while (str.Contains("$") && nowVisitor.diseaseList.Count != 0)
             {
                 if (nowSymptomInsertIndex < nowVisitor.diseaseList.Count)
                 {

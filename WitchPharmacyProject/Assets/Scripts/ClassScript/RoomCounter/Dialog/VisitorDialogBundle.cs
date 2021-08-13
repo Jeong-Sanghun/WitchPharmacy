@@ -6,6 +6,8 @@ public class VisitorDialogBundle
 {
     public string bundleName;
     public VisitorType visitorType;
+    public int[] symptomNumberArray;
+    public List<string> diseaseNameList;
     public List<VisitorDialogWrapper> startWrapperList;
     public List<VisitorDialogWrapper> rightWrapperList;
     public List<VisitorDialogWrapper> wrongWrapperList;
@@ -15,6 +17,8 @@ public class VisitorDialogBundle
     {
         visitorType = VisitorType.Random;
         bundleName = null;
+        symptomNumberArray = new int[5];
+        diseaseNameList = new List<string>();
         startWrapperList = new List<VisitorDialogWrapper>();
         rightWrapperList = new List<VisitorDialogWrapper>();
         wrongWrapperList = new List<VisitorDialogWrapper>();

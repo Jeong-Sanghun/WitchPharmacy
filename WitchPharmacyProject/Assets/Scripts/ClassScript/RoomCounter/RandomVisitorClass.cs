@@ -24,7 +24,7 @@ public class SymptomObject
     public Symptom symptom;
     public bool dissolve;
     public UIDissolve dissolveComponent;
-    public string disease;
+    //public string disease;
     public int amount;
 
     public SymptomObject()
@@ -412,7 +412,7 @@ public class RandomVisitorClass : VisitorClass
                 SymptomObject symptomObject = new SymptomObject();
                 symptomObject.obj = obj;
                 symptomObject.dissolve = true;
-                symptomObject.disease = diseaseList[i].sympotmString;
+                //symptomObject.disease = diseaseList[i].sympotmString;
                 symptomObject.amount = diseaseList[i].symptomNumber;
                 symptomObject.dissolveComponent = dissolve;
                 symptomObjectList.Add(symptomObject);
@@ -451,7 +451,7 @@ public class RandomVisitorClass : VisitorClass
                 symptomObject.obj = obj;
                 symptomObject.dissolve = true;
                 symptomObject.dissolveComponent = dissolve;
-                symptomObject.disease = diseaseList[i].sympotmString;
+                //symptomObject.disease = diseaseList[i].sympotmString;
                 symptomObject.amount = diseaseList[i].symptomNumber;
                 symptomObjectList.Add(symptomObject);
                 if (diseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
@@ -504,7 +504,7 @@ public class RandomVisitorClass : VisitorClass
             {
                 for (int j = 0; j < symptomObjectList.Count; j++)
                 {
-                    if(symptomObjectList[j].disease.Contains(((Symptom)i).ToString()))
+                    if(symptomObjectList[j].symptom== (Symptom)i)
                     {
                         symptomObjectList[j].dissolve = false;
                     }
