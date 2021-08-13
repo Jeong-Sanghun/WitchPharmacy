@@ -22,6 +22,7 @@ public class VisitorTriggerManager : MonoBehaviour
     bool specialVisitorVisited;
     int oddProgressingQuestIndex = 0;
     List<int> specialVisitorAppearingIndex;
+    SpecialVisitorCondition nowSpecialVisitorCondition;
 
     void Start()
     {
@@ -69,15 +70,15 @@ public class VisitorTriggerManager : MonoBehaviour
     //트루면 트리거체크, 폴스면 그냥 일반손님 혹은 띨빵손님.
     bool SpecialConditionCheck()
     {
-        if(specialVisitorVisited == true)
-        {
-            return false;
-        }
-        if (!specialVisitorAppearingIndex.Contains(nowVisitorIndex))
-        {
-            return false;
-        }
-        float chaosMeter = gameManager.saveData.chaosMeter;
+        //if(specialVisitorVisited == true)
+        //{
+        //    return false;
+        //}
+        //if (specialVisitorAppearingIndex.Contains(nowVisitorIndex))
+        //{
+        //    return false;
+        //}
+        //float chaosMeter = gameManager.saveData.chaosMeter;
         //List<string> solvedQuest = gameManager.saveData.solvedQuestBundleName;
         //List<string> calledQuest = gameManager.saveData.calledQuestBundleName;
         //호출때렸으면 무조건 얘부터 나옴.
@@ -90,122 +91,139 @@ public class VisitorTriggerManager : MonoBehaviour
 
         //}
 
-        //for (int i = 0; i < specialVisitorConditionDataList.Count; i++)
-        //{
-            
-        //    if (solvedQuest.Contains(specialVisitorConditionDataList[i].bundleName))
-        //    {
-        //        Debug.Log("해결한 퀘스트");
-        //        continue;
-        //    }
-        //    if (saveData.progressingQuestBundleName.Contains(specialVisitorConditionDataList[i].bundleName))
-        //    {
-        //        Debug.Log("해결한 퀘스트");
-        //        continue;
-        //    }
-        //    //if (todaySpecialVisitorList.Contains(specialVisitorConditionDataList[i].bundleName))
-        //    //{
-        //    //    Debug.Log("오늘 이미 방문함");
-        //    //    continue;
-        //    //}
-        //    if (chaosMeter < specialVisitorConditionDataList[i].appearingChaosMeter)
-        //    {
-        //        Debug.Log("카오스미터가 안됨");
-        //        continue;
-        //    }
+        for (int i = 0; i < specialVisitorConditionDataList.Count; i++)
+        {
 
-        //    if (gameManager.saveData.nowDay < specialVisitorConditionDataList[i].appearingLeastDay)
-        //    {
-        //        Debug.Log("데이가 안됨");
-        //        continue;
-        //    }
-        //    bool notContaining = false;
-        //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingSolvedQuestBundleList.Count; j++)
-        //    {
-        //        if (!gameManager.saveData.solvedQuestBundleName.
-        //            Contains(specialVisitorConditionDataList[i].appearingSolvedQuestBundleList[j]))
-        //        {
-        //            notContaining = true;
-        //            break;
-        //        }
-        //    }
-        //    if (notContaining == true)
-        //    {
-        //        Debug.Log("솔브드퀘스트가 안됨");
-        //        continue;
-        //    }
+            //    if (solvedQuest.Contains(specialVisitorConditionDataList[i].bundleName))
+            //    {
+            //        Debug.Log("해결한 퀘스트");
+            //        continue;
+            //    }
+            //    if (saveData.progressingQuestBundleName.Contains(specialVisitorConditionDataList[i].bundleName))
+            //    {
+            //        Debug.Log("해결한 퀘스트");
+            //        continue;
+            //    }
+            //    //if (todaySpecialVisitorList.Contains(specialVisitorConditionDataList[i].bundleName))
+            //    //{
+            //    //    Debug.Log("오늘 이미 방문함");
+            //    //    continue;
+            //    //}
+            //    if (chaosMeter < specialVisitorConditionDataList[i].appearingChaosMeter)
+            //    {
+            //        Debug.Log("카오스미터가 안됨");
+            //        continue;
+            //    }
+            bool read = false;
+            for(int j = 0;j< gameManager.saveData.readSpecialVisitorBundleList.Count; j++)
+            {
+                if (gameManager.saveData.readSpecialVisitorBundleList[j].Contains(specialVisitorConditionDataList[i].bundleName))
+                {
+                    read = true;
+                    break;
+                }
+            }
+            if (read)
+            {
+                continue;
+            }
 
-        //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingProgressingQuestBundleList.Count; j++)
-        //    {
-        //        if (!gameManager.saveData.progressingQuestBundleName.
-        //            Contains(specialVisitorConditionDataList[i].appearingProgressingQuestBundleList[j]))
-        //        {
-        //            notContaining = true;
-        //            break;
-        //        }
-        //    }
-        //    if (notContaining == true)
-        //    {
-        //        Debug.Log("프로그레싱퀘스트 조건이 안됨");
-        //        continue;
-        //    }
-        //    List<SpecialMedicineClass> medicineList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
-        //    List<OwningMedicineClass> owningList = gameManager.saveData.owningSpecialMedicineList;
-        //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingSpecialMedicineList.Count; j++)
-        //    {
+            if (gameManager.saveData.nowDay < specialVisitorConditionDataList[i].appearingLeastDay)
+            {
+                Debug.Log("데이가 안됨");
+                continue;
+            }
+            saveData.readSpecialVisitorBundleList.Add(specialVisitorConditionDataList[i].bundleName);
+            nowSpecialVisitorCondition = specialVisitorConditionDataList[i];
+            //specialVisitorFileName = specialVisitorConditionDataList[i].bundleName;
+            return true;
+            //    bool notContaining = false;
+            //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingSolvedQuestBundleList.Count; j++)
+            //    {
+            //        if (!gameManager.saveData.solvedQuestBundleName.
+            //            Contains(specialVisitorConditionDataList[i].appearingSolvedQuestBundleList[j]))
+            //        {
+            //            notContaining = true;
+            //            break;
+            //        }
+            //    }
+            //    if (notContaining == true)
+            //    {
+            //        Debug.Log("솔브드퀘스트가 안됨");
+            //        continue;
+            //    }
 
-        //        for (int k = 0; k < owningList.Count; k++)
-        //        {
-        //            if (medicineList[owningList[i].medicineIndex].fileName
-        //                == specialVisitorConditionDataList[i].appearingSpecialMedicineList[j])
-        //            {
-        //                notContaining = false;
-        //                break;
-        //            }
-        //            else
-        //            {
-        //                notContaining = true;
-        //            }
-        //        }
-        //        if (notContaining == true)
-        //        {
-        //            break;
-        //        }
-        //    }
-        //    if (notContaining == true)
-        //    {
-        //        Debug.Log("스페셜메디슨이 안됨");
-        //        continue;
-        //    }
-        //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingStoryBundleList.Count; j++)
-        //    {
-        //        if (!gameManager.saveData.readStoryList.
-        //            Contains(specialVisitorConditionDataList[i].appearingStoryBundleList[j]))
-        //        {
-        //            notContaining = true;
-        //            break;
-        //        }
-        //    }
-        //    if (notContaining == true)
-        //    {
-        //        Debug.Log("스토리가 안됨");
-        //        continue;
-        //    }
-        //    if (!notContaining)
-        //    {
-                
-        //        specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
-        //        if (saveData.progressingQuestBundleName.Contains(specialVisitorDialogBundle.bundleName))
-        //        {
-        //            isSecondVisit = true;
-        //        }
-        //        else
-        //        {
-        //            isSecondVisit = false;
-        //        }
-        //        return true;
-        //    }
-        //}
+            //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingProgressingQuestBundleList.Count; j++)
+            //    {
+            //        if (!gameManager.saveData.progressingQuestBundleName.
+            //            Contains(specialVisitorConditionDataList[i].appearingProgressingQuestBundleList[j]))
+            //        {
+            //            notContaining = true;
+            //            break;
+            //        }
+            //    }
+            //    if (notContaining == true)
+            //    {
+            //        Debug.Log("프로그레싱퀘스트 조건이 안됨");
+            //        continue;
+            //    }
+            //    List<SpecialMedicineClass> medicineList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
+            //    List<OwningMedicineClass> owningList = gameManager.saveData.owningSpecialMedicineList;
+            //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingSpecialMedicineList.Count; j++)
+            //    {
+
+            //        for (int k = 0; k < owningList.Count; k++)
+            //        {
+            //            if (medicineList[owningList[i].medicineIndex].fileName
+            //                == specialVisitorConditionDataList[i].appearingSpecialMedicineList[j])
+            //            {
+            //                notContaining = false;
+            //                break;
+            //            }
+            //            else
+            //            {
+            //                notContaining = true;
+            //            }
+            //        }
+            //        if (notContaining == true)
+            //        {
+            //            break;
+            //        }
+            //    }
+            //    if (notContaining == true)
+            //    {
+            //        Debug.Log("스페셜메디슨이 안됨");
+            //        continue;
+            //    }
+            //    for (int j = 0; j < specialVisitorConditionDataList[i].appearingStoryBundleList.Count; j++)
+            //    {
+            //        if (!gameManager.saveData.readStoryList.
+            //            Contains(specialVisitorConditionDataList[i].appearingStoryBundleList[j]))
+            //        {
+            //            notContaining = true;
+            //            break;
+            //        }
+            //    }
+            //    if (notContaining == true)
+            //    {
+            //        Debug.Log("스토리가 안됨");
+            //        continue;
+            //    }
+            //    if (!notContaining)
+            //    {
+
+            //        specialVisitorDialogBundle = gameManager.LoadVisitorBundle(specialVisitorConditionDataList[i].bundleName);
+            //        if (saveData.progressingQuestBundleName.Contains(specialVisitorDialogBundle.bundleName))
+            //        {
+            //            isSecondVisit = true;
+            //        }
+            //        else
+            //        {
+            //            isSecondVisit = false;
+            //        }
+            //        return true;
+            //    }
+        }
         return false;
     }
 
@@ -281,6 +299,7 @@ public class VisitorTriggerManager : MonoBehaviour
         if (SpecialConditionCheck())
         {
             specialVisitorVisited = true;
+            counterManager.CounterSpecialStart(nowSpecialVisitorCondition);
             //todaySpecialVisitorList.Add(specialVisitorDialogBundle.bundleName);
             //if (isSecondVisit)
             //{

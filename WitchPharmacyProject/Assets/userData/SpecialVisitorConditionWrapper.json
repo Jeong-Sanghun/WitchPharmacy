@@ -3,23 +3,28 @@
         {
             "priority": 0,
             "bundleName": "Lily",
-			"specialMedicine" : "withered_dew",
-            "appearingChaosMeter": 0.0,
-            "appearingSolvedQuestBundleList": [],
-            "appearingProgressingQuestBundleList": [],
-            "appearingSpecialMedicineList": [],
-            "appearingLeastDay": 0,
-            "appearingStoryBundleList": []
+            "characterName": "",
+            "symptomNumberArray": [
+                -1,
+                2,
+                0,
+                0,
+                0
+            ],
+            "appearingLeastDay": 0
         },
         {
             "priority": 0,
             "bundleName": "Lily",
-            "appearingChaosMeter": 0.0,
-            "appearingSolvedQuestBundleList": [],
-            "appearingProgressingQuestBundleList": [],
-            "appearingSpecialMedicineList": [],
-            "appearingLeastDay": 0,
-            "appearingStoryBundleList": []
+            "characterName": "",
+            "symptomNumberArray": [
+                -1,
+                2,
+                0,
+                0,
+                0
+            ],
+            "appearingLeastDay": 0
         }
     ]
 }

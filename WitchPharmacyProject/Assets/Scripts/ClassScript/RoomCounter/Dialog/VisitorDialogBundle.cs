@@ -9,6 +9,7 @@ public class VisitorDialogBundle
     public List<VisitorDialogWrapper> startWrapperList;
     public List<VisitorDialogWrapper> rightWrapperList;
     public List<VisitorDialogWrapper> wrongWrapperList;
+    public List<VisitorDialogWrapper> skipWrapperList;
 
     public VisitorDialogBundle()
     {
@@ -17,5 +18,6 @@ public class VisitorDialogBundle
         startWrapperList = new List<VisitorDialogWrapper>();
         rightWrapperList = new List<VisitorDialogWrapper>();
         wrongWrapperList = new List<VisitorDialogWrapper>();
+        skipWrapperList = new List<VisitorDialogWrapper>();
     }
 }

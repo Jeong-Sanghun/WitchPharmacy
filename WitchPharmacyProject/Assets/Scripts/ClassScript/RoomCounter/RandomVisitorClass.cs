@@ -37,10 +37,8 @@ public class SymptomObject
 //이거 제이슨으로 저장하는게 아님
 //랜덤손님 1명이 가지고 있는 클래스
 [System.Serializable]
-public class RandomVisitorClass //SH
+public class RandomVisitorClass : VisitorClass
 {
-    //이거 만들어줘야 카운터 클래스에서 setactiveFalse로 끌 수 있음
-    public GameObject visitorObject;
 
     public string name;
     //public string fullDialog;
@@ -49,14 +47,11 @@ public class RandomVisitorClass //SH
     
     public List<Symptom> symptomList;
     public List<int> symptomAmountList;
-    public int[] symptomAmountArray;
     //증상은 무조건 두 개    
     public List<MedicineClass> answerMedicineList;
     
-    static List<MedicineClass> ownedMedicineList;
-    static RandomVisitorDiseaseBundle diseaseBundle;
+
     public static int gainCoin = 40;
-    public List<RandomVisitorDisease> diseaseList;
 
 
     /*
@@ -69,9 +64,7 @@ public class RandomVisitorClass //SH
     int[] partsIndex;
     public GameObjectWrapper[] partsWrapperArray;
 
-    List<SymptomObject> symptomObjectList;
-    List<SymptomObject> finalSymptomObjectList;
-    StoryRegion nowRegion;
+
     bool childSetParented;
 
     GameObject headPart;
@@ -101,6 +94,7 @@ public class RandomVisitorClass //SH
     public RandomVisitorClass(GameObject parent,StoryRegion region)
     {
         //earSymptom = (Symptom)Random.Range(0, 6);
+        visitorType = VisitorType.Random;
         //hornSymptom = (Symptom)Random.Range(0, 6);
         symptomList = new List<Symptom>();
         symptomAmountList = new List<int>();
@@ -293,30 +287,9 @@ public class RandomVisitorClass //SH
         //fullDialog = build.ToString();
         SetDiseaseList();
         RandomPartsGenerator(parent,region);
+        StartSymptomSpriteUpdate();
     }
 
-    void SetDiseaseList()
-    {
-        for(int i = 0; i < symptomAmountArray.Length; i++)
-        {
-            int amount = symptomAmountArray[i];
-            if(amount == 0)
-            {
-                continue;
-            }
-            List<int> diseaseIndexList = new List<int>();
-            for(int j = 0; j < diseaseBundle.wrapperList[i].randomVisitorDiseaseArray.Length; j++)
-            {
-                if (amount == diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[j].symptomNumber)
-                {
-                    diseaseIndexList.Add(j);
-                }
-            }
-            int index = diseaseIndexList[Random.Range(0, diseaseIndexList.Count)];
-            diseaseList.Add(diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[index]);
-            
-        }
-    }
 
 
     //랜덤캐릭터 만드는 함수
@@ -421,6 +394,11 @@ public class RandomVisitorClass //SH
                 }
             }
         }
+
+    }
+
+    public override void StartSymptomSpriteUpdate()
+    {
         childSetParented = false;
         //partsWrapperArray[2].partsArray[0] 이게 헤드임.
         for (int i = 0; i < diseaseList.Count; i++)
@@ -428,7 +406,7 @@ public class RandomVisitorClass //SH
 
             if (diseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(true),visitor.transform).transform.GetChild(0).gameObject;
+                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -457,7 +435,7 @@ public class RandomVisitorClass //SH
                 }
                 else
                 {
-                    obj.transform.parent.SetParent(visitor.transform);
+                    obj.transform.parent.SetParent(visitorObject.transform);
                     obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetFirstLayer());
 
                 }
@@ -466,7 +444,7 @@ public class RandomVisitorClass //SH
             }
             if (diseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(false), visitor.transform).transform.GetChild(0).gameObject;
+                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -489,7 +467,7 @@ public class RandomVisitorClass //SH
                 }
                 else
                 {
-                    obj.transform.parent.SetParent(visitor.transform);
+                    obj.transform.parent.SetParent(visitorObject.transform);
                     obj.transform.localPosition = new Vector3(0, 0, diseaseList[i].GetSecondLayer());
 
                 }
@@ -497,12 +475,9 @@ public class RandomVisitorClass //SH
             }
 
         }
-
-
-
     }
 
-    public void FinalSymptomSpriteUpdate(int[] finalSymptomArray)
+    public override void FinalSymptomSpriteUpdate(int[] finalSymptomArray)
     {
         List<RandomVisitorDisease> finalDiseaseList = new List<RandomVisitorDisease>();
         //for(int i = 0; i < symptomObjectList.Count; i++)
@@ -628,41 +603,8 @@ public class RandomVisitorClass //SH
         }
     }
 
-    public IEnumerator FinalDissolve()
-    {
-        yield return null;
-        float timer = 0;
-
-        while (timer < 1)
-        {
-            timer += Time.deltaTime/3f;
-            Debug.Log(timer);
-            for(int  i = 0; i < symptomObjectList.Count; i++)
-            {
-                if(symptomObjectList[i].dissolve == false)
-                {
-                    continue;
-                }
-                symptomObjectList[i].dissolveComponent.effectFactor = timer;
-            }
-            for (int i = 0; i < finalSymptomObjectList.Count; i++)
-            {
-                if (finalSymptomObjectList[i].dissolve == false)
-                {
-                    continue;
-                }
-                finalSymptomObjectList[i].dissolveComponent.effectFactor = 1-timer;
-            }
-            yield return null;
-        }
-    }
+  
     //카운터매니저에서 불러옴.134줄
-    public static void SetStaticData(List<MedicineClass> ownedMedicineList,
-        RandomVisitorDiseaseBundle bundle )
-    {
-        RandomVisitorClass.ownedMedicineList = ownedMedicineList;
-        RandomVisitorClass.diseaseBundle = bundle;
-    }
 
 
 }

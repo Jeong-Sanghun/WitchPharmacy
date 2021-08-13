@@ -36,10 +36,10 @@ public class CounterManager : MonoBehaviour //SH
     List<MedicineClass> medicineDataList;
 
 
-    SpecialVisitorClass nowSpecialVisitor;
+    //SpecialVisitorClass nowSpecialVisitor;
     [SerializeField]
-    List<RandomVisitorClass> randomVisitorList;
-    RandomVisitorClass nowVisitor;
+    List<VisitorClass> visitorList;
+    VisitorClass nowVisitor;
     VisitorType nowVisitorType;
     [SerializeField]
     Text visitorText;
@@ -93,6 +93,7 @@ public class CounterManager : MonoBehaviour //SH
     int index = 0;
     //bool isSpecialVisitor = false;
     bool lastVisitor = false;
+    bool counterStarted = false;
 
     [SerializeField]
     GameObject measureToolOpenButton;
@@ -112,6 +113,7 @@ public class CounterManager : MonoBehaviour //SH
     [SerializeField]
     Text wholeCoinText;
 
+    SpecialVisitorCondition nowSpecialVisitorCondition;
 
     List<SpecialMedicineClass> specialMedicineDataList;
 
@@ -137,7 +139,7 @@ public class CounterManager : MonoBehaviour //SH
         gainedCoinObjectOriginPos = gainedCoinText.transform.position;
         gainedMedicineObjectOriginPos = gainedMedicineImage.transform.position;
 
-        randomVisitorList = new List<RandomVisitorClass>();
+        visitorList = new List<VisitorClass>();
 
         wholeCoinText.text = saveData.coin.ToString();
 
@@ -172,16 +174,37 @@ public class CounterManager : MonoBehaviour //SH
             entry1.callback.AddListener((data) => { OnButtonUp((PointerEventData)data, delegateIndex); });
             buttonEvent.triggers.Add(entry1);
         }
-
+        counterStarted = false;
         //스태틱으로 만들어버려
         RandomVisitorClass.SetStaticData(ownedMedicineList,gameManager.randomVisitorDiseaseBundle);
         TimeTextChange();
     }
 
+    float timer = 0;
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > 1)
+        {
+            if(counterStarted)
+                TimeChange(60);
+            timer = 0;
+        }
+    }
+
     //트리거매니저에서 불러옴.
     public void CounterStart()
     {
+        counterStarted = true;
         nowVisitorType = VisitorType.Random;
+        SpawnRandomVisitor();
+    }
+
+    public void CounterSpecialStart(SpecialVisitorCondition condition)
+    {
+        counterStarted = true;
+        nowVisitorType = VisitorType.Special;
+        nowSpecialVisitorCondition = condition;
         SpawnRandomVisitor();
     }
     ////씨발...트리거매니저...
@@ -201,6 +224,7 @@ public class CounterManager : MonoBehaviour //SH
     //whtflrj~~
     public void CounterStart(OddVisitorDialogBundle bundle)
     {
+        counterStarted = true;
         nowVisitorType = VisitorType.Odd;
         SpawnRandomVisitor();
     }
@@ -231,10 +255,10 @@ public class CounterManager : MonoBehaviour //SH
             if(nowVisitor.visitorObject != null)
                 nowVisitor.visitorObject.SetActive(false);
         }
-        if(nowSpecialVisitor != null)
-        {
-            nowSpecialVisitor.visitorObject.SetActive(false);
-        }
+        //if(nowSpecialVisitor != null)
+        //{
+        //    nowSpecialVisitor.visitorObject.SetActive(false);
+        //}
         counterDialogManager.nowTalking = true;
         medicineManager.SpecialVisitorVisits();
         //symptomChartManager.SpecialVisitorVisits(specialVisitorDialogBundle.symptomNumberArray);
@@ -261,10 +285,10 @@ public class CounterManager : MonoBehaviour //SH
     }
 
     //카운터 다이얼로그 매니저에서 스프라이트 바꿔줘야돼서. 앵그리로.
-    public void ChangeSpecialVisitorSprite(Sprite sprite)
-    {
-        nowSpecialVisitor.spriteRenderer.sprite = sprite;
-    }
+    //public void ChangeSpecialVisitorSprite(Sprite sprite)
+    //{
+    //    nowSpecialVisitor.spriteRenderer.sprite = sprite;
+    //}
 
 
 
@@ -377,7 +401,7 @@ public class CounterManager : MonoBehaviour //SH
         int[] visitorSymptomArray = nowVisitor.symptomAmountArray;
 
         List<Symptom> badSymptomList = new List<Symptom>();
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             finalSymptomArray[i] = 0;
             medicineSymptomArray[i] = 0;
@@ -392,7 +416,7 @@ public class CounterManager : MonoBehaviour //SH
             medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
             medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
         }
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             finalSymptomArray[i] = medicineSymptomArray[i] + visitorSymptomArray[i];
             if (finalSymptomArray[i] != 0)
@@ -401,9 +425,24 @@ public class CounterManager : MonoBehaviour //SH
                 badSymptomList.Add((Symptom)i);
             }
         }
-        if (nowVisitorType == VisitorType.Random)
+        if (wrongMedicine)
         {
-            counterDialogManager.OnVisitorEnd(wrongMedicine);
+            counterDialogManager.OnVisitorEnd(VisitorEndState.Wrong);
+        }
+        else
+        {
+            counterDialogManager.OnVisitorEnd(VisitorEndState.Right);
+        }
+
+        if (nowVisitor.visitorType == VisitorType.Random)
+        {
+
+            ((RandomVisitorClass)nowVisitor).FinalSymptomSpriteUpdate(finalSymptomArray);
+            StartCoroutine(nowVisitor.FinalDissolve());
+        }
+        else
+        {
+
             nowVisitor.FinalSymptomSpriteUpdate(finalSymptomArray);
             StartCoroutine(nowVisitor.FinalDissolve());
         }
@@ -421,10 +460,10 @@ public class CounterManager : MonoBehaviour //SH
         //}
 
 
-        if (!wrongMedicine)
-        {
-            CoinGain();
-        }
+        //if (!wrongMedicine)
+        //{
+        //    CoinGain();
+        //}
 
 
     }
@@ -432,19 +471,35 @@ public class CounterManager : MonoBehaviour //SH
     //counterDialogManager에서 호출, 스킵버튼에서 호출.
     public void VisitorDisappear(bool skip)
     {
-        TimeChange(3600);
+        //TimeChange(3600);
         VisitorTalkStart();
-        StartCoroutine(VisitorDisapperCoroutine());
+        if (skip)
+        {
+            counterDialogManager.OnVisitorEnd(VisitorEndState.Skip);
+        }
+        else
+        {
+            StartCoroutine(VisitorDisapperCoroutine());
+        }
+
+        
     }
 
     public void SetSpecialVisitor(string characterName, string feeling)
     {
-        if(nowSpecialVisitor != null)
+
+        if(nowVisitor != null && nowVisitor.visitorType == VisitorType.Special)
         {
-            nowSpecialVisitor.visitorObject.SetActive(false);
+            ((SpecialVisitorClass)nowVisitor).SetObjectImage(characterName, feeling);
         }
-        SpecialVisitorClass visitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, characterName, feeling);
-        nowSpecialVisitor = visitor;
+        else
+        {
+            if (nowVisitor == null)
+            {
+                SpecialVisitorClass visitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, characterName, feeling);
+                nowVisitor = visitor;
+            }
+        }
     }
 
     //카운터 다이얼로그 매니저에서 불러옴.
@@ -470,13 +525,19 @@ public class CounterManager : MonoBehaviour //SH
         {
             nowVisitor.visitorObject.SetActive(false);
         }
-        if (nowSpecialVisitor != null)
+        if(nowVisitorType == VisitorType.Random)
         {
-            nowSpecialVisitor.visitorObject.SetActive(false);
+            nowVisitor = new RandomVisitorClass(visitorParent, StoryRegion.Narin);
         }
-        nowVisitor = new RandomVisitorClass(visitorParent, StoryRegion.Narin);
+        else if(nowVisitorType== VisitorType.Special)
+        {
+            nowVisitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, nowSpecialVisitorCondition);
+            VisitorDialogWrapper wrapper = counterDialogManager.LoadSpecialBundle(nowVisitor);
+            ((SpecialVisitorClass)nowVisitor).SetObjectImage(wrapper.characterName,wrapper.characterFeeling);
+        }
+        
         //쫙 뿌려준다
-        randomVisitorList.Add(nowVisitor);
+        visitorList.Add(nowVisitor);
         symptomChartManager.VisitorVisits(nowVisitor);
         medicineManager.VisitorVisits(nowVisitor);
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
@@ -485,21 +546,25 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorAppearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
+        counterDialogManager.OnVisitorVisit(nowVisitor);
 
-        switch (nowVisitorType){
-            case VisitorType.Random:
-                counterDialogManager.OnVisitorVisit(nowVisitor);
-                break;
-            //case VisitorType.SecondSpecial:
-            //    counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle,true);
-            //    break;
-            //case VisitorType.FirstSpecial:
-            //    counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle, false);
-            //    break;
-            //case VisitorType.Odd:
-            //    counterDialogManager.OnOddVisitorVisit(oddVisitorDialogBundle,nowVisitor);
-                //break;
-        }
+        //switch (nowVisitorType){
+        //    case VisitorType.Random:
+        //        counterDialogManager.OnVisitorVisit(nowVisitor);
+        //        break;
+        //    case VisitorType.Special:
+
+        //        break;
+        //        //case VisitorType.SecondSpecial:
+        //        //    counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle,true);
+        //        //    break;
+        //        //case VisitorType.FirstSpecial:
+        //        //    counterDialogManager.OnSpecialVisitorVisit(specialVisitorDialogBundle, false);
+        //        //    break;
+        //        //case VisitorType.Odd:
+        //        //    counterDialogManager.OnOddVisitorVisit(oddVisitorDialogBundle,nowVisitor);
+        //        //break;
+        //}
 
 
     }
@@ -720,14 +785,15 @@ public class CounterManager : MonoBehaviour //SH
         timeText.text = builder.ToString();
     }
 
-    void CoinGain()
+    //카운터다이얼로그매니저
+    public void CoinGain(int coin)
     {
-        saveData.coin += RandomVisitorClass.gainCoin;
+        saveData.coin += coin;
         CoinTextChange();
         gainedCoinText.color = Color.black;
-        gainedCoinText.text = "+" + RandomVisitorClass.gainCoin.ToString();
+        gainedCoinText.text = "+" + coin.ToString();
         gainedCoinText.transform.position = gainedCoinObjectOriginPos;
-        TabletManager.inst.UpdateBill(BillReason.medicineSell, true, RandomVisitorClass.gainCoin);
+        TabletManager.inst.UpdateBill(BillReason.medicineSell, true, coin);
         StartCoroutine(sceneManager.FadeModule_Text(gainedCoinText, 1, 0, 2f));
         StartCoroutine(sceneManager.MoveModule_Linear(gainedCoinText.gameObject, gainedCoinObjectOriginPos + new Vector3(0, 2, 0), 1));
     }

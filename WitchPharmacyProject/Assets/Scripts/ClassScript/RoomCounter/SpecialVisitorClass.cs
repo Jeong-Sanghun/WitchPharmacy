@@ -3,29 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 
-public class SpecialVisitorClass
+public class SpecialVisitorClass : VisitorClass
 {
-    public GameObject visitorObject;
     public SpriteRenderer spriteRenderer;
-
-    public SpecialVisitorClass(GameObject parent,GameObject prefab,string characterName,string feeling)
+    public SpecialVisitorCondition condition;
+    string characterName;
+    CharacterIndexToName loader;
+    public SpecialVisitorClass(GameObject parent,GameObject prefab,SpecialVisitorCondition cond)
     {
-        string path = "CharacterSprite/";
 
-
-        StringBuilder builder = new StringBuilder(path);
-        builder.Append(characterName);
-        builder.Append("/");
-        builder.Append(feeling);
-        //GameObject part = GameObject.Instantiate(prefab, parent.transform);
-        GameObject part = prefab;
+        visitorType = VisitorType.Special;
+        condition = cond;
+        diseaseList = new List<RandomVisitorDisease>();
+        symptomObjectList = new List<SymptomObject>();
+        finalSymptomObjectList = new List<SymptomObject>();
+        symptomAmountArray = cond.symptomNumberArray;
+        characterName = cond.characterName;
+        GameObject part = GameObject.Instantiate(prefab, parent.transform);
         visitorObject = part;
         spriteRenderer = part.GetComponent<SpriteRenderer>();
-        CharacterIndexToName loader = new CharacterIndexToName();
-
-        spriteRenderer.sprite = loader.GetSprite(characterName, feeling);
-        //part.transform.position = new Vector3(0, -11.91f, -1);
+        loader = new CharacterIndexToName();
         part.SetActive(true);
-        part.transform.localPosition = Vector3.zero;
+        SetDiseaseList();
+        StartSymptomSpriteUpdate();
+
+    }
+
+    public SpecialVisitorClass(GameObject parent, GameObject prefab, string characterName, string characterFeeling)
+    {
+        GameObject part = prefab;
+        visitorObject = part;
+        this.characterName = characterName;
+        spriteRenderer = part.GetComponent<SpriteRenderer>();
+        loader = new CharacterIndexToName();
+        SetObjectImage(characterName, characterFeeling);
+        prefab.SetActive(true);
+    }
+
+
+    public void SetObjectImage(string characterName,string feeling)
+    {
+        //string path = "CharacterSprite/";
+        //StringBuilder builder = new StringBuilder(path);
+        //builder.Append(characterName);
+        //builder.Append("/");
+        //builder.Append(feeling);
+        spriteRenderer.sprite = loader.GetSprite(characterName, feeling);
     }
 }

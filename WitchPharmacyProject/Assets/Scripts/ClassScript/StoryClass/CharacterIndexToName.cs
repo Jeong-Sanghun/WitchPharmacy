@@ -70,6 +70,7 @@ public class CharacterIndexToName
 
     public Sprite GetSprite(string nameText, string feelingText)
     {
+        Debug.Log(nameText);
         CharacterName name = (CharacterName)Enum.Parse(typeof(CharacterName), nameText);
         CharacterFeeling feeling = (CharacterFeeling)Enum.Parse(typeof(CharacterFeeling), feelingText);
         if (characterSprite[(int)name, (int)feeling] == null)

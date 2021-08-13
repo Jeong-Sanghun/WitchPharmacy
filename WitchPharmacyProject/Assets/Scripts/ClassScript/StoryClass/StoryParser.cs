@@ -10,7 +10,7 @@ public class StoryParser
             ReadMode,ClampCharacterName, ClampFeeling,ClampEffect
             ,RouteSwitch,RouteText,RightAfterRoute,CutScene,CutSceneFileName,CutSceneEffect,Null
             ,BackGround,BackGroundName,BackGroundEffect, NextStory, NextStoryName
-            ,NextRegion, NextRegionName
+            ,NextRegion, NextRegionName,RightMedicine,WrongMedicine,SkipVisitor,GiveCoin,CoinNumber
     }
 
     CharacterIndexToName characterIndexToName;
@@ -628,7 +628,7 @@ public class StoryParser
         }
 
         builder.Append(appender1);
-
+        Debug.Log(builder.ToString());
         TextAsset jsonString = Resources.Load<TextAsset>(builder.ToString());
         originText = jsonString.text;
 
@@ -641,8 +641,6 @@ public class StoryParser
         string beforeName=null;
         string beforeFeeling=null;
         VisitorDialog nowDialog = null;
-        bool isRouting = false;
-        bool isRightRoute = false;
         for (int i = 0; i < originText.Length; i++)
         {
 
@@ -680,21 +678,71 @@ public class StoryParser
                             nowWrapperList.Add(nowWrapper);
                         }
                     }
-                    else if (modeStr.Contains("route"))
-                    {
-                        nowMode = ParseMode.Route;
+                    //else if (modeStr.Contains("route"))
+                    //{
+                    //    nowMode = ParseMode.Route;
  
+                    //    nowWrapper = new VisitorDialogWrapper();
+                    //    nowWrapper.characterName = beforeName;
+                    //    nowWrapper.characterFeeling = beforeFeeling;
+                    //    nowWrapperList = gameData.rightWrapperList;
+                    //    nowWrapperList.Add(nowWrapper);
+                    //    isRouting = true;
+                    //    isRightRoute = true;
+                    //}
+                    else if (modeStr.Contains("forceEnd"))
+                    {
+                        nowMode = ParseMode.Null;
+                        nowWrapper.forceEnd = true;
+                    }
+                    else if (modeStr.Contains("giveCoin"))
+                    {
+                        nowMode = ParseMode.GiveCoin;
+
+                        if (nowWrapper != null)
+                        {
+                            beforeName = nowWrapper.characterName;
+                            beforeFeeling = nowWrapper.characterFeeling;
+                            nowWrapper = new VisitorDialogWrapper();
+                            nowWrapper.characterName = beforeName;
+                            nowWrapper.characterFeeling = beforeFeeling;
+                        }
+                        else if (nowWrapper == null || nowWrapper.dialogList.Count != 0)
+                        {
+                            nowWrapper = new VisitorDialogWrapper();
+                        }
+                        nowWrapper.giveCoin = true;
+                        nowWrapperList.Add(nowWrapper);
+
+                    }
+                    else if (modeStr.Contains("right"))
+                    {
+                        nowMode = ParseMode.RightMedicine;
+                        beforeName = nowWrapper.characterName;
+                        beforeFeeling = nowWrapper.characterFeeling;
                         nowWrapper = new VisitorDialogWrapper();
                         nowWrapper.characterName = beforeName;
                         nowWrapper.characterFeeling = beforeFeeling;
                         nowWrapperList = gameData.rightWrapperList;
                         nowWrapperList.Add(nowWrapper);
-                        isRouting = true;
-                        isRightRoute = true;
                     }
-                    else if (modeStr.Contains("forceEnd"))
+                    else if (modeStr.Contains("wrong"))
                     {
-                        nowWrapper.forceEnd = true;
+                        nowMode = ParseMode.RightMedicine;
+                        nowWrapper = new VisitorDialogWrapper();
+                        nowWrapper.characterName = beforeName;
+                        nowWrapper.characterFeeling = beforeFeeling;
+                        nowWrapperList = gameData.wrongWrapperList;
+                        nowWrapperList.Add(nowWrapper);
+                    }
+                    else if (modeStr.Contains("skip"))
+                    {
+                        nowMode = ParseMode.SkipVisitor;
+                        nowWrapper = new VisitorDialogWrapper();
+                        nowWrapper.characterName = beforeName;
+                        nowWrapper.characterFeeling = beforeFeeling;
+                        nowWrapperList = gameData.skipWrapperList;
+                        nowWrapperList.Add(nowWrapper);
                     }
                     builder.Clear();
                     break;
@@ -735,6 +783,9 @@ public class StoryParser
                             
                             builder.Clear();
                             nowMode = ParseMode.ClampEffect;
+                            break;
+                        case ParseMode.GiveCoin:
+                            nowMode = ParseMode.CoinNumber;
                             break;
                         default:
                             builder.Append('{');
@@ -790,6 +841,11 @@ public class StoryParser
                         case ParseMode.BackGroundEffect:
                             nowMode = ParseMode.Null;
                             break;
+                        case ParseMode.CoinNumber:
+                            nowMode = ParseMode.Null;
+                            string num = builder.ToString();
+                            nowWrapper.coin = int.Parse(num);
+                            break;
 
                     }
                     builder.Clear();
@@ -816,23 +872,6 @@ public class StoryParser
                         case ParseMode.ClampEffect:
                         case ParseMode.ClampFeeling:
                             break;
-                        case ParseMode.Route:
-                            //라우트 해야함.
-                            if (isRightRoute)
-                            {
-                                nowMode = ParseMode.Null;
-                                isRightRoute = false;
-                            }
-                            else
-                            {
-                                nowWrapperList = gameData.wrongWrapperList;
-                                nowWrapper = new VisitorDialogWrapper();
-                                nowWrapper.characterName = beforeName;
-                                nowWrapper.characterFeeling = beforeFeeling;
-                                nowWrapperList.Add(nowWrapper);
-                                nowMode = ParseMode.Null;
-                            }
-                            break;
 
                         case ParseMode.Dialog:
                             builder.Append('(');
@@ -850,18 +889,7 @@ public class StoryParser
                             builder.Clear();
                             break;
                         case ParseMode.Dialog:
-                            if (isRouting)
-                            {
-                                nowDialog.dialog = builder.ToString();
-                                Debug.Log(builder.ToString());
-                                nowMode = ParseMode.Route;
-                                builder.Clear();
-                            }
-                            else
-                            {
                                 builder.Append(')');
-                            }
-
                             break;
                     }
 
@@ -896,7 +924,7 @@ public class StoryParser
 
 
             }
-            if (i == originText.Length - 1 && isRouting == false)
+            if (i == originText.Length - 1)
             {
 
                 nowDialog.dialog = builder.ToString();

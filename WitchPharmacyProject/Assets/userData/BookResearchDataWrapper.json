@@ -1,0 +1,44 @@
+{
+    "bookResearchDataList": [
+        {
+            "fileName": "water",
+            "ingameName": "물 증상 책자",
+            "explain": "물이물물",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "water"
+        },
+        {
+            "fileName": "water",
+            "ingameName": "물 증상 책자",
+            "explain": "물이물물",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "water"
+        },
+        {
+            "fileName": "water",
+            "ingameName": "물 증상 책자",
+            "explain": "물이물물",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "water"
+        },
+        {
+            "fileName": "water",
+            "ingameName": "물 증상 책자",
+            "explain": "물이물물",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "water"
+        },
+        {
+            "fileName": "water",
+            "ingameName": "물 증상 책자",
+            "explain": "물이물물",
+            "researchEndTime": 2,
+            "neededResearchList": [],
+            "symptomString": "water"
+        }
+    ]
+}

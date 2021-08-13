@@ -120,7 +120,7 @@ public class MedicineManager : MonoBehaviour    //SH
     //[HideInInspector]
     //public bool nowInRoom;
 
-    RandomVisitorClass nowVisitor;
+    VisitorClass nowVisitor;
     [SerializeField]
     GameObject binObject;
     [SerializeField]
@@ -888,7 +888,7 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
 
     }
     //카운터매니저에서 불러옴.
-    public void VisitorVisits(RandomVisitorClass visitor)
+    public void VisitorVisits(VisitorClass visitor)
     {
         nowVisitor = visitor;
         isSpecialMedicine = false;

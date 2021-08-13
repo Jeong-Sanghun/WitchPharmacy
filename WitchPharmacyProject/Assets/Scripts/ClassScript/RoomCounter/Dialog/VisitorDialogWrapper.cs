@@ -6,6 +6,8 @@ public class VisitorDialogWrapper
 {
     public DialogFX dialogFX;
     public bool forceEnd;
+    public bool giveCoin;
+    public int coin;
     public string characterName;
     public string characterFeeling;
     public List<VisitorDialog> dialogList;
@@ -16,6 +18,8 @@ public class VisitorDialogWrapper
         characterFeeling = "nothing";
         characterName = null;
         forceEnd = false;
+        giveCoin = false;
+        coin = 0;
         dialogList = new List<VisitorDialog>();
     }
 }

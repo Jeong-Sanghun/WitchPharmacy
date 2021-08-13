@@ -20,7 +20,7 @@ public class SymptomChartManager : MonoBehaviour
     public bool[] symptomMeasuredArray;
 
     List<MedicineButton> medicineInPotList;
-    RandomVisitorClass nowVisitor;
+    VisitorClass nowVisitor;
     int[] symptomAmountArray;
 
     // Start is called before the first frame update
@@ -52,7 +52,7 @@ public class SymptomChartManager : MonoBehaviour
         }
     }
 
-    public void VisitorVisits(RandomVisitorClass visitor)
+    public void VisitorVisits(VisitorClass visitor)
     {
         nowVisitor = visitor;
         for (int i = 0; i < 5; i++)

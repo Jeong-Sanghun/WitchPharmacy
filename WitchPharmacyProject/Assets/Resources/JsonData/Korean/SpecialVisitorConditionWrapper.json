@@ -2,47 +2,29 @@
     "specialVisitorConditionDataList": [
         {
             "priority": 0,
-            "bundleName": "Lily",
-			"specialMedicine" : "withered_dew",
-            "appearingChaosMeter": 0.0,
-            "appearingSolvedQuestBundleList": [],
-            "appearingProgressingQuestBundleList": [],
-            "appearingSpecialMedicineList": [],
-            "appearingLeastDay": 0,
-            "appearingStoryBundleList": []
+            "bundleName": "Lily1",
+            "characterName": "Lily",
+            "symptomNumberArray": [
+                -1,
+                2,
+                0,
+                0,
+                0
+            ],
+            "appearingLeastDay": 0
         },
         {
             "priority": 0,
-            "bundleName": "Jet",
-			"specialMedicine" : "icefruit",
-            "appearingChaosMeter": 0.0,
-            "appearingSolvedQuestBundleList": ["Lily"],
-            "appearingProgressingQuestBundleList": [],
-            "appearingSpecialMedicineList": [],
-            "appearingLeastDay": 0,
-            "appearingStoryBundleList": []
-        },
-        {
-            "priority": 0,
-            "bundleName": "Iris",
-			"specialMedicine" : "meltfire",
-            "appearingChaosMeter": 0.0,
-            "appearingSolvedQuestBundleList": ["Jet"],
-            "appearingProgressingQuestBundleList": [],
-            "appearingSpecialMedicineList": [],
-            "appearingLeastDay": 0,
-            "appearingStoryBundleList": []
-        },
-		{
-            "priority": 0,
-            "bundleName": "Ian",
-			"specialMedicine" : "withered_dew",
-            "appearingChaosMeter": 0.0,
-            "appearingSolvedQuestBundleList": ["Lily"],
-            "appearingProgressingQuestBundleList": [],
-            "appearingSpecialMedicineList": [],
-            "appearingLeastDay": 0,
-            "appearingStoryBundleList": []
+            "bundleName": "Ian1",
+            "characterName": "Ian",
+            "symptomNumberArray": [
+                -1,
+                2,
+                0,
+                0,
+                0
+            ],
+            "appearingLeastDay": 2
         }
     ]
 }

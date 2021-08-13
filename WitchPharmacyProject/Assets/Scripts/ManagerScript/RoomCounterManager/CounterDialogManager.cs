@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 
+public enum VisitorEndState
+{
+    Right,Wrong,Skip
+}
+
 public class CounterDialogManager : MonoBehaviour
 {
     enum CounterState{
@@ -34,7 +39,7 @@ public class CounterDialogManager : MonoBehaviour
     int nowWrapperIndex;
     CounterState nowState;
     VisitorType nowVisitorType;
-    RandomVisitorClass nowRandomVisitor;
+    VisitorClass nowVisitor;
     
     //List<string> visitDialog;
 
@@ -200,7 +205,6 @@ public class CounterDialogManager : MonoBehaviour
         nowWrapper = nowBundle.startWrapperList[0];
         if (nowWrapper.characterName != null)
         {
-
             if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
             {
                 counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
@@ -218,24 +222,44 @@ public class CounterDialogManager : MonoBehaviour
         VisitUpdate();
     }
 
-    //카운터매니저에서 불러옴. 랜덤비지터 스폰하고 들어올 떄.
-    public void OnVisitorVisit(RandomVisitorClass visitor)
+    public VisitorDialogWrapper LoadSpecialBundle(VisitorClass visitor)
     {
+        nowVisitor = visitor;
+        nowVisitorType = visitor.visitorType;
+        nowBundle = storyParser.LoadBundle(((SpecialVisitorClass)visitor).condition.bundleName, languageDirectory, visitor.visitorType);
+        return nowBundle.startWrapperList[0];
+    }
+
+
+    //카운터매니저에서 불러옴. 랜덤비지터 스폰하고 들어올 떄.
+    public void OnVisitorVisit(VisitorClass visitor)
+    {
+        nowVisitor = visitor;
         nowTalking = true;
-        nowVisitorType = VisitorType.Random;
-        nowBundle = storyParser.LoadBundle(Random.Range(0, 3).ToString(), languageDirectory, nowVisitorType,visitor.diseaseList.Count);
+        if(visitor.visitorType == VisitorType.Random)
+        {
+            nowVisitorType = VisitorType.Random;
+            nowBundle = storyParser.LoadBundle(Random.Range(0, 3).ToString(), languageDirectory, nowVisitorType, visitor.diseaseList.Count);
+        }
+        else if (visitor.visitorType == VisitorType.Special)
+        {
+            nowVisitorType = VisitorType.Special;
+        }
+
         nowWrapperList = nowBundle.startWrapperList;
         nowWrapper = nowBundle.startWrapperList[0];
-        
+        if(nowVisitorType == VisitorType.Special)
+        {
+            ((SpecialVisitorClass)visitor).SetObjectImage(nowWrapper.characterName,nowWrapper.characterFeeling);
+        }
         dialogMouseEventObject.SetActive(true);
         roomManager.ToCounterButton(false);
         InitializeBackLog();
-        nowRandomVisitor = visitor;
+
         nowSymptomInsertIndex = 0;
         nowWrapperIndex = 0;
         if (nowWrapper.characterName != null)
         {
-
             if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
             {
                 counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
@@ -249,6 +273,10 @@ public class CounterDialogManager : MonoBehaviour
         else if (nowWrapper.dialogFX == DialogFX.Down)
         {
             counterManager.VisitorDownFx();
+        }
+        if (nowWrapper.giveCoin == true)
+        {
+            counterManager.CoinGain(nowWrapper.coin);
         }
 
         nowState = CounterState.Visit;
@@ -299,23 +327,31 @@ public class CounterDialogManager : MonoBehaviour
     //}
 
     ////메디쓴을 전해줬을 때. 카운터메니저
-    public void OnVisitorEnd(bool wrongMedicine)
+    public void OnVisitorEnd(VisitorEndState state)
     {
         nowTalking = true;
         dialogMouseEventObject.SetActive(true);
         counterManager.VisitorTalkStart();
-        if (wrongMedicine)
+        switch (state)
         {
-            nowWrapperList = nowBundle.wrongWrapperList;
-            
-        }
-        else
-        {
-            nowWrapperList = nowBundle.rightWrapperList;
+            case VisitorEndState.Right:
+                nowWrapperList = nowBundle.rightWrapperList;
+                break;
+            case VisitorEndState.Wrong:
+                nowWrapperList = nowBundle.wrongWrapperList;
+                break;
+            case VisitorEndState.Skip:
+                nowWrapperList = nowBundle.skipWrapperList;
+                break;
         }
         nowWrapper = nowWrapperList[0];
+        nowWrapperIndex = 0;
         nowDialogIndex = 0;
         nowState = CounterState.End;
+        if (nowVisitorType == VisitorType.Special)
+        {
+            ((SpecialVisitorClass)nowVisitor).SetObjectImage(nowWrapper.characterName,nowWrapper.characterFeeling);
+        }
 
 
         if (nowWrapper.characterName != null)
@@ -326,6 +362,10 @@ public class CounterDialogManager : MonoBehaviour
                 counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
             }
         }
+        if (nowWrapper.giveCoin == true)
+        {
+            counterManager.CoinGain(nowWrapper.coin);
+        }
 
         if (nowWrapper.dialogFX == DialogFX.Up)
         {
@@ -333,6 +373,7 @@ public class CounterDialogManager : MonoBehaviour
         }
         else if (nowWrapper.dialogFX == DialogFX.Down)
         {
+
             counterManager.VisitorDownFx();
         }
 
@@ -558,11 +599,12 @@ public class CounterDialogManager : MonoBehaviour
             lastWrapper = nowWrapper;
             nowWrapper = nowWrapperList[nowWrapperIndex];
 
-            if (lastWrapper != null && nowWrapper.characterName  != null)
+            if (lastWrapper != null && nowWrapper.characterName != null)
             {
-                
+
                 if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
                 {
+                    Debug.Log(nowWrapper.characterName);
                     counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
                 }
             }
@@ -573,29 +615,48 @@ public class CounterDialogManager : MonoBehaviour
             }
             else if (nowWrapper.dialogFX == DialogFX.Down)
             {
+                visitorText.transform.parent.gameObject.SetActive(false);
+                visitorText.text = "";
                 counterManager.VisitorDownFx();
             }
-
+            Debug.Log(nowWrapper.giveCoin);
+            if (nowWrapper.giveCoin == true)
+            { 
+                
+                counterManager.CoinGain(nowWrapper.coin);
+            }
+            if (nowVisitorType == VisitorType.Special)
+            {
+                ((SpecialVisitorClass)nowVisitor).SetObjectImage(nowWrapper.characterName, nowWrapper.characterFeeling);
+            }
 
             VisitUpdate();
         }
         else
         {
-            switch (nowState)
+            if(nowWrapper.forceEnd == true)
             {
-                case CounterState.Start:
-                    counterManager.VisitorDownFx();
-                    roomManager.FadeShopOpen();
-                    break;
-                case CounterState.Visit:
-                    counterManager.VisitorTalkEnd();
-                    nowState = CounterState.NotTalking;
-                    break;
-                case CounterState.End:
-                    counterManager.VisitorDisappear(false);
-                    break;
-
+                counterManager.VisitorDisappear(false);
             }
+            else
+            {
+                switch (nowState)
+                {
+                    case CounterState.Start:
+                        counterManager.VisitorDownFx();
+                        roomManager.FadeShopOpen();
+                        break;
+                    case CounterState.Visit:
+                        counterManager.VisitorTalkEnd();
+                        nowState = CounterState.NotTalking;
+                        break;
+                    case CounterState.End:
+                        counterManager.VisitorDisappear(false);
+                        break;
+
+                }
+            }
+
             nowTalking = false;
 
             ruelliaText.transform.parent.gameObject.SetActive(false);
@@ -615,19 +676,16 @@ public class CounterDialogManager : MonoBehaviour
         {
             VisitorDialog nowDialog = nowWrapper.dialogList[nowDialogIndex];
             string str = nowDialog.dialog;
-            if(nowVisitorType == VisitorType.Random)
+            while (str.Contains("$"))
             {
-                while (str.Contains("$"))
+                if (nowSymptomInsertIndex < nowVisitor.diseaseList.Count)
                 {
-                    if (nowSymptomInsertIndex < nowRandomVisitor.diseaseList.Count)
-                    {
-                        str = gameManager.languagePack.Insert(str, nowRandomVisitor.diseaseList[nowSymptomInsertIndex].dialog);
-                        nowSymptomInsertIndex++;
+                    str = gameManager.languagePack.Insert(str, nowVisitor.diseaseList[nowSymptomInsertIndex].dialog);
+                    nowSymptomInsertIndex++;
 
-                    }
                 }
             }
-            
+
 
             if (nowWrapper.dialogList[nowDialogIndex].ruelliaTalking)
             {

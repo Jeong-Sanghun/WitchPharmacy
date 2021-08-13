@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 10800.0,
-    "nowDay": 3,
-    "coin": 928,
+    "nowTime": 1200.0,
+    "nowDay": 2,
+    "coin": 1047,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -26,11 +26,11 @@
         },
         {
             "medicineIndex": 51,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 58,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 59,
@@ -47,6 +47,11 @@
             "wholeSpentCoin": 0,
             "billList": [
                 {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 20
+                },
+                {
                     "isPlus": false,
                     "reason": 1,
                     "changedCoin": 3
@@ -57,31 +62,10 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 3
-                },
-                {
-                    "isPlus": false,
-                    "reason": 5,
-                    "changedCoin": 100
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 3
-                },
                 {
                     "isPlus": true,
                     "reason": 0,
-                    "changedCoin": 40
+                    "changedCoin": 10
                 }
             ]
         },
@@ -90,9 +74,9 @@
             "wholeSpentCoin": 0,
             "billList": [
                 {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 3
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 20
                 }
             ]
         }
@@ -101,14 +85,8 @@
         {
             "name": "Go",
             "gainedRegion": 0,
-            "gainedDay": 1,
-            "gainedTime": 7200.0
-        },
-        {
-            "name": "Octopus",
-            "gainedRegion": 0,
-            "gainedDay": 2,
-            "gainedTime": 10800.0
+            "gainedDay": 0,
+            "gainedTime": 3480.0
         }
     ],
     "symptomBookList": [
@@ -117,31 +95,16 @@
         "fire+",
         "fire-"
     ],
-    "owningMeasureToolList": [
-        2
-    ],
+    "owningMeasureToolList": [],
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [
-            {
-                "fileName": "waterAuto",
-                "researchedTime": 3
-            },
-            {
-                "fileName": "fireTool",
-                "researchedTime": 6
-            }
-        ],
-        "endMeasureToolResearchList": [
-            "earthTool"
-        ],
+        "progressingMeasureToolResearchList": [],
+        "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [
-            "energyDrink"
-        ],
+        "endOtherToolResearchList": [],
         "progressingBookResearchList": [],
         "endBookResearchList": [],
         "progressingSpecialResearchList": [],
@@ -152,7 +115,10 @@
     "regionSaveDataList": [
         {
             "regionIndex": 0,
-            "firstDiscountedMedicineIndex": [],
+            "firstDiscountedMedicineIndex": [
+                51,
+                58
+            ],
             "secondDiscountedMedicineIndex": [],
             "eventTimeArray": [
                 0,
@@ -176,12 +142,13 @@
         "fourthDay2",
         "fifthDay",
         "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay"
+        "secondDay"
     ],
-    "nextStory": "firstDay",
+    "readSpecialVisitorBundleList": [
+        "Lily1",
+        "Ian1"
+    ],
+    "nextStory": "thirdDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 0,
     "nowRegion": 0

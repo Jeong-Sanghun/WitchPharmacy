@@ -208,6 +208,7 @@ public class TabletDocumentManager : MonoBehaviour
             document.SetupDocument(canvas,gameManager.languagePack,highlightButtonPrefab,highlightPopupPrefab,imageOpenCanvasPrefab);
             directoryCanvas.SetAsLastSibling();
         }
+        document.CloseHighlight(null);
         nowOpenedDocumentCanvas = document.documentCanvas;
         nowOpenedDocumentCanvas.SetActive(true);
         UpdateDirectory();

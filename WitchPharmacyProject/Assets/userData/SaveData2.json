@@ -25,9 +25,13 @@
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": []
+        "endOtherToolResearchList": [],
+        "progressingBookResearchList": [],
+        "endBookResearchList": [],
+        "progressingSpecialResearchList": [],
+        "endSpecialResearchList": [],
+        "appearingSpecialResearchList": []
     },
-    "bookMarkNumber": 3,
     "routePairList": [],
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],
@@ -37,6 +41,7 @@
         false
     ],
     "readStoryList": [],
+    "readSpecialVisitorBundleList": [],
     "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,

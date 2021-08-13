@@ -48,6 +48,7 @@ public class SaveDataClass
     public bool[] highlightedButton;
 
     public List<string> readStoryList;
+    public List<string> readSpecialVisitorBundleList;
     public string nextStory;
     public string nextLoadSceneName;
     public SaveTime nowSaveTime;
@@ -94,6 +95,7 @@ public class SaveDataClass
         nowRegion = StoryRegion.Narin;
         likedTreeterIndexList = new List<int>();
         highlightedButton = new bool[3];
+        readSpecialVisitorBundleList = new List<string>();
         for(int i = 0; i < highlightedButton.Length;i++)
         {
             highlightedButton[i] = false;
