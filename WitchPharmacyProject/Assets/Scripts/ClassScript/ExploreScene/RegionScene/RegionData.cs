@@ -14,6 +14,7 @@ public class RegionData
 {
     public string fileName;
     public string ingameName;
+    public int unlockDay;
     public List<SpecialEventCondition> specialEventConditionList;
     public int[] appearingMedicineArray;
     public int[] eventTimeArray;

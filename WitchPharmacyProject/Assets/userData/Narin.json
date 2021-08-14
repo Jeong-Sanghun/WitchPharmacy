@@ -1,0 +1,240 @@
+{
+    "regionDataList": [
+        {
+            "fileName": "null",
+            "ingameName": "널",
+            "unlockDay": 0,
+            "specialEventConditionList": [
+                {
+                    "fileName": "Event1",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "thirdDay",
+                            "pickedRouteList": [0]
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 0
+                },
+                {
+                    "fileName": "Event2",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "thirdDay",
+                            "pickedRouteList": [1]
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 1
+                }
+            ],
+            "appearingMedicineArray": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "appearingDocumentArray": [
+                "null",
+                "null",
+                "null"
+            ],
+            "appearingResearchArray": []
+        },
+        {
+            "fileName": "null",
+            "ingameName": "널",
+            "unlockDay": 0,
+            "specialEventConditionList": [
+                {
+                    "fileName": "null",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        "null"
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "null",
+                            "pickedRouteList": []
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 0
+                },
+                {
+                    "fileName": "null",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        "null"
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "null",
+                            "pickedRouteList": []
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 0
+                }
+            ],
+            "appearingMedicineArray": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "appearingDocumentArray": [
+                "null",
+                "null",
+                "null"
+            ],
+            "appearingResearchArray": []
+        },
+        {
+            "fileName": "null",
+            "ingameName": "널",
+            "unlockDay": 0,
+            "specialEventConditionList": [
+                {
+                    "fileName": "null",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        "null"
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "null",
+                            "pickedRouteList": []
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 0
+                },
+                {
+                    "fileName": "null",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        "null"
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "null",
+                            "pickedRouteList": []
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 0
+                }
+            ],
+            "appearingMedicineArray": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "appearingDocumentArray": [
+                "null",
+                "null",
+                "null"
+            ],
+            "appearingResearchArray": []
+        },
+        {
+            "fileName": "null",
+            "ingameName": "널",
+            "unlockDay": 0,
+            "specialEventConditionList": [
+                {
+                    "fileName": "null",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        "null"
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "null",
+                            "pickedRouteList": []
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 0
+                },
+                {
+                    "fileName": "null",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        "null"
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "null",
+                            "pickedRouteList": []
+                        }
+                    ],
+                    "rewardSpecialMedicineIndex": 0
+                }
+            ],
+            "appearingMedicineArray": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "appearingDocumentArray": [
+                "null",
+                "null",
+                "null"
+            ],
+            "appearingResearchArray": []
+        }
+    ]
+}

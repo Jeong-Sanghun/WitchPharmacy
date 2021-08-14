@@ -377,6 +377,7 @@ public class StoryManager : MonoBehaviour
         {
             routePair = new RoutePair();
             routePair.storyName = nowBundle.bundleName;
+            saveData.routePairList.Add(routePair);
         }
         routePair.pickedRouteList.Add(index);
 

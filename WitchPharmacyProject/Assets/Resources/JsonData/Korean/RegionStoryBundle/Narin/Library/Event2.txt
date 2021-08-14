@@ -1,0 +1,9 @@
+﻿<bundleName>{testBundle}
+<switch>{Cari,Ruellia,Jet(nothing){up}}
+<background>{counter(blur)}
+[제트]
+루엘리아 안뇽
+[루엘리아]
+안뇽
+[카리]
+뭐야 제트잖아 안뇽

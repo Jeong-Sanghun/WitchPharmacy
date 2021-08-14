@@ -1,15 +1,82 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 0,
-    "coin": 1000,
-    "owningMedicineList": [],
+    "nowDay": 3,
+    "coin": 1010,
+    "owningMedicineList": [
+        {
+            "medicineIndex": 34,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 35,
+            "medicineCost": 2
+        },
+        {
+            "medicineIndex": 42,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 43,
+            "medicineCost": 2
+        },
+        {
+            "medicineIndex": 50,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 51,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 58,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 59,
+            "medicineCost": 3
+        }
+    ],
     "owningSpecialMedicineList": [],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [],
-    "owningDocumentList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 10
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        }
+    ],
+    "owningDocumentList": [
+        {
+            "name": "Go",
+            "gainedRegion": 0,
+            "gainedDay": 0,
+            "gainedTime": 960.0
+        }
+    ],
     "symptomBookList": [
         "water+",
         "water-",
@@ -22,7 +89,12 @@
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
-        "progressingMedicineResearchList": [],
+        "progressingMedicineResearchList": [
+            {
+                "fileName": "waterearth",
+                "researchedTime": 3
+            }
+        ],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": [],
@@ -33,16 +105,72 @@
         "appearingSpecialResearchList": []
     },
     "routePairList": [],
-    "regionSaveDataList": [],
+    "regionSaveDataList": [
+        {
+            "storyRegion": 0,
+            "regionIndex": 0,
+            "firstDiscountedMedicineIndex": [
+                35
+            ],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        },
+        {
+            "storyRegion": 0,
+            "regionIndex": 1,
+            "firstDiscountedMedicineIndex": [],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        },
+        {
+            "storyRegion": 0,
+            "regionIndex": 2,
+            "firstDiscountedMedicineIndex": [
+                43
+            ],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        }
+    ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        false,
-        false,
-        false
+        true,
+        true,
+        true
     ],
-    "readStoryList": [],
-    "readSpecialVisitorBundleList": [],
-    "nextStory": "firstDay",
+    "readStoryList": [
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2"
+    ],
+    "readSpecialVisitorBundleList": [
+        "Lily1"
+    ],
+    "nextStory": "fifthDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0

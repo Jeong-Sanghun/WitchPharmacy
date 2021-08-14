@@ -94,18 +94,37 @@ public class RegionManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
-        regionDataWrapper = gameManager.regionDataWrapper;
+        StringBuilder path = new StringBuilder("RegionData/");
+        path.Append(saveData.nowRegion.ToString());
+        regionDataWrapper = gameManager.jsonManager.ResourceDataLoad<RegionDataWrapper>(path.ToString());
         documentConditionWrapper = gameManager.documentConditionWrapper;
         regionSaveDataList = saveData.regionSaveDataList;
         exploreManager = ExploreManager.inst;
         nowRegion = exploreManager.nowRegion;
+        for (int i = 0; i < regionSaveDataList.Count; i++)
+        {
+            if (nowRegion == regionSaveDataList[i].regionName)
+            {
+                nowRegionSaveData = regionSaveDataList[i];
+                break;
+            }
+        }
+        if (nowRegionSaveData == null)
+        {
+            nowRegionSaveData = new RegionSaveData();
+            regionSaveDataList.Add(nowRegionSaveData);
+            nowRegionSaveData.regionName = nowRegion;
+        }
+
         //여기서 조건체크 다 해주고 아래에서 그거에 맞는 스토리 표출해야함
         if (CheckSpecialEvent())
         {
+            Debug.Log("조건체크 트루");
             nowStoryBundleName = nowSpecialEvent.fileName;
         }
         else
         {
+            Debug.Log("조건체크 폴스");
             GenerateRegularReward();
         }
 
@@ -122,7 +141,7 @@ public class RegionManager : MonoBehaviour
         nowWrapperIndex = 0;
         nowRouterIndex = 0;
         storyParser = new StoryParser(characterIndexToName, gameManager.languagePack);
-        nowBundle = storyParser.LoadBundle(nowStoryBundleName, gameManager.saveDataTimeWrapper.nowLanguageDirectory,true);
+        nowBundle = storyParser.LoadBundle(nowStoryBundleName, gameManager.saveDataTimeWrapper.nowLanguageDirectory,true,nowRegion,saveData.nowRegion);
         nowWrapper = nowBundle.dialogWrapperList[0];
         for (int i = 0; i < 4; i++)
         {
@@ -252,6 +271,7 @@ public class RegionManager : MonoBehaviour
             nowSpecialEvent = condition;
             nowMedicineIndex = condition.rewardSpecialMedicineIndex;
             nowRegionEvent = RegionEvent.SpecialEvent;
+            nowRegionSaveData.seenSpecialEventList.Add(nowSpecialEvent.fileName);
             return true;
         }
         return false;
@@ -265,21 +285,6 @@ public class RegionManager : MonoBehaviour
         int rewardIndex = -1;
         List<int> discountableMedicine = new List<int>();
         List<string> progressableResearchList = new List<string>();
-
-        for(int i = 0; i< regionSaveDataList.Count; i++)
-        {
-            if((int)nowRegion == regionSaveDataList[i].regionIndex)
-            {
-                nowRegionSaveData = regionSaveDataList[i];
-                break;
-            }
-        }
-        if(nowRegionSaveData== null)
-        {
-            nowRegionSaveData = new RegionSaveData();
-            regionSaveDataList.Add(nowRegionSaveData);
-            nowRegionSaveData.regionIndex = (int)nowRegion;
-        }
 
         nowMedicineIndex = -1;
         for(int i = 0; i < data.appearingMedicineArray.Length; i++)
@@ -405,8 +410,7 @@ public class RegionManager : MonoBehaviour
         {
             nowRegionEvent = (RegionEvent)rewardIndex;
         }
-        StringBuilder builder = new StringBuilder(nowRegion.ToString());
-        builder.Append(nowRegionEvent.ToString());
+        StringBuilder builder = new StringBuilder(nowRegionEvent.ToString());
         builder.Append(Random.Range(0, 3).ToString());
         nowStoryBundleName = builder.ToString();
     }

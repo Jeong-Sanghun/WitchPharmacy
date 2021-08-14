@@ -41,8 +41,7 @@ public class GameManager : MonoBehaviour //SH
     public DocumentConditionWrapper documentConditionWrapper;
     [HideInInspector]
     public UILanguagePack languagePack;
-    [HideInInspector]
-    public RegionDataWrapper regionDataWrapper;
+
     [HideInInspector]
     public OtherToolResearchDataWrapper otherToolResearchDataWrapper;
     [HideInInspector]
@@ -99,7 +98,7 @@ public class GameManager : MonoBehaviour //SH
         //    documentConditionWrapper.documentConditionList[i].ConditionStringParse();
            
         //}
-        regionDataWrapper = jsonManager.ResourceDataLoad<RegionDataWrapper>("RegionDataWrapper");
+
         treeterConditionWrapper = jsonManager.ResourceDataLoad<TreeterConditionWrapper>("TreeterConditionWrapper");
         //languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
 
@@ -284,12 +283,12 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<RegionDataWrapper>(region, "RegionDataWrapper");
         //RandomVisitorDiseaseWrapper diseaseWrapper = new RandomVisitorDiseaseWrapper();
         //jsonManager.SaveJson<RandomVisitorDiseaseWrapper>(diseaseWrapper, "water");
-        treeterConditionWrapper = new TreeterConditionWrapper();
-        jsonManager.SaveJson<TreeterConditionWrapper>(treeterConditionWrapper, "TreeterConditionWrapper");
-        TreeterData treeterData = new TreeterData();
-        jsonManager.SaveJson<TreeterData>(treeterData, "TreeterData");
-        bookResearchDataWrapper = new BookResearchDataWrapper();
-        jsonManager.SaveJson<BookResearchDataWrapper>(bookResearchDataWrapper, "BookResearchDataWrapper");
+        //treeterConditionWrapper = new TreeterConditionWrapper();
+        //jsonManager.SaveJson<TreeterConditionWrapper>(treeterConditionWrapper, "TreeterConditionWrapper");
+        //TreeterData treeterData = new TreeterData();
+        //jsonManager.SaveJson<TreeterData>(treeterData, "TreeterData");
+        //bookResearchDataWrapper = new BookResearchDataWrapper();
+        //jsonManager.SaveJson<BookResearchDataWrapper>(bookResearchDataWrapper, "BookResearchDataWrapper");
 
         //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         //jsonManager.SaveJson<UILanguagePack>(languagePack, "languagePack");
@@ -301,10 +300,12 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<ConversationDialogBundle>(conversationDialogBundle, conversationDialogBundle.bundleName);
         //jsonManager.SaveJson<StartDialogClassWrapper>(randomDialogDataWrapper, "RandomDialogDataWrapper");
         //jsonManager.SaveJson<SpecialMedicineDataWrapper>(wrapper, "SpecialMedicineDataWrapper");
-        jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
+        //jsonManager.SaveJson<SpecialVisitorConditionWrapper>(specialVisitorConditionWrapper, "SpecialVisitorConditionWrapper");
         //jsonManager.SaveJson<DocumentConditionWrapper>(documentConditionWrapper, "DocumentConditionWrapper");
         //DocumentBundle doc = new DocumentBundle();
         //jsonManager.SaveJson<DocumentBundle>(doc, "testDocument");
+        RegionDataWrapper regionDataWrapper = new RegionDataWrapper();
+        jsonManager.SaveJson<RegionDataWrapper>(regionDataWrapper, "Narin");
 
         for (int i = 0; i < 4; i++)
         {
@@ -314,8 +315,8 @@ public class GameManager : MonoBehaviour //SH
         jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
 
 
-        medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
+        //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
+        //symptomDialog = jsonManager.ResourceDataLoad<SymptomDialog>("SymptomDialog");
         //saveData = jsonManager.LoadSaveData(0);
 
         /*

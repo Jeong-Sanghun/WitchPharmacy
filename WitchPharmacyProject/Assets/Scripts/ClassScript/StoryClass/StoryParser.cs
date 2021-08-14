@@ -22,7 +22,7 @@ public class StoryParser
         languagePack = language;
     }
 
-    public ConversationDialogBundle LoadBundle(string bundleName,string languageDirectory,bool isRegion)
+    public ConversationDialogBundle LoadBundle(string bundleName, string languageDirectory, bool isRegion = false, RegionName regionName = RegionName.Library,StoryRegion storyRegion=StoryRegion.Narin)
     {
         string originText;
 
@@ -37,6 +37,12 @@ public class StoryParser
         if (isRegion)
         {
             builder.Append("RegionStoryBundle/");
+            builder.Append(storyRegion.ToString());
+            builder.Append("/");
+
+            builder.Append(regionName.ToString());
+            builder.Append("/");
+
         }
         else
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text;
 
 public enum RegionName
 {
@@ -10,6 +11,7 @@ public enum RegionName
 public class ExploreManager : MonoBehaviour
 {
     public static ExploreManager inst;
+    public RegionDataWrapper regionDataWrapper;
     TabletManager tabletManager;
     GameManager gameManager;
     SaveDataClass saveData;
@@ -42,7 +44,10 @@ public class ExploreManager : MonoBehaviour
                 timeCount = 2;
             }
         }
-        
+        StringBuilder path = new StringBuilder("RegionData/");
+        path.Append(saveData.nowRegion.ToString());
+        regionDataWrapper = gameManager.jsonManager.ResourceDataLoad<RegionDataWrapper>(path.ToString());
+
     }
 
     public void TimeChange(float time)

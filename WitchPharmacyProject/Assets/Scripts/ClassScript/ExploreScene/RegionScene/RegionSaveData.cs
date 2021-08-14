@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class RegionSaveData
 {
-    public int regionIndex;
+    public StoryRegion storyRegion;
+    public RegionName regionName;
     public List<int> firstDiscountedMedicineIndex;
     public List<int> secondDiscountedMedicineIndex;
     public int[] eventTimeArray;
@@ -13,7 +14,8 @@ public class RegionSaveData
 
     public RegionSaveData()
     {
-        regionIndex = -1;
+        storyRegion = StoryRegion.Narin;
+        regionName = RegionName.Library;
         firstDiscountedMedicineIndex = new List<int>();
         secondDiscountedMedicineIndex = new List<int>();
         eventTimeArray = new int[4];

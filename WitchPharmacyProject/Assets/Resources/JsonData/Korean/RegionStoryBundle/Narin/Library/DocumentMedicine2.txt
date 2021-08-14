@@ -1,0 +1,12 @@
+﻿<bundleName>{testBundle}
+<switch>{Cari,,Ruellia(nothing){up}}
+<background>{counter(blur)}
+[]
+와 문서와 수급처야~
+[]
+히히
+[카리]
+대박이당
+[루엘리아]
+대박이넹
+
