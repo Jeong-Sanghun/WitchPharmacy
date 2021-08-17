@@ -53,7 +53,7 @@ public class StoryManager : MonoBehaviour
     bool nowInRouterWrapper;
     int leftRouterWrapper;
     int nowRouterWrapperIndex;
-    string nextStory;
+    //string nextStory;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +65,7 @@ public class StoryManager : MonoBehaviour
         //nowBundle = gameManager.LoadBundle("testBundle");
         //nowWrapper = nowBundle.dialogWrapperList[0];
         //routingTime = nowBundle.conversationRouter.routingTime;
-        nextStory = null;
+        //nextStory = null;
         checkingRouter = false;
         blurred = false;
         faded = new bool[4];

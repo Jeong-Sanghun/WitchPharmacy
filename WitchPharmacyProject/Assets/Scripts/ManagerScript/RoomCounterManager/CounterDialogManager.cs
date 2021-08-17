@@ -28,6 +28,7 @@ public class CounterDialogManager : MonoBehaviour
     List<VisitorDialogWrapper> nowWrapperList;
     VisitorDialogWrapper lastWrapper;
     StoryParser storyParser;
+    UILanguagePack languagePack;
 
 
 
@@ -57,8 +58,10 @@ public class CounterDialogManager : MonoBehaviour
     [SerializeField]
     Text visitorText;
     [SerializeField]
+    Text visitorName;
+    [SerializeField]
     Text ruelliaText;
-
+    
     [SerializeField]
     GameObject backLogParent;
     [SerializeField]
@@ -79,8 +82,8 @@ public class CounterDialogManager : MonoBehaviour
     GameObject[] routingButtonArray;
     RectTransform contentRect;
     int nowBackLogIndex;
-    bool isRouted = false;
-    bool isOddVisitor = false;
+    //bool isRouted = false;
+    //bool isOddVisitor = false;
 
     string languageDirectory;
     
@@ -105,7 +108,7 @@ public class CounterDialogManager : MonoBehaviour
         languageDirectory = gameManager.saveDataTimeWrapper.nowLanguageDirectory;
         characterIndexToName = new CharacterIndexToName();
         storyParser = new StoryParser(characterIndexToName, gameManager.languagePack);
-
+        languagePack = gameManager.languagePack;
         nowTalking = true;
         nowDialogIndex = 0;
         nowSymptomInsertIndex = 0;
@@ -203,6 +206,7 @@ public class CounterDialogManager : MonoBehaviour
         nowWrapperList = nowBundle.startWrapperList;
 
         nowWrapper = nowBundle.startWrapperList[0];
+        visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
         if (nowWrapper.characterName != null)
         {
             if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
@@ -248,7 +252,8 @@ public class CounterDialogManager : MonoBehaviour
 
         nowWrapperList = nowBundle.startWrapperList;
         nowWrapper = nowBundle.startWrapperList[0];
-        if(nowVisitorType == VisitorType.Special)
+        visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
+        if (nowVisitorType == VisitorType.Special)
         {
             ((SpecialVisitorClass)visitor).SetObjectImage(nowWrapper.characterName,nowWrapper.characterFeeling);
         }
@@ -434,7 +439,11 @@ public class CounterDialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(nowWrapper != null && nowTalking)
+            DebugSkip();
+        }
     }
 
     public void OnDialogMousButtonDown()
@@ -598,7 +607,7 @@ public class CounterDialogManager : MonoBehaviour
             nowWrapperIndex++;
             lastWrapper = nowWrapper;
             nowWrapper = nowWrapperList[nowWrapperIndex];
-
+            visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
             if (lastWrapper != null && nowWrapper.characterName != null)
             {
 
@@ -668,6 +677,34 @@ public class CounterDialogManager : MonoBehaviour
         }
     }
 
+    void DebugSkip()
+    {
+        nowDialogIndex = 0;
+        switch (nowState)
+        {
+            case CounterState.Start:
+                counterManager.VisitorDownFx();
+                roomManager.FadeShopOpen();
+                break;
+            case CounterState.Visit:
+                counterManager.VisitorTalkEnd();
+                nowState = CounterState.NotTalking;
+                break;
+            case CounterState.End:
+                counterManager.VisitorDisappear(false);
+                break;
+
+        }
+        nowWrapper = null;
+        nowTalking = false;
+
+        ruelliaText.transform.parent.gameObject.SetActive(false);
+        visitorText.transform.parent.gameObject.SetActive(false);
+        ruelliaText.text = "";
+        visitorText.text = "";
+        dialogMouseEventObject.SetActive(false);
+    }
+
     //각 업데이트가 달려있다.
     void VisitUpdate()
     {
@@ -726,6 +763,7 @@ public class CounterDialogManager : MonoBehaviour
 
         }
     }
+
 
     //void EndUpdate()
     //{
@@ -812,7 +850,7 @@ public class CounterDialogManager : MonoBehaviour
     //        {
     //            if (!visitorText.transform.parent.gameObject.activeSelf)
     //                visitorText.transform.parent.gameObject.SetActive(true);
-                
+
     //            string str = nowOddVisitorWrapper[nowDialogIndex].dialog;
     //            MakeBackLog(true, str);
     //            StartCoroutine(sceneManager.LoadTextOneByOne(str, visitorText));

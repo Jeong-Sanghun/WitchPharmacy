@@ -48,12 +48,13 @@ public class EarthTool : MeasureTool
         base.Start();
         spriteArray = new Sprite[4];
         ExplainLoad();
+        chosenGlyphIndex = -1;
     }
 
     
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(measureEnd == false && measureStarted == true)
         {
@@ -70,7 +71,6 @@ public class EarthTool : MeasureTool
                         {
                             if(touchedObject == glyphArray[i].obj)
                             {
-                                Debug.Log(i);
                                 chosenGlyphIndex = i;
                             }
                         }
@@ -126,15 +126,24 @@ public class EarthTool : MeasureTool
                     chosenGlyphIndex = -1;
                 }
             }
+
+            
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (measureEnd == false && measureStarted == true)
+        {
             moveTimer += Time.deltaTime;
-            if(moveTimer >= 2)
+            if (moveTimer >= 2)
             {
                 moveTimer = 0;
                 MoveGlyphs();
             }
             BoundGlyphs();
-            
         }
+
     }
 
     public override void ToolActive(bool active)
@@ -165,6 +174,7 @@ public class EarthTool : MeasureTool
     {
         base.OnNewVisitor(symptomNum, index, auto);
         symptomText.gameObject.SetActive(false);
+        
         if (isAuto)
         {
             MeasureEnd();
@@ -184,7 +194,13 @@ public class EarthTool : MeasureTool
             {
                 glyphArray[i].rigid.velocity = Vector2.zero;
             }
-            glyphArray[i].rigid.velocity = (new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f))).normalized;
+            else
+            {
+                glyphArray[i].rigid.velocity = (new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f))).normalized;
+                glyphArray[i].rigid.AddTorque(Random.Range(-2f,2f));
+            }
+           
+            
         }
     }
 

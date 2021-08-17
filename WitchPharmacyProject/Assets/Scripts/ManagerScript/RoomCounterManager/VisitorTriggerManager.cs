@@ -11,22 +11,22 @@ public class VisitorTriggerManager : MonoBehaviour
     GameManager gameManager;
     SaveDataClass saveData;
     // Start is called before the first frame update
-    bool nowCheckingTrigger;
+    //bool nowCheckingTrigger;
 
     
     List<SpecialVisitorCondition> specialVisitorConditionDataList;
 
     //List<string> todaySpecialVisitorList;
     int nowVisitorIndex;
-    bool isSecondVisit = false;
-    bool specialVisitorVisited;
-    int oddProgressingQuestIndex = 0;
+    //bool isSecondVisit = false;
+    //bool specialVisitorVisited;
+    //int oddProgressingQuestIndex = 0;
     List<int> specialVisitorAppearingIndex;
     SpecialVisitorCondition nowSpecialVisitorCondition;
 
     void Start()
     {
-        nowCheckingTrigger = false;
+        //nowCheckingTrigger = false;
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
 
@@ -302,7 +302,7 @@ public class VisitorTriggerManager : MonoBehaviour
     {
         if (SpecialConditionCheck())
         {
-            specialVisitorVisited = true;
+            //specialVisitorVisited = true;
             counterManager.CounterSpecialStart(nowSpecialVisitorCondition);
             //todaySpecialVisitorList.Add(specialVisitorDialogBundle.bundleName);
             //if (isSecondVisit)

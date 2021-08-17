@@ -8,7 +8,7 @@ public class StartSceneManager : MonoBehaviour
 {
     SceneManager sceneManager;
     JsonManager jsonManager;
-    int nowSaveIndex;
+    //int nowSaveIndex;
     SaveDataTimeWrapper saveDataTimeWrapper;
     SaveDataTime[] saveDataTimeArray;
     UILanguagePack languagePack;
@@ -24,7 +24,7 @@ public class StartSceneManager : MonoBehaviour
     {
         jsonManager = new JsonManager();
         sceneManager = SceneManager.inst;
-        nowSaveIndex = -1;
+        //nowSaveIndex = -1;
         saveDataTimeWrapper = jsonManager.LoadSaveDataTime();
         saveDataTimeArray = saveDataTimeWrapper.saveDataTimeList;
         languagePack = jsonManager.ResourceDataLoadBeforeGame<UILanguagePack>("LanguagePack", saveDataTimeWrapper.nowLanguageDirectory);

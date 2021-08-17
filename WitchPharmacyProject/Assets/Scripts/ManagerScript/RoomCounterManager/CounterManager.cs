@@ -222,13 +222,6 @@ public class CounterManager : MonoBehaviour //SH
     //    SpawnSpecialVisitor(false);
     //}
     //whtflrj~~
-    public void CounterStart(OddVisitorDialogBundle bundle)
-    {
-        counterStarted = true;
-        nowVisitorType = VisitorType.Odd;
-        SpawnRandomVisitor();
-    }
-
     //카운터 다이얼로그 매니저에서 불러옴.
     public void VisitorTalkEnd()
     {
