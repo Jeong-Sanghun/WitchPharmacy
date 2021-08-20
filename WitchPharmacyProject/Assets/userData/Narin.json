@@ -6,32 +6,32 @@
             "unlockDay": 0,
             "specialEventConditionList": [
                 {
-                    "fileName": "Event1",
+                    "fileName": "null",
                     "leastDayCondition": 0,
                     "questConditionList": [
-                        
+                        "null"
                     ],
                     "routeConditionList": [
                         {
-                            "storyName": "thirdDay",
-                            "pickedRouteList": [0]
+                            "storyName": "null",
+                            "pickedRouteList": []
                         }
                     ],
                     "rewardSpecialMedicineIndex": 0
                 },
                 {
-                    "fileName": "Event2",
+                    "fileName": "null",
                     "leastDayCondition": 0,
                     "questConditionList": [
-                        
+                        "null"
                     ],
                     "routeConditionList": [
                         {
-                            "storyName": "thirdDay",
-                            "pickedRouteList": [1]
+                            "storyName": "null",
+                            "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 1
+                    "rewardSpecialMedicineIndex": 0
                 }
             ],
             "appearingMedicineArray": [
@@ -50,6 +50,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -57,7 +58,8 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         },
         {
             "fileName": "null",
@@ -109,6 +111,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -116,7 +119,8 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         },
         {
             "fileName": "null",
@@ -168,6 +172,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -175,7 +180,8 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         },
         {
             "fileName": "null",
@@ -227,6 +233,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -234,7 +241,8 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         }
     ]
 }

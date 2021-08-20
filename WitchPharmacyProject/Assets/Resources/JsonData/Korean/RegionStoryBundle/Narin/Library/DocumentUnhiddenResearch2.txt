@@ -1,0 +1,9 @@
+﻿<bundleName>{testBundle}
+<switch>{Cari,,Ruellia(nothing){up}}
+<background>{counter(blur)}
+[카리]
+이봐 뤵ㄹ리아
+[루엘리아]
+뭐야
+[카리]
+저기 문서가 있다

@@ -1,7 +1,7 @@
 {
     "name": "initName",
-    "nowTime": 1920.0,
-    "nowDay": 0,
+    "nowTime": 840.0,
+    "nowDay": 2,
     "coin": 1000,
     "owningMedicineList": [
         {
@@ -37,7 +37,12 @@
             "medicineCost": 3
         }
     ],
-    "owningSpecialMedicineList": [],
+    "owningSpecialMedicineList": [
+        {
+            "medicineIndex": 1,
+            "medicineCost": 3
+        }
+    ],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
@@ -46,9 +51,26 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         }
     ],
-    "owningDocumentList": [],
+    "owningDocumentList": [
+        {
+            "name": "Go",
+            "gainedRegion": 0,
+            "gainedDay": 1,
+            "gainedTime": 1200.0
+        }
+    ],
     "symptomBookList": [
         "water+",
         "water-",
@@ -64,28 +86,64 @@
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [],
+        "endOtherToolResearchList": [
+            "energyDrink"
+        ],
         "progressingBookResearchList": [],
         "endBookResearchList": [],
         "progressingSpecialResearchList": [],
         "endSpecialResearchList": [],
-        "appearingSpecialResearchList": []
+        "appearingSpecialResearchList": [],
+        "unHiddenResearchList": [
+            "waterAuto"
+        ]
     },
-    "routePairList": [],
-    "regionSaveDataList": [],
+    "routePairList": [
+        {
+            "storyName": "thirdDay",
+            "pickedRouteList": [
+                1
+            ]
+        }
+    ],
+    "regionSaveDataList": [
+        {
+            "storyRegion": 0,
+            "regionName": 0,
+            "firstDiscountedMedicineIndex": [],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": [
+                "Event2"
+            ]
+        }
+    ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
         false,
-        false,
-        false
+        true,
+        true
     ],
     "readStoryList": [
-        "firstDay"
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay"
     ],
     "readSpecialVisitorBundleList": [
         "Lily1"
     ],
-    "nextStory": "secondDay",
+    "nextStory": "thirdDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 0,
     "nowRegion": 0

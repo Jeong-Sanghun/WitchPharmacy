@@ -1,12 +1,8 @@
 {
     "saveDataTimeList": [
         {
-            "day": 0,
-            "saveTime": 0
-        },
-        {
             "day": 2,
-            "saveTime": 1
+            "saveTime": 0
         },
         {
             "day": 3,
@@ -14,7 +10,11 @@
         },
         {
             "day": 1,
-            "saveTime": 1
+            "saveTime": 0
+        },
+        {
+            "day": -1,
+            "saveTime": 0
         }
     ],
     "nowLanguageDirectory": "Korean/"

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum RegionEvent
 {
-    MedicineDiscount, ResearchProgress, DocumentMedicine, DocumentResearch, RandomCoin,SpecialEvent
+    MedicineDiscount, ResearchProgress, DocumentMedicine, DocumentResearch, UnhiddenResearch, DocumentUnhiddenResearch, RandomCoin,SpecialEvent
 }
 
 
@@ -20,6 +20,7 @@ public class RegionData
     public int[] eventTimeArray;
     public string[] appearingDocumentArray;
     public string[] appearingResearchArray;
+    public string[] unHiddenResearchArray;
 
     public RegionData()
     {
@@ -28,7 +29,7 @@ public class RegionData
         specialEventConditionList = new List<SpecialEventCondition>();
         specialEventConditionList.Add(new SpecialEventCondition());
         specialEventConditionList.Add(new SpecialEventCondition());
-        eventTimeArray = new int[4];
+        eventTimeArray = new int[6];
         appearingDocumentArray = new string[3];
         appearingMedicineArray = new int[10];
         for(int i = 0; i < 10; i++)

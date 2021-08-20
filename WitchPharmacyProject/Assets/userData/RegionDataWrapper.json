@@ -3,6 +3,7 @@
         {
             "fileName": "null",
             "ingameName": "널",
+            "unlockDay": 0,
             "specialEventConditionList": [
                 {
                     "fileName": "null",
@@ -49,6 +50,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -56,11 +58,13 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         },
         {
             "fileName": "null",
             "ingameName": "널",
+            "unlockDay": 0,
             "specialEventConditionList": [
                 {
                     "fileName": "null",
@@ -107,6 +111,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -114,11 +119,13 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         },
         {
             "fileName": "null",
             "ingameName": "널",
+            "unlockDay": 0,
             "specialEventConditionList": [
                 {
                     "fileName": "null",
@@ -165,6 +172,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -172,11 +180,13 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         },
         {
             "fileName": "null",
             "ingameName": "널",
+            "unlockDay": 0,
             "specialEventConditionList": [
                 {
                     "fileName": "null",
@@ -223,6 +233,7 @@
                 0,
                 0,
                 0,
+                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -230,7 +241,8 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": []
+            "appearingResearchArray": [],
+            "unHiddenResearchArray": []
         }
     ]
 }

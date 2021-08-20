@@ -33,6 +33,22 @@ public class MeasureToolResearchManager : ResearchManagerParent
             {
                 continue;
             }
+            if(dataList[i].hidden == true)
+            {
+                bool contains = false;
+                for(int j = 0; j < researchSaveData.unHiddenResearchList.Count; j++)
+                {
+                    if (researchSaveData.unHiddenResearchList[j].Contains(dataList[i].fileName))
+                    {
+                        contains = true;
+                        break;
+                    }
+                }
+                if (!contains)
+                {
+                    continue;
+                }
+            }
             //만약 요구사항을 충족하지 않았으면 락걸어줌.
             bool contain = true;
             for(int j = 0; j < dataList[i].neededResearchList.Count;j++)

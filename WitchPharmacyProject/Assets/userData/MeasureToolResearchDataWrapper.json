@@ -6,6 +6,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         },
         {
@@ -14,6 +15,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         },
         {
@@ -22,6 +24,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         },
         {
@@ -30,6 +33,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         },
         {
@@ -38,6 +42,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         },
         {
@@ -46,6 +51,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         },
         {
@@ -54,6 +60,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         },
         {
@@ -62,6 +69,7 @@
             "explain": "도구설명",
             "researchEndTime": 10,
             "neededResearchList": [],
+            "hidden": false,
             "symptomString": "water"
         }
     ]

@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 3,
-    "coin": 1010,
+    "nowTime": 1200.0,
+    "nowDay": 1,
+    "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -10,7 +10,7 @@
         },
         {
             "medicineIndex": 35,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 42,
@@ -18,7 +18,7 @@
         },
         {
             "medicineIndex": 43,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 50,
@@ -50,33 +50,10 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 10
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
             "billList": []
         }
     ],
-    "owningDocumentList": [
-        {
-            "name": "Go",
-            "gainedRegion": 0,
-            "gainedDay": 0,
-            "gainedTime": 960.0
-        }
-    ],
+    "owningDocumentList": [],
     "symptomBookList": [
         "water+",
         "water-",
@@ -89,79 +66,35 @@
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
-        "progressingMedicineResearchList": [
-            {
-                "fileName": "waterearth",
-                "researchedTime": 3
-            }
-        ],
+        "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [],
+        "endOtherToolResearchList": [
+            "energyDrink"
+        ],
         "progressingBookResearchList": [],
         "endBookResearchList": [],
         "progressingSpecialResearchList": [],
         "endSpecialResearchList": [],
-        "appearingSpecialResearchList": []
+        "appearingSpecialResearchList": [],
+        "unHiddenResearchList": []
     },
-    "routePairList": [],
-    "regionSaveDataList": [
+    "routePairList": [
         {
-            "storyRegion": 0,
-            "regionIndex": 0,
-            "firstDiscountedMedicineIndex": [
-                35
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        },
-        {
-            "storyRegion": 0,
-            "regionIndex": 1,
-            "firstDiscountedMedicineIndex": [],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        },
-        {
-            "storyRegion": 0,
-            "regionIndex": 2,
-            "firstDiscountedMedicineIndex": [
-                43
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
+            "storyName": "thirdDay",
+            "pickedRouteList": [
+                1
+            ]
         }
     ],
+    "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
-        true,
+        false,
+        false,
         true
     ],
     "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
         "firstDay",
         "secondDay",
         "thirdDay",
@@ -172,6 +105,6 @@
     ],
     "nextStory": "fifthDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 0
 }

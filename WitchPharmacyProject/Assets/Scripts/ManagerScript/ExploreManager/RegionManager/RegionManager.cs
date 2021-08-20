@@ -69,6 +69,7 @@ public class RegionManager : MonoBehaviour
     bool isFirstDiscount;
     string nowStoryBundleName;
     string nowResearch;
+    string nowUnhiddenResearch;
     ResearchType nowResearchType;
 
     [SerializeField]
@@ -192,8 +193,23 @@ public class RegionManager : MonoBehaviour
     {
         RegionData data = regionDataWrapper.regionDataList[(int)nowRegion];
         nowSpecialEvent = null;
+        
         for(int  i = 0; i < data.specialEventConditionList.Count; i++)
         {
+            bool contains = false;
+            for (int j = 0;j < nowRegionSaveData.seenSpecialEventList.Count; j++)
+            {
+                if (nowRegionSaveData.seenSpecialEventList[j].Contains(data.specialEventConditionList[i].fileName))
+                {
+                    contains = true;
+                    break;
+                }
+            }
+            if (contains)
+            {
+                continue;
+            }
+
             SpecialEventCondition condition = data.specialEventConditionList[i];
             bool cont = false;
 
@@ -285,6 +301,7 @@ public class RegionManager : MonoBehaviour
         int rewardIndex = -1;
         List<int> discountableMedicine = new List<int>();
         List<string> progressableResearchList = new List<string>();
+        List<string> unHiddenableReserachList = new List<string>();
 
         nowMedicineIndex = -1;
         for(int i = 0; i < data.appearingMedicineArray.Length; i++)
@@ -307,7 +324,7 @@ public class RegionManager : MonoBehaviour
 
         ResearchSaveData researchSaveData = saveData.researchSaveData;
         nowResearch = null;
-
+        nowUnhiddenResearch = null;
 
         for (int i = 0; i < data.appearingResearchArray.Length; i++)
         {
@@ -352,9 +369,31 @@ public class RegionManager : MonoBehaviour
             }
             progressableResearchList.Add(data.appearingResearchArray[i]);
         }
+
+        for(int i = 0; i < data.unHiddenResearchArray.Length; i++)
+        {
+            bool find = false;
+            for(int j = 0; j < researchSaveData.unHiddenResearchList.Count; j++)
+            {
+                if (researchSaveData.unHiddenResearchList[j].Contains(data.unHiddenResearchArray[i]))
+                {
+                    find = true;
+                    break;
+                }
+            }
+            if (find == false)
+            {
+                unHiddenableReserachList.Add(data.unHiddenResearchArray[i]);
+            }
+            
+        }
         if (progressableResearchList.Count > 0)
         {
             nowResearch = progressableResearchList[Random.Range(0, progressableResearchList.Count)];
+        }
+        if(unHiddenableReserachList.Count > 0)
+        {
+            nowUnhiddenResearch = unHiddenableReserachList[Random.Range(0, unHiddenableReserachList.Count)];
         }
 
 
@@ -390,6 +429,10 @@ public class RegionManager : MonoBehaviour
                 continue;
             }
             if (nowResearch == null && ((RegionEvent)i == RegionEvent.DocumentResearch || (RegionEvent)i == RegionEvent.ResearchProgress))
+            {
+                continue;
+            }
+            if (nowUnhiddenResearch == null && ((RegionEvent)i == RegionEvent.UnhiddenResearch || (RegionEvent)i == RegionEvent.DocumentUnhiddenResearch))
             {
                 continue;
             }
@@ -479,6 +522,7 @@ public class RegionManager : MonoBehaviour
                 {
                     name.Append("--");
                 }
+                name.Append(")");
                 bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.whatMedicineDiscount, name.ToString());
                 smallTextArray[0].text = gameManager.languagePack.medicineDiscount;
                 if(nowRegionEvent == RegionEvent.DocumentMedicine)
@@ -613,6 +657,85 @@ public class RegionManager : MonoBehaviour
                 smallTextArray[0].text = gameManager.languagePack.researchProgressed;
 
                 if (nowRegionEvent == RegionEvent.DocumentResearch)
+                {
+                    DocumentCondition nowCondition = null;
+                    OwningDocumentClass doc = new OwningDocumentClass();
+                    doc.name = nowDocument;
+                    doc.gainedDay = saveData.nowDay;
+                    doc.gainedTime = saveData.nowTime;
+                    doc.gainedRegion = nowRegion;
+                    saveData.owningDocumentList.Add(doc);
+                    TabletManager.inst.UpdateDocument(doc);
+                    for (int i = 0; i < gameManager.documentConditionWrapper.documentConditionList.Count; i++)
+                    {
+                        if (gameManager.documentConditionWrapper.documentConditionList[i].fileName.Contains(doc.name))
+                        {
+                            nowCondition = documentConditionWrapper.documentConditionList[i];
+                        }
+                    }
+
+                    iconArray[1].sprite = nowCondition.LoadSprite();
+                    bigTextArray[1].text = gameManager.languagePack.Insert(gameManager.languagePack.whatDocumentGained, nowCondition.ingameName);
+                    smallTextArray[1].text = gameManager.languagePack.documentGained;
+                }
+                else
+                {
+                    iconArray[1].gameObject.SetActive(false);
+                    bigTextArray[1].gameObject.SetActive(false);
+                    smallTextArray[1].gameObject.SetActive(false);
+                }
+
+
+                break;
+            case RegionEvent.UnhiddenResearch:
+            case RegionEvent.DocumentUnhiddenResearch:
+                researchSaveData = saveData.researchSaveData;
+                find = false;
+                researchSaveData.unHiddenResearchList.Add(nowUnhiddenResearch);
+
+                researchData = null;
+                for (int i = 0; i < gameManager.otherToolResearchDataWrapper.otherToolResearchDataList.Count; i++)
+                {
+                    if (gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[i].fileName.Contains(nowUnhiddenResearch))
+                    {
+                        nowResearchType = ResearchType.OtherTool;
+                        researchData = gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[i];
+                        find = true;
+                        break;
+                    }
+                }
+                if (!find)
+                {
+                    for (int i = 0; i < gameManager.measureToolResearchDataWrapper.measureToolResearchDataList.Count; i++)
+                    {
+                        if (gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[i].fileName.Contains(nowUnhiddenResearch))
+                        {
+                            nowResearchType = ResearchType.MeasureTool;
+                            researchData = gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[i];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!find)
+                {
+                    for (int i = 0; i < gameManager.medicineResearchDataWrapper.medicineResearchDataList.Count; i++)
+                    {
+                        if (gameManager.medicineResearchDataWrapper.medicineResearchDataList[i].fileName.Contains(nowUnhiddenResearch))
+                        {
+                            nowResearchType = ResearchType.Medicine;
+                            researchData = gameManager.medicineResearchDataWrapper.medicineResearchDataList[i];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+
+                bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.whatResearchUnhidden, researchData.ingameName);
+                smallTextArray[0].text = gameManager.languagePack.researchUnhidden;
+
+                if (nowRegionEvent == RegionEvent.DocumentUnhiddenResearch)
                 {
                     DocumentCondition nowCondition = null;
                     OwningDocumentClass doc = new OwningDocumentClass();

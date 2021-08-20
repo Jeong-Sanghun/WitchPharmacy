@@ -38,6 +38,7 @@
             "symptomString": "water",
             "explain": "물이얏~~~~",
             "researchEndTime": 10,
+			            "hidden": true,
             "neededResearchList": ["waterTool"]
         },
         {
@@ -46,6 +47,7 @@
             "symptomString": "fire",
             "explain": "불이얏~~~",
             "researchEndTime": 10,
+			            "hidden": true,
             "neededResearchList": ["fireTool"]
         },
         {
@@ -54,6 +56,7 @@
             "symptomString": "earth",
             "explain": "돼지돼지",
             "researchEndTime": 10,
+			"hidden": true,
             "neededResearchList": ["earthTool"]
         },
         {
@@ -62,6 +65,7 @@
             "symptomString": "air",
             "explain": "공기밥~",
             "researchEndTime": 10,
+			"hidden": true,
             "neededResearchList": ["airTool"]
         }
     ]

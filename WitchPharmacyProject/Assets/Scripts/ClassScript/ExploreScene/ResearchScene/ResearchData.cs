@@ -13,6 +13,8 @@ public class ResearchData
 
     public List<string> neededResearchList;
 
+    public bool hidden;
+
     protected Sprite image;
 
     public virtual Sprite LoadImage()
@@ -28,7 +30,7 @@ public class ResearchData
         explain = "도구설명";
         researchEndTime = 10;
         neededResearchList = new List<string>();
-
+        hidden = false;
 
     }
 

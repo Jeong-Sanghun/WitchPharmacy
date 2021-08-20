@@ -1,16 +1,16 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 2,
-    "coin": 1010,
+    "nowDay": 3,
+    "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 35,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 42,
@@ -37,7 +37,12 @@
             "medicineCost": 3
         }
     ],
-    "owningSpecialMedicineList": [],
+    "owningSpecialMedicineList": [
+        {
+            "medicineIndex": 1,
+            "medicineCost": 3
+        }
+    ],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
@@ -50,13 +55,12 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 10
-                }
-            ]
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         },
         {
             "wholeGainCoin": 0,
@@ -68,7 +72,7 @@
         {
             "name": "Go",
             "gainedRegion": 0,
-            "gainedDay": 0,
+            "gainedDay": 2,
             "gainedTime": 960.0
         }
     ],
@@ -82,57 +86,57 @@
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [],
-        "progressingMedicineResearchList": [
+        "progressingMeasureToolResearchList": [
             {
-                "fileName": "waterearth",
+                "fileName": "fireTool",
                 "researchedTime": 3
             }
         ],
+        "endMeasureToolResearchList": [],
+        "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [],
+        "endOtherToolResearchList": [
+            "energyDrink"
+        ],
         "progressingBookResearchList": [],
         "endBookResearchList": [],
         "progressingSpecialResearchList": [],
         "endSpecialResearchList": [],
-        "appearingSpecialResearchList": []
+        "appearingSpecialResearchList": [],
+        "unHiddenResearchList": []
     },
-    "routePairList": [],
+    "routePairList": [
+        {
+            "storyName": "thirdDay",
+            "pickedRouteList": [
+                1
+            ]
+        }
+    ],
     "regionSaveDataList": [
         {
             "storyRegion": 0,
-            "regionIndex": 0,
+            "regionName": 0,
             "firstDiscountedMedicineIndex": [
-                35
+                34
             ],
             "secondDiscountedMedicineIndex": [],
             "eventTimeArray": [
                 0,
                 0,
                 0,
-                0
-            ],
-            "seenSpecialEventList": []
-        },
-        {
-            "storyRegion": 0,
-            "regionIndex": 1,
-            "firstDiscountedMedicineIndex": [],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
                 0,
                 0
             ],
-            "seenSpecialEventList": []
+            "seenSpecialEventList": [
+                "Event2"
+            ]
         }
     ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
+        false,
         true,
         true
     ],
@@ -142,12 +146,15 @@
         "thirdDay",
         "fourthDay2",
         "fifthDay",
-        "firstDay"
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "thirdDay"
     ],
     "readSpecialVisitorBundleList": [
         "Lily1"
     ],
-    "nextStory": "secondDay",
+    "nextStory": "thirdDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0
