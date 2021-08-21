@@ -49,7 +49,7 @@
                 "Go","Vagabond"
             ],
             "appearingResearchArray": ["waterTool","energyDrink","fireTool","fireAuto"],
-			"unHiddenResearchArray": ["waterAuto","fireAuto","airAuto","lightAuto"]
+			"unHiddenResearchArray": ["waterAuto","fireAuto","airAuto"]
         },
                {
             "fileName": "Forest",
@@ -92,7 +92,7 @@
                 "Octopus"
             ],
             "appearingResearchArray": ["waterair"],
-						"unHiddenResearchArray": ["waterAuto","fireAuto","airAuto","lightAuto"]
+						"unHiddenResearchArray": ["waterAuto","fireAuto","airAuto"]
         },
                 {
             "fileName": "AntiqueShop",

@@ -361,14 +361,11 @@ public class StoryManager : MonoBehaviour
         {
             if (saveData.routePairList[i].storyName.Contains(nowBundle.bundleName))
             {
-                
+                routePair = saveData.routePairList[i];
                 if (routePair.pickedRouteList.Count >= nowBundle.conversationRouterList.Count)
                 {
                     saveData.routePairList.RemoveAt(i);
-                }
-                else
-                {
-                    routePair = saveData.routePairList[i];
+                    routePair = null;
                 }
                 break;
             }

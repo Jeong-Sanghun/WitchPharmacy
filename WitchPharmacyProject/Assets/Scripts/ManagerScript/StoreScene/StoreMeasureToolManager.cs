@@ -51,16 +51,45 @@ public class StoreMeasureToolManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         dataWrapper = gameManager.jsonManager.ResourceDataLoad<MeasureToolDataWrapper>("MeasureToolDataWrapper");
+        MeasureToolResearchDataWrapper researchDataWrapper = gameManager.measureToolResearchDataWrapper;
         wholeButtonList = new List<MeasureToolButton>();
         int nowButtonNumber = 0;
         for(int i = 0; i < dataWrapper.measureToolDataList.Count; i++)
         {
             MeasureToolData data = dataWrapper.measureToolDataList[i];
-
+            MeasureToolResearchData researchData = null;
             if (saveData.owningMeasureToolList.Contains(i))
             {
                 continue;
             }
+            for (int j = 0; j < researchDataWrapper.measureToolResearchDataList.Count; j++)
+            {
+                if (researchDataWrapper.measureToolResearchDataList[j].fileName.Contains(data.fileName))
+                {
+                    researchData = researchDataWrapper.measureToolResearchDataList[j];
+                    break;
+                }
+            }
+            if(researchData != null)
+            {
+                if (researchData.hidden)
+                {
+                    bool hidden = true;
+                    for (int j = 0; j< saveData.researchSaveData.unHiddenResearchList.Count; j++)
+                    {
+                        if (saveData.researchSaveData.unHiddenResearchList[j].Contains(data.fileName))
+                        {
+                            hidden = false;
+                            break;
+                        }
+                    }
+                    if (hidden == true)
+                    {
+                        continue;
+                    }
+                }
+            }
+
             MeasureToolButton buttonClass = new MeasureToolButton();
             buttonClass.researched = false;
             prefabTitleText.text = data.ingameName;

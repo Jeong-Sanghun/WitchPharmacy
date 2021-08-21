@@ -1,50 +1,215 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 0,
-    "coin": 1000,
-    "owningMedicineList": [],
-    "owningSpecialMedicineList": [],
+    "nowTime": 1680.0,
+    "nowDay": 3,
+    "coin": 825,
+    "owningMedicineList": [
+        {
+            "medicineIndex": 34,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 35,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 42,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 43,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 50,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 51,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 58,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 59,
+            "medicineCost": 3
+        }
+    ],
+    "owningSpecialMedicineList": [
+        {
+            "medicineIndex": 1,
+            "medicineCost": 3
+        }
+    ],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [],
-    "owningDocumentList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 9
+                },
+                {
+                    "isPlus": false,
+                    "reason": 6,
+                    "changedCoin": 100
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 10
+                },
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 10
+                },
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
+                },
+                {
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 100
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 20
+                }
+            ]
+        }
+    ],
+    "owningDocumentList": [
+        {
+            "name": "Go",
+            "gainedRegion": 0,
+            "gainedDay": 1,
+            "gainedTime": 8400.0
+        }
+    ],
     "symptomBookList": [
         "water+",
         "water-",
         "fire+",
-        "fire-"
+        "fire-",
+        "earth+",
+        "earth-"
     ],
-    "owningMeasureToolList": [],
-    "owningOtherToolList": [],
+    "owningMeasureToolList": [
+        1
+    ],
+    "owningOtherToolList": [
+        "bookMark"
+    ],
     "endQuestList": [],
     "researchSaveData": {
         "progressingMeasureToolResearchList": [],
-        "endMeasureToolResearchList": [],
+        "endMeasureToolResearchList": [
+            "fireTool"
+        ],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
-        "endOtherToolResearchList": [],
+        "endOtherToolResearchList": [
+            "energyDrink"
+        ],
         "progressingBookResearchList": [],
-        "endBookResearchList": [],
+        "endBookResearchList": [
+            "earth"
+        ],
         "progressingSpecialResearchList": [],
         "endSpecialResearchList": [],
         "appearingSpecialResearchList": [],
-        "unHiddenResearchList": []
+        "unHiddenResearchList": [
+            "fireAuto"
+        ]
     },
-    "routePairList": [],
-    "regionSaveDataList": [],
-    "likedTreeterIndexList": [],
-    "highlightedButton": [
-        false,
-        false,
-        false
+    "routePairList": [
+        {
+            "storyName": "thirdDay",
+            "pickedRouteList": [
+                1
+            ]
+        }
     ],
-    "readStoryList": [],
-    "readSpecialVisitorBundleList": [],
+    "regionSaveDataList": [
+        {
+            "storyRegion": 0,
+            "regionName": 0,
+            "firstDiscountedMedicineIndex": [],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": [
+                "Event2"
+            ]
+        }
+    ],
+    "likedTreeterIndexList": [
+        1,
+        0
+    ],
+    "highlightedButton": [
+        true,
+        false,
+        true
+    ],
+    "readStoryList": [
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay"
+    ],
+    "readSpecialVisitorBundleList": [
+        "Lily1"
+    ],
     "nextStory": "firstDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 0
 }

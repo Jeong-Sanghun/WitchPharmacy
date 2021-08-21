@@ -458,9 +458,14 @@ public class RegionManager : MonoBehaviour
         nowStoryBundleName = builder.ToString();
     }
 
-
+    bool popupOnce = false;
     void RegionEndPopup()
     {
+        if(popupOnce == true)
+        {
+            return;
+        }
+        popupOnce = true;
         switch (nowRegionEvent)
         {
             case RegionEvent.DocumentMedicine:
@@ -731,7 +736,7 @@ public class RegionManager : MonoBehaviour
                         }
                     }
                 }
-
+                Debug.Log(nowUnhiddenResearch);
                 bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.whatResearchUnhidden, researchData.ingameName);
                 smallTextArray[0].text = gameManager.languagePack.researchUnhidden;
 
@@ -771,6 +776,7 @@ public class RegionManager : MonoBehaviour
             case RegionEvent.RandomCoin:
                 int coin = Random.Range(100, 200);
                 saveData.coin += coin;
+                TabletManager.inst.UpdateBill(BillReason.exploreBoxGain, true, coin);
                 bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.boxCoinGained, coin);
                 smallTextArray[0].text = gameManager.languagePack.coinGained;
                 iconArray[0].sprite = coinSprite;
