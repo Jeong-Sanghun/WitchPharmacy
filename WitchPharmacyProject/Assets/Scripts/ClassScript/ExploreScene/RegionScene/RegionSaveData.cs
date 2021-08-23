@@ -18,7 +18,7 @@ public class RegionSaveData
         regionName = RegionName.Library;
         firstDiscountedMedicineIndex = new List<int>();
         secondDiscountedMedicineIndex = new List<int>();
-        eventTimeArray = new int[6];
+        eventTimeArray = new int[4];
         seenSpecialEventList = new List<string>();
 
     }

@@ -1,12 +1,12 @@
 {
     "regionDataList": [
         {
-            "fileName": "Library",
+			"fileName": "Library",
             "ingameName": "도서관",
             "unlockDay": 0,
-			"specialEventConditionList": [
-			 {
-                    "fileName": "Event1",
+            "specialEventConditionList": [
+                {
+					"fileName": "Event1",
                     "leastDayCondition": 0,
                     "questConditionList": [
                         
@@ -17,7 +17,11 @@
                             "pickedRouteList": [0]
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 5,
+                    "reward": "waterAuto",
+                    "rewardDocument": "Vagabond",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 },
                 {
                     "fileName": "Event2",
@@ -31,25 +35,26 @@
                             "pickedRouteList": [1]
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 1
+                    "eventType": 3,
+                    "reward": "waterTool",
+                    "rewardDocument": "Octopus",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 3
                 }
             ],
-            "appearingMedicineArray": [
+"appearingMedicineArray": [
                 34,35,42,43,50,51,58,59
             ],
             "eventTimeArray": [
                 0,
-               0,
-                0,
-                0,
+               10,
 				10,
 				10
             ],
             "appearingDocumentArray": [
                 "Go","Vagabond"
             ],
-            "appearingResearchArray": ["waterTool","energyDrink","fireTool","fireAuto"],
-			"unHiddenResearchArray": ["waterAuto","fireAuto","airAuto"]
+            "appearingResearchArray": ["waterTool","energyDrink","fireTool","fireAuto"]
         },
                {
             "fileName": "Forest",
@@ -91,8 +96,7 @@
             "appearingDocumentArray": [
                 "Octopus"
             ],
-            "appearingResearchArray": ["waterair"],
-						"unHiddenResearchArray": ["waterAuto","fireAuto","airAuto"]
+            "appearingResearchArray": ["waterair"]
         },
                 {
             "fileName": "AntiqueShop",

@@ -9,7 +9,12 @@ public class SpecialEventCondition
     public int leastDayCondition;
     public List<string> questConditionList;
     public List<RoutePair> routeConditionList;
-    public int rewardSpecialMedicineIndex;
+    public RegionEvent eventType;
+    public string reward;
+    public string rewardDocument;
+    public int rewardMedicineIndex;
+    public int researchProgress;
+
     
     public SpecialEventCondition()
     {

@@ -70,6 +70,7 @@ public class RegionManager : MonoBehaviour
     string nowStoryBundleName;
     string nowResearch;
     string nowUnhiddenResearch;
+    int nowProgressNumber;
     ResearchType nowResearchType;
 
     [SerializeField]
@@ -92,15 +93,14 @@ public class RegionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        exploreManager = ExploreManager.inst;
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
-        StringBuilder path = new StringBuilder("RegionData/");
-        path.Append(saveData.nowRegion.ToString());
-        regionDataWrapper = gameManager.jsonManager.ResourceDataLoad<RegionDataWrapper>(path.ToString());
+        regionDataWrapper = exploreManager.regionDataWrapper;
         documentConditionWrapper = gameManager.documentConditionWrapper;
         regionSaveDataList = saveData.regionSaveDataList;
-        exploreManager = ExploreManager.inst;
+
         nowRegion = exploreManager.nowRegion;
         for (int i = 0; i < regionSaveDataList.Count; i++)
         {
@@ -196,10 +196,11 @@ public class RegionManager : MonoBehaviour
         
         for(int  i = 0; i < data.specialEventConditionList.Count; i++)
         {
+            SpecialEventCondition condition = data.specialEventConditionList[i];
             bool contains = false;
             for (int j = 0;j < nowRegionSaveData.seenSpecialEventList.Count; j++)
             {
-                if (nowRegionSaveData.seenSpecialEventList[j].Contains(data.specialEventConditionList[i].fileName))
+                if (nowRegionSaveData.seenSpecialEventList[j].Contains(condition.fileName))
                 {
                     contains = true;
                     break;
@@ -210,18 +211,8 @@ public class RegionManager : MonoBehaviour
                 continue;
             }
 
-            SpecialEventCondition condition = data.specialEventConditionList[i];
+
             bool cont = false;
-
-            for(int j = 0; j < nowRegionSaveData.seenSpecialEventList.Count; j++)
-            {
-                if (nowRegionSaveData.seenSpecialEventList[j].Contains(condition.fileName))
-                {
-                    continue;
-                }
-            }
-            
-
             if(saveData.nowDay< condition.leastDayCondition)
             {
                 continue;
@@ -247,6 +238,7 @@ public class RegionManager : MonoBehaviour
             {
                 continue;
             }
+
             for (int k = 0; k < condition.routeConditionList.Count; k++)
             {
                 bool contain = false;
@@ -284,9 +276,220 @@ public class RegionManager : MonoBehaviour
             {
                 continue;
             }
+
+            ResearchSaveData researchSaveData = saveData.researchSaveData;
+            nowResearch = null;
+            nowUnhiddenResearch = null;
+            nowMedicineIndex = -1;
+
+            if (condition.eventType == RegionEvent.DocumentMedicine || condition.eventType == RegionEvent.DocumentResearch || condition.eventType == RegionEvent.DocumentUnhiddenResearch)
+            {
+                bool notContain = true;
+                for (int j = 0; j < saveData.owningDocumentList.Count; j++)
+                {
+                    if (saveData.owningDocumentList[j].name.Contains(condition.rewardDocument))
+                    {
+                        notContain = false;
+                        break;
+                    }
+                }
+                if (notContain)
+                {
+                    nowDocument = condition.rewardDocument;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            if (condition.eventType == RegionEvent.ResearchProgress || condition.eventType == RegionEvent.DocumentResearch)
+            {
+                bool find = false;
+                for (int j = 0; j < researchSaveData.endMeasureToolResearchList.Count; j++)
+                {
+                    if (researchSaveData.endMeasureToolResearchList[j].Contains(condition.reward))
+                    {
+                        find = true;
+                        break;
+                    }
+
+                }
+                if (!find)
+                {
+
+                    for (int j = 0; j < researchSaveData.endMedicineResearchList.Count; j++)
+                    {
+                        if (researchSaveData.endMedicineResearchList[j].Contains(condition.reward))
+                        {
+                            find = true;
+                            break;
+                        }
+
+                    }
+                }
+                if (!find)
+                {
+                    for (int j = 0; j < researchSaveData.endOtherToolResearchList.Count; j++)
+                    {
+                        if (researchSaveData.endOtherToolResearchList[j].Contains(condition.reward))
+                        {
+                            find = true;
+                            break;
+                        }
+
+                    }
+                }
+                if(find == true)
+                {
+                    continue;
+                }
+                find = false;
+                ResearchData researchData = null;
+                for (int j = 0; j < gameManager.otherToolResearchDataWrapper.otherToolResearchDataList.Count; j++)
+                {
+                    if (gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[j].fileName.Contains(condition.reward))
+                    {
+                        researchData = gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[j];
+                        find = true;
+                        break;
+                    }
+                }
+                if (!find)
+                {
+                    for (int j = 0; j < gameManager.measureToolResearchDataWrapper.measureToolResearchDataList.Count; j++)
+                    {
+                        if (gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[j].fileName.Contains(condition.reward))
+                        {
+                            researchData = gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[j];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!find)
+                {
+                    for (int j = 0; j < gameManager.medicineResearchDataWrapper.medicineResearchDataList.Count; j++)
+                    {
+                        if (gameManager.medicineResearchDataWrapper.medicineResearchDataList[j].fileName.Contains(condition.reward))
+                        {
+                            researchData = gameManager.medicineResearchDataWrapper.medicineResearchDataList[j];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (researchData.hidden == true)
+                {
+                    find = false;
+                    for (int j = 0; j < researchSaveData.unHiddenResearchList.Count; j++)
+                    {
+                        if (researchSaveData.unHiddenResearchList[j].Contains(condition.reward))
+                        {
+                            find = true;
+                            break;
+                        }
+                    }
+                    if (find == false)
+                    {
+                        continue;
+                    }
+                }
+
+                nowResearch = condition.reward;
+                nowProgressNumber = condition.researchProgress;
+            }
+            else if(condition.eventType == RegionEvent.UnhiddenResearch || condition.eventType == RegionEvent.DocumentUnhiddenResearch)
+            {
+                bool find = false;
+                ResearchData researchData = null;
+                for (int j = 0; j < gameManager.otherToolResearchDataWrapper.otherToolResearchDataList.Count; j++)
+                {
+                    if (gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[j].fileName.Contains(condition.reward))
+                    {
+                        researchData = gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[j];
+                        find = true;
+                        break;
+                    }
+                }
+                if (!find)
+                {
+                    for (int j = 0; j < gameManager.measureToolResearchDataWrapper.measureToolResearchDataList.Count; j++)
+                    {
+                        if (gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[j].fileName.Contains(condition.reward))
+                        {
+                            researchData = gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[j];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!find)
+                {
+                    for (int j = 0; j < gameManager.medicineResearchDataWrapper.medicineResearchDataList.Count; j++)
+                    {
+                        if (gameManager.medicineResearchDataWrapper.medicineResearchDataList[j].fileName.Contains(condition.reward))
+                        {
+                            researchData = gameManager.medicineResearchDataWrapper.medicineResearchDataList[j];
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+                find = false;
+                if (researchData.hidden == true)
+                {
+                    for (int j = 0; j < researchSaveData.unHiddenResearchList.Count; j++)
+                    {
+                        if (researchSaveData.unHiddenResearchList[j].Contains(condition.reward))
+                        {
+                            find = true;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    //심각한 오류
+                    Debug.Log("찾은 데이터가 히든이 아님");
+                    continue;
+                }
+                if (find == true)
+                {
+                    continue;
+                }
+                nowUnhiddenResearch = condition.reward;
+            }
+            else if(condition.eventType == RegionEvent.DocumentMedicine || condition.eventType == RegionEvent.MedicineDiscount)
+            {
+                bool disable = false;
+                for (int j = 0; j < saveData.owningMedicineList.Count; j++)
+                {
+                    if (saveData.owningMedicineList[j].medicineIndex == condition.rewardMedicineIndex)
+                    {
+                        if (nowRegionSaveData.secondDiscountedMedicineIndex.Contains(condition.rewardMedicineIndex))
+                        {
+                            disable = true;
+                            break;
+                        }
+                    }
+                }
+                if (disable)
+                {
+                    continue;
+                }
+                nowMedicineIndex = condition.rewardMedicineIndex;
+            }
+
+
+           
+            
+
             nowSpecialEvent = condition;
-            nowMedicineIndex = condition.rewardSpecialMedicineIndex;
-            nowRegionEvent = RegionEvent.SpecialEvent;
+            nowRegionEvent = condition.eventType;
             nowRegionSaveData.seenSpecialEventList.Add(nowSpecialEvent.fileName);
             return true;
         }
@@ -301,7 +504,7 @@ public class RegionManager : MonoBehaviour
         int rewardIndex = -1;
         List<int> discountableMedicine = new List<int>();
         List<string> progressableResearchList = new List<string>();
-        List<string> unHiddenableReserachList = new List<string>();
+        //List<string> unHiddenableReserachList = new List<string>();
 
         nowMedicineIndex = -1;
         for(int i = 0; i < data.appearingMedicineArray.Length; i++)
@@ -363,38 +566,93 @@ public class RegionManager : MonoBehaviour
                         
                 }
             }
-            if(find == true)
+            if (find == true)
             {
                 continue;
             }
-            progressableResearchList.Add(data.appearingResearchArray[i]);
-        }
-
-        for(int i = 0; i < data.unHiddenResearchArray.Length; i++)
-        {
-            bool find = false;
-            for(int j = 0; j < researchSaveData.unHiddenResearchList.Count; j++)
+            find = false;
+            ResearchData researchData = null;
+            for (int j = 0; j < gameManager.otherToolResearchDataWrapper.otherToolResearchDataList.Count; j++)
             {
-                if (researchSaveData.unHiddenResearchList[j].Contains(data.unHiddenResearchArray[i]))
+                if (gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[j].fileName.Contains(data.appearingResearchArray[i]))
                 {
+                    researchData = gameManager.otherToolResearchDataWrapper.otherToolResearchDataList[j];
                     find = true;
                     break;
                 }
             }
-            if (find == false)
+            if (!find)
             {
-                unHiddenableReserachList.Add(data.unHiddenResearchArray[i]);
+                for (int j = 0; j < gameManager.measureToolResearchDataWrapper.measureToolResearchDataList.Count; j++)
+                {
+                    if (gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[j].fileName.Contains(data.appearingResearchArray[i]))
+                    {
+                        researchData = gameManager.measureToolResearchDataWrapper.measureToolResearchDataList[j];
+                        find = true;
+                        break;
+                    }
+                }
             }
-            
+
+            if (!find)
+            {
+                for (int j = 0; j < gameManager.medicineResearchDataWrapper.medicineResearchDataList.Count; j++)
+                {
+                    if (gameManager.medicineResearchDataWrapper.medicineResearchDataList[j].fileName.Contains(data.appearingResearchArray[i]))
+                    {
+                        researchData = gameManager.medicineResearchDataWrapper.medicineResearchDataList[j];
+                        find = true;
+                        break;
+                    }
+                }
+            }
+
+            if(researchData.hidden == true)
+            {
+                find = false;
+                for (int j = 0; j < researchSaveData.unHiddenResearchList.Count; j++)
+                {
+                    if (researchSaveData.unHiddenResearchList[j].Contains(data.appearingResearchArray[i]))
+                    {
+                        find = true;
+                        break;
+                    }
+                }
+                if (find == false)
+                {
+                    continue;
+                }
+            }
+
+            nowProgressNumber = 3;
+            progressableResearchList.Add(data.appearingResearchArray[i]);
         }
+
+        //for(int i = 0; i < data.unHiddenResearchArray.Length; i++)
+        //{
+        //    bool find = false;
+        //    for(int j = 0; j < researchSaveData.unHiddenResearchList.Count; j++)
+        //    {
+        //        if (researchSaveData.unHiddenResearchList[j].Contains(data.unHiddenResearchArray[i]))
+        //        {
+        //            find = true;
+        //            break;
+        //        }
+        //    }
+        //    if (find == false)
+        //    {
+        //        unHiddenableReserachList.Add(data.unHiddenResearchArray[i]);
+        //    }
+            
+        //}
         if (progressableResearchList.Count > 0)
         {
             nowResearch = progressableResearchList[Random.Range(0, progressableResearchList.Count)];
         }
-        if(unHiddenableReserachList.Count > 0)
-        {
-            nowUnhiddenResearch = unHiddenableReserachList[Random.Range(0, unHiddenableReserachList.Count)];
-        }
+        //if(unHiddenableReserachList.Count > 0)
+        //{
+        //    nowUnhiddenResearch = unHiddenableReserachList[Random.Range(0, unHiddenableReserachList.Count)];
+        //}
 
 
 
@@ -432,10 +690,10 @@ public class RegionManager : MonoBehaviour
             {
                 continue;
             }
-            if (nowUnhiddenResearch == null && ((RegionEvent)i == RegionEvent.UnhiddenResearch || (RegionEvent)i == RegionEvent.DocumentUnhiddenResearch))
-            {
-                continue;
-            }
+            //if (nowUnhiddenResearch == null && ((RegionEvent)i == RegionEvent.UnhiddenResearch || (RegionEvent)i == RegionEvent.DocumentUnhiddenResearch))
+            //{
+            //    continue;
+            //}
             if (data.eventTimeArray[i] - nowRegionSaveData.eventTimeArray[i] > 0)
             {
                 rewardNumPool.Add(i);
@@ -637,7 +895,7 @@ public class RegionManager : MonoBehaviour
                 {
                     research = new OneResearch();
                     research.fileName = nowResearch;
-                    research.researchedTime = progressingResearchTime;
+                    research.researchedTime = nowProgressNumber;
                     if(research.researchedTime >= researchData.researchEndTime)
                     {
                         endReserachList.Add(nowResearch);
@@ -650,7 +908,7 @@ public class RegionManager : MonoBehaviour
                 }
                 else
                 {
-                    research.researchedTime += progressingResearchTime;
+                    research.researchedTime += nowProgressNumber;
                     if (research.researchedTime >= researchData.researchEndTime)
                     {
                         research.researchedTime = researchData.researchEndTime;
@@ -785,28 +1043,28 @@ public class RegionManager : MonoBehaviour
                 smallTextArray[1].gameObject.SetActive(false);
                 break;
 
-            case RegionEvent.SpecialEvent:
-                OwningMedicineClass medicine = new OwningMedicineClass();
-                SpecialMedicineClass med = gameManager.specialMedicineDataWrapper.specialMedicineDataList[nowMedicineIndex];
-                medicine.medicineIndex = nowMedicineIndex;
-                medicine.medicineCost = med.cost;
-                saveData.owningSpecialMedicineList.Add(medicine);
+            //case RegionEvent.SpecialEvent:
+            //    OwningMedicineClass medicine = new OwningMedicineClass();
+            //    SpecialMedicineClass med = gameManager.specialMedicineDataWrapper.specialMedicineDataList[nowMedicineIndex];
+            //    medicine.medicineIndex = nowMedicineIndex;
+            //    medicine.medicineCost = med.cost;
+            //    saveData.owningSpecialMedicineList.Add(medicine);
                 
-                StringBuilder medName = new StringBuilder(med.firstName);
-                medName.Append(" ");
-                medName.Append(med.secondName);
-                if (gameManager.saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
-                {
-                    string josa = gameManager.languagePack.GetCompleteWord(medName.ToString(), "을", "를");
-                    medName.Append(josa);
-                }
-                bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.boxGained, medName.ToString());
-                smallTextArray[0].gameObject.SetActive(false);
-                iconArray[0].sprite = med.LoadImage();
-                iconArray[1].gameObject.SetActive(false);
-                bigTextArray[1].gameObject.SetActive(false);
-                smallTextArray[1].gameObject.SetActive(false);
-                break;
+            //    StringBuilder medName = new StringBuilder(med.firstName);
+            //    medName.Append(" ");
+            //    medName.Append(med.secondName);
+            //    if (gameManager.saveDataTimeWrapper.nowLanguageDirectory.Contains("Korean"))
+            //    {
+            //        string josa = gameManager.languagePack.GetCompleteWord(medName.ToString(), "을", "를");
+            //        medName.Append(josa);
+            //    }
+            //    bigTextArray[0].text = gameManager.languagePack.Insert(gameManager.languagePack.boxGained, medName.ToString());
+            //    smallTextArray[0].gameObject.SetActive(false);
+            //    iconArray[0].sprite = med.LoadImage();
+            //    iconArray[1].gameObject.SetActive(false);
+            //    bigTextArray[1].gameObject.SetActive(false);
+            //    smallTextArray[1].gameObject.SetActive(false);
+            //    break;
 
         }
 

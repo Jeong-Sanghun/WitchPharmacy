@@ -17,7 +17,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 },
                 {
                     "fileName": "null",
@@ -31,7 +35,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 }
             ],
             "appearingMedicineArray": [
@@ -50,7 +58,6 @@
                 0,
                 0,
                 0,
-                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -58,8 +65,7 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": [],
-            "unHiddenResearchArray": []
+            "appearingResearchArray": []
         },
         {
             "fileName": "null",
@@ -78,7 +84,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 },
                 {
                     "fileName": "null",
@@ -92,7 +102,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 }
             ],
             "appearingMedicineArray": [
@@ -111,7 +125,6 @@
                 0,
                 0,
                 0,
-                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -119,8 +132,7 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": [],
-            "unHiddenResearchArray": []
+            "appearingResearchArray": []
         },
         {
             "fileName": "null",
@@ -139,7 +151,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 },
                 {
                     "fileName": "null",
@@ -153,7 +169,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 }
             ],
             "appearingMedicineArray": [
@@ -172,7 +192,6 @@
                 0,
                 0,
                 0,
-                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -180,8 +199,7 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": [],
-            "unHiddenResearchArray": []
+            "appearingResearchArray": []
         },
         {
             "fileName": "null",
@@ -200,7 +218,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 },
                 {
                     "fileName": "null",
@@ -214,7 +236,11 @@
                             "pickedRouteList": []
                         }
                     ],
-                    "rewardSpecialMedicineIndex": 0
+                    "eventType": 0,
+                    "reward": "",
+                    "rewardDocument": "",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
                 }
             ],
             "appearingMedicineArray": [
@@ -233,7 +259,6 @@
                 0,
                 0,
                 0,
-                0,
                 0
             ],
             "appearingDocumentArray": [
@@ -241,8 +266,7 @@
                 "null",
                 "null"
             ],
-            "appearingResearchArray": [],
-            "unHiddenResearchArray": []
+            "appearingResearchArray": []
         }
     ]
 }

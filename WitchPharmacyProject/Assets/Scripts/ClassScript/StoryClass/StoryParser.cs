@@ -284,6 +284,8 @@ public class StoryParser
                         case ParseMode.NextRegion:
                             nowMode = ParseMode.NextRegionName;
                             break;
+
+
                         default:
                             builder.Append('{');
                             break;
@@ -370,7 +372,6 @@ public class StoryParser
                             nowMode = ParseMode.Null;
                             nowWrapper.nextRegion = builder.ToString();
                             break;
-
                     }
                     builder.Clear();
                     break;
