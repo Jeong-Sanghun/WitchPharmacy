@@ -451,7 +451,8 @@ public class MedicineManager : MonoBehaviour    //SH
         inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
 
 
-        potAnimationManager.SetPotColor(nowMedicineButton.medicineClass.LoadImage(), nowPotIndex);
+        Debug.Log(nowMedicineButton.medicineClass.firstNumber);
+        potAnimationManager.SetPotColor(nowMedicineButton.medicineClass.GetSecondSymptom(),nowMedicineButton.medicineClass.secondNumber, nowPotIndex);
         medicineInPotList.Add(nowMedicineButton);
         //아무것도 아님이 뜨면 줄여주지 않음
         //nowMedicineButton.medicineQuant--;
@@ -500,7 +501,7 @@ public class MedicineManager : MonoBehaviour    //SH
                 {
                     potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
                     potMedicineObjectList[1].transform.localPosition = Vector3.zero;
-                    potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.LoadImage(), 0);
+                    potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.GetSecondSymptom(), medicineInPotList[1].medicineClass.secondNumber, 0);
                     
                 }
                 potAnimationManager.UnSetPotColor(1, true);
@@ -512,19 +513,19 @@ public class MedicineManager : MonoBehaviour    //SH
                     potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
                     potMedicineObjectList[1].transform.localPosition = Vector3.zero;
 
-                    potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.LoadImage(), 0);
+                    potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.GetSecondSymptom(), medicineInPotList[1].medicineClass.secondNumber, 0);
 
                     potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
                     potMedicineObjectList[2].transform.localPosition = Vector3.zero;
 
-                    potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.LoadImage(), 1);
+                    potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.GetSecondSymptom(), medicineInPotList[2].medicineClass.secondNumber, 1);
                     
                 }
                 else if (listIndex == 1)
                 {
                     potMedicineObjectList[2].transform.SetParent(potMedicineParentArray[1].transform);
                     potMedicineObjectList[2].transform.localPosition = Vector3.zero;
-                    potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.LoadImage(), 1);
+                    potAnimationManager.SetPotColor(medicineInPotList[2].medicineClass.GetSecondSymptom(), medicineInPotList[2].medicineClass.secondNumber, 1);
                     
                 }
                 potAnimationManager.UnSetPotColor(2, true);

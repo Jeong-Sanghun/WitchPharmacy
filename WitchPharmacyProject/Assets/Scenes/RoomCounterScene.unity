@@ -12262,6 +12262,17 @@ MonoBehaviour:
   potUIAnimation: {fileID: 1827862956}
   gradient: {fileID: 479883334}
   bottleGradient: {fileID: 1297842052}
+  symptomColorArray:
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0.8518257, b: 1, a: 1}
+  - {r: 1, g: 0.7330102, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.82061434, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.02162838, a: 1}
+  - {r: 1, g: 0.8873908, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.42460012, a: 1}
+  - {r: 0.4950266, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.56688833, a: 1}
 --- !u!1 &749682853
 GameObject:
   m_ObjectHideFlags: 0

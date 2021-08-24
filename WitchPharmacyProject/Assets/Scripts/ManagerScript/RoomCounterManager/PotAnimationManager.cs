@@ -14,6 +14,8 @@ public class PotAnimationManager : MonoBehaviour
     UIGradient gradient;
     [SerializeField]
     UIGradient bottleGradient;
+    [SerializeField]
+    Color[] symptomColorArray;
 
     public void PotWorldAnimation(bool active)
     {
@@ -26,35 +28,41 @@ public class PotAnimationManager : MonoBehaviour
         potUIAnimation.SetBool("Boil", active);
     }
 
-    public void SetPotColor(Sprite sprite,int index)
+    public void SetPotColor(Symptom symptom, int symptomNumber,int index)
     {
         //Texture2D tex = sprite.texture;
-        Color32[] texColors = sprite.texture.GetPixels32();
+        //Color32[] texColors = sprite.texture.GetPixels32();
 
-        int total = texColors.Length;
+        //int total = texColors.Length;
 
-        float r = 0;
-        float g = 0;
-        float b = 0;
-        float totalWithoutAlpha = total;
+        //float r = 0;
+        //float g = 0;
+        //float b = 0;
+        //float totalWithoutAlpha = total;
 
-        for (int i = 0; i < total; i++)
+        //for (int i = 0; i < total; i++)
+        //{
+        //    if (texColors[i].a == 0)
+        //    {
+        //        totalWithoutAlpha--;
+        //        continue;
+        //    }
+        //    r += texColors[i].r;
+
+        //    g += texColors[i].g;
+
+        //    b += texColors[i].b;
+
+        //}
+
+        //Color32 color = new Color32((byte)(r*1.2f / totalWithoutAlpha), (byte)(g*1.2f / totalWithoutAlpha), (byte)(b*1.2f / totalWithoutAlpha), 255);
+        Color color;
+        int arrayIndex = (int)symptom * 2;
+        if(symptomNumber == 2)
         {
-            if (texColors[i].a == 0)
-            {
-                totalWithoutAlpha--;
-                continue;
-            }
-            r += texColors[i].r;
-
-            g += texColors[i].g;
-
-            b += texColors[i].b;
-
+            arrayIndex++;
         }
-
-        Color32 color = new Color32((byte)(r*1.2f / totalWithoutAlpha), (byte)(g*1.2f / totalWithoutAlpha), (byte)(b*1.2f / totalWithoutAlpha), 255);
-        Debug.Log(color);
+        color = symptomColorArray[arrayIndex];
         switch (index)
         {
             case 0:
