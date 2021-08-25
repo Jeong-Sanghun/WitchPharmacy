@@ -268,9 +268,9 @@ public class GameManager : MonoBehaviour //SH
         languagePack = new UILanguagePack();
         //jsonManager.SaveJson<QuestDocument>(doc, "Lily");
         //jsonManager.SaveJson<SymptomBookBundle>(symptomBookBundle, "water+");
-        //jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
-        MeasureToolResearchDataWrapper measureToolWrapper = new MeasureToolResearchDataWrapper();
-        jsonManager.SaveJson<MeasureToolResearchDataWrapper>(measureToolWrapper, "MeasureToolResearchDataWrapper");
+        ////jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
+        //MeasureToolResearchDataWrapper measureToolWrapper = new MeasureToolResearchDataWrapper();
+        //jsonManager.SaveJson<MeasureToolResearchDataWrapper>(measureToolWrapper, "MeasureToolResearchDataWrapper");
         //MeasureToolExplain explain = new MeasureToolExplain();
         //jsonManager.SaveJson<MeasureToolExplain>(explain, "Fire");
         //MedicineResearchDataWrapper medicineResearchWrapper = new MedicineResearchDataWrapper();
@@ -278,10 +278,10 @@ public class GameManager : MonoBehaviour //SH
         //OtherToolResearchDataWrapper otherToolResearchWrapper = new OtherToolResearchDataWrapper();
         //jsonManager.SaveJson<OtherToolResearchDataWrapper>(otherToolResearchWrapper, "OtherToolResearchDataWrapper");
         //OtherToolDataWrapper otherToolWrapper = new OtherToolDataWrapper();
-        //jsonManager.SaveJson<OtherToolDataWrapper>(otherToolWrapper, "OtherToolDataWrapper");
-        RegionDataWrapper region = new RegionDataWrapper();
-        jsonManager.SaveJson<RegionDataWrapper>(region, "RegionDataWrapper");
-        //RandomVisitorDiseaseWrapper diseaseWrapper = new RandomVisitorDiseaseWrapper();
+        ////jsonManager.SaveJson<OtherToolDataWrapper>(otherToolWrapper, "OtherToolDataWrapper");
+        //RegionDataWrapper region = new RegionDataWrapper();
+        //jsonManager.SaveJson<RegionDataWrapper>(region, "RegionDataWrapper");
+        ////RandomVisitorDiseaseWrapper diseaseWrapper = new RandomVisitorDiseaseWrapper();
         //jsonManager.SaveJson<RandomVisitorDiseaseWrapper>(diseaseWrapper, "water");
         //treeterConditionWrapper = new TreeterConditionWrapper();
         //jsonManager.SaveJson<TreeterConditionWrapper>(treeterConditionWrapper, "TreeterConditionWrapper");

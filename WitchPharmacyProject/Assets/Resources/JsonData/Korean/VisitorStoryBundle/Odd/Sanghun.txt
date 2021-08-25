@@ -1,0 +1,30 @@
+﻿<bundleName>{0}
+<symptom>{-1,2,0,0,0}
+<switch>{상훈}
+<disease>{dehydration1,flame2}
+<visitorSet>{0,0,0,0,0}
+[]
+안녕
+[Ruellia]
+뭐야 너
+[]
+나 상훈이지
+[Ruellia]
+무슨일이야
+[]
+약줘 벅벅
+
+
+<wrong>
+[]
+에라
+
+<skip>
+[] 날 보내지마 
+
+<right>
+[]
+대박인걸~
+
+
+

@@ -203,7 +203,15 @@ public class CounterManager : MonoBehaviour //SH
     public void CounterSpecialStart(SpecialVisitorCondition condition)
     {
         counterStarted = true;
-        nowVisitorType = VisitorType.Special;
+        if (condition.isOdd)
+        {
+            nowVisitorType = VisitorType.Odd;
+        }
+        else
+        {
+            nowVisitorType = VisitorType.Special;
+        }
+        
         nowSpecialVisitorCondition = condition;
         SpawnRandomVisitor();
     }
@@ -321,73 +329,6 @@ public class CounterManager : MonoBehaviour //SH
     public void OnMedicineDelivery(CookedMedicine medicine)
     {
         bool wrongMedicine = false;
-        //if (nowVisitorType == VisitorType.SecondSpecial || nowVisitorType == VisitorType.FirstSpecial)
-        //{
-        //    bool specialWrong = true;
-        //    for (int i = 0; i < medicine.medicineCount; i++)
-        //    {
-        //        if (medicine.specialArray[i] == false)
-        //        {
-        //            continue;
-        //        }
-        //        if (specialVisitorDialogBundle.answerSpecialMedicineName == specialMedicineDataList[medicine.medicineArray[i]].fileName)
-        //        {
-        //            specialWrong = false;
-        //            break;
-        //        }
-        //    }
-        //    if(specialWrong == false)
-        //    {
-
-        //        int[] medicineIndexArray = medicine.medicineArray;
-        //        int[] medicineSymptomArray = new int[5];
-        //        int[] visitorSymptomArray = specialVisitorDialogBundle.symptomNumberArray;
-
-        //        for (int i = 0; i < 5; i++)
-        //        {
-        //            medicineSymptomArray[i] = 0;
-        //        }
-        //        for (int i = 0; i < medicine.medicineCount; i++)
-        //        {
-        //            if (medicine.specialArray[i] == true)
-        //            {
-        //                continue;
-        //            }
-        //            MedicineClass med = medicineDataList[medicineIndexArray[i]];
-
-        //            medicineSymptomArray[(int)med.GetFirstSymptom()] += med.firstNumber;
-        //            medicineSymptomArray[(int)med.GetSecondSymptom()] += med.secondNumber;
-        //        }
-        //        for (int i = 0; i < 5; i++)
-        //        {
-        //            if (medicineSymptomArray[i] + visitorSymptomArray[i] != 0)
-        //            {
-        //                wrongMedicine = true;
-        //                break;
-        //            }
-        //        }
-        //        if (!specialWrong && !wrongMedicine)
-        //        {
-        //            wrongMedicine = false;
-        //        }
-        //        else
-        //        {
-        //            wrongMedicine = true;
-        //        }
-        //        counterDialogManager.OnSpecialVisitorEnd(wrongMedicine);
-        //    }
-        //    else
-        //    {
-        //        Debug.Log(specialWrong);
-        //        wrongMedicine = true;
-        //        counterDialogManager.OnSpecialVisitorEnd(specialWrong);
-        //    }
-
-
-
-        //}
-        //else
-        //{
         int[] medicineIndexArray = medicine.medicineArray;
         int[] medicineSymptomArray = new int[6];
         int[] finalSymptomArray = new int[6];
@@ -439,26 +380,6 @@ public class CounterManager : MonoBehaviour //SH
             nowVisitor.FinalSymptomSpriteUpdate(finalSymptomArray);
             StartCoroutine(nowVisitor.FinalDissolve());
         }
-
-        //if (nowVisitorType == VisitorType.Odd)
-        //{
-        //    counterDialogManager.OnOddVisitorEnd(wrongMedicine);
-        //    if(wrongMedicine == false)
-        //    {
-        //        SpecialMedicineGain(oddVisitorDialogBundle.rewardSpecialMedicine);
-
-        //    }
-        //}
-
-        //}
-
-
-        //if (!wrongMedicine)
-        //{
-        //    CoinGain();
-        //}
-
-
     }
 
     //counterDialogManager에서 호출, 스킵버튼에서 호출.
@@ -481,7 +402,7 @@ public class CounterManager : MonoBehaviour //SH
     public void SetSpecialVisitor(string characterName, string feeling)
     {
 
-        if(nowVisitor != null && nowVisitor.visitorType == VisitorType.Special)
+        if (nowVisitor != null && nowVisitor.visitorType == VisitorType.Special)
         {
             ((SpecialVisitorClass)nowVisitor).SetObjectImage(characterName, feeling);
         }
@@ -489,7 +410,7 @@ public class CounterManager : MonoBehaviour //SH
         {
             if (nowVisitor != null)
             {
-                nowVisitor.visitorObject.gameObject.SetActive(false);
+                nowVisitor.visitorObject.SetActive(false);
             }
             SpecialVisitorClass visitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, characterName, feeling);
             nowVisitor = visitor;
@@ -521,14 +442,19 @@ public class CounterManager : MonoBehaviour //SH
         }
         if(nowVisitorType == VisitorType.Random)
         {
-            nowVisitor = new RandomVisitorClass(visitorParent, StoryRegion.Narin);
+            nowVisitor = new RandomVisitorClass(visitorParent, saveData.nowRegion);
         }
         else if(nowVisitorType== VisitorType.Special)
         {
-            VisitorDialogBundle bundle = counterDialogManager.LoadSpecialBundle(nowSpecialVisitorCondition);
+            VisitorDialogBundle bundle = counterDialogManager.LoadSpecialOddBundle(nowSpecialVisitorCondition,nowVisitorType);
             nowVisitor = new SpecialVisitorClass(visitorParent, specialVisitorPrefab, bundle);
             VisitorDialogWrapper wrapper = bundle.startWrapperList[0];
             ((SpecialVisitorClass)nowVisitor).SetObjectImage(wrapper.characterName,wrapper.characterFeeling);
+        }
+        else if (nowVisitorType == VisitorType.Odd)
+        {
+            VisitorDialogBundle bundle = counterDialogManager.LoadSpecialOddBundle(nowSpecialVisitorCondition, nowVisitorType);
+            nowVisitor = new OddVisitorClass(visitorParent, specialVisitorPrefab, bundle,saveData.nowRegion);
         }
         
         //쫙 뿌려준다

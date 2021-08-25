@@ -315,10 +315,6 @@ public class VisitorTriggerManager : MonoBehaviour
             //}
             
         }
-        else if (OddConditionCheck())
-        {
-            //counterManager.CounterStart(nowOddVisitorDialogBundle);
-        }
         else
         {
             counterManager.CounterStart();

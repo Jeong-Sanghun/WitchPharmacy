@@ -11,7 +11,7 @@ public class StoryParser
             ,RouteSwitch,RouteText,RightAfterRoute,CutScene,CutSceneFileName,CutSceneEffect,Null
             ,BackGround,BackGroundName,BackGroundEffect, NextStory, NextStoryName
             ,NextRegion, NextRegionName,RightMedicine,WrongMedicine,SkipVisitor,GiveCoin,CoinNumber
-            ,Symptom,SymptomNumber,Disease,DiseaseName
+            ,Symptom,SymptomNumber,Disease,DiseaseName,VisitorSet,VisitorSetNumber
     }
 
     CharacterIndexToName characterIndexToName;
@@ -614,6 +614,7 @@ public class StoryParser
         StringBuilder builder = new StringBuilder(directory);
         builder.Append(language);
         builder.Append("VisitorStoryBundle/");
+        gameData.visitorType = visitorType;
         switch (visitorType)
         {
             case VisitorType.Random:
@@ -629,6 +630,7 @@ public class StoryParser
                 break;
             case VisitorType.RuelliaStart:
                 builder.Append("RuelliaStart/");
+                gameData.visitorType = VisitorType.Special;
                 break;
             default:
                 break;
@@ -650,6 +652,8 @@ public class StoryParser
         string beforeFeeling=null;
         VisitorDialog nowDialog = null;
         int nowSymptomIndex = 0;
+        int nowVisitorSetIndex = 0;
+
         for (int i = 0; i < originText.Length; i++)
         {
 
@@ -761,6 +765,10 @@ public class StoryParser
                     {
                         nowMode = ParseMode.Disease;
                     }
+                    else if (modeStr.Contains("visitorSet"))
+                    {
+                        nowMode = ParseMode.VisitorSet;
+                    }
                     builder.Clear();
                     break;
 
@@ -809,6 +817,9 @@ public class StoryParser
                             break;
                         case ParseMode.Disease:
                             nowMode = ParseMode.DiseaseName;
+                            break;
+                        case ParseMode.VisitorSet:
+                            nowMode = ParseMode.VisitorSetNumber;
                             break;
                         default:
                             builder.Append('{');
@@ -893,6 +904,11 @@ public class StoryParser
                             string disease = builder.ToString();
                             gameData.diseaseNameList.Add(disease);
                             break;
+                        case ParseMode.VisitorSetNumber:
+                            nowMode = ParseMode.Null;
+                            gameData.oddVisitorSetArray[nowVisitorSetIndex] = int.Parse(builder.ToString());
+                            nowVisitorSetIndex = 0;
+                            break;
 
                     }
                     builder.Clear();
@@ -922,6 +938,11 @@ public class StoryParser
                         case ParseMode.DiseaseName:
                             string disease = builder.ToString();
                             gameData.diseaseNameList.Add(disease);
+                            builder.Clear();
+                            break;
+                        case ParseMode.VisitorSetNumber:
+                            gameData.oddVisitorSetArray[nowVisitorSetIndex] = int.Parse(builder.ToString());
+                            nowVisitorSetIndex++;
                             builder.Clear();
                             break;
                         default:

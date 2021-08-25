@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 5,
-    "coin": 1191,
+    "nowTime": 2280.0,
+    "nowDay": 0,
+    "coin": 997,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -34,7 +34,7 @@
         },
         {
             "medicineIndex": 59,
-            "medicineCost": 2
+            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -45,71 +45,16 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
             "billList": [
                 {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 20
-                },
-                {
-                    "isPlus": true,
-                    "reason": 4,
-                    "changedCoin": 151
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
                 }
             ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 20
-                }
-            ]
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
         }
     ],
-    "owningDocumentList": [
-        {
-            "name": "Go",
-            "gainedRegion": 0,
-            "gainedDay": 0,
-            "gainedTime": 600.0
-        },
-        {
-            "name": "Vagabond",
-            "gainedRegion": 0,
-            "gainedDay": 1,
-            "gainedTime": 840.0
-        },
-        {
-            "name": "Octopus",
-            "gainedRegion": 0,
-            "gainedDay": 3,
-            "gainedTime": 840.0
-        }
-    ],
+    "owningDocumentList": [],
     "symptomBookList": [
         "water+",
         "water-",
@@ -120,87 +65,35 @@
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [
-            {
-                "fileName": "waterTool",
-                "researchedTime": 3
-            }
-        ],
+        "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
-        "progressingOtherToolResearchList": [
-            {
-                "fileName": "energyDrink",
-                "researchedTime": 3
-            }
-        ],
+        "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": [],
         "progressingBookResearchList": [],
         "endBookResearchList": [],
         "progressingSpecialResearchList": [],
         "endSpecialResearchList": [],
         "appearingSpecialResearchList": [],
-        "unHiddenResearchList": [
-            "waterAuto"
-        ]
+        "unHiddenResearchList": []
     },
-    "routePairList": [
-        {
-            "storyName": "thirdDay",
-            "pickedRouteList": [
-                0
-            ]
-        }
-    ],
-    "regionSaveDataList": [
-        {
-            "storyRegion": 0,
-            "regionName": 0,
-            "firstDiscountedMedicineIndex": [
-                59
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": [
-                "Event1",
-                "Event2"
-            ]
-        }
-    ],
+    "routePairList": [],
+    "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
         true,
-        true,
-        true
+        false,
+        false
     ],
     "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay1",
-        "fifthDay",
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay1",
-        "fifthDay"
+        "firstDay"
     ],
     "readSpecialVisitorBundleList": [
-        "Lily1"
+        "Sanghun"
     ],
-    "nextStory": "firstDay",
+    "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 0
 }

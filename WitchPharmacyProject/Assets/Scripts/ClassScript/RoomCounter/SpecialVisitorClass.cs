@@ -25,7 +25,7 @@ public class SpecialVisitorClass : VisitorClass
         spriteRenderer = part.GetComponent<SpriteRenderer>();
         loader = new CharacterIndexToName();
         part.SetActive(true);
-        SetDiseaseList();
+        SetSpecialDiseaseList();
         StartSymptomSpriteUpdate();
 
     }

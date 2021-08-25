@@ -8,6 +8,7 @@ public class SpecialVisitorCondition
     public int appearingSequence;
     public string bundleName;
     //public string specialMedicine;
+    public bool isOdd;
     public int appearingDay;
 
 

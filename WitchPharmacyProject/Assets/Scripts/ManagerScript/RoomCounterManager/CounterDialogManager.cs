@@ -226,11 +226,11 @@ public class CounterDialogManager : MonoBehaviour
         VisitUpdate();
     }
 
-    public VisitorDialogBundle LoadSpecialBundle(SpecialVisitorCondition condition)
+    public VisitorDialogBundle LoadSpecialOddBundle(SpecialVisitorCondition condition,VisitorType type)
     {
         //nowVisitor = visitor;
         //nowVisitorType = visitor.visitorType;
-        nowBundle = storyParser.LoadBundle(condition.bundleName, languageDirectory,VisitorType.Special);
+        nowBundle = storyParser.LoadBundle(condition.bundleName, languageDirectory,type);
         return nowBundle;
     }
 
@@ -245,25 +245,33 @@ public class CounterDialogManager : MonoBehaviour
             nowVisitorType = VisitorType.Random;
             nowBundle = storyParser.LoadBundle(Random.Range(0, 3).ToString(), languageDirectory, nowVisitorType, visitor.diseaseList.Count);
         }
-        else if (visitor.visitorType == VisitorType.Special)
+        else
         {
-            nowVisitorType = VisitorType.Special;
+            nowVisitorType = visitor.visitorType;
         }
 
         nowWrapperList = nowBundle.startWrapperList;
         nowWrapper = nowBundle.startWrapperList[0];
-        visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
-        if (nowVisitorType == VisitorType.Special)
+        if(nowBundle.visitorType == VisitorType.Special)
         {
-            ((SpecialVisitorClass)visitor).SetObjectImage(nowWrapper.characterName,nowWrapper.characterFeeling);
+            visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
         }
+        else if (nowBundle.visitorType == VisitorType.Odd)
+        {
+            visitorName.text = nowWrapper.characterName;
+        }
+        
+        //if (nowVisitorType == VisitorType.Special)
+        //{
+        //    ((SpecialVisitorClass)visitor).SetObjectImage(nowWrapper.characterName,nowWrapper.characterFeeling);
+        //}
         dialogMouseEventObject.SetActive(true);
         roomManager.ToCounterButton(false);
         InitializeBackLog();
 
         nowSymptomInsertIndex = 0;
         nowWrapperIndex = 0;
-        if (nowWrapper.characterName != null)
+        if (nowWrapper.characterName != null && nowBundle.visitorType == VisitorType.Special)
         {
             if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
             {
@@ -359,7 +367,7 @@ public class CounterDialogManager : MonoBehaviour
         }
 
 
-        if (nowWrapper.characterName != null)
+        if (nowWrapper.characterName != null && nowBundle.visitorType == VisitorType.Special)
         {
 
             if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
@@ -608,7 +616,7 @@ public class CounterDialogManager : MonoBehaviour
             lastWrapper = nowWrapper;
             nowWrapper = nowWrapperList[nowWrapperIndex];
             visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
-            if (lastWrapper != null && nowWrapper.characterName != null)
+            if (lastWrapper != null && nowWrapper.characterName != null && nowBundle.visitorType == VisitorType.Special)
             {
 
                 if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)

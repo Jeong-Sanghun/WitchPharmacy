@@ -1,0 +1,16 @@
+{
+    "specialVisitorConditionDataList": [
+        {
+            "appearingSequence": 0,
+            "bundleName": "Lily",
+            "isOdd": false,
+            "appearingDay": 0
+        },
+        {
+            "appearingSequence": 0,
+            "bundleName": "Lily",
+            "isOdd": false,
+            "appearingDay": 0
+        }
+    ]
+}
