@@ -22,7 +22,7 @@ public class OddVisitorClass : VisitorClass
     GameObject headPart;
     GameObject[] facePart;
 
-    public OddVisitorClass(GameObject parent, GameObject prefab, VisitorDialogBundle bundle,StoryRegion region)
+    public OddVisitorClass(GameObject parent, GameObject prefab, VisitorDialogBundle bundle)
     {
 
         visitorType = VisitorType.Odd;
@@ -34,7 +34,7 @@ public class OddVisitorClass : VisitorClass
         diseaseNameList = bundle.diseaseNameList;
         visitorSetArray = bundle.oddVisitorSetArray;
         loader = new CharacterIndexToName();
-        RandomPartsGenerator(parent,region);
+        RandomPartsGenerator(parent,bundle.storyRegion);
         SetSpecialDiseaseList();
         StartSymptomSpriteUpdate();
         

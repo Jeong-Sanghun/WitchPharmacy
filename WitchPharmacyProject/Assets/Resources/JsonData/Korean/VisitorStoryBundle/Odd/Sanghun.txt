@@ -1,6 +1,7 @@
 ﻿<bundleName>{0}
 <symptom>{-1,2,0,0,0}
 <switch>{상훈}
+<region>{Narin}
 <disease>{dehydration1,flame2}
 <visitorSet>{0,0,0,0,0}
 []

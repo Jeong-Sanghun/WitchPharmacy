@@ -8,6 +8,7 @@ public class VisitorDialogBundle
     public VisitorType visitorType;
     public int[] oddVisitorSetArray;
     public int[] symptomNumberArray;
+    public StoryRegion storyRegion;
     public List<string> diseaseNameList;
     public List<VisitorDialogWrapper> startWrapperList;
     public List<VisitorDialogWrapper> rightWrapperList;

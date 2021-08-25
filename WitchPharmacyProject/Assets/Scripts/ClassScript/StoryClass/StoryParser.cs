@@ -769,6 +769,10 @@ public class StoryParser
                     {
                         nowMode = ParseMode.VisitorSet;
                     }
+                    else if (modeStr.Contains("region"))
+                    {
+                        nowMode = ParseMode.NextRegion;
+                    }
                     builder.Clear();
                     break;
 
@@ -820,6 +824,9 @@ public class StoryParser
                             break;
                         case ParseMode.VisitorSet:
                             nowMode = ParseMode.VisitorSetNumber;
+                            break;
+                        case ParseMode.NextRegion:
+                            nowMode = ParseMode.NextRegionName;
                             break;
                         default:
                             builder.Append('{');
@@ -908,6 +915,10 @@ public class StoryParser
                             nowMode = ParseMode.Null;
                             gameData.oddVisitorSetArray[nowVisitorSetIndex] = int.Parse(builder.ToString());
                             nowVisitorSetIndex = 0;
+                            break;
+                        case ParseMode.NextRegionName:
+                            nowMode = ParseMode.Null;
+                            gameData.storyRegion = (StoryRegion)Enum.Parse(typeof(StoryRegion), builder.ToString());
                             break;
 
                     }

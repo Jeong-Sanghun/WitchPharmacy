@@ -454,7 +454,7 @@ public class CounterManager : MonoBehaviour //SH
         else if (nowVisitorType == VisitorType.Odd)
         {
             VisitorDialogBundle bundle = counterDialogManager.LoadSpecialOddBundle(nowSpecialVisitorCondition, nowVisitorType);
-            nowVisitor = new OddVisitorClass(visitorParent, specialVisitorPrefab, bundle,saveData.nowRegion);
+            nowVisitor = new OddVisitorClass(visitorParent, specialVisitorPrefab, bundle);
         }
         
         //쫙 뿌려준다
