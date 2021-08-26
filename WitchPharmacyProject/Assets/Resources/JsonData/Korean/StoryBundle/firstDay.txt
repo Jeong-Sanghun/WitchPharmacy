@@ -2,6 +2,7 @@
 <switch>{Cari,,Ruellia(nothing){up}}
 <nextStory>{secondDay}
 <background>{counter(blur)}
+<forcedRegion>{Library}
 [카리]
 야 오늘은 첫날이야!
 [루엘리아]

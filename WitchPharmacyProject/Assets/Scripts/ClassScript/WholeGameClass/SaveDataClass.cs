@@ -53,6 +53,7 @@ public class SaveDataClass
     public string nextLoadSceneName;
     public SaveTime nowSaveTime;
     public StoryRegion nowRegion;
+    public string forcedRegion;
     //public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
 
 

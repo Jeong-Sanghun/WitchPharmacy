@@ -81,6 +81,7 @@ public class StoryManager : MonoBehaviour
         saveData.readStoryList.Add(saveData.nextStory);
         nowBundle = storyParser.LoadBundle(saveData.nextStory, gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
         nowWrapper = nowBundle.dialogWrapperList[0];
+        saveData.forcedRegion = nowBundle.forcedRegion;
         if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
         {
             saveData.nextStory = nowWrapper.nextStory;

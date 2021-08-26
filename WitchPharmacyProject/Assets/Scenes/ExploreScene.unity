@@ -650,6 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exploreManager: {fileID: 604622318}
+  researchButton: {fileID: 518027298}
   regionButtonArray:
   - {fileID: 606371256}
   - {fileID: 904780023}
@@ -919,7 +920,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       - fileName: null
         leastDayCondition: 0
         questConditionList:
@@ -927,7 +932,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
       eventTimeArray: 00000000000000000000000000000000
       appearingDocumentArray:
@@ -946,7 +955,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       - fileName: null
         leastDayCondition: 0
         questConditionList:
@@ -954,7 +967,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
       eventTimeArray: 00000000000000000000000000000000
       appearingDocumentArray:
@@ -973,7 +990,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       - fileName: null
         leastDayCondition: 0
         questConditionList:
@@ -981,7 +1002,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
       eventTimeArray: 00000000000000000000000000000000
       appearingDocumentArray:
@@ -1000,7 +1025,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       - fileName: null
         leastDayCondition: 0
         questConditionList:
@@ -1008,7 +1037,11 @@ MonoBehaviour:
         routeConditionList:
         - storyName: null
           pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
+        eventType: 0
+        reward: 
+        rewardDocument: 
+        rewardMedicineIndex: 0
+        researchProgress: 0
       appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
       eventTimeArray: 00000000000000000000000000000000
       appearingDocumentArray:

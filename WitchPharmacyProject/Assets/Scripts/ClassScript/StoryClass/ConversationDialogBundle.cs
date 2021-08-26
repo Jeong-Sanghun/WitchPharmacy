@@ -12,6 +12,7 @@ public class ConversationDialogBundle
     //어떤 식으로 하면 어떻게 분기를 하고 이런 조건을 넣어야하잖아.
     public string bundleName;
     public string nextStory;
+    public string forcedRegion;
     public List<ConversationDialogWrapper> dialogWrapperList;
     public List<ConversationRouter> conversationRouterList;
 
@@ -22,7 +23,7 @@ public class ConversationDialogBundle
         nextStory = null;
         dialogWrapperList = new List<ConversationDialogWrapper>();
         conversationRouterList = new List<ConversationRouter>();
-
+        forcedRegion = null;
     }
 
     public void StringParse()

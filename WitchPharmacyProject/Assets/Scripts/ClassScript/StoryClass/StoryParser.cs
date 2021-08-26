@@ -12,6 +12,7 @@ public class StoryParser
             ,BackGround,BackGroundName,BackGroundEffect, NextStory, NextStoryName
             ,NextRegion, NextRegionName,RightMedicine,WrongMedicine,SkipVisitor,GiveCoin,CoinNumber
             ,Symptom,SymptomNumber,Disease,DiseaseName,VisitorSet,VisitorSetNumber
+            ,ForcedRegion,ForcedRegionName
     }
 
     CharacterIndexToName characterIndexToName;
@@ -206,6 +207,10 @@ public class StoryParser
                             nowWrapperList.Add(wrapper);
                         }
                     }
+                    else if (modeStr.Contains("forcedRegion"))
+                    {
+                        nowMode = ParseMode.ForcedRegion;
+                    }
                     else if (modeStr.Contains("Region"))
                     {
                         nowMode = ParseMode.NextRegion;
@@ -235,6 +240,7 @@ public class StoryParser
                             nowWrapperList.Add(wrapper);
                         }
                     }
+
                     builder.Clear();
                     break;
 
@@ -283,6 +289,9 @@ public class StoryParser
                             break;
                         case ParseMode.NextRegion:
                             nowMode = ParseMode.NextRegionName;
+                            break;
+                        case ParseMode.ForcedRegion:
+                            nowMode = ParseMode.ForcedRegionName;
                             break;
 
 
@@ -371,6 +380,10 @@ public class StoryParser
                         case ParseMode.NextRegionName:
                             nowMode = ParseMode.Null;
                             nowWrapper.nextRegion = builder.ToString();
+                            break;
+                        case ParseMode.ForcedRegionName:
+                            nowMode = ParseMode.Null;
+                            gameData.forcedRegion = builder.ToString();
                             break;
                     }
                     builder.Clear();

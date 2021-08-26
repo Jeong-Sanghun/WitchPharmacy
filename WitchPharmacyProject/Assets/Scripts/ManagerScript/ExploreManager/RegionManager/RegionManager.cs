@@ -17,6 +17,7 @@ public class RegionManager : MonoBehaviour
     SaveDataClass saveData;
 
     //protected List<ConversationDialogBundle> conversationDialogBundleList;
+    
     ConversationDialogBundle nowBundle;
     ConversationDialogWrapper nowWrapper;
     ConversationRouter nowRouter;
@@ -128,7 +129,7 @@ public class RegionManager : MonoBehaviour
             Debug.Log("조건체크 폴스");
             GenerateRegularReward();
         }
-
+        saveData.forcedRegion = null;
         characterIndexToName = new CharacterIndexToName();
         checkingRouter = false;
         blurred = false;

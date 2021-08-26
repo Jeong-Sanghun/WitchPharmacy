@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 2280.0,
-    "nowDay": 0,
-    "coin": 997,
+    "nowTime": 1200.0,
+    "nowDay": 1,
+    "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -45,13 +45,12 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 3
-                }
-            ]
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         }
     ],
     "owningDocumentList": [],
@@ -65,7 +64,12 @@
     "owningOtherToolList": [],
     "endQuestList": [],
     "researchSaveData": {
-        "progressingMeasureToolResearchList": [],
+        "progressingMeasureToolResearchList": [
+            {
+                "fileName": "waterTool",
+                "researchedTime": 3
+            }
+        ],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
@@ -78,22 +82,48 @@
         "appearingSpecialResearchList": [],
         "unHiddenResearchList": []
     },
-    "routePairList": [],
-    "regionSaveDataList": [],
+    "routePairList": [
+        {
+            "storyName": "thirdDay",
+            "pickedRouteList": [
+                1
+            ]
+        }
+    ],
+    "regionSaveDataList": [
+        {
+            "storyRegion": 0,
+            "regionName": 0,
+            "firstDiscountedMedicineIndex": [],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        }
+    ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
         false,
-        false
+        false,
+        true
     ],
     "readStoryList": [
-        "firstDay"
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay2"
     ],
     "readSpecialVisitorBundleList": [
-        "Sanghun"
+        "Sanghun",
+        "Lily1"
     ],
-    "nextStory": "secondDay",
+    "nextStory": "fifthDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 0,
-    "nowRegion": 0
+    "nowRegion": 0,
+    "forcedRegion": ""
 }
