@@ -15,6 +15,8 @@ public class SymptomBookManager : MonoBehaviour
     [SerializeField] Text prefabExplainText;
     [SerializeField] Image prefabImage;
     [SerializeField] GameObject bookMarkPrefab;
+    [SerializeField] Sprite[] bookMarkSpriteArray;
+
 
     List<SymptomBookBundle> bookBundleList;
     SymptomBookBundle nowBundle;
@@ -56,27 +58,41 @@ public class SymptomBookManager : MonoBehaviour
             }
         }
 
+        Symptom firstSymptom = Symptom.none;
         for(int j = 0; j < bookBundleList.Count; j++)
         {
+            
             if (bookMark)
             {
                 bookMarkIndexList.Add(pageBundleList.Count);
                 GameObject inst = Instantiate(bookMarkPrefab, pageBundleParent);
                 int dele = bookMarkNumber;
                 inst.GetComponent<Button>().onClick.AddListener(() => BookMarkButton(dele));
-                inst.GetComponentInChildren<Text>().text = bookBundleList[j].symptomString;
+                if (firstSymptom == bookBundleList[j].symptom)
+                {
+                    inst.GetComponentInChildren<Text>().text = "+";
+                }
+                else
+                {
+                    inst.GetComponentInChildren<Text>().text = "-";
+                }
+
+                inst.GetComponent<Image>().sprite = bookMarkSpriteArray[(int)bookBundleList[j].symptom];
                 inst.SetActive(true);
                 RectTransform rect = inst.GetComponent<RectTransform>();
                 if (j == 0)
                 {
-                    rect.anchoredPosition = new Vector3(-1100, 450, 0);
+                    rect.anchoredPosition = new Vector3(-980,500, 0);
                 }
                 else
                 {
-                    rect.anchoredPosition = new Vector3(1100, 450 - j*100, 0);
+                    rect.localRotation = Quaternion.Euler(0, 180, 0);
+                    rect.anchoredPosition = new Vector3(980, 500 - j*100, 0);
                 }
+
                 bookMarkRectList.Add(rect);
                 bookMarkNumber++;
+                firstSymptom = bookBundleList[j].symptom;
             }
             nowPages += bookBundleList[j].oneSymptomBookList.Count + bookBundleList[j].twoSymptomBookList.Count;
             nowBundle = bookBundleList[j];
@@ -154,7 +170,8 @@ public class SymptomBookManager : MonoBehaviour
 
             if (nowPageIndex <= bookMarkIndexList[nowLeftBookMarkIndex])
             {
-                bookMarkRectList[nowLeftBookMarkIndex].anchoredPosition = new Vector3(1100, bookMarkRectList[nowLeftBookMarkIndex].anchoredPosition.y, 0);
+                bookMarkRectList[nowLeftBookMarkIndex].localRotation = Quaternion.Euler(0, 180, 0);
+                bookMarkRectList[nowLeftBookMarkIndex].anchoredPosition = new Vector3(980, bookMarkRectList[nowLeftBookMarkIndex].anchoredPosition.y, 0);
                 nowLeftBookMarkIndex--;
                 nowRightBookMarkIndex--;
 
@@ -179,7 +196,8 @@ public class SymptomBookManager : MonoBehaviour
             }
             if (nowPageIndex >= bookMarkIndexList[nowRightBookMarkIndex])
             {
-                bookMarkRectList[nowRightBookMarkIndex].anchoredPosition = new Vector3(-1100, bookMarkRectList[nowRightBookMarkIndex].anchoredPosition.y, 0);
+                bookMarkRectList[nowRightBookMarkIndex].localRotation = Quaternion.Euler(0, 0, 0);
+                bookMarkRectList[nowRightBookMarkIndex].anchoredPosition = new Vector3(-980, bookMarkRectList[nowRightBookMarkIndex].anchoredPosition.y, 0);
                 
                 nowRightBookMarkIndex++;
                 nowLeftBookMarkIndex++;
@@ -198,11 +216,11 @@ public class SymptomBookManager : MonoBehaviour
 
         for(int i = 0; i <= nowLeftBookMarkIndex; i++)
         {
-            bookMarkRectList[i].anchoredPosition = new Vector3(-1100, bookMarkRectList[i].anchoredPosition.y, 0);
+            bookMarkRectList[i].anchoredPosition = new Vector3(-980, bookMarkRectList[i].anchoredPosition.y, 0);
         }
         for(int i = nowRightBookMarkIndex; i< bookMarkRectList.Count; i++)
         {
-            bookMarkRectList[i].anchoredPosition = new Vector3(1100, bookMarkRectList[i].anchoredPosition.y, 0);
+            bookMarkRectList[i].anchoredPosition = new Vector3(980, bookMarkRectList[i].anchoredPosition.y, 0);
         }
 
     }

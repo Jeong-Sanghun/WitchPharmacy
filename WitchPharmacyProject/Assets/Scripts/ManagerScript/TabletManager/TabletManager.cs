@@ -28,6 +28,8 @@ public class TabletManager : MonoBehaviour
     GameObject homeButton;
     [SerializeField]
     GameObject[] buttonHighlightObject;
+    [SerializeField]
+    GameObject tabletHighlightObject;
 
     // Start is called before the first frame update
     void Awake()
@@ -55,6 +57,26 @@ public class TabletManager : MonoBehaviour
     public void OnTabletButton(bool open)
     {
         tabletCanvasParent.SetActive(open);
+        if(open == false)
+        {
+            bool allFalse = true;
+            for(int i = 0; i < buttonHighlightObject.Length; i++)
+            {
+                if(buttonHighlightObject[i].activeSelf == true)
+                {
+                    allFalse = false;
+                    break;
+                }
+            }
+            if(allFalse == true)
+            {
+                tabletHighlightObject.SetActive(false);
+            }
+            else
+            {
+                tabletHighlightObject.SetActive(true);
+            }
+        }
     }
 
     public void TabletOpenButtonActive(bool active)
@@ -123,14 +145,24 @@ public class TabletManager : MonoBehaviour
     {
         saveData.highlightedButton[(int)component] = active;
         buttonHighlightObject[(int)component].SetActive(active);
+        if(active == true)
+        {
+            tabletHighlightObject.SetActive(true);
+        }
     }
 
     public void SetHighlightButton()
     {
+        bool isOneTrue = false;
         for (int i = 0; i < saveData.highlightedButton.Length; i++)
         {
+            if(saveData.highlightedButton[i] == true)
+            {
+                isOneTrue = true;
+            }
             buttonHighlightObject[i].SetActive(saveData.highlightedButton[i]);
         }
+        tabletHighlightObject.SetActive(isOneTrue);
     }
 
     // Update is called once per frame

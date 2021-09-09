@@ -1,14 +1,59 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
+    "nowTime": 10320.0,
     "nowDay": 0,
-    "coin": 1000,
-    "owningMedicineList": [],
+    "coin": 988,
+    "owningMedicineList": [
+        {
+            "medicineIndex": 34,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 35,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 42,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 43,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 50,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 51,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 58,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 59,
+            "medicineCost": 3
+        }
+    ],
     "owningSpecialMedicineList": [],
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 12
+                }
+            ]
+        }
+    ],
     "owningDocumentList": [],
     "symptomBookList": [
         "water+",
@@ -37,14 +82,19 @@
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
-        false,
+        true,
         false,
         false
     ],
-    "readStoryList": [],
-    "readSpecialVisitorBundleList": [],
-    "nextStory": "firstDay",
+    "readStoryList": [
+        "firstDay"
+    ],
+    "readSpecialVisitorBundleList": [
+        "Sanghun"
+    ],
+    "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
-    "nowRegion": 0
+    "nowSaveTime": 0,
+    "nowRegion": 0,
+    "forcedRegion": "Library"
 }

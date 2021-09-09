@@ -2004,6 +2004,135 @@ RectTransform:
   m_AnchoredPosition: {x: -38.099976, y: -64.47272}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &250822339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 250822340}
+  - component: {fileID: 250822343}
+  - component: {fileID: 250822342}
+  - component: {fileID: 250822341}
+  m_Layer: 0
+  m_Name: Notice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &250822340
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250822339}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 267506565}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 46.099976, y: 37}
+  m_SizeDelta: {x: 33, y: 34}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &250822341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250822339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 250822342}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1560275831}
+        m_MethodName: OnTabletButton
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &250822342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250822339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 319e27d03a162d3429eb94991b58bca2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &250822343
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250822339}
+  m_CullTransparentMesh: 0
 --- !u!1 &254007286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,14 +2237,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 431641414}
+  - {fileID: 250822340}
   m_Father: {fileID: 650611834}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1124, y: 581}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 1179.5, y: 639.5}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267506566
 MonoBehaviour:
@@ -2190,8 +2319,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 26841f557d51e044e98704358877fd8d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3334,84 +3463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!1 &431641413
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 431641414}
-  - component: {fileID: 431641416}
-  - component: {fileID: 431641415}
-  m_Layer: 0
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &431641414
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431641413}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 267506565}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &431641415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431641413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 51
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 51
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uD0C0\uBE14\uB81B"
---- !u!222 &431641416
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431641413}
-  m_CullTransparentMesh: 0
 --- !u!1 &458730849
 GameObject:
   m_ObjectHideFlags: 0
@@ -12968,15 +13019,18 @@ MonoBehaviour:
       progressingSpecialResearchList: []
       endSpecialResearchList: []
       appearingSpecialResearchList: []
+      unHiddenResearchList: []
     routePairList: []
     regionSaveDataList: []
     likedTreeterIndexList: 
     highlightedButton: 
     readStoryList: []
+    readSpecialVisitorBundleList: []
     nextStory: firstDay
     nextLoadSceneName: StoryScene
     nowSaveTime: 1
     nowRegion: 0
+    forcedRegion: 
   saveDataTimeWrapper:
     saveDataTimeList:
     - day: -1
@@ -13642,6 +13696,7 @@ MonoBehaviour:
     conversationDialogBundleList:
     - bundleName: bundle
       nextStory: 
+      forcedRegion: 
       dialogWrapperList:
       - wrapperIndex: 0
         characterName:
@@ -13779,6 +13834,7 @@ MonoBehaviour:
       conversationRouterList: []
     - bundleName: testBundle
       nextStory: 
+      forcedRegion: 
       dialogWrapperList:
       - wrapperIndex: 0
         characterName:
@@ -13917,6 +13973,7 @@ MonoBehaviour:
   conversationDialogBundle:
     bundleName: testBundle
     nextStory: 
+    forcedRegion: 
     dialogWrapperList:
     - wrapperIndex: 0
       characterName:
@@ -14125,24 +14182,14 @@ MonoBehaviour:
       cost: 3
   specialVisitorConditionWrapper:
     specialVisitorConditionDataList:
-    - priority: 0
+    - appearingSequence: 0
       bundleName: Lily
-      specialMedicine: 
-      appearingChaosMeter: 0
-      appearingSolvedQuestBundleList: []
-      appearingProgressingQuestBundleList: []
-      appearingSpecialMedicineList: []
-      appearingLeastDay: 0
-      appearingStoryBundleList: []
-    - priority: 0
+      isOdd: 0
+      appearingDay: 0
+    - appearingSequence: 0
       bundleName: Lily
-      specialMedicine: 
-      appearingChaosMeter: 0
-      appearingSolvedQuestBundleList: []
-      appearingProgressingQuestBundleList: []
-      appearingSpecialMedicineList: []
-      appearingLeastDay: 0
-      appearingStoryBundleList: []
+      isOdd: 0
+      appearingDay: 0
   documentConditionWrapper:
     documentConditionList:
     - folderIngameName: 
@@ -14190,6 +14237,8 @@ MonoBehaviour:
     documentGained: 
     whatCoinGained: 
     coinGained: 
+    whatResearchUnhidden: 
+    researchUnhidden: 
     shopOpen: 
     saveTimeArray: []
     reasonArray:
@@ -14199,112 +14248,6 @@ MonoBehaviour:
     characterNameArray: []
     symptomArray: []
     regionNameArray: []
-  regionDataWrapper:
-    regionDataList:
-    - fileName: null
-      ingameName: "\uB110"
-      specialEventConditionList:
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
-      eventTimeArray: 00000000000000000000000000000000
-      appearingDocumentArray:
-      - null
-      - null
-      - null
-      appearingResearchArray: []
-    - fileName: null
-      ingameName: "\uB110"
-      specialEventConditionList:
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
-      eventTimeArray: 00000000000000000000000000000000
-      appearingDocumentArray:
-      - null
-      - null
-      - null
-      appearingResearchArray: []
-    - fileName: null
-      ingameName: "\uB110"
-      specialEventConditionList:
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
-      eventTimeArray: 00000000000000000000000000000000
-      appearingDocumentArray:
-      - null
-      - null
-      - null
-      appearingResearchArray: []
-    - fileName: null
-      ingameName: "\uB110"
-      specialEventConditionList:
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      - fileName: null
-        leastDayCondition: 0
-        questConditionList:
-        - null
-        routeConditionList:
-        - storyName: null
-          pickedRouteList: 
-        rewardSpecialMedicineIndex: 0
-      appearingMedicineArray: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
-      eventTimeArray: 00000000000000000000000000000000
-      appearingDocumentArray:
-      - null
-      - null
-      - null
-      appearingResearchArray: []
   otherToolResearchDataWrapper:
     otherToolResearchDataList:
     - fileName: improvement
@@ -14313,18 +14256,21 @@ MonoBehaviour:
         \uC9C4\uD589\uD560 \uC218 \uC788\uC5B4..!"
       researchEndTime: 5
       neededResearchList: []
+      hidden: 0
     - fileName: improvement
       ingameName: "\uC5F0\uAD6C \uC124\uBE44 \uAC1C\uC120 \uC5F0\uAD6C"
       explain: "\uC774\uAC83\uB9CC \uC788\uC73C\uBA74 \uC5F0\uAD6C\uB97C \uB354 \uBE60\uB974\uAC8C
         \uC9C4\uD589\uD560 \uC218 \uC788\uC5B4..!"
       researchEndTime: 5
       neededResearchList: []
+      hidden: 0
     - fileName: improvement
       ingameName: "\uC5F0\uAD6C \uC124\uBE44 \uAC1C\uC120 \uC5F0\uAD6C"
       explain: "\uC774\uAC83\uB9CC \uC788\uC73C\uBA74 \uC5F0\uAD6C\uB97C \uB354 \uBE60\uB974\uAC8C
         \uC9C4\uD589\uD560 \uC218 \uC788\uC5B4..!"
       researchEndTime: 5
       neededResearchList: []
+      hidden: 0
   measureToolResearchDataWrapper:
     measureToolResearchDataList:
     - fileName: water
@@ -14332,48 +14278,56 @@ MonoBehaviour:
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uCE21\uC815\uB3C4\uAD6C(\uBB3C)"
       explain: "\uB3C4\uAD6C\uC124\uBA85"
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       symptomString: water
   medicineResearchDataWrapper:
     medicineResearchDataList:
@@ -14382,6 +14336,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14389,6 +14344,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14396,6 +14352,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14403,6 +14360,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14410,6 +14368,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14417,6 +14376,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14424,6 +14384,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14431,6 +14392,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
     - fileName: earthwater
@@ -14438,6 +14400,7 @@ MonoBehaviour:
       explain: "\uB300\uC9C0 \uBB3C \uC57D\uC7AC \uC5F0\uAD6C\uC785\uB2C8\uB2E4."
       researchEndTime: 10
       neededResearchList: []
+      hidden: 0
       firstSymptomString: earth
       secondSymptomString: water
   bookResearchDataWrapper:
@@ -14447,30 +14410,35 @@ MonoBehaviour:
       explain: "\uBB3C\uC774\uBB3C\uBB3C"
       researchEndTime: 2
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
       explain: "\uBB3C\uC774\uBB3C\uBB3C"
       researchEndTime: 2
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
       explain: "\uBB3C\uC774\uBB3C\uBB3C"
       researchEndTime: 2
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
       explain: "\uBB3C\uC774\uBB3C\uBB3C"
       researchEndTime: 2
       neededResearchList: []
+      hidden: 0
       symptomString: water
     - fileName: water
       ingameName: "\uBB3C \uC99D\uC0C1 \uCC45\uC790"
       explain: "\uBB3C\uC774\uBB3C\uBB3C"
       researchEndTime: 2
       neededResearchList: []
+      hidden: 0
       symptomString: water
   treeterConditionWrapper:
     treeterConditionList:
@@ -16252,6 +16220,7 @@ MonoBehaviour:
   - {fileID: 875435852}
   - {fileID: 1338591707}
   - {fileID: 283186770}
+  tabletHighlightObject: {fileID: 250822339}
 --- !u!4 &1560275832
 Transform:
   m_ObjectHideFlags: 0

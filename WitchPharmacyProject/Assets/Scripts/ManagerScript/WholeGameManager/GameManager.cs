@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 public class GameManager : MonoBehaviour //SH
@@ -178,6 +179,7 @@ public class GameManager : MonoBehaviour //SH
     {
         SymptomBookBundle bundle;
         bundle = jsonManager.ResourceDataLoad<SymptomBookBundle>("SymptomBookBundle/" + bundleName);
+        bundle.symptom = (Symptom)Enum.Parse(typeof(Symptom), bundle.symptomString);
         return bundle;
     }
 
