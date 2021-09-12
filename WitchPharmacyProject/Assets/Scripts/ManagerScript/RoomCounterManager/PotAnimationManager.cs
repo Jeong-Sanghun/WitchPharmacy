@@ -15,7 +15,12 @@ public class PotAnimationManager : MonoBehaviour
     [SerializeField]
     UIGradient bottleGradient;
     [SerializeField]
+    GameObject stopPotFront;
+    [SerializeField]
+    GameObject movingPotFront;
+    [SerializeField]
     Color[] symptomColorArray;
+
 
     public void PotWorldAnimation(bool active)
     {
@@ -26,6 +31,8 @@ public class PotAnimationManager : MonoBehaviour
     public void PotUIAnimation(bool active)
     {
         potUIAnimation.SetBool("Boil", active);
+        stopPotFront.SetActive(!active);
+        movingPotFront.SetActive(active);
     }
 
     public void PotDropAnimation()
