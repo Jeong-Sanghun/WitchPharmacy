@@ -753,14 +753,16 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
     IEnumerator CookAnimationCoroutine()
     {
         potAnimationManager.PotWorldAnimation(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
+        potAnimationManager.PotDropAnimation();
+        yield return new WaitForSeconds(0.6f);
         potAnimationManager.PotUIAnimation(true);
         for (int i = 0; i <potMedicineObjectList.Count; i++)
         {
             potMedicineObjectList[i].SetActive(false);
         }
         potAnimationManager.PotWorldAnimation(false);
-        yield return new WaitForSeconds(3.8f);
+        yield return new WaitForSeconds(4f);
         CookFunction();
         potAnimationManager.PotUIAnimation(false);
         nowCookingAnimation = false;

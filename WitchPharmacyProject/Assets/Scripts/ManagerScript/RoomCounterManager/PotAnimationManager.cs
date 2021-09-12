@@ -28,6 +28,11 @@ public class PotAnimationManager : MonoBehaviour
         potUIAnimation.SetBool("Boil", active);
     }
 
+    public void PotDropAnimation()
+    {
+        potUIAnimation.SetTrigger("Drop");
+    }
+
     public void SetPotColor(Symptom symptom, int symptomNumber,int index)
     {
         //Texture2D tex = sprite.texture;
