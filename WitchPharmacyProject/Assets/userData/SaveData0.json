@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 6,
-    "coin": 1071,
+    "nowTime": 10200.0,
+    "nowDay": 7,
+    "coin": 1291,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -131,7 +131,29 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 6
+                },
+                {
+                    "isPlus": true,
+                    "reason": 4,
+                    "changedCoin": 233
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 7
+                }
+            ]
         }
     ],
     "owningDocumentList": [
@@ -248,9 +270,9 @@
         1
     ],
     "highlightedButton": [
+        true,
         false,
-        false,
-        false
+        true
     ],
     "readStoryList": [
         "firstDay",
@@ -270,15 +292,19 @@
         "fifthDay",
         "firstDay",
         "secondDay",
-        "thirdDay"
+        "thirdDay",
+        "fourthDay2",
+        "fifthDay",
+        "firstDay",
+        "secondDay"
     ],
     "readSpecialVisitorBundleList": [
         "Sanghun",
         "Lily1"
     ],
-    "nextStory": "fourthDay2",
+    "nextStory": "thirdDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 0,
     "forcedRegion": ""
 }
