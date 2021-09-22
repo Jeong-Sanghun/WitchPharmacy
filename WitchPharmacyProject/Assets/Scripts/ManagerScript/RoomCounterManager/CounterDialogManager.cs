@@ -278,6 +278,14 @@ public class CounterDialogManager : MonoBehaviour
                 counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
             }
         }
+        if (nowWrapper.characterFeeling.Contains("angry"))
+        {
+            visitor.FaceShifter(true);
+        }
+        else if(nowWrapper.characterFeeling.Contains("nothing"))
+        {
+            visitor.FaceShifter(false);
+        }
 
         if (nowWrapper.dialogFX == DialogFX.Up)
         {
@@ -379,6 +387,25 @@ public class CounterDialogManager : MonoBehaviour
         {
             counterManager.CoinGain(nowWrapper.coin);
         }
+        Debug.Log(nowWrapper.characterFeeling);
+        if (nowWrapper.characterFeeling == null)
+        {
+            nowVisitor.FaceShifter(false);
+
+        }
+        else
+        {
+            if (nowWrapper.characterFeeling.Contains("angry"))
+            {
+                nowVisitor.FaceShifter(true);
+            }
+            else if (nowWrapper.characterFeeling.Contains("nothing"))
+            {
+                nowVisitor.FaceShifter(false);
+            }
+        }
+
+
 
         if (nowWrapper.dialogFX == DialogFX.Up)
         {
@@ -625,6 +652,16 @@ public class CounterDialogManager : MonoBehaviour
                     counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
                 }
             }
+            Debug.Log(nowWrapper.characterFeeling);
+            if (nowWrapper.characterFeeling.Contains("angry"))
+            {
+                nowVisitor.FaceShifter(true);
+            }
+            else if (nowWrapper.characterFeeling.Contains("nothing"))
+            {
+                nowVisitor.FaceShifter(false);
+            }
+
 
             if (nowWrapper.dialogFX == DialogFX.Up)
             {
@@ -636,7 +673,6 @@ public class CounterDialogManager : MonoBehaviour
                 visitorText.text = "";
                 counterManager.VisitorDownFx();
             }
-            Debug.Log(nowWrapper.giveCoin);
             if (nowWrapper.giveCoin == true)
             { 
                 

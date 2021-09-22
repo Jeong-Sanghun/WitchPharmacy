@@ -807,7 +807,7 @@ public class StoryParser
 
                             //}
                             //builder.Clear();
-                            nowMode = ParseMode.ClampCharacterName;
+                            nowMode = ParseMode.ClampEffect;
                             break;
                         case ParseMode.ClampFeeling:
                             nowMode = ParseMode.ClampEffect;
@@ -887,8 +887,8 @@ public class StoryParser
                             //{
                             //    nowWrapper.dialogFX = DialogFX.Blur;
                             //}
-
                             nowMode = ParseMode.Switch;
+                            //nowMode = ParseMode.DialogCharacterName;
                             break;
                         //여기 파스모드 컷씬 이펙트랑 백그라운드 이펙트는 하나마나 의미없어서..
                         case ParseMode.CutScene:
@@ -978,6 +978,7 @@ public class StoryParser
                     switch (nowMode)
                     {
                         case ParseMode.Switch:
+                            nowMode = ParseMode.ClampFeeling;
                             break;
                         case ParseMode.ClampCharacterName:
                             string name = builder.ToString();
@@ -994,6 +995,8 @@ public class StoryParser
                             builder.Clear();
                             break;
                         case ParseMode.ClampEffect:
+                            nowMode = ParseMode.ClampFeeling;
+                            break;
                         case ParseMode.ClampFeeling:
                             break;
 
@@ -1009,7 +1012,7 @@ public class StoryParser
                         case ParseMode.ClampFeeling:
                             string feeling = builder.ToString();
                             nowWrapper.characterFeeling = feeling;
-                            //nowMode = ParseMode.Switch;
+                            nowMode = ParseMode.Switch;
                             builder.Clear();
                             break;
                         case ParseMode.Dialog:

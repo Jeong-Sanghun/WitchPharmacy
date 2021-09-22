@@ -1,16 +1,18 @@
 ﻿<bundleName>{0}
+<switch>{(angry)}
 []
 안녕하세요 저는...
 [Ruellia]
 뭐야 당신
+<switch>{(nothing)}
 []
 저 저아파서요...
 [Ruellia]
 그냥 가
-<switch>{{down}}
+<switch>{(nothing){down}}
 []
 넹....
-<switch>{{up}}
+<switch>{(angry){up}}
 []
 아니 이건 아니잖아요.
 [Ruellia]
@@ -23,6 +25,7 @@
 아니 아픈데가 한두개가 아니에요
 [Ruellia]
 알겠어
+<switch>{(angry)}
 [Ruellia]
 근데 우리가게 선불인거 알지?
 [Ruellia]
@@ -33,17 +36,18 @@
 ...
 []
 ...
-<switch>{{down}}
+<switch>{(nothing){down}}
 [Ruellia]
 뭐야 얘 어디갔어
 [Ruellia]
 야 돌아와봐 10코인으로 깎아줄께
 [Ruellia]
 대신 고치면 30코인 더내 ㅋㅋ
-<switch>{{up}}
+<switch>{(angry){up}}
 []
 아 그러면 얘기가 돼죠
 <giveCoin>{10}
+<switch>{(nothing)}
 []
 여기요!
 [Ruellia]
@@ -61,7 +65,7 @@
 너주변에 봐봐 증상 다 사라졌잖아
 []
 오 진짜다 저 갈게요
-<switch>{{down}}
+<switch>{{down}(angry)}
 [Ruellia]
 아니미친 돈내고가야지
 [Ruellia]
@@ -84,12 +88,12 @@
 ㅋㅋ 이거 뭐에요
 [Ruellia]
 할말이 없네;;
-<switch>{{down}}
+<switch>{{down}(nothing)}
 []
 그냥갈게요 ㅋㅋ
 [Ruellia]
 아니 그냥가기가 어딨어 돌아와바
-<switch>{{up}}
+<switch>{{up}(angry)}
 []왜요
 []미안하단말 할라구요?
 [Ruellia]

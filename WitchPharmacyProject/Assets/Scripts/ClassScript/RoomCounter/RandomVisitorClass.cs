@@ -58,17 +58,16 @@ public class RandomVisitorClass : VisitorClass
     public Symptom earSymptom;
     public Symptom hornSymptom;
     */
-    //body clothes head face hair ear horn
+    //body
+    // head face hair body 
+    // ear horn
     //인덱스별로 레이어가 있음. 각 파츠가 몇개까지 있는지 미리 저장해두고 그 인덱스에서 뽑아옴.
-    static int[] partsNum = { 1, 2, 2, 2, 4, 4, 4 };
-    int[] partsIndex;
-    public GameObjectWrapper[] partsWrapperArray;
+
+    //public GameObjectWrapper[] partsWrapperArray;
 
 
     bool childSetParented;
 
-    GameObject headPart;
-    GameObject[] facePart;
 
 
     /*body	_00	_01    	
@@ -205,7 +204,6 @@ public class RandomVisitorClass : VisitorClass
                     {
                         randomIndex = Random.Range(0, availableMedicineList.Count);
                         answerMedicine = availableMedicineList[randomIndex];
-
                     }
 
                 }
@@ -293,109 +291,7 @@ public class RandomVisitorClass : VisitorClass
 
 
     //랜덤캐릭터 만드는 함수
-    void RandomPartsGenerator(GameObject parent,StoryRegion region)
-    {
-        string path = "RandomCharacter/" + region.ToString()+"/";
-        Transform visitorParent = parent.transform;
-        GameObject visitor = new GameObject();
-        visitor.transform.SetParent(visitorParent);
-        visitorObject = visitor;
-
-        visitorObject.transform.localPosition = Vector3.zero;
-
-        //먼저 래퍼 7개를 만들고.
-        partsIndex = new int[5];
-        partsWrapperArray = new GameObjectWrapper[partsIndex.Length];
-        RandomVisitorFX effect = RandomVisitorFX.None;
-        for(int i = 0; i < diseaseList.Count; i++)
-        {
-            if(diseaseList[i].GetEffect() != RandomVisitorFX.None)
-            {
-                effect = diseaseList[i].GetEffect();
-            }
-            if(effect == RandomVisitorFX.GrayScale && diseaseList[i].GetEffect() == RandomVisitorFX.Shiny)
-            {
-                effect = diseaseList[i].GetEffect();
-            }
-
-        }
-
-        for (int i = 0; i < partsIndex.Length; i++)
-        {
-            partsWrapperArray[i] = new GameObjectWrapper();
-            partsIndex[i] = Random.Range(0, partsNum[i]);
-            StringBuilder builder = new StringBuilder(path);
-            if(effect == RandomVisitorFX.GrayScale)
-            {
-                builder.Append("gray");
-            }
-            else if (effect == RandomVisitorFX.Shiny)
-            {
-                builder.Append("shiny");
-            }
-            else if (effect == RandomVisitorFX.Transparent)
-            {
-                if(i != 1)
-                {
-                    continue;
-                }
-            }
-            switch (i)
-            {
-                case 0:
-                    builder.Append("body/");
-                    break;
-                case 1:
-                    builder.Append("clothes/");
-                    break;
-                case 2:
-                    builder.Append("head/");
-                    break;
-                case 3:
-                    builder.Append("face/");
-                    break;
-                case 4:
-                    builder.Append("hair/");
-                    break;
-                default:
-                    break;
-
-            }
-            builder.Append(partsIndex[i]);
-            partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
-        }
-
-        headPart = null;
-        facePart = new GameObject[2];
-        for (int i = 0; i < partsWrapperArray.Length; i++)
-        {
-            if(partsWrapperArray[i].partsArray == null)
-            {
-                continue;
-            }
-            for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
-            {
-                GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
-                if (i == 3)
-                {
-                    facePart[j] = part;
-                }
-                if (i == 2)
-                {
-                    headPart = part;
-                }
-                if (i == 4 && j == 1)
-                {
-                    part.transform.localPosition = new Vector3(0, 0, 1.5f);
-                }
-                else
-                {
-                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.01f * (j + 1));
-                }
-            }
-        }
-
-    }
+   
 
     public override void StartSymptomSpriteUpdate()
     {
@@ -603,7 +499,12 @@ public class RandomVisitorClass : VisitorClass
         }
     }
 
-  
+    public override void FaceShifter(bool isAngry)
+    {
+        base.FaceShifter(isAngry);
+    }
+
+
     //카운터매니저에서 불러옴.134줄
 
 

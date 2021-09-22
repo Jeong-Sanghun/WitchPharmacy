@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Coffee.UIExtensions;
+using System.Text;
 
 public class VisitorClass
 {
@@ -14,6 +15,14 @@ public class VisitorClass
     protected List<SymptomObject> symptomObjectList;
     protected List<SymptomObject> finalSymptomObjectList;
     protected StoryRegion nowRegion;
+    protected static int[] bodyPartsNum = { 2, 2, 2, 2 };
+    protected static int[] partsNum = { 2, 2, 2 };
+    protected int[] partsIndex;
+    protected int bodyPartsIndex;
+    protected GameObject headPart;
+    protected GameObject[] facePart;
+    protected GameObject happyFace;
+    protected GameObject angryFace;
 
     public static void SetStaticData(List<MedicineClass> ownedMedicineList,
     RandomVisitorDiseaseBundle bundle)
@@ -209,5 +218,139 @@ public class VisitorClass
             yield return null;
         }
     }
+    public virtual void FaceShifter(bool isAngry)
+    {
+        if (isAngry)
+        {
+            angryFace.SetActive(true);
+            happyFace.SetActive(false);
+        }
+        else
+        {
+            happyFace.SetActive(true);
+            angryFace.SetActive(false);
+        }
+    }
 
+    protected void RandomPartsGenerator(GameObject parent, StoryRegion region)
+    {
+        string path = "RandomCharacter/Whole/";
+        string bodyPath = "RandomCharacter/" + region.ToString() + "/body/";
+        int[] partsIndex;
+        GameObjectWrapper[] partsWrapperArray;
+        Transform visitorParent = parent.transform;
+        GameObject visitor = new GameObject();
+        visitor.transform.SetParent(visitorParent);
+        visitorObject = visitor;
+
+        visitorObject.transform.localPosition = Vector3.zero;
+
+        //먼저 래퍼 7개를 만들고.
+        partsIndex = new int[4];
+        //head face hair body
+        partsWrapperArray = new GameObjectWrapper[4];
+        //RandomVisitorFX effect = RandomVisitorFX.None;
+        //for(int i = 0; i < diseaseList.Count; i++)
+        //{
+        //    if(diseaseList[i].GetEffect() != RandomVisitorFX.None)
+        //    {
+        //        effect = diseaseList[i].GetEffect();
+        //    }
+        //    if(effect == RandomVisitorFX.GrayScale && diseaseList[i].GetEffect() == RandomVisitorFX.Shiny)
+        //    {
+        //        effect = diseaseList[i].GetEffect();
+        //    }
+
+        //}
+        partsIndex[3] = Random.Range(0, bodyPartsNum[(int)region]);
+        partsWrapperArray[3] = new GameObjectWrapper();
+        partsWrapperArray[3].partsArray = Resources.LoadAll<GameObject>(bodyPath + bodyPartsIndex.ToString());
+        for (int i = 0; i < partsIndex.Length - 1; i++)
+        {
+            partsWrapperArray[i] = new GameObjectWrapper();
+            partsIndex[i] = Random.Range(0, partsNum[i]);
+            StringBuilder builder = new StringBuilder(path);
+            //if(effect == RandomVisitorFX.GrayScale)
+            //{
+            //    builder.Append("gray");
+            //}
+            //else if (effect == RandomVisitorFX.Shiny)
+            //{
+            //    builder.Append("shiny");
+            //}
+            //else if (effect == RandomVisitorFX.Transparent)
+            //{
+            //    if(i != 1)
+            //    {
+            //        continue;
+            //    }
+            //}
+            switch (i)
+            {
+                case 0:
+                    builder.Append("head/");
+                    break;
+                case 1:
+                    builder.Append("face/");
+                    break;
+                case 2:
+                    builder.Append("hair/");
+                    break;
+                default:
+                    break;
+
+            }
+            builder.Append(partsIndex[i]);
+            partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
+        }
+
+        headPart = null;
+        facePart = new GameObject[2];
+        for (int i = 0; i < partsWrapperArray.Length; i++)
+        {
+            if (partsWrapperArray[i].partsArray == null)
+            {
+                continue;
+            }
+            for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
+            {
+                //head face hair body
+                GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
+                if (i == 1)
+                {
+                    facePart[j] = part;
+                    if (j == 1)
+                    {
+                        angryFace = part.transform.GetChild(0).gameObject;
+                        angryFace.SetActive(false);
+                    }
+                    else
+                    {
+                        happyFace = part.transform.GetChild(0).gameObject;
+                    }
+                }
+                if (i == 0)
+                {
+                    headPart = part;
+                }
+                if (i == 2 && j == 1)
+                {
+                    part.transform.localPosition = new Vector3(0, 0, 1.5f);
+                }
+                else if(i==2 && j == 2)
+                {
+                    part.transform.localPosition = new Vector3(0, 0, 1.6f);
+                }
+                else if (i == 3)
+                {
+                    part.transform.localPosition = new Vector3(0, 0, 1);
+                }
+                else
+                {
+                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.01f * (j + 1));
+                }
+            }
+        }
+
+    }
 }

@@ -12,16 +12,10 @@ public class OddVisitorClass : VisitorClass
     CharacterIndexToName loader;
     int[] visitorSetArray;
 
-    static int[] partsNum = { 1, 2, 2, 2, 4};
-    int[] partsIndex;
     public GameObjectWrapper[] partsWrapperArray;
 
 
     bool childSetParented;
-
-    GameObject headPart;
-    GameObject[] facePart;
-
     public OddVisitorClass(GameObject parent, GameObject prefab, VisitorDialogBundle bundle)
     {
 
@@ -72,118 +66,118 @@ public class OddVisitorClass : VisitorClass
         }
     }
 
-    //랜덤캐릭터 만드는 함수
-    void RandomPartsGenerator(GameObject parent, StoryRegion region)
-    {
-        string path = "RandomCharacter/" + region.ToString() + "/";
-        Transform visitorParent = parent.transform;
-        GameObject visitor = new GameObject();
-        visitor.transform.SetParent(visitorParent);
-        visitorObject = visitor;
+    ////랜덤캐릭터 만드는 함수
+    //void RandomPartsGenerator(GameObject parent, StoryRegion region)
+    //{
+    //    string path = "RandomCharacter/" + region.ToString() + "/";
+    //    Transform visitorParent = parent.transform;
+    //    GameObject visitor = new GameObject();
+    //    visitor.transform.SetParent(visitorParent);
+    //    visitorObject = visitor;
 
-        visitorObject.transform.localPosition = Vector3.zero;
+    //    visitorObject.transform.localPosition = Vector3.zero;
 
-        //먼저 래퍼 7개를 만들고.
-        partsIndex = new int[5];
-        partsWrapperArray = new GameObjectWrapper[partsIndex.Length];
-        RandomVisitorFX effect = RandomVisitorFX.None;
-        for (int i = 0; i < diseaseList.Count; i++)
-        {
-            if (diseaseList[i].GetEffect() != RandomVisitorFX.None)
-            {
-                effect = diseaseList[i].GetEffect();
-            }
-            if (effect == RandomVisitorFX.GrayScale && diseaseList[i].GetEffect() == RandomVisitorFX.Shiny)
-            {
-                effect = diseaseList[i].GetEffect();
-            }
+    //    //먼저 래퍼 7개를 만들고.
+    //    partsIndex = new int[5];
+    //    partsWrapperArray = new GameObjectWrapper[partsIndex.Length];
+    //    RandomVisitorFX effect = RandomVisitorFX.None;
+    //    for (int i = 0; i < diseaseList.Count; i++)
+    //    {
+    //        if (diseaseList[i].GetEffect() != RandomVisitorFX.None)
+    //        {
+    //            effect = diseaseList[i].GetEffect();
+    //        }
+    //        if (effect == RandomVisitorFX.GrayScale && diseaseList[i].GetEffect() == RandomVisitorFX.Shiny)
+    //        {
+    //            effect = diseaseList[i].GetEffect();
+    //        }
 
-        }
+    //    }
 
         
-        for(int i = 0; i < partsIndex.Length; i++)
-        {
-            partsIndex[i] = visitorSetArray[i];
-            Debug.Log(partsIndex[i]);
+    //    for(int i = 0; i < partsIndex.Length; i++)
+    //    {
+    //        partsIndex[i] = visitorSetArray[i];
+    //        Debug.Log(partsIndex[i]);
 
-        }
+    //    }
 
-        for (int i = 0; i < partsIndex.Length; i++)
-        {
-            partsWrapperArray[i] = new GameObjectWrapper();
+    //    for (int i = 0; i < partsIndex.Length; i++)
+    //    {
+    //        partsWrapperArray[i] = new GameObjectWrapper();
             
-            StringBuilder builder = new StringBuilder(path);
-            if (effect == RandomVisitorFX.GrayScale)
-            {
-                builder.Append("gray");
-            }
-            else if (effect == RandomVisitorFX.Shiny)
-            {
-                builder.Append("shiny");
-            }
-            else if (effect == RandomVisitorFX.Transparent)
-            {
-                if (i != 1)
-                {
-                    continue;
-                }
-            }
-            switch (i)
-            {
-                case 0:
-                    builder.Append("body/");
-                    break;
-                case 1:
-                    builder.Append("clothes/");
-                    break;
-                case 2:
-                    builder.Append("head/");
-                    break;
-                case 3:
-                    builder.Append("face/");
-                    break;
-                case 4:
-                    builder.Append("hair/");
-                    break;
-                default:
-                    break;
+    //        StringBuilder builder = new StringBuilder(path);
+    //        if (effect == RandomVisitorFX.GrayScale)
+    //        {
+    //            builder.Append("gray");
+    //        }
+    //        else if (effect == RandomVisitorFX.Shiny)
+    //        {
+    //            builder.Append("shiny");
+    //        }
+    //        else if (effect == RandomVisitorFX.Transparent)
+    //        {
+    //            if (i != 1)
+    //            {
+    //                continue;
+    //            }
+    //        }
+    //        switch (i)
+    //        {
+    //            case 0:
+    //                builder.Append("body/");
+    //                break;
+    //            case 1:
+    //                builder.Append("clothes/");
+    //                break;
+    //            case 2:
+    //                builder.Append("head/");
+    //                break;
+    //            case 3:
+    //                builder.Append("face/");
+    //                break;
+    //            case 4:
+    //                builder.Append("hair/");
+    //                break;
+    //            default:
+    //                break;
 
-            }
-            builder.Append(partsIndex[i]);
-            partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
-        }
+    //        }
+    //        builder.Append(partsIndex[i]);
+    //        partsWrapperArray[i].partsArray = Resources.LoadAll<GameObject>(builder.ToString());
+    //    }
 
-        headPart = null;
-        facePart = new GameObject[2];
-        for (int i = 0; i < partsWrapperArray.Length; i++)
-        {
-            if (partsWrapperArray[i].partsArray == null)
-            {
-                continue;
-            }
-            for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
-            {
-                GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
-                if (i == 3)
-                {
-                    facePart[j] = part;
-                }
-                if (i == 2)
-                {
-                    headPart = part;
-                }
-                if (i == 4 && j == 1)
-                {
-                    part.transform.localPosition = new Vector3(0, 0, 1.5f);
-                }
-                else
-                {
-                    part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.01f * (j + 1));
-                }
-            }
-        }
+    //    headPart = null;
+    //    facePart = new GameObject[2];
+    //    for (int i = 0; i < partsWrapperArray.Length; i++)
+    //    {
+    //        if (partsWrapperArray[i].partsArray == null)
+    //        {
+    //            continue;
+    //        }
+    //        for (int j = 0; j < partsWrapperArray[i].partsArray.Length; j++)
+    //        {
+    //            GameObject part = GameObject.Instantiate(partsWrapperArray[i].partsArray[j], visitor.transform);
+    //            if (i == 3)
+    //            {
+    //                facePart[j] = part;
+    //            }
+    //            if (i == 2)
+    //            {
+    //                headPart = part;
+    //            }
+    //            if (i == 4 && j == 1)
+    //            {
+    //                part.transform.localPosition = new Vector3(0, 0, 1.5f);
+    //            }
+    //            else
+    //            {
+    //                part.transform.localPosition = new Vector3(0, 0, 1 - 0.1f * (i + 1) - 0.01f * (j + 1));
+    //            }
+    //        }
+    //    }
 
-    }
+    //}
 
 
     public override void StartSymptomSpriteUpdate()
