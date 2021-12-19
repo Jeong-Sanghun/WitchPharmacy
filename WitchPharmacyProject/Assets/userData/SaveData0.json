@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 2,
-    "coin": 1000,
+    "nowTime": 53640.0,
+    "nowDay": 0,
+    "coin": 1085,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -35,38 +35,6 @@
         {
             "medicineIndex": 59,
             "medicineCost": 3
-        },
-        {
-            "medicineIndex": 4,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 5,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 12,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 13,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 38,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 39,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 46,
-            "medicineCost": 3
-        },
-        {
-            "medicineIndex": 47,
-            "medicineCost": 3
         }
     ],
     "owningSpecialMedicineList": [],
@@ -77,17 +45,18 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 15
+                },
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 100
+                }
+            ]
         }
     ],
     "owningDocumentList": [],
@@ -95,9 +64,7 @@
         "water+",
         "water-",
         "fire+",
-        "fire-",
-        "air+",
-        "air-"
+        "fire-"
     ],
     "owningMeasureToolList": [],
     "owningOtherToolList": [],
@@ -106,50 +73,34 @@
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [
-            "waterair"
-        ],
+        "endMedicineResearchList": [],
         "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": [],
         "progressingBookResearchList": [],
-        "endBookResearchList": [
-            "air"
-        ],
+        "endBookResearchList": [],
         "progressingSpecialResearchList": [],
         "endSpecialResearchList": [],
         "appearingSpecialResearchList": [],
         "unHiddenResearchList": []
     },
-    "routePairList": [
-        {
-            "storyName": "thirdDay",
-            "pickedRouteList": [
-                1
-            ]
-        }
-    ],
+    "routePairList": [],
     "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
+        true,
         false,
-        false,
-        true
+        false
     ],
     "readStoryList": [
-        "firstDay",
-        "secondDay",
-        "thirdDay",
-        "fourthDay2",
-        "fifthDay",
         "firstDay"
     ],
     "readSpecialVisitorBundleList": [
         "Sanghun",
-        "Lily1"
+        "Ian1"
     ],
     "nextStory": "secondDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 1,
     "forcedRegion": "Library"
 }

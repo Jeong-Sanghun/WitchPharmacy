@@ -61,7 +61,14 @@ public class CounterDialogManager : MonoBehaviour
     Text visitorName;
     [SerializeField]
     Text ruelliaText;
-    
+
+    [SerializeField]
+    GameObject visitorParent;
+    [SerializeField]
+    GameObject specialVisitorPrefab;
+
+
+
     [SerializeField]
     GameObject backLogParent;
     [SerializeField]
@@ -204,8 +211,8 @@ public class CounterDialogManager : MonoBehaviour
         nowVisitorType = VisitorType.RuelliaStart;
         nowBundle = storyParser.LoadBundle(Random.Range(0, 2).ToString(), languageDirectory,VisitorType.RuelliaStart);
         nowWrapperList = nowBundle.startWrapperList;
-
         nowWrapper = nowBundle.startWrapperList[0];
+
         visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
         if (nowWrapper.characterName != null)
         {
@@ -280,11 +287,11 @@ public class CounterDialogManager : MonoBehaviour
         }
         if (nowWrapper.characterFeeling.Contains("angry"))
         {
-            visitor.FaceShifter(true);
+            visitor.FaceShifter(Feeling.Angry);
         }
         else if(nowWrapper.characterFeeling.Contains("nothing"))
         {
-            visitor.FaceShifter(false);
+            visitor.FaceShifter(Feeling.Happy);
         }
 
         if (nowWrapper.dialogFX == DialogFX.Up)
@@ -390,18 +397,18 @@ public class CounterDialogManager : MonoBehaviour
         Debug.Log(nowWrapper.characterFeeling);
         if (nowWrapper.characterFeeling == null)
         {
-            nowVisitor.FaceShifter(false);
+            nowVisitor.FaceShifter(Feeling.Happy);
 
         }
         else
         {
             if (nowWrapper.characterFeeling.Contains("angry"))
             {
-                nowVisitor.FaceShifter(true);
+                nowVisitor.FaceShifter(Feeling.Angry);
             }
             else if (nowWrapper.characterFeeling.Contains("nothing"))
             {
-                nowVisitor.FaceShifter(false);
+                nowVisitor.FaceShifter(Feeling.Happy);
             }
         }
 
@@ -643,24 +650,53 @@ public class CounterDialogManager : MonoBehaviour
             lastWrapper = nowWrapper;
             nowWrapper = nowWrapperList[nowWrapperIndex];
             visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
-            if (lastWrapper != null && nowWrapper.characterName != null && nowBundle.visitorType == VisitorType.Special)
+            if (lastWrapper != null )
             {
-
-                if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
+                Debug.Log(nowWrapper.characterName);
+                Debug.Log(nowBundle.visitorType);
+                if(nowWrapper.characterName != null && (nowBundle.visitorType == VisitorType.Special
+                   || nowBundle.visitorType == VisitorType.RuelliaStart))
                 {
                     Debug.Log(nowWrapper.characterName);
                     counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
                 }
+
+                //if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
+                //{
+                //    Debug.Log(nowWrapper.characterName);
+                //    counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
+                //}
             }
+            else if(nowBundle.visitorType == VisitorType.RuelliaStart && nowWrapper.characterName != null)
+            {
+                Debug.Log(nowWrapper.characterName);
+                counterManager.SetSpecialVisitor(nowWrapper.characterName, nowWrapper.characterFeeling);
+                nowVisitor = counterManager.GetVisitor();
+            }
+
             Debug.Log(nowWrapper.characterFeeling);
-            if (nowWrapper.characterFeeling.Contains("angry"))
+            if(nowVisitor  != null)
             {
-                nowVisitor.FaceShifter(true);
+                if (nowBundle.visitorType != VisitorType.RuelliaStart &&
+               nowBundle.visitorType != VisitorType.Special)
+                {
+                    if (nowWrapper.characterFeeling.Contains("angry"))
+                    {
+                        nowVisitor.FaceShifter(Feeling.Angry);
+                    }
+                    else if (nowWrapper.characterFeeling.Contains("nothing"))
+                    {
+                        nowVisitor.FaceShifter(Feeling.Happy);
+                    }
+                }
+                else
+                {
+                    ((SpecialVisitorClass)nowVisitor).SetObjectImage(nowWrapper.characterName, nowWrapper.characterFeeling);
+                }
             }
-            else if (nowWrapper.characterFeeling.Contains("nothing"))
-            {
-                nowVisitor.FaceShifter(false);
-            }
+           
+            
+
 
 
             if (nowWrapper.dialogFX == DialogFX.Up)
@@ -678,10 +714,7 @@ public class CounterDialogManager : MonoBehaviour
                 
                 counterManager.CoinGain(nowWrapper.coin);
             }
-            if (nowVisitorType == VisitorType.Special)
-            {
-                ((SpecialVisitorClass)nowVisitor).SetObjectImage(nowWrapper.characterName, nowWrapper.characterFeeling);
-            }
+
 
             VisitUpdate();
         }

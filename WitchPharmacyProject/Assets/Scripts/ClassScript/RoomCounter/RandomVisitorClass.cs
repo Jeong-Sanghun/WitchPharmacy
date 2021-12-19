@@ -499,9 +499,9 @@ public class RandomVisitorClass : VisitorClass
         }
     }
 
-    public override void FaceShifter(bool isAngry)
+    public override void FaceShifter(Feeling feeling)
     {
-        base.FaceShifter(isAngry);
+        base.FaceShifter(feeling);
     }
 
 

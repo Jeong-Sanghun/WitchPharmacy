@@ -216,6 +216,12 @@ public class CounterManager : MonoBehaviour //SH
         nowSpecialVisitorCondition = condition;
         SpawnRandomVisitor();
     }
+
+    public VisitorClass GetVisitor()
+    {
+        return nowVisitor;
+    }
+
     ////씨발...트리거매니저...
     //public void CounterSecondStart(SpecialVisitorDialogBundle bundle)
     //{

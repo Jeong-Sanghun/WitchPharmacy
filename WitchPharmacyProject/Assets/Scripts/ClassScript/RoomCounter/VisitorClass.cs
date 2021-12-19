@@ -4,6 +4,10 @@ using UnityEngine;
 using Coffee.UIExtensions;
 using System.Text;
 
+public enum Feeling
+{
+    Happy,Angry
+}
 public class VisitorClass
 {
     public VisitorType visitorType;
@@ -21,8 +25,7 @@ public class VisitorClass
     protected int bodyPartsIndex;
     protected GameObject headPart;
     protected GameObject[] facePart;
-    protected GameObject happyFace;
-    protected GameObject angryFace;
+    protected GameObject[] feelingFace;
 
     public static void SetStaticData(List<MedicineClass> ownedMedicineList,
     RandomVisitorDiseaseBundle bundle)
@@ -218,18 +221,16 @@ public class VisitorClass
             yield return null;
         }
     }
-    public virtual void FaceShifter(bool isAngry)
+    public virtual void FaceShifter(Feeling feeling)
     {
-        if (isAngry)
+        if (feelingFace == null)
+            return;
+        for(int i = 0; i < feelingFace.Length; i++)
         {
-            angryFace.SetActive(true);
-            happyFace.SetActive(false);
+            feelingFace[i].SetActive(false);
         }
-        else
-        {
-            happyFace.SetActive(true);
-            angryFace.SetActive(false);
-        }
+
+        feelingFace[(int)feeling].SetActive(true);
     }
 
     protected void RandomPartsGenerator(GameObject parent, StoryRegion region)
@@ -242,6 +243,7 @@ public class VisitorClass
         GameObject visitor = new GameObject();
         visitor.transform.SetParent(visitorParent);
         visitorObject = visitor;
+        feelingFace = new GameObject[2];
 
         visitorObject.transform.localPosition = Vector3.zero;
 
@@ -321,12 +323,12 @@ public class VisitorClass
                     facePart[j] = part;
                     if (j == 1)
                     {
-                        angryFace = part.transform.GetChild(0).gameObject;
-                        angryFace.SetActive(false);
+                        feelingFace[(int)Feeling.Angry] = part.transform.GetChild(0).gameObject;
+                        feelingFace[(int)Feeling.Angry].SetActive(false);
                     }
                     else
                     {
-                        happyFace = part.transform.GetChild(0).gameObject;
+                        feelingFace[(int)Feeling.Happy] = part.transform.GetChild(0).gameObject;
                     }
                 }
                 if (i == 0)

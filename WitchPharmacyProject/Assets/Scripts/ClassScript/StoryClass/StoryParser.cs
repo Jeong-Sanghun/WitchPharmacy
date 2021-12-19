@@ -643,7 +643,6 @@ public class StoryParser
                 break;
             case VisitorType.RuelliaStart:
                 builder.Append("RuelliaStart/");
-                gameData.visitorType = VisitorType.Special;
                 break;
             default:
                 break;
@@ -799,15 +798,8 @@ public class StoryParser
                         case ParseMode.BundleName:
                             break;
                         case ParseMode.Switch:
-                            //string name = builder.ToString();
-                            //if (nowWrapper.characterName[leftMiddleRight] == null && name.Length>1)
-                            //{
-                            //    nowWrapper.characterName[leftMiddleRight] = name;
-                            //    nowWrapper.ingameName[leftMiddleRight] = characterIndexToName.NameTranslator(name, languagePack);
-
-                            //}
-                            //builder.Clear();
-                            nowMode = ParseMode.ClampEffect;
+                            
+                            nowMode = ParseMode.ClampCharacterName;
                             break;
                         case ParseMode.ClampFeeling:
                             nowMode = ParseMode.ClampEffect;
@@ -1011,8 +1003,12 @@ public class StoryParser
                     {
                         case ParseMode.ClampFeeling:
                             string feeling = builder.ToString();
-                            nowWrapper.characterFeeling = feeling;
-                            nowMode = ParseMode.Switch;
+                            if (feeling.Length > 1)
+                            {
+                                nowWrapper.characterFeeling = feeling;
+                            }
+
+                            nowMode = ParseMode.ClampFeeling;
                             builder.Clear();
                             break;
                         case ParseMode.Dialog:
