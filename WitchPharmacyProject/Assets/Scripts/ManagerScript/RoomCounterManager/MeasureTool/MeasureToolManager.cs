@@ -137,7 +137,6 @@ public class MeasureToolManager : MonoBehaviour
     //드래그앤드롭하면 이거 실행됨. 카운터매니저에서 실행
     public void ToolOpenButton(int index)
     {
-        Symptom.
         //blurManager.OnBlur(true);
         blurManager.ChangeLayer(true, visitorParent);
         blurManager.ChangeLayer(true, counterTable);

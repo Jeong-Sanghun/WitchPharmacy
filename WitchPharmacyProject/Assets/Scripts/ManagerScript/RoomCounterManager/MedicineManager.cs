@@ -54,6 +54,7 @@ public class MedicineManager : MonoBehaviour    //SH
     Image[] propertySubButtonImageArray;
     [SerializeField]
     GameObject[] propertySubButtonLockArray;
+    Button[] propertySubButtonComponentArray;
     [SerializeField]
     GameObject propertySubListParent;
     [SerializeField]
@@ -165,6 +166,7 @@ public class MedicineManager : MonoBehaviour    //SH
         {
             isMainButtonOn[i] = false;
             isSubButtonOn[i] = false;
+            propertySubButtonComponentArray[i] = propertySubButtonImageArray[i].GetComponent<Button>();
         }
         wholeMedicineButtonList = new List<MedicineButton>();
         medicineInPotList = new List<MedicineButton>();
@@ -246,10 +248,10 @@ public class MedicineManager : MonoBehaviour    //SH
             EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
 
             //버튼 이벤트
-            //EventTrigger.Entry entry2 = new EventTrigger.Entry();
-            //entry2.eventID = EventTriggerType.Drag;
-            //entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
-            //buttonEvent.triggers.Add(entry2);
+            EventTrigger.Entry entry2 = new EventTrigger.Entry();
+            entry2.eventID = EventTriggerType.Drag;
+            entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+            buttonEvent.triggers.Add(entry2);
 
             //속성창 이벤트
             EventTrigger.Entry entry3 = new EventTrigger.Entry();
@@ -276,7 +278,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
         //SpecialScrollAlign();
         //PropertyListButton(0);
-        //PropertyListButton(0);
+        PropertyListMainButton(0);
 
     }
 
@@ -574,11 +576,12 @@ public class MedicineManager : MonoBehaviour    //SH
         {
             propertyMainButtonImageArray[index].color = Color.white;
             propertySubButtonLockArray[index].SetActive(false);
+            propertySubButtonComponentArray[index].interactable = false;
             propertySubListParent.SetActive(false);
             isMainButtonOn[index] = false;
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-                wholeMedicineButtonList[i].isActive = true;
+                wholeMedicineButtonList[i].isActive = false;
             }
         }
         else
@@ -603,11 +606,13 @@ public class MedicineManager : MonoBehaviour    //SH
                 if (isMainButtonOn[i])
                 {
                     propertySubButtonLockArray[i].SetActive(false);
+                    propertySubButtonComponentArray[i].interactable = true;
                     isMainButtonOn[i] = false;
                     propertyMainButtonImageArray[i].color = Color.white;
                 }
             }
             propertySubButtonLockArray[index].SetActive(true);
+            propertySubButtonComponentArray[index].interactable = false;
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
                 //if (wholeMedicineButtonList[i].zeroMedicine)
@@ -1048,7 +1053,7 @@ public class MedicineManager : MonoBehaviour    //SH
             //}
 
         }
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             if (isMainButtonOn[i] == true)
             {
