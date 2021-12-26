@@ -46,9 +46,16 @@ public class MedicineManager : MonoBehaviour    //SH
     [SerializeField]
     GameObject scrollObject;
 
-    [SerializeField]
-    Image[] propertyButtonImageArray;
+    
 
+    [SerializeField]
+    Image[] propertyMainButtonImageArray;
+    [SerializeField]
+    Image[] propertySubButtonImageArray;
+    [SerializeField]
+    GameObject[] propertySubButtonLockArray;
+    [SerializeField]
+    GameObject propertySubListParent;
     [SerializeField]
     Transform propertyObjectParent;
 
@@ -78,7 +85,8 @@ public class MedicineManager : MonoBehaviour    //SH
     List<MedicineButton> wholeMedicineButtonList;
     //List<MedicineButton> wholeSpecialMedicineButtonList;
     //int[] contentButtonQuantityArray;
-    bool[] isButtonOn;
+    bool[] isMainButtonOn;
+    bool[] isSubButtonOn;
 
 
     //이거 드래그앤드롭할떄 필요함
@@ -151,10 +159,12 @@ public class MedicineManager : MonoBehaviour    //SH
         owningSpecialMedicineList = saveData.owningSpecialMedicineList;
         specialMedicineDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
         isDraggingMedicineFromPot = false;
-        isButtonOn = new bool[6];
-        for (int i = 0; i < isButtonOn.Length; i++)
+        isMainButtonOn = new bool[5];
+        isSubButtonOn = new bool[5];
+        for (int i = 0; i < isMainButtonOn.Length; i++)
         {
-            isButtonOn[i] = false;
+            isMainButtonOn[i] = false;
+            isSubButtonOn[i] = false;
         }
         wholeMedicineButtonList = new List<MedicineButton>();
         medicineInPotList = new List<MedicineButton>();
@@ -236,16 +246,16 @@ public class MedicineManager : MonoBehaviour    //SH
             EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
 
             //버튼 이벤트
-            EventTrigger.Entry entry2 = new EventTrigger.Entry();
-            entry2.eventID = EventTriggerType.Drag;
-            entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
-            buttonEvent.triggers.Add(entry2);
+            //EventTrigger.Entry entry2 = new EventTrigger.Entry();
+            //entry2.eventID = EventTriggerType.Drag;
+            //entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+            //buttonEvent.triggers.Add(entry2);
 
             //속성창 이벤트
-            //EventTrigger.Entry entry3 = new EventTrigger.Entry();
-            //entry3.eventID = EventTriggerType.Drag;
-            //entry3.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
-            //propertyEvent.triggers.Add(entry2);
+            EventTrigger.Entry entry3 = new EventTrigger.Entry();
+            entry3.eventID = EventTriggerType.PointerDown;
+            entry3.callback.AddListener((data) => { OnButtonDown(delegateIndex); });
+            propertyEvent.triggers.Add(entry3);
 
             propertyEvent.transform.GetChild(0).GetComponent<EventTrigger>().enabled = false;
 
@@ -259,9 +269,14 @@ public class MedicineManager : MonoBehaviour    //SH
             AddSpecialMedicineOnOdd(owningSpecialMedicineList[i]);
         }
 
+        for(int i = 0; i < potMedicineParentArray.Length; i++)
+        {
+            potMedicineParentArray[i].SetActive(false);
+        }
+
         //SpecialScrollAlign();
-        PropertyListButton(0);
-        PropertyListButton(0);
+        //PropertyListButton(0);
+        //PropertyListButton(0);
 
     }
 
@@ -374,7 +389,7 @@ public class MedicineManager : MonoBehaviour    //SH
                 //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
                 if (touchedObject.CompareTag("PotMedicine"))
                 {
-                    if(medicineInPotList != null)
+                    if(medicineInPotList != null && medicineInPotList.Count>touchedObject.transform.GetSiblingIndex())
                     {
                         for (int i = 0; i < medicineInPotList.Count; i++)
                         {
@@ -449,6 +464,7 @@ public class MedicineManager : MonoBehaviour    //SH
         UseCoin(nowMedicineButton.owningMedicine.medicineCost);
         medicineObj = nowMedicineButton.medicineObject;
         inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
+        potMedicineParentArray[nowPotIndex].SetActive(true);
 
 
         Debug.Log(nowMedicineButton.medicineClass.firstNumber);
@@ -492,6 +508,7 @@ public class MedicineManager : MonoBehaviour    //SH
             Destroy(potMedicineObjectList[listIndex]);
             if (medicineInPotList.Count == 1)
             {
+                potMedicineParentArray[0].SetActive(false);
                 potAnimationManager.UnSetPotColor(0,true);
             }
 
@@ -500,6 +517,7 @@ public class MedicineManager : MonoBehaviour    //SH
                 if (listIndex == 0)
                 {
                     potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
+                    potMedicineParentArray[1].SetActive(false);
                     potMedicineObjectList[1].transform.localPosition = Vector3.zero;
                     potAnimationManager.SetPotColor(medicineInPotList[1].medicineClass.GetSecondSymptom(), medicineInPotList[1].medicineClass.secondNumber, 0);
                     
@@ -508,6 +526,7 @@ public class MedicineManager : MonoBehaviour    //SH
             }
             else if (medicineInPotList.Count == 3)
             {
+                potMedicineParentArray[2].SetActive(false);
                 if (listIndex == 0)
                 {
                     potMedicineObjectList[1].transform.SetParent(potMedicineParentArray[0].transform);
@@ -544,67 +563,51 @@ public class MedicineManager : MonoBehaviour    //SH
 
     }
 
-    //속성 누르면 그 속성 아이템 뜨게하는 버튼
-    public void PropertyListButton(int index)
+    public void PropertyListMainButton(int index)
     {
         if (counterManager.endSales)
         {
             return;
         }
         int buttonQuantity = 0;
-        if (isButtonOn[index] == true)
+        if (isMainButtonOn[index] == true)
         {
-            propertyButtonImageArray[index].color = Color.white;
-
-            isButtonOn[index] = false;
-            int pushedButton = 0;
-            for (int i = 0; i < 6; i++)
-            {
-                if (isButtonOn[i])
-                {
-                    pushedButton++;
-                }
-            }
+            propertyMainButtonImageArray[index].color = Color.white;
+            propertySubButtonLockArray[index].SetActive(false);
+            propertySubListParent.SetActive(false);
+            isMainButtonOn[index] = false;
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
-
-
-                //if (wholeMedicineButtonList[i].medicineQuant == 0)
-                //{
-                //    wholeMedicineButtonList[i].isActive = false;
-                //    continue;
-                //}
-                if (pushedButton == 0)
-                {
-                    wholeMedicineButtonList[i].isActive = true;
-                    continue;
-                }
-
-
-                wholeMedicineButtonList[i].isActive = false;
-                if (pushedButton > 1)
-                {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
-    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
-                    {
-                        wholeMedicineButtonList[i].isActive = true;
-                    }
-                }
+                wholeMedicineButtonList[i].isActive = true;
             }
         }
         else
         {
-            propertyButtonImageArray[index].color = Color.red;
-
-            isButtonOn[index] = true;
-            int pushedButton = 0;
-            for(int i = 0; i < 6; i++)
+            propertyMainButtonImageArray[index].color = Color.red;
+            propertySubListParent.SetActive(true);
+            isMainButtonOn[index] = true;
+            for (int i = 0; i < isSubButtonOn.Length; i++)
             {
-                if (isButtonOn[i])
+                if (isSubButtonOn[i])
                 {
-                    pushedButton++;
+                    isSubButtonOn[i] = false;
+                    propertySubButtonImageArray[i].color = Color.white;
                 }
             }
+            for (int i = 0; i < isMainButtonOn.Length; i++)
+            {
+                if(index == i)
+                {
+                    continue;
+                }
+                if (isMainButtonOn[i])
+                {
+                    propertySubButtonLockArray[i].SetActive(false);
+                    isMainButtonOn[i] = false;
+                    propertyMainButtonImageArray[i].color = Color.white;
+                }
+            }
+            propertySubButtonLockArray[index].SetActive(true);
             for (int i = 0; i < wholeMedicineButtonList.Count; i++)
             {
                 //if (wholeMedicineButtonList[i].zeroMedicine)
@@ -612,43 +615,23 @@ public class MedicineManager : MonoBehaviour    //SH
                 //    wholeMedicineButtonList[i].isActive = false;
                 //    continue;
                 //}
-                if (pushedButton > 1)
+                if (isMainButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
-    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
-                    {
-                        wholeMedicineButtonList[i].isActive = true;
-                    }
-                    else
-                    {
-                        wholeMedicineButtonList[i].isActive = false;
-                    }
+                    wholeMedicineButtonList[i].isActive = true;
                 }
                 else
                 {
-                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] ||
-isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
-                    {
-                        wholeMedicineButtonList[i].isActive = true;
-                    }
-                    else
-                    {
-                        wholeMedicineButtonList[i].isActive = false;
-                    }
-
-
+                    wholeMedicineButtonList[i].isActive = false;
                 }
-
-
             }
         }
 
         for (int i = 0; i < wholeMedicineButtonList.Count; i++)
         {
-            if(wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.special && !isSpecialMedicine)
-            {
-                wholeMedicineButtonList[i].isActive = false;
-            }
+            //if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.special && !isSpecialMedicine)
+            //{
+            //    wholeMedicineButtonList[i].isActive = false;
+            //}
             if (wholeMedicineButtonList[i].isActive)
             {
                 wholeMedicineButtonList[i].buttonObject.SetActive(true);
@@ -663,8 +646,220 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         }
 
         regularScrollContent.sizeDelta = new Vector2(0, 180 * buttonQuantity);
-
     }
+
+    public void PropertyListSubButton(int index)
+    {
+        if (counterManager.endSales)
+        {
+            return;
+        }
+        int buttonQuantity = 0;
+        if (isSubButtonOn[index] == true)
+        {
+            propertySubButtonImageArray[index].color = Color.white;
+
+            isSubButtonOn[index] = false;
+            for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+            {
+                wholeMedicineButtonList[i].isActive = true;
+            }
+
+            for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+            {
+                //if (wholeMedicineButtonList[i].zeroMedicine)
+                //{
+                //    wholeMedicineButtonList[i].isActive = false;
+                //    continue;
+                //}
+                if (isMainButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
+                {
+                    wholeMedicineButtonList[i].isActive = true;
+                }
+                else
+                {
+                    wholeMedicineButtonList[i].isActive = false;
+                }
+            }
+        }
+        else
+        {
+            propertySubButtonImageArray[index].color = Color.red;
+
+            isSubButtonOn[index] = true;
+            for (int i = 0; i < isSubButtonOn.Length; i++)
+            {
+                if (index == i)
+                {
+                    continue;
+                }
+                if (isSubButtonOn[i])
+                {
+                    isSubButtonOn[i] = false;
+                    propertySubButtonImageArray[i].color = Color.white;
+                }
+            }
+            for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+            {
+                //if (wholeMedicineButtonList[i].zeroMedicine)
+                //{
+                //    wholeMedicineButtonList[i].isActive = false;
+                //    continue;
+                //}
+                if (isMainButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()] && isSubButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()])
+                {
+                    wholeMedicineButtonList[i].isActive = true;
+                }
+                else
+                {
+                    wholeMedicineButtonList[i].isActive = false;
+                }
+            }
+        }
+
+        for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+        {
+            //if (wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.special && !isSpecialMedicine)
+            //{
+            //    wholeMedicineButtonList[i].isActive = false;
+            //}
+            if (wholeMedicineButtonList[i].isActive)
+            {
+                wholeMedicineButtonList[i].buttonObject.SetActive(true);
+                wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -90 - buttonQuantity * 180);
+                buttonQuantity++;
+            }
+            if (wholeMedicineButtonList[i].isActive == false)
+            {
+                wholeMedicineButtonList[i].propertyObject.SetActive(false);
+                wholeMedicineButtonList[i].buttonObject.SetActive(false);
+            }
+        }
+
+        regularScrollContent.sizeDelta = new Vector2(0, 180 * buttonQuantity);
+    }
+
+    //    //속성 누르면 그 속성 아이템 뜨게하는 버튼
+    //    public void PropertyListButton(int index)
+    //    {
+    //        if (counterManager.endSales)
+    //        {
+    //            return;
+    //        }
+    //        int buttonQuantity = 0;
+    //        if (isButtonOn[index] == true)
+    //        {
+    //            propertyButtonImageArray[index].color = Color.white;
+
+    //            isButtonOn[index] = false;
+    //            int pushedButton = 0;
+    //            for (int i = 0; i < 6; i++)
+    //            {
+    //                if (isButtonOn[i])
+    //                {
+    //                    pushedButton++;
+    //                }
+    //            }
+    //            for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+    //            {
+
+
+    //                //if (wholeMedicineButtonList[i].medicineQuant == 0)
+    //                //{
+    //                //    wholeMedicineButtonList[i].isActive = false;
+    //                //    continue;
+    //                //}
+    //                if (pushedButton == 0)
+    //                {
+    //                    wholeMedicineButtonList[i].isActive = true;
+    //                    continue;
+    //                }
+
+
+    //                wholeMedicineButtonList[i].isActive = false;
+    //                if (pushedButton > 1)
+    //                {
+    //                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
+    //    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
+    //                    {
+    //                        wholeMedicineButtonList[i].isActive = true;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            propertyButtonImageArray[index].color = Color.red;
+
+    //            isButtonOn[index] = true;
+    //            int pushedButton = 0;
+    //            for(int i = 0; i < 6; i++)
+    //            {
+    //                if (isButtonOn[i])
+    //                {
+    //                    pushedButton++;
+    //                }
+    //            }
+    //            for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+    //            {
+    //                //if (wholeMedicineButtonList[i].zeroMedicine)
+    //                //{
+    //                //    wholeMedicineButtonList[i].isActive = false;
+    //                //    continue;
+    //                //}
+    //                if (pushedButton > 1)
+    //                {
+    //                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] &&
+    //    isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
+    //                    {
+    //                        wholeMedicineButtonList[i].isActive = true;
+    //                    }
+    //                    else
+    //                    {
+    //                        wholeMedicineButtonList[i].isActive = false;
+    //                    }
+    //                }
+    //                else
+    //                {
+    //                    if (isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetFirstSymptom()] ||
+    //isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
+    //                    {
+    //                        wholeMedicineButtonList[i].isActive = true;
+    //                    }
+    //                    else
+    //                    {
+    //                        wholeMedicineButtonList[i].isActive = false;
+    //                    }
+
+
+    //                }
+
+
+    //            }
+    //        }
+
+    //        for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+    //        {
+    //            if(wholeMedicineButtonList[i].medicineClass.GetFirstSymptom() == Symptom.special && !isSpecialMedicine)
+    //            {
+    //                wholeMedicineButtonList[i].isActive = false;
+    //            }
+    //            if (wholeMedicineButtonList[i].isActive)
+    //            {
+    //                wholeMedicineButtonList[i].buttonObject.SetActive(true);
+    //                wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -90 - buttonQuantity * 180);
+    //                buttonQuantity++;
+    //            }
+    //            if (wholeMedicineButtonList[i].isActive == false)
+    //            {
+    //                wholeMedicineButtonList[i].propertyObject.SetActive(false);
+    //                wholeMedicineButtonList[i].buttonObject.SetActive(false);
+    //            }
+    //        }
+
+    //        regularScrollContent.sizeDelta = new Vector2(0, 180 * buttonQuantity);
+
+    //    }
 
     int nowButtonIndex = -1;
     bool dragged = false;
@@ -723,27 +918,27 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
     //약재 하나 버튼 클릭했을 때
     public void OnButtonDown(int index)
     {
-        //wholeMedicineButtonList[index].propertyObject.SetActive(true);
-        //wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
-        //if (nowButtonIndex != -1)
-        //{
-        //    wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
-        //    wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
-        //}
-
-        nowButtonIndex = index;
-        if (doubleClickIndex == index)
+        if(nowButtonIndex == index)
         {
-            //따블클릭
-            if(doubleClickTimer <0.5f)
-                AddMedicineToPot();
-            doubleClickIndex = -1;
+            wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
+            wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
+            AddMedicineToPot();
+            nowButtonIndex = -1;
         }
         else
         {
-            doubleClickTimer = 0;
-            doubleClickIndex = index;
+            wholeMedicineButtonList[index].propertyObject.SetActive(true);
+            wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
+            if (nowButtonIndex != -1)
+            {
+                wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
+                wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
+            }
+            nowButtonIndex = index;
         }
+
+
+  
 
         dragged = false;
 
@@ -855,13 +1050,11 @@ isButtonOn[(int)wholeMedicineButtonList[i].medicineClass.GetSecondSymptom()])
         }
         for (int i = 0; i < 6; i++)
         {
-            if (isButtonOn[i] == true)
+            if (isMainButtonOn[i] == true)
             {
-                PropertyListButton(i);
+                PropertyListMainButton(i);
             }
         }
-        PropertyListButton(0);
-        PropertyListButton(0);
 
         medicineInPotList.Clear();
         potMedicineObjectList.Clear();

@@ -61,6 +61,8 @@ public class CounterDialogManager : MonoBehaviour
     Text visitorName;
     [SerializeField]
     Text ruelliaText;
+    [SerializeField]
+    Text ruelliaName;
 
     [SerializeField]
     GameObject visitorParent;
@@ -121,6 +123,7 @@ public class CounterDialogManager : MonoBehaviour
         nowSymptomInsertIndex = 0;
         nowWrapperIndex = 0;
         nowBackLogIndex = 0;
+  
         OnStart();
         //nowDialogClassIndex = Random.Range(0, randomDialogClassList.Count);
         //dialogCount = randomDialogClassList[nowDialogClassIndex].dialogList.Count;
@@ -212,7 +215,7 @@ public class CounterDialogManager : MonoBehaviour
         nowBundle = storyParser.LoadBundle(Random.Range(0, 2).ToString(), languageDirectory,VisitorType.RuelliaStart);
         nowWrapperList = nowBundle.startWrapperList;
         nowWrapper = nowBundle.startWrapperList[0];
-
+        ruelliaName.text = characterIndexToName.NameTranslator("Ruellia", languagePack);
         visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
         if (nowWrapper.characterName != null)
         {
@@ -251,6 +254,7 @@ public class CounterDialogManager : MonoBehaviour
         {
             nowVisitorType = VisitorType.Random;
             nowBundle = storyParser.LoadBundle(Random.Range(0, 3).ToString(), languageDirectory, nowVisitorType, visitor.diseaseList.Count);
+            visitorName.text = "";
         }
         else
         {

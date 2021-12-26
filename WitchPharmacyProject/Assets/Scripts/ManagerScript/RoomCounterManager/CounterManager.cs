@@ -158,23 +158,23 @@ public class CounterManager : MonoBehaviour //SH
             symptomCheckedArray[i] = false;
         } 
 
-        for(int i = 0; i < 4; i++)
-        {
-            measureToolOriginPosArray[i] = measureToolIconArray[i].transform.position;
-            EventTrigger buttonEvent = measureToolIconArray[i].GetComponent<EventTrigger>();
+        //for(int i = 0; i < 4; i++)
+        //{
+        //    measureToolOriginPosArray[i] = measureToolIconArray[i].transform.position;
+        //    EventTrigger buttonEvent = measureToolIconArray[i].GetComponent<EventTrigger>();
 
 
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            int delegateIndex = i;
-            entry.eventID = EventTriggerType.Drag;
-            entry.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
-            buttonEvent.triggers.Add(entry);
+        //    EventTrigger.Entry entry = new EventTrigger.Entry();
+        //    int delegateIndex = i;
+        //    entry.eventID = EventTriggerType.Drag;
+        //    entry.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+        //    buttonEvent.triggers.Add(entry);
 
-            EventTrigger.Entry entry1 = new EventTrigger.Entry();
-            entry1.eventID = EventTriggerType.PointerUp;
-            entry1.callback.AddListener((data) => { OnButtonUp((PointerEventData)data, delegateIndex); });
-            buttonEvent.triggers.Add(entry1);
-        }
+        //    EventTrigger.Entry entry1 = new EventTrigger.Entry();
+        //    entry1.eventID = EventTriggerType.PointerUp;
+        //    entry1.callback.AddListener((data) => { OnButtonUp((PointerEventData)data, delegateIndex); });
+        //    buttonEvent.triggers.Add(entry1);
+        //}
         counterStarted = false;
         //스태틱으로 만들어버려
         RandomVisitorClass.SetStaticData(ownedMedicineList,gameManager.randomVisitorDiseaseBundle);
@@ -526,30 +526,30 @@ public class CounterManager : MonoBehaviour //SH
         dialogPanelObject.SetActive(active);
     }
 
-    //메저툴 드래그
-    void OnButtonDrag(PointerEventData data, int index)
-    {
-        Vector2 mousePos =Input.mousePosition;
-        measureToolIconArray[index].transform.position = Input.mousePosition;
-    }
+    ////메저툴 드래그
+    //void OnButtonDrag(PointerEventData data, int index)
+    //{
+    //    Vector2 mousePos =Input.mousePosition;
+    //    measureToolIconArray[index].transform.position = Input.mousePosition;
+    //}
 
-    //메저툴 엔드,드래그하고서 클릭 뗐을 때
-    void OnButtonUp(PointerEventData data, int index)
-    {
+    ////메저툴 엔드,드래그하고서 클릭 뗐을 때
+    //void OnButtonUp(PointerEventData data, int index)
+    //{
         
-        measureToolIconArray[index].transform.position = measureToolOriginPosArray[index];
+    //    measureToolIconArray[index].transform.position = measureToolOriginPosArray[index];
 
-        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
-        {
-            touchedObject = hit.collider.gameObject;
-            //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
-            if (touchedObject.CompareTag("Visitor"))
-            {
-                measureToolManager.ToolOpenButton(index);
-            }
-        }
-    }
+    //    Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+    //    if (hit = Physics2D.Raycast(mousePos, Vector2.zero))
+    //    {
+    //        touchedObject = hit.collider.gameObject;
+    //        //Ray에 맞은 콜라이더를 터치된 오브젝트로 설정
+    //        if (touchedObject.CompareTag("Visitor"))
+    //        {
+    //            measureToolManager.ToolOpenButton(index);
+    //        }
+    //    }
+    //}
 
     int symptomToggleIndex = 0;
     //시발 파라미터가 1개밖에 안들어가서 어쩔 수 없이 두 개의 함수를 파야했다.

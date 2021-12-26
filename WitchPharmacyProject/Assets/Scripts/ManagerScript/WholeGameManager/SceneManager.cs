@@ -57,6 +57,42 @@ public class SceneManager : MonoBehaviour // JH
         yield return null;
         nowTexting = false;
     }
+
+    public IEnumerator ChangeScale_Object(GameObject i_Object, float size_Initial, float size_final, float i_Time)
+    {
+        i_Object.SetActive(true);
+        Transform objTransform = i_Object.transform;
+        float miniTimer = 0f;
+        
+        while (miniTimer < i_Time)
+        {
+            float sizeFloat= Mathf.Lerp(size_Initial, size_final, miniTimer / i_Time);
+            Vector3 sizeVector = new Vector3(sizeFloat, sizeFloat, sizeFloat);
+            objTransform.localScale = sizeVector;
+            yield return null;
+            miniTimer += Time.deltaTime;
+        }
+        objTransform.localScale = new Vector3(size_final, size_final, size_final);
+        yield return null;
+    }
+
+    public IEnumerator ColorChange_Sprite(GameObject i_Object, float color_Initial, float color_Final, float i_Time)
+    {
+        i_Object.SetActive(true);
+        SpriteRenderer i_image = i_Object.GetComponent<SpriteRenderer>();
+        float miniTimer = 0f;
+        Color initColor = new Color(color_Initial, color_Initial, color_Initial, 1);
+        Color afterColor = new Color(color_Final, color_Final, color_Final, 1);
+        while (miniTimer < i_Time)
+        {
+            i_image.color = Color.Lerp(initColor, afterColor, miniTimer / i_Time);
+            yield return null;
+            miniTimer += Time.deltaTime;
+        }
+        i_image.color = afterColor;
+        yield return null;
+    }
+
     public IEnumerator FadeModule_Sprite(GameObject i_Object, float i_Alpha_Initial, float i_Alpha_Final, float i_Time)
     {
         i_Object.SetActive(true);

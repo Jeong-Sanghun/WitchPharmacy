@@ -72,7 +72,7 @@ public class StoryManager : MonoBehaviour
         for(int i = 0; i < 4; i++)
         {
             faded[i] = false;
-            characterSprite[i].color = new Color(1, 1, 1, 0.2f);
+            characterSprite[i].color = new Color(0.2f, 0.2f, 0.2f, 1f);
         }
         nowConversationIndex = 0;
         nowWrapperIndex = 0;
@@ -326,14 +326,17 @@ public class StoryManager : MonoBehaviour
             else if(!faded[i] && nowConversation.fade[i])
             {
                 faded[i] = true;
-                StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1, 1.1f, 0.5f));
 
             }
             else if(faded[i] && !nowConversation.fade[i])
             {
                 faded[i] = false;
-                StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
-                
+                //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
+                StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 1, 0.2f, 0.5f));
+                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1.1f, 1f, 0.5f));
 
             }
         }
