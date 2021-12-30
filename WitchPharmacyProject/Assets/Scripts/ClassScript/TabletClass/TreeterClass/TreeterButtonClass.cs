@@ -55,8 +55,9 @@ public class TreeterButtonClass
         likeButton = mainPost.transform.GetChild(1).GetChild(3).GetComponent<Button>();
         likeButton.onClick.AddListener(() => LikeButton());
 
-        profileNameText.text = data.profileIngameName;
-        profileImage.sprite = data.LoadSprite(true);
+        profileNameText.text = TabletTreeterManager.profileWrapper.LoadIngameName(data.profileFileName);
+            //data.profileIngameName;
+        profileImage.sprite = TabletTreeterManager.profileWrapper.LoadSprite(data.profileFileName);
         titleText.text = data.titleIngameText;
         dialogText.text = data.dialog;
 
@@ -71,12 +72,12 @@ public class TreeterButtonClass
 
         if (cond.printSprite)
         {
-            treeterImage.sprite = data.LoadSprite(false);
+            treeterImage.sprite = data.LoadSprite();
             treeterImage.rectTransform.sizeDelta = new Vector2(treeterImage.sprite.rect.width, treeterImage.rectTransform.sizeDelta.y);
             openedImageCanvas = GameObject.Instantiate(openedImagePrefab, openedImageParent);
             openedImage = openedImageCanvas.transform.GetChild(1).GetComponent<Image>();
             openedImageText = openedImageCanvas.transform.GetChild(2).GetComponent<Text>();
-            openedImage.sprite = data.LoadSprite(false);
+            openedImage.sprite = data.LoadSprite();
             openedImageText.text = data.titleIngameText;
             EventTrigger trigger1 = treeterImage.GetComponent<EventTrigger>();
 

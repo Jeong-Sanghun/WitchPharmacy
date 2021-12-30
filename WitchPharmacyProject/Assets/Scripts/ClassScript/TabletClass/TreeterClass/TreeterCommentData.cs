@@ -7,21 +7,20 @@ using System.Text;
 public class TreeterCommentData
 {
     public string profileFileName;
-    public string profileIngameName;
     public string dialog;
 
-    Sprite profileSprite;
+    //Sprite profileSprite;
 
-    public Sprite LoadSprite()
-    {
-        if (profileSprite != null)
-        {
-            return profileSprite;
-        }
-        StringBuilder builder = new StringBuilder("TreeterSprite/Profile/");
-        builder.Append(profileFileName);
-        profileSprite = Resources.Load<Sprite>(builder.ToString());
-        return profileSprite;
-    }
+    //public Sprite LoadSprite()
+    //{
+    //    if (profileSprite != null)
+    //    {
+    //        return profileSprite;
+    //    }
+    //    StringBuilder builder = new StringBuilder("TreeterSprite/Profile/");
+    //    builder.Append(profileFileName);
+    //    profileSprite = Resources.Load<Sprite>(builder.ToString());
+    //    return profileSprite;
+    //}
 
 }

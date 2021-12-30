@@ -162,6 +162,7 @@ public class MedicineManager : MonoBehaviour    //SH
         isDraggingMedicineFromPot = false;
         isMainButtonOn = new bool[5];
         isSubButtonOn = new bool[5];
+        propertySubButtonComponentArray = new Button[5];
         for (int i = 0; i < isMainButtonOn.Length; i++)
         {
             isMainButtonOn[i] = false;

@@ -39,6 +39,7 @@ public class TabletTreeterManager : MonoBehaviour
     [SerializeField]
     GameObject onePostPrefab;
 
+    public static TreeterProfileWrapper profileWrapper;
     List<TreeterButtonClass> wholeTreeterButton;
     int nowButtonIndex;
     bool isInit = false;
@@ -48,7 +49,11 @@ public class TabletTreeterManager : MonoBehaviour
         gameManager = GameManager.singleTon;
         saveData = gameManager.saveData;
         wrapper = gameManager.treeterConditionWrapper;
+        if(profileWrapper == null)
+        {
+            profileWrapper = gameManager.jsonManager.ResourceDataLoad<TreeterProfileWrapper>("TreeterProfileWrapper");
 
+        }
 
         wholeTreeterButton = new List<TreeterButtonClass>();
 
@@ -95,8 +100,10 @@ public class TabletTreeterManager : MonoBehaviour
         
         TreeterData data = gameManager.jsonManager.ResourceDataLoad<TreeterData>("TreeterData/" + condition.fileName);
         buttonClass.SetTreeterButton(condition, data, oneTreeterCanvasPrefab, oneTreeterCanvasParent, openedCanvasPrefab, openedCanvasParent, onePostPrefab, oneCommentPrefab);
-        prefabProfileImage.sprite = data.LoadSprite(true);
-        prefabProfileNameText.text = data.profileIngameName;
+        prefabProfileImage.sprite = profileWrapper.LoadSprite(data.profileFileName);
+        //data.LoadSprite(true);
+        prefabProfileNameText.text = profileWrapper.LoadIngameName(data.profileFileName);
+            //data.profileIngameName;
         prefabTitleText.text = data.titleIngameText;
         GameObject buttonObj = Instantiate(oneTitleButtonPrefab, contentRect);
         buttonObj.SetActive(true);

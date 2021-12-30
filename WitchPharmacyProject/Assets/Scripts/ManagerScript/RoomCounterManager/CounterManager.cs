@@ -112,6 +112,8 @@ public class CounterManager : MonoBehaviour //SH
 
     [SerializeField]
     Text wholeCoinText;
+    [SerializeField]
+    bool isDebugMode;
 
     SpecialVisitorCondition nowSpecialVisitorCondition;
 
@@ -122,7 +124,6 @@ public class CounterManager : MonoBehaviour //SH
         gameManager = GameManager.singleTon;
         sceneManager = SceneManager.inst;
         saveData = gameManager.saveData;
-        saveData.nowRegion = StoryRegion.Themnos;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         //ownedMedicineIndexList = saveData.ownedMedicineList;
         measureToolArray = measureToolManager.measureToolArray;
@@ -503,7 +504,10 @@ public class CounterManager : MonoBehaviour //SH
         StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 2f));
 
         yield return new WaitForSeconds(1.5f);
-        //lastVisitor = true;
+        if(isDebugMode == true)
+        {
+            lastVisitor = true;
+        }
         if (lastVisitor)
         {
             endSales = true;

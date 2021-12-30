@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 53640.0,
-    "nowDay": 0,
-    "coin": 1085,
+    "nowTime": 0.0,
+    "nowDay": 1,
+    "coin": 994,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -14,7 +14,7 @@
         },
         {
             "medicineIndex": 42,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 43,
@@ -49,17 +49,24 @@
                 {
                     "isPlus": false,
                     "reason": 1,
-                    "changedCoin": 15
-                },
-                {
-                    "isPlus": true,
-                    "reason": 0,
-                    "changedCoin": 100
+                    "changedCoin": 6
                 }
             ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
         }
     ],
-    "owningDocumentList": [],
+    "owningDocumentList": [
+        {
+            "name": "Go",
+            "gainedRegion": 0,
+            "gainedDay": 0,
+            "gainedTime": 3480.0
+        }
+    ],
     "symptomBookList": [
         "water+",
         "water-",
@@ -83,24 +90,48 @@
         "appearingSpecialResearchList": [],
         "unHiddenResearchList": []
     },
-    "routePairList": [],
-    "regionSaveDataList": [],
+    "routePairList": [
+        {
+            "storyName": "thirdDay",
+            "pickedRouteList": [
+                0
+            ]
+        }
+    ],
+    "regionSaveDataList": [
+        {
+            "storyRegion": 0,
+            "regionName": 0,
+            "firstDiscountedMedicineIndex": [
+                42
+            ],
+            "secondDiscountedMedicineIndex": [],
+            "eventTimeArray": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "seenSpecialEventList": []
+        }
+    ],
     "likedTreeterIndexList": [],
     "highlightedButton": [
         true,
-        false,
-        false
+        true,
+        true
     ],
     "readStoryList": [
-        "firstDay"
+        "firstDay",
+        "secondDay",
+        "thirdDay"
     ],
     "readSpecialVisitorBundleList": [
-        "Sanghun",
-        "Ian1"
+        "Sanghun"
     ],
-    "nextStory": "secondDay",
+    "nextStory": "fourthDay1",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 0,
-    "nowRegion": 1,
-    "forcedRegion": "Library"
+    "nowSaveTime": 1,
+    "nowRegion": 0,
+    "forcedRegion": ""
 }

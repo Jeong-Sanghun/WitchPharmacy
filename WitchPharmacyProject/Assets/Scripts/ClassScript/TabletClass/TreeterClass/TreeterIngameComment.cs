@@ -20,8 +20,10 @@ public class TreeterIngameComment
         Image profileImage = commentObject.transform.GetChild(0).GetComponent<Image>();
         Text dialogText = commentObject.transform.GetChild(1).GetChild(0).GetComponent<Text>();
 
-        profileNameText.text = data.profileIngameName;
-        profileImage.sprite = data.LoadSprite();
+        profileNameText.text = TabletTreeterManager.profileWrapper.LoadIngameName(data.profileFileName);
+        //data.profileIngameName;
+        profileImage.sprite = TabletTreeterManager.profileWrapper.LoadSprite(data.profileFileName);
+            //data.LoadSprite();
         dialogText.text = data.dialog;
 
     }
