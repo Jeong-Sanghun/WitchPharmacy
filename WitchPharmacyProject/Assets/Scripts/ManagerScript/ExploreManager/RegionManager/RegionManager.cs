@@ -484,11 +484,6 @@ public class RegionManager : MonoBehaviour
                 }
                 nowMedicineIndex = condition.rewardMedicineIndex;
             }
-
-
-           
-            
-
             nowSpecialEvent = condition;
             nowRegionEvent = condition.eventType;
             nowRegionSaveData.seenSpecialEventList.Add(nowSpecialEvent.fileName);

@@ -6,14 +6,17 @@ using UnityEngine;
 public class SpecialEventCondition
 {
     public string fileName;
-    public int leastDayCondition;
-    public List<string> questConditionList;
-    public List<RoutePair> routeConditionList;
     public RegionEvent eventType;
     public string reward;
     public string rewardDocument;
     public int rewardMedicineIndex;
     public int researchProgress;
+
+    public int leastDayCondition;
+    public List<string> questConditionList;
+    public List<RoutePair> routeConditionList;
+
+
 
     
     public SpecialEventCondition()

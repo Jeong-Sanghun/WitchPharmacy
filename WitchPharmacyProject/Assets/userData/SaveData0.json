@@ -18,7 +18,7 @@
         },
         {
             "medicineIndex": 43,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 50,
@@ -34,6 +34,38 @@
         },
         {
             "medicineIndex": 59,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 4,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 5,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 12,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 13,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 38,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 39,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 46,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 47,
             "medicineCost": 3
         }
     ],
@@ -59,14 +91,7 @@
             "billList": []
         }
     ],
-    "owningDocumentList": [
-        {
-            "name": "Go",
-            "gainedRegion": 0,
-            "gainedDay": 0,
-            "gainedTime": 3480.0
-        }
-    ],
+    "owningDocumentList": [],
     "symptomBookList": [
         "water+",
         "water-",
@@ -80,7 +105,9 @@
         "progressingMeasureToolResearchList": [],
         "endMeasureToolResearchList": [],
         "progressingMedicineResearchList": [],
-        "endMedicineResearchList": [],
+        "endMedicineResearchList": [
+            "waterair"
+        ],
         "progressingOtherToolResearchList": [],
         "endOtherToolResearchList": [],
         "progressingBookResearchList": [],
@@ -98,27 +125,11 @@
             ]
         }
     ],
-    "regionSaveDataList": [
-        {
-            "storyRegion": 0,
-            "regionName": 0,
-            "firstDiscountedMedicineIndex": [
-                43
-            ],
-            "secondDiscountedMedicineIndex": [],
-            "eventTimeArray": [
-                0,
-                0,
-                0,
-                0
-            ],
-            "seenSpecialEventList": []
-        }
-    ],
+    "regionSaveDataList": [],
     "likedTreeterIndexList": [],
     "highlightedButton": [
         true,
-        true,
+        false,
         true
     ],
     "readStoryList": [
