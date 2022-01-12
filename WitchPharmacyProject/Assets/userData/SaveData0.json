@@ -14,11 +14,11 @@
         },
         {
             "medicineIndex": 42,
-            "medicineCost": 2
+            "medicineCost": 3
         },
         {
             "medicineIndex": 43,
-            "medicineCost": 3
+            "medicineCost": 2
         },
         {
             "medicineIndex": 50,
@@ -94,7 +94,7 @@
         {
             "storyName": "thirdDay",
             "pickedRouteList": [
-                0
+                1
             ]
         }
     ],
@@ -103,7 +103,7 @@
             "storyRegion": 0,
             "regionName": 0,
             "firstDiscountedMedicineIndex": [
-                42
+                43
             ],
             "secondDiscountedMedicineIndex": [],
             "eventTimeArray": [
@@ -129,7 +129,7 @@
     "readSpecialVisitorBundleList": [
         "Sanghun"
     ],
-    "nextStory": "fourthDay1",
+    "nextStory": "fourthDay2",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0,

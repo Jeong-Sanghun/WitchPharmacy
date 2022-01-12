@@ -167,12 +167,13 @@ public class SceneManager : MonoBehaviour // JH
         }
         moveModuleLinearRunning = true;
         Vector3 newVector = new Vector3(0f,0f,0f);
+        Vector3 origin = i_Object.transform.position;
         linearMovingObj = i_Object;
         float newX=0f, newY=0f, newZ=0f;
         while(miniTimer<i_Time){
-            newX= Mathf.Lerp(i_Object.transform.position.x,i_Vector.x,miniTimer/i_Time);
-            newY= Mathf.Lerp(i_Object.transform.position.y,i_Vector.y,miniTimer/i_Time);
-            newZ= Mathf.Lerp(i_Object.transform.position.z,i_Vector.z,miniTimer/i_Time);
+            newX= Mathf.Lerp(origin.x,i_Vector.x,miniTimer/i_Time);
+            newY= Mathf.Lerp(origin.y,i_Vector.y,miniTimer/i_Time);
+            newZ= Mathf.Lerp(origin.z,i_Vector.z,miniTimer/i_Time);
             newVector = new Vector3(newX,newY,newZ);
             i_Object.transform.position = newVector;
             yield return null;
@@ -198,10 +199,11 @@ public class SceneManager : MonoBehaviour // JH
         Vector2 newVector = new Vector2(0f, 0f);
         float newX = 0f, newY = 0f;
         RectTransform rect = i_Object.GetComponent<RectTransform>();
+        Vector2 origin = rect.anchoredPosition;
         while (miniTimer < i_Time)
         {
-            newX = Mathf.Lerp(rect.anchoredPosition.x, i_Vector.x, miniTimer / i_Time);
-            newY = Mathf.Lerp(rect.anchoredPosition.y, i_Vector.y, miniTimer / i_Time);
+            newX = Mathf.Lerp(origin.x, i_Vector.x, miniTimer / i_Time);
+            newY = Mathf.Lerp(origin.y, i_Vector.y, miniTimer / i_Time);
             //newZ = Mathf.Lerp(rect.anchoredPosition.z, i_Vector.z, miniTimer / i_Time);
             newVector = new Vector2(newX, newY);
             rect.anchoredPosition = newVector;

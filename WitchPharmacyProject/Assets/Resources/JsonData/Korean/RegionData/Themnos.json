@@ -1,0 +1,123 @@
+{
+    "regionDataList": [
+        {
+			"fileName": "Library",
+            "ingameName": "도서관",
+            "unlockDay": 0,
+            "specialEventConditionList": [
+                {
+					"fileName": "Event1",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "thirdDay",
+                            "pickedRouteList": [0]
+                        }
+                    ],
+                    "eventType": 5,
+                    "reward": "waterAuto",
+                    "rewardDocument": "Vagabond",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 0
+                },
+                {
+                    "fileName": "Event2",
+                    "leastDayCondition": 0,
+                    "questConditionList": [
+                        
+                    ],
+                    "routeConditionList": [
+                        {
+                            "storyName": "thirdDay",
+                            "pickedRouteList": [1]
+                        }
+                    ],
+                    "eventType": 3,
+                    "reward": "waterTool",
+                    "rewardDocument": "Octopus",
+                    "rewardMedicineIndex": 0,
+                    "researchProgress": 3
+                }
+            ],
+"appearingMedicineArray": [
+                34,35,42,43,50,51,58,59
+            ],
+            "eventTimeArray": [
+                0,
+               10,
+				10,
+				10
+            ],
+            "appearingDocumentArray": [
+                "Go","Vagabond"
+            ],
+            "appearingResearchArray": ["waterTool","energyDrink","fireTool","fireAuto"]
+        },
+               {
+            "fileName": "Forest",
+            "ingameName": "숲",
+            "unlockDay": 1,
+			"specialEventConditionList": [
+
+            ],
+            "appearingMedicineArray": [
+                34,35,42,43,50,51,58,59
+            ],
+            "eventTimeArray": [
+                10,
+                10,
+                10,
+                10
+            ],
+            "appearingDocumentArray": [
+                "TheBeautyOfVoid"
+            ],
+            "appearingResearchArray": ["waterearth"]
+        },
+                {
+            "fileName": "Market",
+            "ingameName": "시장",
+            "unlockDay": 2,
+			"specialEventConditionList": [
+
+            ],
+            "appearingMedicineArray": [
+                34,35,42,43,50,51,58,59
+            ],
+            "eventTimeArray": [
+                10,
+                10,
+                10,
+                10
+            ],
+            "appearingDocumentArray": [
+                "Octopus"
+            ],
+            "appearingResearchArray": ["waterair"]
+        },
+                {
+            "fileName": "AntiqueShop",
+            "ingameName": "골동품 상점",
+            "unlockDay": 3,
+			"specialEventConditionList": [
+
+            ],
+            "appearingMedicineArray": [
+                34,35,42,43,50,51,58,59
+            ],
+            "eventTimeArray": [
+                10,
+                10,
+                10,
+                10
+            ],
+            "appearingDocumentArray": [
+                
+            ],
+            "appearingResearchArray": ["fireair"]
+        }
+    ]
+}

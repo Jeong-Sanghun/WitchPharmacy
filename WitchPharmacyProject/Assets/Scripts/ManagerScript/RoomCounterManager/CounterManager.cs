@@ -428,12 +428,12 @@ public class CounterManager : MonoBehaviour //SH
     //카운터 다이얼로그 매니저에서 불러옴.
     public void VisitorUpFx()
     {
-        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorAppearPos, 2f));
+        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorAppearPos, 0.5f));
     }
 
     public void VisitorDownFx()
     {
-        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 2f));
+        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 0.5f));
     }
 
     
@@ -472,7 +472,7 @@ public class CounterManager : MonoBehaviour //SH
         measureToolManager.OnNewVisitor(nowVisitor.symptomAmountArray);
 
         blurManager.OnBlur(true);
-        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorAppearPos, 2f));
+        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorAppearPos, 0.5f));
 
         yield return new WaitForSeconds(1.5f);
         counterDialogManager.OnVisitorVisit(nowVisitor);
@@ -501,7 +501,7 @@ public class CounterManager : MonoBehaviour //SH
     IEnumerator VisitorDisapperCoroutine()
     {
         blurManager.OnBlur(false);
-        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 2f));
+        StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 0.5f));
 
         yield return new WaitForSeconds(1.5f);
         if(isDebugMode == true)
