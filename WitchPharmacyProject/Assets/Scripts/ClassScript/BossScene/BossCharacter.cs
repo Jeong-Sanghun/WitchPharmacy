@@ -4,45 +4,24 @@ using UnityEngine;
 
 public class BossCharacter
 {
-    public VisitorType visitorType;
-    public GameObject visitorObject;
-    public int[] symptomAmountArray;
-    protected static List<MedicineClass> ownedMedicineList;
-    protected static RandomVisitorDiseaseBundle diseaseBundle;
-    public List<RandomVisitorDisease> diseaseList;
-    protected List<SymptomObject> symptomObjectList;
-    protected List<SymptomObject> finalSymptomObjectList;
+    BossData bossData;
+    public GameObject bossObject;
+    public SpriteRenderer bossSpriteRenderer;
+    public List<BossSymptom> bossSymptomList;
 
-    public static void SetStaticData(List<MedicineClass> ownedMedicineList,
-    RandomVisitorDiseaseBundle bundle)
+
+    public BossCharacter(GameObject obj,BossData data)
     {
-        BossCharacter.ownedMedicineList = ownedMedicineList;
-        diseaseBundle = bundle;
+        bossData = data;
+        bossSymptomList = new List<BossSymptom>();
+        bossObject = obj;
+        bossSpriteRenderer = bossObject.GetComponent<SpriteRenderer>();
     }
 
-    protected void SetDiseaseList()
+    public void SetSprite()
     {
-        for (int i = 0; i < symptomAmountArray.Length; i++)
-        {
-            int amount = symptomAmountArray[i];
-            if (amount == 0)
-            {
-                continue;
-            }
-            List<int> diseaseIndexList = new List<int>();
-            for (int j = 0; j < diseaseBundle.wrapperList[i].randomVisitorDiseaseArray.Length; j++)
-            {
-                if (amount == diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[j].symptomNumber)
-                {
-                    diseaseIndexList.Add(j);
-                }
-            }
-            int index = diseaseIndexList[Random.Range(0, diseaseIndexList.Count)];
-            diseaseList.Add(diseaseBundle.wrapperList[i].randomVisitorDiseaseArray[index]);
-
-        }
+        CharacterIndexToName tool = new CharacterIndexToName();
+        tool.GetSprite(bossData.characterEnum, CharacterFeeling.nothing);
+        bossSpriteRenderer.sprite = 
     }
-
-
-
 }

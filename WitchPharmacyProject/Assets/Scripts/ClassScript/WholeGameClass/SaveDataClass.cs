@@ -54,6 +54,7 @@ public class SaveDataClass
     public SaveTime nowSaveTime;
     public StoryRegion nowRegion;
     public string forcedRegion;
+    public string nowBossFile;
     //public string nowLanguageDirectory;  //Korean/ 이렇게 들어가야함.
 
 

@@ -229,45 +229,45 @@ public class GameManager : MonoBehaviour //SH
     //아직 영표형한테서 안나왔으니까 디버깅용으로 파일을 만들어야함.
     void DebugDataJson()
     {
-        saveData = new SaveDataClass();
-        symptomDialog = new SymptomDialog();
+        //saveData = new SaveDataClass();
+        //symptomDialog = new SymptomDialog();
 
-        /*
-        cookedMedicineDataWrapper = new CookedMedicineDataWrapper();
-        for(int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
-        {
-            for (int j = i; j < medicineDataWrapper.medicineDataList.Count; j++)
-            {
-                for (int k = j; k < medicineDataWrapper.medicineDataList.Count; k++)
-                {
-                    CookedMedicineData cookedMedicine = new CookedMedicineData();
-                    cookedMedicine.name = i.ToString() +j.ToString() +k.ToString();
-                    cookedMedicine.medicineArray[0] = i;
-                    cookedMedicine.medicineArray[1] = j;
-                    cookedMedicine.medicineArray[2] = k;
-                    cookedMedicineDataWrapper.cookedMedicineDataList.Add(cookedMedicine);
-                }
-            }
+        ///*
+        //cookedMedicineDataWrapper = new CookedMedicineDataWrapper();
+        //for(int i = 0; i < medicineDataWrapper.medicineDataList.Count; i++)
+        //{
+        //    for (int j = i; j < medicineDataWrapper.medicineDataList.Count; j++)
+        //    {
+        //        for (int k = j; k < medicineDataWrapper.medicineDataList.Count; k++)
+        //        {
+        //            CookedMedicineData cookedMedicine = new CookedMedicineData();
+        //            cookedMedicine.name = i.ToString() +j.ToString() +k.ToString();
+        //            cookedMedicine.medicineArray[0] = i;
+        //            cookedMedicine.medicineArray[1] = j;
+        //            cookedMedicine.medicineArray[2] = k;
+        //            cookedMedicineDataWrapper.cookedMedicineDataList.Add(cookedMedicine);
+        //        }
+        //    }
 
-        }*/
-        conversationDialogBundleWrapper = new ConversationDialogBundleWrapper();
-        randomDialogDataWrapper = new StartDialogClassWrapper();
-        conversationDialogBundle = new ConversationDialogBundle();
-        documentConditionWrapper = new DocumentConditionWrapper();
+        //}*/
+        //conversationDialogBundleWrapper = new ConversationDialogBundleWrapper();
+        //randomDialogDataWrapper = new StartDialogClassWrapper();
+        //conversationDialogBundle = new ConversationDialogBundle();
+        //documentConditionWrapper = new DocumentConditionWrapper();
 
-        SpecialVisitorDialogBundle bundle = new SpecialVisitorDialogBundle();
-        SpecialMedicineDataWrapper wrapper = new SpecialMedicineDataWrapper();
-        specialVisitorConditionWrapper = new SpecialVisitorConditionWrapper();
-        ConversationDialogBundle storyBundle = new ConversationDialogBundle();
-        //jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
+        //SpecialVisitorDialogBundle bundle = new SpecialVisitorDialogBundle();
+        //SpecialMedicineDataWrapper wrapper = new SpecialMedicineDataWrapper();
+        //specialVisitorConditionWrapper = new SpecialVisitorConditionWrapper();
+        //ConversationDialogBundle storyBundle = new ConversationDialogBundle();
+        ////jsonManager.SaveJson<ConversationDialogBundle>(storyBundle, "testBundle");
 
-        OddVisitorDialogBundle oddBundle = new OddVisitorDialogBundle();
-        QuestDocument doc = new QuestDocument();
-        SymptomBookBundle symptomBookBundle = new SymptomBookBundle();
-        MeasureToolDataWrapper measureToolDataWrapper = new MeasureToolDataWrapper();
-        jsonManager.SaveJson<MeasureToolDataWrapper>(measureToolDataWrapper, "MeasureToolDataWrapper");
+        //OddVisitorDialogBundle oddBundle = new OddVisitorDialogBundle();
+        //QuestDocument doc = new QuestDocument();
+        //SymptomBookBundle symptomBookBundle = new SymptomBookBundle();
+        //MeasureToolDataWrapper measureToolDataWrapper = new MeasureToolDataWrapper();
+        //jsonManager.SaveJson<MeasureToolDataWrapper>(measureToolDataWrapper, "MeasureToolDataWrapper");
 
-        languagePack = new UILanguagePack();
+        //languagePack = new UILanguagePack();
         //jsonManager.SaveJson<QuestDocument>(doc, "Lily");
         //jsonManager.SaveJson<SymptomBookBundle>(symptomBookBundle, "water+");
         ////jsonManager.SaveJson<OddVisitorDialogBundle>(oddBundle, "meltfire");
@@ -306,15 +306,22 @@ public class GameManager : MonoBehaviour //SH
         //jsonManager.SaveJson<DocumentConditionWrapper>(documentConditionWrapper, "DocumentConditionWrapper");
         //DocumentBundle doc = new DocumentBundle();
         //jsonManager.SaveJson<DocumentBundle>(doc, "testDocument");
-        RegionDataWrapper regionDataWrapper = new RegionDataWrapper();
-        jsonManager.SaveJson<RegionDataWrapper>(regionDataWrapper, "Narin");
+        //RegionDataWrapper regionDataWrapper = new RegionDataWrapper();
+        //jsonManager.SaveJson<RegionDataWrapper>(regionDataWrapper, "Narin");
 
-        for (int i = 0; i < 4; i++)
-        {
-            jsonManager.SaveJson(saveData, i);
-        }
-        saveDataTimeWrapper = new SaveDataTimeWrapper();
-        jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
+        BossDataWrapper bossDataWrapper = new BossDataWrapper();
+        bossDataWrapper.bossDataList.Add(new BossData());
+        bossDataWrapper.bossDataList.Add(new BossData());
+        bossDataWrapper.bossDataList.Add(new BossData());
+        jsonManager.SaveJson<BossDataWrapper>(bossDataWrapper, "BossDataWrapper");
+
+
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    jsonManager.SaveJson(saveData, i);
+        //}
+        //saveDataTimeWrapper = new SaveDataTimeWrapper();
+        //jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
 
 
         //medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
