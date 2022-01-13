@@ -1,0 +1,158 @@
+{
+    "bundleName": "Jet",
+    "characterName": "Jet",
+    "answerSpecialMedicineName" : "icefruit",
+	"symptomNumberArray": [0,-1,0,2,0],
+    "appearingProgression": 0.0,
+    "progressingNumber": 10.0,
+    "appearingConditionQuestList": [
+        "Lily"
+    ],
+    "conversationRouter": {
+        "routingWrapperName": [
+            "1",
+            "2"
+        ],
+        "routeButtonText": [
+            "너가 싫어. 죽이고 싶을만큼.",
+            "나한테 이러지마 제트."
+        ],
+        "routingTime": 1
+    },
+    "specialVisitorDialogWrapperList": [
+        {
+            "wrapperName": "0",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "루엘리아 안녕?"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog":"우리 오랜만이지?"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "날 보는 당신의 기분은 어때?"
+                }
+            ]
+        },
+        {
+            "wrapperName": "1",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "역시 그렇구나."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "너조차도 날 이해하지 못했어"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "그게 무슨말이야. 널 이해할 수 있는 사람은 이 세상에 아무도 없어"
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "그녀만은 나를 이해해줄거야. 그보다 내가 좀 아프니 약좀 줄래?"
+                },
+				{
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "그녀가 누군지는 모르겠지만, 약을 먹고 어떻게 될 지는 각오하는게 좋을거야."
+                }
+
+            ]
+        },
+        {
+            "wrapperName": "2",
+            "specialVisitorDialogList": [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "왜 묻는말에 대답하지 않는거야."
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "그 누구도 너의 질문에는 대답하지 않을꺼야. 그녀마저도.."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "angry",
+                    "dialog": "정말 심하게 말을 하는군. 약이나 줘봐."
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "약을 먹고 어떻게 될 지는 각오해."
+                }
+            ]
+        }
+    ],
+    "answerDialogWrapper": {
+        "wrapperName": "answer",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "이렇게 쓴 걸 보니 잘 만든거 같은데 루엘리아. 실력이 녹슬지 않았어."
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "내 마지막 인간미를 보여주었을 뿐이야. 아픈사람을 되돌려 보낼 수는 없는 법이니까."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "어떻게 될지 각오하라더니, 당신은 여전히 따뜻하구나."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "정말 고맙다. 나중에는 너가 날 이해하게 될거야. 그때 보자구"
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "우리가 다음에 볼 일은 없을거야."
+                }
+        
+        ]
+    },
+    "wrongDialogWrapper": {
+        "wrapperName": "wrong",
+        "specialVisitorDialogList": 
+        [
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "각오하라더니 정말 문제가 있는 약이군."
+                },
+                {
+                    "ruelliaTalking": true,
+                    "characterFeeling": "nothing",
+                    "dialog": "너같은 애한테는 약 짓는 물도 아까워. 빨리 마셨으면 꺼져."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "어지간히 쌀쌀맞구만. 당신 말고 좋은 약사는 이 세상에 많아."
+                },
+                {
+                    "ruelliaTalking": false,
+                    "characterFeeling": "nothing",
+                    "dialog": "언젠가 보게 될 때가 올거야. 그때 보자고"
+                }
+        ]
+    }
+}

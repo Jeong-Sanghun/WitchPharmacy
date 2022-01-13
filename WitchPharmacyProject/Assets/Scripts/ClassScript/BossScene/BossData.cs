@@ -6,6 +6,7 @@ using UnityEngine;
 public class BossData
 {
     public string characterFileName;
+    public string nextStory;
     public int health;
     public int timeLimit;
     public string conversationText;
