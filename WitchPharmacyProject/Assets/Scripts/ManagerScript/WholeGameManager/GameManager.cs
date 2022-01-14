@@ -8,7 +8,7 @@ using System;
 public class GameManager : MonoBehaviour //SH
 {
     //singleTon 모든 매니저 스크립트에서 참조
-    public static GameManager singleTon;
+    public static GameManager singleton;
     [HideInInspector]
     public SceneManager sceneManager;
     TabletManager tabletManager;
@@ -67,9 +67,9 @@ public class GameManager : MonoBehaviour //SH
 
     void Awake()
     {
-        if (singleTon == null)
+        if (singleton == null)
         {
-            singleTon = this;
+            singleton = this;
             DontDestroyOnLoad(gameObject);
         }
         else

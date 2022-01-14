@@ -44,7 +44,7 @@ public class ResearchManagerParent : MonoBehaviour
 
     protected virtual void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         languagePack = gameManager.languagePack;
         exploreManager = ExploreManager.inst;
 

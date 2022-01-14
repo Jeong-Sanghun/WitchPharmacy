@@ -19,7 +19,7 @@ public class ExploreButtonManager : MonoBehaviour
     {
         sceneManager = SceneManager.inst;
         exploreManager = ExploreManager.inst;
-        saveData = GameManager.singleTon.saveData;
+        saveData = GameManager.singleton.saveData;
         UnlockButton();
     }
 
@@ -48,7 +48,7 @@ public class ExploreButtonManager : MonoBehaviour
             for (int i = 0; i < wrapper.regionDataList.Count; i++)
             {
                 Debug.Log(wrapper.regionDataList[i].fileName);
-                if (wrapper.regionDataList[i].unlockDay <= GameManager.singleTon.saveData.nowDay)
+                if (wrapper.regionDataList[i].unlockDay <= GameManager.singleton.saveData.nowDay)
                 {
                     regionButtonArray[i].SetActive(true);
                 }

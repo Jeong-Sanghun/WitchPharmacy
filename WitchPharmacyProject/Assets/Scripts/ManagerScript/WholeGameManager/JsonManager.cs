@@ -58,7 +58,7 @@ public class JsonManager    //SH
         //만약 저장한 데이터가 없다면? 이걸 실행 안하고 튜토리얼을 실행하면 그만이다. 그 작업은 씬로더에서 해준다
         T gameData;
 
-        string language = GameManager.singleTon.saveDataTimeWrapper.nowLanguageDirectory;
+        string language = GameManager.singleton.saveDataTimeWrapper.nowLanguageDirectory;
         string directory = "JsonData/";
         
         string appender1 = name;

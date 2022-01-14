@@ -48,7 +48,7 @@ public class StoreOtherToolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         dataWrapper = gameManager.jsonManager.ResourceDataLoad<OtherToolDataWrapper>("OtherToolDataWrapper");
         wholeButtonList = new List<OtherToolButton>();

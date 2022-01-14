@@ -27,7 +27,7 @@ public class VisitorTriggerManager : MonoBehaviour
     void Start()
     {
         //nowCheckingTrigger = false;
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
 
         specialVisitorConditionDataList = gameManager.specialVisitorConditionWrapper.specialVisitorConditionDataList;

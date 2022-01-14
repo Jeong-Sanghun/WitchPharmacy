@@ -34,7 +34,7 @@ public class SymptomBookManager : MonoBehaviour
         int bookMarkNumber = 0;
         int nowPages = 0;
         bool bookMark = false;
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         //연구할 때 이걸 받아와야함.
         isNewPage = true;
         nowPageIndex = 0;

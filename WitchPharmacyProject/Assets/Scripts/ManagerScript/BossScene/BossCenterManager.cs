@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossCenterManager : MonoBehaviour
 {
     BossDataWrapper bossDataWrapper;
+    List<MedicineClass> ownedMedicineList;
+    
     //다른데서 존나 가져다 쓸거.
     public BossData bossData;
     GameManager gameManager;
@@ -15,8 +17,15 @@ public class BossCenterManager : MonoBehaviour
     {
         JsonManager json = new JsonManager();
         bossDataWrapper = json.ResourceDataLoad<BossDataWrapper>("BossDataWrapper");
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
+        ownedMedicineList = new List<MedicineClass>();
+        
+        for (int i = 0; i < saveData.owningMedicineList.Count; i++)
+        {
+            ownedMedicineList.Add(gameManager.medicineDataWrapper.medicineDataList[saveData.owningMedicineList[i].medicineIndex]);
+        }
+        BossSymptom.SetStaticData(ownedMedicineList);
         string nowCharacter = saveData.nowBossFile;
 
         for(int i = 0; i < bossDataWrapper.bossDataList.Count; i++)

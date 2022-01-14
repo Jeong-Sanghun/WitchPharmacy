@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class BossDataWrapper : MonoBehaviour
+public class BossDataWrapper
 {
     public List<BossData> bossDataList;
 

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using System.Text;
 public class BossSymptom
 {
     static List<MedicineClass> ownedMedicineList;
@@ -10,7 +11,7 @@ public class BossSymptom
         BossSymptom.ownedMedicineList = ownedMedicineList;
     }
 
-    int[] symptomAmountArray;
+    public int[] symptomAmountArray;
     List<Symptom> symptomList;
     List<int> symptomAmountList;
     List<MedicineClass> answerMedicineList;
@@ -28,8 +29,25 @@ public class BossSymptom
         symptomAmountArray = new int[5];
         SymptomAccepter();
 
+        Text symptomText = symptomObjectParent.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        StringBuilder builder = new StringBuilder();
+        UILanguagePack languagePack = GameManager.singleton.languagePack;
+
+        for(int i = 0; i < symptomAmountArray.Length; i++)
+        {
+            if(symptomAmountArray[i] ==0)
+            {
+                continue;
+            }
+
+            builder.Append(languagePack.symptomArray[i]);
+            builder.Append(symptomAmountArray[i].ToString());
+        }
+        symptomText.text = builder.ToString();
+
 
     }
+
 
     void SymptomAccepter()
     {

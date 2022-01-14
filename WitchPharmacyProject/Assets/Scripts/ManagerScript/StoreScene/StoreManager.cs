@@ -18,7 +18,7 @@ public class StoreManager : MonoBehaviour
     private void Start()
     {
         sceneManager = SceneManager.inst;
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         otherToolTab.SetActive(false);
         measureToolTab.SetActive(true);
     }

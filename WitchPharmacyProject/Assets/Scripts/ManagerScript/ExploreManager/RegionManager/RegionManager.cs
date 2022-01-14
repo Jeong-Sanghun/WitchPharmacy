@@ -95,7 +95,7 @@ public class RegionManager : MonoBehaviour
     void Start()
     {
         exploreManager = ExploreManager.inst;
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
         regionDataWrapper = exploreManager.regionDataWrapper;

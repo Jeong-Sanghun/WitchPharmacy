@@ -46,7 +46,7 @@ public class TabletTreeterManager : MonoBehaviour
     
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         wrapper = gameManager.treeterConditionWrapper;
         if(profileWrapper == null)

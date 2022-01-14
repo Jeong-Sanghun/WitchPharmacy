@@ -46,7 +46,7 @@ public class MeasureToolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         measureToolExitButtonObject.SetActive(false);
         saveData = gameManager.saveData;
         toolStateArray = new ToolState[4];

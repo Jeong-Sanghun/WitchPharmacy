@@ -44,7 +44,7 @@ public class TabletSaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         tabletManager = TabletManager.inst;
         languagePack = gameManager.languagePack;
         saveDataTimeArray = gameManager.saveDataTimeWrapper.saveDataTimeList;

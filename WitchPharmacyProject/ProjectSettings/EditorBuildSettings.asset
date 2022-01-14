@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ResearchScene.unity
     guid: 53258fa0235da6a4d83b208a64e86df4
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: dcb003d8a72d7964d88d3c0d7f66afd1
   m_configObjects: {}

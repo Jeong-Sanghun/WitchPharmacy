@@ -65,7 +65,7 @@ public class TabletDocumentManager : MonoBehaviour
 
             }
         }
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         owningDocumentList = saveData.owningDocumentList;
         documentConditionList = gameManager.documentConditionWrapper.documentConditionList;

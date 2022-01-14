@@ -34,7 +34,7 @@ public class ExploreManager : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         tabletManager = TabletManager.inst;
         saveData = gameManager.saveData;
         for(int  i = 0; i < saveData.researchSaveData.endOtherToolResearchList.Count; i++)

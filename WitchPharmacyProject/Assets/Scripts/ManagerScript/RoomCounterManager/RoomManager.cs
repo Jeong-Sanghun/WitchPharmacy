@@ -44,7 +44,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         languagePack = gameManager.languagePack;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;

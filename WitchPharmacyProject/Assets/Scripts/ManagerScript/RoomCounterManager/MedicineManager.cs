@@ -152,7 +152,7 @@ public class MedicineManager : MonoBehaviour    //SH
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         //ownedMedicineList = saveData.ownedMedicineList;

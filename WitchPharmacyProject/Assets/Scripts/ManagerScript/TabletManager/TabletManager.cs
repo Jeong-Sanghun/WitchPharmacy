@@ -47,7 +47,7 @@ public class TabletManager : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         wholeTabletParent.SetActive(false);
         SetHighlightButton();

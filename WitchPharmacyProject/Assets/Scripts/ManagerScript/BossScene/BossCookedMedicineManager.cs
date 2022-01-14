@@ -12,6 +12,8 @@ public class BossCookedMedicineManager : MonoBehaviour
     List<MedicineClass> medicineDataList;
 
     [SerializeField]
+    BossCharacterManager bossCharacterManager;
+    [SerializeField]
     BossMedicineManager bossMedicineManager;
     CookedMedicine cookedMedicine;
 
@@ -31,7 +33,7 @@ public class BossCookedMedicineManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         binObject.SetActive(false);//쓰레기통 꺼줌
@@ -115,9 +117,12 @@ public class BossCookedMedicineManager : MonoBehaviour
             }
 
             //여기다가 보스꺼에 집어넣으면 어케되는지 넣어야함.
-            if (touchedObject.CompareTag("Visitor"))
+            if (touchedObject.CompareTag("BossSymptom"))
             {
-
+                bossCharacterManager.OnMedicineDelivery(cookedMedicine, touchedObject);
+                bossMedicineManager.CookedMedicineRemoved();
+                cookedMedicine.medicineObject.SetActive(false);
+                cookedMedicine = null;
             }
         }
         binObject.SetActive(false);

@@ -38,7 +38,7 @@ public class CookedMedicineManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         binObject.SetActive(false);//쓰레기통 꺼줌

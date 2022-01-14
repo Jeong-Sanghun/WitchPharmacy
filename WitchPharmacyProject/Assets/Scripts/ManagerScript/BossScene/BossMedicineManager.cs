@@ -17,7 +17,8 @@ public class BossMedicineManager : MonoBehaviour
 
     GameManager gameManager;
     SaveDataClass saveData;
-    List<MedicineClass> medicineDataList;
+    //캐릭터매니저에서 씀
+    public List<MedicineClass> medicineDataList;
     List<SpecialMedicineClass> specialMedicineDataList;
     //List<int> ownedMedicineList;
     List<OwningMedicineClass> owningMedicineList;
@@ -95,11 +96,6 @@ public class BossMedicineManager : MonoBehaviour
     RaycastHit2D hit;                         //터치를 위한 raycastHit
     public Camera cam;                      //레이캐스트를 위한 카메라.
 
-    [SerializeField]
-    GameObject roomUICanvas;    //카운터로 옮겨갈때 이거 바꿔줘야해.
-    [SerializeField]
-    GameObject counterUICanvas;
-
 
     //현재 팟 안에 들어가있는 메디슨의 리스트. 이게 존나 중요.
     //이거 심텀 차트 매니저에서 그대로 참조함.
@@ -117,23 +113,18 @@ public class BossMedicineManager : MonoBehaviour
     GameObject cookButtonObject;
     [SerializeField]
     GameObject cookedMedicinePrefab;
-    Vector3 cookedMedicineCounterPos;
 
     //현재 조제실에 있는가.
     //[HideInInspector]
     //public bool nowInRoom;
 
-    VisitorClass nowVisitor;
     [SerializeField]
     GameObject binObject;
-    [SerializeField]
-    Text usedCoinText;
 
 
     //증상기록창에서 측정도구로 측정한 증상은 토글이 고정이 되어야함
     //그래서 어떤 걸 측정도구로 측정했는지 알아야함.
     bool isDraggingMedicineFromPot;
-    bool isSpecialMedicine;
 
     //룸매니저에서 투 카운터버튼에서 사용
     public bool nowCookingAnimation;
@@ -146,7 +137,7 @@ public class BossMedicineManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         //ownedMedicineList = saveData.ownedMedicineList;
@@ -171,8 +162,6 @@ public class BossMedicineManager : MonoBehaviour
         isPotCooked = false;
         cookButtonObject.SetActive(false);
 
-
-        cookedMedicineCounterPos = new Vector3(-100, -555, 0);
         doubleClickTimer = 0;
 
 
@@ -463,7 +452,6 @@ public class BossMedicineManager : MonoBehaviour
         potMedicineParentArray[nowPotIndex].SetActive(true);
 
 
-        Debug.Log(nowMedicineButton.medicineClass.firstNumber);
         potAnimationManager.SetPotColor(nowMedicineButton.medicineClass.GetSecondSymptom(), nowMedicineButton.medicineClass.secondNumber, nowPotIndex);
         medicineInPotList.Add(nowMedicineButton);
         //아무것도 아님이 뜨면 줄여주지 않음
@@ -896,9 +884,11 @@ public class BossMedicineManager : MonoBehaviour
         //더미임
         cookedMedicineText.text = cookedMedicine.name;
 
+        
         for (int i = 0; i < medicineCount; i++)
         {
-            potMedicineObjectList[i].SetActive(false);
+            potMedicineParentArray[i].SetActive(false);
+               potMedicineObjectList[i].SetActive(false);
         }
 
         cookedMedicinePrefab.SetActive(true);

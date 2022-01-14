@@ -21,7 +21,7 @@ public class SceneManager : MonoBehaviour // JH
     private void Start()
     {
         Screen.SetResolution(2560, 1440, false);
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         nowTexting = false;   
     }
     // // Module // //
@@ -295,7 +295,7 @@ public class SceneManager : MonoBehaviour // JH
         UnityEngine.SceneManagement.SceneManager.LoadScene("StartLoadingScene");
         yield return null;
         Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         if(gameManager.saveData.nowSaveTime == SaveTime.DayStart)
         {
             lastSceneName = "StoryScene";
@@ -306,6 +306,45 @@ public class SceneManager : MonoBehaviour // JH
         }
         //게임매니저가 여기서 로드할 때 생기거덩 그러면 게임매니저에서 씬매니저의 그 인덱스 번호를 가져가서 스타트에서 로드를 때려버림. 
         AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(gameManager.saveData.nextLoadSceneName);
+
+        op.allowSceneActivation = false;
+
+        float timer = 0.0f;
+
+        while (!op.isDone)
+        {
+
+            timer += Time.deltaTime;
+            loadText.text = op.progress.ToString();
+            if (timer > 0.5f)
+            {
+                op.allowSceneActivation = true;
+            }
+            yield return null;
+        }
+        if (gameManager.saveData.nextLoadSceneName == "StoryScene")
+        {
+            TabletManager.inst.TabletOpenButtonActive(false);
+        }
+        else
+        {
+            TabletManager.inst.TabletOpenButtonActive(true);
+        }
+    }
+
+    public void BossSceneLoad()
+    {
+        StartCoroutine(BossSceneCoroutine());
+    }
+
+    IEnumerator BossSceneCoroutine()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StartLoadingScene");
+        yield return null;
+        Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
+        gameManager = GameManager.singleton;
+        //게임매니저가 여기서 로드할 때 생기거덩 그러면 게임매니저에서 씬매니저의 그 인덱스 번호를 가져가서 스타트에서 로드를 때려버림. 
+        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("BossScene");
 
         op.allowSceneActivation = false;
 

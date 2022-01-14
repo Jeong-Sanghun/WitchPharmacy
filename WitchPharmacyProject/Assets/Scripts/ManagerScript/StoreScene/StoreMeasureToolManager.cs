@@ -48,7 +48,7 @@ public class StoreMeasureToolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         dataWrapper = gameManager.jsonManager.ResourceDataLoad<MeasureToolDataWrapper>("MeasureToolDataWrapper");
         MeasureToolResearchDataWrapper researchDataWrapper = gameManager.measureToolResearchDataWrapper;

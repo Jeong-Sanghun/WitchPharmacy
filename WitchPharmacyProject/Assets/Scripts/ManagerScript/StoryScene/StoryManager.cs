@@ -57,7 +57,7 @@ public class StoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
         //conversationDialogBundleList = gameManager.conversationDialogBundleWrapper.conversationDialogBundleList;

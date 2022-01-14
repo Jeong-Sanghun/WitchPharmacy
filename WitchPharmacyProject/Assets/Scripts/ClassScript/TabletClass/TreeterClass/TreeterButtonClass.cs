@@ -61,7 +61,7 @@ public class TreeterButtonClass
         titleText.text = data.titleIngameText;
         dialogText.text = data.dialog;
 
-        if (GameManager.singleTon.saveData.likedTreeterIndexList.Contains(data.index))
+        if (GameManager.singleton.saveData.likedTreeterIndexList.Contains(data.index))
         {
             likeText.text = (data.likeNumber + 1).ToString();
         }
@@ -109,7 +109,7 @@ public class TreeterButtonClass
 
     void LikeButton()
     {
-        SaveDataClass saveData = GameManager.singleTon.saveData;
+        SaveDataClass saveData = GameManager.singleton.saveData;
         if (saveData.likedTreeterIndexList.Contains(data.index))
         {
             saveData.likedTreeterIndexList.Remove(data.index);

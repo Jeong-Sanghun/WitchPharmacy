@@ -77,7 +77,7 @@ public class TabletBillManager : MonoBehaviour
         wholeGain = 0;
         wholeSpent = 0;
         nowButtonIndex = 0;
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         languagePack = gameManager.languagePack;
         wholeBillButtonClass = new List<OneDayBillButtonClass>();

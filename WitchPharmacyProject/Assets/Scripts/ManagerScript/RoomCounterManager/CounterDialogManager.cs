@@ -105,7 +105,7 @@ public class CounterDialogManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         sceneManager = SceneManager.inst;
         //randomDialogClassList = gameManager.randomDialogDataWrapper.randomDialogList;
         //randomVisitorEndDialogWrapper = gameManager.randomVisitorEndDialogWrapper;

@@ -41,7 +41,7 @@ public class MeasureTool : MonoBehaviour    //SH
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        gameManager = GameManager.singleTon;
+        gameManager = GameManager.singleton;
         measureEnd = false;
     }
 

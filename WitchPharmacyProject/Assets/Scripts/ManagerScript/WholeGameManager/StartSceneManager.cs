@@ -72,6 +72,12 @@ public class StartSceneManager : MonoBehaviour
         sceneManager.VeryFirstStartLoad();
     }
 
+    public void BossButton()
+    {
+        sceneManager.nowSaveIndex = -1;
+        sceneManager.BossSceneLoad();
+    }
+
 
     // Update is called once per frame
     void Update()

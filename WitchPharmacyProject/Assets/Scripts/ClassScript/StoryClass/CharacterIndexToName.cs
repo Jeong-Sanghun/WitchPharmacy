@@ -29,13 +29,16 @@ public class CharacterIndexToName
     //static string[] characterNameArray = { "Ruelia", "Cari", "Jet", "Lily" ,"Iris","Ian"};
     static Sprite[,] characterSprite;
     //각 스프라이트 뭔지.
-    const int characterNumber = 6;
+    int characterNumber;
+    int feelingNumber;
     List<BackGroundPair> backGroundList;
     List<BackGroundPair> cutSceneList;
 
     public CharacterIndexToName()
     {
-        characterSprite = new Sprite[characterNumber,2];
+        characterNumber = System.Enum.GetValues(typeof(CharacterName)).Length;
+        feelingNumber = System.Enum.GetValues(typeof(CharacterFeeling)).Length;
+        characterSprite = new Sprite[characterNumber,feelingNumber];
         backGroundList = new List<BackGroundPair>();
         cutSceneList = new List<BackGroundPair>();
     }
