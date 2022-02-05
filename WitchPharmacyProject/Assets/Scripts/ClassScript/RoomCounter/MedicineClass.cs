@@ -14,6 +14,8 @@ public class MedicineClass : SpecialMedicineClass  //SH
     //public string firstName;
     //public string secondName;
     //public string toolTip;
+    public static Dictionary<string, Sprite> symptomIconDictionary;
+
     public string firstSymptomText;
     public string secondSymptomText;
     Symptom firstSymptom;
@@ -90,6 +92,11 @@ public class MedicineClass : SpecialMedicineClass  //SH
         secondNumber = 2;
         medicineImage = null;
         toolTip = "Tooltip missing";
+        if(symptomIconDictionary == null)
+        {
+            symptomIconDictionary = new Dictionary<string, Sprite>();
+        }
+
     }
     public MedicineClass(SpecialMedicineClass cast)
     {
@@ -140,5 +147,16 @@ public class MedicineClass : SpecialMedicineClass  //SH
             medicineImage = Resources.Load<Sprite>(builder.ToString());
         }
         return medicineImage;
+    }
+
+    public Sprite GetIcon(string key)
+    {
+        
+        if(!symptomIconDictionary.ContainsKey(key))
+        {
+            symptomIconDictionary.Add(key, Resources.Load<Sprite>("SymptomIcon/" + key));
+
+        }
+        return symptomIconDictionary[key];
     }
 }

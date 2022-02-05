@@ -9,7 +9,9 @@ public class MedicineButton
     public MedicineClass medicineClass; //아이템의 약 속성이 뭔지
     public GameObject buttonObject;     //스크롤뷰에 들어가있는 버튼 오브젝트
     public GameObject propertyObject;   //클릭하면 속성창이 떠야되는데 그 속성창 오브젝트
+    public Text medicineNameText;
     public RectTransform buttonRect;    //버튼 rect 계속 getComponent해주기 귀찮아서
+    public Image buttonBackground;
     public GameObject medicineObject;   //드래그앤드롭시 약재 오브젝트
     public OwningMedicineClass owningMedicine;     //owningMedicineList에서 가져오는거
     
@@ -31,6 +33,8 @@ public class MedicineButton
         propertyObject = property;
         medicineObject = medicineObj;
         buttonRect = buttonObject.GetComponent<RectTransform>();
+        buttonBackground = buttonObject.GetComponent<Image>();
+        medicineNameText = buttonObject.transform.GetChild(2).GetComponent<Text>();
         medicineIndex = index;
         quantityText = quantText;
         propertyQuantityText = propertyQuantText;

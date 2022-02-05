@@ -71,13 +71,13 @@ public class MedicineManager : MonoBehaviour    //SH
     [SerializeField]
     Text prefabButtonQuantity;
     [SerializeField]
-    Text prefabButtonFirstEffectIcon;
+    Image prefabButtonFirstEffectIcon;
     [SerializeField]
-    Text prefabButtonSecondEffectIcon;
-    [SerializeField]
-    Text prefabButtonFirstEffectNumber;
-    [SerializeField]
-    Text prefabButtonSecondEffectNumber;
+    Image prefabButtonSecondEffectIcon;
+    //[SerializeField]
+    //Text prefabButtonFirstEffectNumber;
+    //[SerializeField]
+    //Text prefabButtonSecondEffectNumber;
 
     [SerializeField]
     GameObject medicineInstanceParent;
@@ -211,21 +211,23 @@ public class MedicineManager : MonoBehaviour    //SH
                 prefabButtonQuantity.text = cost.ToString();
             }
             
-            prefabButtonFirstEffectIcon.text = medicine.GetFirstSymptom().ToString();
-            prefabButtonSecondEffectIcon.text = medicine.GetSecondSymptom().ToString();
-            prefabButtonFirstEffectNumber.text = medicine.firstNumber.ToString();
-            prefabButtonSecondEffectNumber.text = medicine.secondNumber.ToString();
+            //prefabButtonFirstEffectIcon.text = medicine.GetFirstSymptom().ToString();
+            //prefabButtonSecondEffectIcon.text = medicine.GetSecondSymptom().ToString();
+            //prefabButtonFirstEffectNumber.text = medicine.firstNumber.ToString();
+            //prefabButtonSecondEffectNumber.text = medicine.secondNumber.ToString();
+            prefabButtonFirstEffectIcon.sprite = medicine.GetIcon(medicine.GetFirstSymptom().ToString() + medicine.firstNumber.ToString());
+            prefabButtonSecondEffectIcon.sprite = medicine.GetIcon(medicine.GetSecondSymptom().ToString() + medicine.secondNumber.ToString());
             //버튼 세팅 다 해서 instantiate하고 리스트에 넣어줌.
             //이제 이 리스트에서 active하고 위치바꿔주고 그럴거임.
             GameObject buttonObject = Instantiate(medicineButtonPrefab, regularScrollContent.transform);
             buttonObject.SetActive(true);
             GameObject propertyObject = Instantiate(medicineButtonPrefab, propertyObjectParent);
             propertyObject.SetActive(false);
-            propertyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-450, 250);
+            propertyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-395, 115);
             propertyObject.GetComponent<Image>().color = Color.grey;
             propertyObject.GetComponent<Button>().enabled = false;
-            Text quantText = buttonObject.transform.GetChild(2).GetComponent<Text>();
-            Text propertyQuantText = propertyObject.transform.GetChild(2).GetComponent<Text>();
+            Text quantText = buttonObject.transform.GetChild(3).GetComponent<Text>();
+            Text propertyQuantText = propertyObject.transform.GetChild(3).GetComponent<Text>();
             EventTrigger propertyEvent = propertyObject.AddComponent<EventTrigger>();
             GameObject medicineObj = Instantiate(medicineObjectPrefab,medicineInstanceParent.transform);
             medicineObj.SetActive(false);
@@ -245,7 +247,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
 
             //scrollView의 각 버튼마다 index에 맞는 eventTrigger를 심어줘야함.
-            Transform iconObject = buttonObject.transform.GetChild(0);
+            Transform iconObject = buttonObject.transform.GetChild(1);
             EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
 
             //버튼 이벤트
@@ -260,7 +262,7 @@ public class MedicineManager : MonoBehaviour    //SH
             entry3.callback.AddListener((data) => { OnButtonDown(delegateIndex); });
             propertyEvent.triggers.Add(entry3);
 
-            propertyEvent.transform.GetChild(0).GetComponent<EventTrigger>().enabled = false;
+            propertyEvent.transform.GetChild(1).GetComponent<EventTrigger>().enabled = false;
 
             buttonIndex++;
             //wholeMedicienButtonList의 index임.
@@ -303,17 +305,17 @@ public class MedicineManager : MonoBehaviour    //SH
         prefabButtonName.text = nameBuilder.ToString();
         prefabButtonQuantity.text = cost.ToString();
 
-        prefabButtonFirstEffectIcon.text = null;
-        prefabButtonSecondEffectIcon.text = null;
-        prefabButtonFirstEffectNumber.text = null;
-        prefabButtonSecondEffectNumber.text = null;
+        //prefabButtonFirstEffectIcon.text = null;
+        //prefabButtonSecondEffectIcon.text = null;
+        //prefabButtonFirstEffectNumber.text = null;
+        //prefabButtonSecondEffectNumber.text = null;
         //버튼 세팅 다 해서 instantiate하고 리스트에 넣어줌.
         //이제 이 리스트에서 active하고 위치바꿔주고 그럴거임.
         GameObject buttonObject = Instantiate(medicineButtonPrefab, regularScrollContent.transform);
         buttonObject.SetActive(true);
         GameObject propertyObject = Instantiate(medicineButtonPrefab, propertyObjectParent);
         propertyObject.SetActive(false);
-        propertyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-450, 250);
+        propertyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(-395, 115);
         propertyObject.GetComponent<Image>().color = Color.grey;
         propertyObject.GetComponent<Button>().enabled = false;
         Text quantText = buttonObject.transform.GetChild(2).GetComponent<Text>();
@@ -641,7 +643,7 @@ public class MedicineManager : MonoBehaviour    //SH
             if (wholeMedicineButtonList[i].isActive)
             {
                 wholeMedicineButtonList[i].buttonObject.SetActive(true);
-                wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -90 - buttonQuantity * 180);
+                wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -116 - buttonQuantity * 186);
                 buttonQuantity++;
             }
             if (wholeMedicineButtonList[i].isActive == false)
@@ -651,7 +653,7 @@ public class MedicineManager : MonoBehaviour    //SH
             }
         }
 
-        regularScrollContent.sizeDelta = new Vector2(0, 180 * buttonQuantity);
+        regularScrollContent.sizeDelta = new Vector2(0, 186 * buttonQuantity);
     }
 
     public void PropertyListSubButton(int index)
@@ -732,7 +734,7 @@ public class MedicineManager : MonoBehaviour    //SH
             if (wholeMedicineButtonList[i].isActive)
             {
                 wholeMedicineButtonList[i].buttonObject.SetActive(true);
-                wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -90 - buttonQuantity * 180);
+                wholeMedicineButtonList[i].buttonRect.anchoredPosition = new Vector2(0, -116 - buttonQuantity * 186);
                 buttonQuantity++;
             }
             if (wholeMedicineButtonList[i].isActive == false)
@@ -742,7 +744,7 @@ public class MedicineManager : MonoBehaviour    //SH
             }
         }
 
-        regularScrollContent.sizeDelta = new Vector2(0, 180 * buttonQuantity);
+        regularScrollContent.sizeDelta = new Vector2(0, 186 * buttonQuantity);
     }
 
     //    //속성 누르면 그 속성 아이템 뜨게하는 버튼
@@ -927,18 +929,21 @@ public class MedicineManager : MonoBehaviour    //SH
         if(nowButtonIndex == index)
         {
             wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
-            wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
+            wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
+            wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
             AddMedicineToPot();
             nowButtonIndex = -1;
         }
         else
         {
             wholeMedicineButtonList[index].propertyObject.SetActive(true);
-            wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.grey;
+            wholeMedicineButtonList[index].medicineNameText.fontStyle = FontStyle.Bold;
+            wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.white;
             if (nowButtonIndex != -1)
             {
                 wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
-                wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = Color.white;
+                wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
+                wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
             }
             nowButtonIndex = index;
         }
