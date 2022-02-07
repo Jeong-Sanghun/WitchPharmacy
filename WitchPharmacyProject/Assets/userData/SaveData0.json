@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
+    "nowTime": 63120.0,
     "nowDay": 1,
-    "coin": 994,
+    "coin": 1001,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -88,7 +88,18 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": []
+            "billList": [
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 3
+                },
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 10
+                }
+            ]
         }
     ],
     "owningDocumentList": [],
@@ -135,14 +146,17 @@
     "readStoryList": [
         "firstDay",
         "secondDay",
-        "thirdDay"
+        "thirdDay",
+        "fourthDay2"
     ],
     "readSpecialVisitorBundleList": [
-        "Sanghun"
+        "Sanghun",
+        "Lily1"
     ],
-    "nextStory": "fourthDay2",
+    "nextStory": "fifthDay",
     "nextLoadSceneName": "StoryScene",
-    "nowSaveTime": 1,
+    "nowSaveTime": 0,
     "nowRegion": 0,
-    "forcedRegion": ""
+    "forcedRegion": "",
+    "nowBossFile": ""
 }
