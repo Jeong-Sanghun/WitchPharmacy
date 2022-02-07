@@ -7,7 +7,8 @@ using System;
 public enum CharacterFeeling { nothing, angry,pain }
 public enum CharacterName
 {
-    Ruellia, Cari, Jet, Lily, Iris, Ian
+    Ruellia, Cari, Jet, Lily, Iris, Ian,
+    Immanuel,Hyacinth,Kiddo,OldMan
 }
 
 public class BackGroundPair

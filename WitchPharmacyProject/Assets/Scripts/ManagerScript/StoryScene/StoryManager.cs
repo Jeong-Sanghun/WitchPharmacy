@@ -43,7 +43,7 @@ public class StoryManager : MonoBehaviour
     
 
     float downYpos = -10;
-    float upYpos = 0;
+    float upYpos = -1;
 
     //어느 번들인지.
     //int nowBundleIndex;

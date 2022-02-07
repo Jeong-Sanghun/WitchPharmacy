@@ -577,7 +577,7 @@ public class MedicineManager : MonoBehaviour    //SH
         int buttonQuantity = 0;
         if (isMainButtonOn[index] == true)
         {
-            propertyMainButtonImageArray[index].color = Color.white;
+            propertyMainButtonImageArray[index].gameObject.SetActive(false);
             propertySubButtonLockArray[index].SetActive(false);
             propertySubButtonComponentArray[index].interactable = false;
             propertySubListParent.SetActive(false);
@@ -589,7 +589,7 @@ public class MedicineManager : MonoBehaviour    //SH
         }
         else
         {
-            propertyMainButtonImageArray[index].color = Color.red;
+            propertyMainButtonImageArray[index].gameObject.SetActive(true);
             propertySubListParent.SetActive(true);
             isMainButtonOn[index] = true;
             for (int i = 0; i < isSubButtonOn.Length; i++)
@@ -611,7 +611,7 @@ public class MedicineManager : MonoBehaviour    //SH
                     propertySubButtonLockArray[i].SetActive(false);
                     propertySubButtonComponentArray[i].interactable = true;
                     isMainButtonOn[i] = false;
-                    propertyMainButtonImageArray[i].color = Color.white;
+                    propertyMainButtonImageArray[i].gameObject.SetActive(false);
                 }
             }
             propertySubButtonLockArray[index].SetActive(true);
