@@ -396,12 +396,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blurManager: {fileID: 514353807}
+  nowBundle:
+    bundleName: testBundle
+    forcedRegion: 
+    uiUnlock: 
+    dialogWrapperList: []
+    conversationRouterList: []
+  nowWrapper:
+    wrapperIndex: 0
+    characterName:
+    - 
+    - 
+    - 
+    - 
+    ingameName:
+    - 
+    - 
+    - 
+    - 
+    characterFeeling:
+    - nothing
+    - nothing
+    - nothing
+    - nothing
+    nextStory: 
+    effect: 
+    sfx: 
+    concealedCharacter: []
+    bgm: 
+    conversationDialogList: []
+    nextWrapperIsRouter: 0
+    isCutscene: 0
+    cutSceneFileName: 
+    cutSceneEffect: 0
+    backGroundEffect: 0
+    backGroundFileName: 
+    nextRegion: 
+    popUp: 
   characterSprite:
   - {fileID: 1424095970}
   - {fileID: 6517389924254320821}
   - {fileID: 1574252043}
   - {fileID: 6517389924254320819}
   cutSceneBGSprite: {fileID: 6517389924254320822}
+  popupSprite: {fileID: 6517389924254320825}
   conversationText: {fileID: 122256067}
   nameText: {fileID: 6517389924254320820}
   routingTextArray:
@@ -962,3 +1000,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6517389924254320818}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6517389924254320825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4483471646632918295, guid: 275846198ae314b40b055f98b3efb17c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6517389924254320818}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,7 +12,9 @@ public class StoryManager : MonoBehaviour
     SaveDataClass saveData;
 
     //protected List<ConversationDialogBundle> conversationDialogBundleList;
+    [SerializeField]
     ConversationDialogBundle nowBundle;
+    [SerializeField]
     ConversationDialogWrapper nowWrapper;
     ConversationRouter nowRouter;
     StoryParser storyParser;
@@ -23,6 +25,8 @@ public class StoryManager : MonoBehaviour
     SpriteRenderer[] characterSprite;
     [SerializeField]
     SpriteRenderer cutSceneBGSprite;
+    [SerializeField]
+    Image popupSprite;
 
     [SerializeField]
     Text conversationText;
@@ -94,6 +98,15 @@ public class StoryManager : MonoBehaviour
                 saveData.nowRegion = region;
             }
         }
+        OnWrapperStart();
+        
+
+        PrintConversation();
+    }
+
+
+    void OnWrapperStart()
+    {
         for (int i = 0; i < 4; i++)
         {
             if (nowWrapper.characterName[i] != null)
@@ -101,25 +114,25 @@ public class StoryManager : MonoBehaviour
             else
                 characterSprite[i].sprite = null;
         }
-        for(int i = 0; i < nowWrapper.startEffectList.Count; i++)
+        for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
         {
             DialogEffect effect = nowWrapper.startEffectList[i];
             GameObject obj = characterSprite[(int)effect.characterPosition].gameObject;
-            if(effect.effect == DialogFX.Up)
+            if (effect.effect == DialogFX.Up)
             {
                 obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
-                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 1));
+                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 0.5f));
             }
             else if (effect.effect == DialogFX.Down)
             {
                 obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 1));
+                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 0.5f));
             }
         }
         if (nowWrapper.isCutscene)
         {
             cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.cutSceneFileName, true);
-            if(nowWrapper.cutSceneEffect == CutSceneEffect.Blur)
+            if (nowWrapper.cutSceneEffect == CutSceneEffect.Blur)
             {
                 blurred = true;
                 blurManager.OnBlur(true);
@@ -128,15 +141,23 @@ public class StoryManager : MonoBehaviour
         else
         {
             cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.backGroundFileName, false);
-            if(nowWrapper.backGroundEffect == CutSceneEffect.Blur)
+            if (nowWrapper.backGroundEffect == CutSceneEffect.Blur)
             {
                 blurred = true;
                 blurManager.OnBlur(true);
             }
         }
-        
-
-        PrintConversation();
+        if(nowWrapper.popUp != null)
+        {
+            Debug.Log(nowWrapper.popUp);
+            Sprite spr = Resources.Load<Sprite>("Popup/" + nowWrapper.popUp);
+            popupSprite.color = new Color(1, 1, 1, 1);
+            popupSprite.sprite = spr;
+        }
+        else
+        {
+            popupSprite.color = new Color(1, 1, 1, 0);
+        }
     }
 
 
@@ -244,59 +265,7 @@ public class StoryManager : MonoBehaviour
         }
 
         nowConversationIndex = 0;
-        for(int i = 0; i < 4; i++)
-        {
-            if(nowWrapper.characterName[i] != null)
-                characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
-            else
-            {
-                characterSprite[i].sprite = null;
-            }
-        }
-        for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
-        {
-            DialogEffect effect = nowWrapper.startEffectList[i];
-            GameObject obj = characterSprite[(int)effect.characterPosition].gameObject;
-            if (effect.effect == DialogFX.Up)
-            {
-                obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
-                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 1));
-            }
-            else if (effect.effect == DialogFX.Down)
-            {
-                obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 1));
-
-            }
-        }
-        if (nowWrapper.isCutscene)
-        {
-            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.cutSceneFileName, true);
-            if (nowWrapper.cutSceneEffect == CutSceneEffect.Blur && blurred == false)
-            {
-                blurManager.OnBlur(true);
-                blurred = true;
-            }
-            else if (nowWrapper.cutSceneEffect == CutSceneEffect.None && blurred == true)
-            {
-                blurManager.OnBlur(false);
-                blurred = false;
-            }
-        }
-        else
-        {
-            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.backGroundFileName, false);
-            if (nowWrapper.backGroundEffect == CutSceneEffect.Blur && blurred == false)
-            {
-                blurManager.OnBlur(true);
-                blurred = true;
-            }
-            else if(nowWrapper.backGroundEffect == CutSceneEffect.None && blurred == true)
-            {
-                blurManager.OnBlur(false);
-                blurred = false;
-            }
-        }
+        OnWrapperStart();
 
         PrintConversation();
         
@@ -316,7 +285,15 @@ public class StoryManager : MonoBehaviour
         ConversationDialog nowConversation = nowWrapper.conversationDialogList[nowConversationIndex];
         conversationText.text = nowConversation.dialog;
         StartCoroutine( sceneManager.LoadTextOneByOne(nowConversation.dialog, conversationText));
-        nameText.text = nowConversation.ingameName;
+        if (nowWrapper.concealedCharacter.Contains(nowConversation.ingameName))
+        {
+            nameText.text = "???";
+        }
+        else
+        {
+            nameText.text = nowConversation.ingameName;
+        }
+        
         for(int i = 0; i < 4; i++)
         {
             if(faded[i] == nowConversation.fade[i])

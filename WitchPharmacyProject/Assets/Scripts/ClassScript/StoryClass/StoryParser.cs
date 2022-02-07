@@ -12,7 +12,9 @@ public class StoryParser
             ,BackGround,BackGroundName,BackGroundEffect, NextStory, NextStoryName
             ,NextRegion, NextRegionName,RightMedicine,WrongMedicine,SkipVisitor,GiveCoin,CoinNumber
             ,Symptom,SymptomNumber,Disease,DiseaseName,VisitorSet,VisitorSetNumber
-            ,ForcedRegion,ForcedRegionName
+            ,ForcedRegion,ForcedRegionName,Sfx,SfxName,Effect,EffectName,Bgm,BgmName,
+            Conceal,ConcealName,UnConceal,UnConcealName,UIUnlock,UIUnlockName,
+            Popup,PopupName
     }
 
     CharacterIndexToName characterIndexToName;
@@ -75,6 +77,7 @@ public class StoryParser
                 case '<':
                     if(nowMode == ParseMode.Dialog)
                     {
+                        Debug.Log(builder.ToString());
                         nowDialog.dialog = builder.ToString();
                     }
                     builder.Clear();
@@ -96,9 +99,16 @@ public class StoryParser
                     else if (modeStr.Contains("switch"))
                     {
                         nowMode = ParseMode.Switch;
-                        if(nowWrapper == null || nowWrapper.conversationDialogList.Count != 0)
+                        if(nowWrapper == null)
                         {
                             nowWrapper = new ConversationDialogWrapper();
+                            nowWrapperList.Add(nowWrapper);
+                        }
+                        else if(nowWrapper.conversationDialogList.Count != 0)
+                        {
+                            ConversationDialogWrapper wrapper = nowWrapper;
+                            nowWrapper = new ConversationDialogWrapper();
+                            nowWrapper.CopyExceptCharacter(wrapper);
                             nowWrapperList.Add(nowWrapper);
                         }
                     }
@@ -168,12 +178,8 @@ public class StoryParser
                         else
                         {
                             wrapper = new ConversationDialogWrapper();
-                            for (int j = 0; j < 3; j++)
-                            {
-                                wrapper.characterFeeling[j] = nowWrapper.characterFeeling[j];
-                                wrapper.characterName[j] = nowWrapper.characterName[j];
-                                wrapper.ingameName[j] = nowWrapper.ingameName[j];
-                            }
+                            wrapper.Copy(nowWrapper);
+
                             nowWrapper = wrapper;
                             nowWrapperList.Add(wrapper);
                         }
@@ -197,12 +203,7 @@ public class StoryParser
                         else
                         {
                             wrapper = new ConversationDialogWrapper();
-                            for (int j = 0; j < 3; j++)
-                            {
-                                wrapper.characterFeeling[j] = nowWrapper.characterFeeling[j];
-                                wrapper.characterName[j] = nowWrapper.characterName[j];
-                                wrapper.ingameName[j] = nowWrapper.ingameName[j];
-                            }
+                            wrapper.Copy(nowWrapper);
                             nowWrapper = wrapper;
                             nowWrapperList.Add(wrapper);
                         }
@@ -211,7 +212,7 @@ public class StoryParser
                     {
                         nowMode = ParseMode.ForcedRegion;
                     }
-                    else if (modeStr.Contains("Region"))
+                    else if (modeStr.Contains("region"))
                     {
                         nowMode = ParseMode.NextRegion;
                         ConversationDialogWrapper wrapper;
@@ -230,16 +231,90 @@ public class StoryParser
                         else
                         {
                             wrapper = new ConversationDialogWrapper();
-                            for (int j = 0; j < 3; j++)
-                            {
-                                wrapper.characterFeeling[j] = nowWrapper.characterFeeling[j];
-                                wrapper.characterName[j] = nowWrapper.characterName[j];
-                                wrapper.ingameName[j] = nowWrapper.ingameName[j];
-                            }
+                            wrapper.Copy(nowWrapper);
                             nowWrapper = wrapper;
                             nowWrapperList.Add(wrapper);
                         }
                     }
+                    else if (modeStr.Contains("sfx"))
+                    {
+                        nowMode = ParseMode.Sfx;
+                        ConversationDialogWrapper wrapper;
+                        wrapper = new ConversationDialogWrapper();
+                        if (nowWrapper != null)
+                        {
+                            wrapper.Copy(nowWrapper);
+                        }
+                        nowWrapper = wrapper;
+                        nowWrapperList.Add(wrapper);
+                    }
+                    else if (modeStr.Contains("effect"))
+                    {
+                        nowMode = ParseMode.Effect;
+                        ConversationDialogWrapper wrapper;
+                        wrapper = new ConversationDialogWrapper();
+                        if (nowWrapper != null)
+                        {
+                            wrapper.Copy(nowWrapper);
+                        }
+                        nowWrapper = wrapper;
+                        nowWrapperList.Add(wrapper);
+                    }
+                    else if (modeStr.Contains("bgm"))
+                    {
+                        nowMode = ParseMode.Bgm;
+                        ConversationDialogWrapper wrapper;
+                        wrapper = new ConversationDialogWrapper();
+                        if (nowWrapper != null)
+                        {
+                            wrapper.Copy(nowWrapper);
+                        }
+                        nowWrapper = wrapper;
+                        nowWrapperList.Add(wrapper);
+                    }
+                    else if (modeStr.Contains("conceal"))
+                    {
+                        nowMode = ParseMode.Conceal;
+                        ConversationDialogWrapper wrapper;
+                        wrapper = new ConversationDialogWrapper();
+                        if (nowWrapper != null)
+                        {
+                            wrapper.Copy(nowWrapper);
+                        }
+                        nowWrapper = wrapper;
+                        nowWrapperList.Add(wrapper);
+                    }
+                    else if (modeStr.Contains("unConceal"))
+                    {
+                        nowMode = ParseMode.UnConceal;
+                        ConversationDialogWrapper wrapper;
+                        wrapper = new ConversationDialogWrapper();
+                        if (nowWrapper != null)
+                        {
+                            wrapper.Copy(nowWrapper);
+                        }
+                        nowWrapper = wrapper;
+                        nowWrapperList.Add(wrapper);
+                    }
+                    else if (modeStr.Contains("popup"))
+                    {
+                        nowMode = ParseMode.Popup;
+                        ConversationDialogWrapper wrapper;
+                        wrapper = new ConversationDialogWrapper();
+                        if (nowWrapper != null)
+                        {
+                            wrapper.Copy(nowWrapper);
+                        }
+                        nowWrapper = wrapper;
+                        nowWrapperList.Add(wrapper);
+                    }
+                    else if (modeStr.Contains("uiUnlock"))
+                    {
+                        nowMode = ParseMode.UIUnlock;
+                    }
+
+                    //        Sfx,SfxName,Effect,EffectName,Bgm,BgmName,
+                    //Conceal,ConcealName,UnConceal,UnConcealName,UIUnlock,UIUnlockName
 
                     builder.Clear();
                     break;
@@ -293,7 +368,34 @@ public class StoryParser
                         case ParseMode.ForcedRegion:
                             nowMode = ParseMode.ForcedRegionName;
                             break;
+                        case ParseMode.Effect:
+                            nowMode = ParseMode.EffectName;
+                            break;
+                        case ParseMode.Sfx:
+                            nowMode = ParseMode.SfxName;
+                            break;
+                        case ParseMode.Bgm:
+                            nowMode = ParseMode.BgmName;
+                            break;
 
+                        case ParseMode.Conceal:
+                            nowMode = ParseMode.ConcealName;
+                            break;
+                        case ParseMode.Popup:
+                            nowMode = ParseMode.PopupName;
+                            break;
+
+                        case ParseMode.UnConceal:
+                            nowMode = ParseMode.UnConcealName;
+                            break;
+                        case ParseMode.UIUnlock:
+                            nowMode = ParseMode.UIUnlockName;
+                            break;
+
+
+
+                        //        Sfx,SfxName,Effect,EffectName,Bgm,BgmName,
+                        //Conceal,ConcealName,UnConceal,UnConcealName,UIUnlock,UIUnlockName
 
                         default:
                             builder.Append('{');
@@ -384,6 +486,34 @@ public class StoryParser
                         case ParseMode.ForcedRegionName:
                             nowMode = ParseMode.Null;
                             gameData.forcedRegion = builder.ToString();
+                            break;
+                        case ParseMode.EffectName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.effect = builder.ToString();
+                            break;
+                        case ParseMode.Sfx:
+                            nowMode = ParseMode.SfxName;
+                            nowWrapper.sfx = builder.ToString();
+                            break;
+                        case ParseMode.BgmName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.bgm = builder.ToString();
+                            break;
+                        case ParseMode.PopupName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.popUp = builder.ToString();
+                            break;
+                        case ParseMode.ConcealName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.concealedCharacter.Add(characterIndexToName.NameTranslator(builder.ToString(),languagePack));
+                            break;
+                        case ParseMode.UnConcealName:
+                            nowMode = ParseMode.Null;
+                            nowWrapper.concealedCharacter.Remove(characterIndexToName.NameTranslator(builder.ToString(), languagePack));
+                            break;
+                        case ParseMode.UIUnlockName:
+                            nowMode = ParseMode.Null;
+                            gameData.uiUnlock = builder.ToString();
                             break;
                     }
                     builder.Clear();
@@ -588,6 +718,15 @@ public class StoryParser
                             leftMiddleRight++;
                             nowMode = ParseMode.ClampCharacterName;
                             break;
+
+                        case ParseMode.ConcealName:
+                            nowWrapper.concealedCharacter.Add(builder.ToString());
+                            builder.Clear();
+                            break;
+                        case ParseMode.UnConcealName:
+                            nowWrapper.concealedCharacter.Remove(builder.ToString());
+                            builder.Clear();
+                            break;
                         default:
                             builder.Append(originText[i]);
                             break;
@@ -601,7 +740,7 @@ public class StoryParser
 
 
             }
-            if (i == originText.Length - 1)
+            if (i == originText.Length - 1 && nowMode == ParseMode.Dialog)
             {
 
                 nowDialog.dialog = builder.ToString();

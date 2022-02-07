@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Text;
 using System;
 
-public enum CharacterFeeling { nothing, angry }
+public enum CharacterFeeling { nothing, angry,pain }
 public enum CharacterName
 {
     Ruellia, Cari, Jet, Lily, Iris, Ian
