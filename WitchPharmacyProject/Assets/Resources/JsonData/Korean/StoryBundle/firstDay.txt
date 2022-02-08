@@ -1,5 +1,4 @@
 ﻿<bundleName>{prologue1}
-<switch>{Cari,,Ruellia(nothing){up}}
 <nextStory>{fifthDay}
 <background>{counter(blur)}
 
