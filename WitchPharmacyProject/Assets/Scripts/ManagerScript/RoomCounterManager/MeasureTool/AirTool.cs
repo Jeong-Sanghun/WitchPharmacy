@@ -35,6 +35,7 @@ public class AirTool : MeasureTool
         targetAngle = Random.Range(-90f, 180f);
         handleParentPos = handleParentTransform.GetComponent<RectTransform>().anchoredPosition;
         ExplainLoad();
+        symptomTextDumy.fontSize = 150;
     }
 
 
@@ -50,7 +51,7 @@ public class AirTool : MeasureTool
     {
         if(!isAuto && !measureEnd && measureStarted)
         {
-            Vector2 mousePos = Input.mousePosition - screenPos;
+            Vector2 mousePos = Input.mousePosition - screenPos - (new Vector3(400,0,0));
             Vector2 handleVector = (mousePos - handleParentPos);
             float angle = Vector2.SignedAngle(Vector2.left,handleVector);
 
@@ -162,7 +163,7 @@ public class AirTool : MeasureTool
 
         }
         //StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
-        StartCoroutine(SceneManager.inst.MoveModuleRect_Linear(movingTool, Vector3.zero, 2));
+        StartCoroutine(SceneManager.inst.MoveModuleRect_Linear(movingTool, new Vector3(400,0,0),0.5f));
     }
 
     public override void OnNewVisitor(int symptomNum, int index, bool auto)

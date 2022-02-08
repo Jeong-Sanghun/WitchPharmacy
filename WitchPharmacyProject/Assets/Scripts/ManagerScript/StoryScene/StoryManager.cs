@@ -22,6 +22,8 @@ public class StoryManager : MonoBehaviour
     CharacterIndexToName characterIndexToName;
 
     [SerializeField]
+    SpriteRenderer middleCharacterSprite;
+    [SerializeField]
     SpriteRenderer[] characterSprite;
     [SerializeField]
     SpriteRenderer cutSceneBGSprite;
@@ -107,13 +109,37 @@ public class StoryManager : MonoBehaviour
 
     void OnWrapperStart()
     {
+        int characterCount = 0;
+        int middleCharacterIndex = 0;
         for (int i = 0; i < 4; i++)
         {
             if (nowWrapper.characterName[i] != null)
-                characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
-            else
-                characterSprite[i].sprite = null;
+            {
+                characterCount++;
+                middleCharacterIndex = i;
+            }
         }
+        if(characterCount != 1)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (nowWrapper.characterName[i] != null)
+                    characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
+                else
+                    characterSprite[i].sprite = null;
+            }
+            middleCharacterSprite.sprite = null;
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                characterSprite[i].sprite = null;
+            }
+            middleCharacterSprite.sprite = characterIndexToName.GetSprite(nowWrapper.characterName[middleCharacterIndex], nowWrapper.characterFeeling[middleCharacterIndex]);
+
+        }
+        
         for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
         {
             DialogEffect effect = nowWrapper.startEffectList[i];
@@ -305,16 +331,14 @@ public class StoryManager : MonoBehaviour
                 faded[i] = true;
                 //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
                 StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
-                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1, 1.1f, 0.5f));
-
+                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 0.9f, 1f, 0.5f));
             }
             else if(faded[i] && !nowConversation.fade[i])
             {
                 faded[i] = false;
                 //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
                 StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 1, 0.2f, 0.5f));
-                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1.1f, 1f, 0.5f));
-
+                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1f, 0.9f, 0.5f));
             }
         }
         nowConversationIndex++;

@@ -1,8 +1,8 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 7,
-    "coin": 1191,
+    "nowDay": 8,
+    "coin": 1006,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -147,6 +147,27 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
+            "billList": [
+                {
+                    "isPlus": true,
+                    "reason": 0,
+                    "changedCoin": 30
+                },
+                {
+                    "isPlus": false,
+                    "reason": 1,
+                    "changedCoin": 15
+                },
+                {
+                    "isPlus": false,
+                    "reason": 5,
+                    "changedCoin": 200
+                }
+            ]
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
             "billList": []
         }
     ],
@@ -172,11 +193,15 @@
         "earth+",
         "earth-",
         "air+",
-        "air-"
+        "air-",
+        "light+",
+        "light-"
     ],
     "owningMeasureToolList": [
         0,
-        1
+        1,
+        2,
+        3
     ],
     "owningOtherToolList": [
         "bookMark"
@@ -187,7 +212,8 @@
         "endMeasureToolResearchList": [
             "waterTool",
             "fireTool",
-            "earthTool"
+            "earthTool",
+            "airTool"
         ],
         "progressingMedicineResearchList": [],
         "endMedicineResearchList": [],
@@ -198,7 +224,8 @@
         "progressingBookResearchList": [],
         "endBookResearchList": [
             "earth",
-            "air"
+            "air",
+            "light"
         ],
         "progressingSpecialResearchList": [],
         "endSpecialResearchList": [],
@@ -209,7 +236,7 @@
         {
             "storyName": "thirdDay",
             "pickedRouteList": [
-                1
+                0
             ]
         }
     ],
@@ -291,15 +318,19 @@
         "thirdDay",
         "fourthDay2",
         "fifthDay",
-        "firstDay"
+        "firstDay",
+        "secondDay",
+        "thirdDay",
+        "fourthDay1"
     ],
     "readSpecialVisitorBundleList": [
         "Sanghun",
         "Lily1"
     ],
-    "nextStory": "secondDay",
+    "nextStory": "fifthDay",
     "nextLoadSceneName": "StoryScene",
     "nowSaveTime": 1,
     "nowRegion": 0,
-    "forcedRegion": "Library"
+    "forcedRegion": "",
+    "nowBossFile": ""
 }

@@ -131,6 +131,7 @@ public class MeasureToolManager : MonoBehaviour
         {
             existingUIObjects[i].SetActive(true);
         }
+        TabletManager.inst.TabletOpenButtonActive(true);
         measureToolExitButtonObject.SetActive(false);
     }
 
@@ -147,6 +148,7 @@ public class MeasureToolManager : MonoBehaviour
         {
             existingUIObjects[i].SetActive(false);
         }
+        TabletManager.inst.TabletOpenButtonActive(false);
         measureToolExitButtonObject.SetActive(true);
     }
     

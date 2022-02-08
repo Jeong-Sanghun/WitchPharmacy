@@ -83,7 +83,7 @@ public class FireTool : MeasureTool
             }
             MeasureEnd();
         }
-        StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, Vector3.zero, 2));
+        StartCoroutine(SceneManager.inst.MoveModule_Linear(toolObject, new Vector3(5,0,0), 0.5f));
     }
 
     

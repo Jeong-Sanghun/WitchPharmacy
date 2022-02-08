@@ -52,7 +52,7 @@ public class WaterTool : MeasureTool
         {
             nowGauge = 1000;
         }
-        StartCoroutine(SceneManager.inst.MoveModuleRect_Linear(movingTool, Vector3.zero, 2));
+        StartCoroutine(SceneManager.inst.MoveModuleRect_Linear(movingTool, new Vector3(513,0,0), 0.5f));
     }
 
     public void OnTouch()

@@ -167,7 +167,7 @@ public class EarthTool : MeasureTool
             }
         }
  
-        StartCoroutine(SceneManager.inst.MoveModule_Linear(movingObject, new Vector3(0,1.5f,0), 2));
+        StartCoroutine(SceneManager.inst.MoveModule_Linear(movingObject, new Vector3(0,1.5f,0), 0.5f));
     }
 
     public override void OnNewVisitor(int symptomNum, int index, bool auto)
