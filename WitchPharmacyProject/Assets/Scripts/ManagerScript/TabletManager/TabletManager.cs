@@ -12,6 +12,7 @@ public class TabletManager : MonoBehaviour
 
     GameManager gameManager;
     SaveDataClass saveData;
+    
     [SerializeField]
     TabletBillManager tabletBillManager;
     [SerializeField]
@@ -20,6 +21,8 @@ public class TabletManager : MonoBehaviour
     TabletSaveManager tabletSaveManager;
     [SerializeField]
     TabletTreeterManager tabletTreeterManager;
+    [SerializeField]
+    TabletCariManager tabletCariManager;
     [SerializeField]
     GameObject tabletCanvasParent;
     [SerializeField]
@@ -94,6 +97,7 @@ public class TabletManager : MonoBehaviour
     public void OnHomeButton()
     {
         wholeTabletParent.SetActive(true);
+        tabletCariManager.ChangeTabletType(TabletType.Main);
         tabletBillManager.WholeButtonOff();
         tabletDocumentManager.WholeButtonOff();
         tabletSaveManager.WholeButtonOff();
@@ -129,6 +133,7 @@ public class TabletManager : MonoBehaviour
     {
         tabletBillManager.SetBill();
         tabletTreeterManager.OnNextDay();
+        tabletCariManager.OnNextDay();
     }
 
     //tabletSavemanager에서 불러옴

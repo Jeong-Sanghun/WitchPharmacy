@@ -8,6 +8,10 @@ public class TabletBillManager : MonoBehaviour
 
     GameManager gameManager;
     SaveDataClass saveData;
+    [SerializeField]
+    TabletCariManager tabletCariManager;
+    BillCariDialogWrapper billCariDialogWrapper;
+    BillCariDialog nowBillCariDialog;
     List<OneDayBillWrapper> billWrapperList;
     List<OneDayBillButtonClass> wholeBillButtonClass;
     UILanguagePack languagePack;
@@ -104,6 +108,10 @@ public class TabletBillManager : MonoBehaviour
             MakeNewButton(billWrapperList[i]);
         }
 
+        JsonManager jsonManager = new JsonManager();
+        billCariDialogWrapper = jsonManager.ResourceDataLoad<BillCariDialogWrapper>("TabletCariDialog/Bill/BillCariDialogWrapper");
+
+        ChooseCariDialog();
     }
     //날짜 지나서 새로운거 사면 이거 호출.
     void MakeNewButton(OneDayBillWrapper wrapper)
@@ -277,6 +285,26 @@ public class TabletBillManager : MonoBehaviour
                 wholeBillButtonClass[saveData.nowDay].UpdatePropertyLine(reason, isPlus, coin, propertyOneLinePrefab, languagePack);
             }
         }
+        ChooseCariDialog();
+    }
+
+    void ChooseCariDialog()
+    {
+        nowBillCariDialog = null;
+        for (int i = 0; i < billCariDialogWrapper.billCariDialogArray.Length - 1; i++)
+        {
+            BillCariDialog[] arr = billCariDialogWrapper.billCariDialogArray;
+
+            if (saveData.coin >= arr[i].coinThreshold && saveData.coin < arr[i + 1].coinThreshold)
+            {
+                nowBillCariDialog = arr[i];
+                break;
+            }
+        }
+        if (nowBillCariDialog == null)
+        {
+            nowBillCariDialog = billCariDialogWrapper.billCariDialogArray[billCariDialogWrapper.billCariDialogArray.Length - 1];
+        }
     }
 
     public void BillOpenCloseButton(bool open)
@@ -284,7 +312,13 @@ public class TabletBillManager : MonoBehaviour
         if (open)
         {
             TabletManager.inst.ButtonHighlightActive(TabletComponent.Bill, false);
+            tabletCariManager.ChangeTabletType(TabletType.Bill);
         }
+        else
+        {
+            tabletCariManager.ChangeTabletType(TabletType.Main);
+        }
+
         billCanvasParent.SetActive(open);
     }
 
@@ -299,6 +333,11 @@ public class TabletBillManager : MonoBehaviour
             nowActivePropertyObject.SetActive(false);
 
         billCanvasParent.SetActive(false);
+    }
+
+    public BillCariDialog GetNowCariTalk()
+    {
+        return nowBillCariDialog;
     }
 
     void DayButtonDown(int index)

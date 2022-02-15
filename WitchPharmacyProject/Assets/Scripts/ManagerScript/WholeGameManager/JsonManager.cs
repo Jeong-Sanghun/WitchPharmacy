@@ -42,6 +42,7 @@ public class JsonManager    //SH
         builder.Append(dotJson);
 
         jsonText = JsonUtility.ToJson(saveData, true);
+        //ClassData to JsonText
         //이러면은 일단 데이터가 텍스트로 변환이 된다
         //jsonUtility를 이용하여 data인 WholeGameData를 json형식의 text로 바꾸어준다
 
@@ -71,7 +72,7 @@ public class JsonManager    //SH
         //파일스트림을 만들어준다. 파일모드를 open으로 해서 열어준다. 다 구글링이다
         TextAsset jsonString = Resources.Load<TextAsset>(builder.ToString());
         gameData = JsonUtility.FromJson<T>(jsonString.ToString());
-        
+       
         return gameData;
         //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
     }

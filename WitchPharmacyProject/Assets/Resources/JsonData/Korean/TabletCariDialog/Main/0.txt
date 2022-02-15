@@ -1,0 +1,26 @@
+{
+    "mainCariDialogArray": [
+        {
+            "feelingString": "angry1",
+            "dialog": "아 나 킹받아",
+            "firstButtonText": "왜?",
+            "secondButtonText": "뭐래",
+            "thirdButtonText": "응 그래"
+        },
+        {
+            "dialog": "그냥 그렇다고",
+            "firstButtonText": "알겠어",
+            "secondButtonText": "...뭐",
+            "thirdButtonText": "아니;;"
+        },
+        {
+            "feelingString": "talk",
+            "dialog": "됐어 나 이제 말 안해",
+            "firstButtonText": "그러등가"
+        },
+        {
+            "feelingString": "angry2",
+            "dialog": "흥"
+        }
+    ]
+}

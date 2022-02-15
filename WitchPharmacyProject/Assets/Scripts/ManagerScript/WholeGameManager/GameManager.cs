@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour //SH
         sceneManager = SceneManager.inst;
         tabletManager = TabletManager.inst;
         medicineDataWrapper = jsonManager.ResourceDataLoad<MedicineDataWrapper>("MedicineDataWrapper");
-        //DebugDataJson();
+        DebugDataJson();
 
         
         languagePack = jsonManager.ResourceDataLoad<UILanguagePack>("LanguagePack");
@@ -309,11 +309,16 @@ public class GameManager : MonoBehaviour //SH
         //RegionDataWrapper regionDataWrapper = new RegionDataWrapper();
         //jsonManager.SaveJson<RegionDataWrapper>(regionDataWrapper, "Narin");
 
-        BossDataWrapper bossDataWrapper = new BossDataWrapper();
-        bossDataWrapper.bossDataList.Add(new BossData());
-        bossDataWrapper.bossDataList.Add(new BossData());
-        bossDataWrapper.bossDataList.Add(new BossData());
-        jsonManager.SaveJson<BossDataWrapper>(bossDataWrapper, "BossDataWrapper");
+        //BossDataWrapper bossDataWrapper = new BossDataWrapper();
+        //bossDataWrapper.bossDataList.Add(new BossData());
+        //bossDataWrapper.bossDataList.Add(new BossData());
+        //bossDataWrapper.bossDataList.Add(new BossData());
+        //jsonManager.SaveJson<BossDataWrapper>(bossDataWrapper, "BossDataWrapper");
+
+        MainCariDialogCondition condition = new MainCariDialogCondition();
+        condition.appearingDayArray = new int[1];
+        condition.appearingDayArray[0] = 0;
+        jsonManager.SaveJson<MainCariDialogCondition>(condition, "MainCariDialogCondition");
 
 
         //for (int i = 0; i < 4; i++)

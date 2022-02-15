@@ -1,0 +1,24 @@
+{
+    "billCariDialogArray": [
+        {
+            "coinThreshold": "0",
+            "feelingString": "angry1",
+            "dialog": "돈이업서"
+        },
+        {
+            "coinThreshold": "100",
+            "feelingString": "angry2",
+            "dialog": "업ㄷㅅ다구"
+        },
+        {
+            "coinThreshold": "200",
+            "feelingString": "talk",
+            "dialog": "업숭"
+        },
+        {
+            "coinThreshold": "300",
+            "feelingString": "angry2",
+            "dialog": "좀있네"
+        }
+    ]
+}

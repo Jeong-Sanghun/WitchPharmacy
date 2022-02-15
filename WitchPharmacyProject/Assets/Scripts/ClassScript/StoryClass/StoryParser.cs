@@ -349,7 +349,6 @@ public class StoryParser
                             string name = builder.ToString();
                             nowWrapper.characterName[leftMiddleRight] = name;
                             nowWrapper.ingameName[leftMiddleRight] = characterIndexToName.NameTranslator(name, languagePack);
-                            nowMode = ParseMode.ClampFeeling;
                             builder.Clear();
                             nowMode = ParseMode.ClampEffect;
                             break;

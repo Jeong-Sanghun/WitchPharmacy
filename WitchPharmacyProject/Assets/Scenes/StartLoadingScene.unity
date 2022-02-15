@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc7a5f48ae50d34b9065e1e6bf8baa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabletCariManager: {fileID: 1728170844}
   billCanvasParent: {fileID: 1482620991}
   billTitle: {fileID: 1294335944}
   wholeGainTitleText: {fileID: 474831595}
@@ -751,7 +752,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 58700924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1728170844}
+        m_MethodName: NextDialogButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &58700924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2356,135 +2368,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254007286}
-  m_CullTransparentMesh: 0
---- !u!1 &266135411
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 266135412}
-  - component: {fileID: 266135415}
-  - component: {fileID: 266135414}
-  - component: {fileID: 266135413}
-  m_Layer: 0
-  m_Name: CariButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &266135412
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266135411}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 620625409}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 844.1, y: -251}
-  m_SizeDelta: {x: 154, y: 154}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &266135413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266135411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 266135414}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1445468279}
-        m_MethodName: WholeTreeterActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &266135414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266135411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b5a295d2202952f4ba1c3973731637e1, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &266135415
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266135411}
   m_CullTransparentMesh: 0
 --- !u!1 &267506564
 GameObject:
@@ -5731,9 +5614,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1445468279}
-        m_MethodName: WholeTreeterActive
-        m_Mode: 6
+      - m_Target: {fileID: 1728170844}
+        m_MethodName: MaximizeButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6470,7 +6353,6 @@ RectTransform:
   - {fileID: 1636363161}
   - {fileID: 1169059232}
   - {fileID: 2051307379}
-  - {fileID: 266135412}
   m_Father: {fileID: 135859573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9651,7 +9533,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 877198782}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1728170844}
+        m_MethodName: NextDialogButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &877198782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17731,6 +17624,7 @@ MonoBehaviour:
   tabletDocumentManager: {fileID: 1704496320}
   tabletSaveManager: {fileID: 1954067607}
   tabletTreeterManager: {fileID: 1445468279}
+  tabletCariManager: {fileID: 0}
   tabletCanvasParent: {fileID: 135859572}
   wholeTabletParent: {fileID: 650611830}
   homeButton: {fileID: 1941249112}
@@ -18645,7 +18539,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1627697074}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1728170844}
+        m_MethodName: NextDialogButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1627697074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19063,6 +18968,7 @@ GameObject:
   - component: {fileID: 1688756399}
   - component: {fileID: 1688756401}
   - component: {fileID: 1688756400}
+  - component: {fileID: 1688756402}
   m_Layer: 0
   m_Name: Cari
   m_TagString: Untagged
@@ -19126,6 +19032,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688756398}
   m_CullTransparentMesh: 0
+--- !u!114 &1688756402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688756398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1728170844}
+          m_MethodName: MinimizeButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1704496319
 GameObject:
   m_ObjectHideFlags: 0
@@ -19223,6 +19157,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5178295191d71544ebae82fc39c04b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabletBillManager: {fileID: 9946207}
+  minimizeParent: {fileID: 155234169}
+  minimizeTalkText: {fileID: 627013399}
+  maximizeParent: {fileID: 1304131477}
+  maximizeButtonObjectArray:
+  - {fileID: 1627697071}
+  - {fileID: 58700921}
+  - {fileID: 877198779}
+  maximizeButtonTextArray:
+  - {fileID: 643947740}
+  - {fileID: 900075676}
+  - {fileID: 517449363}
+  maximizeTalkText: {fileID: 1537756589}
 --- !u!1 &1747519263
 GameObject:
   m_ObjectHideFlags: 0
