@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Text;
+using UnityEngine.Rendering.PostProcessing;
 
 public class SceneManager : MonoBehaviour // JH
 {
@@ -191,6 +192,35 @@ public class SceneManager : MonoBehaviour // JH
         
         yield return null;
         moveModuleLinearRunning = false;
+    }
+
+    public IEnumerator VolumeModule(PostProcessVolume volume, bool finalOne, float time)
+    {
+        float timer = 0;
+        int one;
+        if (finalOne)
+        {
+            timer = 0;
+            while (timer < 1)
+            {
+                volume.weight = timer;
+                timer += Time.deltaTime / time;
+                yield return null;
+            }
+            volume.weight = 1;
+        }
+        else
+        {
+            timer = 1;
+            while (timer > 0)
+            {
+                volume.weight = timer;
+                timer -= Time.deltaTime / time;
+                yield return null;
+            }
+            volume.weight = 0;
+        }
+
     }
 
     public IEnumerator MoveModuleRect_Linear(GameObject i_Object, Vector3 i_Vector, float i_Time)

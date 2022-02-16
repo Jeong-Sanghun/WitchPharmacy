@@ -4,11 +4,11 @@ using UnityEngine;
 using System.Text;
 using System;
 
-public enum CharacterFeeling { nothing, angry,pain }
+public enum CharacterFeeling { Null,nothing, angry,pain, angry1, angry2, doubting, grin, hugesmile, notTalk, surprised, talk }
 public enum CharacterName
 {
     Ruellia, Cari, Jet, Lily, Iris, Ian,
-    Immanuel,Hyacinth,Kiddo,OldMan
+    Immanuel,Hyacinth,Kiddo, Anderson,Null
 }
 
 public class BackGroundPair
@@ -130,6 +130,15 @@ public class CharacterIndexToName
             return null;
         }
         CharacterName name = (CharacterName)Enum.Parse(typeof(CharacterName), fileName);
+        return languagePack.characterNameArray[(int)name];
+    }
+
+    public string NameTranslator(CharacterName name, UILanguagePack languagePack)
+    {
+        if (name ==  CharacterName.Null)
+        {
+            return null;
+        }
         return languagePack.characterNameArray[(int)name];
     }
 

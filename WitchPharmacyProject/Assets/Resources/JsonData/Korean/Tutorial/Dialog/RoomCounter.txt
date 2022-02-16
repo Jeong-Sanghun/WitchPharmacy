@@ -1,0 +1,346 @@
+{
+    "dialogArray": [
+        {
+            "actionKeyword": "VisitorUp"
+        },
+        {
+            "actionKeyword": "Delay",
+            "actionKeywordParameter": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "앤더슨 영감님께 약을 만들어 드려야 겠네요! 오늘 정신이 없으신 것 같은데 영감님을 치료하면서 생각을 정리해보자구요."
+        },
+        {
+            "typeString": "Dialog",
+            "actionKeyword": "VisitorBallonGlow",
+            "dialog": "영감님의 이야기를 유심히 듣고 어떤 속성에서 문제가 생겼는지 유추해봐요!"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "dialog": "자꾸만 바다로 돌아가야 할 것 같다는 생각이 든단 말이야."
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Ruellia",
+            "dialog": "어... 영감님 예전에는 바다에서 지내셨나요?"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "actionKeyword": "Delay",
+            "actionKeywordParameter": "1",
+            "dialog": "그러니까 약국에 온게다!! 나는 살면서 바다를 본 적이 없어."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "doubting",
+            "dialog": "보통은 손님의 말씀을 통해서 어떤 곳이 아픈지 짐작할 수 있어요.\n어…하지만 이렇게 가끔 알기 힘든 말씀을 하시는 분들도… 있긴 하죠"
+        },
+        {
+            "typeString": "Dialog",
+            "dialog": "바다라고 하면 물속성과 관련된 증상일까요…?\n대화만으로는 알기 힘드네요.."
+        },
+        {
+            "typeString": "Dialog",
+            "dialog": "주인님은 가끔 무언가 보인다고 하실 때가 있었죠… 뭔가 이상한게 보이세요? 가령 영감님 뒤에나 위쪽에.."
+        },
+        {
+            "typeString": "Dialog",
+            "dialog": "주인님은 가끔 무언가 보인다고 하실 때가 있었죠… 뭔가 이상한게 보이세요? 가령 영감님 뒤에나 위쪽에..",
+            "routeFirst": "투명한..물고기?",
+            "routeSecond": "물로 이루어진 물고기 형상?",
+            "routeFirstJump": "1",
+            "routeSecondJump": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "actionKeyword": "BookGlow",
+            "dialog": "음… 그러니까 물고기 형태의 무언가가 보인다는 말씀이시죠?\n그러면 예전에 주인님이 적어둔 노트에 일치하는게 있는지 찾아봐요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "actionKeyword": "RightPageGlow",
+            "dialog": "[Cari]\n음… 이 페이지에 물고기 관련된 것은 안보이네요.\n다음 페이지로 넘겨보실래요? 오른쪽 페이지를 터치하면 다음 장으로 넘길 수 있어요."
+        },
+        {
+            "actionKeyword": "Delay",
+            "actionKeywordParameter": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "EffectIconGlow",
+            "dialog": "여기 있네요! 물고기!\n자, 그럼 속성을 확인해보면.."
+        },
+        {
+            "actionKeyword": "Delay",
+            "actionKeywordParameter": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "dialog": "물++속성이네요.\n손님은 물 속성이 과잉이어서 저런 증상이 나타나게 된 것이었네요"
+        },
+        {
+            "typeString": "Dialog",
+            "actionKeyword": "NoteGlow",
+            "dialog": "이제 바깥쪽을 눌러 노트를 닫고 카운터로 돌아갑시다. "
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "actionKeyword": "CounterSymptomChartGlow",
+            "dialog": "이제 까먹지 않게 해당하는 증상을 기록해봅시다!\n메모지를 클릭 해 증상기록지를 열어보세요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "notTalk",
+            "actionKeyword": "WaterPlusGlow",
+            "dialog": "손님의 증상은 물++였으니, 해당하는 칸을 클릭해 체크해보세요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "actionKeyword": "CounterChartExitButtonGlow",
+            "dialog": "잘하셨습니다!\n여러 증상을 지닌 손님이 오셨을 때, 증상 기록지를 쓰면 덜 혼란스러울 거예요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "그러면 문제입니다!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "dialog": "물++ 속성의 증상을 지닌 이 손님께는 어떤 약을 드려야 할까요?",
+            "routeFirst": "물++ 속성의 약",
+            "routeSecond": "물-- 속성의 약",
+            "routeThird": "물리 속성의 약",
+            "routeFirstJump": "1",
+            "routeSecondJump": "2",
+            "routeThirdJump": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "feelingString": "angry1",
+            "actionKeyword": "Jump",
+            "actionKeywordParameter": "-2",
+            "dialog": "아니에요!!! 주인님 정신차려봐요.\n다시 대답할 기회를 드릴게요."
+        },
+        {
+            "typeString": "Dialog",
+            "feelingString": "grin",
+            "dialog": "맞아요! 증상과 반대되는 속성의 약을 드려야 하니, \n물++의 반대인 물--속성의 약을 드려야 합니다."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari\r",
+            "feelingString": "notTalk",
+            "actionKeyword": "ToRoomButtonGlow",
+            "dialog": "그러면 이제 조제실로 이동해 손님에게 맞는 약을 만들어봐요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "RoomSymptomChartGlow",
+            "dialog": "우선 어떤 속성의 약을 만들어야하는지 다시 확인해볼까요?\n증상기록지를 열어 다시 확인해봐요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "actionKeyword": "RoomChartExitButtonGlow",
+            "dialog": "이렇게 조제실에서도 증상기록지를 확인할 수 있어요.\n카운터에 다시 돌아가지 않아도 되서 편리하겠죠?"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "notTalk",
+            "dialog": "이제 물--속성의 약을 만들어봐요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "dialog": "약재들은 각각 두 가지 속성을 가지고 있어요. \n메마른 열망 약재를 한 번 확인해볼까요?"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "actionKeyword": "ItemForceChoose",
+            "dialog": "메마른 열망은 물- 불++속성을 가지고 있는걸 확인할 수 있어요.\n물속성을 1만큼 줄이고, 불 속성을 2 만큼 늘린다는 뜻이에요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "doubting",
+            "dialog": "우리는 물--속성만 가진 약을 만들어야 하는데, \n필요없는 불 속성이 끼어있네요..."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "약의 속성은 들어간 약재의 속성을 모두 합한 것으로 결정됩니다.\n따라서 여기에 다른 약재를 넣어 필요없는 속성을 없앨 수 있겠죠!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "dialog": "그렇다면 물- 불++ 속성을 가진 메마른 열망 약재에\n어떤 속성의 약재를 넣어야 물--속성의 약이 만들어질까요?",
+            "routeFirst": "물- 불--",
+            "routeSecond": "물+ 불--",
+            "routeThird": "불+ 물--",
+            "routeFirstJump": "2",
+            "routeSecondJump": "1",
+            "routeThirdJump": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "angry1",
+            "actionKeyword": "Jump",
+            "actionKeywordParameter": "-4",
+            "dialog": "아니에요! \n한 번 더 맞출 기회를 드릴게요"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "dialog": "맞습니다! 물- 불++ 속성의 약재와 물- 불-- 속성의 약재를 더하면 물--속성의 약이 만들어집니다."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "notTalk",
+            "dialog": "그럼 이제 두 약재를 찾아봐요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "dialog": "메마른 열망은 물- 불++ 속성을 가지고 있으니,\n더 큰 값을 가진 불속성이 주요속성이에요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "actionKeyword": "FireIconGlow",
+            "dialog": "인벤토리에서 불속성 아이콘을 클릭해서,\n불속성 약재들을 확인해볼까요?"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "WaterSubIconGlow",
+            "dialog": "이제 인벤토리에는 주요 속성이 불속성인 약재만 나타납니다!\n이제 보조속성으로 물속성을 선택해봅시다."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "actionKeyword": "PotGlow",
+            "dialog": "자 이제 메마른 열망 약재가 보이죠?\n약재를 드래그하거나 더블클릭해서 가마솥에 넣어봅시다."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "dialog": "이제 물- 불--속성을 가진 사막의 서리 약재를 넣어봐요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "actionKeyword": "CookButtonClick",
+            "dialog": "이제 가마솥을 클릭해 약을 만들어봅시다!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "actionKeyword": "TrayGlow",
+            "dialog": "약이 완성되었습니다!\n트레이에 약을 드래그해서 카운터로 옮길 수 있어요!"
+        },
+        {
+            "actionKeyword": "Delay",
+            "actionKeywordParameter": "1"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Ruellia",
+            "dialog": "여기요."
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "dialog": "얼마냐?"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Ruellia",
+            "dialog": "아니에요. 안 받을게요."
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "dialog": "뭣? 너 또 멍청한 거랑 착한 거랑 구분 못 허냐?"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Ruellia",
+            "dialog": "그게 아니라 늘 신세도 지고 있고-"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "dialog": "머어어엉청한 소리!"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "dialog": "내가 너한테 차 빌려준 건 빌려준 거고, 약을 파는 건 파는 거지."
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "actionKeyword": "GetCoin",
+            "actionKeywordParameter": "100",
+            "dialog": "됐으니 받아!"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Ruellia",
+            "dialog": "너, 너무 많은데요??"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "dialog": "넌 팁도 모르냐? 잔말 말고 받아."
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Anderson",
+            "dialog": "대신 구린 약 주는 날엔 합의금 제대로 받아낼 테니 그리 알고!"
+        },
+        {
+            "typeString": "VisitorDialog",
+            "characterString": "Ruellia",
+            "dialog": "가,감사합니-"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "hugesmile",
+            "actionKeyword": "SceneEnd",
+            "dialog": "잘하셨습니다!\n이제 제가 참견 안해도 괜찮겠네요"
+        }
+    ]
+}
