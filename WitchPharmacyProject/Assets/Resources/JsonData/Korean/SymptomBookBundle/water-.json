@@ -12,12 +12,6 @@
             "symptomIndexNumber": 1,
             "title": "나는 건기",
             "explain": "너는 우기"
-        },
-        {
-            "symptomAmountNumber": -1,
-            "symptomIndexNumber": 2,
-            "title": "나는 목이 말라요",
-            "explain": "물을 좀만 주세요"
         }
     ],
     "twoSymptomBookList": [
@@ -32,12 +26,6 @@
             "symptomIndexNumber": 1,
             "title": "건조기는 옷이 싫었다",
             "explain": "건조기야 달아나자"
-        },
-        {
-            "symptomAmountNumber": -2,
-            "symptomIndexNumber": 2,
-            "title": "물이 필요햇",
-            "explain": "햇햇햇"
         }
     ]
 }

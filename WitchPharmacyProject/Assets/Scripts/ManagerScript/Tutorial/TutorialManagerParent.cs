@@ -36,8 +36,14 @@ public class TutorialManagerParent : MonoBehaviour
     GameObject[] routeButtonArray;
     [SerializeField]
     protected PostProcessVolume blurVolume;
+    [SerializeField]
+    protected GameObject screenTouchCanvas;
     
 
+
+
+    public bool[] isGlowing;
+    protected ActionKeyword nowGlow;
     protected int nowDialogIndex;
     protected bool isDialogStopping;
     //bool isTalkingSystem;
@@ -66,6 +72,8 @@ public class TutorialManagerParent : MonoBehaviour
         fadeInImage.gameObject.SetActive(true);
         fadeInImage.color = new Color(0, 0, 0, 1);
         textFrameImage.color = new Color(1, 1, 1, 0);
+        characterImage.color = new Color(1, 1, 1, 0);
+        dialogNameText.color= new Color(1, 1, 1, 0);
         dialogText.text = "";
         dialogNameText.text = "";
         systemText.text = "";
@@ -76,15 +84,22 @@ public class TutorialManagerParent : MonoBehaviour
         isStarted = false;
         isRouteButtonAble = false;
         routeDialog = null;
-
         isRouting = false;
         nowCharacter = CharacterName.Null;
         nowType = DialogType.Null;
         nowFeeling = CharacterFeeling.Null;
+        nowGlow = ActionKeyword.Null;
+
 
         saveData = gameManager.saveData;
         StartCoroutine(sceneManager.FadeModule_Image(fadeInImage.gameObject, 1, 0, 0.5f)) ;
-       
+
+        isGlowing = new bool[Enum.GetValues(typeof(ActionKeyword)).Length];
+
+        for (int i = 0; i < isGlowing.Length; i++)
+        {
+            isGlowing[i] = false;
+        }
 
 
     }
@@ -126,7 +141,7 @@ public class TutorialManagerParent : MonoBehaviour
         }
         
         TutorialDialog nowDialog = dialogWrapper.dialogArray[nowDialogIndex];
-
+        screenTouchCanvas.SetActive(true);
 
 
         PrintDialog();
@@ -271,10 +286,10 @@ public class TutorialManagerParent : MonoBehaviour
 
     protected virtual void OnActionKeyword()
     {
-        bool stop = false;
-        if (nowAction.action == ActionKeyword.Delay)
+        bool stop = true;
+        if (nowAction.action == ActionKeyword.Jump)
         {
-            stop = true;
+            stop = false;
         }
         OverrideAction();
         if (!stop)
@@ -292,6 +307,7 @@ public class TutorialManagerParent : MonoBehaviour
         switch (nowAction.action)
         {
             case ActionKeyword.Delay:
+                Debug.Log(nowAction.parameter);
                 StartCoroutine(InvokerCoroutine(nowAction.parameter, NextDialog));
                 break;
             case ActionKeyword.Jump:
@@ -315,8 +331,10 @@ public class TutorialManagerParent : MonoBehaviour
         {
             StartCoroutine(sceneManager.FadeModule_Image(characterImage.gameObject, 1, 0, 0.7f));
             StartCoroutine(sceneManager.FadeModule_Image(textFrameImage.gameObject, 1, 0, 0.7f));
-            dialogText.gameObject.SetActive(false);
-            dialogNameText.gameObject.SetActive(false);
+            StartCoroutine(sceneManager.FadeModule_Text(dialogNameText, 1, 0, 0.7f));
+            StartCoroutine(sceneManager.FadeModule_Text(dialogText, 1, 0, 0.7f));
+            //dialogText.gameObject.SetActive(false);
+            //dialogNameText.gameObject.SetActive(false);
         }
         else
         {
@@ -324,10 +342,10 @@ public class TutorialManagerParent : MonoBehaviour
             dialogText.gameObject.SetActive(true);
             dialogNameText.gameObject.SetActive(true);
             dialogText.text = "";
-            dialogNameText.text = "";
             StartCoroutine(sceneManager.FadeModule_Image(characterImage.gameObject, 0, 1, 0.7f));
             StartCoroutine(sceneManager.FadeModule_Image(textFrameImage.gameObject, 0, 1, 0.7f));
-
+            StartCoroutine(sceneManager.FadeModule_Text(dialogNameText, 0, 1, 0.7f));
+            StartCoroutine(sceneManager.FadeModule_Text(dialogText, 0, 1, 0.7f));
         }
     }
 
@@ -335,6 +353,7 @@ public class TutorialManagerParent : MonoBehaviour
     protected IEnumerator InvokerCoroutine(float time, Action method)
     {
         yield return new WaitForSeconds(time);
+        Debug.Log("어디여");
         isStarted = true;
         method();
     }
@@ -507,4 +526,77 @@ public class TutorialManagerParent : MonoBehaviour
     {
         isRouteButtonAble = true;
     }
+
+    protected void Glow(SpriteRenderer sprite,int param)
+    {
+        screenTouchCanvas.SetActive(false);
+        StartCoroutine(GlowCoroutine(sprite, param));
+    }
+
+    protected void Glow(Image sprite,int param)
+    {
+        screenTouchCanvas.SetActive(false);
+        StartCoroutine(GlowCoroutine(sprite, param));
+    }
+
+    protected IEnumerator GlowCoroutine(SpriteRenderer sprite,int param)
+    {
+        float timer = -0.5f;
+        int one = 1;
+        int targetIndex = param + nowDialogIndex;
+        Color originColor = sprite.color;
+        sprite.gameObject.SetActive(true);
+        sprite.color = new Color(originColor.r, originColor.g, originColor.b, 0);
+        while (nowDialogIndex != targetIndex)
+        {
+            timer += Time.deltaTime * one;
+            sprite.color = new Color(originColor.r, originColor.g, originColor.b, timer+0.5f);
+            if (Mathf.Abs(timer) >= 0.5f)
+            {
+                one *= -1;
+            }
+            yield return null;
+        }
+        sprite.gameObject.SetActive(false);
+
+    }
+    protected IEnumerator GlowCoroutine(Image sprite,int param)
+    {
+        float timer = -0.5f;
+        int one = 1;
+        int targetIndex = param + nowDialogIndex;
+        Color originColor = sprite.color;
+        sprite.gameObject.SetActive(true);
+        sprite.color = new Color(originColor.r, originColor.g, originColor.b, 0);
+        while(nowDialogIndex != targetIndex)
+        {
+            timer += Time.deltaTime * one;
+            sprite.color = new Color(originColor.r, originColor.g, originColor.b, timer+0.5f);
+            if (Mathf.Abs(timer) >= 0.5f)
+            {
+                one *= -1;
+            }
+            yield return null;
+        }
+        sprite.gameObject.SetActive(false);
+
+    }
+
+    public void GlowNextDialog(string action)
+    {
+        ActionKeyword nowAction = (ActionKeyword)Enum.Parse(typeof(ActionKeyword), action);
+        if(nowAction != nowGlow)
+        {
+            return;
+        }
+        if (isGlowing[(int)nowGlow] == true)
+        {
+            NextDialog();
+
+            isGlowing[(int)nowGlow] = false;
+            nowGlow = ActionKeyword.Null;
+        }
+  
+    }
+
 }

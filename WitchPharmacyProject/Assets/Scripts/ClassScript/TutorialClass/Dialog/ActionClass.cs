@@ -4,11 +4,12 @@ using UnityEngine;
 
 
 
+[System.Serializable]
 public enum ActionKeyword
 {
     Null,VisitorUp,VisitorDown,VisitorBallonGlow,
     Delay,BookGlow,RightPageGlow,EffectIconGlow,
-    NoteGlow,CounterSymptomChartGlow, WaterPlusGlow,
+    ExitGlow,CounterSymptomChartGlow, WaterPlusGlow,
     CounterChartExitButtonGlow,Jump, ToRoomButtonGlow,
     RoomSymptomChartGlow, RoomChartExitButtonGlow,
     ItemForceChoose, FireIconGlow, WaterSubIconGlow,
