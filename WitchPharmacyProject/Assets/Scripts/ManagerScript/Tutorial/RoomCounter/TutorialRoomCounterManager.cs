@@ -41,6 +41,12 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     Image waterPlusGlow;
     [SerializeField]
     Image counterChartExitButtonGlow;
+    [SerializeField]
+    Image toRoomButtonGlow;
+    [SerializeField]
+    Image roomSymptomChartGlow;
+    [SerializeField]
+    SpriteRenderer trayGlow;
 
     [SerializeField]
     GameObject visitorObject;
@@ -156,6 +162,15 @@ public class TutorialRoomCounterManager : TutorialManagerParent
             case ActionKeyword.CounterChartExitButtonGlow:
                 CounterChartExitButtonGlow();
                 break;
+            case ActionKeyword.ToRoomButtonGlow:
+                ToRoomButtonGlow();
+                break;
+            case ActionKeyword.RoomSymptomChartGlow:
+                RoomSymptomChartGlow();
+                break;
+            case ActionKeyword.TrayGlow:
+                TrayGlow();
+                break;
         }
     }
     
@@ -220,6 +235,27 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         Glow(counterChartExitButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.CounterChartExitButtonGlow;
         isGlowing[(int)ActionKeyword.CounterChartExitButtonGlow] = true;
+    }
+    void ToRoomButtonGlow()
+    {
+        TextFrameToggle(false);
+        Glow(toRoomButtonGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.ToRoomButtonGlow;
+        isGlowing[(int)ActionKeyword.ToRoomButtonGlow] = true;
+    }
+    void RoomSymptomChartGlow()
+    {
+        TextFrameToggle(false);
+        Glow(roomSymptomChartGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.RoomSymptomChartGlow;
+        isGlowing[(int)ActionKeyword.RoomSymptomChartGlow] = true;
+    }
+    void TrayGlow()
+    {
+        TextFrameToggle(false);
+        Glow(trayGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.TrayGlow;
+        isGlowing[(int)ActionKeyword.TrayGlow] = true;
     }
 
 

@@ -163,7 +163,7 @@
             "typeString": "Dialog",
             "characterString": "Cari",
             "feelingString": "grin",
-            "actionKeyword": "RoomChartExitButtonGlow",
+            "actionKeyword": "CounterChartExitButtonGlow",
             "actionKeywordParameter": "1",
             "dialog": "이렇게 조제실에서도 증상기록지를 확인할 수 있어요.\n카운터에 다시 돌아가지 않아도 되서 편리하겠죠?"
         },

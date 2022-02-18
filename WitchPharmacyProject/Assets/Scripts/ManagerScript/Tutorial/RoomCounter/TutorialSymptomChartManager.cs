@@ -17,7 +17,8 @@ public class TutorialSymptomChartManager : MonoBehaviour
         if (turnOn)
         {
             Debug.Log("눌림");
-            if (tutorialManager.isGlowing[(int)ActionKeyword.CounterSymptomChartGlow] == false)
+            if (tutorialManager.isGlowing[(int)ActionKeyword.CounterSymptomChartGlow] == false
+                && tutorialManager.isGlowing[(int)ActionKeyword.RoomSymptomChartGlow] == false)
             {
                 return;
             }
