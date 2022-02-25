@@ -46,7 +46,9 @@ public class MedicineManager : MonoBehaviour    //SH
     [SerializeField]
     GameObject scrollObject;
 
-    
+    VisitorClass nowVisitor;
+    [SerializeField]
+    GameObject binObject;
 
     [SerializeField]
     Image[] propertyMainButtonImageArray;
@@ -129,9 +131,6 @@ public class MedicineManager : MonoBehaviour    //SH
     //[HideInInspector]
     //public bool nowInRoom;
 
-    VisitorClass nowVisitor;
-    [SerializeField]
-    GameObject binObject;
     [SerializeField]
     Text usedCoinText;
 
