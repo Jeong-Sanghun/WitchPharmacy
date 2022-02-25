@@ -8,6 +8,9 @@ using System.Text;
 public class TutorialMedicineManager : MonoBehaviour
 {
     [SerializeField]
+    TutorialRoomCounterManager roomCounterManager;
+   
+    [SerializeField]
     TutorialCounterManager counterManager;
     [SerializeField]
     TutorialCookedMedicineManager cookedMedicineManager;
@@ -109,7 +112,6 @@ public class TutorialMedicineManager : MonoBehaviour
     GameObject cookButtonObject;
     [SerializeField]
     GameObject cookedMedicinePrefab;
-    Vector3 cookedMedicineCounterPos;
 
     //현재 조제실에 있는가.
     //[HideInInspector]
@@ -130,12 +132,18 @@ public class TutorialMedicineManager : MonoBehaviour
     //Animator cookAnimator;
     float doubleClickTimer;
     int doubleClickIndex;
+    int frostItemIndex = 0;
+    int desireItemIndex = 0;
+    bool frostAdded = false;
+    bool desireAdded = false;
+    bool onStartArrangement = true;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.singleton;
         medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
+        owningMedicineList = new List<OwningMedicineClass>();
         AddMedicineBySymptom(gameManager.medicineDataWrapper, Symptom.water, Symptom.fire);
         //ownedMedicineList = saveData.ownedMedicineList;
         isDraggingMedicineFromPot = false;
@@ -156,8 +164,6 @@ public class TutorialMedicineManager : MonoBehaviour
         isPotCooked = false;
         cookButtonObject.SetActive(false);
 
-
-        cookedMedicineCounterPos = new Vector3(-100, -555, 0);
         doubleClickTimer = 0;
 
 
@@ -220,26 +226,46 @@ public class TutorialMedicineManager : MonoBehaviour
             //wholeMedicineButtonList의 index는 바로 아랫줄과 onButtonUp Down Drag함수에서 사용하니 medicineDictionary와 혼동하지 않도록 유의
             //정훈아 미안해 이거 주석 다 못적겠어. 그냥 그러려니 해. 셋업이야.
 
-            int delegateIndex = buttonIndex;
-            Button button = buttonClass.buttonObject.GetComponent<Button>();
-            button.onClick.AddListener(() => OnButtonDown(delegateIndex));
+            if(medicine.GetFirstSymptom() == Symptom.water && medicine.GetSecondSymptom() == Symptom.fire)
+            {
+                if((medicine.firstNumber==-1 && medicine.secondNumber == 2)
+                    || (medicine.firstNumber == -1 && medicine.secondNumber == -2))
+                {
+                    if(medicine.secondNumber == 2)
+                    {
+                        desireItemIndex = index;
+                        roomCounterManager.desireItemGlow = buttonClass.buttonObject.transform.
+                            GetChild(6).GetComponent<Image>();
+                    }
+                    else if(medicine.secondNumber == -2)
+                    {
+                        frostItemIndex = index;
+                        roomCounterManager.frostItemGlow = buttonClass.buttonObject.transform.
+                            GetChild(6).GetComponent<Image>();
+                    }
+                    int delegateIndex = buttonIndex;
+                    Button button = buttonClass.buttonObject.GetComponent<Button>();
+                    button.onClick.AddListener(() => OnButtonDown(delegateIndex));
 
 
-            //scrollView의 각 버튼마다 index에 맞는 eventTrigger를 심어줘야함.
-            Transform iconObject = buttonObject.transform.GetChild(1);
-            EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
+                    //scrollView의 각 버튼마다 index에 맞는 eventTrigger를 심어줘야함.
+                    Transform iconObject = buttonObject.transform.GetChild(1);
+                    EventTrigger buttonEvent = iconObject.GetComponent<EventTrigger>();
 
-            //버튼 이벤트
-            EventTrigger.Entry entry2 = new EventTrigger.Entry();
-            entry2.eventID = EventTriggerType.Drag;
-            entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
-            buttonEvent.triggers.Add(entry2);
+                    //버튼 이벤트
+                    EventTrigger.Entry entry2 = new EventTrigger.Entry();
+                    entry2.eventID = EventTriggerType.Drag;
+                    entry2.callback.AddListener((data) => { OnButtonDrag((PointerEventData)data, delegateIndex); });
+                    buttonEvent.triggers.Add(entry2);
 
-            //속성창 이벤트
-            EventTrigger.Entry entry3 = new EventTrigger.Entry();
-            entry3.eventID = EventTriggerType.PointerDown;
-            entry3.callback.AddListener((data) => { OnButtonDown(delegateIndex); });
-            propertyEvent.triggers.Add(entry3);
+                    //속성창 이벤트
+                    EventTrigger.Entry entry3 = new EventTrigger.Entry();
+                    entry3.eventID = EventTriggerType.PointerDown;
+                    entry3.callback.AddListener((data) => { OnButtonDown(delegateIndex); });
+                    propertyEvent.triggers.Add(entry3);
+                }
+            }
+            
 
             propertyEvent.transform.GetChild(1).GetComponent<EventTrigger>().enabled = false;
 
@@ -256,7 +282,7 @@ public class TutorialMedicineManager : MonoBehaviour
 
         //SpecialScrollAlign();
         //PropertyListButton(0);
-        PropertyListMainButton(0);
+        PropertyListMainButton(1);
 
     }
 
@@ -299,7 +325,9 @@ public class TutorialMedicineManager : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButton(0) && isPotCooked == false && isDraggingMedicineFromPot == true)
+        if (Input.GetMouseButton(0) && isPotCooked == false && isDraggingMedicineFromPot == true
+            && (roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow] ||
+            roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow]))
         {
             if (draggingObject != null)
             {
@@ -314,6 +342,22 @@ public class TutorialMedicineManager : MonoBehaviour
     void AddMedicineToPot()
     {
         if (isPotCooked)
+        {
+            return;
+        }
+        bool desire = roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow];
+        bool frost = roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow];
+        int medicineIndex = wholeMedicineButtonList[nowButtonIndex].medicineIndex;
+        if (desire==false && frost == false)
+        {
+            return;
+        }
+
+        if (medicineIndex == frostItemIndex && frostAdded == true)
+        {
+            return;
+        }
+        if (medicineIndex == desireItemIndex && desireAdded == true)
         {
             return;
         }
@@ -360,6 +404,16 @@ public class TutorialMedicineManager : MonoBehaviour
         //    Debug.Log("뭐야");
         //    symptomChartManager.ChangeSymptomChartText();
         //}
+        if (medicineIndex == frostItemIndex)
+        {
+            frostAdded = true;
+            roomCounterManager.GlowNextDialog("AddFrostGlow");
+        }
+        if (medicineIndex == desireItemIndex)
+        {
+            desireAdded = true;
+            roomCounterManager.GlowNextDialog("AddDesireGlow");
+        }
 
 
 
@@ -368,19 +422,23 @@ public class TutorialMedicineManager : MonoBehaviour
 
     public void PropertyListMainButton(int index)
     {
-
+        if (roomCounterManager.isGlowing[(int)ActionKeyword.FireIconGlow] == false
+            && onStartArrangement == false)
+        {
+            return;
+        }
         int buttonQuantity = 0;
         if (isMainButtonOn[index] == true)
         {
-            propertyMainButtonImageArray[index].gameObject.SetActive(false);
-            propertySubButtonLockArray[index].SetActive(false);
-            propertySubButtonComponentArray[index].interactable = false;
-            propertySubListParent.SetActive(false);
-            isMainButtonOn[index] = false;
-            for (int i = 0; i < wholeMedicineButtonList.Count; i++)
-            {
-                wholeMedicineButtonList[i].isActive = false;
-            }
+            //propertyMainButtonImageArray[index].gameObject.SetActive(false);
+            //propertySubButtonLockArray[index].SetActive(false);
+            //propertySubButtonComponentArray[index].interactable = false;
+            //propertySubListParent.SetActive(false);
+            //isMainButtonOn[index] = false;
+            //for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+            //{
+            //    wholeMedicineButtonList[i].isActive = false;
+            //}
         }
         else
         {
@@ -449,11 +507,24 @@ public class TutorialMedicineManager : MonoBehaviour
         }
 
         regularScrollContent.sizeDelta = new Vector2(0, 186 * buttonQuantity);
+        if (onStartArrangement == true)
+        {
+            onStartArrangement = false;
+        }
+        else
+        {
+            roomCounterManager.GlowNextDialog("FireIconGlow");
+        }
+        
+
     }
 
     public void PropertyListSubButton(int index)
     {
-
+        if(roomCounterManager.isGlowing[(int)ActionKeyword.WaterSubIconGlow] == false)
+        {
+            return;
+        }
         int buttonQuantity = 0;
         if (isSubButtonOn[index] == true)
         {
@@ -537,6 +608,7 @@ public class TutorialMedicineManager : MonoBehaviour
         }
 
         regularScrollContent.sizeDelta = new Vector2(0, 186 * buttonQuantity);
+        roomCounterManager.GlowNextDialog("WaterSubIconGlow");
     }
 
 
@@ -546,7 +618,11 @@ public class TutorialMedicineManager : MonoBehaviour
     //버튼을 드래그해서 팟에 넣는거.
     void OnButtonDrag(PointerEventData data, int index)
     {
-
+        if (roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow] == false
+            && roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow] == false)
+        {
+            return;
+        }
         if (isPotCooked)
         {
             return;
@@ -563,6 +639,11 @@ public class TutorialMedicineManager : MonoBehaviour
     //드래그하고서 클릭 뗐을 때
     void OnButtonUp()
     {
+        if (roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow] == false
+           && roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow] == false)
+        {
+            return;
+        }
         if (isPotCooked)
         {
             return;
@@ -597,32 +678,47 @@ public class TutorialMedicineManager : MonoBehaviour
     //약재 하나 버튼 클릭했을 때
     public void OnButtonDown(int index)
     {
-        if (nowButtonIndex == index)
+        bool choose = roomCounterManager.isGlowing[(int)ActionKeyword.ItemForceChoose];
+        bool desire = roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow];
+        bool frost = roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow];
+
+
+        if (choose == true || desire == true || frost == true)
         {
-            wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
-            wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
-            wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-            AddMedicineToPot();
-            nowButtonIndex = -1;
-        }
-        else
-        {
-            wholeMedicineButtonList[index].propertyObject.SetActive(true);
-            wholeMedicineButtonList[index].medicineNameText.fontStyle = FontStyle.Bold;
-            wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.white;
-            if (nowButtonIndex != -1)
+
+            if (doubleClickIndex == index)
+            {
+                AddMedicineToPot();
+            }
+            if (nowButtonIndex == index)
             {
                 wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
                 wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
                 wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+
+                nowButtonIndex = -1;
             }
-            nowButtonIndex = index;
+            else
+            {
+                wholeMedicineButtonList[index].propertyObject.SetActive(true);
+                wholeMedicineButtonList[index].medicineNameText.fontStyle = FontStyle.Bold;
+                wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.white;
+                if (nowButtonIndex != -1)
+                {
+                    wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
+                    wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
+                    wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                }
+                nowButtonIndex = index;
+            }
+            doubleClickIndex = index;
+            if (choose == true)
+            {
+                roomCounterManager.GlowNextDialog("ItemForceChoose");
+            }
+
         }
 
-
-
-
-        dragged = false;
 
     }
 

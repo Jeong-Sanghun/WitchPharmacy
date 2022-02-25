@@ -23,7 +23,6 @@ public class TutorialCounterManager : MonoBehaviour //SH
     List<MedicineClass> ownedMedicineList;
     //Dictionary<int,int> owningMedicineDictionary;
     //List<MedicineClass> owningMedicineList;
-    List<MedicineClass> medicineDataList;
 
 
     //SpecialVisitorClass nowSpecialVisitor;
@@ -49,9 +48,6 @@ public class TutorialCounterManager : MonoBehaviour //SH
     Text gainedCoinText;
     Vector3 gainedCoinObjectOriginPos;
 
-    [SerializeField]
-    Image gainedMedicineImage;
-    Vector3 gainedMedicineObjectOriginPos;
 
     [SerializeField]
     Text wholeCoinText;
@@ -68,7 +64,6 @@ public class TutorialCounterManager : MonoBehaviour //SH
     {
         gameManager = GameManager.singleton;
         sceneManager = SceneManager.inst;
-        medicineDataList = gameManager.medicineDataWrapper.medicineDataList;
         nowCoin = 100;
         //ownedMedicineIndexList = saveData.ownedMedicineList;
         specialMedicineDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
@@ -77,7 +72,6 @@ public class TutorialCounterManager : MonoBehaviour //SH
         endSales = false;
 
         gainedCoinObjectOriginPos = gainedCoinText.transform.position;
-        gainedMedicineObjectOriginPos = gainedMedicineImage.transform.position;
 
         wholeCoinText.text = nowCoin.ToString();
 

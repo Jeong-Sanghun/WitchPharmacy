@@ -413,7 +413,7 @@ public class TutorialManagerParent : MonoBehaviour
             yield return null;
         }
 
-        TextFrameToggle(false);
+        //TextFrameToggle(false);
         yield return new WaitForSeconds(0.8f);
         RouteButtonActive();
 

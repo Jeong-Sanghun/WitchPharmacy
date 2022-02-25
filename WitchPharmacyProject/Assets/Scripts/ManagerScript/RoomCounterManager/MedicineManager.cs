@@ -925,12 +925,16 @@ public class MedicineManager : MonoBehaviour    //SH
     //약재 하나 버튼 클릭했을 때
     public void OnButtonDown(int index)
     {
+        if(doubleClickIndex == index)
+        {
+            AddMedicineToPot();
+        }
         if(nowButtonIndex == index)
         {
             wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
             wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
             wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-            AddMedicineToPot();
+
             nowButtonIndex = -1;
         }
         else
@@ -944,6 +948,7 @@ public class MedicineManager : MonoBehaviour    //SH
                 wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
                 wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
             }
+            doubleClickIndex = index;
             nowButtonIndex = index;
         }
 

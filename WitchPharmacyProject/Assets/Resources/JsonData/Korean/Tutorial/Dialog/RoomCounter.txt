@@ -41,10 +41,6 @@
         },
         {
             "typeString": "Dialog",
-            "dialog": "주인님은 가끔 무언가 보인다고 하실 때가 있었죠… 뭔가 이상한게 보이세요? 가령 영감님 뒤에나 위쪽에.."
-        },
-        {
-            "typeString": "Dialog",
             "dialog": "주인님은 가끔 무언가 보인다고 하실 때가 있었죠… 뭔가 이상한게 보이세요? 가령 영감님 뒤에나 위쪽에..",
             "routeFirst": "투명한..물고기?",
             "routeSecond": "물로 이루어진 물고기 형상?",
@@ -252,13 +248,14 @@
         {
             "typeString": "Dialog",
             "characterString": "Cari",
-            "actionKeyword": "PotGlow",
+            "actionKeyword": "AddDesireGlow",
             "actionKeywordParameter": "1",
             "dialog": "자 이제 메마른 열망 약재가 보이죠?\n약재를 드래그하거나 더블클릭해서 가마솥에 넣어봅시다."
         },
         {
             "typeString": "Dialog",
             "characterString": "Cari",
+            "actionKeyword": "AddFrostGlow",
             "dialog": "이제 물- 불--속성을 가진 사막의 서리 약재를 넣어봐요!"
         },
         {

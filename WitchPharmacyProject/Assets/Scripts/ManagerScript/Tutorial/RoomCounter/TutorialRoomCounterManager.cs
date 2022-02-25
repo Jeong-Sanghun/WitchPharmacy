@@ -47,6 +47,17 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     Image roomSymptomChartGlow;
     [SerializeField]
     SpriteRenderer trayGlow;
+    [HideInInspector]
+    public Image frostItemGlow;
+    [HideInInspector]
+    public Image desireItemGlow;
+
+    [SerializeField]
+    Image fireIconGlow;
+    [SerializeField]
+    Image waterIconGlow;
+    [SerializeField]
+    Image potGlow;
 
     [SerializeField]
     GameObject visitorObject;
@@ -171,6 +182,21 @@ public class TutorialRoomCounterManager : TutorialManagerParent
             case ActionKeyword.TrayGlow:
                 TrayGlow();
                 break;
+            case ActionKeyword.ItemForceChoose:
+                ItemForceChoose();
+                break;
+            case ActionKeyword.FireIconGlow:
+                FireIconGlow();
+                break;
+            case ActionKeyword.WaterSubIconGlow:
+                WaterIconGlow();
+                break;
+            case ActionKeyword.AddDesireGlow:
+                AddDesireGlow();
+                break;
+            case ActionKeyword.AddFrostGlow:
+                AddFrostGlow();
+                break;
         }
     }
     
@@ -258,5 +284,40 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         isGlowing[(int)ActionKeyword.TrayGlow] = true;
     }
 
+    void ItemForceChoose()
+    {
+        TextFrameToggle(false);
+        Glow(desireItemGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.ItemForceChoose;
+        isGlowing[(int)ActionKeyword.ItemForceChoose] = true;
+    }
 
+    void FireIconGlow()
+    {
+        TextFrameToggle(false);
+        Glow(fireIconGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.FireIconGlow;
+        isGlowing[(int)ActionKeyword.FireIconGlow] = true;
+    }
+    void WaterIconGlow()
+    {
+        TextFrameToggle(false);
+        Glow(waterIconGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.WaterSubIconGlow;
+        isGlowing[(int)ActionKeyword.WaterSubIconGlow] = true;
+    }
+    void AddDesireGlow()
+    {
+        TextFrameToggle(false);
+        Glow(desireItemGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.AddDesireGlow;
+        isGlowing[(int)ActionKeyword.AddDesireGlow] = true;
+    }
+    void AddFrostGlow()
+    {
+        TextFrameToggle(false);
+        Glow(desireItemGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.AddFrostGlow;
+        isGlowing[(int)ActionKeyword.AddFrostGlow] = true;
+    }
 }
