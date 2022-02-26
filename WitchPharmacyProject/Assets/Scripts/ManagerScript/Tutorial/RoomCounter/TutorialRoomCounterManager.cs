@@ -7,6 +7,8 @@ using System;
 public class TutorialRoomCounterManager : TutorialManagerParent
 {
     [SerializeField]
+    TutorialCounterManager counterManager;
+    [SerializeField]
     Image visitorBallonImage;
     [SerializeField]
     Image ruelliaBallonImage;
@@ -71,6 +73,10 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         ruelliaNameText.text = characterIndexToName.NameTranslator(CharacterName.Ruellia, languagePack);
         isBallonActive = false;
 
+        visitorText.gameObject.SetActive(false);
+        ruelliaText.gameObject.SetActive(false);
+        visitorNameText.gameObject.SetActive(false);
+        ruelliaNameText.gameObject.SetActive(false);
     }
 
 
@@ -88,7 +94,10 @@ public class TutorialRoomCounterManager : TutorialManagerParent
                 break;
             case DialogType.VisitorDialog:
                 TextFrameToggle(false);
-                BallonActiveTrue();
+                if (nowCharacter != CharacterName.Ruellia)
+                {
+                    visitorNameText.text = characterIndexToName.NameTranslator(nowCharacter, languagePack);
+                }
                 if (nowCharacter == CharacterName.Ruellia)
                 {
                     nowTextComponent = ruelliaText;
@@ -96,8 +105,16 @@ public class TutorialRoomCounterManager : TutorialManagerParent
                 else
                 {
                     nowTextComponent = visitorText;
-                    visitorNameText.text = characterIndexToName.NameTranslator(nowCharacter, languagePack);
                 }
+                if (isBallonActive == false)
+                {
+                    BallonActiveTrue();
+                    isDialogStopping = true;
+                    StartCoroutine(InvokerCoroutine(1, NextDialog));
+                    return;
+                }
+
+
                 break;
             default:
                 //일단 암것도 하지말아봐.
@@ -115,6 +132,12 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         isBallonActive = true;
         visitorText.gameObject.SetActive(true);
         ruelliaText.gameObject.SetActive(true);
+        visitorNameText.gameObject.SetActive(true);
+        ruelliaNameText.gameObject.SetActive(true);
+        StartCoroutine(sceneManager.FadeModule_Text(visitorText, 0, 1, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(ruelliaText, 0, 1, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(visitorNameText, 0, 1, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(ruelliaNameText, 0, 1, 1));
         visitorText.text = "";
         ruelliaText.text = "";
         visitorBallonImage.color = new Color(1, 1, 1, 0);
@@ -135,7 +158,10 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         ruelliaBallonImage.color = new Color(1, 1, 1, 1);
         StartCoroutine(sceneManager.FadeModule_Image(ruelliaBallonImage.gameObject, 1, 0, 1));
         StartCoroutine(sceneManager.FadeModule_Image(visitorBallonImage.gameObject, 1, 0, 1));
-
+        StartCoroutine(sceneManager.FadeModule_Text(visitorText, 1, 0, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(ruelliaText, 1, 0, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(visitorNameText, 1, 0, 1));
+        StartCoroutine(sceneManager.FadeModule_Text(ruelliaNameText, 1, 0, 1));
 
         //visitorText.gameObject.SetActive(false);
         //ruelliaText.gameObject.SetActive(false);
@@ -189,13 +215,19 @@ public class TutorialRoomCounterManager : TutorialManagerParent
                 FireIconGlow();
                 break;
             case ActionKeyword.WaterSubIconGlow:
-                WaterIconGlow();
+                WaterSubIconGlow();
                 break;
             case ActionKeyword.AddDesireGlow:
                 AddDesireGlow();
                 break;
             case ActionKeyword.AddFrostGlow:
                 AddFrostGlow();
+                break;
+            case ActionKeyword.CookButtonClick:
+                CookButtonClick();
+                break;
+            case ActionKeyword.GetCoin:
+                GetCoin();
                 break;
         }
     }
@@ -268,6 +300,7 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         Glow(toRoomButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.ToRoomButtonGlow;
         isGlowing[(int)ActionKeyword.ToRoomButtonGlow] = true;
+        BallonActiveFalse();
     }
     void RoomSymptomChartGlow()
     {
@@ -299,7 +332,7 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         nowGlow = ActionKeyword.FireIconGlow;
         isGlowing[(int)ActionKeyword.FireIconGlow] = true;
     }
-    void WaterIconGlow()
+    void WaterSubIconGlow()
     {
         TextFrameToggle(false);
         Glow(waterIconGlow, (int)nowAction.parameter);
@@ -320,4 +353,16 @@ public class TutorialRoomCounterManager : TutorialManagerParent
         nowGlow = ActionKeyword.AddFrostGlow;
         isGlowing[(int)ActionKeyword.AddFrostGlow] = true;
     }
+    void CookButtonClick()
+    {
+        TextFrameToggle(false);
+        Glow(potGlow, (int)nowAction.parameter);
+        nowGlow = ActionKeyword.CookButtonClick;
+        isGlowing[(int)ActionKeyword.CookButtonClick] = true;
+    }
+    void GetCoin()
+    {
+        counterManager.CoinGain((int)nowAction.parameter);
+    }
+
 }

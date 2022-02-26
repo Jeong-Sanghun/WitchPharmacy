@@ -11,6 +11,8 @@ public class TutorialCookedMedicineManager : MonoBehaviour
     List<MedicineClass> medicineDataList;
 
     [SerializeField]
+    TutorialRoomCounterManager roomCounterManager;
+    [SerializeField]
     TutorialMedicineManager medicineManager;
     [SerializeField]
     TutorialCounterManager counterManager;
@@ -64,29 +66,13 @@ public class TutorialCookedMedicineManager : MonoBehaviour
         //약병오브젝트는 UI이고 쓰레기통은 월드오브젝트임
     }
 
-    public void ToRoomButton()
-    {
-        if (cookedMedicine == null)
-        {
-            return;
-        }
-        cookedMedicine.medicineObject.SetActive(!cookedMedicine.medicineObject.activeSelf);
-        cookedMedicine.medicineObject.transform.position = medicineOriginPos;
-    }
-
-    public void ToCounterButton()
-    {
-        if (cookedMedicine == null)
-        {
-            return;
-        }
-        cookedMedicine.medicineObject.SetActive(false);
-        //cookedMedicine.medicineObject.GetComponent<RectTransform>().anchoredPosition = medicineOriginCounterPos;
-    }
-
 
     void OnMedicineDrag(PointerEventData data)
     {
+        if(roomCounterManager.isGlowing[(int)ActionKeyword.TrayGlow] == false)
+        {
+            return;
+        }
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
         cookedMedicine.medicineObject.transform.position = Input.mousePosition;
     }
@@ -94,6 +80,10 @@ public class TutorialCookedMedicineManager : MonoBehaviour
  
     void OnMedicinePointerUp(PointerEventData data)
     {
+        if (roomCounterManager.isGlowing[(int)ActionKeyword.TrayGlow] == false)
+        {
+            return;
+        }
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //마우스 좌클릭으로 마우스의 위치에서 Ray를 쏘아 오브젝트를 감지
         cookedMedicine.medicineObject.transform.position = medicineOriginPos;
 
@@ -113,6 +103,7 @@ public class TutorialCookedMedicineManager : MonoBehaviour
                 medicineManager.CookedMedicineRemoved();
                 cookedMedicine.medicineObject.SetActive(false);
                 cookedMedicine = null;
+                roomCounterManager.GlowNextDialog("TrayGlow");
             }
         }
 

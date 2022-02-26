@@ -282,7 +282,7 @@ public class TutorialMedicineManager : MonoBehaviour
 
         //SpecialScrollAlign();
         //PropertyListButton(0);
-        PropertyListMainButton(1);
+        ArrangeMainButton(1);
 
     }
 
@@ -306,15 +306,16 @@ public class TutorialMedicineManager : MonoBehaviour
     }
 
 
-    GameObject draggingObject;
+    //GameObject draggingObject;
     //약재 떨어뜨릴 때 약재를 꺼줘야해서.
     public void Update()
     {
         if (doubleClickIndex != -1)
         {
             doubleClickTimer += Time.deltaTime;
-            if (doubleClickTimer > 0.5f)
+            if (doubleClickTimer > 0.8f)
             {
+                doubleClickTimer = 0;
                 doubleClickIndex = -1;
             }
         }
@@ -325,16 +326,16 @@ public class TutorialMedicineManager : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButton(0) && isPotCooked == false && isDraggingMedicineFromPot == true
-            && (roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow] ||
-            roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow]))
-        {
-            if (draggingObject != null)
-            {
-                Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-                draggingObject.transform.position = new Vector3(mousePos.x, mousePos.y, touchedObject.transform.position.z);
-            }
-        }
+        //if (Input.GetMouseButton(0) && isPotCooked == false && isDraggingMedicineFromPot == true
+        //    && (roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow] ||
+        //    roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow]))
+        //{
+        //    if (draggingObject != null)
+        //    {
+        //        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        //        draggingObject.transform.position = new Vector3(mousePos.x, mousePos.y, touchedObject.transform.position.z);
+        //    }
+        //}
 
     }
 
@@ -349,6 +350,14 @@ public class TutorialMedicineManager : MonoBehaviour
         bool frost = roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow];
         int medicineIndex = wholeMedicineButtonList[nowButtonIndex].medicineIndex;
         if (desire==false && frost == false)
+        {
+            return;
+        }
+        if(desire == true && medicineIndex == frostItemIndex)
+        {
+            return;
+        }
+        if(frost == true && medicineIndex == desireItemIndex)
         {
             return;
         }
@@ -380,8 +389,6 @@ public class TutorialMedicineManager : MonoBehaviour
         inst = Instantiate(medicineObj, potMedicineParentArray[nowPotIndex].transform);
         potMedicineParentArray[nowPotIndex].SetActive(true);
 
-
-        Debug.Log(nowMedicineButton.medicineClass.firstNumber);
         potAnimationManager.SetPotColor(nowMedicineButton.medicineClass.GetSecondSymptom(), nowMedicineButton.medicineClass.secondNumber, nowPotIndex);
         medicineInPotList.Add(nowMedicineButton);
         //아무것도 아님이 뜨면 줄여주지 않음
@@ -422,11 +429,18 @@ public class TutorialMedicineManager : MonoBehaviour
 
     public void PropertyListMainButton(int index)
     {
-        if (roomCounterManager.isGlowing[(int)ActionKeyword.FireIconGlow] == false
-            && onStartArrangement == false)
+        if (roomCounterManager.isGlowing[(int)ActionKeyword.FireIconGlow] == false)
         {
             return;
         }
+        ArrangeMainButton(index);
+        roomCounterManager.GlowNextDialog("FireIconGlow");
+
+
+    }
+
+    public void ArrangeMainButton(int index)
+    {
         int buttonQuantity = 0;
         if (isMainButtonOn[index] == true)
         {
@@ -507,16 +521,6 @@ public class TutorialMedicineManager : MonoBehaviour
         }
 
         regularScrollContent.sizeDelta = new Vector2(0, 186 * buttonQuantity);
-        if (onStartArrangement == true)
-        {
-            onStartArrangement = false;
-        }
-        else
-        {
-            roomCounterManager.GlowNextDialog("FireIconGlow");
-        }
-        
-
     }
 
     public void PropertyListSubButton(int index)
@@ -618,8 +622,19 @@ public class TutorialMedicineManager : MonoBehaviour
     //버튼을 드래그해서 팟에 넣는거.
     void OnButtonDrag(PointerEventData data, int index)
     {
-        if (roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow] == false
-            && roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow] == false)
+        bool desire = roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow];
+        bool frost = roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow];
+        int medicineIndex = wholeMedicineButtonList[index].medicineIndex;
+
+        if (desire == false && frost == false)
+        {
+            return;
+        }
+        if (desire == true && medicineIndex == frostItemIndex)
+        {
+            return;
+        }
+        if (frost == true && medicineIndex == desireItemIndex)
         {
             return;
         }
@@ -681,13 +696,26 @@ public class TutorialMedicineManager : MonoBehaviour
         bool choose = roomCounterManager.isGlowing[(int)ActionKeyword.ItemForceChoose];
         bool desire = roomCounterManager.isGlowing[(int)ActionKeyword.AddDesireGlow];
         bool frost = roomCounterManager.isGlowing[(int)ActionKeyword.AddFrostGlow];
-
+        int medicineIndex = wholeMedicineButtonList[index].medicineIndex;
+        if (choose == true && medicineIndex == frostItemIndex)
+        {
+            return;
+        }
 
         if (choose == true || desire == true || frost == true)
         {
+            if (desire == true && medicineIndex == frostItemIndex)
+            {
+                return;
+            }
+            if (frost == true && medicineIndex == desireItemIndex)
+            {
+                return;
+            }
 
             if (doubleClickIndex == index)
             {
+                nowButtonIndex = index;
                 AddMedicineToPot();
             }
             if (nowButtonIndex == index)
@@ -740,6 +768,7 @@ public class TutorialMedicineManager : MonoBehaviour
         CookFunction();
         potAnimationManager.PotUIAnimation(false);
         nowCookingAnimation = false;
+        roomCounterManager.GlowNextDialog("CookButtonClick");
     }
 
     void CookFunction()
@@ -812,7 +841,6 @@ public class TutorialMedicineManager : MonoBehaviour
             OwningMedicineClass owningMedicine = medicineInPotList[i].owningMedicine;
             if (!owningMedicineList.Contains(owningMedicine))
             {
-                Debug.Log("존나잘햇네 ㅋㅋ");
                 continue;
             }
 
@@ -822,7 +850,7 @@ public class TutorialMedicineManager : MonoBehaviour
         {
             if (isMainButtonOn[i] == true)
             {
-                PropertyListMainButton(i);
+                ArrangeMainButton(i);
             }
         }
 
@@ -836,6 +864,10 @@ public class TutorialMedicineManager : MonoBehaviour
     public void OnCookButton()
     {
         if (isPotCooked == true)
+        {
+            return;
+        }
+        if (roomCounterManager.isGlowing[(int)ActionKeyword.CookButtonClick] == false)
         {
             return;
         }

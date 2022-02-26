@@ -143,9 +143,11 @@ public class TutorialManagerParent : MonoBehaviour
         TutorialDialog nowDialog = dialogWrapper.dialogArray[nowDialogIndex];
         screenTouchCanvas.SetActive(true);
 
-
         PrintDialog();
-
+        if(isDialogStopping == true)
+        {
+            return;
+        }
 
 
         if (nowDialog.actionKeyword != null)
@@ -240,6 +242,10 @@ public class TutorialManagerParent : MonoBehaviour
             if (isPropertyChanged)
             {
                 SetDialogText();
+                if(isDialogStopping == true)
+                {
+                    return;
+                }
             }
         }
 
@@ -287,7 +293,7 @@ public class TutorialManagerParent : MonoBehaviour
     protected virtual void OnActionKeyword()
     {
         bool stop = true;
-        if (nowAction.action == ActionKeyword.Jump)
+        if (nowAction.action == ActionKeyword.Jump || nowAction.action==ActionKeyword.GetCoin)
         {
             stop = false;
         }

@@ -23887,6 +23887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a076ba320d80742baca1e14fcffa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomCounterManager: {fileID: 1848410493}
   medicineManager: {fileID: 1562803912}
   counterManager: {fileID: 128851365}
   roomManager: {fileID: 814437296}
@@ -27325,6 +27326,7 @@ MonoBehaviour:
   blurVolume: {fileID: 1818428719}
   screenTouchCanvas: {fileID: 378434863}
   isGlowing: 
+  counterManager: {fileID: 128851365}
   visitorBallonImage: {fileID: 2010671568}
   ruelliaBallonImage: {fileID: 1287343697}
   visitorNameText: {fileID: 1722067238}
