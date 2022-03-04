@@ -1,0 +1,12 @@
+﻿<bundleName>{testBundle}
+<switch>{Lily,,Ruellia(nothing){up}}
+<background>{counter(blur)}
+[]
+뭐야 왠 돈이지
+[]
+진짜 돈이 있네
+[릴리]
+와 땡잡았네 ㅋㅋ
+[루엘리아]
+대박이넹
+

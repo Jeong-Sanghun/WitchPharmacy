@@ -102,7 +102,7 @@ public class DocumentButtonClass
         popupTrigger.triggers.Add(entry2);
 
         MakeHighlight(highlightButtonPref,highlightPopupPref);
-        gainedRegionText.text = languagePack.documentGainedRegion + languagePack.regionNameArray[(int)owningDocumentClass.gainedRegion];
+        gainedRegionText.text = languagePack.documentGainedRegion + languagePack.exploreRegionNameArray[(int)owningDocumentClass.gainedRegion];
     }
 
     void OpenImage()

@@ -15,6 +15,7 @@ public class CounterDialogManager : MonoBehaviour
         Start,Visit, End, NotTalking,FirstSpecialVisitor, SecondSpecialVisitor, SpecialVisitorEnd, OddVisit,OddEnd
     }
     GameManager gameManager;
+    SaveDataClass saveData;
     SceneManager sceneManager;
     //List<StartDialogClass> randomDialogClassList;
     //RandomVisitorEndDialogWrapper randomVisitorEndDialogWrapper;
@@ -106,6 +107,7 @@ public class CounterDialogManager : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.singleton;
+        saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
         //randomDialogClassList = gameManager.randomDialogDataWrapper.randomDialogList;
         //randomVisitorEndDialogWrapper = gameManager.randomVisitorEndDialogWrapper;
@@ -212,7 +214,7 @@ public class CounterDialogManager : MonoBehaviour
         nowState = CounterState.Start;
         nowWrapperIndex = 0;
         nowVisitorType = VisitorType.RuelliaStart;
-        nowBundle = storyParser.LoadBundle(Random.Range(0, 2).ToString(), languageDirectory,VisitorType.RuelliaStart);
+        nowBundle = storyParser.LoadBundle(Random.Range(0, 2).ToString(), languageDirectory,VisitorType.RuelliaStart,0, saveData.nowRegion);
         nowWrapperList = nowBundle.startWrapperList;
         nowWrapper = nowBundle.startWrapperList[0];
         ruelliaName.text = characterIndexToName.NameTranslator("Ruellia", languagePack);
@@ -253,7 +255,7 @@ public class CounterDialogManager : MonoBehaviour
         if(visitor.visitorType == VisitorType.Random)
         {
             nowVisitorType = VisitorType.Random;
-            nowBundle = storyParser.LoadBundle(Random.Range(0, 3).ToString(), languageDirectory, nowVisitorType, visitor.diseaseList.Count);
+            nowBundle = storyParser.LoadBundle(Random.Range(0, 2).ToString(), languageDirectory, nowVisitorType, visitor.diseaseList.Count,saveData.nowRegion);
             visitorName.text = "";
         }
         else

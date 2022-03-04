@@ -752,7 +752,7 @@ public class StoryParser
         //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
     }
 
-    public VisitorDialogBundle LoadBundle(string bundleName, string languageDirectory,VisitorType visitorType,int symptomNumber = 0)
+    public VisitorDialogBundle LoadBundle(string bundleName, string languageDirectory,VisitorType visitorType,int symptomNumber = 0, StoryRegion storyRegion = StoryRegion.NotAllocated)
     {
         string originText;
 
@@ -765,11 +765,15 @@ public class StoryParser
         StringBuilder builder = new StringBuilder(directory);
         builder.Append(language);
         builder.Append("VisitorStoryBundle/");
+
         gameData.visitorType = visitorType;
         switch (visitorType)
         {
             case VisitorType.Random:
+
                 builder.Append("Random/");
+                builder.Append(storyRegion.ToString());
+                builder.Append("/");
                 builder.Append(symptomNumber.ToString());
                 builder.Append("/");
                 break;

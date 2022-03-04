@@ -94,7 +94,7 @@ public class SaveDataClass
         owningMeasureToolList = new List<int>();
         owningOtherToolList = new List<string>();
         endQuestList = new List<string>();
-        nowRegion = StoryRegion.Narin;
+        nowRegion = StoryRegion.RuinCity;
         likedTreeterIndexList = new List<int>();
         highlightedButton = new bool[3];
         readSpecialVisitorBundleList = new List<string>();

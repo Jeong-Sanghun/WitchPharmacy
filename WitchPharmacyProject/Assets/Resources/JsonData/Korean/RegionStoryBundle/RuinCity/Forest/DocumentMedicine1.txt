@@ -1,0 +1,14 @@
+﻿<bundleName>{testBundle}
+<switch>{Cari,,Ruellia(nothing){up}}
+<background>{counter(blur)}
+[]
+저기 떨어져있는 문서가 보인다.
+[]
+약재 수급처도 보인다
+[카리]
+대박이당
+[루엘리아]
+뭐가 대박이여
+[카리]
+대박이쥐
+
