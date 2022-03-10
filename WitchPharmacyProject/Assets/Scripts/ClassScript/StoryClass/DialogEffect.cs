@@ -8,7 +8,7 @@ public enum CharacterPos
 }
 public enum DialogFX
 {
-    Up, Down,Blur,Null
+    Up, Down,Left,Right,Blur,Null
 }
 public class DialogEffect
 {

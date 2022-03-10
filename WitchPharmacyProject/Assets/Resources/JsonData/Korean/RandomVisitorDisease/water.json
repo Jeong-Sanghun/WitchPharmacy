@@ -1,124 +1,128 @@
 {
-    "randomVisitorDiseaseArray": [
-        {
-            "symptomName": "drySkin1",
-            "symptomNumber": "-2",
-            "effectString": "None",
-            "dialog": "피부가 건조해서 갈라지잖아요.",
-            "firstSpriteName": "drySkin",
-            "firstSpriteLayer": "0.5"
-        },
-        {
-            "symptomName": "drySkin2",
-            "symptomNumber": "-2",
-            "effectString": "None",
-            "dialog": "지금 제 피부좀 봐봐요!",
-            "firstSpriteName": "drySkin",
-            "firstSpriteLayer": "0.5"
-        },
-        {
-            "symptomName": "dustWind1",
-            "symptomNumber": "-2",
-            "effectString": "None",
-            "dialog": "제 주변에 이거 바람부는거좀 봐요",
-            "firstSpriteName": "dustWind",
-            "firstSpriteLayer": "1.6"
-        },
-        {
-            "symptomName": "dustWind2",
-            "symptomNumber": "-2",
-            "effectString": "None",
-            "dialog": "주변에 막 흙먼지가 있어요",
-            "firstSpriteName": "dustWind",
-            "firstSpriteLayer": "1.6"
-        },
-        {
-            "symptomName": "dehydration1",
-            "symptomNumber": "-1",
-            "effectString": "None",
-            "dialog": "지금 저 탈수온거 같아요"
-        },
-        {
-            "symptomName": "dehydration2",
-            "symptomNumber": "-1",
-            "effectString": "None",
-            "dialog": "탈수가 있어요..."
-        },
-        {
-            "symptomName": "dehydration3",
-            "symptomNumber": "-1",
-            "effectString": "None",
-            "dialog": "목이 너무 말라요"
-        },
-        {
-            "symptomName": "dehydration4",
-            "symptomNumber": "-1",
-            "effectString": "None",
-            "dialog": "너무 목이 말라서 미칠거같아요"
-        },
-        {
-            "symptomName": "sweat1",
-            "symptomNumber": "1",
-            "effectString": "None",
-            "dialog": "땀이 너무 많이나요",
-            "firstSpriteName": "sweat",
-            "firstSpriteLayer": "0.3"
-        },
-        {
-            "symptomName": "sweat2",
-            "symptomNumber": "1",
-            "effectString": "None",
-            "dialog": "땀이 비오듯이 와요",
-            "firstSpriteName": "sweat",
-            "firstSpriteLayer": "0.3"
-        },
-        {
-            "symptomName": "sweat3",
-            "symptomNumber": "1",
-            "effectString": "None",
-            "dialog": "땀냄새!",
-            "firstSpriteName": "sweat",
-            "firstSpriteLayer": "0.3"
-        },
-        {
-            "symptomName": "sweat4",
-            "symptomNumber": "1",
-            "effectString": "None",
-            "dialog": "땀이 너무 많아요",
-            "firstSpriteName": "sweat",
-            "firstSpriteLayer": "0.3"
-        },
-        {
-            "symptomName": "whale1",
-            "symptomNumber": "2",
-            "effectString": "None",
-            "dialog": "머리에서 물이 튀어나오고 있어요!",
-            "firstSpriteName": "whale",
-            "firstSpriteLayer": "0.3"
-        },
-        {
-            "symptomName": "whale2",
-            "symptomNumber": "2",
-            "effectString": "None",
-            "dialog": "정수리에서 물이 튀어나와요!",
-            "firstSpriteName": "whale",
-            "firstSpriteLayer": "0.3"
-        },
-        {
-            "symptomName": "fish1",
-            "symptomNumber": "2",
-            "effectString": "None",
-            "dialog": "이 이물고기 뭐에요??",
-            "firstSpriteName": "fish",
-            "firstSpriteLayer": "1.6"
-        },
-        {
-            "symptomName": "fish2",
-            "symptomNumber": "2",
-            "effectString": "None",
-            "dialog": "물고기가 자꾸 주변에 돌아다녀요",
-            "firstSpriteName": "fish",
-            "firstSpriteLayer": "1.6"
-        }
-    ]
+  "randomVisitorDiseaseArray": [
+    {
+      "symptomName": "drySkin1",
+      "symptomNumber": "-2",
+      "effectString": "None",
+      "dialog": "피부가 건조해서 갈라지잖아요.",
+      "firstSpriteName": "water-_dry",
+      "firstSpriteLayer": "0.5"
+    },
+    {
+      "symptomName": "drySkin2",
+      "symptomNumber": "-2",
+      "effectString": "None",
+      "dialog": "지금 제 피부좀 봐봐요!",
+      "firstSpriteName": "water-_dry",
+      "firstSpriteLayer": "0.5"
+    },
+    {
+      "symptomName": "sap1",
+      "symptomNumber": "-2",
+      "effectString": "None",
+      "dialog": "목이 너무너무 말라요",
+      "firstSpriteName": "water--_sap",
+      "firstSpriteLayer": "1.6"
+    },
+    {
+      "symptomName": "sap2",
+      "symptomNumber": "-2",
+      "effectString": "None",
+      "dialog": "물을 달고 살지 않으면 힘들어요",
+      "firstSpriteName": "water--_sap",
+      "firstSpriteLayer": "1.6"
+    },
+    {
+      "symptomName": "fruit1",
+      "symptomNumber": "-1",
+      "effectString": "None",
+      "dialog": "얼굴에 붙은게 말라서 안떨어져요",
+      "firstSpriteName": "water-_fruit"
+    },
+    {
+      "symptomName": "fruit2",
+      "symptomNumber": "-1",
+      "effectString": "None",
+      "dialog": "몸에 닿는게 있으면 다 말라버려요",
+      "firstSpriteName": "water-_fruit"
+    },
+    {
+      "symptomName": "sand1",
+      "symptomNumber": "-1",
+      "effectString": "None",
+      "dialog": "제 주변에 이거 바람부는거좀 봐요",
+      "firstSpriteName": "water-_sand"
+    },
+    {
+      "symptomName": "sand2",
+      "symptomNumber": "-1",
+      "effectString": "None",
+      "dialog": "주변에 막 흙먼지가 있어요",
+      "firstSpriteName": "water-_sand"
+    },
+    {
+      "symptomName": "sweat1",
+      "symptomNumber": "1",
+      "effectString": "None",
+      "dialog": "땀이 너무 많이나요",
+      "firstSpriteName": "water+_sweat",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "sweat2",
+      "symptomNumber": "1",
+      "effectString": "None",
+      "dialog": "땀이 비오듯이 와요",
+      "firstSpriteName": "water+_sweat",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "bubble",
+      "symptomNumber": "1",
+      "effectString": "None",
+      "dialog": "땀냄새!",
+      "firstSpriteName": "water+_bubble",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "bubble",
+      "symptomNumber": "1",
+      "effectString": "None",
+      "dialog": "땀이 너무 많아요",
+      "firstSpriteName": "water+_bubble",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "cloud1",
+      "symptomNumber": "2",
+      "effectString": "None",
+      "dialog": "나갈때마다 소나기가 와요",
+      "firstSpriteName": "water++_cloud",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "cloud2",
+      "symptomNumber": "2",
+      "effectString": "None",
+      "dialog": "비가 온 것 처럼 몸이 젖어요",
+      "firstSpriteName": "water++_cloud",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "fish1",
+      "symptomNumber": "2",
+      "effectString": "None",
+      "dialog": "이 이물고기 뭐에요??",
+      "firstSpriteName": "fish",
+      "firstSpriteLayer": "1.6"
+    },
+    {
+      "symptomName": "fish2",
+      "symptomNumber": "2",
+      "effectString": "None",
+      "dialog": "물고기가 자꾸 주변에 돌아다녀요",
+      "firstSpriteName": "fish",
+      "firstSpriteLayer": "1.6"
+    }
+  ]
 }

@@ -189,7 +189,7 @@ public class OddVisitorClass : VisitorClass
 
             if (diseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = diseaseList[i].LoadObject(true, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -227,7 +227,7 @@ public class OddVisitorClass : VisitorClass
             }
             if (diseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = diseaseList[i].LoadObject(false, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -318,7 +318,7 @@ public class OddVisitorClass : VisitorClass
 
             if (finalDiseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = finalDiseaseList[i].LoadObject(true, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();
@@ -355,7 +355,7 @@ public class OddVisitorClass : VisitorClass
             }
             if (finalDiseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = finalDiseaseList[i].LoadObject(false, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();

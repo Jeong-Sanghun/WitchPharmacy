@@ -42,10 +42,16 @@ public class StoryManager : MonoBehaviour
 
     [SerializeField]
     GameObject toNextSceneButton;
+    [SerializeField]
+    GameObject fadeObject;
+
+    Vector3[] characterOriginPosArray;
     
 
     float downYpos = -10;
     float upYpos = -1;
+    float leftXPos = -30;
+    float rightXPos = 30;
 
     //어느 번들인지.
     //int nowBundleIndex;
@@ -100,8 +106,15 @@ public class StoryManager : MonoBehaviour
                 saveData.nowRegion = region;
             }
         }
+        characterOriginPosArray = new Vector3[5];
+        for (int i = 0; i < 4; i++)
+        {
+            characterOriginPosArray[i] = characterSprite[i].gameObject.transform.position;
+        }
+        characterOriginPosArray[4] = middleCharacterSprite.gameObject.transform.position;
+
         OnWrapperStart();
-        
+
 
         PrintConversation();
     }
@@ -118,8 +131,10 @@ public class StoryManager : MonoBehaviour
                 characterCount++;
                 middleCharacterIndex = i;
             }
+            characterSprite[i].transform.position = characterOriginPosArray[i];
         }
-        if(characterCount != 1)
+        middleCharacterSprite.transform.position = characterOriginPosArray[4];
+        if (characterCount != 1)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -129,6 +144,32 @@ public class StoryManager : MonoBehaviour
                     characterSprite[i].sprite = null;
             }
             middleCharacterSprite.sprite = null;
+
+            for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
+            {
+                DialogEffect effect = nowWrapper.startEffectList[i];
+                GameObject obj = characterSprite[(int)effect.characterPosition].gameObject;
+                if (effect.effect == DialogFX.Up)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 0.5f));
+                }
+                else if (effect.effect == DialogFX.Down)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 0.5f));
+                }
+                else if (effect.effect == DialogFX.Right)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(rightXPos, upYpos, 0), 0.5f));
+                }
+                else if (effect.effect == DialogFX.Left)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(leftXPos, downYpos, 0), 0.5f));
+                }
+            }
         }
         else
         {
@@ -138,23 +179,33 @@ public class StoryManager : MonoBehaviour
             }
             middleCharacterSprite.sprite = characterIndexToName.GetSprite(nowWrapper.characterName[middleCharacterIndex], nowWrapper.characterFeeling[middleCharacterIndex]);
 
+            for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
+            {
+                DialogEffect effect = nowWrapper.startEffectList[i];
+                GameObject obj = middleCharacterSprite.gameObject;
+                if (effect.effect == DialogFX.Up)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 0.5f));
+                }
+                else if (effect.effect == DialogFX.Down)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 0.5f));
+                }
+                else if (effect.effect == DialogFX.Right)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(rightXPos, upYpos, 0), 0.5f));
+                }
+                else if (effect.effect == DialogFX.Left)
+                {
+                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(leftXPos, downYpos, 0), 0.5f));
+                }
+            }
         }
         
-        for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
-        {
-            DialogEffect effect = nowWrapper.startEffectList[i];
-            GameObject obj = characterSprite[(int)effect.characterPosition].gameObject;
-            if (effect.effect == DialogFX.Up)
-            {
-                obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
-                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 0.5f));
-            }
-            else if (effect.effect == DialogFX.Down)
-            {
-                obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 0.5f));
-            }
-        }
         if (nowWrapper.isCutscene)
         {
             cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.cutSceneFileName, true);
@@ -183,6 +234,54 @@ public class StoryManager : MonoBehaviour
         else
         {
             popupSprite.color = new Color(1, 1, 1, 0);
+        }
+        if(nowWrapper.effect != null)
+        {
+            string effect = nowWrapper.effect;
+            if(effect.Contains("blur") || effect.Contains("Blur"))
+            {
+                if(effect.Contains("On") || effect.Contains("on"))
+                {
+                    blurred = true;
+
+                }
+                if(effect.Contains("Off") || effect.Contains("off"))
+                {
+
+                    blurred = false;
+
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    blurManager.ChangeLayer(blurred, characterSprite[i].gameObject);
+                }
+                blurManager.ChangeLayer(blurred, middleCharacterSprite.gameObject);
+                blurManager.OnBlur(blurred);
+            }
+            if (effect.Contains("fade") || effect.Contains("Fade"))
+            {
+                float fadeTime = 1;
+                float initTransparency = 0;
+                float endTransparency = 1;
+                if (effect.Contains("Immediate") || effect.Contains("immediate"))
+                {
+                    fadeTime = 0;
+
+                }
+                if (effect.Contains("Out") || effect.Contains("out"))
+                {
+                    initTransparency = 1;
+                    endTransparency = 0;
+                }
+                if (effect.Contains("In") || effect.Contains("in"))
+                {
+
+                    initTransparency = 0;
+                    endTransparency = 1;
+                }
+                StartCoroutine(sceneManager.FadeModule_Image(fadeObject, initTransparency, endTransparency, fadeTime));
+                
+            }
         }
     }
 

@@ -115,6 +115,9 @@ public class CounterManager : MonoBehaviour //SH
     [SerializeField]
     bool isDebugMode;
 
+    [SerializeField]
+    GameObject randomDiseasePrefab;
+
     SpecialVisitorCondition nowSpecialVisitorCondition;
 
     List<SpecialMedicineClass> specialMedicineDataList;
@@ -179,6 +182,7 @@ public class CounterManager : MonoBehaviour //SH
         counterStarted = false;
         //스태틱으로 만들어버려
         RandomVisitorClass.SetStaticData(ownedMedicineList,gameManager.randomVisitorDiseaseBundle);
+        RandomVisitorDisease.SetStaticData(randomDiseasePrefab);
         TimeTextChange();
     }
 

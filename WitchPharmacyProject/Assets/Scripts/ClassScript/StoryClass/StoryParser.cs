@@ -438,13 +438,21 @@ public class StoryParser
                             DialogEffect effect = new DialogEffect();
                             string effectStr = builder.ToString();
                             nowWrapper.startEffectList.Add(effect);
-                            if(effectStr.Contains("up") || effectStr.Contains("Up"))
+                            if (effectStr.Contains("up") || effectStr.Contains("Up"))
                             {
                                 effect.effect = DialogFX.Up;
                             }
-                            else if(effectStr.Contains("down") || effectStr.Contains("Down"))
+                            else if (effectStr.Contains("down") || effectStr.Contains("Down"))
                             {
                                 effect.effect = DialogFX.Down;
+                            }
+                            else if (effectStr.Contains("left") || effectStr.Contains("Left"))
+                            {
+                                effect.effect = DialogFX.Left;
+                            }
+                            else if (effectStr.Contains("right") || effectStr.Contains("Right"))
+                            {
+                                effect.effect = DialogFX.Right;
                             }
                             else if(effectStr.Contains("blur") || effectStr.Contains("Blur"))
                             {

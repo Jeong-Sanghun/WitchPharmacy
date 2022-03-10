@@ -10200,6 +10200,8 @@ MonoBehaviour:
   gainedMedicineImage: {fileID: 1483401135}
   wholeCoinText: {fileID: 973120989}
   isDebugMode: 0
+  randomDiseasePrefab: {fileID: 1401955170127163961, guid: eac878b9d89b12243ab871bab70d2bc2,
+    type: 3}
 --- !u!4 &561591400
 Transform:
   m_ObjectHideFlags: 0
@@ -34238,6 +34240,7 @@ MonoBehaviour:
   regularScrollContent: {fileID: 1119378488}
   regularScrollUIParent: {fileID: 1058116739}
   scrollObject: {fileID: 1037144938}
+  binObject: {fileID: 776380039}
   propertyMainButtonImageArray:
   - {fileID: 12303550}
   - {fileID: 203148737}
@@ -34278,7 +34281,6 @@ MonoBehaviour:
   cookedMedicineText: {fileID: 1403752334}
   cookButtonObject: {fileID: 682171876}
   cookedMedicinePrefab: {fileID: 1910721385}
-  binObject: {fileID: 776380039}
   usedCoinText: {fileID: 1987063145}
   nowCookingAnimation: 0
 --- !u!4 &2027568711

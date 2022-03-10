@@ -14,6 +14,7 @@ public class BlurManager : MonoBehaviour
 
     const int blurLayer = 8;
     const int defaultLayer = 0;
+    bool runToggle = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,44 +61,48 @@ public class BlurManager : MonoBehaviour
 
     IEnumerator BlurCoroutine(bool blur)
     {
-        if(running == true)
+        runToggle = !runToggle;
+        bool nowRunToggle = runToggle;
+        float lerp;
+        float hit;
+        if (blur == true)
         {
-            Debug.LogError("좆ㅅ돼따");
-            
+            lerp = 4;
+            hit = 0.5f;
+
+            while (lerp >= hit)
+            {
+                if (nowRunToggle != runToggle)
+                {
+                    break;
+                }
+                lerp -= Time.deltaTime * 4;
+                depthOfField.focusDistance.value = lerp;
+
+                yield return null;
+            }
         }
         else
         {
-            running = true;
-            float lerp;
-            float hit;
-            if (blur == true)
+            lerp = 0.5f;
+            hit = 4;
+            while (lerp <= hit)
             {
-                lerp = 4;
-                hit = 0.5f;
-
-                while (lerp >= hit)
+                if (nowRunToggle != runToggle)
                 {
-                    lerp -= Time.deltaTime * 4;
-                    depthOfField.focusDistance.value = lerp;
-                    yield return null;
+                    break;
                 }
-            }
-            else
-            {
-                lerp = 0.5f;
-                hit = 4;
-                while (lerp <= hit)
-                {
-                    lerp += Time.deltaTime * 4;
-                    depthOfField.focusDistance.value = lerp;
-                    yield return null;
-                }
+                lerp += Time.deltaTime * 4;
+                depthOfField.focusDistance.value = lerp;
 
+                yield return null;
             }
-            depthOfField.focusDistance.value = hit;
-            running = false;
+
         }
-       
+        if (nowRunToggle == runToggle)
+        {
+            depthOfField.focusDistance.value = hit;
+        }
     }
 
     // Update is called once per frame

@@ -302,7 +302,7 @@ public class RandomVisitorClass : VisitorClass
 
             if (diseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = diseaseList[i].LoadObject(true, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -312,7 +312,7 @@ public class RandomVisitorClass : VisitorClass
                 symptomObject.amount = diseaseList[i].symptomNumber;
                 symptomObject.dissolveComponent = dissolve;
                 symptomObjectList.Add(symptomObject);
-                if (diseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
+                if (diseaseList[i].firstSpriteName.Contains("face") && headPart != null)
                 {
                     if (childSetParented == false)
                     {
@@ -340,7 +340,7 @@ public class RandomVisitorClass : VisitorClass
             }
             if (diseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = diseaseList[i].LoadObject(false, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -350,7 +350,7 @@ public class RandomVisitorClass : VisitorClass
                 //symptomObject.disease = diseaseList[i].sympotmString;
                 symptomObject.amount = diseaseList[i].symptomNumber;
                 symptomObjectList.Add(symptomObject);
-                if (diseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
+                if (diseaseList[i].secondSpriteName.Contains("face") && headPart != null)
                 {
                     for (int j = 0; j < facePart.Length; j++)
                     {
@@ -431,7 +431,7 @@ public class RandomVisitorClass : VisitorClass
 
             if (finalDiseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = finalDiseaseList[i].LoadObject(true, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();
@@ -439,7 +439,7 @@ public class RandomVisitorClass : VisitorClass
                 symptomObject.dissolve = true;
                 symptomObject.dissolveComponent = dissolve;
                 finalSymptomObjectList.Add(symptomObject);
-                if (finalDiseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
+                if (finalDiseaseList[i].firstSpriteName.Contains("face") && headPart != null)
                 {
                     if (childSetParented == false)
                     {
@@ -468,7 +468,7 @@ public class RandomVisitorClass : VisitorClass
             }
             if (finalDiseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = finalDiseaseList[i].LoadObject(false, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();
@@ -476,7 +476,7 @@ public class RandomVisitorClass : VisitorClass
                 symptomObject.dissolveComponent = dissolve;
                 symptomObject.dissolve = true;
                 finalSymptomObjectList.Add(symptomObject);
-                if (finalDiseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
+                if (finalDiseaseList[i].secondSpriteName.Contains("face") && headPart != null)
                 {
                     for (int j = 0; j < facePart.Length; j++)
                     {

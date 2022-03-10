@@ -19,7 +19,7 @@ public class VisitorClass
     protected List<SymptomObject> symptomObjectList;
     protected List<SymptomObject> finalSymptomObjectList;
     protected StoryRegion nowRegion;
-    protected static int[] bodyPartsNum = { 2, 2, 2, 2 };
+    protected static int[] bodyPartsNum = {3,2, 2, 2, 2, 2 };
     protected static int[] partsNum = { 2, 2, 2 };
     protected int[] partsIndex;
     protected int bodyPartsIndex;
@@ -65,7 +65,7 @@ public class VisitorClass
 
             if (diseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = diseaseList[i].LoadObject(true, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -82,7 +82,7 @@ public class VisitorClass
             }
             if (diseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(diseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = diseaseList[i].LoadObject(false, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 0;
                 SymptomObject symptomObject = new SymptomObject();
@@ -162,7 +162,7 @@ public class VisitorClass
 
             if (finalDiseaseList[i].firstSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(true), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = finalDiseaseList[i].LoadObject(true, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();
@@ -178,7 +178,7 @@ public class VisitorClass
             }
             if (finalDiseaseList[i].secondSpriteName != null)
             {
-                GameObject obj = GameObject.Instantiate(finalDiseaseList[i].LoadObject(false), visitorObject.transform).transform.GetChild(0).gameObject;
+                GameObject obj = finalDiseaseList[i].LoadObject(false, visitorObject.transform).transform.GetChild(0).gameObject;
                 UIDissolve dissolve = obj.GetComponent<UIDissolve>();
                 dissolve.effectFactor = 1;
                 SymptomObject symptomObject = new SymptomObject();
@@ -266,7 +266,7 @@ public class VisitorClass
         //}
         partsIndex[3] = Random.Range(0, bodyPartsNum[(int)region]);
         partsWrapperArray[3] = new GameObjectWrapper();
-        partsWrapperArray[3].partsArray = Resources.LoadAll<GameObject>(bodyPath + bodyPartsIndex.ToString());
+        partsWrapperArray[3].partsArray = Resources.LoadAll<GameObject>(bodyPath + partsIndex[3].ToString());
         for (int i = 0; i < partsIndex.Length - 1; i++)
         {
             partsWrapperArray[i] = new GameObjectWrapper();

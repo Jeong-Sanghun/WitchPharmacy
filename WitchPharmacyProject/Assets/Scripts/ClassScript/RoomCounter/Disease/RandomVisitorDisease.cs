@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Text;
 using System;
 
@@ -37,6 +38,13 @@ public class RandomVisitorDisease
     bool secondParsed=false;
     bool effectParsed = false;
 
+    static GameObject prefab;
+
+
+    public static void SetStaticData(GameObject diseasePrefab)
+    {
+        prefab = diseasePrefab;
+    }
     public Sprite LoadImage(bool first)
     {
         Sprite nowSprite = null;
@@ -57,10 +65,42 @@ public class RandomVisitorDisease
         StringBuilder builder = new StringBuilder("RandomCharacter/Disease/");
         builder.Append(spriteName);
         nowSprite = Resources.Load<Sprite>(builder.ToString());
+        if (first == true)
+        {
+            firstSprite =nowSprite;
+        }
+        else
+        {
+           secondSprite= nowSprite ;
+        }
         return nowSprite;
     }
 
-    public GameObject LoadObject(bool first)
+    //public GameObject LoadObject(bool first)
+    //{
+    //    GameObject nowObject = null;
+    //    string objectName;
+    //    if (first == true)
+    //    {
+    //        objectName = firstSpriteName;
+    //        nowObject = firstObj;
+    //    }
+    //    else
+    //    {
+    //        objectName = secondSpriteName;
+    //        nowObject = secondObj;
+    //    }
+    //    if (nowObject != null)
+    //    {
+    //        return nowObject;
+    //    }
+    //    StringBuilder builder = new StringBuilder("RandomCharacter/Disease/");
+    //    builder.Append(objectName);
+    //    nowObject = Resources.Load<GameObject>(builder.ToString());
+    //    return nowObject;
+    //}
+
+    public GameObject LoadObject(bool first,Transform parent)
     {
         GameObject nowObject = null;
         string objectName;
@@ -78,9 +118,18 @@ public class RandomVisitorDisease
         {
             return nowObject;
         }
-        StringBuilder builder = new StringBuilder("RandomCharacter/Disease/");
-        builder.Append(objectName);
-        nowObject = Resources.Load<GameObject>(builder.ToString());
+        nowObject = GameObject.Instantiate(prefab, parent);
+        if (first == true)
+        {
+
+            nowObject.transform.GetChild(0).GetComponent<Image>().sprite = LoadImage(true) ;
+        }
+        else
+        {
+
+            nowObject.transform.GetChild(0).GetComponent<Image>().sprite = LoadImage(false);
+        }
+        nowObject.name = objectName;
         return nowObject;
     }
 

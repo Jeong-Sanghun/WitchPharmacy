@@ -539,6 +539,7 @@ MonoBehaviour:
   - {fileID: 878635642}
   - {fileID: 257354555}
   toNextSceneButton: {fileID: 6517389924254320824}
+  fadeObject: {fileID: 6517389924254320826}
 --- !u!4 &1018911734
 Transform:
   m_ObjectHideFlags: 0
@@ -900,6 +901,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1018911733}
+    - target: {fileID: 470669284603718370, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2173372888397363407, guid: 275846198ae314b40b055f98b3efb17c,
         type: 3}
       propertyPath: m_RootOrder
@@ -975,6 +981,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1018911733}
+    - target: {fileID: 6896466827710008602, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7125146063089046827, guid: 275846198ae314b40b055f98b3efb17c,
         type: 3}
       propertyPath: m_Name
@@ -1036,3 +1047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6517389924254320826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 470669284603718370, guid: 275846198ae314b40b055f98b3efb17c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6517389924254320818}
+  m_PrefabAsset: {fileID: 0}
