@@ -13,7 +13,10 @@ public enum ActionKeyword
     CounterChartExitButtonGlow,Jump, ToRoomButtonGlow,
     RoomSymptomChartGlow, RoomChartExitButtonGlow,
     ItemForceChoose, FireIconGlow, WaterSubIconGlow,
-    AddDesireGlow, AddFrostGlow, CookButtonClick, TrayGlow, GetCoin, SceneEnd
+    AddDesireGlow, AddFrostGlow, CookButtonClick, TrayGlow, GetCoin, SceneEnd,
+
+    TabletButtonGlow,CariButtonGlow,TreeterButtonGlow,
+    TreeterPostButtonGlow,TabletExitButtonGlow
 
 
 }

@@ -27,4 +27,21 @@ public class TreeterIngameComment
         dialogText.text = data.dialog;
 
     }
+
+
+    public void SetTutorialButton(TreeterCommentData data, GameObject prefab, Transform prefabParent)
+    {
+        commentObject = GameObject.Instantiate(prefab, prefabParent);
+        commentObject.SetActive(true);
+        Text profileNameText = commentObject.transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        Image profileImage = commentObject.transform.GetChild(0).GetComponent<Image>();
+        Text dialogText = commentObject.transform.GetChild(1).GetChild(0).GetComponent<Text>();
+
+        profileNameText.text = TutorialTreeterManager.profileWrapper.LoadIngameName(data.profileFileName);
+        //data.profileIngameName;
+        profileImage.sprite = TutorialTreeterManager.profileWrapper.LoadSprite(data.profileFileName);
+        //data.LoadSprite();
+        dialogText.text = data.dialog;
+
+    }
 }

@@ -1,0 +1,96 @@
+{
+    "dialogArray": [
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "아직 영업시작까지 시간이 좀 있네요.."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "surprised",
+            "dialog": "앗. 구독해뒀던 계정에서 글이 올라왔나봐요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Ruellia",
+            "dialog": "뉴스 계정 말이지? 어디 보자. 오늘은 좀 흥미로운 거 올라왔나?"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "TabletButtonGlow",
+            "dialog": "바움패드를 켜서 한 번 확인해봐요!"
+        },
+        {
+            "actionKeyword": "Delay",
+            "actionKeywardParameter": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "notTalk",
+            "dialog": "바움패드에는 다양한 앱들이 내장되어있어요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "CariButtonGlow",
+            "dialog": "오른쪽 아래에 여우모양 버튼이 보이시나요? 여기서 언제든 제가 도움을 드릴 수 있어요!"
+        },
+        {
+            "typeString": "CariDialog",
+            "characterString": "Cari",
+            "feelingString": "grin",
+            "dialog": "이런 식으로요!",
+            "routeFirst": "안녕!",
+            "routeSecond": "신기하다",
+            "routeFirstJump": "1"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "dialog": "나중에 앱을 실행한 상태에서 이 버튼을 누르시면 제가 앱에 대한 설명을 다시 해드릴게요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "notTalk",
+            "actionKeyword": "TreeterButtonGlow",
+            "dialog": "일단은 트리터 앱을 실행해보세요"
+        },
+        {
+            "actionKeyword": "CariButtonGlow"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "트리터는 샤라이의 주민들이 자유롭게 소통할 수 있는 SNS 공간이에요"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "오늘 올라온 뉴스 게시글을 클릭해서 확인해봐요!"
+        },
+        {
+            "actionKeyword": "TreeterPostButtonGlow"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "글을 다 읽으시면 우측 상단의 X 버튼을 눌러 태블릿을 닫으세요!"
+        },
+        {
+            "actionKeyword": "TabletExitButtonGlow"
+        },
+        {
+            "actionKeyword": "SceneEnd"
+        }
+    ]
+}

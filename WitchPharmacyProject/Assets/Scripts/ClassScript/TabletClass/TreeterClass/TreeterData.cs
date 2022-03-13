@@ -14,6 +14,7 @@ public class TreeterData
     public int likeNumber;
 
     public List<TreeterCommentData> commentDataList;
+    public string cariComment;
 
     Sprite treeterSprite;
     Sprite profileSprite;
