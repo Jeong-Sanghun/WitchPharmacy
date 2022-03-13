@@ -22,6 +22,7 @@
             "characterString": "Cari",
             "feelingString": "talk",
             "actionKeyword": "TabletButtonGlow",
+                        "actionKeywardParameter": "1",
             "dialog": "바움패드를 켜서 한 번 확인해봐요!"
         },
         {
@@ -42,13 +43,15 @@
             "dialog": "오른쪽 아래에 여우모양 버튼이 보이시나요? 여기서 언제든 제가 도움을 드릴 수 있어요!"
         },
         {
-            "typeString": "CariDialog",
+            "typeString": "Dialog",
             "characterString": "Cari",
             "feelingString": "grin",
             "dialog": "이런 식으로요!",
             "routeFirst": "안녕!",
             "routeSecond": "신기하다",
-            "routeFirstJump": "1"
+            "routeFirstJump": "1",
+            "routeSecondJump": "1"
+
         },
         {
             "typeString": "Dialog",

@@ -42,6 +42,7 @@ public class TutorialManagerParent : MonoBehaviour
 
 
 
+    [HideInInspector]
     public bool[] isGlowing;
     protected ActionKeyword nowGlow;
     protected int nowDialogIndex;

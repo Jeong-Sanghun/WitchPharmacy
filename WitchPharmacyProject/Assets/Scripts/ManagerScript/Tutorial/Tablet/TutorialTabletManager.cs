@@ -7,19 +7,23 @@ public class TutorialTabletManager : TutorialManagerParent
 {
 
     [SerializeField]
-    TabletTreeterManager tabletTreeterManager;
-    [SerializeField]
-    TabletCariManager tabletCariManager;
+    TutorialTreeterManager tabletTreeterManager;
     [SerializeField]
     GameObject tabletCanvasParent;
+
     [SerializeField]
-    GameObject wholeTabletParent;
+    GameObject minimizeParent;
     [SerializeField]
-    GameObject homeButton;
+    Text minimizeTalkText;
+
     [SerializeField]
-    GameObject[] buttonHighlightObject;
+    GameObject maximizeParent;
     [SerializeField]
-    GameObject tabletHighlightObject;
+    GameObject[] maximizeButtonObjectArray;
+    [SerializeField]
+    Text[] maximizeButtonTextArray;
+    [SerializeField]
+    Text maximizeTalkText;
 
     [SerializeField]
     Image tabletButtonGlow;
@@ -42,7 +46,6 @@ public class TutorialTabletManager : TutorialManagerParent
         dialogWrapper = jsonManager.ResourceDataLoad<TutorialDialogWrapper>("Tutorial/Dialog/Tablet");
         dialogWrapper.Parse();
         StartCoroutine(InvokerCoroutine(1, NextDialog));
-        wholeTabletParent.SetActive(false);
 
     }
 
@@ -52,17 +55,13 @@ public class TutorialTabletManager : TutorialManagerParent
     }
     
 
-    public void ButtonHighlightActive(bool active)
-    {
-        tabletHighlightObject.SetActive(active);
-    }
-
     protected override void OverrideAction()
     {
         base.OverrideAction();
         switch (nowAction.action)
         {
             case ActionKeyword.TabletButtonGlow:
+                Debug.Log("씨빨삤씨빨");
                 TabletButtonGlow();
                 break;
             case ActionKeyword.CariButtonGlow:
