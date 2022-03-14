@@ -7,6 +7,8 @@ public class TutorialTreeterManager : MonoBehaviour
 {
     GameManager gameManager;
     [SerializeField]
+    TutorialTabletManager tabletManager;
+    [SerializeField]
     GameObject wholeTreeterCanvas;
     [SerializeField]
     GameObject oneTitleButtonPrefab;
@@ -35,7 +37,7 @@ public class TutorialTreeterManager : MonoBehaviour
     [SerializeField]
     GameObject onePostPrefab;
 
-    TreeterData tutorialTreeterData;
+    public TreeterData tutorialTreeterData;
 
     public static TreeterProfileWrapper profileWrapper;
     List<TreeterButtonClass> wholeTreeterButton;
@@ -53,7 +55,7 @@ public class TutorialTreeterManager : MonoBehaviour
 
         wholeTreeterButton = new List<TreeterButtonClass>();
         tutorialTreeterData = gameManager.jsonManager.ResourceDataLoad<TreeterData>("TreeterData/TutorialTreeterData");
-        InitializeButtons();
+        MakeOneButton();
 
 
     }
@@ -82,10 +84,17 @@ public class TutorialTreeterManager : MonoBehaviour
         Button button = buttonObj.transform.GetChild(1).GetComponent<Button>();
         int dele = wholeTreeterButton.Count - 1;
         button.onClick.AddListener(() => TreeterButtonActive(dele));
+        button.onClick.AddListener(() => tabletManager.GlowNextDialog(ActionKeyword.TreeterPostButtonGlow.ToString()));
+
+        
     }
 
     void TreeterButtonActive(int index)
     {
+        if (tabletManager.isGlowing[(int)ActionKeyword.TreeterPostButtonGlow] == false)
+        {
+            return;
+        }
         nowButtonIndex = index;
         wholeTreeterButton[index].wholeCanvasObject.SetActive(true);
     }

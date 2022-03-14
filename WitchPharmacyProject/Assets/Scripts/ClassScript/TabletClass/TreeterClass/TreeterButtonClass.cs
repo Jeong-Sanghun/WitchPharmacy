@@ -125,9 +125,9 @@ public class TreeterButtonClass
         likeButton = mainPost.transform.GetChild(1).GetChild(3).GetComponent<Button>();
         likeButton.onClick.AddListener(() => LikeButton());
 
-        profileNameText.text = TabletTreeterManager.profileWrapper.LoadIngameName(data.profileFileName);
+        profileNameText.text =TutorialTreeterManager.profileWrapper.LoadIngameName(data.profileFileName);
         //data.profileIngameName;
-        profileImage.sprite = TabletTreeterManager.profileWrapper.LoadSprite(data.profileFileName);
+        profileImage.sprite = TutorialTreeterManager.profileWrapper.LoadSprite(data.profileFileName);
         titleText.text = data.titleIngameText;
         dialogText.text = data.dialog;
 
@@ -155,7 +155,7 @@ public class TreeterButtonClass
         for (int i = 0; i < data.commentDataList.Count; i++)
         {
             TreeterIngameComment comment = new TreeterIngameComment();
-            comment.SetButton(data.commentDataList[i], commentPrefab, wholeContentRect);
+            comment.SetTutorialButton(data.commentDataList[i], commentPrefab, wholeContentRect);
             commentList.Add(comment);
         }
     }
@@ -176,6 +176,8 @@ public class TreeterButtonClass
         }
         
     }
+
+   
 
     void ActiveImage(bool active)
     {

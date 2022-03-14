@@ -160,10 +160,15 @@ public class TutorialManagerParent : MonoBehaviour
 
         if (nowDialog.routeList != null)
         {
-            isRouting = true;
-            isStartOfWrapper = true;
-            routeDialog = nowDialog;
-            StartCoroutine(CheckRoutePointTextEnd());
+
+            if(nowDialog.type != DialogType.CariDialog)
+            {
+                isRouting = true;
+                isStartOfWrapper = true;
+                routeDialog = nowDialog;
+                StartCoroutine(CheckRoutePointTextEnd());
+
+            }
 
         }
 
@@ -554,6 +559,8 @@ public class TutorialManagerParent : MonoBehaviour
         Color originColor = sprite.color;
         sprite.gameObject.SetActive(true);
         sprite.color = new Color(originColor.r, originColor.g, originColor.b, 0);
+        Debug.Log(param);
+        
         while (nowDialogIndex != targetIndex)
         {
             timer += Time.deltaTime * one;
@@ -575,7 +582,7 @@ public class TutorialManagerParent : MonoBehaviour
         Color originColor = sprite.color;
         sprite.gameObject.SetActive(true);
         sprite.color = new Color(originColor.r, originColor.g, originColor.b, 0);
-        while(nowDialogIndex != targetIndex)
+        while (nowDialogIndex != targetIndex)
         {
             timer += Time.deltaTime * one;
             sprite.color = new Color(originColor.r, originColor.g, originColor.b, timer+0.5f);

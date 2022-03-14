@@ -5,7 +5,7 @@ using System;
 
 public enum DialogType
 {
-    Null,Dialog,VisitorDialog
+    Null,Dialog,VisitorDialog,CariDialog
 }
 [Serializable]
 public class TutorialDialog

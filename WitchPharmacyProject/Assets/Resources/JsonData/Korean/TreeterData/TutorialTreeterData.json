@@ -1,23 +1,23 @@
 ﻿{
-    "index": 1,
-    "fileName": "WinWin",
-    "titleIngameText":"윈윈",
-    "dialog": "Ready, get set, huh 떨림은 익숙해져 걔네랑 비슷했던 이기는 거 말곤 모르던 놈이 변해서 지켜내지 patience 그게 나라 믿고 살아온지가 벌써 스물 넘어가면서 쏟아 전력, oh yeah 아빠회사에서 나는 주인공, huh 오늘은 내가 아니라 우리여 pilot",
-    "profileFileName": "meatKiller",
-    "likeNumber": 250,
-    "commentDataList": [
-        {
-            "profileFileName": "morningCinema",
-            "dialog": "윈윈하는거야 윈윈~~ 촐싹대는거 너무 좋네요"
-        },
-        {
-            "profileFileName": "riceCake",
-            "dialog": "사이렌 못이겨!"
-        }
-		,
-        {
-            "profileFileName": "doge",
-            "dialog": "왈왈"
-        }
-    ]
+  "index": 1,
+  "fileName": "WinWin",
+  "titleIngameText": "윈윈",
+  "dialog": "Ready, get set, huh 떨림은 익숙해져 걔네랑 비슷했던 이기는 거 말곤 모르던 놈이 변해서 지켜내지 patience 그게 나라 믿고 살아온지가 벌써 스물 넘어가면서 쏟아 전력, oh yeah 아빠회사에서 나는 주인공, huh 오늘은 내가 아니라 우리여 pilot",
+  "profileFileName": "meatKiller",
+  "likeNumber": 250,
+  "commentDataList": [
+    {
+      "profileFileName": "morningCinema",
+      "dialog": "윈윈하는거야 윈윈~~ 촐싹대는거 너무 좋네요"
+    },
+    {
+      "profileFileName": "riceCake",
+      "dialog": "사이렌 못이겨!"
+    },
+    {
+      "profileFileName": "doge",
+      "dialog": "왈왈"
+    }
+  ],
+  "cariComment": "애애앵"
 }

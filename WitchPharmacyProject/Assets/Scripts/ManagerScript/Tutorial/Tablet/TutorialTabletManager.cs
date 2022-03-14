@@ -10,6 +10,8 @@ public class TutorialTabletManager : TutorialManagerParent
     TutorialTreeterManager tabletTreeterManager;
     [SerializeField]
     GameObject tabletCanvasParent;
+    [SerializeField]
+    GameObject treeterCanvas;
 
     [SerializeField]
     GameObject minimizeParent;
@@ -49,11 +51,62 @@ public class TutorialTabletManager : TutorialManagerParent
 
     }
 
+    public void OnTreeterButton(bool open)
+    {
+        if (isGlowing[(int)ActionKeyword.TreeterButtonGlow] == false)
+        {
+            return;
+        }
+        treeterCanvas.SetActive(open);
+    }
     public void OnTabletButton(bool open)
     {
+        if (open)
+        {
+            if (isGlowing[(int)ActionKeyword.TabletButtonGlow] == false)
+            {
+                return;
+            }
+        }
+        else
+        {
+            if (isGlowing[(int)ActionKeyword.TabletExitButtonGlow] == false)
+            {
+                return;
+            }
+        }
+
         tabletCanvasParent.SetActive(open);
     }
-    
+
+
+
+    protected override void SetDialogText()
+    {
+        switch (nowType)
+        {
+            case DialogType.Dialog:
+                TextFrameToggle(true);
+                screenTouchCanvas.SetActive(true);
+                nowTextComponent = dialogText;
+                characterImage.sprite = characterIndexToName.GetSprite(nowCharacter, nowFeeling);
+                dialogNameText.text = characterIndexToName.NameTranslator(nowCharacter, languagePack);
+                characterImage.SetNativeSize();
+                break;
+            case DialogType.CariDialog:
+                TextFrameToggle(false);
+                screenTouchCanvas.SetActive(false);
+                SetHomeCariDialog();
+
+                break;
+            default:
+                //일단 암것도 하지말아봐.
+                break;
+        }
+
+
+    }
+
 
     protected override void OverrideAction()
     {
@@ -61,7 +114,6 @@ public class TutorialTabletManager : TutorialManagerParent
         switch (nowAction.action)
         {
             case ActionKeyword.TabletButtonGlow:
-                Debug.Log("씨빨삤씨빨");
                 TabletButtonGlow();
                 break;
             case ActionKeyword.CariButtonGlow:
@@ -80,9 +132,62 @@ public class TutorialTabletManager : TutorialManagerParent
         }
     }
 
+    public void MaximizeButton()
+    {
+        if (isGlowing[(int)ActionKeyword.CariButtonGlow] == false)
+        {
+            return;
+        }
+        minimizeParent.SetActive(false);
+        maximizeParent.SetActive(true);
+    }
+
+    public void MinimizeButton()
+    {
+        minimizeParent.SetActive(true);
+        maximizeParent.SetActive(false);
+    }
+
+    void SetHomeCariDialog()
+    {
+        maximizeTalkText.text = dialogWrapper.dialogArray[nowDialogIndex].dialog;
+
+        for (int i = 0; i < maximizeButtonObjectArray.Length; i++)
+        {
+            maximizeButtonObjectArray[i].SetActive(false);
+        }
+        for (int i = 0; i < dialogWrapper.dialogArray[nowDialogIndex].routeList.Count; i++)
+        {
+            maximizeButtonObjectArray[i].SetActive(true);
+            maximizeButtonTextArray[i].text = dialogWrapper.dialogArray[nowDialogIndex].routeList[i].routeString;
+        }
+
+
+    }
+
+    public void SetTreeterCariDialog()
+    {
+        maximizeTalkText.text = tabletTreeterManager.tutorialTreeterData.cariComment;
+
+        for (int i = 0; i < maximizeButtonObjectArray.Length; i++)
+        {
+            maximizeButtonObjectArray[i].SetActive(false);
+        }
+    }
+
+
+    public void CariNextDialogButton()
+    {
+        MinimizeButton();
+        screenTouchCanvas.SetActive(true);
+        NextDialog();
+    }
+
     void TabletButtonGlow()
     {
         TextFrameToggle(false);
+        Debug.Log(nowAction.parameter);
+        Debug.Log(nowAction.action);
         Glow(tabletButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.TabletButtonGlow;
         isGlowing[(int)ActionKeyword.TabletButtonGlow] = true;
@@ -91,6 +196,7 @@ public class TutorialTabletManager : TutorialManagerParent
     void CariButtonGlow()
     {
         TextFrameToggle(false);
+        screenTouchCanvas.SetActive(false);
         Glow(cariButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.CariButtonGlow;
         isGlowing[(int)ActionKeyword.CariButtonGlow] = true;
@@ -98,6 +204,8 @@ public class TutorialTabletManager : TutorialManagerParent
     void TreeterButtonGlow()
     {
         TextFrameToggle(false);
+        SetTreeterCariDialog();
+        screenTouchCanvas.SetActive(false);
         Glow(treeterButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.TreeterButtonGlow;
         isGlowing[(int)ActionKeyword.TreeterButtonGlow] = true;
@@ -105,6 +213,7 @@ public class TutorialTabletManager : TutorialManagerParent
     void TreeterPostButtonGlow()
     {
         TextFrameToggle(false);
+        screenTouchCanvas.SetActive(false);
         Glow(treeterPostButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.TreeterPostButtonGlow;
         isGlowing[(int)ActionKeyword.TreeterPostButtonGlow] = true;
@@ -112,6 +221,7 @@ public class TutorialTabletManager : TutorialManagerParent
     void TabletExitButtonGlow()
     {
         TextFrameToggle(false);
+        screenTouchCanvas.SetActive(false);
         Glow(tabletExitButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.TabletExitButtonGlow;
         isGlowing[(int)ActionKeyword.TabletExitButtonGlow] = true;
