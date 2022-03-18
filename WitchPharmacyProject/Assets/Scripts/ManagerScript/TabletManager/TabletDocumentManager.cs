@@ -136,9 +136,9 @@ public class TabletDocumentManager : MonoBehaviour
             folderButton = new DocumentFolderButtonClass(nowFolderButtonIndex, conditionData.folderIngameName,
                 folderCanvasInst, folderButtonInst);
             wholeFolderButtonList.Add(folderButton);
-            FolderButtonAlign();
+            //FolderButtonAlign();
             nowFolderButtonIndex++;
-        }
+        } 
         GameObject docButtonObj = Instantiate(oneLineDocumentButtonPrefab, folderButton.documentButtonScrollParent);
         docButtonObj.SetActive(true);
         Button docButtonComponent = docButtonObj.transform.GetChild(1).GetComponent<Button>();

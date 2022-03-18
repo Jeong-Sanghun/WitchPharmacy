@@ -28,15 +28,6 @@ public class DocumentButtonClass
     //public List<GameObject> highlightButtonList;
     //public List<GameObject> highlightPopupList;
     List<Highlight> highlightList;
-    class Highlight
-    {
-        public int startIndex;
-        public int endIndex;
-        public Vector2 popupPos;
-        public string popupString;
-        //public GameObject popupObject;
-        public Text popupText;
-    }
 
 
     public DocumentButtonClass(int _index,DocumentCondition condition, DocumentBundle doc,OwningDocumentClass ownDoc, GameObject buttonObj)
