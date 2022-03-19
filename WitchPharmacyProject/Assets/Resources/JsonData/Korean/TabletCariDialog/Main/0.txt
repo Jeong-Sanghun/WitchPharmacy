@@ -20,7 +20,8 @@
         },
         {
             "feelingString": "angry2",
-            "dialog": "흥"
+            "dialog": "흥",
+			            "firstButtonText": "그러등가"
         }
     ]
 }

@@ -32,17 +32,22 @@ public class TabletCariManager : MonoBehaviour
     [SerializeField]
     Text[] maximizeButtonTextArray;
     [SerializeField]
-    Text maximizeTalkText;
+    public Text maximizeTalkText;
+    [SerializeField]
+    GameObject buttonBundle;
 
     int nowMainDialogIndex;
     //BillCariDialog nowBillCariDialog;
     CariDialog nowCariDialog;
+
+    bool nowInHome;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
+        nowInHome = true;
 
         JsonManager jsonManager = new JsonManager();
         mainCariDialogCondition = jsonManager.ResourceDataLoad<MainCariDialogCondition>("TabletCariDialog/Main/MainCariDialogCondition");
@@ -51,12 +56,30 @@ public class TabletCariManager : MonoBehaviour
 
     public void MaximizeButton()
     {
-        minimizeParent.SetActive(false);
-        maximizeParent.SetActive(true);
+        if (nowTabletType != TabletType.Main)
+        {
+            return;
+        }
+        MaximizeTalk();
         SetDialogByType();
     }
 
     public void MinimizeButton()
+    {
+        if (nowTabletType != TabletType.Main)
+        {
+            return;
+        }
+        MinimizeTalk();
+    }
+
+    public void MaximizeTalk()
+    {
+        minimizeParent.SetActive(false);
+        maximizeParent.SetActive(true);
+    }
+
+    public void MinimizeTalk()
     {
         minimizeParent.SetActive(true);
         maximizeParent.SetActive(false);
@@ -65,14 +88,25 @@ public class TabletCariManager : MonoBehaviour
     public void NextDialogButton()
     {
         nowMainDialogIndex++;
-        SetMainDialog();
+        if(nowMainDialogIndex == mainCariDialogWrapper.mainCariDialogArray.Length)
+        {
+            MinimizeTalk();
+            nowMainDialogIndex = 0;
+        }
+        else
+        {
+            SetMainDialog();
+        }
+        
         
     }
 
     public void ChangeTabletType(TabletType type)
     {
+        MinimizeTalk();
         nowTabletType = type;
         SetDialogByType();
+
     }
 
     void SetDialogByType()
@@ -86,6 +120,9 @@ public class TabletCariManager : MonoBehaviour
             case TabletType.Main:
                 SetMainDialog();
                 break;
+            default:
+                RouteButtonActiveFalse();
+                break;
         }
     }
 
@@ -93,15 +130,22 @@ public class TabletCariManager : MonoBehaviour
     {
         MainCariDialog mainDialog = mainCariDialogWrapper.mainCariDialogArray[nowMainDialogIndex];
         maximizeTalkText.text = mainDialog.dialog;
+        RouteButtonActiveFalse();
+        for (int i = 0; i < mainDialog.buttonTextList.Count; i++)
+        {
+            buttonBundle.SetActive(true);
+            maximizeButtonObjectArray[i].SetActive(true);
+            maximizeButtonTextArray[i].text = mainDialog.buttonTextList[i];
+        }
+    }
+
+    void RouteButtonActiveFalse()
+    {
         for (int i = 0; i < maximizeButtonObjectArray.Length; i++)
         {
             maximizeButtonObjectArray[i].SetActive(false);
         }
-        for (int i = 0; i < mainDialog.buttonTextList.Count; i++)
-        {
-            maximizeButtonObjectArray[i].SetActive(true);
-            maximizeButtonTextArray[i].text = mainDialog.buttonTextList[i];
-        }
+
     }
 
     //빌 버튼에서 호출.

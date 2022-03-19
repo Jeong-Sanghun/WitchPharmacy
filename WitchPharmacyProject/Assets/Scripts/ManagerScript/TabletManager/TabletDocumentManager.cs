@@ -20,6 +20,8 @@ public class TabletDocumentManager : MonoBehaviour
     [SerializeField]
     GameObject wholeFolderParentObject;
     [SerializeField]
+    GameObject wholeFolderScrollObject;
+    [SerializeField]
     Transform folderScrollParent;
     [SerializeField]
     GameObject folderButtonPrefab;
@@ -35,8 +37,6 @@ public class TabletDocumentManager : MonoBehaviour
     Transform directoryCanvas;
     [SerializeField]
     GameObject highlightButtonPrefab;
-    [SerializeField]
-    GameObject highlightPopupPrefab;
     [SerializeField]
     GameObject imageOpenCanvasPrefab;
     bool isInit = false;
@@ -149,7 +149,6 @@ public class TabletDocumentManager : MonoBehaviour
             conditionData,bundle,owningDocument, docButtonObj);
        
         folderButton.AddDocument(documentButton);
-        folderButton.SetupContentRect();
         directoryCanvas.SetAsLastSibling();
 
     }
@@ -168,11 +167,13 @@ public class TabletDocumentManager : MonoBehaviour
     void OnFolderButtonDown(int index)
     {
         nowOpenedFolderIndex = index;
+        wholeFolderScrollObject.SetActive(false);
         wholeFolderButtonList[index].folderCanvasObject.SetActive(true);
         UpdateDirectory();
     }
     public void OnFolderBackButton()
     {
+        wholeFolderScrollObject.SetActive(true);
         wholeFolderButtonList[nowOpenedFolderIndex].folderCanvasObject.SetActive(false);
         nowOpenedFolderIndex = -1;
         UpdateDirectory();
@@ -198,6 +199,7 @@ public class TabletDocumentManager : MonoBehaviour
             return;
         }
         DocumentFolderButtonClass folder = wholeFolderButtonList[nowOpenedFolderIndex];
+        folder.folderCanvasObject.SetActive(false);
         nowOpenedDocumentIndex = index;
         DocumentButtonClass document = folder.documentButtonList[index];
         if(document.isOpened == false)
@@ -205,10 +207,9 @@ public class TabletDocumentManager : MonoBehaviour
             GameObject canvas = Instantiate(documentParentPrefab, wholeFolderParentObject.transform);
             //Tlqkf zz
             
-            document.SetupDocument(canvas,gameManager.languagePack,highlightButtonPrefab,highlightPopupPrefab,imageOpenCanvasPrefab);
+            document.SetupDocument(canvas,gameManager.languagePack,highlightButtonPrefab,imageOpenCanvasPrefab);
             directoryCanvas.SetAsLastSibling();
         }
-        document.CloseHighlight(null);
         nowOpenedDocumentCanvas = document.documentCanvas;
         nowOpenedDocumentCanvas.SetActive(true);
         UpdateDirectory();
@@ -252,9 +253,4 @@ public class TabletDocumentManager : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

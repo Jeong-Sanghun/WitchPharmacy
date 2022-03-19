@@ -22,7 +22,7 @@ public class TabletManager : MonoBehaviour
     [SerializeField]
     TabletTreeterManager tabletTreeterManager;
     [SerializeField]
-    TabletCariManager tabletCariManager;
+    public TabletCariManager tabletCariManager;
     [SerializeField]
     GameObject tabletCanvasParent;
     [SerializeField]
