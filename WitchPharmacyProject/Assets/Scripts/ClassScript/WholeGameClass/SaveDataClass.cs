@@ -50,7 +50,8 @@ public class SaveDataClass
     public List<string> readStoryList;
     public List<string> readSpecialVisitorBundleList;
     public string nextStory;
-    public string nextLoadSceneName;
+    public int nowSceneIndex;
+    //public string nextLoadSceneName;
     public SaveTime nowSaveTime;
     public StoryRegion nowRegion;
     public string forcedRegion;
@@ -79,7 +80,8 @@ public class SaveDataClass
         owningDocumentList = new List<OwningDocumentClass>();
         //visitedOddVisitorName = new List<string>();
         //readStoryList = new List<string>();
-        nextLoadSceneName = "StoryScene";
+        nowSceneIndex = 0;
+        //nextLoadSceneName = "StoryScene";
         nowSaveTime = SaveTime.DayStart;
         researchSaveData = new ResearchSaveData();
         symptomBookList = new List<string>();

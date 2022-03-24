@@ -1,0 +1,205 @@
+{
+    "sceneArray": [
+        {
+            "day": "0",
+            "sceneName": "StoryScene",
+            "storyName": "main_Prologue"
+        },
+        {
+            "day": "1",
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Start"
+        },
+        {
+            "sceneName": "TutorialConceptScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_ConceptTutoAfter"
+        },
+        {
+            "sceneName": "TutorialRoomCounterScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_RoomCounterTutoAfter"
+        },
+        {
+            "sceneName": "TutorialTabletScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_AfterTabletTutoAfter"
+        },
+        {
+            "sceneName": "RoomCounterScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day1Mid"
+        },
+        {
+            "sceneName": "TutorialWorldmap1"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "local_Grave1"
+        },
+        {
+            "day": "2",
+            "sceneName": "StoryScene",
+            "storyName": "<DayStartRand>"
+        },
+        {
+            "sceneName": "RoomCounterScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "<DayMidRand>"
+        },
+        {
+            "sceneName": "TutorialWorldmap2"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "<DayEndRand>"
+        },
+        {
+            "day": "3",
+            "sceneName": "StoryScene",
+            "storyName": "<DayStartRand>"
+        },
+        {
+            "sceneName": "RoomCounterScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Lynn1"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Lynn2"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day3Mid"
+        },
+        {
+            "sceneName": "WorldmapForced1"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "local_Grave2"
+        },
+        {
+            "sceneName": "TutorialResearchScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day3End"
+        },
+        {
+            "day": "4",
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day4Start"
+        },
+        {
+            "sceneName": "RoomCounterScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "<DayMidRand>"
+        },
+        {
+            "sceneName": "Worldmap"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "<DayEndRand>"
+        },
+        {
+            "day": "5",
+            "sceneName": "StoryScene",
+            "storyName": "<DayStartRand>"
+        },
+        {
+            "sceneName": "RoomCounterScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day5Mid"
+        },
+        {
+            "sceneName": "WorldmapForced2"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "local_AndersonHouse"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_After"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Retrospect"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day5End"
+        },
+        {
+            "day": "6",
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day6Start"
+        },
+        {
+            "sceneName": "RoomCounterScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day6Mid"
+        },
+        {
+            "sceneName": "WorldmapForced3"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "local_Grave3"
+        },
+        {
+            "sceneName": "TutorialBossScene"
+        },
+        {
+            "sceneName": "BossScene"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_BossEnd"
+        },
+        {
+            "sceneName": "WorldmapForced4"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "local_Grave4"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day6End"
+        },
+        {
+            "day": "7",
+            "sceneName": "StoryScene",
+            "storyName": "<DayStartRand>"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Day7Counter"
+        },
+        {
+            "sceneName": "StoryScene",
+            "storyName": "main_ruinVil_Epilogue"
+        }
+    ]
+}

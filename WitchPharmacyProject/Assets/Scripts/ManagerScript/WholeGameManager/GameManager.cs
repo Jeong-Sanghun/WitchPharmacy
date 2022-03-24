@@ -199,9 +199,8 @@ public class GameManager : MonoBehaviour //SH
 
     //}
 
-    public void ForceSaveButtonActive(string nextScene,SaveTime saveTime)
+    public void ForceSaveButtonActive(SaveTime saveTime)
     {
-        saveData.nextLoadSceneName = nextScene;
         saveData.nowSaveTime = saveTime;
         jsonManager.SaveJson(saveData, 0);
         saveDataTimeWrapper.saveDataTimeList[0].day = saveData.nowDay;
@@ -215,14 +214,6 @@ public class GameManager : MonoBehaviour //SH
     public void LoadJson(int index)
     {
         saveData = jsonManager.LoadSaveData(index);
-        if(saveData.nowSaveTime == SaveTime.ExploreStart)
-        {
-            sceneManager.lastSceneName = "RoomCounterScene";
-        }
-        else if(saveData.nowSaveTime == SaveTime.DayStart)
-        {
-            sceneManager.lastSceneName = "StoryScene";
-        }
         sceneManager.SaveDataLoadScene();
     }
 

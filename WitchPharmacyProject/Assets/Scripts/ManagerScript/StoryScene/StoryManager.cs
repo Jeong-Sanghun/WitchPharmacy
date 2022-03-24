@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Obsolete;
 
 public class StoryManager : MonoBehaviour
 {
@@ -504,38 +505,45 @@ public class StoryManager : MonoBehaviour
 
     public void ToNextSceneButton()
     {
-        Debug.Log(sceneManager.lastSceneName);
+        //Debug.Log(sceneManager.lastSceneName);
 
-        if(sceneManager.lastSceneName == null)
-        {
-            //gameManager.AutoSave("StoreScene");
-            sceneManager.LoadScene("RoomCounterScene");
-        }
-        //else if(sceneManager.lastSceneName == "StoreScene")
+        //if (sceneManager.lastSceneName == null)
         //{
-        //    //지금 쓸지말지 모름 여기는.
-        //    //gameManager.ForceSaveButtonActive("RoomCounterScene");
+        //    //gameManager.AutoSave("StoreScene");
         //    sceneManager.LoadScene("RoomCounterScene");
         //}
-        else if (sceneManager.lastSceneName == "StartScene")
-        {
-            sceneManager.LoadScene("RoomCounterScene");
-        }
-        else if (sceneManager.lastSceneName == "RoomCounterScene")
-        {
+        ////else if(sceneManager.lastSceneName == "StoreScene")
+        ////{
+        ////    //지금 쓸지말지 모름 여기는.
+        ////    //gameManager.ForceSaveButtonActive("RoomCounterScene");
+        ////    sceneManager.LoadScene("RoomCounterScene");
+        ////}
+        //else if (sceneManager.lastSceneName == "StartScene")
+        //{
+        //    sceneManager.LoadScene("RoomCounterScene");
+        //}
+        //else if (sceneManager.lastSceneName == "RoomCounterScene")
+        //{
 
-         //   gameManager.ForceSaveButtonActive("ExploreScene");
-            sceneManager.LoadScene("ExploreScene");
-        }
-        else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene" || sceneManager.lastSceneName == "StoreScene" || sceneManager.lastSceneName == "RegionScene")
+        //    //   gameManager.ForceSaveButtonActive("ExploreScene");
+        //    sceneManager.LoadScene("ExploreScene");
+        //}
+        //else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene" || sceneManager.lastSceneName == "StoreScene" || sceneManager.lastSceneName == "RegionScene")
+        //{
+        //    gameManager.ForceSaveButtonActive("StoryScene", SaveTime.DayStart);
+        //    //sceneManager.LoadScene("StoryScene");
+        //}
+        //else if (sceneManager.lastSceneName == "StoryScene")
+        //{
+        //    sceneManager.LoadScene("RoomCounterScene");
+        //}
+
+        if (sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].saveTimeString != null)
         {
-            gameManager.ForceSaveButtonActive("StoryScene",SaveTime.DayStart);
-            //sceneManager.LoadScene("StoryScene");
+            sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].Parse();
+            gameManager.ForceSaveButtonActive(sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].saveTime);
         }
-        else if(sceneManager.lastSceneName == "StoryScene")
-        {
-            sceneManager.LoadScene("RoomCounterScene");
-        }
+        
 
     }
 

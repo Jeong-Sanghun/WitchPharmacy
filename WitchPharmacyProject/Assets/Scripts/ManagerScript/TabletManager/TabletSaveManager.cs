@@ -161,7 +161,8 @@ public class TabletSaveManager : MonoBehaviour
                     SaveCanvasActive(false);
 
                     // gameManager.sceneManager.lastSceneName = 
-                    gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
+                    SceneManager.inst.LoadNextScene();
+                    //gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
 
                 }
             }
@@ -202,8 +203,7 @@ public class TabletSaveManager : MonoBehaviour
         SaveOrLoadButtonCanvasGetout();
         SaveCanvasActive(false);
 
-        // gameManager.sceneManager.lastSceneName = 
-        gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
+        SceneManager.inst.LoadNextScene();
 
     }
 

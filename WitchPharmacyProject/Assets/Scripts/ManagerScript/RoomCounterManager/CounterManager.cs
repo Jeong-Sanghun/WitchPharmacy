@@ -517,7 +517,7 @@ public class CounterManager : MonoBehaviour //SH
             endSales = true;
 
             //gameManager.AutoSave("StoryScene");
-            gameManager.ForceSaveButtonActive("StoryScene",SaveTime.ExploreStart);
+            gameManager.ForceSaveButtonActive(SaveTime.ExploreStart);
             //toNextSceneButton.SetActive(true);
 
         }

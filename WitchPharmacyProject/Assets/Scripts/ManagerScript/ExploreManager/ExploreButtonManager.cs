@@ -58,9 +58,6 @@ public class ExploreButtonManager : MonoBehaviour
                 }
             }
         }
-       
-
-
     }
 
     public void ResearchSceneButton()

@@ -15,15 +15,35 @@ public class SceneManager : MonoBehaviour // JH
     public static SceneManager inst;
     //이전 씬의 네임. storyScene에서 써먹을라고 만듦......
     public string lastSceneName;
+    public string sceneParameter;
     //텍스트가 지금 쳐지고 있으면. 여러매니저에서 써먹을듯.
     public bool nowTexting;
     public int nowSaveIndex;
+    public int nowIngameSceneIndex;
+    public SceneWrapper sceneWrapper;
+   
+
+    void Awake()
+    {
+        if (inst == null)
+        {
+            inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     private void Start()
     {
         Screen.SetResolution(2560, 1440, false);
         gameManager = GameManager.singleton;
-        nowTexting = false;   
+        nowTexting = false;
+        JsonManager json = new JsonManager();
+        sceneWrapper = json.ResourceDataLoadBeforeGame<SceneWrapper>("SceneWrapper",gameManager);
     }
     // // Module // //
     GameObject linearMovingObj;
@@ -335,7 +355,10 @@ public class SceneManager : MonoBehaviour // JH
             lastSceneName = "RoomCounterScene";
         }
         //게임매니저가 여기서 로드할 때 생기거덩 그러면 게임매니저에서 씬매니저의 그 인덱스 번호를 가져가서 스타트에서 로드를 때려버림. 
-        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(gameManager.saveData.nextLoadSceneName);
+        int nowSceneIndex = gameManager.saveData.nowSceneIndex;
+        string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
+        sceneParameter = sceneWrapper.sceneArray[nowSceneIndex].sceneParameter;
+        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(nowScene);
 
         op.allowSceneActivation = false;
 
@@ -352,7 +375,7 @@ public class SceneManager : MonoBehaviour // JH
             }
             yield return null;
         }
-        if (gameManager.saveData.nextLoadSceneName == "StoryScene")
+        if (nowScene == "StoryScene")
         {
             TabletManager.inst.TabletOpenButtonActive(false);
         }
@@ -362,48 +385,60 @@ public class SceneManager : MonoBehaviour // JH
         }
     }
 
-    public void BossSceneLoad()
+    //public void BossSceneLoad()
+    //{
+    //    StartCoroutine(BossSceneCoroutine());
+    //}
+
+    //IEnumerator BossSceneCoroutine()
+    //{
+    //    UnityEngine.SceneManagement.SceneManager.LoadScene("StartLoadingScene");
+    //    yield return null;
+    //    Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
+    //    gameManager = GameManager.singleton;
+    //    //게임매니저가 여기서 로드할 때 생기거덩 그러면 게임매니저에서 씬매니저의 그 인덱스 번호를 가져가서 스타트에서 로드를 때려버림. 
+    //    int nowSceneIndex = gameManager.saveData.nowSceneIndex;
+    //    string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
+    //    sceneParameter = sceneWrapper.sceneArray[nowSceneIndex].storyName;
+    //    AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("BossScene");
+
+    //    op.allowSceneActivation = false;
+
+    //    float timer = 0.0f;
+
+    //    while (!op.isDone)
+    //    {
+
+    //        timer += Time.deltaTime;
+    //        loadText.text = op.progress.ToString();
+    //        if (timer > 0.5f)
+    //        {
+    //            op.allowSceneActivation = true;
+    //        }
+    //        yield return null;
+    //    }
+    //    if (gameManager.saveData.nextLoadSceneName == "StoryScene")
+    //    {
+    //        TabletManager.inst.TabletOpenButtonActive(false);
+    //    }
+    //    else
+    //    {
+    //        TabletManager.inst.TabletOpenButtonActive(true);
+    //    }
+    //}
+
+    public void LoadNextScene()
     {
-        StartCoroutine(BossSceneCoroutine());
-    }
-
-    IEnumerator BossSceneCoroutine()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("StartLoadingScene");
-        yield return null;
-        Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
-        gameManager = GameManager.singleton;
-        //게임매니저가 여기서 로드할 때 생기거덩 그러면 게임매니저에서 씬매니저의 그 인덱스 번호를 가져가서 스타트에서 로드를 때려버림. 
-        AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("BossScene");
-
-        op.allowSceneActivation = false;
-
-        float timer = 0.0f;
-
-        while (!op.isDone)
-        {
-
-            timer += Time.deltaTime;
-            loadText.text = op.progress.ToString();
-            if (timer > 0.5f)
-            {
-                op.allowSceneActivation = true;
-            }
-            yield return null;
-        }
-        if (gameManager.saveData.nextLoadSceneName == "StoryScene")
-        {
-            TabletManager.inst.TabletOpenButtonActive(false);
-        }
-        else
-        {
-            TabletManager.inst.TabletOpenButtonActive(true);
-        }
+        gameManager.saveData.nowSceneIndex++;
+        int nowSceneIndex = gameManager.saveData.nowSceneIndex;
+        string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
+        sceneParameter = sceneWrapper.sceneArray[nowSceneIndex].sceneParameter;
+        StartCoroutine(LoadingSceneCoroutine(nowScene));
     }
 
     public void LoadScene(string sceneName)
     {
-        lastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        //lastSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         StartCoroutine(LoadingSceneCoroutine(sceneName));
     }
 
@@ -412,7 +447,10 @@ public class SceneManager : MonoBehaviour // JH
     {
         //lastSceneName = null;
         //gameManager.LoadJson(index);
-        StartCoroutine(LoadingSceneCoroutine(gameManager.saveData.nextLoadSceneName));
+        int nowSceneIndex = gameManager.saveData.nowSceneIndex;
+        string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
+        sceneParameter = sceneWrapper.sceneArray[nowSceneIndex].sceneParameter;
+        StartCoroutine(LoadingSceneCoroutine(nowScene));
     }
 
     IEnumerator LoadingSceneCoroutine(string sceneName)
@@ -454,22 +492,6 @@ public class SceneManager : MonoBehaviour // JH
     }
 
 
-    void Awake()
-    {
-        if (inst == null)
-        {
-            inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     
-    void Update()
-    {
-        
-    }
 }
