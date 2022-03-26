@@ -40,7 +40,7 @@ public class TabletSaveManager : MonoBehaviour
     int nowAlertSaveIndex = -1;
     bool isSavingMode = false;
     bool isForceSave = false;
-    SaveTime nowSaveTime;
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -81,7 +81,7 @@ public class TabletSaveManager : MonoBehaviour
             builder.Append((saveDataTimeArray[index].day+1).ToString());
             builder.Append(languagePack.slotDay);
             builder.Append(" ");
-            builder.Append(languagePack.saveTimeArray[(int)saveDataTimeArray[index].saveTime]);
+            builder.Append(SceneManager.inst.sceneWrapper.sceneArray[saveDataTimeArray[index].sceneIndex].saveTimeString);
         }
         buttonTextArray[index].text = builder.ToString();
 
@@ -95,10 +95,9 @@ public class TabletSaveManager : MonoBehaviour
         saveLoadCanvas.SetActive(active);
     }
 
-    public void OnOpenedForceSave(SaveTime saveTime)
+    public void OnOpenedForceSave()
     {
         isForceSave = true;
-        nowSaveTime = saveTime;
         //saveButton.enabled = true;
         saveButton.gameObject.SetActive(true);
         loadButton.SetActive(false);
@@ -148,7 +147,7 @@ public class TabletSaveManager : MonoBehaviour
         {
             if(saveDataTimeArray[index].day == -1)
             {
-                gameManager.SaveJson(index, nowSaveTime);
+                gameManager.SaveJson(index);
                 if (isForceSave)
                 {
                     for (int i = 0; i < getOutButtons.Length; i++)
@@ -192,7 +191,7 @@ public class TabletSaveManager : MonoBehaviour
     public void AlertYesButton()
     {
         alertCanvas.SetActive(false);
-        gameManager.SaveJson(nowAlertSaveIndex, nowSaveTime);
+        gameManager.SaveJson(nowAlertSaveIndex);
 
         for (int i = 0; i < getOutButtons.Length; i++)
         {

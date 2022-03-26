@@ -52,7 +52,7 @@ public class SaveDataClass
     public string nextStory;
     public int nowSceneIndex;
     //public string nextLoadSceneName;
-    public SaveTime nowSaveTime;
+    //public SaveTime nowSaveTime;
     public StoryRegion nowRegion;
     public string forcedRegion;
     public string nowBossFile;
@@ -82,7 +82,6 @@ public class SaveDataClass
         //readStoryList = new List<string>();
         nowSceneIndex = 0;
         //nextLoadSceneName = "StoryScene";
-        nowSaveTime = SaveTime.DayStart;
         researchSaveData = new ResearchSaveData();
         symptomBookList = new List<string>();
         symptomBookList.Add("water+");

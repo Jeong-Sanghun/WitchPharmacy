@@ -28,6 +28,7 @@ public class StartSceneManager : MonoBehaviour
         saveDataTimeWrapper = jsonManager.LoadSaveDataTime();
         saveDataTimeArray = saveDataTimeWrapper.saveDataTimeList;
         languagePack = jsonManager.ResourceDataLoadBeforeGame<UILanguagePack>("LanguagePack", saveDataTimeWrapper.nowLanguageDirectory);
+        sceneManager.SetSceneWrapper(saveDataTimeWrapper.nowLanguageDirectory);
         for(int i = 0; i < saveDataTimeArray.Length; i++)
         {
             SetButtonText(i);
@@ -56,7 +57,7 @@ public class StartSceneManager : MonoBehaviour
             builder.Append((saveDataTimeArray[index].day + 1).ToString());
             builder.Append(languagePack.slotDay);
             builder.Append(" ");
-            builder.Append(languagePack.saveTimeArray[(int)saveDataTimeArray[index].saveTime]);
+            builder.Append(SceneManager.inst.sceneWrapper.sceneArray[saveDataTimeArray[index].sceneIndex].saveTimeString);
         }
         buttonTextArray[index].text = builder.ToString();
     }

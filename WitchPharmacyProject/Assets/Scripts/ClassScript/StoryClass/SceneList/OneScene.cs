@@ -9,13 +9,9 @@ public class OneScene
     public string sceneName;
     public string sceneParameter;
     public string saveTimeString;
-    public SaveTime saveTime;
 
 
-    public void Parse()
-    {
-        saveTime = (SaveTime)System.Enum.Parse(typeof(SaveTime), saveTimeString);
-    }
+    
     public OneScene()
     {
         day = -1;

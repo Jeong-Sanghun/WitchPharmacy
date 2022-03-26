@@ -104,7 +104,7 @@ public class TabletManager : MonoBehaviour
         tabletTreeterManager.WholeButtonOff();
     }
 
-    public void ForceSaveButtonActive(bool forceSave,SaveTime saveTime)
+    public void ForceSaveButtonActive(bool forceSave)
     {
 
         tabletCanvasParent.SetActive(true);
@@ -112,7 +112,7 @@ public class TabletManager : MonoBehaviour
         if (forceSave)
         {
             homeButton.SetActive(false);
-            tabletSaveManager.OnOpenedForceSave(saveTime);
+            tabletSaveManager.OnOpenedForceSave();
         }
     }
 

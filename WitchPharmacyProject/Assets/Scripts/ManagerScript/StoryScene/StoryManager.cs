@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using Obsolete;
+
 
 public class StoryManager : MonoBehaviour
 {
@@ -13,11 +13,14 @@ public class StoryManager : MonoBehaviour
     SaveDataClass saveData;
 
     //protected List<ConversationDialogBundle> conversationDialogBundleList;
-    [SerializeField]
-    ConversationDialogBundle nowBundle;
-    [SerializeField]
-    ConversationDialogWrapper nowWrapper;
-    ConversationRouter nowRouter;
+    //[SerializeField]
+    //ConversationDialogBundle nowBundle;
+    //[SerializeField]
+    //ConversationDialogWrapper nowWrapper;
+    //ConversationRouter nowRouter;
+    StoryDialogBundle nowBundle;
+    int nowDialogIndex;
+  
     StoryParser storyParser;
 
     CharacterIndexToName characterIndexToName;
@@ -92,9 +95,9 @@ public class StoryManager : MonoBehaviour
         nowRouterIndex = 0;
         storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
         saveData.readStoryList.Add(saveData.nextStory);
-        nowBundle = storyParser.LoadBundle(saveData.nextStory, gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
-        nowWrapper = nowBundle.dialogWrapperList[0];
-        saveData.forcedRegion = nowBundle.forcedRegion;
+        nowBundle = storyParser.LoadStoryBundle(sceneManager.sceneParameter, gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
+        
+        
         if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
         {
             saveData.nextStory = nowWrapper.nextStory;
@@ -537,11 +540,10 @@ public class StoryManager : MonoBehaviour
         //{
         //    sceneManager.LoadScene("RoomCounterScene");
         //}
-
+        gameManager.saveData.nowSceneIndex++;
         if (sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].saveTimeString != null)
         {
-            sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].Parse();
-            gameManager.ForceSaveButtonActive(sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].saveTime);
+            gameManager.ForceSaveButtonActive();
         }
         
 

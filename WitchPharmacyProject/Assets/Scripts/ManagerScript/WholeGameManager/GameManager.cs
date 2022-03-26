@@ -184,10 +184,10 @@ public class GameManager : MonoBehaviour //SH
     }
 
     //아마 모든 매니저에서 참조할것.
-    public void SaveJson(int index,SaveTime saveTime)
+    public void SaveJson(int index)
     {
         saveDataTimeWrapper.saveDataTimeList[index].day = saveData.nowDay;
-        saveDataTimeWrapper.saveDataTimeList[index].saveTime = saveTime;
+        saveDataTimeWrapper.saveDataTimeList[index].sceneIndex = saveData.nowSceneIndex;
         jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
 
         jsonManager.SaveJson(saveData,index);
@@ -199,15 +199,15 @@ public class GameManager : MonoBehaviour //SH
 
     //}
 
-    public void ForceSaveButtonActive(SaveTime saveTime)
+    public void ForceSaveButtonActive()
     {
-        saveData.nowSaveTime = saveTime;
+        
         jsonManager.SaveJson(saveData, 0);
         saveDataTimeWrapper.saveDataTimeList[0].day = saveData.nowDay;
-        saveDataTimeWrapper.saveDataTimeList[0].saveTime = saveTime;
+        saveDataTimeWrapper.saveDataTimeList[0].sceneIndex = saveData.nowSceneIndex;
         jsonManager.SaveJson<SaveDataTimeWrapper>(saveDataTimeWrapper, "SaveDataTimeWrapper");
         tabletManager.TabletOpenButtonActive(true);
-        tabletManager.ForceSaveButtonActive(true,saveTime);
+        tabletManager.ForceSaveButtonActive(true);
     }
 
 

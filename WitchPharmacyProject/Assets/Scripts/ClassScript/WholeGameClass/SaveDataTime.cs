@@ -11,11 +11,11 @@ public enum SaveTime
 public class SaveDataTime
 {
     public int day;
-    public SaveTime saveTime;
+    public int sceneIndex;
 
     public SaveDataTime()
     {
         day = -1;
-        saveTime = SaveTime.ExploreStart;
+        sceneIndex = 0;
     }
 }

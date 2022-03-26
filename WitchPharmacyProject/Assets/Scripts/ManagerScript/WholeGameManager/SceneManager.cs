@@ -14,7 +14,7 @@ public class SceneManager : MonoBehaviour // JH
     GameManager gameManager;
     public static SceneManager inst;
     //이전 씬의 네임. storyScene에서 써먹을라고 만듦......
-    public string lastSceneName;
+    //public string lastSceneName;
     public string sceneParameter;
     //텍스트가 지금 쳐지고 있으면. 여러매니저에서 써먹을듯.
     public bool nowTexting;
@@ -42,8 +42,14 @@ public class SceneManager : MonoBehaviour // JH
         Screen.SetResolution(2560, 1440, false);
         gameManager = GameManager.singleton;
         nowTexting = false;
+        
+        
+    }
+
+    public void SetSceneWrapper(string languageDirectory)
+    {
         JsonManager json = new JsonManager();
-        sceneWrapper = json.ResourceDataLoadBeforeGame<SceneWrapper>("SceneWrapper",gameManager);
+        sceneWrapper = json.ResourceDataLoadBeforeGame<SceneWrapper>("SceneWrapper", languageDirectory);
     }
     // // Module // //
     GameObject linearMovingObj;
@@ -346,14 +352,14 @@ public class SceneManager : MonoBehaviour // JH
         yield return null;
         Text loadText = GameObject.Find("LoadingText").GetComponent<Text>();
         gameManager = GameManager.singleton;
-        if(gameManager.saveData.nowSaveTime == SaveTime.DayStart)
-        {
-            lastSceneName = "StoryScene";
-        }
-        else
-        {
-            lastSceneName = "RoomCounterScene";
-        }
+        //if(gameManager.saveData.nowSaveTime == SaveTime.DayStart)
+        //{
+        //    lastSceneName = "StoryScene";
+        //}
+        //else
+        //{
+        //    lastSceneName = "RoomCounterScene";
+        //}
         //게임매니저가 여기서 로드할 때 생기거덩 그러면 게임매니저에서 씬매니저의 그 인덱스 번호를 가져가서 스타트에서 로드를 때려버림. 
         int nowSceneIndex = gameManager.saveData.nowSceneIndex;
         string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
