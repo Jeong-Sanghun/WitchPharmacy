@@ -1,0 +1,23 @@
+﻿<bundleName>{fifthDay}
+<effect>{blurOn,fadeInImmediate}
+<switch>{Cari{Left},Ian,Lily,Ruellia{Right}}
+<nextStory>{firstDay}
+<background>{counter}
+[카리]
+우리 다과회하자
+<effect>{fadeOut}
+[릴리]
+싫어싫어
+<effect>{blurOff}
+[루엘리아]
+싫어싫어
+<effect>{fadeIn,blurOn}
+[이안]
+싫어싫어
+<effect>{blurOff}
+<switch>{Cari,Ian,Lily,Ruellia}
+[릴리]
+앙 맛있겠다 과자 좋아
+<effect>{fadeOut,blurOn}
+[루엘리아]
+히히

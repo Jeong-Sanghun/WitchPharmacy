@@ -186,22 +186,24 @@ public class SceneManager : MonoBehaviour // JH
 
     bool moveModuleLinearRunning = false;
     bool moveModuleInterrupt = false;
-    public IEnumerator MoveModule_Linear(GameObject i_Object, Vector3 i_Vector, float i_Time){
+    public IEnumerator MoveModule_Linear(GameObject i_Object, Vector3 i_Vector, float i_Time)
+    {
         float miniTimer = 0f;
-        if(moveModuleLinearRunning == true && linearMovingObj == i_Object)
+        if (moveModuleLinearRunning == true && linearMovingObj == i_Object)
         {
-            moveModuleInterrupt = true;    
+            moveModuleInterrupt = true;
         }
         moveModuleLinearRunning = true;
-        Vector3 newVector = new Vector3(0f,0f,0f);
+        Vector3 newVector = new Vector3(0f, 0f, 0f);
         Vector3 origin = i_Object.transform.position;
         linearMovingObj = i_Object;
-        float newX=0f, newY=0f, newZ=0f;
-        while(miniTimer<i_Time){
-            newX= Mathf.Lerp(origin.x,i_Vector.x,miniTimer/i_Time);
-            newY= Mathf.Lerp(origin.y,i_Vector.y,miniTimer/i_Time);
-            newZ= Mathf.Lerp(origin.z,i_Vector.z,miniTimer/i_Time);
-            newVector = new Vector3(newX,newY,newZ);
+        float newX = 0f, newY = 0f, newZ = 0f;
+        while (miniTimer < i_Time)
+        {
+            newX = Mathf.Lerp(origin.x, i_Vector.x, miniTimer / i_Time);
+            newY = Mathf.Lerp(origin.y, i_Vector.y, miniTimer / i_Time);
+            newZ = Mathf.Lerp(origin.z, i_Vector.z, miniTimer / i_Time);
+            newVector = new Vector3(newX, newY, newZ);
             i_Object.transform.position = newVector;
             yield return null;
             if (moveModuleInterrupt)
@@ -209,13 +211,43 @@ public class SceneManager : MonoBehaviour // JH
                 moveModuleInterrupt = false;
                 break;
             }
-            miniTimer +=Time.deltaTime;
+            miniTimer += Time.deltaTime;
         }
-        if(linearMovingObj == i_Object)
+        if (linearMovingObj == i_Object)
         {
             i_Object.transform.position = i_Vector;
         }
+
+        yield return null;
+        moveModuleLinearRunning = false;
+    }
+
+    public IEnumerator ShakeModule(GameObject i_Object,float shakePowerX,float shakePowerY, float i_Time)
+    {
+        float miniTimer = 0f;
+        if (moveModuleLinearRunning == true && linearMovingObj == i_Object)
+        {
+            moveModuleInterrupt = true;
+        }
+        moveModuleLinearRunning = true;
+        Vector3 newVector = new Vector3(0f, 0f, 0f);
+        Vector3 origin = i_Object.transform.position;
+        linearMovingObj = i_Object;
+        float newX = 0f, newY = 0f;
         
+        while (miniTimer < i_Time)
+        {
+            newX = origin.x + Random.Range(-shakePowerX, shakePowerX);
+            newY = origin.y + Random.Range(-shakePowerY, shakePowerY);
+            
+            newVector = new Vector3(newX, newY, origin.z);
+            i_Object.transform.position = newVector;
+            yield return null;
+
+            miniTimer += Time.deltaTime;
+        }
+        i_Object.transform.position = origin;
+
         yield return null;
         moveModuleLinearRunning = false;
     }
@@ -436,9 +468,11 @@ public class SceneManager : MonoBehaviour // JH
     public void LoadNextScene()
     {
         gameManager.saveData.nowSceneIndex++;
+        
         int nowSceneIndex = gameManager.saveData.nowSceneIndex;
         string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
         sceneParameter = sceneWrapper.sceneArray[nowSceneIndex].sceneParameter;
+        Debug.Log(sceneParameter);
         StartCoroutine(LoadingSceneCoroutine(nowScene));
     }
 

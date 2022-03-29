@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//이거 안쓸수도 있음.
-[System.Serializable]
-public class ConversationDialogBundleWrapper
+namespace Obsolete
 {
-    public List<ConversationDialogBundle> conversationDialogBundleList;
 
-    public ConversationDialogBundleWrapper()
+    //이거 안쓸수도 있음.
+    [System.Serializable]
+    public class ConversationDialogBundleWrapper
     {
-        conversationDialogBundleList = new List<ConversationDialogBundle>();
+        public List<ConversationDialogBundle> conversationDialogBundleList;
 
-        conversationDialogBundleList.Add(new ConversationDialogBundle());
-        conversationDialogBundleList[0].bundleName = "bundle";
+        public ConversationDialogBundleWrapper()
+        {
+            conversationDialogBundleList = new List<ConversationDialogBundle>();
 
-        conversationDialogBundleList.Add(new ConversationDialogBundle());
+            conversationDialogBundleList.Add(new ConversationDialogBundle());
+            conversationDialogBundleList[0].bundleName = "bundle";
+
+            conversationDialogBundleList.Add(new ConversationDialogBundle());
+        }
     }
+
 }

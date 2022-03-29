@@ -35,5 +35,17 @@ public class StoryDialog
     public string routeSecondJump;
     public string routeThirdJump;
 
+    [System.NonSerialized]
+    public CharacterName[] enumCharacterArray;
+
+    public StoryDialog()
+    {
+        enumCharacterArray = new CharacterName[4];
+        for(int i = 0; i < enumCharacterArray.Length; i++)
+        {
+            enumCharacterArray[i] = CharacterName.Null;
+        }
+    }
+
 
 }

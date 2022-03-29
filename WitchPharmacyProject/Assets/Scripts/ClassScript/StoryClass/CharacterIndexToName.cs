@@ -76,7 +76,12 @@ public class CharacterIndexToName
     {
         Debug.Log(nameText);
         CharacterName name = (CharacterName)Enum.Parse(typeof(CharacterName), nameText);
-        CharacterFeeling feeling = (CharacterFeeling)Enum.Parse(typeof(CharacterFeeling), feelingText);
+        CharacterFeeling feeling;
+        if(Enum.TryParse(feelingText,out feeling) == false)
+        {
+            feeling = CharacterFeeling.nothing;
+        }
+        
         if (characterSprite[(int)name, (int)feeling] == null)
         {
             StringBuilder nameBuilder = new StringBuilder("CharacterSprite/");

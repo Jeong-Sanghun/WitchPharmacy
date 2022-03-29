@@ -12,7 +12,7 @@ public class SpecialVisitorDialogBundle
     public float appearingProgression;
     public float progressingNumber;
     public List<string> appearingConditionQuestList;
-    public ConversationRouter conversationRouter;
+    //public ConversationRouter conversationRouter;
     public List<SpecialVisitorDialogWrapper> secondDialogWrapperList;
     public SpecialVisitorDialogWrapper answerDialogWrapper;
     public SpecialVisitorDialogWrapper wrongDialogWrapper;
@@ -26,7 +26,7 @@ public class SpecialVisitorDialogBundle
         progressingNumber = 10;
         appearingConditionQuestList = new List<string>();
         appearingConditionQuestList.Add("testBundle");
-        conversationRouter = new ConversationRouter();
+        //conversationRouter = new ConversationRouter();
         secondDialogWrapperList = new List<SpecialVisitorDialogWrapper>();
         for(int i = 0; i < 3; i++)
         {

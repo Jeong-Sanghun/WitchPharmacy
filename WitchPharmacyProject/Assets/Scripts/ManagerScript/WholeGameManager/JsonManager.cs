@@ -69,9 +69,12 @@ public class JsonManager    //SH
         builder.Append(appender1);
         //      builder.Append(appender2);
         //위까지는 세이브랑 똑같다
+        
         //파일스트림을 만들어준다. 파일모드를 open으로 해서 열어준다. 다 구글링이다
         TextAsset jsonString = Resources.Load<TextAsset>(builder.ToString());
+        
         gameData = JsonUtility.FromJson<T>(jsonString.ToString());
+        
        
         return gameData;
         //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당

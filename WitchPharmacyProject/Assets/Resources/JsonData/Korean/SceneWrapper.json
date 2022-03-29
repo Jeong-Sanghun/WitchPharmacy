@@ -3,169 +3,177 @@
         {
             "day": "0",
             "sceneName": "StoryScene",
-            "storyName": "main_Prologue"
+            "sceneParameter": "main_Prologue",
+            "saveTimeString": "DayStart"
         },
         {
             "day": "1",
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Start"
+            "sceneParameter": "main_ruinVil_Start"
         },
         {
             "sceneName": "TutorialConceptScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_ConceptTutoAfter"
+            "sceneParameter": "main_ruinVil_ConceptTutoAfter",
+            "saveTimeString": "RoomCounterTutorial"
         },
         {
             "sceneName": "TutorialRoomCounterScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_RoomCounterTutoAfter"
+            "sceneParameter": "main_ruinVil_RoomCounterTutoAfter",
+            "saveTimeString": "TabletTutorial"
         },
         {
             "sceneName": "TutorialTabletScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_AfterTabletTutoAfter"
+            "sceneParameter": "main_ruinVil_AfterTabletTutoAfter"
         },
         {
             "sceneName": "RoomCounterScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day1Mid"
+            "sceneParameter": "main_ruinVil_Day1Mid",
+            "saveTimeString": "ExploreStart"
         },
         {
-            "sceneName": "TutorialWorldmap1"
+            "sceneName": "TutorialWorldmap1",
+            "sceneParameter": "WitchGrave"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "local_Grave1"
+            "sceneParameter": "local_Grave1",
+            "saveTimeString": "DayStart"
         },
         {
             "day": "2",
             "sceneName": "StoryScene",
-            "storyName": "<DayStartRand>"
+            "sceneParameter": "<DayStartRand>"
         },
         {
             "sceneName": "RoomCounterScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "<DayMidRand>"
+            "sceneParameter": "<DayMidRand>",
+            "saveTimeString": "ExploreStart"
         },
         {
             "sceneName": "TutorialWorldmap2"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "<DayEndRand>"
+            "sceneParameter": "<DayEndRand>",
+            "saveTimeString": "DayStart"
         },
         {
             "day": "3",
             "sceneName": "StoryScene",
-            "storyName": "<DayStartRand>"
+            "sceneParameter": "<DayStartRand>"
         },
         {
             "sceneName": "RoomCounterScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Lynn1"
+            "sceneParameter": "main_ruinVil_Lynn1"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Lynn2"
+            "sceneParameter": "main_ruinVil_Day3Mid",
+            "saveTimeString": "ExploreStart"
+        },
+        {
+            "sceneName": "WorldmapForced1",
+            "sceneParameter": "WitchGrave"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day3Mid"
-        },
-        {
-            "sceneName": "WorldmapForced1"
-        },
-        {
-            "sceneName": "StoryScene",
-            "storyName": "local_Grave2"
+            "sceneParameter": "local_Grave2"
         },
         {
             "sceneName": "TutorialResearchScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day3End"
+            "sceneParameter": "main_ruinVil_Day3End"
         },
         {
             "day": "4",
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day4Start"
+            "sceneParameter": "main_ruinVil_Day4Start"
         },
         {
             "sceneName": "RoomCounterScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "<DayMidRand>"
+            "sceneParameter": "<DayMidRand>"
         },
         {
             "sceneName": "Worldmap"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "<DayEndRand>"
+            "sceneParameter": "<DayEndRand>"
         },
         {
             "day": "5",
             "sceneName": "StoryScene",
-            "storyName": "<DayStartRand>"
+            "sceneParameter": "<DayStartRand>"
         },
         {
             "sceneName": "RoomCounterScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day5Mid"
+            "sceneParameter": "main_ruinVil_Day5Mid"
         },
         {
-            "sceneName": "WorldmapForced2"
-        },
-        {
-            "sceneName": "StoryScene",
-            "storyName": "local_AndersonHouse"
+            "sceneName": "WorldmapForced2",
+            "sceneParameter": "WitchGrave"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_After"
+            "sceneParameter": "local_AndersonHouse"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Retrospect"
+            "sceneParameter": "main_ruinVil_After"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day5End"
+            "sceneParameter": "main_ruinVil_Retrospect"
+        },
+        {
+            "sceneName": "StoryScene",
+            "sceneParameter": "main_ruinVil_Day5End"
         },
         {
             "day": "6",
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day6Start"
+            "sceneParameter": "main_ruinVil_Day6Start"
         },
         {
             "sceneName": "RoomCounterScene"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day6Mid"
+            "sceneParameter": "main_ruinVil_Day6Mid"
         },
         {
-            "sceneName": "WorldmapForced3"
+            "sceneName": "WorldmapForced3",
+            "sceneParameter": "WitchGrave"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "local_Grave3"
+            "sceneParameter": "local_Grave3"
         },
         {
             "sceneName": "TutorialBossScene"
@@ -175,31 +183,32 @@
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_BossEnd"
+            "sceneParameter": "main_ruinVil_BossEnd"
         },
         {
-            "sceneName": "WorldmapForced4"
-        },
-        {
-            "sceneName": "StoryScene",
-            "storyName": "local_Grave4"
+            "sceneName": "WorldmapForced4",
+            "sceneParameter": "WitchGrave"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day6End"
+            "sceneParameter": "local_Grave4"
+        },
+        {
+            "sceneName": "StoryScene",
+            "sceneParameter": "main_ruinVil_Day6End"
         },
         {
             "day": "7",
             "sceneName": "StoryScene",
-            "storyName": "<DayStartRand>"
+            "sceneParameter": "<DayStartRand>"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Day7Counter"
+            "sceneParameter": "main_ruinVil_Day7Counter"
         },
         {
             "sceneName": "StoryScene",
-            "storyName": "main_ruinVil_Epilogue"
+            "sceneParameter": "main_ruinVil_Epilogue"
         }
     ]
 }

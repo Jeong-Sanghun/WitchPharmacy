@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System;
+using Obsolete;
 
 
 public class StoryParser
@@ -21,12 +22,8 @@ public class StoryParser
     {
         StoryDialogBundle gameData;
 
-        string language = languageDirectory;
-        string directory = "JsonData/";
-
         string appender1 = bundleName;
-        StringBuilder builder = new StringBuilder(directory);
-        builder.Append(language);
+        StringBuilder builder = new StringBuilder();
         if (isRegion)
         {
             builder.Append("RegionStoryBundle/");
@@ -783,6 +780,10 @@ public class StoryParser
     //    //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
     //}
 
+    public ConversationDialogBundle LoadBundle(string bundleName, string languageDirectory, bool isRegion = false, RegionName regionName = RegionName.Library, StoryRegion storyRegion = StoryRegion.Narin)
+    {
+        return null;
+    }
     public VisitorDialogBundle LoadBundle(string bundleName, string languageDirectory, VisitorType visitorType, int symptomNumber = 0, StoryRegion storyRegion = StoryRegion.NotAllocated)
     {
         string originText;

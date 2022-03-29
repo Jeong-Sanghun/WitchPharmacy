@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
+using Obsolete;
 
 
 public enum ResearchType
@@ -144,6 +145,7 @@ public class RegionManager : MonoBehaviour
         nowWrapperIndex = 0;
         nowRouterIndex = 0;
         storyParser = new StoryParser(characterIndexToName, gameManager.languagePack);
+        //이부분 고쳐야함
         nowBundle = storyParser.LoadBundle(nowStoryBundleName, gameManager.saveDataTimeWrapper.nowLanguageDirectory,true,nowRegion,saveData.nowRegion);
         nowWrapper = nowBundle.dialogWrapperList[0];
         for (int i = 0; i < 4; i++)

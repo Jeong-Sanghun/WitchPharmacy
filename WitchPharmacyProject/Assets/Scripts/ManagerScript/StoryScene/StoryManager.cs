@@ -18,12 +18,20 @@ public class StoryManager : MonoBehaviour
     //[SerializeField]
     //ConversationDialogWrapper nowWrapper;
     //ConversationRouter nowRouter;
+
+        [SerializeField]
     StoryDialogBundle nowBundle;
+    StoryDialog[] nowDialogArray;
+    StoryDialog nowDialog;
     int nowDialogIndex;
   
     StoryParser storyParser;
 
     CharacterIndexToName characterIndexToName;
+    [SerializeField]
+    GameObject cameraObject;
+    [SerializeField]
+    Text blackOutText;
 
     [SerializeField]
     SpriteRenderer middleCharacterSprite;
@@ -48,8 +56,19 @@ public class StoryManager : MonoBehaviour
     GameObject toNextSceneButton;
     [SerializeField]
     GameObject fadeObject;
+    [SerializeField]
+    GameObject blackOutObject;
 
     Vector3[] characterOriginPosArray;
+
+    Vector3 characterMiddleOriginPos;
+    Text nowConversationText;
+
+    CharacterName[] nowCharacterArray;
+    CharacterFeeling[] nowFeelingArray;
+
+    CharacterName nowMiddleCharacter;
+    CharacterFeeling nowMiddleFeeling;
     
 
     float downYpos = -10;
@@ -69,6 +88,7 @@ public class StoryManager : MonoBehaviour
     bool nowInRouterWrapper;
     int leftRouterWrapper;
     int nowRouterWrapperIndex;
+    bool delaying;
     //string nextStory;
     // Start is called before the first frame update
     void Start()
@@ -93,416 +113,511 @@ public class StoryManager : MonoBehaviour
         nowConversationIndex = 0;
         nowWrapperIndex = 0;
         nowRouterIndex = 0;
+        nowDialogIndex = 0;
+        delaying = false;
         storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
         saveData.readStoryList.Add(saveData.nextStory);
+        Debug.Log(sceneManager.sceneParameter);
         nowBundle = storyParser.LoadStoryBundle(sceneManager.sceneParameter, gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
+        nowDialogArray = nowBundle.storyDialogArray;
+        nowConversationText = conversationText;
+        blackOutText.gameObject.SetActive(false);
         
-        
-        if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
-        {
-            saveData.nextStory = nowWrapper.nextStory;
-        }
-        if(nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
-        {
-            StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
-            if(region != saveData.nowRegion)
-            {
-                saveData.nowRegion = region;
-            }
-        }
-        characterOriginPosArray = new Vector3[5];
+
+
+        characterOriginPosArray = new Vector3[4];
+        nowFeelingArray = new CharacterFeeling[4];
+        nowCharacterArray = new CharacterName[4];
         for (int i = 0; i < 4; i++)
         {
             characterOriginPosArray[i] = characterSprite[i].gameObject.transform.position;
+            nowCharacterArray[i] = CharacterName.Null;
+            nowFeelingArray[i] = CharacterFeeling.Null;
         }
-        characterOriginPosArray[4] = middleCharacterSprite.gameObject.transform.position;
+        nowMiddleCharacter = CharacterName.Null;
+        nowMiddleFeeling = CharacterFeeling.Null;
+        characterMiddleOriginPos = middleCharacterSprite.gameObject.transform.position;
 
-        OnWrapperStart();
 
 
+
+        NextDialog();
+    }
+
+    void NextDialog()
+    {
+        if(nowDialogIndex >= nowDialogArray.Length)
+        {
+            toNextSceneButton.SetActive(true);
+            return;
+        }
+        nowDialog = nowDialogArray[nowDialogIndex];
+       
+        PrintCharacter();
+        PrintEffect();
         PrintConversation();
+        nowDialogIndex++;
+    }
+
+    void SetCharacterEffect(int characterIndex, string character,string effect, string feeling,bool isMiddle)
+    {
+        bool charDiffer = false;
+        bool feelingDiffer = false;
+        CharacterName enumCharacter = (CharacterName)Enum.Parse(typeof(CharacterName), character);
+        CharacterFeeling enumFeeling = CharacterFeeling.Null;
+        nowDialog.enumCharacterArray[characterIndex] = enumCharacter;
+         GameObject obj = characterSprite[characterIndex].gameObject;
+        if (enumCharacter != nowCharacterArray[characterIndex])
+        {
+            charDiffer = true;
+        }
+        if (effect != null && effect.Contains("feeling"))
+        {
+            enumFeeling = (CharacterFeeling)Enum.Parse(typeof(CharacterFeeling), feeling);
+            if (enumFeeling != nowFeelingArray[characterIndex] && enumFeeling != CharacterFeeling.Null)
+            {
+                feelingDiffer = true;
+            }
+        }
+        else
+        {
+            if(nowFeelingArray[characterIndex] == CharacterFeeling.Null)
+            {
+                enumFeeling = CharacterFeeling.nothing;
+            }
+            else
+            {
+                enumFeeling = nowFeelingArray[characterIndex];
+            }
+
+          
+           
+
+        }
+        if (charDiffer || feelingDiffer)
+        {
+            Sprite sprite = characterIndexToName.GetSprite(enumCharacter, enumFeeling);
+            if (isMiddle)
+            {
+                middleCharacterSprite.sprite = sprite;
+                middleCharacterSprite.transform.position = characterMiddleOriginPos;
+            }
+            else
+            {
+                characterSprite[characterIndex].sprite = sprite;
+                characterSprite[characterIndex].transform.position = characterOriginPosArray[characterIndex];
+            }
+        }
+        if (isMiddle)
+        {
+
+            obj = middleCharacterSprite.gameObject;
+        }
+
+        if (effect.Contains("up"))
+        {
+            obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
+            StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 0.5f));
+        }
+        else if (effect.Contains("down"))
+        {
+            obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+            StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 0.5f));
+        }
+        else if (effect.Contains("right"))
+        {
+            obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+            StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(rightXPos, upYpos, 0), 0.5f));
+        }
+        else if (effect.Contains("left"))
+        {
+            obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+            StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(leftXPos, downYpos, 0), 0.5f));
+        }
+        else if (effect.Contains("shake"))
+        {
+            obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
+            StartCoroutine(sceneManager.ShakeModule(obj, 0, float.Parse(feeling),1f));
+        }
+    }
+
+    void ChangeCharacterSpriteNull(int index)
+    {
+        nowCharacterArray[index] = CharacterName.Null;
+        nowFeelingArray[index] = CharacterFeeling.Null;
+        characterSprite[index].sprite = null;
     }
 
 
-    void OnWrapperStart()
+    void PrintCharacter()
     {
         int characterCount = 0;
-        int middleCharacterIndex = 0;
-        for (int i = 0; i < 4; i++)
+        bool isMiddle = false;
+
+        if (nowDialog.charSlot1 != null)
         {
-            if (nowWrapper.characterName[i] != null)
-            {
-                characterCount++;
-                middleCharacterIndex = i;
-            }
-            characterSprite[i].transform.position = characterOriginPosArray[i];
+            characterCount++;
         }
-        middleCharacterSprite.transform.position = characterOriginPosArray[4];
-        if (characterCount != 1)
+        if (nowDialog.charSlot2 != null)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                if (nowWrapper.characterName[i] != null)
-                    characterSprite[i].sprite = characterIndexToName.GetSprite(nowWrapper.characterName[i], nowWrapper.characterFeeling[i]);
-                else
-                    characterSprite[i].sprite = null;
-            }
+            characterCount++;
+        }
+        if (nowDialog.charSlot3 != null)
+        {
+            characterCount++;
+        }
+        if (nowDialog.charSlot4 != null)
+        {
+            characterCount++;
+        }
+        if(characterCount == 1)
+        {
+            isMiddle = true;
+        }
+        if(characterCount == 0)
+        {
+            nowMiddleCharacter = CharacterName.Null;
+            nowMiddleFeeling = CharacterFeeling.Null;
             middleCharacterSprite.sprite = null;
+        }
 
-            for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
-            {
-                DialogEffect effect = nowWrapper.startEffectList[i];
-                GameObject obj = characterSprite[(int)effect.characterPosition].gameObject;
-                if (effect.effect == DialogFX.Up)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 0.5f));
-                }
-                else if (effect.effect == DialogFX.Down)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 0.5f));
-                }
-                else if (effect.effect == DialogFX.Right)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(rightXPos, upYpos, 0), 0.5f));
-                }
-                else if (effect.effect == DialogFX.Left)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(leftXPos, downYpos, 0), 0.5f));
-                }
-            }
+        if (nowDialog.charSlot1 != null)
+        {
+            SetCharacterEffect(0, nowDialog.charSlot1, nowDialog.charEffect1, nowDialog.charEffectParameter1, isMiddle);
         }
         else
         {
+            ChangeCharacterSpriteNull(0);
+        }
+
+        if (nowDialog.charSlot2 != null)
+        {
+            SetCharacterEffect(1, nowDialog.charSlot2, nowDialog.charEffect2, nowDialog.charEffectParameter2, isMiddle);
+
+        }
+        else
+        {
+            ChangeCharacterSpriteNull(1);
+        }
+
+        if (nowDialog.charSlot3 != null)
+        {
+            SetCharacterEffect(2, nowDialog.charSlot3, nowDialog.charEffect3, nowDialog.charEffectParameter3, isMiddle);
+        }
+        else
+        {
+            ChangeCharacterSpriteNull(2);
+        }
+
+        if (nowDialog.charSlot4 != null)
+        {
+            SetCharacterEffect(3, nowDialog.charSlot4, nowDialog.charEffect4, nowDialog.charEffectParameter4, isMiddle);
+        }
+        else
+        {
+            ChangeCharacterSpriteNull(3);
+        }
+
+
+    }
+
+    void PrintEffect()
+    {
+        if(nowDialog.effect == null)
+        {
+            return;
+        }
+
+        if (nowDialog.effect.Contains("cutScene"))
+        {
+            if (nowDialog.effect.Contains("End"))
+            {
+                cutSceneBGSprite.sprite = null;
+            }
+            else
+            {
+                cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowDialog.effectParameter, true);
+            }
+            
+        }
+        else if (nowDialog.effect.Contains("background"))
+        {
+           
+            if (nowDialog.effect.Contains("End"))
+            {
+                cutSceneBGSprite.sprite = null;
+            }
+            else
+            {
+                cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowDialog.effectParameter, false);
+            }
+        }
+        else if (nowDialog.effect.Contains("popup"))
+        {
+
+            if (nowDialog.effect.Contains("End"))
+            {
+                popupSprite.sprite = null;
+                popupSprite.color = new Color(1, 1, 1, 0);
+            }
+            else
+            {
+                Sprite spr = Resources.Load<Sprite>("Popup/" + nowDialog.effectParameter);
+                popupSprite.color = new Color(1, 1, 1, 1);
+                popupSprite.sprite = spr;
+            }
+        }
+        else if (nowDialog.effect.Contains("route"))
+        {
+
+        }
+        else if (nowDialog.effect.Contains("blackOut"))
+        {
+            if (nowDialog.effect.Contains("End"))
+            {
+                blackOutObject.SetActive(false);
+                nowConversationText = conversationText;
+                blackOutText.gameObject.SetActive(false);
+            }
+            else
+            {
+                nowConversationText = blackOutText;
+                blackOutObject.SetActive(true);
+                blackOutText.gameObject.SetActive(true);
+            }
+    
+        }
+        else if (nowDialog.effect.Contains("bgm"))
+        {
+            Debug.LogError("브금 미구현");
+        }
+        else if (nowDialog.effect.Contains("sfx"))
+        {
+            Debug.LogError("사운드이펙트 미구현");
+        }
+        else if (nowDialog.effect.Contains("dialogBoxHide"))
+        {
+
+        }
+        else if (nowDialog.effect.Contains("delay"))
+        {
+            StartCoroutine(DelayActionCoroutine(float.Parse(nowDialog.effectParameter), NextDialog));
+        }
+        else if (nowDialog.effect.Contains("fade"))
+        {
+            float fadeTime = float.Parse(nowDialog.effectParameter);
+            float initTransparency = 0;
+            float endTransparency = 1;
+            if (nowDialog.effect.Contains("Out") || nowDialog.effect.Contains("out"))
+            {
+                initTransparency = 1;
+                endTransparency = 0;
+            }
+            if (nowDialog.effect.Contains("In") || nowDialog.effect.Contains("in"))
+            {
+
+                initTransparency = 0;
+                endTransparency = 1;
+            }
+            StartCoroutine(sceneManager.FadeModule_Image(fadeObject, initTransparency, endTransparency, fadeTime));
+        }
+        else if (nowDialog.effect.Contains("shakeScreen"))
+        {
+            StartCoroutine(sceneManager.ShakeModule(cameraObject, 0, 0.5f, float.Parse(nowDialog.effectParameter)));
+        }
+        else if (nowDialog.effect.Contains("blur"))
+        {
+            if (nowDialog.effect.Contains("On") || nowDialog.effect.Contains("on"))
+            {
+                blurred = true;
+
+            }
+            if (nowDialog.effect.Contains("Off") || nowDialog.effect.Contains("off"))
+            {
+
+                blurred = false;
+
+            }
             for (int i = 0; i < 4; i++)
             {
-                characterSprite[i].sprite = null;
+                blurManager.ChangeLayer(blurred, characterSprite[i].gameObject);
             }
-            middleCharacterSprite.sprite = characterIndexToName.GetSprite(nowWrapper.characterName[middleCharacterIndex], nowWrapper.characterFeeling[middleCharacterIndex]);
-
-            for (int i = 0; i < nowWrapper.startEffectList.Count; i++)
-            {
-                DialogEffect effect = nowWrapper.startEffectList[i];
-                GameObject obj = middleCharacterSprite.gameObject;
-                if (effect.effect == DialogFX.Up)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, upYpos, 0), 0.5f));
-                }
-                else if (effect.effect == DialogFX.Down)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(obj.transform.position.x, downYpos, 0), 0.5f));
-                }
-                else if (effect.effect == DialogFX.Right)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(rightXPos, upYpos, 0), 0.5f));
-                }
-                else if (effect.effect == DialogFX.Left)
-                {
-                    obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-                    StartCoroutine(sceneManager.MoveModule_Linear(obj, new Vector3(leftXPos, downYpos, 0), 0.5f));
-                }
-            }
+            blurManager.ChangeLayer(blurred, middleCharacterSprite.gameObject);
+            blurManager.OnBlur(blurred);
         }
-        
-        if (nowWrapper.isCutscene)
-        {
-            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.cutSceneFileName, true);
-            if (nowWrapper.cutSceneEffect == CutSceneEffect.Blur)
-            {
-                blurred = true;
-                blurManager.OnBlur(true);
-            }
-        }
-        else
-        {
-            cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowWrapper.backGroundFileName, false);
-            if (nowWrapper.backGroundEffect == CutSceneEffect.Blur)
-            {
-                blurred = true;
-                blurManager.OnBlur(true);
-            }
-        }
-        if(nowWrapper.popUp != null)
-        {
-            Debug.Log(nowWrapper.popUp);
-            Sprite spr = Resources.Load<Sprite>("Popup/" + nowWrapper.popUp);
-            popupSprite.color = new Color(1, 1, 1, 1);
-            popupSprite.sprite = spr;
-        }
-        else
-        {
-            popupSprite.color = new Color(1, 1, 1, 0);
-        }
-        if(nowWrapper.effect != null)
-        {
-            string effect = nowWrapper.effect;
-            if(effect.Contains("blur") || effect.Contains("Blur"))
-            {
-                if(effect.Contains("On") || effect.Contains("on"))
-                {
-                    blurred = true;
-
-                }
-                if(effect.Contains("Off") || effect.Contains("off"))
-                {
-
-                    blurred = false;
-
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    blurManager.ChangeLayer(blurred, characterSprite[i].gameObject);
-                }
-                blurManager.ChangeLayer(blurred, middleCharacterSprite.gameObject);
-                blurManager.OnBlur(blurred);
-            }
-            if (effect.Contains("fade") || effect.Contains("Fade"))
-            {
-                float fadeTime = 1;
-                float initTransparency = 0;
-                float endTransparency = 1;
-                if (effect.Contains("Immediate") || effect.Contains("immediate"))
-                {
-                    fadeTime = 0;
-
-                }
-                if (effect.Contains("Out") || effect.Contains("out"))
-                {
-                    initTransparency = 1;
-                    endTransparency = 0;
-                }
-                if (effect.Contains("In") || effect.Contains("in"))
-                {
-
-                    initTransparency = 0;
-                    endTransparency = 1;
-                }
-                StartCoroutine(sceneManager.FadeModule_Image(fadeObject, initTransparency, endTransparency, fadeTime));
-                
-            }
-        }
+    
     }
 
 
     //그 버튼이 뜨는거임. 라우팅 버튼
     void RouteCheck()
     {
-        //if (routingTime <= 0)
-        //{
-        //    conversationText.text = "이야기끝";
-        //    if (!isTile)
-        //    {
-        //        toNextSceneButton.SetActive(true);
-        //    }
+        ////if (routingTime <= 0)
+        ////{
+        ////    conversationText.text = "이야기끝";
+        ////    if (!isTile)
+        ////    {
+        ////        toNextSceneButton.SetActive(true);
+        ////    }
             
+        ////    return;
+        ////}
+        //if(nowRouterIndex >= nowBundle.conversationRouterList.Count)
+        //{
         //    return;
         //}
-        if(nowRouterIndex >= nowBundle.conversationRouterList.Count)
-        {
-            return;
-        }
-        ConversationRouter router = nowBundle.conversationRouterList[nowRouterIndex];
-        nowRouter = router;
-        if (router == null)
-        {
-            nowWrapperIndex++;
-            nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
-            return;
-        } else if (router.routeButtonText.Count == 0)
-        {
-            if(nowWrapperIndex+1 < nowBundle.dialogWrapperList.Count)
-            {
-                nowWrapperIndex++;
-                nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
-            }
-            return;
-        }
-        checkingRouter = true;
-        nowInRouterWrapper = true;
-        for (int i = 0; i < routingButtonArray.Length; i++)
-        {
-            routingButtonArray[i].SetActive(false);
-        }
+        //ConversationRouter router = nowBundle.conversationRouterList[nowRouterIndex];
+        //nowRouter = router;
+        //if (router == null)
+        //{
+        //    nowWrapperIndex++;
+        //    nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
+        //    return;
+        //} else if (router.routeButtonText.Count == 0)
+        //{
+        //    if(nowWrapperIndex+1 < nowBundle.dialogWrapperList.Count)
+        //    {
+        //        nowWrapperIndex++;
+        //        nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
+        //    }
+        //    return;
+        //}
+        //checkingRouter = true;
+        //nowInRouterWrapper = true;
+        //for (int i = 0; i < routingButtonArray.Length; i++)
+        //{
+        //    routingButtonArray[i].SetActive(false);
+        //}
 
-        for(int i = 0; i < router.routeButtonText.Count; i++)
-        {
-            routingButtonArray[i].SetActive(true);
-            routingTextArray[i].text = router.routeButtonText[i];
-        }
-        nowRouterIndex++;
+        //for(int i = 0; i < router.routeButtonText.Count; i++)
+        //{
+        //    routingButtonArray[i].SetActive(true);
+        //    routingTextArray[i].text = router.routeButtonText[i];
+        //}
+        //nowRouterIndex++;
     }
 
-    public void NextWrapper()
-    {
-        Debug.Log("넥스트래퍼");
-        if (nowInRouterWrapper)
-        {
-            leftRouterWrapper--;
-            if(leftRouterWrapper <= 0)
-            {
-                nowInRouterWrapper = false;
-                if (nowWrapperIndex >= nowBundle.dialogWrapperList.Count)
-                {
-                    toNextSceneButton.SetActive(true);
-                    return;
-                }
-                nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
-                
-
-            }
-            else
-            {
-                nowRouterWrapperIndex++;
-                nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
-
-            }
-        }
-        else
-        {
-            nowWrapperIndex++;
-            if (nowWrapper.nextWrapperIsRouter)
-            {
-                RouteCheck();
-                return;
-            }
-            if (nowWrapperIndex >= nowBundle.dialogWrapperList.Count)
-            {
-                toNextSceneButton.SetActive(true);
-                return;
-            }
-
-            nowWrapper = nowBundle.dialogWrapperList[nowWrapperIndex];
-        }
-        if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length>0)
-        {
-            Debug.Log("저장");
-            saveData.nextStory = nowWrapper.nextStory;
-        }
-        if (nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
-        {
-            StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
-            if (region != saveData.nowRegion)
-            {
-                saveData.nowRegion = region;
-            }
-        }
-
-        nowConversationIndex = 0;
-        OnWrapperStart();
-
-        PrintConversation();
-        
-
-
-    }
 
     //한 줄 띄우는거.
     void PrintConversation()
     {
-        //이제 끝나면 RouteCheck가 뜸. 그 wrapper에 있는거 다 쓰면은.
-        if (nowConversationIndex >= nowWrapper.conversationDialogList.Count)
+        if (nowDialog.dialog == null)
         {
-            NextWrapper();
             return;
         }
-        ConversationDialog nowConversation = nowWrapper.conversationDialogList[nowConversationIndex];
-        conversationText.text = nowConversation.dialog;
-        StartCoroutine( sceneManager.LoadTextOneByOne(nowConversation.dialog, conversationText));
-        if (nowWrapper.concealedCharacter.Contains(nowConversation.ingameName))
+        StartCoroutine(sceneManager.LoadTextOneByOne(nowDialog.dialog, nowConversationText));
+        CharacterName talkingCharEnum = CharacterName.Null;
+        if (nowDialog.talkingCharName != null)
         {
-            nameText.text = "???";
+            nameText.text = nowDialog.talkingCharName;
+
+
+            if (Enum.TryParse<CharacterName>(nowDialog.talkingCharName, out talkingCharEnum))
+            {
+                talkingCharEnum = CharacterName.Null;
+            }
+
+
         }
         else
         {
-            nameText.text = nowConversation.ingameName;
+            nameText.text = null;
+        }
+
+
+        if (talkingCharEnum == CharacterName.Null)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (!faded[i] && nowDialog.enumCharacterArray[i] == CharacterName.Null)
+                {
+                    faded[i] = true;
+                    //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                    StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                    StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 0.9f, 1f, 0.5f));
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+               if (faded[i] && nowDialog.enumCharacterArray[i] == talkingCharEnum)
+                {
+                    faded[i] = false;
+                    //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
+                    StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 1, 0.2f, 0.5f));
+                    StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1f, 0.9f, 0.5f));
+                }
+                else if (!faded[i])
+                {
+                    faded[i] = true;
+                    //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                    StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                    StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 0.9f, 1f, 0.5f));
+                }
+            }
         }
         
-        for(int i = 0; i < 4; i++)
-        {
-            if(faded[i] == nowConversation.fade[i])
-            {
-                continue;
-            }
-            else if(!faded[i] && nowConversation.fade[i])
-            {
-                faded[i] = true;
-                //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
-                StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
-                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 0.9f, 1f, 0.5f));
-            }
-            else if(faded[i] && !nowConversation.fade[i])
-            {
-                faded[i] = false;
-                //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
-                StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 1, 0.2f, 0.5f));
-                StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1f, 0.9f, 0.5f));
-            }
-        }
-        nowConversationIndex++;
+       
 
     }
 
     //라우터 버튼 눌릴 때
     public void OnRouterButton(int index)
     {
-        checkingRouter = false;
-        for (int i = 0; i < routingButtonArray.Length; i++)
-        {
-            routingButtonArray[i].SetActive(false);
-        }
-        if(nowRouter.routingWrapperIndex.Count-1 == index)
-        {
-            leftRouterWrapper = nowRouter.routingWrapperIndex.Count - nowRouter.routingWrapperIndex[index];
-        }
-        else
-        {
-            leftRouterWrapper = nowRouter.routingWrapperIndex[index+1] - nowRouter.routingWrapperIndex[index];
-        }
-        RoutePair routePair = null;
-        for (int i = 0; i < saveData.routePairList.Count; i++)
-        {
-            if (saveData.routePairList[i].storyName.Contains(nowBundle.bundleName))
-            {
-                routePair = saveData.routePairList[i];
-                if (routePair.pickedRouteList.Count >= nowBundle.conversationRouterList.Count)
-                {
-                    saveData.routePairList.RemoveAt(i);
-                    routePair = null;
-                }
-                break;
-            }
-        }
-        if(routePair == null)
-        {
-            routePair = new RoutePair();
-            routePair.storyName = nowBundle.bundleName;
-            saveData.routePairList.Add(routePair);
-        }
-        routePair.pickedRouteList.Add(index);
+        //checkingRouter = false;
+        //for (int i = 0; i < routingButtonArray.Length; i++)
+        //{
+        //    routingButtonArray[i].SetActive(false);
+        //}
+        //if(nowRouter.routingWrapperIndex.Count-1 == index)
+        //{
+        //    leftRouterWrapper = nowRouter.routingWrapperIndex.Count - nowRouter.routingWrapperIndex[index];
+        //}
+        //else
+        //{
+        //    leftRouterWrapper = nowRouter.routingWrapperIndex[index+1] - nowRouter.routingWrapperIndex[index];
+        //}
+        //RoutePair routePair = null;
+        //for (int i = 0; i < saveData.routePairList.Count; i++)
+        //{
+        //    if (saveData.routePairList[i].storyName.Contains(nowBundle.bundleName))
+        //    {
+        //        routePair = saveData.routePairList[i];
+        //        if (routePair.pickedRouteList.Count >= nowBundle.conversationRouterList.Count)
+        //        {
+        //            saveData.routePairList.RemoveAt(i);
+        //            routePair = null;
+        //        }
+        //        break;
+        //    }
+        //}
+        //if(routePair == null)
+        //{
+        //    routePair = new RoutePair();
+        //    routePair.storyName = nowBundle.bundleName;
+        //    saveData.routePairList.Add(routePair);
+        //}
+        //routePair.pickedRouteList.Add(index);
 
-        nowRouterWrapperIndex = nowRouter.routingWrapperIndex[index];
-        nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
-        nowConversationIndex = 0;
-        if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
-        {
-            Debug.Log("저장");
-            saveData.nextStory = nowWrapper.nextStory;
-        }
-        if (nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
-        {
-            StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
-            if (region != saveData.nowRegion)
-            {
-                saveData.nowRegion = region;
-            }
-        }
-        PrintConversation();
+        //nowRouterWrapperIndex = nowRouter.routingWrapperIndex[index];
+        //nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
+        //nowConversationIndex = 0;
+        //if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
+        //{
+        //    Debug.Log("저장");
+        //    saveData.nextStory = nowWrapper.nextStory;
+        //}
+        //if (nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
+        //{
+        //    StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
+        //    if (region != saveData.nowRegion)
+        //    {
+        //        saveData.nowRegion = region;
+        //    }
+        //}
+        //PrintConversation();
         
     }
 
@@ -540,36 +655,42 @@ public class StoryManager : MonoBehaviour
         //{
         //    sceneManager.LoadScene("RoomCounterScene");
         //}
-        gameManager.saveData.nowSceneIndex++;
+        toNextSceneButton.SetActive(false);
         if (sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].saveTimeString != null)
         {
             gameManager.ForceSaveButtonActive();
         }
-        
+        else
+        {
+            sceneManager.LoadNextScene();
+        }
+
 
     }
 
     public void OnTouchScreen()
     {
-        if (!checkingRouter && !sceneManager.nowTexting)
+        if (!checkingRouter && !sceneManager.nowTexting && !delaying)
         {
-            PrintConversation();
+            NextDialog();
         }
     }
+    
 
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator DelayCoroutine(float time)
     {
-        //입력
-        if (Input.GetMouseButtonDown(0))
-        {
-
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            nowConversationIndex = nowWrapper.conversationDialogList.Count;
-        }
-
+        delaying = true;
+        yield return new WaitForSeconds(time);
+        delaying = false;
     }
+
+    IEnumerator DelayActionCoroutine(float time, Action action)
+    {
+        delaying = true;
+        yield return new WaitForSeconds(time);
+        delaying = false;
+        action();
+    }
+
+    
 }

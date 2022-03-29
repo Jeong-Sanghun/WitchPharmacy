@@ -19,9 +19,7 @@ public class GameManager : MonoBehaviour //SH
     public MedicineDataWrapper medicineDataWrapper;
 
     [HideInInspector]
-    public ConversationDialogBundleWrapper conversationDialogBundleWrapper;
-    [HideInInspector]
-    public ConversationDialogBundle conversationDialogBundle;
+    //public ConversationDialogBundle conversationDialogBundle;
     //[HideInInspector]
     public StartDialogClassWrapper randomDialogDataWrapper;
     //public CookedMedicineDataWrapper cookedMedicineDataWrapper;
@@ -106,7 +104,7 @@ public class GameManager : MonoBehaviour //SH
         randomVisitorEndDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorEndDialogWrapper>("RandomVisitorEndDialogWrapper");
         //randomVisitorDiseaseDialogWrapper = jsonManager.ResourceDataLoad<RandomVisitorDiseaseDialogWrapper>("RandomVisitorDiseaseDialogWrapper");
         specialVisitorConditionWrapper = jsonManager.ResourceDataLoad<SpecialVisitorConditionWrapper>("SpecialVisitorConditionWrapper");
-        conversationDialogBundleWrapper = jsonManager.ResourceDataLoad<ConversationDialogBundleWrapper>("ConversationDialogBundleWrapper");
+
         measureToolResearchDataWrapper = jsonManager.ResourceDataLoad<MeasureToolResearchDataWrapper>("ResearchData/MeasureToolResearchDataWrapper");
         medicineResearchDataWrapper = jsonManager.ResourceDataLoad<MedicineResearchDataWrapper>("ResearchData/MedicineResearchDataWrapper");
         otherToolResearchDataWrapper = jsonManager.ResourceDataLoad<OtherToolResearchDataWrapper>("ResearchData/OtherToolResearchDataWrapper");
@@ -147,12 +145,6 @@ public class GameManager : MonoBehaviour //SH
         }
     }
 
-    public ConversationDialogBundle LoadBundle(string bundleName)
-    {
-        ConversationDialogBundle bundle;
-        bundle = jsonManager.ResourceDataLoad<ConversationDialogBundle>("StoryBundle/" + bundleName);
-        return bundle;
-    }
 
     public SpecialVisitorDialogBundle LoadVisitorBundle(string bundleName)
     {

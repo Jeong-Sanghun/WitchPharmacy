@@ -1,0 +1,86 @@
+{
+    "name": "initName",
+    "nowTime": 0.0,
+    "nowDay": 0,
+    "coin": 1000,
+    "owningMedicineList": [
+        {
+            "medicineIndex": 34,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 35,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 42,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 43,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 50,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 51,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 58,
+            "medicineCost": 3
+        },
+        {
+            "medicineIndex": 59,
+            "medicineCost": 3
+        }
+    ],
+    "owningSpecialMedicineList": [],
+    "chaosMeter": 0.0,
+    "nowCounterDialogBundleName": "testBundle",
+    "nowStoryDialogBundleName": "testBundle",
+    "billWrapperList": [],
+    "owningDocumentList": [],
+    "symptomBookList": [
+        "water+",
+        "water-",
+        "fire+",
+        "fire-"
+    ],
+    "owningMeasureToolList": [],
+    "owningOtherToolList": [],
+    "endQuestList": [],
+    "researchSaveData": {
+        "progressingMeasureToolResearchList": [],
+        "endMeasureToolResearchList": [],
+        "progressingMedicineResearchList": [],
+        "endMedicineResearchList": [],
+        "progressingOtherToolResearchList": [],
+        "endOtherToolResearchList": [],
+        "progressingBookResearchList": [],
+        "endBookResearchList": [],
+        "progressingSpecialResearchList": [],
+        "endSpecialResearchList": [],
+        "appearingSpecialResearchList": [],
+        "unHiddenResearchList": []
+    },
+    "routePairList": [],
+    "regionSaveDataList": [],
+    "likedTreeterIndexList": [],
+    "highlightedButton": [
+        false,
+        false,
+        false
+    ],
+    "readStoryList": [
+        "firstDay"
+    ],
+    "readSpecialVisitorBundleList": [],
+    "nextStory": "firstDay",
+    "nowSceneIndex": 0,
+    "nowRegion": 0,
+    "forcedRegion": "",
+    "nowBossFile": ""
+}

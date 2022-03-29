@@ -136,7 +136,8 @@ public class TabletSaveManager : MonoBehaviour
         tabletManager.OnTabletButton(false);
         SaveOrLoadButtonCanvasGetout();
         SaveCanvasActive(false);
-        gameManager.LoadJson(0);
+        //        gameManager.LoadJson(0);
+        SceneManager.inst.LoadNextScene();
         tabletManager.SetOnSaveDataLoad();
     }
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Obsolete;
 public enum NowStoryScene
 {
     DayStart, AfterCounter, AfterExplore
