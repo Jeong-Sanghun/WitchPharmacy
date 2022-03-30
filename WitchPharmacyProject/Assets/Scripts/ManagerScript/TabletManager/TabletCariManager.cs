@@ -21,6 +21,9 @@ public class TabletCariManager : MonoBehaviour
     SaveDataClass saveData;
 
     [SerializeField]
+    GameObject wholeParent;
+
+    [SerializeField]
     GameObject minimizeParent;
     [SerializeField]
     Text minimizeTalkText;
@@ -52,6 +55,11 @@ public class TabletCariManager : MonoBehaviour
         JsonManager jsonManager = new JsonManager();
         mainCariDialogCondition = jsonManager.ResourceDataLoad<MainCariDialogCondition>("TabletCariDialog/Main/MainCariDialogCondition");
         OnNextDay();
+    }
+
+    public void SetCariActive(bool active)
+    {
+        wholeParent.SetActive(active);
     }
 
     public void MaximizeButton()

@@ -69,7 +69,11 @@ public class StoryManager : MonoBehaviour
 
     CharacterName nowMiddleCharacter;
     CharacterFeeling nowMiddleFeeling;
-    
+
+    string nowTalkingCharacterString;
+    CharacterName nowTalkingCharacterEnum;
+
+    UILanguagePack languagePack;
 
     float downYpos = -10;
     float upYpos = -1;
@@ -96,6 +100,7 @@ public class StoryManager : MonoBehaviour
         gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         sceneManager = SceneManager.inst;
+        languagePack = gameManager.languagePack;
         //conversationDialogBundleList = gameManager.conversationDialogBundleWrapper.conversationDialogBundleList;
         characterIndexToName = new CharacterIndexToName();
         //nowBundle = gameManager.LoadBundle("testBundle");
@@ -146,6 +151,7 @@ public class StoryManager : MonoBehaviour
 
     void NextDialog()
     {
+        bool immediateNext = false;
         if(nowDialogIndex >= nowDialogArray.Length)
         {
             toNextSceneButton.SetActive(true);
@@ -154,9 +160,16 @@ public class StoryManager : MonoBehaviour
         nowDialog = nowDialogArray[nowDialogIndex];
        
         PrintCharacter();
-        PrintEffect();
+        PrintEffect(out immediateNext);
         PrintConversation();
         nowDialogIndex++;
+
+        if(immediateNext == true)
+        {
+            NextDialog();
+        }
+
+
     }
 
     void SetCharacterEffect(int characterIndex, string character,string effect, string feeling,bool isMiddle)
@@ -173,11 +186,14 @@ public class StoryManager : MonoBehaviour
         }
         if (effect != null && effect.Contains("feeling"))
         {
+            //<bold> <boldEnd>
+            //<b>안<\b> <b>녕<\b>
             enumFeeling = (CharacterFeeling)Enum.Parse(typeof(CharacterFeeling), feeling);
             if (enumFeeling != nowFeelingArray[characterIndex] && enumFeeling != CharacterFeeling.Null)
             {
                 feelingDiffer = true;
             }
+            nowFeelingArray[characterIndex] = enumFeeling;
         }
         else
         {
@@ -187,6 +203,7 @@ public class StoryManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("ㅁㄴㅇㄹ");
                 enumFeeling = nowFeelingArray[characterIndex];
             }
 
@@ -214,6 +231,10 @@ public class StoryManager : MonoBehaviour
             obj = middleCharacterSprite.gameObject;
         }
 
+        if(effect == null)
+        {
+            return;
+        }
         if (effect.Contains("up"))
         {
             obj.transform.position = new Vector3(obj.transform.position.x, downYpos, 0);
@@ -237,7 +258,8 @@ public class StoryManager : MonoBehaviour
         else if (effect.Contains("shake"))
         {
             obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
-            StartCoroutine(sceneManager.ShakeModule(obj, 0, float.Parse(feeling),1f));
+            //StartCoroutine(sceneManager.ShakeModule(obj, 0, float.Parse(feeling),1f));
+            StartCoroutine(sceneManager.ShakeModule(obj, 0, 0.5f, 1f));
         }
     }
 
@@ -274,7 +296,7 @@ public class StoryManager : MonoBehaviour
         {
             isMiddle = true;
         }
-        if(characterCount == 0)
+        else 
         {
             nowMiddleCharacter = CharacterName.Null;
             nowMiddleFeeling = CharacterFeeling.Null;
@@ -321,11 +343,17 @@ public class StoryManager : MonoBehaviour
 
     }
 
-    void PrintEffect()
+    void PrintEffect(out bool immediateNext)
     {
+        immediateNext = false;
         if(nowDialog.effect == null)
         {
             return;
+        }
+
+        if(nowDialog.dialog == null)
+        {
+            immediateNext = true;
         }
 
         if (nowDialog.effect.Contains("cutScene"))
@@ -403,6 +431,24 @@ public class StoryManager : MonoBehaviour
         {
             StartCoroutine(DelayActionCoroutine(float.Parse(nowDialog.effectParameter), NextDialog));
         }
+        else if (nowDialog.effect.Contains("fadeInAndFocus"))
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                blurManager.ChangeLayer(true, characterSprite[i].gameObject);
+            }
+            blurManager.ChangeLayer(true, middleCharacterSprite.gameObject);
+            blurManager.OnBlur(false,()=>
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    blurManager.ChangeLayer(false, characterSprite[i].gameObject);
+                }
+                blurManager.ChangeLayer(false, middleCharacterSprite.gameObject);
+            }
+            );
+            StartCoroutine(sceneManager.FadeModule_Image(fadeObject, 1, 0, 1));
+        }
         else if (nowDialog.effect.Contains("fade"))
         {
             float fadeTime = float.Parse(nowDialog.effectParameter);
@@ -410,20 +456,20 @@ public class StoryManager : MonoBehaviour
             float endTransparency = 1;
             if (nowDialog.effect.Contains("Out") || nowDialog.effect.Contains("out"))
             {
-                initTransparency = 1;
-                endTransparency = 0;
+                initTransparency = 0;
+                endTransparency = 1;
             }
             if (nowDialog.effect.Contains("In") || nowDialog.effect.Contains("in"))
             {
 
-                initTransparency = 0;
-                endTransparency = 1;
+                initTransparency = 1;
+                endTransparency = 0;
             }
             StartCoroutine(sceneManager.FadeModule_Image(fadeObject, initTransparency, endTransparency, fadeTime));
         }
         else if (nowDialog.effect.Contains("shakeScreen"))
         {
-            StartCoroutine(sceneManager.ShakeModule(cameraObject, 0, 0.5f, float.Parse(nowDialog.effectParameter)));
+            StartCoroutine(sceneManager.ShakeModule(cameraObject, 0, 1, float.Parse(nowDialog.effectParameter)));
         }
         else if (nowDialog.effect.Contains("blur"))
         {
@@ -510,14 +556,7 @@ public class StoryManager : MonoBehaviour
         if (nowDialog.talkingCharName != null)
         {
             nameText.text = nowDialog.talkingCharName;
-
-
-            if (Enum.TryParse<CharacterName>(nowDialog.talkingCharName, out talkingCharEnum))
-            {
-                talkingCharEnum = CharacterName.Null;
-            }
-
-
+            talkingCharEnum = characterIndexToName.IngameNameToEnum(nowDialog.talkingCharName, languagePack);
         }
         else
         {
@@ -529,12 +568,12 @@ public class StoryManager : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                if (!faded[i] && nowDialog.enumCharacterArray[i] == CharacterName.Null)
+                if (!faded[i])
                 {
                     faded[i] = true;
                     //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
-                    StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
-                    StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 0.9f, 1f, 0.5f));
+                    StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 1, 0.2f, 0.2f));
+                    StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1f, 0.9f, 0.2f));
                 }
             }
         }
@@ -542,19 +581,30 @@ public class StoryManager : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-               if (faded[i] && nowDialog.enumCharacterArray[i] == talkingCharEnum)
+               if (nowDialog.enumCharacterArray[i] == talkingCharEnum)
                 {
-                    faded[i] = false;
-                    //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
-                    StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 1, 0.2f, 0.5f));
-                    StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1f, 0.9f, 0.5f));
+                    if(faded[i] ==true)
+                    {
+                        faded[i] = false;
+                        //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 1f, 0.2f, 0.5f));
+
+                        StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.2f));
+                        StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 0.9f, 1f, 0.2f));
+
+                    }
+
+
                 }
-                else if (!faded[i])
+                else
                 {
-                    faded[i] = true;
-                    //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
-                    StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
-                    StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 0.9f, 1f, 0.5f));
+                    if(faded[i] == false)
+                    {
+                        faded[i] = true;
+                        //StartCoroutine(sceneManager.FadeModule_Sprite(characterSprite[i].gameObject, 0.2f, 1, 0.5f));
+                        StartCoroutine(sceneManager.ColorChange_Sprite(characterSprite[i].gameObject, 1, 0.2f, 0.2f));
+                        StartCoroutine(sceneManager.ChangeScale_Object(characterSprite[i].gameObject, 1, 0.9f, 0.2f));
+                    }
+                    
                 }
             }
         }
@@ -656,6 +706,7 @@ public class StoryManager : MonoBehaviour
         //    sceneManager.LoadScene("RoomCounterScene");
         //}
         toNextSceneButton.SetActive(false);
+
         if (sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].saveTimeString != null)
         {
             gameManager.ForceSaveButtonActive();

@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Text;
 using System;
 
-public enum CharacterFeeling { Null,nothing, angry,pain, angry1, angry2, doubting, grin, hugesmile, notTalk, surprised, talk }
+public enum CharacterFeeling { Null,nothing, angry,pain, angry1, angry2, doubting, grin, hugesmile, notTalk, surprised, talk,sad,panic }
 public enum CharacterName
 {
     Ruellia, Cari, Jet, Lily, Iris, Ian,
@@ -128,14 +128,32 @@ public class CharacterIndexToName
         return spr;
     }
 
-    public string NameTranslator(string fileName, UILanguagePack languagePack)
+    public string EnumNameToIngame(string fileName, UILanguagePack languagePack)
     {
-        if(fileName == null)
+        if (fileName == null)
         {
             return null;
         }
         CharacterName name = (CharacterName)Enum.Parse(typeof(CharacterName), fileName);
         return languagePack.characterNameArray[(int)name];
+    }
+
+
+    public CharacterName IngameNameToEnum(string fileName, UILanguagePack languagePack)
+    {
+        if (fileName == null)
+        {
+            return CharacterName.Null;
+        }
+        for(int i = 0; i < languagePack.characterNameArray.Length; i++)
+        {
+            if (languagePack.characterNameArray[i].Contains(fileName))
+            {
+                return (CharacterName)i;
+            }
+        }
+
+        return CharacterName.Null;
     }
 
     public string NameTranslator(CharacterName name, UILanguagePack languagePack)

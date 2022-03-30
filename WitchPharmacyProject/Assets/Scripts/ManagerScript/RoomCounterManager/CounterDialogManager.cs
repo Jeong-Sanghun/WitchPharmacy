@@ -217,8 +217,8 @@ public class CounterDialogManager : MonoBehaviour
         nowBundle = storyParser.LoadBundle(Random.Range(0, 2).ToString(), languageDirectory,VisitorType.RuelliaStart,0, saveData.nowRegion);
         nowWrapperList = nowBundle.startWrapperList;
         nowWrapper = nowBundle.startWrapperList[0];
-        ruelliaName.text = characterIndexToName.NameTranslator("Ruellia", languagePack);
-        visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
+        ruelliaName.text = characterIndexToName.EnumNameToIngame("Ruellia", languagePack);
+        visitorName.text = characterIndexToName.EnumNameToIngame(nowWrapper.characterName, languagePack);
         if (nowWrapper.characterName != null)
         {
             if (lastWrapper.characterFeeling != nowWrapper.characterFeeling || lastWrapper.characterName != nowWrapper.characterName)
@@ -267,7 +267,7 @@ public class CounterDialogManager : MonoBehaviour
         nowWrapper = nowBundle.startWrapperList[0];
         if(nowBundle.visitorType == VisitorType.Special)
         {
-            visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
+            visitorName.text = characterIndexToName.EnumNameToIngame(nowWrapper.characterName, languagePack);
         }
         else if (nowBundle.visitorType == VisitorType.Odd)
         {
@@ -655,7 +655,7 @@ public class CounterDialogManager : MonoBehaviour
             nowWrapperIndex++;
             lastWrapper = nowWrapper;
             nowWrapper = nowWrapperList[nowWrapperIndex];
-            visitorName.text = characterIndexToName.NameTranslator(nowWrapper.characterName, languagePack);
+            visitorName.text = characterIndexToName.EnumNameToIngame(nowWrapper.characterName, languagePack);
             if (lastWrapper != null )
             {
                 Debug.Log(nowWrapper.characterName);

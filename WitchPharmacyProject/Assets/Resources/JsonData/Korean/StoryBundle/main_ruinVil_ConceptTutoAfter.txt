@@ -1,0 +1,507 @@
+{
+    "storyDialogArray": [
+        {
+            "effect": "background",
+            "effectParameter": "room_ruinVil",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "저주의 원인을 원론적으로 설명해볼게요.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "talk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "popupIllust",
+            "effectParameter": "elements",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "이 세상은 다섯 원소로 이루어져있어요.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "사람들도 이 다섯가지 원소로 이루어져있죠. \\n 정상적인 상태라면, 몸을 이루고 있는 다섯 원소가 균형을 이루어야 해요.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "popupIllust",
+            "effectParameter": "curse",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "이 균형이 깨져 조절하기 힘든 정도가 되면, 괴이한 증상을 보이며 고통받게 된다고 해요.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "그 상태를 저주라고 부릅니다.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "popupIllustEnd",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "주인님이 기억하고 있는 저주 약학은, 저주를 치유하는 고대의 약 제조법이에요.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "습득하기 매우 어렵기도 하고, 남은 기록이 거의 없어 통달한 사람은 거의 없다고 해요.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "doubting",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "저주 약학에 통달한 사람이 있긴 한걸까요?",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "라이제르하로부터 직접 약학을 전수받은, 신전의 마녀라면 모를까...",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "저주 약학의 기본 원리는 \"각 다섯 원소의 중심을 바로잡아\" 흐트러진 균형을 맞추는거예요.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "nothing",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "각 원소가 과하거나 부족한 상태일 때, 반대되는 약재를 통해 중심을 맞춘다는 뜻입니다..!",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "route",
+            "talkingCharName": "카리",
+            "dialog": "예를 들어 물속성이 과하다고 하면, 다음 중 어떤 약재를 사용해야 할까요?",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "routeFirst": "물 속성을 증가시키는 약재",
+            "routeSecond": "물 속성을 감소시키는 약재",
+            "routeFirstJump": "1",
+            "routeSecondJump": "4"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "아니에요!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "angry2",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "물 속성이 너무 크니까, 물 속성을 감소시키는 약재를 써야해요!",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "jump",
+            "effectParameter": "3",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "nothing",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "맞습니다!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "grin",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "물 속성이 너무 크니까, 물 속성을 감소시키는 약재를 써야해요!",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "어라. 벌써 시간이 이렇게 됐네.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "surprised",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "힘들었어….",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "벌써 지치시면 어떡해요? 약국 열 시간 다 되었는데.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "talk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "피곤하다고 또 졸면 안돼요! 졸다가 솥에 고꾸라지면 그대로 루엘리아 스튜가 될 테니.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "그치만 뭐 솥에 고꾸라져서 죽으면 그거대로 나쁘지 않네~",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "그래도 몸이 타들어가서 죽는 건 아니잖아.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "아, 아니 그런 말을 들으려던 게 아니라구요!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "surprised",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "불안하게 왜 그런 소리를 해요?",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "사실인데, 뭐...",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "혹시…더 안 좋아졌어요?",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "talk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "…….",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "sfx",
+            "effectParameter": "clothRub",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "angry"
+        },
+        {
+            "effect": "popupIllust",
+            "effectParameter": "rue_Scar",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "shake",
+            "charEffectParameter3": "3"
+        },
+        {
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "shake",
+            "charEffectParameter3": "3"
+        },
+        {
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "shake",
+            "charEffectParameter3": "3"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "읏….",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "popupIllustEnd",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "주인님!!!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "surprised",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "괜찮아. 약간 찌릿했을 뿐이야.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "전보다 더 심해졌잖아요!",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "아하하...",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "솔직히 말하면 안 좋은 예감이 들어...",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "주인님...",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "괜찮을 거에요! 연구도 잘 되고있고...!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "grin",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "고마워 카리.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "grin"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "시간이 많이 남지 않았을 수도 있으니까... 앞으로는 좀 더 연구에 집중해야겠어.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "shakeScreen",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "surprised",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "???",
+            "dialog": "루엘리아!!! 나와봐라!!!",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "앗.. 앤더슨 영감님 오셨나보네.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "fadeOut",
+            "effectParameter": "0.5",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "background",
+            "effectParameter": "counter_ruinVil",
+            "charSlot1": "Anderson",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "nothing",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "fadeIn",
+            "effectParameter": "0.5",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "게으른 녀석 같으니라고! 아직도 약국 문을 안연게냐?",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "안녕하세요. 요 며칠 못 뵈었네요.",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "grin"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "어디 다녀오셨나요?",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "또 물자나 구하러 돌아다닌거지. \\n 늙어죽을 때까지 일해야 입에 풀칠이라도 하지 않겄냐.",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "세계수 땅은 위험하다면서요... 다른 주민 분들에게 맡기시는게 낫지 않을까요?",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "못미더운 마을 놈들 시키다간 속 터져 죽을게다!",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "힘들어도 내가 하는게 속 편허지.",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charEffect2": "up",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "근데 우리 영업시간 한 시간 뒤인데요.",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "talk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "요놈의 전자여우는 은제 가져다 버리냐?",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "캬아악. 전자여우라니!",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "angry2",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "카리, 쉿!",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "panic"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "영업시간 아니면 내가 내 차 확인하러도 못 와본다는 말이냐?",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "요놈의 은혜도 모르고 버르장머리도 없는 자식. 길거리에 나앉아 볼텨?",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "쳇. 이래서 내 집 마련은 필수라니까.",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "angry1",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "쯧. 됐고. 약국에 온 이유가 뭐겄냐.",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "약이나 좀 내와 봐라.",
+            "charSlot1": "Anderson",
+            "charSlot2": "Cari",
+            "charSlot3": "Ruellia"
+        }
+    ]
+}

@@ -193,7 +193,14 @@ public class GameManager : MonoBehaviour //SH
 
     public void ForceSaveButtonActive()
     {
-        
+        saveData.nowSceneIndex++;
+        if(sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].day != null)
+        {
+            int day =int.Parse(sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].day);
+            
+            saveData.nowDay = day;
+        }
+
         jsonManager.SaveJson(saveData, 0);
         saveDataTimeWrapper.saveDataTimeList[0].day = saveData.nowDay;
         saveDataTimeWrapper.saveDataTimeList[0].sceneIndex = saveData.nowSceneIndex;
@@ -201,6 +208,7 @@ public class GameManager : MonoBehaviour //SH
         tabletManager.TabletOpenButtonActive(true);
         tabletManager.ForceSaveButtonActive(true);
     }
+
 
 
     public void LoadJson(int index)

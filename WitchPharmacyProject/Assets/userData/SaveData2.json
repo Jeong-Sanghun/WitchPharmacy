@@ -1,7 +1,7 @@
 {
     "name": "initName",
     "nowTime": 0.0,
-    "nowDay": 0,
+    "nowDay": 1,
     "coin": 1000,
     "owningMedicineList": [
         {
@@ -41,13 +41,7 @@
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
-        }
-    ],
+    "billWrapperList": [],
     "owningDocumentList": [],
     "symptomBookList": [
         "water+",
@@ -81,7 +75,6 @@
         false
     ],
     "readStoryList": [
-        "firstDay",
         "firstDay"
     ],
     "readSpecialVisitorBundleList": [],

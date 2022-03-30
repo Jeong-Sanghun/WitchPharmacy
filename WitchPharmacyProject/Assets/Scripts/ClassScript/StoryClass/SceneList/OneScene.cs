@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class OneScene
 {
-    public int day;
+    public string day;
     public string sceneName;
     public string sceneParameter;
     public string saveTimeString;
@@ -14,7 +14,7 @@ public class OneScene
     
     public OneScene()
     {
-        day = -1;
+        day = null;
         sceneName = null;
         sceneParameter = null;
         saveTimeString = null;

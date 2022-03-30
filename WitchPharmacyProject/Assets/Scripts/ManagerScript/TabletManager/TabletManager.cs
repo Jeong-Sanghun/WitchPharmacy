@@ -106,9 +106,11 @@ public class TabletManager : MonoBehaviour
 
     public void ForceSaveButtonActive(bool forceSave)
     {
-
+        
+        tabletCariManager.SetCariActive(false);
         tabletCanvasParent.SetActive(true);
         tabletSaveManager.SaveCanvasActive(true);
+        
         if (forceSave)
         {
             homeButton.SetActive(false);

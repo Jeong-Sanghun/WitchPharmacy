@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using System;
 
 public class BlurManager : MonoBehaviour
 {
@@ -24,7 +25,12 @@ public class BlurManager : MonoBehaviour
 
     public void OnBlur(bool blur)
     {
-        StartCoroutine(BlurCoroutine(blur));
+        StartCoroutine(BlurCoroutine(blur,null));
+    }
+
+    public void OnBlur(bool blur, Action afterAction)
+    {
+        StartCoroutine(BlurCoroutine(blur,afterAction));
     }
     bool running = false;
 
@@ -59,7 +65,7 @@ public class BlurManager : MonoBehaviour
         }
     }
 
-    IEnumerator BlurCoroutine(bool blur)
+    IEnumerator BlurCoroutine(bool blur, Action afterAction)
     {
         runToggle = !runToggle;
         bool nowRunToggle = runToggle;
@@ -102,6 +108,11 @@ public class BlurManager : MonoBehaviour
         if (nowRunToggle == runToggle)
         {
             depthOfField.focusDistance.value = hit;
+        }
+
+        if(afterAction != null)
+        {
+            afterAction();
         }
     }
 

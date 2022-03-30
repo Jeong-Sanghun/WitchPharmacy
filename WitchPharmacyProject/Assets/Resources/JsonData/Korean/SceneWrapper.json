@@ -12,9 +12,6 @@
             "sceneParameter": "main_ruinVil_Start"
         },
         {
-            "sceneName": "TutorialConceptScene"
-        },
-        {
             "sceneName": "StoryScene",
             "sceneParameter": "main_ruinVil_ConceptTutoAfter",
             "saveTimeString": "RoomCounterTutorial"

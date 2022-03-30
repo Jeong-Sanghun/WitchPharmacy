@@ -98,6 +98,7 @@ public class TabletSaveManager : MonoBehaviour
     public void OnOpenedForceSave()
     {
         isForceSave = true;
+        gameManager.SaveJson(0);
         //saveButton.enabled = true;
         saveButton.gameObject.SetActive(true);
         loadButton.SetActive(false);
@@ -122,6 +123,7 @@ public class TabletSaveManager : MonoBehaviour
     public void SaveOrLoadButtonCanvasGetout()
     {
         saveButtonCanvas.SetActive(false);
+        TabletManager.inst.tabletCariManager.SetCariActive(true);
     }
 
     public void WholeButtonOff()
@@ -137,7 +139,7 @@ public class TabletSaveManager : MonoBehaviour
         SaveOrLoadButtonCanvasGetout();
         SaveCanvasActive(false);
         //        gameManager.LoadJson(0);
-        SceneManager.inst.LoadNextScene();
+        SceneManager.inst.LoadNowScene();
         tabletManager.SetOnSaveDataLoad();
     }
 
@@ -161,7 +163,7 @@ public class TabletSaveManager : MonoBehaviour
                     SaveCanvasActive(false);
 
                     // gameManager.sceneManager.lastSceneName = 
-                    SceneManager.inst.LoadNextScene();
+                    SceneManager.inst.LoadNowScene();
                     //gameManager.sceneManager.LoadScene(gameManager.saveData.nextLoadSceneName);
 
                 }
@@ -202,8 +204,8 @@ public class TabletSaveManager : MonoBehaviour
         tabletManager.OnTabletButton(false);
         SaveOrLoadButtonCanvasGetout();
         SaveCanvasActive(false);
-
-        SceneManager.inst.LoadNextScene();
+        
+        SceneManager.inst.LoadNowScene();
 
     }
 

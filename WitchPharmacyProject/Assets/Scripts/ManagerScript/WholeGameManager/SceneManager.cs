@@ -467,12 +467,26 @@ public class SceneManager : MonoBehaviour // JH
 
     public void LoadNextScene()
     {
+        
         gameManager.saveData.nowSceneIndex++;
         
         int nowSceneIndex = gameManager.saveData.nowSceneIndex;
+        if(sceneWrapper.sceneArray[nowSceneIndex].day != null)
+        {
+            int day = int.Parse(sceneWrapper.sceneArray[nowSceneIndex].day);
+            gameManager.saveData.nowDay = day;
+        }
         string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
         sceneParameter = sceneWrapper.sceneArray[nowSceneIndex].sceneParameter;
-        Debug.Log(sceneParameter);
+        StartCoroutine(LoadingSceneCoroutine(nowScene));
+    }
+
+    public void LoadNowScene()
+    {
+        int nowSceneIndex = gameManager.saveData.nowSceneIndex;
+
+        string nowScene = sceneWrapper.sceneArray[nowSceneIndex].sceneName;
+        sceneParameter = sceneWrapper.sceneArray[nowSceneIndex].sceneParameter;
         StartCoroutine(LoadingSceneCoroutine(nowScene));
     }
 
