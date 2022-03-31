@@ -1099,7 +1099,9 @@ public class StoryParser
                             nowMode = StoryEffect.Null;
                             gameData.storyRegion = (StoryRegion)Enum.Parse(typeof(StoryRegion), builder.ToString());
                             break;
-
+                        default:
+                            builder.Append('{');
+                            break;
                     }
                     builder.Clear();
                     break;

@@ -10,6 +10,7 @@ public class StoryDialog
     public string effectParameter;
     public string talkingCharName;
     public string dialog;
+    public string speed;
 
     public string charSlot1;
     public string charEffect1;

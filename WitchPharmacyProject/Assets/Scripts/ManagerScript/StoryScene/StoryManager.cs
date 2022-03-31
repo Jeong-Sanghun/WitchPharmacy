@@ -551,7 +551,20 @@ public class StoryManager : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(sceneManager.LoadTextOneByOne(nowDialog.dialog, nowConversationText));
+        float speed = 0.05f;
+        bool skippable = true;
+        if(nowDialog.speed != null)
+        {
+            speed *= float.Parse(nowDialog.speed);
+        }
+        if (nowDialog.effect != null)
+        {
+            if (nowDialog.effect.Contains("unskippable"))
+            {
+                skippable = false;
+            }
+        }
+        StartCoroutine(sceneManager.LoadTextOneByOne(nowDialog.dialog, nowConversationText,speed,skippable));
         CharacterName talkingCharEnum = CharacterName.Null;
         if (nowDialog.talkingCharName != null)
         {

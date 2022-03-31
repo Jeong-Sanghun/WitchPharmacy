@@ -59,27 +59,130 @@ public class SceneManager : MonoBehaviour // JH
         float miniTimer = 0f; //타이머
         float currentTargetNumber=0f; // 해당 Time에 출력을 목표로 하는 최소 글자 수
         int currentNumber=0; // 해당 Time에 출력중인 글자 수
+
+        string processedString = inputTextString;
+        List<Vector2Int> boldIndexList = new List<Vector2Int>();
+        List<Vector2Int> speedChangeIndexList = new List<Vector2Int>();
+        List<float> speedChangeValueList = new List<float>();
+        while (processedString.Contains("^bold^"))
+        {
+            int boldStartIndex = processedString.IndexOf("^bold^");
+            processedString =  processedString.Remove(boldStartIndex, "^bold^".Length);
+            int boldEndIndex = processedString.IndexOf("^boldEnd^");
+            processedString = processedString.Remove(boldEndIndex, "^boldEnd^".Length);
+            Vector2Int boldVector = new Vector2Int(boldStartIndex, boldEndIndex);
+            boldIndexList.Add(boldVector);
+        }
+
+        while (processedString.Contains("^speed^"))
+        {
+
+            int speedStartIndex = processedString.IndexOf("^speed^");
+            processedString = processedString.Remove(speedStartIndex, "^speed^".Length);
+            Debug.Log(processedString);
+            StringBuilder speedBuilder = new StringBuilder();
+            for(int i = speedStartIndex; i<processedString.Length; i++)
+            {
+                char nowChar = processedString[i];
+                if(nowChar == '{')
+                {
+                    continue;
+                }
+                else if (nowChar == '}')
+                {
+                    break;
+                }
+                else
+                {
+                    speedBuilder.Append(nowChar);
+                }
+            }
+            Debug.Log(speedBuilder.ToString());
+            float speed = float.Parse(speedBuilder.ToString());
+
+            processedString = processedString.Remove(speedStartIndex, speedBuilder.Length + 2);
+            speedChangeValueList.Add(speed);
+
+            int speedEndIndex = processedString.IndexOf("^speedEnd^");
+            processedString = processedString.Remove(speedEndIndex, "^speedEnd^".Length);
+            Vector2Int speedVector = new Vector2Int(speedStartIndex, speedEndIndex);
+            speedChangeIndexList.Add(speedVector);
+        }
+
+
         string displayedText="";
         StringBuilder builder = new StringBuilder(displayedText);
-        while (currentTargetNumber < inputTextString.Length){
+        while (currentTargetNumber < processedString.Length){
+            bool bold = false;
+
             while (currentNumber < currentTargetNumber){ // 목표 글자수까지 출력
+                if (boldIndexList.Count >= 1)
+                {
+                    if (currentNumber >= boldIndexList[0].x && currentNumber < boldIndexList[0].y)
+                    {
+                        builder.Append("<b>");
+                        bold = true;
+                    }
+                    if (currentNumber == boldIndexList[0].y)
+                    {
+                        boldIndexList.RemoveAt(0);
+                    }
+
+                }
                 //displayedText += inputTextString.Substring(currentNumber,1);
-                builder.Append(inputTextString.Substring(currentNumber, 1));
+                builder.Append(processedString.Substring(currentNumber, 1));
                 currentNumber++;
+                if (bold == true)
+                {
+                    builder.Append("</b>");
+                }
             }
+
             //inputTextUI.text = displayedText;
             inputTextUI.text = builder.ToString();
             yield return null;
             miniTimer += Time.deltaTime;
-            currentTargetNumber = miniTimer/eachTime;
+            float nowSpeed = eachTime;
+            if(speedChangeIndexList.Count >= 1)
+            {
+                if (currentNumber >= speedChangeIndexList[0].x && currentNumber < speedChangeIndexList[0].y)
+                {
+                    nowSpeed /= speedChangeValueList[0];
+                }
+                if (currentNumber == speedChangeIndexList[0].y)
+                {
+                    speedChangeValueList.RemoveAt(0);
+                    speedChangeIndexList.RemoveAt(0);
+                }
+            }
+
+            currentTargetNumber = miniTimer/nowSpeed;
             if(Input.GetMouseButtonDown(0)&&canClickSkip){
                 break;
             }
         }
-        while (currentNumber < inputTextString.Length){ // 목표 글자수까지 출력
-                builder.Append(inputTextString.Substring(currentNumber, 1));
-                currentNumber++;
+        while (currentNumber < processedString.Length){ // 목표 글자수까지 출력
+            bool bold = false;
+            if (boldIndexList.Count >= 1)
+            {
+                if (currentNumber >= boldIndexList[0].x && currentNumber < boldIndexList[0].y)
+                {
+                    builder.Append("<b>");
+                    bold = true;
+                }
+                if (currentNumber == boldIndexList[0].y)
+                {
+                    boldIndexList.RemoveAt(0);
+                }
+
             }
+            builder.Append(processedString.Substring(currentNumber, 1));
+            currentNumber++;
+            if (bold == true)
+            {
+                builder.Append("</b>");
+            }
+        }
         inputTextUI.text = builder.ToString();
         yield return null;
         nowTexting = false;
