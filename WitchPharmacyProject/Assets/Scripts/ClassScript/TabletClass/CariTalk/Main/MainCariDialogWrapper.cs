@@ -11,7 +11,6 @@ public class MainCariDialogWrapper
     {
         for(int i=0;i< mainCariDialogArray.Length; i++)
         {
-            Debug.Log(i);
             mainCariDialogArray[i].Parse();
         }
     }

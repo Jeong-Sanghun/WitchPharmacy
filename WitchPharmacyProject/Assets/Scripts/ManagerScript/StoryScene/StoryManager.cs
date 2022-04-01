@@ -48,9 +48,16 @@ public class StoryManager : MonoBehaviour
     Text nameText;
 
     [SerializeField]
-    Text[] routingTextArray;
+    GameObject textFrameObject;
     [SerializeField]
-    GameObject[] routingButtonArray;
+    GameObject nextButtonObject;
+
+
+
+    [SerializeField]
+    Text[] routeTextArray;
+    [SerializeField]
+    GameObject[] routeButtonArray;
 
     [SerializeField]
     GameObject toNextSceneButton;
@@ -59,6 +66,8 @@ public class StoryManager : MonoBehaviour
     [SerializeField]
     GameObject blackOutObject;
 
+
+    List<TutorialRoute> routeList;
     Vector3[] characterOriginPosArray;
 
     Vector3 characterMiddleOriginPos;
@@ -80,19 +89,19 @@ public class StoryManager : MonoBehaviour
     float leftXPos = -30;
     float rightXPos = 30;
 
+    bool nowTextFrameToggleActive;
+    bool isRouteButtonAble;
+
     //어느 번들인지.
     //int nowBundleIndex;
     //어디에서 분기해서 어디 래퍼인지.
     protected int nowWrapperIndex;
     protected int nowConversationIndex;
-    protected bool checkingRouter;
     bool[] faded;
     bool blurred;
     protected int nowRouterIndex;
-    bool nowInRouterWrapper;
-    int leftRouterWrapper;
-    int nowRouterWrapperIndex;
     bool delaying;
+    bool isRouting;
     //string nextStory;
     // Start is called before the first frame update
     void Start()
@@ -107,7 +116,6 @@ public class StoryManager : MonoBehaviour
         //nowWrapper = nowBundle.dialogWrapperList[0];
         //routingTime = nowBundle.conversationRouter.routingTime;
         //nextStory = null;
-        checkingRouter = false;
         blurred = false;
         faded = new bool[4];
         for(int i = 0; i < 4; i++)
@@ -120,6 +128,9 @@ public class StoryManager : MonoBehaviour
         nowRouterIndex = 0;
         nowDialogIndex = 0;
         delaying = false;
+        nowTextFrameToggleActive = true;
+        isRouteButtonAble = false;
+        isRouting = false;
         storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
         saveData.readStoryList.Add(saveData.nextStory);
         Debug.Log(sceneManager.sceneParameter);
@@ -158,9 +169,14 @@ public class StoryManager : MonoBehaviour
             return;
         }
         nowDialog = nowDialogArray[nowDialogIndex];
-       
+        Debug.Log(nowDialogIndex);
         PrintCharacter();
         PrintEffect(out immediateNext);
+        
+        if (nowDialog.effect != null && nowDialog.effect.Contains("dialogBoxHide"))
+        {
+            Debug.Log(immediateNext);
+        }
         PrintConversation();
         nowDialogIndex++;
 
@@ -180,6 +196,7 @@ public class StoryManager : MonoBehaviour
         CharacterFeeling enumFeeling = CharacterFeeling.Null;
         nowDialog.enumCharacterArray[characterIndex] = enumCharacter;
          GameObject obj = characterSprite[characterIndex].gameObject;
+
         if (enumCharacter != nowCharacterArray[characterIndex])
         {
             charDiffer = true;
@@ -397,7 +414,8 @@ public class StoryManager : MonoBehaviour
         }
         else if (nowDialog.effect.Contains("route"))
         {
-
+            isRouting = true;
+            isRouteButtonAble = false;
         }
         else if (nowDialog.effect.Contains("blackOut"))
         {
@@ -425,10 +443,37 @@ public class StoryManager : MonoBehaviour
         }
         else if (nowDialog.effect.Contains("dialogBoxHide"))
         {
-
+            immediateNext = false;
+            float delay = 1;
+            if(!float.TryParse(nowDialog.effectParameter, out delay))
+            {
+                delay = 1;
+            }
+            TextFrameToggle(false);
+            Debug.Log(delay+ " 딜레이");
+            StartCoroutine(DelayCoroutine(delay));
+            //if (nowDialog.dialog != null)
+            //{
+                
+            //}
+            //else
+            //{
+            //    StartCoroutine(DelayActionCoroutine(delay, NextDialog));
+            //}
+            
+        }
+        else if (nowDialog.effect.Contains("jump"))
+        {
+            nowDialogIndex += int.Parse(nowDialog.effectParameter);
+            if(nowDialogIndex < nowDialogArray.Length)
+            {
+                nowDialog = nowDialogArray[nowDialogIndex];
+            }
+            
         }
         else if (nowDialog.effect.Contains("delay"))
         {
+            immediateNext = false;
             StartCoroutine(DelayActionCoroutine(float.Parse(nowDialog.effectParameter), NextDialog));
         }
         else if (nowDialog.effect.Contains("fadeInAndFocus"))
@@ -469,7 +514,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (nowDialog.effect.Contains("shakeScreen"))
         {
-            StartCoroutine(sceneManager.ShakeModule(cameraObject, 0, 1, float.Parse(nowDialog.effectParameter)));
+            StartCoroutine(sceneManager.ShakeModule(cameraObject, 1, 1,1));
         }
         else if (nowDialog.effect.Contains("blur"))
         {
@@ -626,63 +671,7 @@ public class StoryManager : MonoBehaviour
 
     }
 
-    //라우터 버튼 눌릴 때
-    public void OnRouterButton(int index)
-    {
-        //checkingRouter = false;
-        //for (int i = 0; i < routingButtonArray.Length; i++)
-        //{
-        //    routingButtonArray[i].SetActive(false);
-        //}
-        //if(nowRouter.routingWrapperIndex.Count-1 == index)
-        //{
-        //    leftRouterWrapper = nowRouter.routingWrapperIndex.Count - nowRouter.routingWrapperIndex[index];
-        //}
-        //else
-        //{
-        //    leftRouterWrapper = nowRouter.routingWrapperIndex[index+1] - nowRouter.routingWrapperIndex[index];
-        //}
-        //RoutePair routePair = null;
-        //for (int i = 0; i < saveData.routePairList.Count; i++)
-        //{
-        //    if (saveData.routePairList[i].storyName.Contains(nowBundle.bundleName))
-        //    {
-        //        routePair = saveData.routePairList[i];
-        //        if (routePair.pickedRouteList.Count >= nowBundle.conversationRouterList.Count)
-        //        {
-        //            saveData.routePairList.RemoveAt(i);
-        //            routePair = null;
-        //        }
-        //        break;
-        //    }
-        //}
-        //if(routePair == null)
-        //{
-        //    routePair = new RoutePair();
-        //    routePair.storyName = nowBundle.bundleName;
-        //    saveData.routePairList.Add(routePair);
-        //}
-        //routePair.pickedRouteList.Add(index);
-
-        //nowRouterWrapperIndex = nowRouter.routingWrapperIndex[index];
-        //nowWrapper = nowRouter.routingWrapperList[nowRouterWrapperIndex];
-        //nowConversationIndex = 0;
-        //if (nowWrapper.nextStory != null && nowWrapper.nextStory.Length > 0)
-        //{
-        //    Debug.Log("저장");
-        //    saveData.nextStory = nowWrapper.nextStory;
-        //}
-        //if (nowWrapper.nextRegion != null && nowWrapper.nextRegion.Length > 0)
-        //{
-        //    StoryRegion region = (StoryRegion)Enum.Parse(typeof(StoryRegion), nowWrapper.nextRegion);
-        //    if (region != saveData.nowRegion)
-        //    {
-        //        saveData.nowRegion = region;
-        //    }
-        //}
-        //PrintConversation();
-        
-    }
+    
 
     public void ToNextSceneButton()
     {
@@ -732,11 +721,57 @@ public class StoryManager : MonoBehaviour
 
     }
 
+    void TextFrameToggle(bool active)
+    {
+        nowTextFrameToggleActive = active;
+        if (active)
+        {
+            textFrameObject.SetActive(true);
+            nextButtonObject.SetActive(true);
+            conversationText.text = null;
+            nameText.text = null;
+            StartCoroutine(sceneManager.FadeModule_Image(textFrameObject, 0, 1, 1, true));
+            StartCoroutine(sceneManager.FadeModule_Image(nextButtonObject, 0, 1, 1, true));
+            StartCoroutine(sceneManager.FadeModule_Text(conversationText, 0, 1,1));
+            StartCoroutine(sceneManager.FadeModule_Text(nameText, 0, 1, 1));
+            StartCoroutine(DelayCoroutine(1));
+            StartCoroutine(sceneManager.InvokerCoroutine(1, NextDialog));
+        }
+        else
+        {
+            StartCoroutine(sceneManager.FadeModule_Image(textFrameObject, 1,0, 1, false));
+            StartCoroutine(sceneManager.FadeModule_Image(nextButtonObject, 1, 0, 1, false));
+            StartCoroutine(sceneManager.FadeModule_Text(conversationText, 1, 0, 1));
+            StartCoroutine(sceneManager.FadeModule_Text(nameText, 1, 0, 1));
+        }
+        
+    }
+
     public void OnTouchScreen()
     {
-        if (!checkingRouter && !sceneManager.nowTexting && !delaying)
+        if (!sceneManager.nowTexting && !delaying)
         {
-            NextDialog();
+            if(isRouting)
+            {
+                if (!isRouteButtonAble)
+                {
+                    RouteButtonActive();
+                }
+                
+            }
+            else
+            {
+                if (nowTextFrameToggleActive == false)
+                {
+                    TextFrameToggle(true);
+                }
+                else
+                {
+                    NextDialog();
+                }
+            }
+            
+            
         }
     }
     
@@ -751,10 +786,144 @@ public class StoryManager : MonoBehaviour
     IEnumerator DelayActionCoroutine(float time, Action action)
     {
         delaying = true;
+        Debug.Log(time + "딜레이코루틴타임");
         yield return new WaitForSeconds(time);
         delaying = false;
+        Debug.Log("왜아ㅣㄴ기다려");
         action();
     }
 
-    
+    void RouteButtonActive()
+    {
+        routeList = new List<TutorialRoute>();
+        if (nowDialog.routeFirst != null)
+        {
+            TutorialRoute route = new TutorialRoute();
+            route.jump = int.Parse(nowDialog.routeFirstJump);
+            route.routeString = nowDialog.routeFirst;
+            routeList.Add(route);
+        }
+
+        if (nowDialog.routeSecond != null)
+        {
+            TutorialRoute route = new TutorialRoute();
+            route.jump = int.Parse(nowDialog.routeSecondJump);
+            route.routeString = nowDialog.routeSecond;
+            routeList.Add(route);
+        }
+
+        if (nowDialog.routeThird != null)
+        {
+            TutorialRoute route = new TutorialRoute();
+            route.jump = int.Parse(nowDialog.routeThirdJump);
+            route.routeString = nowDialog.routeThird;
+            routeList.Add(route);
+        }
+
+       
+        for (int i = 0; i < routeList.Count; i++)
+        {
+            routeButtonArray[i].SetActive(true);
+        }
+        isRouting = true;
+
+
+        List<Text> routeTextList = new List<Text>();
+        isRouteButtonAble = false;
+        TextFrameToggle(false);
+        for (int i = 0; i < 4; i++)
+        {
+            blurManager.ChangeLayer(true, characterSprite[i].gameObject);
+        }
+        blurManager.ChangeLayer(true, middleCharacterSprite.gameObject);
+        blurManager.OnBlur(true);
+        for (int i = 0; i < routeList.Count; i++)
+        {
+            GameObject txtObj = routeButtonArray[i].transform.GetChild(0).gameObject;
+            GameObject imgObj = routeButtonArray[i].transform.gameObject;
+            Text txt = txtObj.GetComponent<Text>();
+            Image img = imgObj.GetComponent<Image>();
+            img.color = new Color(1, 1, 1, 0);
+            txt.color = new Color(0, 0, 0, 0);
+            txt.text = routeList[i].routeString;
+
+            StartCoroutine(sceneManager.FadeModule_Image(img.gameObject, 0, 1, 1));
+            StartCoroutine(sceneManager.FadeModule_Text(txt, 0, 1, 1));
+        }
+        StartCoroutine(sceneManager.InvokerCoroutine(1, RouteButtonAbleTrue));
+
+
+    }
+
+    public void OnRouteButton(int index)
+    {
+
+        if (isRouteButtonAble == true)
+        {
+            StartCoroutine(ButtonAnimCoroutine(index));
+        }
+        isRouteButtonAble = false;
+
+
+    }
+
+    IEnumerator ButtonAnimCoroutine(int index)
+    {
+
+        for (int i = 0; i < routeList.Count; i++)
+        {
+            GameObject obj = routeButtonArray[i];
+            Text txt = obj.transform.GetChild(0).GetComponent<Text>();
+            Image img = obj.GetComponent<Image>();
+            if (i != index)
+            {
+                StartCoroutine(sceneManager.FadeModule_Image(img.gameObject, 1, 0, 1));
+                StartCoroutine(sceneManager.FadeModule_Text(txt, 1, 0, 1));
+            }
+        }
+        blurManager.OnBlur(false, () =>
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                blurManager.ChangeLayer(false, characterSprite[i].gameObject);
+            }
+            blurManager.ChangeLayer(false, middleCharacterSprite.gameObject);
+        }
+        );
+        Vector3 targetSize = new Vector3(1.05f, 1.05f, 1);
+        Vector3 originSize = Vector3.one;
+        float timer = 0;
+        while (timer < 1)
+        {
+            timer += Time.deltaTime * 6;
+            routeButtonArray[index].transform.localScale = Vector3.Lerp(originSize, targetSize, timer);
+            yield return null;
+        }
+        timer = 0;
+        while (timer < 1)
+        {
+            timer += Time.deltaTime * 6;
+            routeButtonArray[index].transform.localScale = Vector3.Lerp(targetSize, originSize, timer);
+            yield return null;
+        }
+        routeButtonArray[index].transform.localScale = originSize;
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < routeButtonArray.Length; i++)
+        {
+            routeButtonArray[i].SetActive(false);
+        }
+
+        nowDialogIndex += routeList[index].jump - 1;
+        isRouting = false;
+
+        TextFrameToggle(true);
+
+    }
+
+    void RouteButtonAbleTrue()
+    {
+        isRouteButtonAble = true;
+    }
+
+
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Text;
+using System;
 using UnityEngine.Rendering.PostProcessing;
 
 public class SceneManager : MonoBehaviour // JH
@@ -51,6 +52,13 @@ public class SceneManager : MonoBehaviour // JH
         JsonManager json = new JsonManager();
         sceneWrapper = json.ResourceDataLoadBeforeGame<SceneWrapper>("SceneWrapper", languageDirectory);
     }
+
+    public IEnumerator InvokerCoroutine(float time, Action action)
+    {
+        yield return new WaitForSeconds(time);
+        action();
+    }
+
     // // Module // //
     GameObject linearMovingObj;
 
@@ -340,8 +348,8 @@ public class SceneManager : MonoBehaviour // JH
         
         while (miniTimer < i_Time)
         {
-            newX = origin.x + Random.Range(-shakePowerX, shakePowerX);
-            newY = origin.y + Random.Range(-shakePowerY, shakePowerY);
+            newX = origin.x + UnityEngine.Random.Range(-shakePowerX, shakePowerX);
+            newY = origin.y + UnityEngine.Random.Range(-shakePowerY, shakePowerY);
             
             newVector = new Vector3(newX, newY, origin.z);
             i_Object.transform.position = newVector;
@@ -354,6 +362,8 @@ public class SceneManager : MonoBehaviour // JH
         yield return null;
         moveModuleLinearRunning = false;
     }
+
+    
 
     public IEnumerator VolumeModule(PostProcessVolume volume, bool finalOne, float time)
     {
