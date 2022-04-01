@@ -38,7 +38,9 @@ public class StoryManager : MonoBehaviour
     [SerializeField]
     SpriteRenderer[] characterSprite;
     [SerializeField]
-    SpriteRenderer cutSceneBGSprite;
+    SpriteRenderer cutSceneSprite;
+    [SerializeField]
+    SpriteRenderer backgroundSprite;
     [SerializeField]
     Image popupSprite;
 
@@ -165,7 +167,7 @@ public class StoryManager : MonoBehaviour
         bool immediateNext = false;
         if(nowDialogIndex >= nowDialogArray.Length)
         {
-            toNextSceneButton.SetActive(true);
+            sceneManager.LoadNextScene();
             return;
         }
         nowDialog = nowDialogArray[nowDialogIndex];
@@ -377,11 +379,11 @@ public class StoryManager : MonoBehaviour
         {
             if (nowDialog.effect.Contains("End"))
             {
-                cutSceneBGSprite.sprite = null;
+                cutSceneSprite.sprite = null;
             }
             else
             {
-                cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowDialog.effectParameter, true);
+                cutSceneSprite.sprite = characterIndexToName.GetBackGroundSprite(nowDialog.effectParameter, true);
             }
             
         }
@@ -390,11 +392,11 @@ public class StoryManager : MonoBehaviour
            
             if (nowDialog.effect.Contains("End"))
             {
-                cutSceneBGSprite.sprite = null;
+                backgroundSprite.sprite = null;
             }
             else
             {
-                cutSceneBGSprite.sprite = characterIndexToName.GetBackGroundSprite(nowDialog.effectParameter, false);
+                backgroundSprite.sprite = characterIndexToName.GetBackGroundSprite(nowDialog.effectParameter, false);
             }
         }
         else if (nowDialog.effect.Contains("popup"))
@@ -464,7 +466,8 @@ public class StoryManager : MonoBehaviour
         }
         else if (nowDialog.effect.Contains("jump"))
         {
-            nowDialogIndex += int.Parse(nowDialog.effectParameter);
+            immediateNext = false;
+            nowDialogIndex += (int.Parse(nowDialog.effectParameter)-1);
             if(nowDialogIndex < nowDialogArray.Length)
             {
                 nowDialog = nowDialogArray[nowDialogIndex];
@@ -715,9 +718,10 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            sceneManager.LoadNextScene();
+           
         }
 
+        
 
     }
 
@@ -830,7 +834,7 @@ public class StoryManager : MonoBehaviour
 
         List<Text> routeTextList = new List<Text>();
         isRouteButtonAble = false;
-        TextFrameToggle(false);
+        
         for (int i = 0; i < 4; i++)
         {
             blurManager.ChangeLayer(true, characterSprite[i].gameObject);
@@ -916,7 +920,7 @@ public class StoryManager : MonoBehaviour
         nowDialogIndex += routeList[index].jump - 1;
         isRouting = false;
 
-        TextFrameToggle(true);
+        NextDialog();
 
     }
 

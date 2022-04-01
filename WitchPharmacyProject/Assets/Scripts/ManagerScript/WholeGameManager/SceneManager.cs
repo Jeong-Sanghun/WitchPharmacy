@@ -526,14 +526,14 @@ public class SceneManager : MonoBehaviour // JH
             }
             yield return null;
         }
-        if (nowScene == "StoryScene")
-        {
-            TabletManager.inst.TabletOpenButtonActive(false);
-        }
-        else
-        {
-            TabletManager.inst.TabletOpenButtonActive(true);
-        }
+        //if (nowScene == "StoryScene")
+        //{
+        //    TabletManager.inst.TabletOpenButtonActive(false);
+        //}
+        //else
+        //{
+        //    TabletManager.inst.TabletOpenButtonActive(true);
+        //}
     }
 
     //public void BossSceneLoad()
@@ -580,9 +580,17 @@ public class SceneManager : MonoBehaviour // JH
 
     public void LoadNextScene()
     {
-        
+
+        if (sceneWrapper.sceneArray[gameManager.saveData.nowSceneIndex].saveTimeString != null)
+        {
+            gameManager.saveData.nowSceneIndex++;
+            gameManager.ForceSaveButtonActive();
+            return;
+        }
         gameManager.saveData.nowSceneIndex++;
-        
+
+
+
         int nowSceneIndex = gameManager.saveData.nowSceneIndex;
         if(sceneWrapper.sceneArray[nowSceneIndex].day != null)
         {

@@ -37,7 +37,7 @@ public class ExploreManager : MonoBehaviour
         gameManager = GameManager.singleton;
         tabletManager = TabletManager.inst;
         saveData = gameManager.saveData;
-        for(int  i = 0; i < saveData.researchSaveData.endOtherToolResearchList.Count; i++)
+        for (int i = 0; i < saveData.researchSaveData.endOtherToolResearchList.Count; i++)
         {
             if (saveData.researchSaveData.endOtherToolResearchList[i].Contains("energyDrink"))
             {
@@ -53,7 +53,7 @@ public class ExploreManager : MonoBehaviour
     public void TimeChange(float time)
     {
         gameManager.TimeChange(time);
-        if(saveData.nowTime > 3600 * 15)
+        if (saveData.nowTime > 3600 * 15)
         {
             gameManager.NextDay();
             SceneManager.inst.LoadScene("StoryScene");
@@ -66,8 +66,9 @@ public class ExploreManager : MonoBehaviour
         timeCount--;
         if (timeCount == 0)
         {
-            gameManager.NextDay();
-            SceneManager.inst.LoadScene("StoryScene");
+            //gameManager.NextDay();
+            //SceneManager.inst.LoadScene("StoryScene");
+            SceneManager.inst.LoadNextScene();
             Destroy(gameObject);
         }
         else
@@ -76,9 +77,4 @@ public class ExploreManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

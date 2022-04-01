@@ -84,6 +84,7 @@ public class TabletManager : MonoBehaviour
 
     public void TabletOpenButtonActive(bool active)
     {
+        Debug.Log(active+"태블릿");
         wholeTabletParent.SetActive(active);
         homeButton.SetActive(true);
         if (active == false)

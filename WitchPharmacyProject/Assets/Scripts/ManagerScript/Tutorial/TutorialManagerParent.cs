@@ -7,7 +7,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class TutorialManagerParent : MonoBehaviour
 {
-    //protected TutorialDialogWrapper nowWrapper;
+    protected TutorialDialogWrapper nowWrapper;
 
     protected GameManager gameManager;
     protected JsonManager jsonManager;
@@ -64,6 +64,7 @@ public class TutorialManagerParent : MonoBehaviour
 
     protected virtual void Start()
     {
+     //   TabletManager.inst.TabletOpenButtonActive(false);
         gameManager = GameManager.singleton;
         sceneManager = SceneManager.inst;
         jsonManager = new JsonManager();
@@ -119,6 +120,12 @@ public class TutorialManagerParent : MonoBehaviour
             
             return;
         }
+        if (dialogEnd)
+        {
+            TabletManager.inst.TabletOpenButtonActive(true);
+            SceneManager.inst.LoadNextScene();
+
+        }
         if (isDialogStopping == false)
         {
            
@@ -132,14 +139,16 @@ public class TutorialManagerParent : MonoBehaviour
 
     protected virtual void NextDialog()
     {
+        if (dialogEnd == true || nowDialogIndex >= dialogWrapper.dialogArray.Length)
+        {
+
+            return;
+        }
         if (dialogEnd == true || isRouting == true)
         {
             return;
         }
-        if (nowDialogIndex >= dialogWrapper.dialogArray.Length)
-        {
-            return;
-        }
+
         
         TutorialDialog nowDialog = dialogWrapper.dialogArray[nowDialogIndex];
         screenTouchCanvas.SetActive(true);

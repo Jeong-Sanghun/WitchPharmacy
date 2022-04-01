@@ -515,9 +515,9 @@ public class CounterManager : MonoBehaviour //SH
         if (lastVisitor)
         {
             endSales = true;
-
+            sceneManager.LoadNextScene();
             //gameManager.AutoSave("StoryScene");
-            gameManager.ForceSaveButtonActive();
+            //gameManager.ForceSaveButtonActive();
             //toNextSceneButton.SetActive(true);
 
         }
@@ -786,8 +786,8 @@ public class CounterManager : MonoBehaviour //SH
 
     public void ToNextSceneButton()
     {
-        
-        sceneManager.LoadScene("StoryScene");
+
+        sceneManager.LoadNextScene();
     }
 
     public void CoinTextChange()

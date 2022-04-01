@@ -455,7 +455,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -633,7 +633,8 @@ MonoBehaviour:
   - {fileID: 6517389924254320821}
   - {fileID: 1574252043}
   - {fileID: 6517389924254320819}
-  cutSceneBGSprite: {fileID: 6517389924254320822}
+  cutSceneSprite: {fileID: 6517389924254320822}
+  backgroundSprite: {fileID: 6517389924254320836}
   popupSprite: {fileID: 6517389924254320825}
   conversationText: {fileID: 122256067}
   nameText: {fileID: 6517389924254320820}
@@ -1208,3 +1209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &6517389924254320836 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8336947312447143190, guid: 275846198ae314b40b055f98b3efb17c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6517389924254320818}
+  m_PrefabAsset: {fileID: 0}

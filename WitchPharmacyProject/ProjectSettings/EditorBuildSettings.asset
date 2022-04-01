@@ -38,4 +38,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossScene.unity
     guid: dcb003d8a72d7964d88d3c0d7f66afd1
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/TutorialTabletScene.unity
+    guid: 3956336d86ad57b49aabd2a9e205aecd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/TutorialRoomCounterScene.unity
+    guid: 773359c5722c2d1448bae17ae8599318
   m_configObjects: {}

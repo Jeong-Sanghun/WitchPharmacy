@@ -193,7 +193,6 @@ public class GameManager : MonoBehaviour //SH
 
     public void ForceSaveButtonActive()
     {
-        saveData.nowSceneIndex++;
         if(sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].day != null)
         {
             int day =int.Parse(sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].day);
