@@ -81,7 +81,10 @@ public class TabletSaveManager : MonoBehaviour
             builder.Append((saveDataTimeArray[index].day+1).ToString());
             builder.Append(languagePack.slotDay);
             builder.Append(" ");
-            builder.Append(SceneManager.inst.sceneWrapper.sceneArray[saveDataTimeArray[index].sceneIndex].saveTimeString);
+            if (saveDataTimeArray[index].sceneIndex - 1 >= 0)
+            {
+                builder.Append(SceneManager.inst.sceneWrapper.sceneArray[saveDataTimeArray[index].sceneIndex - 1].saveTimeString);
+            }
         }
         buttonTextArray[index].text = builder.ToString();
 

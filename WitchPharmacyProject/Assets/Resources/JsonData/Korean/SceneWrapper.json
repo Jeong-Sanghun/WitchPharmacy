@@ -3,13 +3,15 @@
         {
             "day": "0",
             "sceneName": "StoryScene",
-            "sceneParameter": "main_Prologue",
-            "saveTimeString": "DayStart"
+            "sceneParameter": "main_Prologue"
         },
         {
             "day": "1",
             "sceneName": "StoryScene",
             "sceneParameter": "main_ruinVil_Start"
+        },
+        {
+            "sceneName": "TutorialConceptScene"
         },
         {
             "sceneName": "StoryScene",

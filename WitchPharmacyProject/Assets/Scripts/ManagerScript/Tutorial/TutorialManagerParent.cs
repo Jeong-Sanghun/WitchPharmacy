@@ -64,7 +64,7 @@ public class TutorialManagerParent : MonoBehaviour
 
     protected virtual void Start()
     {
-     //   TabletManager.inst.TabletOpenButtonActive(false);
+        TabletManager.inst.TabletOpenButtonActive(false,false);
         gameManager = GameManager.singleton;
         sceneManager = SceneManager.inst;
         jsonManager = new JsonManager();
@@ -115,20 +115,22 @@ public class TutorialManagerParent : MonoBehaviour
 
     public void ScreenTouchEvent()
     {
+        Debug.Log("모징");
+        if (dialogEnd)
+        {
+            dialogEnd = false;
+            
+            TabletManager.inst.TabletOpenButtonActive(true,false);
+            SceneManager.inst.LoadNextScene();
+        }
         if (isStarted == false || sceneManager.nowTexting || isRouting == true)
         {
             
             return;
         }
-        if (dialogEnd)
-        {
-            TabletManager.inst.TabletOpenButtonActive(true);
-            SceneManager.inst.LoadNextScene();
 
-        }
         if (isDialogStopping == false)
         {
-           
             NextDialog();
         }
         else if (isStopActionable == true)
@@ -141,7 +143,6 @@ public class TutorialManagerParent : MonoBehaviour
     {
         if (dialogEnd == true || nowDialogIndex >= dialogWrapper.dialogArray.Length)
         {
-
             return;
         }
         if (dialogEnd == true || isRouting == true)
@@ -335,6 +336,12 @@ public class TutorialManagerParent : MonoBehaviour
                 Debug.Log(nowAction.parameter);
                 nowDialogIndex += (int)nowAction.parameter;
                 break;
+            case ActionKeyword.SceneEnd:
+                dialogEnd = false;
+                TabletManager.inst.TabletOpenButtonActive(true,false);
+                SceneManager.inst.LoadNextScene();
+                break;
+
         }
     }
 

@@ -1,0 +1,84 @@
+{
+    "storyDialogArray": [
+        {
+            "effect": "background",
+            "effectParameter": "counter_ruinVil",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "오늘도 저주 환자가 늘었다니... 폐허마을보다 심각한가봐.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "그야 많은 사람들이 모여 사니까요... 가짜인간 몇십 명이 전부인 폐허 마을이랑은 다르게요.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "doubting",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "난 뭐가 다른지 잘 모르겠어. 똑같이 생겼잖아.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "그거야 세계수에서 태어나지 않은 인간들은 신 라이제르하의 은총을 받지 못했으니, 인간이라고 인정할 수 없다는거죠.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "talk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "세계수 말이지... 한번 보고싶네.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "여기서도 보이긴 하잖아요~ 어렴풋이 보이는 거지만.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "grin",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "sfx",
+            "effectParameter": "clockAlarm",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "surprised",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "엇! 이제 진짜 약국 영업 시간이에요!",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "좋아! 오늘도 약재값 좀 벌어보자. 아직 연구할 약재가 산더미처럼 쌓여있으니까...!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "grin",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "grin"
+        }
+    ]
+}

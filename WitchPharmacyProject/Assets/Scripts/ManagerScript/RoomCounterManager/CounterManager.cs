@@ -121,6 +121,7 @@ public class CounterManager : MonoBehaviour //SH
     SpecialVisitorCondition nowSpecialVisitorCondition;
 
     List<SpecialMedicineClass> specialMedicineDataList;
+    int nowVisitorCount;
 
     void Start()
     {
@@ -160,7 +161,8 @@ public class CounterManager : MonoBehaviour //SH
         {
             symptomCheckArray[i] = 0;
             symptomCheckedArray[i] = false;
-        } 
+        }
+        nowVisitorCount = 0;
 
         //for(int i = 0; i < 4; i++)
         //{
@@ -443,6 +445,7 @@ public class CounterManager : MonoBehaviour //SH
     
     IEnumerator VisitorAppearCoroutine()
     {
+        nowVisitorCount++;
         if(visitorParent.transform.position != visitorDisappearPos)
         {
             VisitorDownFx();
@@ -506,7 +509,10 @@ public class CounterManager : MonoBehaviour //SH
     {
         blurManager.OnBlur(false);
         StartCoroutine(sceneManager.MoveModule_Linear(visitorParent, visitorDisappearPos, 0.5f));
-
+        if (nowVisitorCount >= 4)
+        {
+            lastVisitor = true;
+        }
         yield return new WaitForSeconds(1.5f);
         if(isDebugMode == true)
         {

@@ -9,7 +9,11 @@
         },
         {
             "talkingCharName": " ",
-            "dialog":"바움력 849년 ^bold^소나의 달^boldEnd^"
+            "dialog": "바움력 849년 소나의 달"
+        },
+        {
+            "effect": "dialogBoxHide",
+            "effectParameter": "0"
         },
         {
             "effect": "blackOutEnd"
@@ -17,9 +21,6 @@
         {
             "effect": "bgm",
             "effectParameter": "retrospect"
-        },
-        {
-            "effect": "dialogBoxHide"
         },
         {
             "effect": "cutScene",
@@ -30,17 +31,18 @@
             "effectParameter": "0.5"
         },
         {
-                    "effect": "unskippable",
+            "effect": "delay",
+            "effectParameter": "0.5"
+        },
+        {
             "talkingCharName": "???",
-            "dialog": "^speed^{0.1}쿨럭. ^bold^쿨럭… 하아^boldEnd^, 결국엔 이렇게 됐군요.^speedEnd^"
+            "dialog": "쿨럭. 쿨럭… 하아, 결국엔 이렇게 됐군요."
         },
         {
-        "effect": "unskippable",
             "talkingCharName": "루엘리아",
-            "dialog": "^bold^어떡해^boldEnd^……. 많이 아프지..? 약 만들어 올게..."
+            "dialog": "어떡해……. 많이 아프지..? 약 만들어 올게..."
         },
         {
-        "effect": "unskippable",
             "talkingCharName": "???",
             "dialog": "멍청하긴. 이 상처는 당신이 배운 약학 따위로 고칠 수 있는게 아니에요."
         },
@@ -58,15 +60,15 @@
         },
         {
             "talkingCharName": "???",
-            "dialog": "^speed^{0.1}…… 별 소리를 다했네요, 이안.^speedEnd^"
+            "dialog": "^speed^{0.5}……^speedEnd^ 별 소리를 다했네요, 이안."
         },
         {
             "talkingCharName": "이안",
-            "dialog": "^speed^{0.1}죄송합니다.^speedEnd^"
+            "dialog": "죄송합니다."
         },
         {
             "talkingCharName": "루엘리아",
-            "dialog": "^bold^그래도 고통을 덜 수 있을지도 모르잖아..!^boldEnd^"
+            "dialog": "그래도 고통을 덜 수 있을지도 모르잖아..!"
         },
         {
             "talkingCharName": "???",
@@ -97,8 +99,7 @@
             "dialog": "최대한 내게서 멀어져요."
         },
         {
-            "talkingCharName": "???",
-            "dialog": "그래야 둘 사이의 연결이 약해질 테니."
+            "talkingCharName": "???"
         },
         {
             "talkingCharName": "루엘리아",
@@ -106,7 +107,7 @@
         },
         {
             "talkingCharName": "???",
-            "dialog": "바보같긴. \\n 잘 들어요."
+            "dialog": "바보같긴. \n잘 들어요."
         },
         {
             "talkingCharName": "???",

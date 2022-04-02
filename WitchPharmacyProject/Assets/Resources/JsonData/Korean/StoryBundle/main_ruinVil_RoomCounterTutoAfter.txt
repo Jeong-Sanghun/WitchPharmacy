@@ -1,0 +1,192 @@
+{
+    "storyDialogArray": [
+        {
+            "effect": "background",
+            "effectParameter": "counter_ruinVil",
+            "charSlot1": "Anderson",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "nothing",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "그건 그렇고…. 여전허냐?",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "네?",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "여전히 아무것도 기억이 안 나느냐 이 말이여.",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "네. 이렇다 할 기억은….",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "……뭐.",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "네?",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "여그도 그럭저럭 살만헌 동네여!",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "panic"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "안 굶고 잠 잘자면 그게 최고 아니겄냐.",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "요 차도 튼튼허고 난방도 잘 되니께!",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "네? 아…! 네!",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "grin"
+        },
+        {
+            "talkingCharName": "앤더슨",
+            "dialog": "크흠! 난 이만 간다!",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "charSlot1": "Anderson",
+            "charEffect1": "down",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "charSlot1": "Cari",
+            "charEffect1": "up",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "뭔 소리래...?",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "angry1",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "어…나름의 응원 아닐까?",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "카리, 너무 그러지마. 영감님 아니었으면 난 이 세상에 없었을거야.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "surprised",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "다친 채로 폐허 한복판에 쓰러져 있었다는데, 그걸 구해주신 게 영감님이잖아.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "세계수 땅에서 돌아오시는 길이 아니었다면... 내가 이렇게 말하고 있지도 못했을거야.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "얼어 죽은 시체 보고싶지 않다면서 이 차도 빌려주셨잖아. \n대여비는 여러 달 밀렸지만...",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "그으건 그렇지만…. 올 때마다 고막 터질 것 같다고요!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "doubting",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "넌 고막 없잖아.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "grin"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "말이 그렇다는 거죠! 꼭 제 입으로 소리 입력 장치라고 해야 속이 시원한 거예요?",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "angry2",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "미안….",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "sfx",
+            "effectParameter": "tabletNotification",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "앗! 구독해뒀던 계정에서 글이 올라왔나봐요.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "surprised",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "전에 그 뉴스계정 말하는거지? 어디 보자. 오늘은 좀 흥미로운게 올라왔을까?",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "grin"
+        }
+    ]
+}

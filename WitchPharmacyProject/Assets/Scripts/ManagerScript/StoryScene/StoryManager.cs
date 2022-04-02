@@ -222,13 +222,8 @@ public class StoryManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("ㅁㄴㅇㄹ");
                 enumFeeling = nowFeelingArray[characterIndex];
             }
-
-          
-           
-
         }
         if (charDiffer || feelingDiffer)
         {
@@ -365,12 +360,13 @@ public class StoryManager : MonoBehaviour
     void PrintEffect(out bool immediateNext)
     {
         immediateNext = false;
-        if(nowDialog.effect == null)
+
+        if (nowDialog.effect == null)
         {
             return;
         }
 
-        if(nowDialog.dialog == null)
+        if (nowDialog.dialog == null)
         {
             immediateNext = true;
         }
@@ -445,24 +441,26 @@ public class StoryManager : MonoBehaviour
         }
         else if (nowDialog.effect.Contains("dialogBoxHide"))
         {
-            immediateNext = false;
-            float delay = 1;
-            if(!float.TryParse(nowDialog.effectParameter, out delay))
-            {
-                delay = 1;
-            }
+            //immediateNext = false;
+            //float delay = 1;
+            //if(!float.TryParse(nowDialog.effectParameter, out delay))
+            //{
+            //    delay = 1;
+            //}
+
+            //Debug.Log(delay+ " 딜레이");
+            //StartCoroutine(DelayCoroutine(delay));
+
             TextFrameToggle(false);
-            Debug.Log(delay+ " 딜레이");
-            StartCoroutine(DelayCoroutine(delay));
             //if (nowDialog.dialog != null)
             //{
-                
+
             //}
             //else
             //{
             //    StartCoroutine(DelayActionCoroutine(delay, NextDialog));
             //}
-            
+
         }
         else if (nowDialog.effect.Contains("jump"))
         {

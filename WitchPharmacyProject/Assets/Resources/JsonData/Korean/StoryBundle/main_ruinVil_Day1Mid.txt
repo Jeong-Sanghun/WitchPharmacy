@@ -1,0 +1,72 @@
+{
+    "storyDialogArray": [
+        {
+            "effect": "background",
+            "effectParameter": "counter_ruinVil",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia",
+            "charEffect3": "feeling",
+            "charEffectParameter3": "nothing"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "히야~ 오늘도 무사히 영업을 마쳤네요!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "hugesmile",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "후... 오전에 이론 정리도 해서 평소보다 배는 힘들어.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "아직 해야할 일이 하나 남아있잖아요.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "talk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "아, 맞다. 린을 찾으러 가야지.",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "notTalk",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "어째서 린을 찾아다니는건 늘 우리 몫일까요?",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "doubting",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "그거야... 어째서인지 모르겠지만 다른 사람들보다는 우리가 린을 빨리 찾아서 아닐까...?",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "왜 자꾸 사라지는거야!!!!",
+            "charSlot1": "Cari",
+            "charEffect1": "feeling",
+            "charEffectParameter1": "angry2",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "어쨌든 찾아야지... 린의 어머니가 걱정하실거야.",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        }
+    ]
+}

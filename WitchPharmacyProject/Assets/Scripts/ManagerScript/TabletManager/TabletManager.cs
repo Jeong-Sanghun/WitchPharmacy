@@ -33,6 +33,7 @@ public class TabletManager : MonoBehaviour
     GameObject[] buttonHighlightObject;
     [SerializeField]
     GameObject tabletHighlightObject;
+    bool originActive;
 
     // Start is called before the first frame update
     void Awake()
@@ -53,6 +54,7 @@ public class TabletManager : MonoBehaviour
         gameManager = GameManager.singleton;
         saveData = gameManager.saveData;
         wholeTabletParent.SetActive(false);
+        originActive = true;
         SetHighlightButton();
 
     }
@@ -82,8 +84,20 @@ public class TabletManager : MonoBehaviour
         }
     }
 
-    public void TabletOpenButtonActive(bool active)
+    public void TabletOpenButtonActive(bool active,bool loading)
     {
+        if (!loading)
+        {
+            originActive = active;
+        }
+        else
+        {
+            if(originActive == false && active == true)
+            {
+                return;
+            }
+        }
+        
         Debug.Log(active+"태블릿");
         wholeTabletParent.SetActive(active);
         homeButton.SetActive(true);

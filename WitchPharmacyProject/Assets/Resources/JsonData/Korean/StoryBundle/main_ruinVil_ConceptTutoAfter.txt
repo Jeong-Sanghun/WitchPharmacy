@@ -32,7 +32,7 @@
         },
         {
             "talkingCharName": "카리",
-            "dialog": "사람들도 이 다섯가지 원소로 이루어져있죠. \\n 정상적인 상태라면, 몸을 이루고 있는 다섯 원소가 균형을 이루어야 해요.",
+            "dialog": "사람들도 이 다섯가지 원소로 이루어져있죠. \n정상적인 상태라면, 몸을 이루고 있는 다섯 원소가 균형을 이루어야 해요.",
             "charSlot1": "Cari",
             "charSlot3": "Ruellia"
         },
@@ -244,21 +244,11 @@
             "charSlot1": "Cari",
             "charSlot3": "Ruellia",
             "charEffect3": "shake",
-            "charEffectParameter3": "3"
+            "charEffectParameter3": "0.5"
         },
         {
-            "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "shake",
-            "charEffectParameter3": "3"
-        },
-        {
-            "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "shake",
-            "charEffectParameter3": "3"
-        },
-        {
+            "effect": "delay",
+            "effectParameter": "1",
             "talkingCharName": "루엘리아",
             "dialog": "읏….",
             "charSlot1": "Cari",
@@ -363,6 +353,12 @@
             "charSlot3": "Ruellia"
         },
         {
+            "effect": "delay",
+            "effectParameter": "0.5",
+            "charSlot1": "Cari",
+            "charSlot3": "Ruellia"
+        },
+        {
             "effect": "background",
             "effectParameter": "counter_ruinVil",
             "charSlot1": "Anderson",
@@ -372,6 +368,12 @@
         },
         {
             "effect": "fadeIn",
+            "effectParameter": "0.5",
+            "charSlot1": "Anderson",
+            "charSlot3": "Ruellia"
+        },
+        {
+            "effect": "delay",
             "effectParameter": "0.5",
             "charSlot1": "Anderson",
             "charSlot3": "Ruellia"
@@ -398,7 +400,7 @@
         },
         {
             "talkingCharName": "앤더슨",
-            "dialog": "또 물자나 구하러 돌아다닌거지. \\n 늙어죽을 때까지 일해야 입에 풀칠이라도 하지 않겄냐.",
+            "dialog": "또 물자나 구하러 돌아다닌거지. \n늙어죽을 때까지 일해야 입에 풀칠이라도 하지 않겄냐.",
             "charSlot1": "Anderson",
             "charSlot3": "Ruellia"
         },

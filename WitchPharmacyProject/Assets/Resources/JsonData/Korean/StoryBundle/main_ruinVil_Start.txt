@@ -31,9 +31,11 @@
             "dialog": "...님!"
         },
         {
+            "talkingCharName": "카리",
             "dialog": "인님...!"
         },
         {
+            "talkingCharName": "카리",
             "dialog": "주인님!"
         },
         {
@@ -85,15 +87,7 @@
             "charSlot1": "Cari",
             "charSlot3": "Ruellia",
             "charEffect3": "shake",
-            "charEffectParameter3": "5"
-        },
-        {
-            "effect": "sfx",
-            "effectParameter": "Alert",
-            "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "shake",
-            "charEffectParameter3": "5"
+            "charEffectParameter3": "1"
         },
         {
             "talkingCharName": "루엘리아",

@@ -630,7 +630,7 @@ public class SceneManager : MonoBehaviour // JH
 
     IEnumerator LoadingSceneCoroutine(string sceneName)
     {
-        TabletManager.inst.TabletOpenButtonActive(false);
+        TabletManager.inst.TabletOpenButtonActive(false,true);
         UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene");
 
         yield return null;
@@ -652,18 +652,11 @@ public class SceneManager : MonoBehaviour // JH
             }
             yield return null;
         }
-        if(sceneName == "StoryScene")
-        {
-            TabletManager.inst.TabletOpenButtonActive(false);
-        }
-        else
-        {
-            TabletManager.inst.TabletOpenButtonActive(true);
-        }
+        TabletManager.inst.TabletOpenButtonActive(true,true);
 
 
 
-        
+
     }
 
 
