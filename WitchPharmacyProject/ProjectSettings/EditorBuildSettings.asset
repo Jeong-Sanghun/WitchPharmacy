@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial/TutorialRoomCounterScene.unity
     guid: 773359c5722c2d1448bae17ae8599318
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/TutorialConceptScene.unity
+    guid: ab2a478fe2e15a641b3d493567220b06
   m_configObjects: {}

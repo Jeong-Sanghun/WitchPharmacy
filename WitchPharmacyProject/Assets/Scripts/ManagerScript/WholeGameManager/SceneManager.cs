@@ -276,7 +276,6 @@ public class SceneManager : MonoBehaviour // JH
             miniTimer+=Time.deltaTime;
         }
         i_image.color = new Color(i_image.color.r,i_image.color.g,i_image.color.b,i_Alpha_Final);
-        yield return null;
         i_Object.SetActive(afterActive);
     }
 
@@ -292,7 +291,6 @@ public class SceneManager : MonoBehaviour // JH
             miniTimer+=Time.deltaTime;
         }
         i_Object.color = new Color(i_Object.color.r,i_Object.color.g,i_Object.color.b,i_Alpha_Final);
-        yield return null;
     }
 
     bool moveModuleLinearRunning = false;

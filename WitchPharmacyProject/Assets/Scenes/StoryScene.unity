@@ -1030,6 +1030,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4566525066070932369, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566525066070932369, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5396996631793760314, guid: 275846198ae314b40b055f98b3efb17c,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1074,6 +1084,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StoryPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336947312447143190, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336947312447143190, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 275846198ae314b40b055f98b3efb17c, type: 3}

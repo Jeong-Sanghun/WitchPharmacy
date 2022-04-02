@@ -158,13 +158,18 @@ public class StoryManager : MonoBehaviour
 
 
 
-
+        TabletManager.inst.TabletOpenButtonActive(false, false);
         NextDialog();
     }
 
     void NextDialog()
     {
-        bool immediateNext = false;
+        if (nowTextFrameToggleActive == false && nowConversationText == conversationText)
+        {
+            TextFrameToggle(true);
+            return;
+        }
+            bool immediateNext = false;
         if(nowDialogIndex >= nowDialogArray.Length)
         {
             sceneManager.LoadNextScene();
@@ -175,10 +180,7 @@ public class StoryManager : MonoBehaviour
         PrintCharacter();
         PrintEffect(out immediateNext);
         
-        if (nowDialog.effect != null && nowDialog.effect.Contains("dialogBoxHide"))
-        {
-            Debug.Log(immediateNext);
-        }
+     
         PrintConversation();
         nowDialogIndex++;
 
@@ -451,7 +453,7 @@ public class StoryManager : MonoBehaviour
             //Debug.Log(delay+ " 딜레이");
             //StartCoroutine(DelayCoroutine(delay));
 
-            TextFrameToggle(false);
+            TextFrameToggle(false,float.Parse(nowDialog.effectParameter));
             //if (nowDialog.dialog != null)
             //{
 
@@ -674,56 +676,15 @@ public class StoryManager : MonoBehaviour
 
     
 
-    public void ToNextSceneButton()
+ 
+
+    void TextFrameToggle(bool active)
     {
-        //Debug.Log(sceneManager.lastSceneName);
-
-        //if (sceneManager.lastSceneName == null)
-        //{
-        //    //gameManager.AutoSave("StoreScene");
-        //    sceneManager.LoadScene("RoomCounterScene");
-        //}
-        ////else if(sceneManager.lastSceneName == "StoreScene")
-        ////{
-        ////    //지금 쓸지말지 모름 여기는.
-        ////    //gameManager.ForceSaveButtonActive("RoomCounterScene");
-        ////    sceneManager.LoadScene("RoomCounterScene");
-        ////}
-        //else if (sceneManager.lastSceneName == "StartScene")
-        //{
-        //    sceneManager.LoadScene("RoomCounterScene");
-        //}
-        //else if (sceneManager.lastSceneName == "RoomCounterScene")
-        //{
-
-        //    //   gameManager.ForceSaveButtonActive("ExploreScene");
-        //    sceneManager.LoadScene("ExploreScene");
-        //}
-        //else if (sceneManager.lastSceneName == "ExploreScene" || sceneManager.lastSceneName == "ResearchScene" || sceneManager.lastSceneName == "StoreScene" || sceneManager.lastSceneName == "RegionScene")
-        //{
-        //    gameManager.ForceSaveButtonActive("StoryScene", SaveTime.DayStart);
-        //    //sceneManager.LoadScene("StoryScene");
-        //}
-        //else if (sceneManager.lastSceneName == "StoryScene")
-        //{
-        //    sceneManager.LoadScene("RoomCounterScene");
-        //}
-        toNextSceneButton.SetActive(false);
-
-        if (sceneManager.sceneWrapper.sceneArray[saveData.nowSceneIndex].saveTimeString != null)
-        {
-            gameManager.ForceSaveButtonActive();
-        }
-        else
-        {
-           
-        }
-
-        
+        TextFrameToggle(active, 1);
 
     }
 
-    void TextFrameToggle(bool active)
+    void TextFrameToggle(bool active, float time)
     {
         nowTextFrameToggleActive = active;
         if (active)
@@ -732,21 +693,21 @@ public class StoryManager : MonoBehaviour
             nextButtonObject.SetActive(true);
             conversationText.text = null;
             nameText.text = null;
-            StartCoroutine(sceneManager.FadeModule_Image(textFrameObject, 0, 1, 1, true));
-            StartCoroutine(sceneManager.FadeModule_Image(nextButtonObject, 0, 1, 1, true));
-            StartCoroutine(sceneManager.FadeModule_Text(conversationText, 0, 1,1));
-            StartCoroutine(sceneManager.FadeModule_Text(nameText, 0, 1, 1));
-            StartCoroutine(DelayCoroutine(1));
-            StartCoroutine(sceneManager.InvokerCoroutine(1, NextDialog));
+            StartCoroutine(sceneManager.FadeModule_Image(textFrameObject, 0, 1, time, true));
+            StartCoroutine(sceneManager.FadeModule_Image(nextButtonObject, 0, 1, time, true));
+            StartCoroutine(sceneManager.FadeModule_Text(conversationText, 0, 1, time));
+            StartCoroutine(sceneManager.FadeModule_Text(nameText, 0, 1, time));
+            StartCoroutine(DelayActionCoroutine(1, NextDialog));
+
         }
         else
         {
-            StartCoroutine(sceneManager.FadeModule_Image(textFrameObject, 1,0, 1, false));
-            StartCoroutine(sceneManager.FadeModule_Image(nextButtonObject, 1, 0, 1, false));
-            StartCoroutine(sceneManager.FadeModule_Text(conversationText, 1, 0, 1));
-            StartCoroutine(sceneManager.FadeModule_Text(nameText, 1, 0, 1));
+            StartCoroutine(sceneManager.FadeModule_Image(textFrameObject, 1, 0, time, false));
+            StartCoroutine(sceneManager.FadeModule_Image(nextButtonObject, 1, 0, time, false));
+            StartCoroutine(sceneManager.FadeModule_Text(conversationText, 1, 0, time));
+            StartCoroutine(sceneManager.FadeModule_Text(nameText, 1, 0, time));
         }
-        
+
     }
 
     public void OnTouchScreen()
@@ -763,14 +724,9 @@ public class StoryManager : MonoBehaviour
             }
             else
             {
-                if (nowTextFrameToggleActive == false)
-                {
-                    TextFrameToggle(true);
-                }
-                else
-                {
+
                     NextDialog();
-                }
+
             }
             
             
@@ -788,10 +744,8 @@ public class StoryManager : MonoBehaviour
     IEnumerator DelayActionCoroutine(float time, Action action)
     {
         delaying = true;
-        Debug.Log(time + "딜레이코루틴타임");
         yield return new WaitForSeconds(time);
         delaying = false;
-        Debug.Log("왜아ㅣㄴ기다려");
         action();
     }
 

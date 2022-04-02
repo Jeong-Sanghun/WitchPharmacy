@@ -177,7 +177,8 @@
             "dialog": "기다려, ^bold^릴리.^boldEnd^"
         },
         {
-            "effect": "dialogBoxHide"
+            "effect": "dialogBoxHide",
+                        "effectParameter": "0.5"
         },
         {
             "effect": "fadeOut",
