@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coffee.UIExtensions;
+using Coffee.UIEffects;
 using System.Text;
 
 public enum Feeling

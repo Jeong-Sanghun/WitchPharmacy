@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
-using Coffee.UIExtensions;
+using Coffee.UIEffects;
 
 public class OddVisitorClass : VisitorClass
 {

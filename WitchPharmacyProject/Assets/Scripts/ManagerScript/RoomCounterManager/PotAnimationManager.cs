@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Coffee.UIExtensions;
+using Coffee.UIEffects;
 
 public class PotAnimationManager : MonoBehaviour
 {
@@ -114,15 +114,4 @@ public class PotAnimationManager : MonoBehaviour
         }
     }
 
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

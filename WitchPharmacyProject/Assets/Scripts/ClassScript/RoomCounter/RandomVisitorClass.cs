@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using UnityEngine.UI;
-using Coffee.UIExtensions;
+using Coffee.UIEffects;
 
 [System.Serializable]
 public enum Symptom
