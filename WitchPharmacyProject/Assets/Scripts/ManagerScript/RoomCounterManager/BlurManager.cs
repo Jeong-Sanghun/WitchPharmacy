@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using System;
 
 public class BlurManager : MonoBehaviour
@@ -9,7 +10,8 @@ public class BlurManager : MonoBehaviour
     [SerializeField]
     GameObject backGround;
     [SerializeField]
-    PostProcessProfile postProcessProfile;
+    Volume postProcessVolume;
+    
     
     DepthOfField depthOfField;
 
@@ -20,7 +22,10 @@ public class BlurManager : MonoBehaviour
     void Start()
     {
         //backGround.layer =0;
-        depthOfField = postProcessProfile.GetSetting<DepthOfField>();
+        if(!postProcessVolume.profile.TryGet<DepthOfField>(out depthOfField))
+        {
+            Debug.LogError("blurManager error");
+        }
     }
 
     public void OnBlur(bool blur)
@@ -116,9 +121,4 @@ public class BlurManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
