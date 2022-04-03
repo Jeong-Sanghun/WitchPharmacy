@@ -41,7 +41,18 @@
     "chaosMeter": 0.0,
     "nowCounterDialogBundleName": "testBundle",
     "nowStoryDialogBundleName": "testBundle",
-    "billWrapperList": [],
+    "billWrapperList": [
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        },
+        {
+            "wholeGainCoin": 0,
+            "wholeSpentCoin": 0,
+            "billList": []
+        }
+    ],
     "owningDocumentList": [],
     "symptomBookList": [
         "water+",
@@ -77,11 +88,12 @@
     "readStoryList": [
         "firstDay",
         "firstDay",
+        "firstDay",
         "firstDay"
     ],
     "readSpecialVisitorBundleList": [],
     "nextStory": "firstDay",
-    "nowSceneIndex": 3,
+    "nowSceneIndex": 6,
     "nowRegion": 0,
     "forcedRegion": "",
     "nowBossFile": ""

@@ -1,0 +1,636 @@
+{
+    "storyDialogArray": [
+        {
+            "effect": "background",
+            "effectParameter": "witchGrave",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "nothing",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "notTalk"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "분위기가 심상치않네요... 허허벌판에 무덤 하나라니.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "doubting"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "응... 그치만 뭔가 그리운 기분이 드는걸.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "그리운 기분이요..? 무덤에 그리운 기분을 느끼다니...",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "doubting"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "주인님 사실 유령이었던 건가요?",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "grin"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "응 뭐... 죽다 살아났으니 유령이라면 유령이겠네.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "저는 주인님이 이러실 때마다 어떤 반응을 보여야 할 지 모르겠어요...",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "talk"
+        },
+        {
+            "talkingCharName": "???",
+            "dialog": "ㄹ…ㅣ..ㄹ…리?",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "카…카리. 들었어?",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "panic",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "네? 뭐가요.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "surprised"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "이상한 목소리 들었잖아.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "주인님. 겁 주는 방식이 너무 구닥다리 아니에요?",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "doubting"
+        },
+        {
+            "talkingCharName": "???",
+            "dialog": "어..ㅉ..ㅐ 서….",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "지, 지, 지금! 지금 말이야. 못들었어? 무덤 쪽에서 소리가 났다고.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "주인님 설마 어깨 상처 말고 머리도 어떻게 되신거는….",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "저쪽으로 가봐야겠어.",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "nothing",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "sfx",
+            "effectParameter": "footstep",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "popupIllust",
+            "effectParameter": "pendant",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "어? 한번도 이런 적이 없었는데...",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "panic",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "야광 아니에요?",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "talk"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "잘 때는 빛난 적 없었거든?",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "nothing",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "popupIllustEnd",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "sfx",
+            "effectParameter": "footstep",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "surprised"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "뭐, 뭐야...! 누가 다가오는 것 같아요!",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "그건 분명히 들리나보네.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "방금까진 이상한 목소리 같은 건 안들렸다니까요! \n주인님 귀보다는 제 소리 입력 장치 성능이 더 좋지 않겠어요?",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "잠깐. 더 빨라지고 있어.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "sfx",
+            "effectParameter": "fasterFootstep",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charEffect3": "up",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "헤엥~ 누나가 왜 여기 있어?",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "panic",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "까아아아악!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "와하하하! 표정 진짜 웃기다~ 못생겼어~♪",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "angry",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "요녀석이!!\n 간 떨어질 뻔했잖아!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "전자 여우는 간이 없잖아?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "캬아아악. 전자 여우 아니라구! \n카리라는 예쁜 이름이 있단 말이야!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "여기서 대체 뭐하고 있었던 거야?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "뭐긴? 모험이지!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "모험을 무슨 이런 데서 하니...",
+            "charSlot2": "Ruellia",
+            "charEffect2": "feeling",
+            "charEffectParameter2": "nothing",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "여기만큼 모험심을 자극하는 곳이 어딨다고 그래? \n적당히 음산한 게 맘에 들어~",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "그놈의 모험심에 정신이 나갔나봐요! \n모험을 하고 싶다면 세계수 땅으로 가는 게 더 나을 것 같은데?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "나도 그러고 싶지만~ 마녀가 잡아간다잖아! \n무시무시한 믹서기로 갈아버린대!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "그런 거대한 믹서기가 있을 리가 없잖아!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "카리…그게 포인트가 아니잖아...",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "상식적으로 말도 안되는 소리를 하니까 그렇죠!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "너도 별로 상식적이지 않거든?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "이..... 쥐방울만한게!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "쥐방울보다 작은 넌 개미 똥꼬겠네~?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "카아아악- 한 마디도 안지려고 들어!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "…흠",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "(세계수 땅에 가면 마녀가 잡아간다라...)",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "(그 위험하다는 폐허가 가짜 인간들에겐 가장 안전한 장소라는 게 아이러니하네.)",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "아니, 주인님! 듣고 있어요? 요녀석이 저를 농락하는 거? \n허락없이 남의 묘지에 들락날락거리고 말이야!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "여기가 얼마나 오랫동안 방치되어 있었는지 아는 거야, 전자 여우?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "키이이익. 그걸 내가 어떻게 알아!!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "내가 태어나기도 전부터 여긴 버려져 있었단 말야.",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "혹시 여기가 누구 무덤인지 알아?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "몰라~ 마녀라는 것 말고는.",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "마녀?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "어른들이 그러는데, 가끔 마녀 무덤 근처에 누군가가 나타난대~ 귀신이래나봐!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "귀신...?",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "거짓말 하지마.",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "믿기 싫으면 믿지마♪",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "어? 벌써 이렇게 어두워졌네... 빨리 안가면 엄마한테 등짝맞겠어!",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "얼른 집으로 가. 어머니가 걱정하시더라.",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "린",
+            "dialog": "예이예이~ 그럼 난 갈게~♪",
+            "charSlot2": "Ruellia",
+            "charSlot3": "Kiddo",
+            "charEffect3": "down",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "하여간 성가신 녀석이라니까... \n우리도 얼른 가요!",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "응.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "(마녀의 무덤이라……. 뭔가 신경쓰여.)",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "fadeOut",
+            "effectParameter": "1",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "delay",
+            "effectParameter": "1",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "background",
+            "effectParameter": "room_ruinVil",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "fadeIn",
+            "effectParameter": "1",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "effect": "delay",
+            "effectParameter": "1",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "…….",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "어우, 정말! 무서워서 혼났지 뭐예요.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "…….",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "하필이면 묘지에는 왜 갔냐구. \n그리고 마녀의 무덤…? 이름도 괴상하기 짝이 없어요! ",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "마녀가 어디 죽는 존재였던가요?",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "surprised"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "…….",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "주인님! 무슨 생각하시길래 대답도 안해줘요!",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry2"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "어? 어, 아냐아냐. 나도 그 마녀의 무덤이라는 걸 생각하고 있었어.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "angry1"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "역시 신경쓰이죠?",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "talk"
+        },
+        {
+            "talkingCharName": "루엘리아",
+            "dialog": "에이, 아냐. 오늘은 얼른 쉬자.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "notTalk"
+        },
+        {
+            "talkingCharName": "카리",
+            "dialog": "흐-응. 뭐, 좋아요.",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "grin"
+        },
+        {
+            "effect": "fadeOut",
+            "effectParameter": "1",
+            "charSlot2": "Ruellia",
+            "charSlot4": "Cari"
+        }
+    ]
+}

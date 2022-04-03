@@ -98,7 +98,6 @@ public class TabletManager : MonoBehaviour
             }
         }
         
-        Debug.Log(active+"태블릿");
         wholeTabletParent.SetActive(active);
         homeButton.SetActive(true);
         if (active == false)

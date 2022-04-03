@@ -1,0 +1,26 @@
+{
+    "dialogArray": [
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "notTalk",
+            "dialog": "영업 종료 후에는 원하는 장소에 방문하여 시간을 보낼 수 있어요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "doubting",
+            "dialog": "오늘은 린을 찾으로 가야겠네요.."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "WitchGraveMapiconGlow",
+            "dialog": "혼자서 먼 곳까지 가지는 못했을 거에요. 근처에 무덤이 하나 있다고 했는데, 거기로 한 번 가볼까요?"
+        },
+        {
+            "actionKeyword": "SceneEnd"
+        }
+    ]
+}

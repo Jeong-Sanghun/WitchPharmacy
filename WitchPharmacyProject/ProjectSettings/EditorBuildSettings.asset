@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial/TutorialConceptScene.unity
     guid: ab2a478fe2e15a641b3d493567220b06
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/TutorialWorldmap1.unity
+    guid: f835ec575c255804298f54b06a685831
   m_configObjects: {}

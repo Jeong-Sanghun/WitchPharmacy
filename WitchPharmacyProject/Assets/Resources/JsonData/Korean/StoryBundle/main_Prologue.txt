@@ -83,6 +83,7 @@
             "dialog": "…응?"
         },
         {
+            "effect": "shakeScreen",
             "talkingCharName": "루엘리아",
             "dialog": "아윽!!"
         },
@@ -135,9 +136,11 @@
         },
         {
             "effect": "sfx",
-            "effectParameter": "Alert",
-            "talkingCharName": " ",
-            "dialog": " "
+            "effectParameter": "Alert"
+        },
+        {
+            "effect": "delay",
+            "effectParameter": "0.3"
         },
         {
             "talkingCharName": "이안",
@@ -152,7 +155,6 @@
             "effectParameter": "baumPad"
         },
         {
-            "effect": "popupIllustEnd",
             "talkingCharName": "???",
             "dialog": "여러모로 도움이 될 거예요."
         },
@@ -165,6 +167,7 @@
             "dialog": "…망가뜨리지만 마요."
         },
         {
+            "effect": "popupIllustEnd",
             "talkingCharName": "이안",
             "dialog": "루엘리아 님은 제가 안전히 모셔다 드리겠습니다. 조금만 버티십시오."
         },
@@ -178,10 +181,14 @@
         },
         {
             "effect": "dialogBoxHide",
-                        "effectParameter": "0.5"
+            "effectParameter": "0.5"
         },
         {
             "effect": "fadeOut",
+            "effectParameter": "0.5"
+        },
+        {
+            "effect": "delay",
             "effectParameter": "0.5"
         },
         {
@@ -190,6 +197,10 @@
         },
         {
             "effect": "fadeIn",
+            "effectParameter": "0.5"
+        },
+        {
+            "effect": "delay",
             "effectParameter": "0.5"
         },
         {

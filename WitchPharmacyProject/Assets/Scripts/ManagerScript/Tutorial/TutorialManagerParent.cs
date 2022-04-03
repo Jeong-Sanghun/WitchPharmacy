@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
 
 public class TutorialManagerParent : MonoBehaviour
 {
@@ -35,7 +35,7 @@ public class TutorialManagerParent : MonoBehaviour
     [SerializeField]
     GameObject[] routeButtonArray;
     [SerializeField]
-    protected PostProcessVolume blurVolume;
+    protected Volume blurVolume;
     [SerializeField]
     protected GameObject screenTouchCanvas;
     

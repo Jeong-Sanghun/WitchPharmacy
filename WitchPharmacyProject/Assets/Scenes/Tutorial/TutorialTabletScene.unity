@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -830,54 +830,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160004394}
   m_CullTransparentMesh: 0
---- !u!1 &163592101
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 163592103}
-  - component: {fileID: 163592102}
-  m_Layer: 8
-  m_Name: Post-process Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &163592102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163592101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 353509d89ab85724ab6ab12adbe6a9a1, type: 2}
-  isGlobal: 1
-  blendDistance: 4.43
-  weight: 1
-  priority: 0
---- !u!4 &163592103
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163592101}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &178379578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,7 +1379,7 @@ Transform:
   - {fileID: 2114762598}
   - {fileID: 1287994690}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &241653740
 GameObject:
@@ -1459,7 +1411,7 @@ Transform:
   - {fileID: 282785945}
   - {fileID: 957462206}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &245096831
 GameObject:
@@ -2857,7 +2809,7 @@ RectTransform:
   m_Children:
   - {fileID: 895637083}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3049,54 +3001,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649838639}
   m_CullTransparentMesh: 0
---- !u!1 &669740882
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 669740884}
-  - component: {fileID: 669740883}
-  m_Layer: 0
-  m_Name: PostProcess
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &669740883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669740882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 353509d89ab85724ab6ab12adbe6a9a1, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
---- !u!4 &669740884
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669740882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &716212128
 GameObject:
   m_ObjectHideFlags: 0
@@ -3372,7 +3276,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1310444462}
+  - {fileID: 1357228064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5229,7 +5133,7 @@ RectTransform:
   m_Children:
   - {fileID: 1027809481}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5567,90 +5471,6 @@ MonoBehaviour:
     - profileFileName: 
       dialog: 
     cariComment: 
---- !u!1 &1310444459
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1310444462}
-  - component: {fileID: 1310444460}
-  - component: {fileID: 1310444461}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!20 &1310444460
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310444459}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 7.2
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 55
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 0
-  m_HDR: 1
-  m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &1310444461
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310444459}
-  m_Enabled: 1
---- !u!4 &1310444462
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310444459}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1357228064}
-  m_Father: {fileID: 756094605}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311573975
 GameObject:
   m_ObjectHideFlags: 0
@@ -5898,6 +5718,7 @@ GameObject:
   - component: {fileID: 1357228064}
   - component: {fileID: 1357228066}
   - component: {fileID: 1357228065}
+  - component: {fileID: 1357228067}
   m_Layer: 8
   m_Name: BGFocusCamera
   m_TagString: MainCamera
@@ -5913,13 +5734,87 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357228063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.14}
+  m_LocalPosition: {x: 0, y: 0, z: -4.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1310444462}
+  m_Father: {fileID: 756094605}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1357228065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357228063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!20 &1357228066
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357228063}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 7.2
+  m_Depth: -2
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 0
+  m_HDR: 1
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 0
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &1357228067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5934,7 +5829,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 1357228064}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4294967295
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -5979,49 +5874,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!20 &1357228066
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357228063}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 7.2
-  m_Depth: -2
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 256
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 0
-  m_HDR: 1
-  m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &1377204501
 GameObject:
   m_ObjectHideFlags: 0
@@ -6817,21 +6669,20 @@ MonoBehaviour:
     readStoryList: []
     readSpecialVisitorBundleList: []
     nextStory: firstDay
-    nextLoadSceneName: StoryScene
-    nowSaveTime: 1
+    nowSceneIndex: 0
     nowRegion: 0
     forcedRegion: 
     nowBossFile: 
   saveDataTimeWrapper:
     saveDataTimeList:
     - day: -1
-      saveTime: 0
+      sceneIndex: 0
     - day: -1
-      saveTime: 0
+      sceneIndex: 0
     - day: -1
-      saveTime: 0
+      sceneIndex: 0
     - day: -1
-      saveTime: 0
+      sceneIndex: 0
     nowLanguageDirectory: Korean/
   medicineDataWrapper:
     medicineDataList:
@@ -7483,468 +7334,6 @@ MonoBehaviour:
       secondSymptomText: 
       firstNumber: 1
       secondNumber: 2
-  conversationDialogBundleWrapper:
-    conversationDialogBundleList:
-    - bundleName: bundle
-      forcedRegion: 
-      uiUnlock: 
-      dialogWrapperList:
-      - wrapperIndex: 0
-        characterName:
-        - 
-        - 
-        - 
-        ingameName:
-        - 
-        - 
-        - 
-        characterFeeling:
-        - nothing
-        - nothing
-        - nothing
-        nextStory: 
-        effect: 
-        sfx: 
-        concealedCharacter: []
-        bgm: 
-        conversationDialogList:
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC624\uB298 \uB0A0\uC528\uAC00 \uCC38 \uB9D1\uC744 \uAC83 \uAC19\uC9C0?
-            \uADF8\uB798\uC11C\uC778\uC9C0 \uB0B4 \uAE30\uBD84\uB3C4 \uC88B\uC544!"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uBB34\uC2A8\uC18C\uB9AC\uC57C \uBC16\uC5D0 \uBE44\uAC00 \uC794\uB729\uC624\uC796\uC544"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC5C7........\uC9C4\uC9DC\uB124 \uBBF8\uC548\uD574!!"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uB2E4\uC74C\uBD80\uD134 \uCC3D\uBB38\uC744 \uC798 \uBCF4\uACE0\uB2E4\uB2C8\uB77C\uAD6C"
-        nextWrapperIsRouter: 0
-        isCutscene: 0
-        cutSceneFileName: 
-        cutSceneEffect: 0
-        backGroundEffect: 0
-        backGroundFileName: 
-        nextRegion: 
-        popUp: 
-      - wrapperIndex: 0
-        characterName:
-        - 
-        - 
-        - 
-        ingameName:
-        - 
-        - 
-        - 
-        characterFeeling:
-        - nothing
-        - nothing
-        - nothing
-        nextStory: 
-        effect: 
-        sfx: 
-        concealedCharacter: []
-        bgm: 
-        conversationDialogList:
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uBB50\uC57C \uB9D0\uC774 \uB108\uBB34 \uC2EC\uD55C\uAC70 \uC544\uB2C8\uC57C?
-            \uC0AC\uACFC\uD574!"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "??? \uB2C8\uAC00 \uBA3C\uC800 \uC774\uC0C1\uD55C \uC18C\uB9AC\uB97C
-            \uD55C\uAC70\uC796\uC544"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC9C0\uAE08 \uB0A0 \uB9CC\uB9CC\uD558\uAC8C \uBCF4\uB294\uAC70\uC57C????"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC544 \uC544\uB2C8 \uADF8\uAC8C \uC544\uB2C8\uB77C..."
-        nextWrapperIsRouter: 0
-        isCutscene: 0
-        cutSceneFileName: 
-        cutSceneEffect: 0
-        backGroundEffect: 0
-        backGroundFileName: 
-        nextRegion: 
-        popUp: 
-      - wrapperIndex: 0
-        characterName:
-        - 
-        - 
-        - 
-        ingameName:
-        - 
-        - 
-        - 
-        characterFeeling:
-        - nothing
-        - nothing
-        - nothing
-        nextStory: 
-        effect: 
-        sfx: 
-        concealedCharacter: []
-        bgm: 
-        conversationDialogList:
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "....\uCE74\uB9AC\uC57C...\uC6B0\uB9AC\uC9D1\uC5D0\uB294 \uCC3D\uBB38
-            \uC5C6\uB294\uAC70 \uC54C\uC796\uC544"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uBB50\uC57C \uB8E8\uC5D8\uB9AC\uC544 \uB108 \uC774\uC0C1\uD574.
-            \uC6B0\uB9AC\uC9D1\uC5D0 \uCC3D\uBB38 \uC788\uC5B4! \uC800\uAE30... \uC5B4
-            \uC5B4\uB514\uAC14\uC9C0......"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uD751\uD751....\uC774\uB7EC\uC9C0\uB9C8 \uC81C\uBC1C \uB098 \uB108\uBB34
-            \uC2AC\uD37C"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: ".....\uBBF8\uC548....\uBCD1\uC138\uAC00 \uC880 \uC2EC\uD574\uC9C4\uAC70\uAC19\uC544....."
-        nextWrapperIsRouter: 0
-        isCutscene: 0
-        cutSceneFileName: 
-        cutSceneEffect: 0
-        backGroundEffect: 0
-        backGroundFileName: 
-        nextRegion: 
-        popUp: 
-      conversationRouterList: []
-    - bundleName: testBundle
-      forcedRegion: 
-      uiUnlock: 
-      dialogWrapperList:
-      - wrapperIndex: 0
-        characterName:
-        - 
-        - 
-        - 
-        ingameName:
-        - 
-        - 
-        - 
-        characterFeeling:
-        - nothing
-        - nothing
-        - nothing
-        nextStory: 
-        effect: 
-        sfx: 
-        concealedCharacter: []
-        bgm: 
-        conversationDialogList:
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC624\uB298 \uB0A0\uC528\uAC00 \uCC38 \uB9D1\uC744 \uAC83 \uAC19\uC9C0?
-            \uADF8\uB798\uC11C\uC778\uC9C0 \uB0B4 \uAE30\uBD84\uB3C4 \uC88B\uC544!"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uBB34\uC2A8\uC18C\uB9AC\uC57C \uBC16\uC5D0 \uBE44\uAC00 \uC794\uB729\uC624\uC796\uC544"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC5C7........\uC9C4\uC9DC\uB124 \uBBF8\uC548\uD574!!"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uB2E4\uC74C\uBD80\uD134 \uCC3D\uBB38\uC744 \uC798 \uBCF4\uACE0\uB2E4\uB2C8\uB77C\uAD6C"
-        nextWrapperIsRouter: 0
-        isCutscene: 0
-        cutSceneFileName: 
-        cutSceneEffect: 0
-        backGroundEffect: 0
-        backGroundFileName: 
-        nextRegion: 
-        popUp: 
-      - wrapperIndex: 0
-        characterName:
-        - 
-        - 
-        - 
-        ingameName:
-        - 
-        - 
-        - 
-        characterFeeling:
-        - nothing
-        - nothing
-        - nothing
-        nextStory: 
-        effect: 
-        sfx: 
-        concealedCharacter: []
-        bgm: 
-        conversationDialogList:
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uBB50\uC57C \uB9D0\uC774 \uB108\uBB34 \uC2EC\uD55C\uAC70 \uC544\uB2C8\uC57C?
-            \uC0AC\uACFC\uD574!"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "??? \uB2C8\uAC00 \uBA3C\uC800 \uC774\uC0C1\uD55C \uC18C\uB9AC\uB97C
-            \uD55C\uAC70\uC796\uC544"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC9C0\uAE08 \uB0A0 \uB9CC\uB9CC\uD558\uAC8C \uBCF4\uB294\uAC70\uC57C????"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uC544 \uC544\uB2C8 \uADF8\uAC8C \uC544\uB2C8\uB77C..."
-        nextWrapperIsRouter: 0
-        isCutscene: 0
-        cutSceneFileName: 
-        cutSceneEffect: 0
-        backGroundEffect: 0
-        backGroundFileName: 
-        nextRegion: 
-        popUp: 
-      - wrapperIndex: 0
-        characterName:
-        - 
-        - 
-        - 
-        ingameName:
-        - 
-        - 
-        - 
-        characterFeeling:
-        - nothing
-        - nothing
-        - nothing
-        nextStory: 
-        effect: 
-        sfx: 
-        concealedCharacter: []
-        bgm: 
-        conversationDialogList:
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "....\uCE74\uB9AC\uC57C...\uC6B0\uB9AC\uC9D1\uC5D0\uB294 \uCC3D\uBB38
-            \uC5C6\uB294\uAC70 \uC54C\uC796\uC544"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uBB50\uC57C \uB8E8\uC5D8\uB9AC\uC544 \uB108 \uC774\uC0C1\uD574.
-            \uC6B0\uB9AC\uC9D1\uC5D0 \uCC3D\uBB38 \uC788\uC5B4! \uC800\uAE30... \uC5B4
-            \uC5B4\uB514\uAC14\uC9C0......"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: "\uD751\uD751....\uC774\uB7EC\uC9C0\uB9C8 \uC81C\uBC1C \uB098 \uB108\uBB34
-            \uC2AC\uD37C"
-        - ingameName: 
-          isCutScene: 0
-          cutSceneFileName: test
-          fade: 000000
-          dialog: ".....\uBBF8\uC548....\uBCD1\uC138\uAC00 \uC880 \uC2EC\uD574\uC9C4\uAC70\uAC19\uC544....."
-        nextWrapperIsRouter: 0
-        isCutscene: 0
-        cutSceneFileName: 
-        cutSceneEffect: 0
-        backGroundEffect: 0
-        backGroundFileName: 
-        nextRegion: 
-        popUp: 
-      conversationRouterList: []
-  conversationDialogBundle:
-    bundleName: testBundle
-    forcedRegion: 
-    uiUnlock: 
-    dialogWrapperList:
-    - wrapperIndex: 0
-      characterName:
-      - 
-      - 
-      - 
-      ingameName:
-      - 
-      - 
-      - 
-      characterFeeling:
-      - nothing
-      - nothing
-      - nothing
-      nextStory: 
-      effect: 
-      sfx: 
-      concealedCharacter: []
-      bgm: 
-      conversationDialogList:
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uC624\uB298 \uB0A0\uC528\uAC00 \uCC38 \uB9D1\uC744 \uAC83 \uAC19\uC9C0?
-          \uADF8\uB798\uC11C\uC778\uC9C0 \uB0B4 \uAE30\uBD84\uB3C4 \uC88B\uC544!"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uBB34\uC2A8\uC18C\uB9AC\uC57C \uBC16\uC5D0 \uBE44\uAC00 \uC794\uB729\uC624\uC796\uC544"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uC5C7........\uC9C4\uC9DC\uB124 \uBBF8\uC548\uD574!!"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uB2E4\uC74C\uBD80\uD134 \uCC3D\uBB38\uC744 \uC798 \uBCF4\uACE0\uB2E4\uB2C8\uB77C\uAD6C"
-      nextWrapperIsRouter: 0
-      isCutscene: 0
-      cutSceneFileName: 
-      cutSceneEffect: 0
-      backGroundEffect: 0
-      backGroundFileName: 
-      nextRegion: 
-      popUp: 
-    - wrapperIndex: 0
-      characterName:
-      - 
-      - 
-      - 
-      ingameName:
-      - 
-      - 
-      - 
-      characterFeeling:
-      - nothing
-      - nothing
-      - nothing
-      nextStory: 
-      effect: 
-      sfx: 
-      concealedCharacter: []
-      bgm: 
-      conversationDialogList:
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uBB50\uC57C \uB9D0\uC774 \uB108\uBB34 \uC2EC\uD55C\uAC70 \uC544\uB2C8\uC57C?
-          \uC0AC\uACFC\uD574!"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "??? \uB2C8\uAC00 \uBA3C\uC800 \uC774\uC0C1\uD55C \uC18C\uB9AC\uB97C
-          \uD55C\uAC70\uC796\uC544"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uC9C0\uAE08 \uB0A0 \uB9CC\uB9CC\uD558\uAC8C \uBCF4\uB294\uAC70\uC57C????"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uC544 \uC544\uB2C8 \uADF8\uAC8C \uC544\uB2C8\uB77C..."
-      nextWrapperIsRouter: 0
-      isCutscene: 0
-      cutSceneFileName: 
-      cutSceneEffect: 0
-      backGroundEffect: 0
-      backGroundFileName: 
-      nextRegion: 
-      popUp: 
-    - wrapperIndex: 0
-      characterName:
-      - 
-      - 
-      - 
-      ingameName:
-      - 
-      - 
-      - 
-      characterFeeling:
-      - nothing
-      - nothing
-      - nothing
-      nextStory: 
-      effect: 
-      sfx: 
-      concealedCharacter: []
-      bgm: 
-      conversationDialogList:
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "....\uCE74\uB9AC\uC57C...\uC6B0\uB9AC\uC9D1\uC5D0\uB294 \uCC3D\uBB38
-          \uC5C6\uB294\uAC70 \uC54C\uC796\uC544"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uBB50\uC57C \uB8E8\uC5D8\uB9AC\uC544 \uB108 \uC774\uC0C1\uD574.
-          \uC6B0\uB9AC\uC9D1\uC5D0 \uCC3D\uBB38 \uC788\uC5B4! \uC800\uAE30... \uC5B4
-          \uC5B4\uB514\uAC14\uC9C0......"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: "\uD751\uD751....\uC774\uB7EC\uC9C0\uB9C8 \uC81C\uBC1C \uB098 \uB108\uBB34
-          \uC2AC\uD37C"
-      - ingameName: 
-        isCutScene: 0
-        cutSceneFileName: test
-        fade: 000000
-        dialog: ".....\uBBF8\uC548....\uBCD1\uC138\uAC00 \uC880 \uC2EC\uD574\uC9C4\uAC70\uAC19\uC544....."
-      nextWrapperIsRouter: 0
-      isCutscene: 0
-      cutSceneFileName: 
-      cutSceneEffect: 0
-      backGroundEffect: 0
-      backGroundFileName: 
-      nextRegion: 
-      popUp: 
-    conversationRouterList: []
   randomDialogDataWrapper:
     randomDialogList:
     - dialogList:
@@ -8304,7 +7693,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1497030484
 GameObject:
@@ -10639,9 +10028,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359cfac1ae747bc458900e1d81e77b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastSceneName: 
+  sceneParameter: 
   nowTexting: 0
   nowSaveIndex: 0
+  nowIngameSceneIndex: 0
+  sceneWrapper:
+    sceneArray: []
 --- !u!4 &1856203257
 Transform:
   m_ObjectHideFlags: 0
@@ -10654,7 +10046,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1872781904
 GameObject:
@@ -12081,6 +11473,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080198772}
   m_CullTransparentMesh: 0
+--- !u!1 &2095117242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095117244}
+  - component: {fileID: 2095117243}
+  m_Layer: 8
+  m_Name: Post-process Volume (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2095117243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095117242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: 92063e8fa91bf724e93563f4702638a6, type: 2}
+--- !u!4 &2095117244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095117242}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2106580573
 GameObject:
   m_ObjectHideFlags: 0
@@ -12210,7 +11650,7 @@ MonoBehaviour:
   - {fileID: 1672064100}
   - {fileID: 1242186233}
   - {fileID: 201017859}
-  blurVolume: {fileID: 669740883}
+  blurVolume: {fileID: 2095117243}
   screenTouchCanvas: {fileID: 1223308754}
   isGlowing: 
   tabletTreeterManager: {fileID: 1287994691}
@@ -12596,7 +12036,7 @@ Transform:
   - {fileID: 7360853325228389434}
   - {fileID: 1992527541}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &7279855452718939428
 CanvasRenderer:

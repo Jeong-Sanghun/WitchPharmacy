@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Text;
 using System;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
 
 public class SceneManager : MonoBehaviour // JH
 {
@@ -331,8 +331,19 @@ public class SceneManager : MonoBehaviour // JH
         moveModuleLinearRunning = false;
     }
 
-    public IEnumerator ShakeModule(GameObject i_Object,float shakePowerX,float shakePowerY, float i_Time)
+    public IEnumerator ShakeModule(GameObject i_Object,float shakePowerX,float shakePowerY, float i_Time,bool isCamera = false)
     {
+        Camera[] cam = null;
+        float originOrthoSize = 7.2f;
+        if (isCamera)
+        {
+            cam = i_Object.GetComponentsInChildren<Camera>();
+            originOrthoSize = cam[0].orthographicSize;
+            for(int i = 0; i < cam.Length; i++)
+            {
+                cam[i].orthographicSize = 6;
+            }
+        }
         float miniTimer = 0f;
         if (moveModuleLinearRunning == true && linearMovingObj == i_Object)
         {
@@ -356,14 +367,20 @@ public class SceneManager : MonoBehaviour // JH
             miniTimer += Time.deltaTime;
         }
         i_Object.transform.position = origin;
-
+        if (isCamera)
+        {
+            for (int i = 0; i < cam.Length; i++)
+            {
+                cam[i].orthographicSize = originOrthoSize;
+            }
+        }
         yield return null;
         moveModuleLinearRunning = false;
     }
 
     
 
-    public IEnumerator VolumeModule(PostProcessVolume volume, bool finalOne, float time)
+    public IEnumerator VolumeModule(Volume volume, bool finalOne, float time)
     {
         float timer = 0;
         int one;

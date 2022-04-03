@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum StoryRegion
 {
-    RuinCity,Narin,Themnos,Rebav,Mikcha,TreeOfLife,NotAllocated
+    RuinCity,Narin,Semnos,Revav,Mikcha,TreeOfLife,NotAllocated
 }
 
 [System.Serializable]

@@ -13,7 +13,7 @@ public class OwningDocumentClass
     public OwningDocumentClass()
     {
         name = null;
-        gainedRegion = RegionName.AntiqueShop;
+        gainedRegion = RegionName.BackStreet;
         gainedDay = 0;
         gainedTime = 0;
     }

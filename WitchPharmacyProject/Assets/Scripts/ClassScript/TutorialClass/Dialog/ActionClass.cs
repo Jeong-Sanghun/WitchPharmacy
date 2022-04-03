@@ -16,7 +16,11 @@ public enum ActionKeyword
     AddDesireGlow, AddFrostGlow, CookButtonClick, TrayGlow, GetCoin, SceneEnd,
 
     TabletButtonGlow,CariButtonGlow,TreeterButtonGlow,
-    TreeterPostButtonGlow,TabletExitButtonGlow
+    TreeterPostButtonGlow,TabletExitButtonGlow,
+
+    WitchGraveMapiconGlow, WreckMapiconGlow
+
+
 
 
 }

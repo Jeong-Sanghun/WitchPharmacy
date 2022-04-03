@@ -186,8 +186,6 @@ public class TutorialTabletManager : TutorialManagerParent
     void TabletButtonGlow()
     {
         TextFrameToggle(false);
-        Debug.Log(nowAction.parameter);
-        Debug.Log(nowAction.action);
         Glow(tabletButtonGlow, (int)nowAction.parameter);
         nowGlow = ActionKeyword.TabletButtonGlow;
         isGlowing[(int)ActionKeyword.TabletButtonGlow] = true;

@@ -5,7 +5,7 @@ using System.Text;
 
 public enum RegionName
 {
-    Library, Forest, Market, AntiqueShop, Research, Store
+    BackStreet, Revav, WitchGrave, Semnos, Narin, RuinCity, Mikcha, TreeOfLife, Research, Store
 }
 
 public class ExploreManager : MonoBehaviour
@@ -15,12 +15,18 @@ public class ExploreManager : MonoBehaviour
     TabletManager tabletManager;
     GameManager gameManager;
     SaveDataClass saveData;
+    [SerializeField]
+    bool isTutorial;
 
     public RegionName nowRegion;
     int timeCount = 1;
     // Start is called before the first frame update
     private void Awake()
     {
+        if(isTutorial == true)
+        {
+            return;
+        }
         if (inst == null)
         {
             inst = this;

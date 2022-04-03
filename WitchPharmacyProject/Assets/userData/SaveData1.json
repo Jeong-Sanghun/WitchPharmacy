@@ -1,7 +1,7 @@
 {
     "name": "initName",
-    "nowTime": 0.0,
-    "nowDay": 1,
+    "nowTime": 3600.0,
+    "nowDay": 2,
     "coin": 1000,
     "owningMedicineList": [
         {
@@ -89,11 +89,16 @@
         "firstDay",
         "firstDay",
         "firstDay",
+        "firstDay",
+        "firstDay",
+        "firstDay",
         "firstDay"
     ],
-    "readSpecialVisitorBundleList": [],
+    "readSpecialVisitorBundleList": [
+        "Lily1"
+    ],
     "nextStory": "firstDay",
-    "nowSceneIndex": 4,
+    "nowSceneIndex": 12,
     "nowRegion": 0,
     "forcedRegion": "",
     "nowBossFile": ""

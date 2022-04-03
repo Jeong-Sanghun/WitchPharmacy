@@ -240,22 +240,19 @@
         },
         {
             "effect": "popupIllust",
-            "effectParameter": "rue_Scar",
+            "effectParameter": "ruelliaScar",
             "charSlot1": "Cari",
             "charSlot3": "Ruellia",
             "charEffect3": "shake",
             "charEffectParameter3": "0.5"
         },
         {
-            "effect": "delay",
-            "effectParameter": "1",
             "talkingCharName": "루엘리아",
             "dialog": "읏….",
             "charSlot1": "Cari",
             "charSlot3": "Ruellia"
         },
         {
-            "effect": "popupIllustEnd",
             "charSlot1": "Cari",
             "charSlot3": "Ruellia"
         },
@@ -320,6 +317,7 @@
             "charEffectParameter3": "grin"
         },
         {
+            "effect": "popupIllustEnd",
             "talkingCharName": "루엘리아",
             "dialog": "시간이 많이 남지 않았을 수도 있으니까... 앞으로는 좀 더 연구에 집중해야겠어.",
             "charSlot1": "Cari",

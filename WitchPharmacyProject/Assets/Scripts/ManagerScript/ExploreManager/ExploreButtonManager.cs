@@ -13,6 +13,11 @@ public class ExploreButtonManager : MonoBehaviour
     GameObject[] regionButtonArray;
     SaveDataClass saveData;
 
+    [SerializeField]
+    bool isTutorial;
+
+    public bool isTutorialGlowing;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +25,37 @@ public class ExploreButtonManager : MonoBehaviour
         sceneManager = SceneManager.inst;
         exploreManager = ExploreManager.inst;
         saveData = GameManager.singleton.saveData;
-        UnlockButton();
+        isTutorialGlowing = false;
+        if (isTutorial)
+        {
+            string unlockScene = SceneManager.inst.sceneParameter;
+            RegionName unlockRegion =(RegionName)System.Enum.Parse(typeof(RegionName), unlockScene);
+            int regionLength = System.Enum.GetValues(typeof(RegionName)).Length;
+            for (int i = 0; i < regionLength; i++)
+            {
+                GameObject onObject = regionButtonArray[i].transform.GetChild(0).gameObject;
+                GameObject offObject = regionButtonArray[i].transform.GetChild(1).gameObject;
+
+                if(i == (int)unlockRegion)
+                {
+                    onObject.SetActive(true);
+                    offObject.SetActive(false);
+                }
+                else
+                {
+                    onObject.SetActive(false);
+                    offObject.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            UnlockButtonObsolete();
+        }
+
     }
 
-    void UnlockButton()
+    void UnlockButtonObsolete()
     {
         RegionDataWrapper wrapper = exploreManager.regionDataWrapper;
 
@@ -60,6 +92,11 @@ public class ExploreButtonManager : MonoBehaviour
         }
     }
 
+    void UnlockButton()
+    {
+
+    }
+
     public void ResearchSceneButton()
     {
         sceneManager.LoadScene("ResearchScene");
@@ -72,8 +109,22 @@ public class ExploreButtonManager : MonoBehaviour
 
     public void RegionSceneButton(int index)
     {
-        exploreManager.nowRegion = (RegionName)index;
-        sceneManager.LoadScene("RegionScene");
+        if (isTutorial)
+        {
+            if (isTutorialGlowing)
+            {
+                isTutorialGlowing = false;
+                SceneManager.inst.LoadNextScene();
+                
+            }
+            
+        }
+        else
+        {
+
+            exploreManager.nowRegion = (RegionName)index;
+            sceneManager.LoadScene("RegionScene");
+        }
     }
 
     // Update is called once per frame

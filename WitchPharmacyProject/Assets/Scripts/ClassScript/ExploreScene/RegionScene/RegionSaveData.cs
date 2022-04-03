@@ -15,7 +15,7 @@ public class RegionSaveData
     public RegionSaveData()
     {
         storyRegion = StoryRegion.Narin;
-        regionName = RegionName.Library;
+        regionName = RegionName.BackStreet;
         firstDiscountedMedicineIndex = new List<int>();
         secondDiscountedMedicineIndex = new List<int>();
         eventTimeArray = new int[4];

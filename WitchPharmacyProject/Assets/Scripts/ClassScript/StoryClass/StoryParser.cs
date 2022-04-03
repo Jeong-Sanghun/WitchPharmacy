@@ -18,7 +18,7 @@ public class StoryParser
         languagePack = language;
     }
 
-    public StoryDialogBundle LoadStoryBundle(string bundleName, string languageDirectory, bool isRegion = false, RegionName regionName = RegionName.Library, StoryRegion storyRegion = StoryRegion.Narin)
+    public StoryDialogBundle LoadStoryBundle(string bundleName, string languageDirectory, bool isRegion = false, RegionName regionName = RegionName.BackStreet, StoryRegion storyRegion = StoryRegion.Narin)
     {
         StoryDialogBundle gameData;
 
@@ -780,7 +780,7 @@ public class StoryParser
     //    //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
     //}
 
-    public ConversationDialogBundle LoadBundle(string bundleName, string languageDirectory, bool isRegion = false, RegionName regionName = RegionName.Library, StoryRegion storyRegion = StoryRegion.Narin)
+    public ConversationDialogBundle LoadBundle(string bundleName, string languageDirectory, bool isRegion = false, RegionName regionName = RegionName.BackStreet, StoryRegion storyRegion = StoryRegion.Narin)
     {
         return null;
     }

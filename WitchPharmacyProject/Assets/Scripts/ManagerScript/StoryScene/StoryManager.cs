@@ -135,7 +135,6 @@ public class StoryManager : MonoBehaviour
         isRouting = false;
         storyParser = new StoryParser(characterIndexToName,gameManager.languagePack);
         saveData.readStoryList.Add(saveData.nextStory);
-        Debug.Log(sceneManager.sceneParameter);
         nowBundle = storyParser.LoadStoryBundle(sceneManager.sceneParameter, gameManager.saveDataTimeWrapper.nowLanguageDirectory,false);
         nowDialogArray = nowBundle.storyDialogArray;
         nowConversationText = conversationText;
@@ -164,19 +163,25 @@ public class StoryManager : MonoBehaviour
 
     void NextDialog()
     {
-        if (nowTextFrameToggleActive == false && nowConversationText == conversationText)
-        {
-            TextFrameToggle(true);
-            return;
-        }
+
             bool immediateNext = false;
         if(nowDialogIndex >= nowDialogArray.Length)
         {
             sceneManager.LoadNextScene();
             return;
         }
+
         nowDialog = nowDialogArray[nowDialogIndex];
-        Debug.Log(nowDialogIndex);
+        if (nowTextFrameToggleActive == false && nowConversationText == conversationText)
+        {
+            if (nowDialog != null && nowDialog.dialog != null)
+            {
+                TextFrameToggle(true);
+                return;
+            }
+
+
+        }
         PrintCharacter();
         PrintEffect(out immediateNext);
         
@@ -517,7 +522,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (nowDialog.effect.Contains("shakeScreen"))
         {
-            StartCoroutine(sceneManager.ShakeModule(cameraObject, 1, 1,1));
+            StartCoroutine(sceneManager.ShakeModule(cameraObject, 1, 1,1,true));
         }
         else if (nowDialog.effect.Contains("blur"))
         {
