@@ -326,7 +326,7 @@ public class OddVisitorClass : VisitorClass
                 symptomObject.dissolve = true;
                 symptomObject.dissolveComponent = dissolve;
                 finalSymptomObjectList.Add(symptomObject);
-                if (finalDiseaseList[i].firstSpriteName.Contains("Skin") && headPart != null)
+                if (finalDiseaseList[i].firstSpriteName.Contains(faceString) && headPart != null)
                 {
                     if (childSetParented == false)
                     {
@@ -363,7 +363,7 @@ public class OddVisitorClass : VisitorClass
                 symptomObject.dissolveComponent = dissolve;
                 symptomObject.dissolve = true;
                 finalSymptomObjectList.Add(symptomObject);
-                if (finalDiseaseList[i].secondSpriteName.Contains("Skin") && headPart != null)
+                if (finalDiseaseList[i].secondSpriteName.Contains(faceString) && headPart != null)
                 {
                     for (int j = 0; j < facePart.Length; j++)
                     {

@@ -439,7 +439,7 @@ public class RandomVisitorClass : VisitorClass
                 symptomObject.dissolve = true;
                 symptomObject.dissolveComponent = dissolve;
                 finalSymptomObjectList.Add(symptomObject);
-                if (finalDiseaseList[i].firstSpriteName.Contains("face") && headPart != null)
+                if (finalDiseaseList[i].firstSpriteName.Contains(faceString) && headPart != null)
                 {
                     if (childSetParented == false)
                     {
@@ -476,7 +476,7 @@ public class RandomVisitorClass : VisitorClass
                 symptomObject.dissolveComponent = dissolve;
                 symptomObject.dissolve = true;
                 finalSymptomObjectList.Add(symptomObject);
-                if (finalDiseaseList[i].secondSpriteName.Contains("face") && headPart != null)
+                if (finalDiseaseList[i].secondSpriteName.Contains(faceString) && headPart != null)
                 {
                     for (int j = 0; j < facePart.Length; j++)
                     {

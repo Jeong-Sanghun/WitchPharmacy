@@ -27,6 +27,8 @@ public class VisitorClass
     protected GameObject[] facePart;
     protected GameObject[] feelingFace;
 
+    protected const string faceString = "face";
+
     public static void SetStaticData(List<MedicineClass> ownedMedicineList,
     RandomVisitorDiseaseBundle bundle)
     {

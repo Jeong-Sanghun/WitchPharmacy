@@ -19,6 +19,22 @@ public class TutorialFirstWorldmapManager : TutorialManagerParent
 
     }
 
+
+    protected override void SetDialogText()
+    {
+        switch (nowType)
+        {
+            case DialogType.Dialog:
+                TextFrameToggle(true);
+                screenTouchCanvas.SetActive(true);
+                nowTextComponent = dialogText;
+                characterImage.sprite = characterIndexToName.GetSprite(nowCharacter, nowFeeling);
+                dialogNameText.text = characterIndexToName.NameTranslator(nowCharacter, languagePack);
+                characterImage.SetNativeSize();
+                break;
+        }
+    }
+
     protected override void OverrideAction()
     {
         base.OverrideAction();
@@ -36,7 +52,7 @@ public class TutorialFirstWorldmapManager : TutorialManagerParent
         buttonManager.isTutorialGlowing = true;
         TextFrameToggle(false);
         screenTouchCanvas.SetActive(false);
-        Glow(witchGraveMapiconGlow, (int)nowAction.parameter);
+        Glow(witchGraveMapiconGlow, 1);
     }
 
 }

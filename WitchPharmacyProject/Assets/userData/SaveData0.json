@@ -1,7 +1,7 @@
 {
     "name": "initName",
-    "nowTime": 3600.0,
-    "nowDay": 2,
+    "nowTime": 0.0,
+    "nowDay": 1,
     "coin": 1000,
     "owningMedicineList": [
         {
@@ -46,11 +46,6 @@
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
             "billList": []
-        },
-        {
-            "wholeGainCoin": 0,
-            "wholeSpentCoin": 0,
-            "billList": []
         }
     ],
     "owningDocumentList": [],
@@ -88,17 +83,11 @@
     "readStoryList": [
         "firstDay",
         "firstDay",
-        "firstDay",
-        "firstDay",
-        "firstDay",
-        "firstDay",
         "firstDay"
     ],
-    "readSpecialVisitorBundleList": [
-        "Lily1"
-    ],
+    "readSpecialVisitorBundleList": [],
     "nextStory": "firstDay",
-    "nowSceneIndex": 12,
+    "nowSceneIndex": 4,
     "nowRegion": 0,
     "forcedRegion": "",
     "nowBossFile": ""

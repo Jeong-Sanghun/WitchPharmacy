@@ -185,6 +185,7 @@ public class CounterManager : MonoBehaviour //SH
         //스태틱으로 만들어버려
         RandomVisitorClass.SetStaticData(ownedMedicineList,gameManager.randomVisitorDiseaseBundle);
         RandomVisitorDisease.SetStaticData(randomDiseasePrefab);
+        TabletManager.inst.TabletOpenButtonActive(true, false);
         TimeTextChange();
     }
 

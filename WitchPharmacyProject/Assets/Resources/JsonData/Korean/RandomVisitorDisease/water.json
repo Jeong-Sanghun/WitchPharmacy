@@ -4,23 +4,31 @@
       "symptomName": "drySkin1",
       "symptomNumber": "-2",
       "effectString": "None",
-      "dialog": "피부가 건조해서 갈라지잖아요.",
-      "firstSpriteName": "water-_dry",
+      "dialog": "지금 피부 갈라지고 난리도 아니에요. 저 진짜 피부관리 꼬박꼬박하는데도 이렇다니까요?",
+      "firstSpriteName": "water-_dryface",
       "firstSpriteLayer": "0.5"
     },
     {
       "symptomName": "drySkin2",
       "symptomNumber": "-2",
       "effectString": "None",
-      "dialog": "지금 제 피부좀 봐봐요!",
-      "firstSpriteName": "water-_dry",
+      "dialog": "전 평생 지성인 줄 알고 살아왔는데…음…지성은 보통 피부 안 갈라지지 않나요?",
+      "firstSpriteName": "water-_dryface",
+      "firstSpriteLayer": "0.5"
+    },
+    {
+      "symptomName": "drySkin3",
+      "symptomNumber": "-2",
+      "effectString": "None",
+      "dialog": "이대로 냅두면 그냥 얼굴이 통째로 떨어질 것 같더라구요..",
+      "firstSpriteName": "water-_dryface",
       "firstSpriteLayer": "0.5"
     },
     {
       "symptomName": "sap1",
       "symptomNumber": "-2",
       "effectString": "None",
-      "dialog": "목이 너무너무 말라요",
+      "dialog": "목이 너무 말라요. 옆에 이건 마시고 싶은 만큼 다마시면 배터질 것 같아서 맞고 있는 거예요.",
       "firstSpriteName": "water--_sap",
       "firstSpriteLayer": "1.6"
     },
@@ -28,7 +36,15 @@
       "symptomName": "sap2",
       "symptomNumber": "-2",
       "effectString": "None",
-      "dialog": "물을 달고 살지 않으면 힘들어요",
+      "dialog": "몸에 수분이 쪽 빠진 느낌이에요. 이거 없으면 저 벌써 탈수로 죽었을지도 몰라요!",
+      "firstSpriteName": "water--_sap",
+      "firstSpriteLayer": "1.6"
+    },
+    {
+      "symptomName": "sap3",
+      "symptomNumber": "-2",
+      "effectString": "None",
+      "dialog": "제가 평생 건조하다는 생각을 해본 적이 없거든요? 근데 지금 진짜 미칠 것 같아요. 세상 공기는 왜 이렇게 건조한 거죠?? 다들 어떻게 사는 거예요?",
       "firstSpriteName": "water--_sap",
       "firstSpriteLayer": "1.6"
     },
@@ -36,35 +52,49 @@
       "symptomName": "fruit1",
       "symptomNumber": "-1",
       "effectString": "None",
-      "dialog": "얼굴에 붙은게 말라서 안떨어져요",
+      "dialog": "그 뭐냐 얼굴에 붙이는 그거 있잖아요. 그게 건조한 데 좋다길래 잘라서 올려놨거든요? 근데 이게 뭔 수를 써도 안 떨어져요!",
       "firstSpriteName": "water-_fruit"
     },
     {
       "symptomName": "fruit2",
       "symptomNumber": "-1",
       "effectString": "None",
-      "dialog": "몸에 닿는게 있으면 다 말라버려요",
+      "dialog": "그…되게 이상하게 생각하실 수 있긴 한데 과일이…붙었어요..",
+      "firstSpriteName": "water-_fruit"
+    },
+    {
+      "symptomName": "fruit3",
+      "symptomNumber": "-1",
+      "effectString": "None",
+      "dialog": "과일 먹으려고 아껴놨냐고 하지 마세요..! 붙은 거 아는데 안 떨어져서 이대로 둔 거예요!",
       "firstSpriteName": "water-_fruit"
     },
     {
       "symptomName": "sand1",
       "symptomNumber": "-1",
       "effectString": "None",
-      "dialog": "제 주변에 이거 바람부는거좀 봐요",
+      "dialog": "제 옆에 이거 보이시죠? 이거때문에 하루종일 눈 따가워 죽겠어요",
       "firstSpriteName": "water-_sand"
     },
     {
       "symptomName": "sand2",
       "symptomNumber": "-1",
       "effectString": "None",
-      "dialog": "주변에 막 흙먼지가 있어요",
+      "dialog": "모래바람 때문에 씻어도 씻어도 머리 사이에 모래가 끼어요..",
+      "firstSpriteName": "water-_sand"
+    },
+    {
+      "symptomName": "sand3",
+      "symptomNumber": "-1",
+      "effectString": "None",
+      "dialog": "아우 그냥 미치겠어요. 내가 사막에 온 건지 뭔지 모르겠다니까요",
       "firstSpriteName": "water-_sand"
     },
     {
       "symptomName": "sweat1",
       "symptomNumber": "1",
       "effectString": "None",
-      "dialog": "땀이 너무 많이나요",
+      "dialog": "아우 더운 것도 아닌데 땀이 너무 많이 나요. 지금 팔 들면 장난 아닐 걸요?",
       "firstSpriteName": "water+_sweat",
       "firstSpriteLayer": "0.3"
     },
@@ -72,7 +102,15 @@
       "symptomName": "sweat2",
       "symptomNumber": "1",
       "effectString": "None",
-      "dialog": "땀이 비오듯이 와요",
+      "dialog": "제가 원래 이렇게 땀이 많은 사람이 아닌데 땀이 계속 나요 진짜.",
+      "firstSpriteName": "water+_sweat",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "sweat3",
+      "symptomNumber": "1",
+      "effectString": "None",
+      "dialog": "땀이 갑자기 너무 많이 나요. 저 땀으로 샤워하는 줄 알았잖아요",
       "firstSpriteName": "water+_sweat",
       "firstSpriteLayer": "0.3"
     },
@@ -80,7 +118,7 @@
       "symptomName": "bubble",
       "symptomNumber": "1",
       "effectString": "None",
-      "dialog": "땀냄새!",
+      "dialog": "아 이걸 어떻게 설명해야되지? 막….음…물 속에 있는 것 같아요…",
       "firstSpriteName": "water+_bubble",
       "firstSpriteLayer": "0.3"
     },
@@ -88,7 +126,15 @@
       "symptomName": "bubble",
       "symptomNumber": "1",
       "effectString": "None",
-      "dialog": "땀이 너무 많아요",
+      "dialog": "물속에 갇힌? 느낌이에요.",
+      "firstSpriteName": "water+_bubble",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "bubble",
+      "symptomNumber": "1",
+      "effectString": "None",
+      "dialog": "물 안에 있는 것같아요. 근데 또 숨쉬는 건 평소랑 비슷해요.",
       "firstSpriteName": "water+_bubble",
       "firstSpriteLayer": "0.3"
     },
@@ -96,7 +142,7 @@
       "symptomName": "cloud1",
       "symptomNumber": "2",
       "effectString": "None",
-      "dialog": "나갈때마다 소나기가 와요",
+      "dialog": "진짜 어이없는게 뭔지 아세요? 여기 옆에 있는 거 보이죠? 아니 이게 우산을 쓰면 우산 안으로 들어온다니까요? 뭐하자는 건지 참나…",
       "firstSpriteName": "water++_cloud",
       "firstSpriteLayer": "0.3"
     },
@@ -104,7 +150,15 @@
       "symptomName": "cloud2",
       "symptomNumber": "2",
       "effectString": "None",
-      "dialog": "비가 온 것 처럼 몸이 젖어요",
+      "dialog": "저 가성비 샤워 그만하고 싶어요…",
+      "firstSpriteName": "water++_cloud",
+      "firstSpriteLayer": "0.3"
+    },
+    {
+      "symptomName": "cloud3",
+      "symptomNumber": "2",
+      "effectString": "None",
+      "dialog": "비구름…만화에서 볼 땐 웃겼는데 갑자기 절 따라다니니까 너무 당황스러워요..",
       "firstSpriteName": "water++_cloud",
       "firstSpriteLayer": "0.3"
     },
@@ -112,7 +166,7 @@
       "symptomName": "fish1",
       "symptomNumber": "2",
       "effectString": "None",
-      "dialog": "이 이물고기 뭐에요??",
+      "dialog": "되게 별거 아닌 걸로 들릴 수는 있는데….그..제가 바다에 가본 적이 없거든요? 근데 바다에 너무 가고 싶어요.",
       "firstSpriteName": "fish",
       "firstSpriteLayer": "1.6"
     },
@@ -120,7 +174,15 @@
       "symptomName": "fish2",
       "symptomNumber": "2",
       "effectString": "None",
-      "dialog": "물고기가 자꾸 주변에 돌아다녀요",
+      "dialog": "전 사실 물고기 아닐까요?",
+      "firstSpriteName": "fish",
+      "firstSpriteLayer": "1.6"
+    },
+    {
+      "symptomName": "fish3",
+      "symptomNumber": "2",
+      "effectString": "None",
+      "dialog": "바다로 돌아가고 싶어요. 아마 향수병인가봐요. 웃긴 게 뭔지 아세요? 전 바다에 가본 적 없다는 거예요.",
       "firstSpriteName": "fish",
       "firstSpriteLayer": "1.6"
     }

@@ -150,9 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359cfac1ae747bc458900e1d81e77b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastSceneName: 
+  sceneParameter: 
   nowTexting: 0
   nowSaveIndex: 0
+  nowIngameSceneIndex: 0
+  sceneWrapper:
+    sceneArray: []
 --- !u!4 &109746238
 Transform:
   m_ObjectHideFlags: 0

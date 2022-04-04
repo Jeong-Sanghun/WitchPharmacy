@@ -122,7 +122,7 @@ public class StoryManager : MonoBehaviour
         faded = new bool[4];
         for(int i = 0; i < 4; i++)
         {
-            faded[i] = false;
+            faded[i] = true;
             characterSprite[i].color = new Color(0.2f, 0.2f, 0.2f, 1f);
         }
         nowConversationIndex = 0;
