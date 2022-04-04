@@ -5719,6 +5719,7 @@ GameObject:
   - component: {fileID: 1357228066}
   - component: {fileID: 1357228065}
   - component: {fileID: 1357228067}
+  - component: {fileID: 1357228068}
   m_Layer: 8
   m_Name: BGFocusCamera
   m_TagString: MainCamera
@@ -5874,6 +5875,18 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1357228068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357228063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865fb20a3a01c994693f1e1550290a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1377204501
 GameObject:
   m_ObjectHideFlags: 0
