@@ -31,7 +31,8 @@
         },
         {
             "sceneName": "StoryScene",
-            "sceneParameter": "main_ruinVil_AfterTabletTutoAfter"
+            "sceneParameter": "main_ruinVil_AfterTabletTutoAfter",
+			"saveTimeString": "룸카운터 디버그"
         },
         {
             "sceneName": "RoomCounterScene"

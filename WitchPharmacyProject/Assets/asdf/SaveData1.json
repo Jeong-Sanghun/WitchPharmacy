@@ -83,11 +83,12 @@
     "readStoryList": [
         "firstDay",
         "firstDay",
+        "firstDay",
         "firstDay"
     ],
     "readSpecialVisitorBundleList": [],
     "nextStory": "firstDay",
-    "nowSceneIndex": 4,
+    "nowSceneIndex": 6,
     "nowRegion": 0,
     "forcedRegion": "",
     "nowBossFile": ""

@@ -8,6 +8,8 @@ public enum Feeling
 {
     Happy,Angry
 }
+
+[System.Serializable]
 public class VisitorClass
 {
     public VisitorType visitorType;
@@ -23,7 +25,9 @@ public class VisitorClass
     protected static int[] partsNum = { 2, 2, 2 };
     protected int[] partsIndex;
     protected int bodyPartsIndex;
+    [SerializeField]
     protected GameObject headPart;
+    [SerializeField]
     protected GameObject[] facePart;
     protected GameObject[] feelingFace;
 

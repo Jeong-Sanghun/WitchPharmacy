@@ -1,8 +1,8 @@
 {
     "name": "initName",
-    "nowTime": 11760.0,
+    "nowTime": 0.0,
     "nowDay": 1,
-    "coin": 988,
+    "coin": 1000,
     "owningMedicineList": [
         {
             "medicineIndex": 34,
@@ -50,13 +50,7 @@
         {
             "wholeGainCoin": 0,
             "wholeSpentCoin": 0,
-            "billList": [
-                {
-                    "isPlus": false,
-                    "reason": 1,
-                    "changedCoin": 12
-                }
-            ]
+            "billList": []
         }
     ],
     "owningDocumentList": [],
@@ -85,11 +79,9 @@
     },
     "routePairList": [],
     "regionSaveDataList": [],
-    "likedTreeterIndexList": [
-        1
-    ],
+    "likedTreeterIndexList": [],
     "highlightedButton": [
-        true,
+        false,
         false,
         false
     ],
@@ -98,14 +90,11 @@
         "firstDay",
         "firstDay",
         "firstDay",
-        "firstDay",
         "firstDay"
     ],
-    "readSpecialVisitorBundleList": [
-        "Lily1"
-    ],
+    "readSpecialVisitorBundleList": [],
     "nextStory": "firstDay",
-    "nowSceneIndex": 10,
+    "nowSceneIndex": 8,
     "nowRegion": 0,
     "forcedRegion": "",
     "nowBossFile": ""

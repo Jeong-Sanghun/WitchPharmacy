@@ -39,6 +39,7 @@ public class CounterManager : MonoBehaviour //SH
     //SpecialVisitorClass nowSpecialVisitor;
     [SerializeField]
     List<VisitorClass> visitorList;
+    [SerializeField]
     VisitorClass nowVisitor;
     VisitorType nowVisitorType;
     [SerializeField]
@@ -125,6 +126,7 @@ public class CounterManager : MonoBehaviour //SH
 
     void Start()
     {
+        nowVisitor = null;
         gameManager = GameManager.singleton;
         sceneManager = SceneManager.inst;
         saveData = gameManager.saveData;
@@ -163,7 +165,7 @@ public class CounterManager : MonoBehaviour //SH
             symptomCheckedArray[i] = false;
         }
         nowVisitorCount = 0;
-
+        
         //for(int i = 0; i < 4; i++)
         //{
         //    measureToolOriginPosArray[i] = measureToolIconArray[i].transform.position;

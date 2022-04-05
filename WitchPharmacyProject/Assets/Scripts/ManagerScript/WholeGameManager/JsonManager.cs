@@ -255,7 +255,9 @@ public class JsonManager    //SH
         else
         {
             //세이브파일이 없는경우
-            gameData = new SaveDataClass();
+            gameData = null;
+            //    = new SaveDataClass();
+            //gameData.AddMedicineBySymptom(medicineDataWrapper, Symptom.water, Symptom.fire);
         }
         return gameData;
         //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당

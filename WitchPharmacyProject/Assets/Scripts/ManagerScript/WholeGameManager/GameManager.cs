@@ -132,6 +132,11 @@ public class GameManager : MonoBehaviour //SH
         else
         {
             saveData = jsonManager.LoadSaveData(sceneManager.nowSaveIndex);
+            if (saveData == null)
+            {
+                saveData = new SaveDataClass();
+                saveData.AddMedicineBySymptom(medicineDataWrapper, Symptom.water, Symptom.fire);
+            }
         }
         
 
@@ -213,6 +218,11 @@ public class GameManager : MonoBehaviour //SH
     public void LoadJson(int index)
     {
         saveData = jsonManager.LoadSaveData(index);
+        if(saveData == null)
+        {
+            saveData = new SaveDataClass();
+            saveData.AddMedicineBySymptom(medicineDataWrapper, Symptom.water, Symptom.fire);
+        }
         sceneManager.SaveDataLoadScene();
     }
 

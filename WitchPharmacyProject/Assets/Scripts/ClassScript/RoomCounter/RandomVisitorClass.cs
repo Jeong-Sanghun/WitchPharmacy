@@ -445,7 +445,7 @@ public class RandomVisitorClass : VisitorClass
                     {
                         for (int j = 0; j < facePart.Length; j++)
                         {
-
+                            
                             facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
                         }
                     }
@@ -478,10 +478,15 @@ public class RandomVisitorClass : VisitorClass
                 finalSymptomObjectList.Add(symptomObject);
                 if (finalDiseaseList[i].secondSpriteName.Contains(faceString) && headPart != null)
                 {
-                    for (int j = 0; j < facePart.Length; j++)
+                    if (childSetParented == false)
                     {
-                        facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                        for (int j = 0; j < facePart.Length; j++)
+                        {
+
+                            facePart[j].transform.GetChild(0).SetParent(headPart.transform.GetChild(0));
+                        }
                     }
+                    childSetParented = true;
                     obj.transform.SetParent(headPart.transform.GetChild(0).transform);
                     obj.transform.SetAsLastSibling();
                     obj.transform.localScale = Vector3.one;

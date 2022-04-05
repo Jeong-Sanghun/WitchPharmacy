@@ -1122,6 +1122,26 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1018911733}
+    - target: {fileID: 5549511344322185446, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549511344322185446, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549511344322185446, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549511344322185446, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1440
+      objectReference: {fileID: 0}
     - target: {fileID: 6517389924469400463, guid: 275846198ae314b40b055f98b3efb17c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1141,6 +1161,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnRouteButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517389925272781297, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517389925272781297, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517389925272781297, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517389925272781297, guid: 275846198ae314b40b055f98b3efb17c,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1440
       objectReference: {fileID: 0}
     - target: {fileID: 6517389925819197466, guid: 275846198ae314b40b055f98b3efb17c,
         type: 3}
