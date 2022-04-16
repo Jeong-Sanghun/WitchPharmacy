@@ -12,19 +12,24 @@
             "effect": "blackOut"
         },
         {
-            "talkingCharName": " ",
-            "dialog": "바움력 850년 헤이모프의 달"
-        },
-        {
-            "talkingCharName": " ",
-            "dialog": "사도 헤이모프의 인도에 따라, 인간들은 세계수에 당도하기에 이르렀다."
-        },
-        {
-            "talkingCharName": " ",
-            "dialog": "황무지 사이로 홀로 서있는 울창하고 거대한 나무를 보자, 인간들은 눈물을 흘리며 하늘을 향해 제를 올리기로 하였다."
+            "dialog": "^speed^{0.8}바움력 850년 헤이모프의 달^speedEnd^"
         },
         {
             "effect": "blackOutEnd"
+        },
+        {
+            "dialog": "사도 헤이모프의 인도에 따라, 인간들은 세계수에 당도하기에 이르렀다."
+        },
+        {
+            "dialog": "황무지 사이로 홀로 서있는 울창하고 거대한 나무를 보자, 인간들은 눈물을 흘리며 하늘을 향해 제를 올리기로 하였다."
+        },
+        {
+            "effect": "dialogBoxHide",
+            "effectParameter": "1"
+        },
+        {
+            "effect": "delay",
+            "effectParameter": "1.5"
         },
         {
             "talkingCharName": "카리",
@@ -45,13 +50,13 @@
         {
             "effect": "fadeInAndFocus",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "effect": "bgm",
             "effectParameter": "Pharmacy",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "talkingCharName": "카리",
@@ -59,7 +64,7 @@
             "charSlot1": "Cari",
             "charEffect1": "feeling",
             "charEffectParameter1": "angry2",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "talkingCharName": "루엘리아",
@@ -67,35 +72,35 @@
             "charSlot1": "Cari",
             "charEffect1": "feeling",
             "charEffectParameter1": "angry1",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "talkingCharName": "카리",
             "dialog": "아직도 잠꼬대를 하다니. 에잇.",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "feeling",
-            "charEffectParameter3": "panic"
+            "charSlot4": "Ruellia",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "panic"
         },
         {
             "effect": "sfx",
             "effectParameter": "Alert",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "shake",
-            "charEffectParameter3": "1"
+            "charSlot4": "Ruellia",
+            "charEffect4": "shake",
+            "charEffectParameter4": "1"
         },
         {
             "talkingCharName": "루엘리아",
             "dialog": "까아아악!",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "feeling",
-            "charEffectParameter3": "panic"
+            "charSlot4": "Ruellia",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "panic"
         },
         {
             "talkingCharName": "카리",
@@ -103,15 +108,15 @@
             "charSlot1": "Cari",
             "charEffect1": "feeling",
             "charEffectParameter1": "talk",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "talkingCharName": "루엘리아",
             "dialog": "…… 당연하지.",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "feeling",
-            "charEffectParameter3": "nothing"
+            "charSlot4": "Ruellia",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "nothing"
         },
         {
             "talkingCharName": "카리",
@@ -119,15 +124,15 @@
             "charSlot1": "Cari",
             "charEffect1": "feeling",
             "charEffectParameter1": "angry1",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "talkingCharName": "루엘리아",
             "dialog": "아하하… 하하…… 응.",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "feeling",
-            "charEffectParameter3": "grin"
+            "charSlot4": "Ruellia",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "grin"
         },
         {
             "talkingCharName": "카리",
@@ -135,57 +140,15 @@
             "charSlot1": "Cari",
             "charEffect1": "feeling",
             "charEffectParameter1": "angry2",
-            "charSlot3": "Ruellia"
+            "charSlot4": "Ruellia"
         },
         {
             "talkingCharName": "카리",
             "dialog": "기억 나는 게 약 만드는 것밖에 없다면서요.",
             "charSlot1": "Cari",
-            "charSlot3": "Ruellia",
-            "charEffect3": "feeling",
-            "charEffectParameter3": "nothing"
-        },
-        {
-            "talkingCharName": "루엘리아",
-            "dialog": "이상하지. 엄청 무서운 선생님한테 특훈이라도 받은 것처럼, 그 부분만큼은 기억이 난단 말이야...",
-            "charSlot1": "Cari",
-            "charSlot3": "Ruellia"
-        },
-        {
-            "talkingCharName": "카리",
-            "dialog": "대체 그 선생이 누군지 궁금하네요.",
-            "charSlot1": "Cari",
-            "charEffect1": "feeling",
-            "charEffectParameter1": "doubting",
-            "charSlot3": "Ruellia"
-        },
-        {
-            "talkingCharName": "루엘리아",
-            "dialog": "아하하... 그럼 이제 시작해볼까...",
-            "charSlot1": "Cari",
-            "charEffect1": "feeling",
-            "charEffectParameter1": "notTalk",
-            "charSlot3": "Ruellia",
-            "charEffect3": "feeling",
-            "charEffectParameter3": "grin"
-        },
-        {
-            "talkingCharName": "카리",
-            "dialog": "큼큼... 좋아요.",
-            "charSlot1": "Cari",
-            "charEffect1": "feeling",
-            "charEffectParameter1": "talk",
-            "charSlot3": "Ruellia"
-        },
-        {
-            "talkingCharName": "카리",
-            "dialog": "우선은 저주의 기원부터 정리할까요?",
-            "charSlot1": "Cari",
-            "charEffect1": "feeling",
-            "charEffectParameter1": "talk",
-            "charSlot3": "Ruellia",
-            "charEffect3": "feeling",
-            "charEffectParameter3": "nothing"
+            "charSlot4": "Ruellia",
+            "charEffect4": "feeling",
+            "charEffectParameter4": "nothing"
         }
     ]
 }

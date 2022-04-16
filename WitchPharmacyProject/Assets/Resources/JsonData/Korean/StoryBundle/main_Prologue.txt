@@ -8,8 +8,7 @@
             "effect": "blackOut"
         },
         {
-            "talkingCharName": " ",
-            "dialog": "바움력 849년 소나의 달"
+            "dialog": "^speed^{0.8}바움력 849년 소나의 달^speedEnd^"
         },
         {
             "effect": "dialogBoxHide",
@@ -76,7 +75,7 @@
         },
         {
             "talkingCharName": "???",
-            "dialog": "저와 당신은 이어져 있다는 사실, 잊었어요? "
+            "dialog": "저와 당신은 이어져 있다는 사실, 잊었어요?"
         },
         {
             "talkingCharName": "루엘리아",
@@ -89,7 +88,7 @@
         },
         {
             "talkingCharName": "???",
-            "dialog": "꼴 좋네요. 주제도 모르고 걱정하더니. "
+            "dialog": "꼴 좋네요. 주제도 모르고 걱정하더니."
         },
         {
             "talkingCharName": "이안",
@@ -108,11 +107,11 @@
         },
         {
             "talkingCharName": "???",
-            "dialog": "바보같긴. \n잘 들어요."
+            "dialog": "바보같긴. \r\n잘 들어요."
         },
         {
             "talkingCharName": "???",
-            "dialog": "실패하면 모든 게 헛수고가 되는 거예요. 당신은 쓸모없어지는 거라고요. "
+            "dialog": "실패하면 모든 게 헛수고가 되는 거예요. 당신은 쓸모없어지는 거라고요."
         },
         {
             "talkingCharName": "???",
@@ -144,7 +143,7 @@
         },
         {
             "talkingCharName": "이안",
-            "dialog": "서둘러야 합니다! "
+            "dialog": "서둘러야 합니다!"
         },
         {
             "talkingCharName": "???",
@@ -159,6 +158,7 @@
             "dialog": "여러모로 도움이 될 거예요."
         },
         {
+            "effect": "popupIllustEnd",
             "talkingCharName": "루엘리아",
             "dialog": "소중히 할게."
         },
@@ -167,7 +167,6 @@
             "dialog": "…망가뜨리지만 마요."
         },
         {
-            "effect": "popupIllustEnd",
             "talkingCharName": "이안",
             "dialog": "루엘리아 님은 제가 안전히 모셔다 드리겠습니다. 조금만 버티십시오."
         },
