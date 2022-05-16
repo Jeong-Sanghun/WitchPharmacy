@@ -106,6 +106,10 @@ public class StoryManager : MonoBehaviour
     bool isRouting;
     //string nextStory;
     // Start is called before the first frame update
+
+    void Update(){if (Input.GetKey(KeyCode.LeftControl)){ OnTouchScreen(); }} //JH 22.05.16 
+    // 미안하다 상훈아 스킵 업데이트문 하나만 추가좀 하자 스토리에서 Ctrl좀 꾹 눌러보지 않으련
+
     void Start()
     {
         gameManager = GameManager.singleton;
@@ -280,7 +284,7 @@ public class StoryManager : MonoBehaviour
         {
             obj.transform.position = new Vector3(obj.transform.position.x, upYpos, 0);
             //StartCoroutine(sceneManager.ShakeModule(obj, 0, float.Parse(feeling),1f));
-            StartCoroutine(sceneManager.ShakeModule(obj, 0, 0.5f, 1f));
+            StartCoroutine(sceneManager.ShakeModule(obj, 0, 0.2f, 0.7f)); // JH 22.05.16 (obj, 0, 0.5f, 1f)
         }
     }
 
@@ -407,14 +411,19 @@ public class StoryManager : MonoBehaviour
 
             if (nowDialog.effect.Contains("End"))
             {
-                popupSprite.sprite = null;
-                popupSprite.color = new Color(1, 1, 1, 0);
+                // popupSprite.sprite = null; // JH 22.05.16
+                //popupSprite.color = new Color(1, 1, 1, 0); // JH 22.05.16
+                popupSprite.GetComponent<UIFadeScriptModule>().EndingFadeOut(0.5f);// JH 22.05.16 페이드아웃 효과
             }
             else
             {
                 Sprite spr = Resources.Load<Sprite>("Popup/" + nowDialog.effectParameter);
                 popupSprite.color = new Color(1, 1, 1, 1);
                 popupSprite.sprite = spr;
+                popupSprite.GetComponent<UIFadeScriptModule>().StartingFadeIn(0.7f);// JH 22.05.16 팝업 일러스트 시작 페이드 효과
+                Vector3 v3 = (Vector3)popupSprite.gameObject.GetComponent<RectTransform>().anchoredPosition;// JH 22.05.16 
+                popupSprite.gameObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(0f, -30f); // JH 22.05.16
+                StartCoroutine(sceneManager.MoveModuleRect_Linear(popupSprite.gameObject, v3, 0.5f));// JH 22.05.16 시작 무빙 효과
             }
         }
         else if (nowDialog.effect.Contains("route"))
@@ -522,7 +531,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (nowDialog.effect.Contains("shakeScreen"))
         {
-            StartCoroutine(sceneManager.ShakeModule(cameraObject, 1, 1,1,true));
+            StartCoroutine(sceneManager.ShakeModule(cameraObject, 0.5f, 0.5f, 0.5f,true)); //JH 22.05.16 original: (cameraObject, 1, 1,1,true))
         }
         else if (nowDialog.effect.Contains("blur"))
         {
@@ -617,7 +626,10 @@ public class StoryManager : MonoBehaviour
                 skippable = false;
             }
         }
-        StartCoroutine(sceneManager.LoadTextOneByOne(nowDialog.dialog, nowConversationText,speed,skippable));
+        if(nowConversationText.gameObject == blackOutText.gameObject) //JH 22.05.16 BlackOutText일 경우 문장이 한번에 출력되도록
+            StartCoroutine(sceneManager.LoadTextOneByOne(nowDialog.dialog, nowConversationText,0.0001f,skippable)); //JH 22.05.16
+        else //JH 22.05.16
+            StartCoroutine(sceneManager.LoadTextOneByOne(nowDialog.dialog, nowConversationText,speed,skippable));
         CharacterName talkingCharEnum = CharacterName.Null;
         if (nowDialog.talkingCharName != null)
         {

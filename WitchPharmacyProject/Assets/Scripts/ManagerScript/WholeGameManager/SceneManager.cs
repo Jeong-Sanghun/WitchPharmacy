@@ -165,7 +165,7 @@ public class SceneManager : MonoBehaviour // JH
             }
 
             currentTargetNumber = miniTimer/nowSpeed;
-            if(Input.GetMouseButtonDown(0)&&canClickSkip){
+            if((Input.GetMouseButtonDown(0)||Input.GetKey(KeyCode.LeftControl))&&canClickSkip){ // JH 22.05.16 Original: if(Input.GetMouseButtonDown(0)&&canClickSkip)
                 break;
             }
         }
@@ -362,9 +362,12 @@ public class SceneManager : MonoBehaviour // JH
             
             newVector = new Vector3(newX, newY, origin.z);
             i_Object.transform.position = newVector;
-            yield return null;
+            //yield return null;
 
-            miniTimer += Time.deltaTime;
+            //miniTimer += Time.deltaTime;
+            
+            yield return new WaitForSeconds(0.03f); //JH 22.05.16
+            miniTimer += 0.03f; //JH 22.05.16
         }
         i_Object.transform.position = origin;
         if (isCamera)
