@@ -962,6 +962,7 @@ public class MedicineManager : MonoBehaviour    //SH
 
     IEnumerator CookAnimationCoroutine()
     {
+        counterManager.ChangeTimeMultiplier(false);
         potAnimationManager.PotWorldAnimation(true);
         yield return new WaitForSeconds(0.8f);
         potAnimationManager.PotUIAnimation(true);
@@ -977,6 +978,7 @@ public class MedicineManager : MonoBehaviour    //SH
         CookFunction();
         potAnimationManager.PotUIAnimation(false);
         nowCookingAnimation = false;
+        counterManager.ChangeTimeMultiplier(true);
     }
 
     void CookFunction()

@@ -726,7 +726,9 @@ public class CounterDialogManager : MonoBehaviour
         }
         else
         {
-            if(nowWrapper.forceEnd == true)
+
+            nowTalking = false;
+            if (nowWrapper.forceEnd == true)
             {
                 counterManager.VisitorDisappear(false);
             }
@@ -749,7 +751,6 @@ public class CounterDialogManager : MonoBehaviour
                 }
             }
 
-            nowTalking = false;
 
             ruelliaText.transform.parent.gameObject.SetActive(false);
             visitorText.transform.parent.gameObject.SetActive(false);
@@ -763,6 +764,7 @@ public class CounterDialogManager : MonoBehaviour
     void DebugSkip()
     {
         nowDialogIndex = 0;
+        nowTalking = false;
         switch (nowState)
         {
             case CounterState.Start:
@@ -779,7 +781,7 @@ public class CounterDialogManager : MonoBehaviour
 
         }
         nowWrapper = null;
-        nowTalking = false;
+
 
         ruelliaText.transform.parent.gameObject.SetActive(false);
         visitorText.transform.parent.gameObject.SetActive(false);

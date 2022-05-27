@@ -97,9 +97,9 @@ public class CounterManager : MonoBehaviour //SH
     bool counterStarted = false;
 
     [SerializeField]
-    GameObject measureToolOpenButton;
+    GameObject counterRealButtonParent;
     [SerializeField]
-    GameObject symptomChartOpenButton;
+    GameObject counterFakeButtonParent;
     [SerializeField]
     GameObject specialVisitorPrefab;
 
@@ -123,10 +123,12 @@ public class CounterManager : MonoBehaviour //SH
 
     List<SpecialMedicineClass> specialMedicineDataList;
     int nowVisitorCount;
+    int timerMultiplier;
 
     void Start()
     {
         nowVisitor = null;
+        timerMultiplier = 1;
         gameManager = GameManager.singleton;
         sceneManager = SceneManager.inst;
         saveData = gameManager.saveData;
@@ -135,7 +137,7 @@ public class CounterManager : MonoBehaviour //SH
         measureToolArray = measureToolManager.measureToolArray;
         specialMedicineDataList = gameManager.specialMedicineDataWrapper.specialMedicineDataList;
         ownedMedicineList = new List<MedicineClass>();
-        for(int i = 0; i < saveData.owningMedicineList.Count; i++)
+        for (int i = 0; i < saveData.owningMedicineList.Count; i++)
         {
             ownedMedicineList.Add(medicineDataList[saveData.owningMedicineList[i].medicineIndex]);
         }
@@ -155,17 +157,17 @@ public class CounterManager : MonoBehaviour //SH
         symptomCheckArray = new int[6];
         symptomCheckedArray = new bool[6];
         symptomChartObject.SetActive(false);
-        measureToolOpenButton.SetActive(false);
-        symptomChartOpenButton.SetActive(false);
-       
+        
+        ToggleButtons(false);
+
         //기록안했을 떄가 -10임
-        for(int i = 0; i < symptomCheckArray.Length; i++)
+        for (int i = 0; i < symptomCheckArray.Length; i++)
         {
             symptomCheckArray[i] = 0;
             symptomCheckedArray[i] = false;
         }
         nowVisitorCount = 0;
-        
+
         //for(int i = 0; i < 4; i++)
         //{
         //    measureToolOriginPosArray[i] = measureToolIconArray[i].transform.position;
@@ -185,21 +187,34 @@ public class CounterManager : MonoBehaviour //SH
         //}
         counterStarted = false;
         //스태틱으로 만들어버려
-        RandomVisitorClass.SetStaticData(ownedMedicineList,gameManager.randomVisitorDiseaseBundle);
+        RandomVisitorClass.SetStaticData(ownedMedicineList, gameManager.randomVisitorDiseaseBundle);
         RandomVisitorDisease.SetStaticData(randomDiseasePrefab);
         TabletManager.inst.TabletOpenButtonActive(true, false);
         TimeTextChange();
     }
 
-    float timer = 0;
-    private void Update()
+    public void ChangeTimeMultiplier(bool one)
     {
-        timer += Time.deltaTime;
-        if (timer > 1)
+        if (one)
         {
-            if(counterStarted)
-                TimeChange(60);
-            timer = 0;
+            timerMultiplier = 1;
+        }
+        else
+        {
+            timerMultiplier = 10;
+        }
+    }
+
+
+    IEnumerator TimerCoroutine()
+    {
+        WaitForSeconds oneSec = new WaitForSeconds(0.5f);
+        while(counterDialogManager.nowTalking ==false)
+        {
+            yield return oneSec;
+                if (counterStarted)
+                    TimeChange(30 * timerMultiplier);
+
         }
     }
 
@@ -250,15 +265,22 @@ public class CounterManager : MonoBehaviour //SH
     //카운터 다이얼로그 매니저에서 불러옴.
     public void VisitorTalkEnd()
     {
-        symptomChartOpenButton.SetActive(true);
-        measureToolOpenButton.SetActive(true);
+        ToggleButtons(true);
+
+        //타이머 넣어야함
+        StartCoroutine(TimerCoroutine());
+    }
+
+    void ToggleButtons(bool active)
+    {
+        counterRealButtonParent.SetActive(active);
+        counterFakeButtonParent.SetActive(!active);
     }
 
     //카운터 다이얼로그 매니저에서 불러옴
     public void VisitorTalkStart()
     {
-        symptomChartOpenButton.SetActive(false);
-        measureToolOpenButton.SetActive(false);
+        ToggleButtons(false);
     }
 
     void SpawnSpecialVisitor(bool isSecond)
