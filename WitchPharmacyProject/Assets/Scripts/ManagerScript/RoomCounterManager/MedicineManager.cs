@@ -281,6 +281,7 @@ public class MedicineManager : MonoBehaviour    //SH
         //SpecialScrollAlign();
         //PropertyListButton(0);
         PropertyListMainButton(0);
+        PropertyListSubButton(1);
 
     }
 
