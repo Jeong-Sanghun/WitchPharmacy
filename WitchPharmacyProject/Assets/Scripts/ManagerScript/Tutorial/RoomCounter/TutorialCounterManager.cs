@@ -16,8 +16,6 @@ public class TutorialCounterManager : MonoBehaviour //SH
     TutorialMedicineManager medicineManager;
     [SerializeField]
     TutorialSymptomChartManager symptomChartManager;
-    [SerializeField]
-    BlurManager blurManager;
     //SymptomDialog symptomDialog;
     //List<int> ownedMedicineIndexList;
     List<MedicineClass> ownedMedicineList;

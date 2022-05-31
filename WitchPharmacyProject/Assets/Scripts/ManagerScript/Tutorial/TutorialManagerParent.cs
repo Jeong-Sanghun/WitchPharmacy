@@ -35,10 +35,13 @@ public class TutorialManagerParent : MonoBehaviour
     [SerializeField]
     GameObject[] routeButtonArray;
     [SerializeField]
-    protected Volume blurVolume;
-    [SerializeField]
     protected GameObject screenTouchCanvas;
-    
+    [SerializeField]
+    protected Transform shadowGlowParent;
+
+    protected Transform nowGlowingParent;
+    protected Transform originGlowParent;
+
 
 
 
@@ -470,9 +473,6 @@ public class TutorialManagerParent : MonoBehaviour
 
         List<Text> routeTextList = new List<Text>();
         isRouteButtonAble = false;
-
-
-        StartCoroutine(sceneManager.VolumeModule(blurVolume, true, 1));
         for (int i = 0; i < routeList.Count; i++)
         {
             GameObject txtObj = routeButtonArray[i].transform.GetChild(0).gameObject;
@@ -542,7 +542,6 @@ public class TutorialManagerParent : MonoBehaviour
         {
             routeButtonArray[i].SetActive(false);
         }
-        StartCoroutine(sceneManager.VolumeModule(blurVolume, false, 1));
         nowDialogIndex += routeDialog.routeList[index].jump-1;
         isRouting = false;
 
@@ -567,6 +566,24 @@ public class TutorialManagerParent : MonoBehaviour
         StartCoroutine(GlowCoroutine(sprite, param));
     }
 
+
+    protected void Glow(Image sprite,Transform shadowing, int param)
+    {
+        screenTouchCanvas.SetActive(false);
+        if(shadowing == null)
+        {
+            nowGlowingParent = null;
+            originGlowParent = null;
+        }
+        else
+        {
+            SetShadowGlow(shadowing);
+            ShadowGlowFade(true);
+        }
+        
+        StartCoroutine(GlowCoroutine(sprite, param));
+    }
+
     protected IEnumerator GlowCoroutine(SpriteRenderer sprite,int param)
     {
         float timer = -0.5f;
@@ -586,6 +603,10 @@ public class TutorialManagerParent : MonoBehaviour
                 one *= -1;
             }
             yield return null;
+        }
+        if (nowGlowingParent != null && originGlowParent != null)
+        {
+            ShadowGlowFade(false);
         }
         sprite.gameObject.SetActive(false);
 
@@ -608,6 +629,10 @@ public class TutorialManagerParent : MonoBehaviour
             }
             yield return null;
         }
+        if (nowGlowingParent != null && originGlowParent != null)
+        {
+            ShadowGlowFade(false);
+        }
         sprite.gameObject.SetActive(false);
 
     }
@@ -626,7 +651,41 @@ public class TutorialManagerParent : MonoBehaviour
             isGlowing[(int)nowGlow] = false;
             nowGlow = ActionKeyword.Null;
         }
-  
     }
+
+    protected void SetShadowGlow(Transform glowingTransform)
+    {
+        nowGlowingParent = glowingTransform;
+        originGlowParent = glowingTransform.parent;
+        glowingTransform.SetParent(shadowGlowParent);
+        
+    }
+
+    protected void BackToOriginGlow()
+    {
+        nowGlowingParent.SetParent(originGlowParent);
+        nowGlowingParent = null;
+        originGlowParent = null;
+    }
+
+    protected void ShadowGlowFade(bool active)
+    {
+        if (active)
+        {
+            shadowGlowParent.gameObject.SetActive(true);
+            StartCoroutine(sceneManager.FadeModule_Image(shadowGlowParent.gameObject, 0, 0.7f, 1, true));
+            
+
+        }
+        else
+        {
+            StartCoroutine(sceneManager.FadeModule_Image(shadowGlowParent.gameObject, 0.7f, 0, 1, false));
+            StartCoroutine(sceneManager.InvokerCoroutine(1, BackToOriginGlow));
+            
+        }
+        
+    }
+
+
 
 }

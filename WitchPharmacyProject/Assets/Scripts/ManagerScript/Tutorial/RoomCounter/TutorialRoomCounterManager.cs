@@ -14,6 +14,7 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     Image ruelliaBallonImage;
 
 
+
     bool isBallonActive;
 
 
@@ -27,8 +28,13 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     [SerializeField]
     Text ruelliaNameText;
 
+    
+
+    [SerializeField]
+    Transform visitorBallonGlowParent;
     [SerializeField]
     Image visitorBallonGlow;
+
     [SerializeField]
     Image bookGlow;
     [SerializeField]
@@ -242,7 +248,7 @@ public class TutorialRoomCounterManager : TutorialManagerParent
 
     void VisitorBallonGlow()
     {
-        Glow(visitorBallonGlow, (int)nowAction.parameter);
+        Glow(visitorBallonGlow,visitorBallonGlowParent, (int)nowAction.parameter);
         NextDialog();
     }
     void BookGlow()
