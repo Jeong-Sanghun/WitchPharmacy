@@ -16,6 +16,7 @@ public class TutorialSymptomBookManager : MonoBehaviour
     [SerializeField] Text prefabExplainText;
     [SerializeField] Image prefabImage;
     [SerializeField] Image prefabGlyphImage;
+    Transform effectIconGlowParent;
 
 
     List<SymptomBookBundle> bookBundleList;
@@ -111,6 +112,8 @@ public class TutorialSymptomBookManager : MonoBehaviour
         tutorialManager.isGlowing[(int)ActionKeyword.RightPageGlow] = true;
         pageBundleList[nowPageIndex].SetActive(false);
         pageBundleList[nowPageIndex + 1].SetActive(true);
+        effectIconGlowParent = pageBundleList[nowPageIndex + 1].transform.GetChild(1).GetChild(0).GetChild(3);
+        tutorialManager.SetEffectIconParent(effectIconGlowParent);
         nowPageIndex++;
     }
 

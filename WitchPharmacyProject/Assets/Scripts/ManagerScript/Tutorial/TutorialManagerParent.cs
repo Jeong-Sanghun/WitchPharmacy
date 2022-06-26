@@ -37,10 +37,18 @@ public class TutorialManagerParent : MonoBehaviour
     [SerializeField]
     protected GameObject screenTouchCanvas;
     [SerializeField]
-    protected Transform shadowGlowParent;
+    protected Transform shadowGlowOverlayImageParent;
+    protected Transform shadowGlowImageParent;
+    [SerializeField]
+    protected Transform shadowGlowWorldImageParent;
+    [SerializeField]
+    protected Transform shadowGlowSpriteRendererParent;
 
     protected Transform nowGlowingParent;
     protected Transform originGlowParent;
+    protected int originGlowParentSibling;
+    protected int originGlowSpriteRendererLayer;
+    protected int shadowGlowSpriteRendererLayer;
 
 
 
@@ -63,6 +71,9 @@ public class TutorialManagerParent : MonoBehaviour
     protected DialogType nowType;
     protected CharacterFeeling nowFeeling;
     protected ActionClass nowAction;
+
+    Coroutine shadowingCoroutine;
+    bool shadowingIntercepted;
 
 
     protected virtual void Start()
@@ -94,6 +105,8 @@ public class TutorialManagerParent : MonoBehaviour
         nowType = DialogType.Null;
         nowFeeling = CharacterFeeling.Null;
         nowGlow = ActionKeyword.Null;
+        shadowingIntercepted = false;
+        shadowGlowImageParent = shadowGlowOverlayImageParent;
 
 
         saveData = gameManager.saveData;
@@ -105,12 +118,8 @@ public class TutorialManagerParent : MonoBehaviour
         {
             isGlowing[i] = false;
         }
+        shadowGlowSpriteRendererLayer = shadowGlowSpriteRendererParent.GetComponent<SpriteRenderer>().sortingOrder;
 
-
-    }
-
-    protected virtual void Update()
-    {
 
     }
 
@@ -567,7 +576,7 @@ public class TutorialManagerParent : MonoBehaviour
     }
 
 
-    protected void Glow(Image sprite,Transform shadowing, int param)
+    protected void Glow(SpriteRenderer sprite,Transform shadowing, int param)
     {
         screenTouchCanvas.SetActive(false);
         if(shadowing == null)
@@ -577,12 +586,29 @@ public class TutorialManagerParent : MonoBehaviour
         }
         else
         {
-            SetShadowGlow(shadowing);
-            ShadowGlowFade(true);
+            SetShadowGlowSpriteRenderer(shadowing);
+            ShadowGlowFadeImage(true);
         }
         
         StartCoroutine(GlowCoroutine(sprite, param));
     }
+    protected void Glow(Image sprite, Transform shadowing, int param,bool isWorld = false)
+    {
+        screenTouchCanvas.SetActive(false);
+        if (shadowing == null)
+        {
+            nowGlowingParent = null;
+            originGlowParent = null;
+        }
+        else
+        {
+            SetShadowGlowImage(shadowing,isWorld);
+            ShadowGlowFadeImage(true);
+        }
+
+        StartCoroutine(GlowCoroutine(sprite, param));
+    }
+
 
     protected IEnumerator GlowCoroutine(SpriteRenderer sprite,int param)
     {
@@ -606,7 +632,7 @@ public class TutorialManagerParent : MonoBehaviour
         }
         if (nowGlowingParent != null && originGlowParent != null)
         {
-            ShadowGlowFade(false);
+            ShadowGlowFadeSpriteRenderer(false);
         }
         sprite.gameObject.SetActive(false);
 
@@ -631,7 +657,7 @@ public class TutorialManagerParent : MonoBehaviour
         }
         if (nowGlowingParent != null && originGlowParent != null)
         {
-            ShadowGlowFade(false);
+            ShadowGlowFadeImage(false);
         }
         sprite.gameObject.SetActive(false);
 
@@ -653,37 +679,112 @@ public class TutorialManagerParent : MonoBehaviour
         }
     }
 
-    protected void SetShadowGlow(Transform glowingTransform)
+    protected void SetShadowGlowImage(Transform glowingTransform, bool isWorld = false)
     {
+        if(nowGlowingParent != null)
+        {
+            BackToOriginGlowImage();
+            shadowingIntercepted = true;
+        }
         nowGlowingParent = glowingTransform;
         originGlowParent = glowingTransform.parent;
-        glowingTransform.SetParent(shadowGlowParent);
-        
+        originGlowParentSibling = glowingTransform.GetSiblingIndex();
+        if(isWorld == true)
+        {
+            shadowGlowImageParent = shadowGlowWorldImageParent;
+        }
+        else
+        {
+            shadowGlowImageParent = shadowGlowOverlayImageParent;
+        }
+        glowingTransform.SetParent(shadowGlowImageParent);
+
     }
 
-    protected void BackToOriginGlow()
+    protected void SetShadowGlowSpriteRenderer(Transform glowingTransform)
     {
+        if (nowGlowingParent != null)
+        {
+            BackToOriginGlowSpriteRenderer();
+            shadowingIntercepted = true;
+        }
+        SpriteRenderer glowSpriteRenderer = glowingTransform.GetComponent<SpriteRenderer>();
+        nowGlowingParent = glowingTransform;
+        originGlowParent = glowingTransform.parent;
+        originGlowSpriteRendererLayer = glowSpriteRenderer.sortingOrder;
+        glowSpriteRenderer.sortingOrder = shadowGlowSpriteRendererLayer + 1;
+        originGlowParentSibling = glowingTransform.GetSiblingIndex();
+        glowingTransform.SetParent(shadowGlowSpriteRendererParent);
+    }
+
+
+
+    protected void BackToOriginGlowImage()
+    {
+        if(shadowingIntercepted == true)
+        {
+            shadowingIntercepted = false;
+            return;
+        }
         nowGlowingParent.SetParent(originGlowParent);
+        nowGlowingParent.SetSiblingIndex(originGlowParentSibling);
+        shadowGlowImageParent.gameObject.SetActive(false);
+        nowGlowingParent = null;
+        originGlowParent = null;
+    }
+    protected void BackToOriginGlowSpriteRenderer()
+    {
+        if (shadowingIntercepted == true)
+        {
+            shadowingIntercepted = false;
+            return;
+        }
+        nowGlowingParent.SetParent(originGlowParent);
+        nowGlowingParent.SetSiblingIndex(originGlowParentSibling);
+        nowGlowingParent.GetComponent<SpriteRenderer>().sortingOrder = originGlowSpriteRendererLayer;
+        shadowGlowSpriteRendererParent.gameObject.SetActive(false);
         nowGlowingParent = null;
         originGlowParent = null;
     }
 
-    protected void ShadowGlowFade(bool active)
+    protected void ShadowGlowFadeImage(bool active)
     {
+        if (shadowingCoroutine != null)
+        {
+            StopCoroutine(shadowingCoroutine);
+        }
         if (active)
         {
-            shadowGlowParent.gameObject.SetActive(true);
-            StartCoroutine(sceneManager.FadeModule_Image(shadowGlowParent.gameObject, 0, 0.7f, 1, true));
-            
-
+            shadowGlowImageParent.gameObject.SetActive(true);
+            shadowingCoroutine=StartCoroutine(sceneManager.FadeModule_Image(shadowGlowImageParent.gameObject, 0, 0.7f, 1, true));
         }
         else
         {
-            StartCoroutine(sceneManager.FadeModule_Image(shadowGlowParent.gameObject, 0.7f, 0, 1, false));
-            StartCoroutine(sceneManager.InvokerCoroutine(1, BackToOriginGlow));
-            
+            shadowingCoroutine=StartCoroutine(sceneManager.FadeModule_Image(shadowGlowImageParent.gameObject, 0.7f, 0, 1, false));
+            StartCoroutine(sceneManager.InvokerCoroutine(1, BackToOriginGlowImage));
+
         }
-        
+
+    }
+
+    protected void ShadowGlowFadeSpriteRenderer(bool active)
+    {
+        if(shadowingCoroutine != null)
+        {
+            StopCoroutine(shadowingCoroutine);
+        }
+        if (active)
+        {
+            shadowGlowSpriteRendererParent.gameObject.SetActive(true);
+            shadowingCoroutine = StartCoroutine(sceneManager.FadeModule_Sprite(shadowGlowSpriteRendererParent.gameObject, 0, 0.7f, 1));
+        }
+        else
+        {
+            shadowingCoroutine = StartCoroutine(sceneManager.FadeModule_Sprite(shadowGlowSpriteRendererParent.gameObject, 0.7f, 0, 1));
+            StartCoroutine(sceneManager.InvokerCoroutine(1, BackToOriginGlowSpriteRenderer));
+
+        }
+
     }
 
 
