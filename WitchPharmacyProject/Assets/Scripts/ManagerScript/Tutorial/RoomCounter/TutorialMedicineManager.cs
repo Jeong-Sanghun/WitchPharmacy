@@ -45,6 +45,8 @@ public class TutorialMedicineManager : MonoBehaviour
     GameObject[] propertySubButtonLockArray;
     Button[] propertySubButtonComponentArray;
     [SerializeField]
+    GameObject fireButtonSelectedObject;
+    [SerializeField]
     GameObject propertySubListParent;
     [SerializeField]
     Transform propertyObjectParent;
@@ -236,12 +238,14 @@ public class TutorialMedicineManager : MonoBehaviour
                         desireItemIndex = index;
                         roomCounterManager.desireItemGlow = buttonClass.buttonObject.transform.
                             GetChild(6).GetComponent<Image>();
+                        roomCounterManager.desireItemGlowParent = buttonClass.buttonObject.transform;
                     }
                     else if(medicine.secondNumber == -2)
                     {
                         frostItemIndex = index;
                         roomCounterManager.frostItemGlow = buttonClass.buttonObject.transform.
                             GetChild(6).GetComponent<Image>();
+                        roomCounterManager.frostItemGlowParent = buttonClass.buttonObject.transform;
                     }
                     int delegateIndex = buttonIndex;
                     Button button = buttonClass.buttonObject.GetComponent<Button>();
@@ -282,7 +286,8 @@ public class TutorialMedicineManager : MonoBehaviour
 
         //SpecialScrollAlign();
         //PropertyListButton(0);
-        ArrangeMainButton(1);
+        ArrangeMainButton(0);
+        
 
     }
 
@@ -435,6 +440,7 @@ public class TutorialMedicineManager : MonoBehaviour
         }
         ArrangeMainButton(index);
         roomCounterManager.GlowNextDialog("FireIconGlow");
+        
 
 
     }
@@ -444,18 +450,19 @@ public class TutorialMedicineManager : MonoBehaviour
         int buttonQuantity = 0;
         if (isMainButtonOn[index] == true)
         {
-            //propertyMainButtonImageArray[index].gameObject.SetActive(false);
-            //propertySubButtonLockArray[index].SetActive(false);
-            //propertySubButtonComponentArray[index].interactable = false;
-            //propertySubListParent.SetActive(false);
-            //isMainButtonOn[index] = false;
-            //for (int i = 0; i < wholeMedicineButtonList.Count; i++)
-            //{
-            //    wholeMedicineButtonList[i].isActive = false;
-            //}
+            propertyMainButtonImageArray[index].gameObject.SetActive(false);
+            propertySubButtonLockArray[index].SetActive(false);
+            propertySubButtonComponentArray[index].interactable = false;
+            propertySubListParent.SetActive(false);
+            isMainButtonOn[index] = false;
+            for (int i = 0; i < wholeMedicineButtonList.Count; i++)
+            {
+                wholeMedicineButtonList[i].isActive = false;
+            }
         }
         else
         {
+            
             propertyMainButtonImageArray[index].gameObject.SetActive(true);
             propertySubListParent.SetActive(true);
             isMainButtonOn[index] = true;
@@ -722,7 +729,7 @@ public class TutorialMedicineManager : MonoBehaviour
             {
                 wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
                 wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
-                wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                wholeMedicineButtonList[nowButtonIndex].buttonBackground.color = new Color(1, 1, 1, 0.7f);
 
                 nowButtonIndex = -1;
             }
@@ -730,12 +737,12 @@ public class TutorialMedicineManager : MonoBehaviour
             {
                 wholeMedicineButtonList[index].propertyObject.SetActive(true);
                 wholeMedicineButtonList[index].medicineNameText.fontStyle = FontStyle.Bold;
-                wholeMedicineButtonList[index].buttonObject.GetComponent<Image>().color = Color.white;
+                wholeMedicineButtonList[index].buttonBackground.color = Color.white;
                 if (nowButtonIndex != -1)
                 {
                     wholeMedicineButtonList[nowButtonIndex].propertyObject.SetActive(false);
                     wholeMedicineButtonList[nowButtonIndex].medicineNameText.fontStyle = FontStyle.Normal;
-                    wholeMedicineButtonList[nowButtonIndex].buttonObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    wholeMedicineButtonList[nowButtonIndex].buttonBackground.color = new Color(1, 1, 1, 0.7f);
                 }
                 nowButtonIndex = index;
             }

@@ -186,7 +186,7 @@ public class TutorialTabletManager : TutorialManagerParent
     void TabletButtonGlow()
     {
         TextFrameToggle(false);
-        Glow(tabletButtonGlow, (int)nowAction.parameter);
+        Glow(tabletButtonGlow, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TabletButtonGlow;
         isGlowing[(int)ActionKeyword.TabletButtonGlow] = true;
     }
@@ -195,7 +195,7 @@ public class TutorialTabletManager : TutorialManagerParent
     {
         TextFrameToggle(false);
         screenTouchCanvas.SetActive(false);
-        Glow(cariButtonGlow, (int)nowAction.parameter);
+        Glow(cariButtonGlow, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.CariButtonGlow;
         isGlowing[(int)ActionKeyword.CariButtonGlow] = true;
     }
@@ -204,7 +204,7 @@ public class TutorialTabletManager : TutorialManagerParent
         TextFrameToggle(false);
         SetTreeterCariDialog();
         screenTouchCanvas.SetActive(false);
-        Glow(treeterButtonGlow, (int)nowAction.parameter);
+        Glow(treeterButtonGlow, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TreeterButtonGlow;
         isGlowing[(int)ActionKeyword.TreeterButtonGlow] = true;
     }
@@ -212,7 +212,7 @@ public class TutorialTabletManager : TutorialManagerParent
     {
         TextFrameToggle(false);
         screenTouchCanvas.SetActive(false);
-        Glow(treeterPostButtonGlow, (int)nowAction.parameter);
+        Glow(treeterPostButtonGlow, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TreeterPostButtonGlow;
         isGlowing[(int)ActionKeyword.TreeterPostButtonGlow] = true;
     }
@@ -220,7 +220,7 @@ public class TutorialTabletManager : TutorialManagerParent
     {
         TextFrameToggle(false);
         screenTouchCanvas.SetActive(false);
-        Glow(tabletExitButtonGlow, (int)nowAction.parameter);
+        Glow(tabletExitButtonGlow, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TabletExitButtonGlow;
         isGlowing[(int)ActionKeyword.TabletExitButtonGlow] = true;
     }

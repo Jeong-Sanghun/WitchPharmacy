@@ -70,10 +70,15 @@ public class TutorialDialog
         {
             action = new ActionClass();
             action.action = (ActionKeyword)Enum.Parse(typeof(ActionKeyword), actionKeyword);
-            action.parameter = 0;
+            action.parameterFloat = 0;
+            
             if(actionKeywordParameter != null)
             {
-                action.parameter = float.Parse(actionKeywordParameter);
+                if(!float.TryParse(actionKeywordParameter, out action.parameterFloat))
+                {
+                    action.parameterString = actionKeywordParameter;
+                }
+                
             }
         }
 

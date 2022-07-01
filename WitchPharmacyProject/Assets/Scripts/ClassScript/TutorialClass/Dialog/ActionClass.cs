@@ -18,7 +18,8 @@ public enum ActionKeyword
     TabletButtonGlow,CariButtonGlow,TreeterButtonGlow,
     TreeterPostButtonGlow,TabletExitButtonGlow,
 
-    WitchGraveMapiconGlow, WreckMapiconGlow
+    WitchGraveMapiconGlow, WreckMapiconGlow,
+    ImagePopup, ImageDown
 
 
 
@@ -29,7 +30,8 @@ public enum ActionKeyword
 public class ActionClass
 {
     public ActionKeyword action;
-    public float parameter;
+    public float parameterFloat;
+    public string parameterString;
 
     public ActionClass()
     {

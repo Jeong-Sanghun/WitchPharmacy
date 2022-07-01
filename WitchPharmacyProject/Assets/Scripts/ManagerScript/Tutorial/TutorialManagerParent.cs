@@ -26,6 +26,8 @@ public class TutorialManagerParent : MonoBehaviour
     [SerializeField]
     protected Image characterImage;
     [SerializeField]
+    protected Image popupSprite;
+    [SerializeField]
     protected Text dialogText;
     [SerializeField]
     protected Text dialogNameText;
@@ -43,9 +45,12 @@ public class TutorialManagerParent : MonoBehaviour
     protected Transform shadowGlowWorldImageParent;
     [SerializeField]
     protected Transform shadowGlowSpriteRendererParent;
+    [SerializeField]
+    protected Image[] overlayFadeImageArray;
 
     protected Transform nowGlowingParent;
     protected Transform originGlowParent;
+    protected List<SpriteRenderer> nowGlowingSpriteRendererList;
     protected int originGlowParentSibling;
     protected int originGlowSpriteRendererLayer;
     protected int shadowGlowSpriteRendererLayer;
@@ -74,6 +79,7 @@ public class TutorialManagerParent : MonoBehaviour
 
     Coroutine shadowingCoroutine;
     bool shadowingIntercepted;
+    bool isWorldCanvasFaded;
 
 
     protected virtual void Start()
@@ -107,6 +113,7 @@ public class TutorialManagerParent : MonoBehaviour
         nowGlow = ActionKeyword.Null;
         shadowingIntercepted = false;
         shadowGlowImageParent = shadowGlowOverlayImageParent;
+        isWorldCanvasFaded = false;
 
 
         saveData = gameManager.saveData;
@@ -321,7 +328,8 @@ public class TutorialManagerParent : MonoBehaviour
     protected virtual void OnActionKeyword()
     {
         bool stop = true;
-        if (nowAction.action == ActionKeyword.Jump || nowAction.action==ActionKeyword.GetCoin)
+        if (nowAction.action == ActionKeyword.Jump || nowAction.action==ActionKeyword.GetCoin || nowAction.action == ActionKeyword.ImagePopup
+            || nowAction.action == ActionKeyword.ImageDown)
         {
             stop = false;
         }
@@ -341,12 +349,18 @@ public class TutorialManagerParent : MonoBehaviour
         switch (nowAction.action)
         {
             case ActionKeyword.Delay:
-                Debug.Log(nowAction.parameter);
-                StartCoroutine(InvokerCoroutine(nowAction.parameter, NextDialog));
+                Debug.Log(nowAction.parameterFloat);
+                StartCoroutine(InvokerCoroutine(nowAction.parameterFloat, NextDialog));
                 break;
             case ActionKeyword.Jump:
-                Debug.Log(nowAction.parameter);
-                nowDialogIndex += (int)nowAction.parameter;
+                Debug.Log(nowAction.parameterFloat);
+                nowDialogIndex += (int)nowAction.parameterFloat;
+                break;
+            case ActionKeyword.ImagePopup:
+                SetPopup(nowAction.parameterString);
+                break;
+            case ActionKeyword.ImageDown:
+                DeactivatePopup();
                 break;
             case ActionKeyword.SceneEnd:
                 dialogEnd = false;
@@ -355,6 +369,22 @@ public class TutorialManagerParent : MonoBehaviour
                 break;
 
         }
+    }
+
+    void SetPopup(string fileName)
+    {
+        Sprite spr = Resources.Load<Sprite>("Popup/" + fileName);
+        popupSprite.color = new Color(1, 1, 1, 1);
+        popupSprite.sprite = spr;
+        popupSprite.GetComponent<UIFadeScriptModule>().StartingFadeIn(0.7f);// JH 22.05.16 팝업 일러스트 시작 페이드 효과
+        Vector3 v3 = (Vector3)popupSprite.gameObject.GetComponent<RectTransform>().anchoredPosition;// JH 22.05.16 
+        popupSprite.gameObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(0f, -30f); // JH 22.05.16
+        StartCoroutine(sceneManager.MoveModuleRect_Linear(popupSprite.gameObject, v3, 0.5f));// JH 22.05.16 시작 무빙 효과
+    }
+
+    void DeactivatePopup()
+    {
+        popupSprite.GetComponent<UIFadeScriptModule>().EndingFadeOut(0.5f);// JH 22.05.16 페이드아웃 효과
     }
 
 
@@ -579,6 +609,11 @@ public class TutorialManagerParent : MonoBehaviour
     protected void Glow(SpriteRenderer sprite,Transform shadowing, int param)
     {
         screenTouchCanvas.SetActive(false);
+        if(nowGlowingSpriteRendererList == null)
+        {
+            nowGlowingSpriteRendererList = new List<SpriteRenderer>();
+        }
+        nowGlowingSpriteRendererList.Add(sprite);
         if(shadowing == null)
         {
             nowGlowingParent = null;
@@ -587,7 +622,7 @@ public class TutorialManagerParent : MonoBehaviour
         else
         {
             SetShadowGlowSpriteRenderer(shadowing);
-            ShadowGlowFadeImage(true);
+            ShadowGlowFadeSpriteRenderer(true);
         }
         
         StartCoroutine(GlowCoroutine(sprite, param));
@@ -603,6 +638,7 @@ public class TutorialManagerParent : MonoBehaviour
         else
         {
             SetShadowGlowImage(shadowing,isWorld);
+            isWorldCanvasFaded = isWorld;
             ShadowGlowFadeImage(true);
         }
 
@@ -708,11 +744,25 @@ public class TutorialManagerParent : MonoBehaviour
             BackToOriginGlowSpriteRenderer();
             shadowingIntercepted = true;
         }
-        SpriteRenderer glowSpriteRenderer = glowingTransform.GetComponent<SpriteRenderer>();
+        //glowingTransform.GetComponent<SpriteRenderer>
+        SpriteRenderer tracingSpriteRenderer = null;
+        if (glowingTransform.TryGetComponent<SpriteRenderer>(out tracingSpriteRenderer))
+        {
+            nowGlowingSpriteRendererList.Add(tracingSpriteRenderer);
+        }
+        SpriteRenderer[] childSpriteArray = glowingTransform.GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < childSpriteArray.Length; i++)
+        {
+            nowGlowingSpriteRendererList.Add(childSpriteArray[i]);
+        }
+        
         nowGlowingParent = glowingTransform;
         originGlowParent = glowingTransform.parent;
-        originGlowSpriteRendererLayer = glowSpriteRenderer.sortingOrder;
-        glowSpriteRenderer.sortingOrder = shadowGlowSpriteRendererLayer + 1;
+        for(int i = 0; i < nowGlowingSpriteRendererList.Count; i++)
+        {
+            nowGlowingSpriteRendererList[i].sortingOrder = nowGlowingSpriteRendererList[i].sortingOrder + shadowGlowSpriteRendererLayer;
+        }
+        
         originGlowParentSibling = glowingTransform.GetSiblingIndex();
         glowingTransform.SetParent(shadowGlowSpriteRendererParent);
     }
@@ -741,10 +791,15 @@ public class TutorialManagerParent : MonoBehaviour
         }
         nowGlowingParent.SetParent(originGlowParent);
         nowGlowingParent.SetSiblingIndex(originGlowParentSibling);
-        nowGlowingParent.GetComponent<SpriteRenderer>().sortingOrder = originGlowSpriteRendererLayer;
+        for (int i = 0; i < nowGlowingSpriteRendererList.Count; i++)
+        {
+            nowGlowingSpriteRendererList[i].sortingOrder = nowGlowingSpriteRendererList[i].sortingOrder - shadowGlowSpriteRendererLayer;
+        }
+        
         shadowGlowSpriteRendererParent.gameObject.SetActive(false);
         nowGlowingParent = null;
         originGlowParent = null;
+        nowGlowingSpriteRendererList.Clear();
     }
 
     protected void ShadowGlowFadeImage(bool active)
@@ -757,11 +812,25 @@ public class TutorialManagerParent : MonoBehaviour
         {
             shadowGlowImageParent.gameObject.SetActive(true);
             shadowingCoroutine=StartCoroutine(sceneManager.FadeModule_Image(shadowGlowImageParent.gameObject, 0, 0.7f, 1, true));
+            if (isWorldCanvasFaded)
+            {
+                for(int i = 0; i < overlayFadeImageArray.Length; i++)
+                {
+                    StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0, 0.7f, 1, true));
+                }
+            }
         }
         else
         {
             shadowingCoroutine=StartCoroutine(sceneManager.FadeModule_Image(shadowGlowImageParent.gameObject, 0.7f, 0, 1, false));
             StartCoroutine(sceneManager.InvokerCoroutine(1, BackToOriginGlowImage));
+            if (isWorldCanvasFaded)
+            {
+                for (int i = 0; i < overlayFadeImageArray.Length; i++)
+                {
+                    StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0.7f, 0, 1, false));
+                }
+            }
 
         }
 
@@ -777,11 +846,23 @@ public class TutorialManagerParent : MonoBehaviour
         {
             shadowGlowSpriteRendererParent.gameObject.SetActive(true);
             shadowingCoroutine = StartCoroutine(sceneManager.FadeModule_Sprite(shadowGlowSpriteRendererParent.gameObject, 0, 0.7f, 1));
+            if (isWorldCanvasFaded)
+            {
+                for (int i = 0; i < overlayFadeImageArray.Length; i++)
+                {
+                    StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0, 0.7f, 1, true));
+                }
+            }
+
         }
         else
         {
             shadowingCoroutine = StartCoroutine(sceneManager.FadeModule_Sprite(shadowGlowSpriteRendererParent.gameObject, 0.7f, 0, 1));
             StartCoroutine(sceneManager.InvokerCoroutine(1, BackToOriginGlowSpriteRenderer));
+            for (int i = 0; i < overlayFadeImageArray.Length; i++)
+            {
+                StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0.7f, 0, 1, false));
+            }
 
         }
 

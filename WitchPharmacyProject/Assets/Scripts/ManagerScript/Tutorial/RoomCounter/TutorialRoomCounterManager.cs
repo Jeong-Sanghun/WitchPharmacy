@@ -88,7 +88,11 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     [HideInInspector]
     public Image frostItemGlow;
     [HideInInspector]
+    public Transform frostItemGlowParent;
+    [HideInInspector]
     public Image desireItemGlow;
+    [HideInInspector]
+    public Transform desireItemGlowParent;
 
     [SerializeField]
     Image fireIconGlow;
@@ -286,13 +290,13 @@ public class TutorialRoomCounterManager : TutorialManagerParent
 
     void VisitorBallonGlow()
     {
-        Glow(visitorBallonGlow,visitorBallonGlowParent, (int)nowAction.parameter);
+        Glow(visitorBallonGlow,visitorBallonGlowParent, (int)nowAction.parameterFloat);
         NextDialog();
     }
     void BookGlow()
     {
         TextFrameToggle(false);
-        Glow(bookGlow,bookGlowParent, (int)nowAction.parameter);
+        Glow(bookGlow,bookGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.BookGlow;
         isGlowing[(int)ActionKeyword.BookGlow] = true;
     }
@@ -300,14 +304,14 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     void RightPageGlow()
     {
         TextFrameToggle(false);
-        Glow(rightPageGlow,rightPageGlowParent, (int)nowAction.parameter);
+        Glow(rightPageGlow,rightPageGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.RightPageGlow;
         isGlowing[(int)ActionKeyword.RightPageGlow] = true;
     }
     void EffectIconGlow()
     {
         TextFrameToggle(false);
-        Glow(effectIconGlow,effectIconGlowParent, (int)nowAction.parameter);
+        Glow(effectIconGlow,effectIconGlowParent, (int)nowAction.parameterFloat);
         StartCoroutine(InvokerCoroutine(2, NextDialog));
     }
 
@@ -320,35 +324,35 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     void ExitGlow()
     {
         TextFrameToggle(false);
-        Glow(exitGlow,exitGlowParent, (int)nowAction.parameter);
+        Glow(exitGlow,exitGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.ExitGlow;
         isGlowing[(int)ActionKeyword.ExitGlow] = true;
     }
     void SymptomChartGlow()
     {
         TextFrameToggle(false);
-        Glow(symptomChartGlow,symptomChartGlowParent, (int)nowAction.parameter);
+        Glow(symptomChartGlow,symptomChartGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.CounterSymptomChartGlow;
         isGlowing[(int)ActionKeyword.CounterSymptomChartGlow] = true;
     }
     void WaterPlusGlow()
     {
         TextFrameToggle(false);
-        Glow(waterPlusGlow,waterPlusGlowParent, (int)nowAction.parameter);
+        Glow(waterPlusGlow,waterPlusGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.WaterPlusGlow;
         isGlowing[(int)ActionKeyword.WaterPlusGlow] = true;
     }
     void CounterChartExitButtonGlow()
     {
         TextFrameToggle(false);
-        Glow(counterChartExitButtonGlow,counterChartExitButtonGlowParent, (int)nowAction.parameter);
+        Glow(counterChartExitButtonGlow,counterChartExitButtonGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.CounterChartExitButtonGlow;
         isGlowing[(int)ActionKeyword.CounterChartExitButtonGlow] = true;
     }
     void ToRoomButtonGlow()
     {
         TextFrameToggle(false);
-        Glow(toRoomButtonGlow,toRoomButtonGlowParent, (int)nowAction.parameter);
+        Glow(toRoomButtonGlow,toRoomButtonGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.ToRoomButtonGlow;
         isGlowing[(int)ActionKeyword.ToRoomButtonGlow] = true;
         BallonActiveFalse();
@@ -356,14 +360,14 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     void RoomSymptomChartGlow()
     {
         TextFrameToggle(false);
-        Glow(roomSymptomChartGlow,roomSymptomChartGlowParent, (int)nowAction.parameter,true);
+        Glow(roomSymptomChartGlow,roomSymptomChartGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.RoomSymptomChartGlow;
         isGlowing[(int)ActionKeyword.RoomSymptomChartGlow] = true;
     }
     void TrayGlow()
     {
         TextFrameToggle(false);
-        Glow(trayGlow,trayGlowParent, (int)nowAction.parameter);
+        Glow(trayGlow,trayGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TrayGlow;
         isGlowing[(int)ActionKeyword.TrayGlow] = true;
     }
@@ -371,7 +375,7 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     void ItemForceChoose()
     {
         TextFrameToggle(false);
-        Glow(desireItemGlow, (int)nowAction.parameter);
+        Glow(desireItemGlow,desireItemGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.ItemForceChoose;
         isGlowing[(int)ActionKeyword.ItemForceChoose] = true;
     }
@@ -379,41 +383,41 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     void FireIconGlow()
     {
         TextFrameToggle(false);
-        Glow(fireIconGlow, (int)nowAction.parameter);
+        Glow(fireIconGlow,fireIconGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.FireIconGlow;
         isGlowing[(int)ActionKeyword.FireIconGlow] = true;
     }
     void WaterSubIconGlow()
     {
         TextFrameToggle(false);
-        Glow(waterIconGlow, (int)nowAction.parameter);
+        Glow(waterIconGlow,waterIconGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.WaterSubIconGlow;
         isGlowing[(int)ActionKeyword.WaterSubIconGlow] = true;
     }
     void AddDesireGlow()
     {
         TextFrameToggle(false);
-        Glow(desireItemGlow, (int)nowAction.parameter);
+        Glow(desireItemGlow,desireItemGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.AddDesireGlow;
         isGlowing[(int)ActionKeyword.AddDesireGlow] = true;
     }
     void AddFrostGlow()
     {
         TextFrameToggle(false);
-        Glow(desireItemGlow, (int)nowAction.parameter);
+        Glow(frostItemGlow,frostItemGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.AddFrostGlow;
         isGlowing[(int)ActionKeyword.AddFrostGlow] = true;
     }
     void CookButtonClick()
     {
         TextFrameToggle(false);
-        Glow(potGlow,potGlowParent, (int)nowAction.parameter,true);
+        Glow(potGlow,potGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.CookButtonClick;
         isGlowing[(int)ActionKeyword.CookButtonClick] = true;
     }
     void GetCoin()
     {
-        counterManager.CoinGain((int)nowAction.parameter);
+        counterManager.CoinGain((int)nowAction.parameterFloat);
     }
 
 }

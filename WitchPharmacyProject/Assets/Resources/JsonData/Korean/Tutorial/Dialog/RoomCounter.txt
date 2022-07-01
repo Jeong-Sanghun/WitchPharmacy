@@ -172,12 +172,34 @@
         {
             "typeString": "Dialog",
             "characterString": "Cari",
+            "feelingString": "grin",
+            "actionKeyword": "FireIconGlow",
+            "actionKeywordParameter": "1",
+            "dialog": "먼저 인벤토리에서 불속성 아이콘을 클릭해서,\n불속성 약재들을 확인해볼까요?"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "WaterSubIconGlow",
+            "actionKeywordParameter": "1",
+            "dialog": "이제 인벤토리에는 주요 속성이 불속성인 약재만 나타납니다!\n이제 보조속성으로 물속성을 선택해봅시다."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "dialog": "잘하셨습니다!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
             "dialog": "약재들은 각각 두 가지 속성을 가지고 있어요. \n메마른 열망 약재를 한 번 확인해볼까요?"
         },
         {
             "typeString": "Dialog",
             "characterString": "Cari",
             "actionKeyword": "ItemForceChoose",
+            "actionKeywordParameter": "1",
             "dialog": "메마른 열망은 물- 불++속성을 가지고 있는걸 확인할 수 있어요.\n물속성을 1만큼 줄이고, 불 속성을 2 만큼 늘린다는 뜻이에요."
         },
         {
@@ -232,30 +254,15 @@
         {
             "typeString": "Dialog",
             "characterString": "Cari",
-            "feelingString": "grin",
-            "actionKeyword": "FireIconGlow",
-            "actionKeywordParameter": "1",
-            "dialog": "인벤토리에서 불속성 아이콘을 클릭해서,\n불속성 약재들을 확인해볼까요?"
-        },
-        {
-            "typeString": "Dialog",
-            "characterString": "Cari",
-            "feelingString": "talk",
-            "actionKeyword": "WaterSubIconGlow",
-            "actionKeywordParameter": "1",
-            "dialog": "이제 인벤토리에는 주요 속성이 불속성인 약재만 나타납니다!\n이제 보조속성으로 물속성을 선택해봅시다."
-        },
-        {
-            "typeString": "Dialog",
-            "characterString": "Cari",
             "actionKeyword": "AddDesireGlow",
             "actionKeywordParameter": "1",
-            "dialog": "자 이제 메마른 열망 약재가 보이죠?\n약재를 드래그하거나 더블클릭해서 가마솥에 넣어봅시다."
+            "dialog": "우선 메마른 열망 약재를 드래그해서 가마솥에 넣어봅시다."
         },
         {
             "typeString": "Dialog",
             "characterString": "Cari",
             "actionKeyword": "AddFrostGlow",
+            "actionKeywordParameter": "1",
             "dialog": "이제 물- 불--속성을 가진 사막의 서리 약재를 넣어봐요!"
         },
         {
@@ -268,9 +275,36 @@
         {
             "typeString": "Dialog",
             "characterString": "Cari",
+            "dialog": "약이 완성되었습니다!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "surprised",
+            "actionKeyword": "ImagePopup",
+            "actionKeywordParameter": "roomCounterTutorial",
+            "dialog": "아 참!! 약재를 잘못 넣었다면 솥에 들어간 약재나 완성된 약을 버릴 수도 있어요."
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "dialog": "가마솥 위의 약이나 약재를 인벤토리로 드래그하면 폐기가 가능해요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "talk",
+            "actionKeyword": "ImageDown",
+            "dialog": "단, 약재값은 환불되지 않으니 주의하세요!"
+        },
+        {
+            "typeString": "Dialog",
+            "characterString": "Cari",
+            "feelingString": "hugesmile",
             "actionKeyword": "TrayGlow",
             "actionKeywordParameter": "1",
-            "dialog": "약이 완성되었습니다!\n트레이에 약을 드래그해서 카운터로 옮길 수 있어요!"
+            "dialog": "그럼 이제 트레이에 약을 드래그해서 카운터로 옮겨봐요!"
         },
         {
             "actionKeyword": "Delay",
@@ -279,7 +313,7 @@
         {
             "typeString": "VisitorDialog",
             "characterString": "Ruellia",
-            "dialog": "여기요."
+            "dialog": "약 다 완성됐어요."
         },
         {
             "typeString": "VisitorDialog",
@@ -332,11 +366,6 @@
             "typeString": "VisitorDialog",
             "characterString": "Anderson",
             "dialog": "대신 구린 약 주는 날엔 합의금 제대로 받아낼 테니 그리 알고!"
-        },
-        {
-            "typeString": "VisitorDialog",
-            "characterString": "Ruellia",
-            "dialog": "가,감사합니-"
         },
         {
             "typeString": "Dialog",
