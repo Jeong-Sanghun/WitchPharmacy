@@ -97,7 +97,7 @@ public class StoryParser
         gameData.bundleName = bundleName;
 
         builder = new StringBuilder();
-        StoryEffect nowMode = StoryEffect.Null;
+        StoryEffect nowMode = StoryEffect.Start;
         VisitorDialogWrapper nowWrapper = null;
         List<VisitorDialogWrapper> nowWrapperList = gameData.startWrapperList;
         string beforeName = null;
@@ -157,7 +157,7 @@ public class StoryParser
                     //}
                     else if (modeStr.Contains("forceEnd"))
                     {
-                        nowMode = StoryEffect.Null;
+                        nowMode = StoryEffect.End;
                         nowWrapper.forceEnd = true;
                     }
                     else if (modeStr.Contains("giveCoin"))
@@ -182,7 +182,7 @@ public class StoryParser
                     }
                     else if (modeStr.Contains("right"))
                     {
-                        nowMode = StoryEffect.RightMedicine;
+                        nowMode = StoryEffect.Start;
                         beforeName = nowWrapper.characterName;
                         beforeFeeling = nowWrapper.characterFeeling;
                         nowWrapper = new VisitorDialogWrapper();
@@ -193,7 +193,7 @@ public class StoryParser
                     }
                     else if (modeStr.Contains("wrong"))
                     {
-                        nowMode = StoryEffect.RightMedicine;
+                        nowMode = StoryEffect.Start;
                         nowWrapper = new VisitorDialogWrapper();
                         nowWrapper.characterName = beforeName;
                         nowWrapper.characterFeeling = beforeFeeling;
@@ -202,7 +202,7 @@ public class StoryParser
                     }
                     else if (modeStr.Contains("skip"))
                     {
-                        nowMode = StoryEffect.SkipVisitor;
+                        nowMode = StoryEffect.Start;
                         nowWrapper = new VisitorDialogWrapper();
                         nowWrapper.characterName = beforeName;
                         nowWrapper.characterFeeling = beforeFeeling;
@@ -284,6 +284,7 @@ public class StoryParser
                     {
                         case StoryEffect.BundleName:
                             gameData.bundleName = builder.ToString();
+                            nowMode = StoryEffect.Start;
                             break;
                         case StoryEffect.Switch:
                             nowMode = StoryEffect.DialogCharacterName;
@@ -322,18 +323,13 @@ public class StoryParser
                             nowMode = StoryEffect.Switch;
                             //nowMode = ParseMode.DialogCharacterName;
                             break;
-                        //여기 파스모드 컷씬 이펙트랑 백그라운드 이펙트는 하나마나 의미없어서..
-                        case StoryEffect.CutScene:
-                        case StoryEffect.BackGroundEffect:
-                            nowMode = StoryEffect.Null;
-                            break;
                         case StoryEffect.CoinNumber:
-                            nowMode = StoryEffect.Null;
+                            nowMode = StoryEffect.Start;
                             string num = builder.ToString();
                             nowWrapper.coin = int.Parse(num);
                             break;
                         case StoryEffect.SymptomNumber:
-                            nowMode = StoryEffect.Null;
+                            nowMode = StoryEffect.Start;
                             if (nowSymptomIndex >= gameData.symptomNumberArray.Length)
                             {
                                 break;
@@ -352,17 +348,17 @@ public class StoryParser
                             nowSymptomIndex++;
                             break;
                         case StoryEffect.DiseaseName:
-                            nowMode = StoryEffect.Null;
+                            nowMode = StoryEffect.Start;
                             string disease = builder.ToString();
                             gameData.diseaseNameList.Add(disease);
                             break;
                         case StoryEffect.VisitorSetNumber:
-                            nowMode = StoryEffect.Null;
+                            nowMode = StoryEffect.Start;
                             gameData.oddVisitorSetArray[nowVisitorSetIndex] = int.Parse(builder.ToString());
                             nowVisitorSetIndex = 0;
                             break;
                         case StoryEffect.NextRegionName:
-                            nowMode = StoryEffect.Null;
+                            nowMode = StoryEffect.Start;
                             gameData.storyRegion = (StoryRegion)Enum.Parse(typeof(StoryRegion), builder.ToString());
                             break;
                         default:

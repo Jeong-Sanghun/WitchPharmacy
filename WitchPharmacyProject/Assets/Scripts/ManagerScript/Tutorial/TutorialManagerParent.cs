@@ -125,7 +125,11 @@ public class TutorialManagerParent : MonoBehaviour
         {
             isGlowing[i] = false;
         }
-        shadowGlowSpriteRendererLayer = shadowGlowSpriteRendererParent.GetComponent<SpriteRenderer>().sortingOrder;
+        if(shadowGlowSpriteRendererParent != null)
+        {
+            shadowGlowSpriteRendererLayer = shadowGlowSpriteRendererParent.GetComponent<SpriteRenderer>().sortingOrder;
+        }
+        
 
 
     }
@@ -606,7 +610,7 @@ public class TutorialManagerParent : MonoBehaviour
     }
 
 
-    protected void Glow(SpriteRenderer sprite,Transform shadowing, int param)
+    protected void Glow(SpriteRenderer sprite,Transform shadowing, int param,bool immediate =false)
     {
         screenTouchCanvas.SetActive(false);
         if(nowGlowingSpriteRendererList == null)
@@ -625,9 +629,9 @@ public class TutorialManagerParent : MonoBehaviour
             ShadowGlowFadeSpriteRenderer(true);
         }
         
-        StartCoroutine(GlowCoroutine(sprite, param));
+        StartCoroutine(GlowCoroutine(sprite, param,immediate));
     }
-    protected void Glow(Image sprite, Transform shadowing, int param,bool isWorld = false)
+    protected void Glow(Image sprite, Transform shadowing, int param,bool isWorld = false,bool immedieate =false)
     {
         screenTouchCanvas.SetActive(false);
         if (shadowing == null)
@@ -642,11 +646,11 @@ public class TutorialManagerParent : MonoBehaviour
             ShadowGlowFadeImage(true);
         }
 
-        StartCoroutine(GlowCoroutine(sprite, param));
+        StartCoroutine(GlowCoroutine(sprite, param,immedieate));
     }
 
 
-    protected IEnumerator GlowCoroutine(SpriteRenderer sprite,int param)
+    protected IEnumerator GlowCoroutine(SpriteRenderer sprite,int param,bool immediate = false)
     {
         float timer = -0.5f;
         int one = 1;
@@ -666,14 +670,14 @@ public class TutorialManagerParent : MonoBehaviour
             }
             yield return null;
         }
-        if (nowGlowingParent != null && originGlowParent != null)
+        if (nowGlowingParent != null)
         {
-            ShadowGlowFadeSpriteRenderer(false);
+            ShadowGlowFadeSpriteRenderer(false,immediate);
         }
         sprite.gameObject.SetActive(false);
 
     }
-    protected IEnumerator GlowCoroutine(Image sprite,int param)
+    protected IEnumerator GlowCoroutine(Image sprite,int param,bool immediate = false)
     {
         float timer = -0.5f;
         int one = 1;
@@ -693,7 +697,7 @@ public class TutorialManagerParent : MonoBehaviour
         }
         if (nowGlowingParent != null && originGlowParent != null)
         {
-            ShadowGlowFadeImage(false);
+            ShadowGlowFadeImage(false,immediate);
         }
         sprite.gameObject.SetActive(false);
 
@@ -802,7 +806,7 @@ public class TutorialManagerParent : MonoBehaviour
         nowGlowingSpriteRendererList.Clear();
     }
 
-    protected void ShadowGlowFadeImage(bool active)
+    protected void ShadowGlowFadeImage(bool active,bool immediate = false)
     {
         if (shadowingCoroutine != null)
         {
@@ -816,7 +820,15 @@ public class TutorialManagerParent : MonoBehaviour
             {
                 for(int i = 0; i < overlayFadeImageArray.Length; i++)
                 {
-                    StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0, 0.7f, 1, true));
+                    if(immediate == true)
+                    {
+                        overlayFadeImageArray[i].color = new Color(1, 1, 1, 0.7f);
+                    }
+                    else
+                    {
+                        StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0, 0.7f, 1, true));
+                    }
+                    
                 }
             }
         }
@@ -828,7 +840,15 @@ public class TutorialManagerParent : MonoBehaviour
             {
                 for (int i = 0; i < overlayFadeImageArray.Length; i++)
                 {
-                    StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0.7f, 0, 1, false));
+                    if (immediate == true)
+                    {
+                        overlayFadeImageArray[i].color = new Color(1, 1, 1, 0);
+                    }
+                    else
+                    {
+                        StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0.7f, 0, 1, false));
+                    }
+                    
                 }
             }
 
@@ -836,7 +856,7 @@ public class TutorialManagerParent : MonoBehaviour
 
     }
 
-    protected void ShadowGlowFadeSpriteRenderer(bool active)
+    protected void ShadowGlowFadeSpriteRenderer(bool active,bool immediate = false)
     {
         if(shadowingCoroutine != null)
         {
@@ -850,18 +870,37 @@ public class TutorialManagerParent : MonoBehaviour
             {
                 for (int i = 0; i < overlayFadeImageArray.Length; i++)
                 {
-                    StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0, 0.7f, 1, true));
+                    if (immediate == true)
+                    {
+                        overlayFadeImageArray[i].gameObject.SetActive(true);
+                        overlayFadeImageArray[i].color = new Color(0, 0, 0, 0.7f);
+                    }
+                    else
+                    {
+                        StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0, 0.7f, 1, true));
+                    }
+                    
+
                 }
             }
 
         }
         else
         {
+            Debug.Log("ShadowGlowFadeSpriteRenderer");
             shadowingCoroutine = StartCoroutine(sceneManager.FadeModule_Sprite(shadowGlowSpriteRendererParent.gameObject, 0.7f, 0, 1));
             StartCoroutine(sceneManager.InvokerCoroutine(1, BackToOriginGlowSpriteRenderer));
             for (int i = 0; i < overlayFadeImageArray.Length; i++)
             {
-                StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0.7f, 0, 1, false));
+                if (immediate == true)
+                {
+                    overlayFadeImageArray[i].color = new Color(0, 0, 0, 0);
+                    overlayFadeImageArray[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    StartCoroutine(sceneManager.FadeModule_Image(overlayFadeImageArray[i].gameObject, 0.7f, 0, 1, false));
+                }
             }
 
         }

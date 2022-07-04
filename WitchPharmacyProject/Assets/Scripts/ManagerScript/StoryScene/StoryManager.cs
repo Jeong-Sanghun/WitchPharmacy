@@ -414,6 +414,7 @@ public class StoryManager : MonoBehaviour
                 // popupSprite.sprite = null; // JH 22.05.16
                 //popupSprite.color = new Color(1, 1, 1, 0); // JH 22.05.16
                 popupSprite.GetComponent<UIFadeScriptModule>().EndingFadeOut(0.5f);// JH 22.05.16 페이드아웃 효과
+                StartCoroutine(sceneManager.FadeModule_Image(fadeObject, 0.8f, 0, 0.7f));
             }
             else
             {
@@ -424,6 +425,9 @@ public class StoryManager : MonoBehaviour
                 Vector3 v3 = (Vector3)popupSprite.gameObject.GetComponent<RectTransform>().anchoredPosition;// JH 22.05.16 
                 popupSprite.gameObject.GetComponent<RectTransform>().anchoredPosition += new Vector2(0f, -30f); // JH 22.05.16
                 StartCoroutine(sceneManager.MoveModuleRect_Linear(popupSprite.gameObject, v3, 0.5f));// JH 22.05.16 시작 무빙 효과
+                immediateNext = false;
+                StartCoroutine(DelayActionCoroutine(0.7f, NextDialog));
+                StartCoroutine(sceneManager.FadeModule_Image(fadeObject, 0, 0.8f, 0.7f));
             }
         }
         else if (nowDialog.effect.Contains("route"))

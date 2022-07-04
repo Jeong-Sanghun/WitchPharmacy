@@ -15,7 +15,8 @@ public class TabletDocumentManager : MonoBehaviour
     int nowFolderButtonIndex;
     int nowOpenedFolderIndex;
     int nowOpenedDocumentIndex;
-    GameObject nowOpenedDocumentCanvas;
+    //GameObject nowOpenedDocumentCanvas;
+    DocumentButtonClass nowOpenedDocument;
 
     [SerializeField]
     GameObject wholeFolderParentObject;
@@ -186,9 +187,9 @@ public class TabletDocumentManager : MonoBehaviour
         {
             wholeFolderButtonList[nowOpenedFolderIndex].folderCanvasObject.SetActive(false);
         }
-        if (nowOpenedDocumentCanvas != null)
+        if (nowOpenedDocument != null)
         {
-            nowOpenedDocumentCanvas.SetActive(false);
+            nowOpenedDocument.ActiveDocument(false);
         }
     }
 
@@ -205,24 +206,25 @@ public class TabletDocumentManager : MonoBehaviour
         if(document.isOpened == false)
         {
             GameObject canvas = Instantiate(documentParentPrefab, wholeFolderParentObject.transform);
-            //Tlqkf zz
-            
             document.SetupDocument(canvas,gameManager.languagePack,highlightButtonPrefab,imageOpenCanvasPrefab);
             directoryCanvas.SetAsLastSibling();
         }
-        nowOpenedDocumentCanvas = document.documentCanvas;
-        nowOpenedDocumentCanvas.SetActive(true);
+        nowOpenedDocument = document;
+        document.ActiveDocument(true);
         UpdateDirectory();
 
     }
     public void OnDocumentBackButton()
     {
-        if(nowOpenedDocumentCanvas== null)
+        if(nowOpenedDocument == null)
         {
             return;
         }
+
+        wholeFolderButtonList[nowOpenedFolderIndex].folderCanvasObject.SetActive(true);
+
         nowOpenedDocumentIndex = -1;
-        nowOpenedDocumentCanvas.SetActive(false);
+        nowOpenedDocument.ActiveDocument(false);
         UpdateDirectory();
     }
 
@@ -232,6 +234,7 @@ public class TabletDocumentManager : MonoBehaviour
         {
             TabletManager.inst.ButtonHighlightActive(TabletComponent.Document, false);
         }
+        TabletManager.inst.MenuCanvasActive(!active);
         wholeFolderParentObject.SetActive(active);
     }
 

@@ -30,14 +30,28 @@ public class TutorialTabletManager : TutorialManagerParent
     [SerializeField]
     Image tabletButtonGlow;
     [SerializeField]
+    Transform tabletButtonGlowParent;
+
+    [SerializeField]
     Image cariButtonGlow;
+    [SerializeField]
+    Transform cariButtonGlowParent;
+
     [SerializeField]
     Image treeterButtonGlow;
     [SerializeField]
+    Transform treeterButtonGlowParent;
+
+    [SerializeField]
     Image treeterPostButtonGlow;
     [SerializeField]
+    Transform treeterPostButtonGlowParent;
+
+    [SerializeField]
     Image tabletExitButtonGlow;
-    
+    [SerializeField]
+    Transform tabletExitButtonGlowParent;
+
 
     // Start is called before the first frame update
 
@@ -186,7 +200,7 @@ public class TutorialTabletManager : TutorialManagerParent
     void TabletButtonGlow()
     {
         TextFrameToggle(false);
-        Glow(tabletButtonGlow, (int)nowAction.parameterFloat);
+        Glow(tabletButtonGlow,tabletButtonGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TabletButtonGlow;
         isGlowing[(int)ActionKeyword.TabletButtonGlow] = true;
     }
@@ -195,7 +209,7 @@ public class TutorialTabletManager : TutorialManagerParent
     {
         TextFrameToggle(false);
         screenTouchCanvas.SetActive(false);
-        Glow(cariButtonGlow, (int)nowAction.parameterFloat);
+        Glow(cariButtonGlow,cariButtonGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.CariButtonGlow;
         isGlowing[(int)ActionKeyword.CariButtonGlow] = true;
     }
@@ -204,7 +218,7 @@ public class TutorialTabletManager : TutorialManagerParent
         TextFrameToggle(false);
         SetTreeterCariDialog();
         screenTouchCanvas.SetActive(false);
-        Glow(treeterButtonGlow, (int)nowAction.parameterFloat);
+        Glow(treeterButtonGlow,treeterButtonGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TreeterButtonGlow;
         isGlowing[(int)ActionKeyword.TreeterButtonGlow] = true;
     }
@@ -212,7 +226,7 @@ public class TutorialTabletManager : TutorialManagerParent
     {
         TextFrameToggle(false);
         screenTouchCanvas.SetActive(false);
-        Glow(treeterPostButtonGlow, (int)nowAction.parameterFloat);
+        Glow(treeterPostButtonGlow,treeterPostButtonGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TreeterPostButtonGlow;
         isGlowing[(int)ActionKeyword.TreeterPostButtonGlow] = true;
     }
@@ -220,7 +234,7 @@ public class TutorialTabletManager : TutorialManagerParent
     {
         TextFrameToggle(false);
         screenTouchCanvas.SetActive(false);
-        Glow(tabletExitButtonGlow, (int)nowAction.parameterFloat);
+        Glow(tabletExitButtonGlow,tabletExitButtonGlowParent, (int)nowAction.parameterFloat);
         nowGlow = ActionKeyword.TabletExitButtonGlow;
         isGlowing[(int)ActionKeyword.TabletExitButtonGlow] = true;
     }

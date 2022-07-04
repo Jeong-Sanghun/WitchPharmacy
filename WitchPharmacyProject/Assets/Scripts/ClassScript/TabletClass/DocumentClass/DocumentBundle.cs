@@ -11,6 +11,7 @@ public class DocumentBundle
     public string name;
     public string document;
     public string cariTalk;
+    public string cariFeeling;
     Sprite documentSprite;
 
     public DocumentBundle()

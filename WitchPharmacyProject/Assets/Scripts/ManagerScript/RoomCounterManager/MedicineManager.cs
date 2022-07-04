@@ -692,7 +692,7 @@ public class MedicineManager : MonoBehaviour    //SH
         }
         else
         {
-            propertySubButtonImageArray[index].color = Color.red;
+            propertySubButtonImageArray[index].color = new Color(1, 1, 1, 0.4f);
 
             isSubButtonOn[index] = true;
             for (int i = 0; i < isSubButtonOn.Length; i++)

@@ -33,6 +33,8 @@ public class TabletManager : MonoBehaviour
     GameObject[] buttonHighlightObject;
     [SerializeField]
     GameObject tabletHighlightObject;
+    [SerializeField]
+    GameObject menuCanvas;
     bool originActive;
 
     // Start is called before the first frame update
@@ -82,6 +84,11 @@ public class TabletManager : MonoBehaviour
                 tabletHighlightObject.SetActive(true);
             }
         }
+    }
+
+    public void MenuCanvasActive(bool active)
+    {
+        menuCanvas.SetActive(active);
     }
 
     public void TabletOpenButtonActive(bool active,bool loading)

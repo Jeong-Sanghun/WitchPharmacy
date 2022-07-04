@@ -2,7 +2,7 @@
     "saveDataTimeList": [
         {
             "day": 1,
-            "sceneIndex": 4
+            "sceneIndex": 6
         },
         {
             "day": 1,
@@ -13,8 +13,8 @@
             "sceneIndex": 8
         },
         {
-            "day": -1,
-            "sceneIndex": 0
+            "day": 1,
+            "sceneIndex": 6
         }
     ],
     "nowLanguageDirectory": "Korean/"

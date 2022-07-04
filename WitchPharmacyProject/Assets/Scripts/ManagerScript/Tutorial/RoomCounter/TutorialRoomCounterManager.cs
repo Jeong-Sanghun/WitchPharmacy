@@ -367,7 +367,7 @@ public class TutorialRoomCounterManager : TutorialManagerParent
     void TrayGlow()
     {
         TextFrameToggle(false);
-        Glow(trayGlow,trayGlowParent, (int)nowAction.parameterFloat);
+        Glow(trayGlow,trayGlowParent, (int)nowAction.parameterFloat,true);
         nowGlow = ActionKeyword.TrayGlow;
         isGlowing[(int)ActionKeyword.TrayGlow] = true;
     }

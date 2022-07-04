@@ -62,6 +62,19 @@ public class TabletCariManager : MonoBehaviour
         wholeParent.SetActive(active);
     }
 
+    public void DocumentCariTalk(string dialog)
+    {
+        maximizeTalkText.text = dialog;
+        nowTabletType = TabletType.Document;
+        MaximizeTalk();
+        SetDialogByType();
+    }
+
+    public void ChangeCarTalkOnMaximized(string dialog)
+    {
+        maximizeTalkText.text = dialog;
+    }
+
     public void MaximizeButton()
     {
         if (nowTabletType != TabletType.Main)
@@ -149,6 +162,7 @@ public class TabletCariManager : MonoBehaviour
 
     void RouteButtonActiveFalse()
     {
+        buttonBundle.SetActive(false);
         for (int i = 0; i < maximizeButtonObjectArray.Length; i++)
         {
             maximizeButtonObjectArray[i].SetActive(false);

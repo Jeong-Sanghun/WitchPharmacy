@@ -10,7 +10,7 @@
             "typeString": "Dialog",
             "actionKeyword": "VisitorBallonGlow",
             "actionKeywordParameter": "4",
-            "dialog": "영감님의 이야기를 유심히 듣고 어떤 속성에서 문제가 생겼는지 유추해봐요!"
+            "dialog": "영감님의 이야기를 유심히 듣고 어떤 ^bold^속성^boldEnd^에서 문제가 생겼는지 유추해봐요!"
         },
         {
             "typeString": "VisitorDialog",
@@ -59,7 +59,7 @@
             "characterString": "Cari",
             "actionKeyword": "RightPageGlow",
             "actionKeywordParameter": "1",
-            "dialog": "음… 이 페이지에 물고기 관련된 것은 안보이네요.\n다음 페이지로 넘겨보실래요? 오른쪽 페이지를 터치하면 다음 장으로 넘길 수 있어요."
+            "dialog": "음… 이 페이지에 물고기 관련된 것은 안보이네요.\n다음 페이지로 넘겨보실래요? ^bold^오른쪽 페이지를 터치하면 다음 장으로 넘길 수 있어요.^boldEnd^"
         },
         {
             "typeString": "Dialog",
@@ -67,12 +67,12 @@
             "feelingString": "talk",
             "actionKeyword": "EffectIconGlow",
             "actionKeywordParameter": "2",
-            "dialog": "여기 있네요! 물고기!\n자, 그럼 속성을 확인해보면.."
+            "dialog": "여기 있네요! 물고기!\n자, 그럼 ^bold^속성^boldEnd^을 확인해보면.."
         },
         {
             "typeString": "Dialog",
             "characterString": "Cari",
-            "dialog": "물++속성이네요.\n손님은 물 속성이 과잉이어서 저런 증상이 나타나게 된 것이었네요"
+            "dialog": "^bold^물++속성이네요.^boldEnd^\n손님은 물 속성이 과잉이어서 저런 증상이 나타나게 된 것이었네요"
         },
         {
             "typeString": "Dialog",
@@ -137,7 +137,7 @@
         {
             "typeString": "Dialog",
             "feelingString": "grin",
-            "dialog": "맞아요! 증상과 반대되는 속성의 약을 드려야 하니, \n물++의 반대인 물--속성의 약을 드려야 합니다."
+            "dialog": "맞아요! ^bold^증상과 반대되는 속성^boldEnd^의 약을 드려야 하니, \n물++의 반대인 물--속성의 약을 드려야 합니다."
         },
         {
             "typeString": "Dialog",
@@ -153,7 +153,7 @@
             "feelingString": "talk",
             "actionKeyword": "RoomSymptomChartGlow",
             "actionKeywordParameter": "1",
-            "dialog": "우선 어떤 속성의 약을 만들어야하는지 다시 확인해볼까요?\n증상기록지를 열어 다시 확인해봐요!"
+            "dialog": "우선 어떤 속성의 약을 만들어야하는지 다시 확인해볼까요?\n^bold^증상기록지^boldEnd^를 열어 다시 확인해봐요!"
         },
         {
             "typeString": "Dialog",
@@ -193,7 +193,7 @@
         {
             "typeString": "Dialog",
             "characterString": "Cari",
-            "dialog": "약재들은 각각 두 가지 속성을 가지고 있어요. \n메마른 열망 약재를 한 번 확인해볼까요?"
+            "dialog": "약재들은 각각 두 가지 속성을 가지고 있어요. \n^bold^메마른 열망^boldEnd^ 약재를 한 번 확인해볼까요?"
         },
         {
             "typeString": "Dialog",
@@ -212,13 +212,13 @@
             "typeString": "Dialog",
             "characterString": "Cari",
             "feelingString": "talk",
-            "dialog": "약의 속성은 들어간 약재의 속성을 모두 합한 것으로 결정됩니다.\n따라서 여기에 다른 약재를 넣어 필요없는 속성을 없앨 수 있겠죠!"
+            "dialog": "약의 속성은 들어간 약재의 속성을 ^bold^모두 합한 것^boldEnd^으로 결정됩니다.\n따라서 여기에 다른 약재를 넣어 필요없는 속성을 없앨 수 있겠죠!"
         },
         {
             "typeString": "Dialog",
             "characterString": "Cari",
             "feelingString": "grin",
-            "dialog": "그렇다면 물- 불++ 속성을 가진 메마른 열망 약재에\n어떤 속성의 약재를 넣어야 물--속성의 약이 만들어질까요?",
+            "dialog": "그렇다면 ^bold^물- 불++ 속성^boldEnd^을 가진 메마른 열망 약재에\n^bold^어떤 속성의 약재^boldEnd^를 넣어야 물--속성의 약이 만들어질까요?",
             "routeFirst": "물- 불--",
             "routeSecond": "물+ 불--",
             "routeThird": "불+ 물--",
@@ -238,7 +238,7 @@
             "typeString": "Dialog",
             "characterString": "Cari",
             "feelingString": "grin",
-            "dialog": "맞습니다! 물- 불++ 속성의 약재와 물- 불-- 속성의 약재를 더하면 물--속성의 약이 만들어집니다."
+            "dialog": "맞습니다! ^bold^물- 불++ 속성^boldEnd^의 약재와 ^bold^물- 불-- 속성^boldEnd^의 약재를 더하면 ^bold^물--속성^boldEnd^의 약이 만들어집니다."
         },
         {
             "typeString": "Dialog",
@@ -256,14 +256,14 @@
             "characterString": "Cari",
             "actionKeyword": "AddDesireGlow",
             "actionKeywordParameter": "1",
-            "dialog": "우선 메마른 열망 약재를 드래그해서 가마솥에 넣어봅시다."
+            "dialog": "우선 ^bold^메마른 열망^boldEnd^ 약재를 드래그해서 가마솥에 넣어봅시다."
         },
         {
             "typeString": "Dialog",
             "characterString": "Cari",
             "actionKeyword": "AddFrostGlow",
             "actionKeywordParameter": "1",
-            "dialog": "이제 물- 불--속성을 가진 사막의 서리 약재를 넣어봐요!"
+            "dialog": "이제 ^bold^물- 불--속성^boldEnd^을 가진 ^bold^사막의 서리^boldEnd^ 약재를 넣어봐요!"
         },
         {
             "typeString": "Dialog",
@@ -289,14 +289,14 @@
             "typeString": "Dialog",
             "characterString": "Cari",
             "feelingString": "talk",
-            "dialog": "가마솥 위의 약이나 약재를 인벤토리로 드래그하면 폐기가 가능해요!"
+            "dialog": "가마솥 위의 약이나 약재를 ^bold^인벤토리로 드래그하면 폐기^boldEnd^가 가능해요!"
         },
         {
             "typeString": "Dialog",
             "characterString": "Cari",
             "feelingString": "talk",
             "actionKeyword": "ImageDown",
-            "dialog": "단, 약재값은 환불되지 않으니 주의하세요!"
+            "dialog": "단, 약재값은 ^bold^환불되지 않으니^boldEnd^ 주의하세요!"
         },
         {
             "typeString": "Dialog",
