@@ -118,6 +118,7 @@ public class TabletManager : MonoBehaviour
     public void OnHomeButton()
     {
         wholeTabletParent.SetActive(true);
+        MenuCanvasActive(true);
         tabletCariManager.ChangeTabletType(TabletType.Main);
         tabletBillManager.WholeButtonOff();
         tabletDocumentManager.WholeButtonOff();

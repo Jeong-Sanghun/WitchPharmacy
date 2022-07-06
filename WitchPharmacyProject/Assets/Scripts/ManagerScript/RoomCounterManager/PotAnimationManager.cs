@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Coffee.UIEffects;
 
 public class PotAnimationManager : MonoBehaviour
@@ -14,12 +15,24 @@ public class PotAnimationManager : MonoBehaviour
     UIGradient gradient;
     [SerializeField]
     UIGradient bottleGradient;
+    bool[] potGradientWhiteArray;
     [SerializeField]
     GameObject stopPotFront;
     [SerializeField]
     GameObject movingPotFront;
     [SerializeField]
     Color[] symptomColorArray;
+    Image potImage;
+
+    private void Start()
+    {
+        potGradientWhiteArray = new bool[3];
+        for(int i = 0; i < potGradientWhiteArray.Length; i++)
+        {
+            potGradientWhiteArray[i] = false;
+        }
+        potImage = gradient.gameObject.GetComponent<Image>();
+    }
 
 
     public void PotWorldAnimation(bool active)
@@ -66,7 +79,7 @@ public class PotAnimationManager : MonoBehaviour
         //    b += texColors[i].b;
 
         //}
-
+        Debug.Log("쎗컬러");
         //Color32 color = new Color32((byte)(r*1.2f / totalWithoutAlpha), (byte)(g*1.2f / totalWithoutAlpha), (byte)(b*1.2f / totalWithoutAlpha), 255);
         Color color;
         int arrayIndex = (int)symptom * 2;
@@ -74,6 +87,20 @@ public class PotAnimationManager : MonoBehaviour
         {
             arrayIndex++;
         }
+        bool isWholeWhite = true;
+        for(int i = 0; i < potGradientWhiteArray.Length; i++)
+        {
+            if (potGradientWhiteArray[i])
+            {
+                isWholeWhite = false;
+                break;
+            }
+        }
+        if (isWholeWhite == true)
+        {
+            potImage.color = new Color(1, 1, 1, 1);
+        }
+        potGradientWhiteArray[index] = true;
         color = symptomColorArray[arrayIndex];
         switch (index)
         {
@@ -90,10 +117,14 @@ public class PotAnimationManager : MonoBehaviour
                 gradient.color3 = color;
                 break;
         }
+            bottleGradient.color4 = new Color(1, 1, 1, 1);
+        gradient.color4 = new Color(1, 1, 1, 1);
     }
 
     public void UnSetPotColor(int index,bool bottle)
     {
+        Debug.Log("언쎗컬러");
+        potGradientWhiteArray[index] = false;
         switch (index)
         {
             case 0:
@@ -111,6 +142,19 @@ public class PotAnimationManager : MonoBehaviour
                     bottleGradient.color3 = Color.white;
                 gradient.color3 = Color.white;
                 break;
+        }
+        bool isWholeWhite = true;
+        for (int i = 0; i < potGradientWhiteArray.Length; i++)
+        {
+            if (potGradientWhiteArray[i])
+            {
+                isWholeWhite = false;
+                break;
+            }
+        }
+        if (isWholeWhite == true)
+        {
+            potImage.color = new Color(1, 1, 1, 0);
         }
     }
 

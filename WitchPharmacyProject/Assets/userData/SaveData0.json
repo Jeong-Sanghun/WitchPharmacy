@@ -84,11 +84,12 @@
         "firstDay",
         "firstDay",
         "firstDay",
+        "firstDay",
         "firstDay"
     ],
     "readSpecialVisitorBundleList": [],
     "nextStory": "firstDay",
-    "nowSceneIndex": 6,
+    "nowSceneIndex": 8,
     "nowRegion": 0,
     "forcedRegion": "",
     "nowBossFile": ""
