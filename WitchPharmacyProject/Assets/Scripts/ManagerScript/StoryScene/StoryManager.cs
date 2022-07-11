@@ -107,7 +107,31 @@ public class StoryManager : MonoBehaviour
     //string nextStory;
     // Start is called before the first frame update
 
-    void Update(){if (Input.GetKey(KeyCode.LeftControl)){ OnTouchScreen(); }} //JH 22.05.16 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            OnTouchScreen();
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("에이눌림");
+            for(int i = 0; i < characterSprite.Length; i++)
+            {
+                ShaderEffecter.SetShaderEffectActive(characterSprite[i].gameObject, "HOLOGRAM_ON", true);
+            }
+            
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Debug.Log("비눌림");
+            for (int i = 0; i < characterSprite.Length; i++)
+            {
+                ShaderEffecter.SetShaderEffectActive(characterSprite[i].gameObject, "HOLOGRAM_ON", false);
+            }
+        }
+    }
+    //JH 22.05.16 
     // 미안하다 상훈아 스킵 업데이트문 하나만 추가좀 하자 스토리에서 Ctrl좀 꾹 눌러보지 않으련
 
     void Start()

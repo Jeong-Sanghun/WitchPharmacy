@@ -12,7 +12,7 @@ namespace AllIn1SpriteShader
 {
     [ExecuteInEditMode]
     [DisallowMultipleComponent]
-    [AddComponentMenu("AllIn1SpriteShader/AddAllIn1Shader")]
+    //[AddComponentMenu("AllIn1SpriteShader/AddAllIn1Shader")]
     public class AllIn1Shader : MonoBehaviour
     {
         public enum ShaderTypes
@@ -27,7 +27,7 @@ namespace AllIn1SpriteShader
 
         private Material currMaterial, prevMaterial;
         private bool matAssigned = false, destroyed = false;
-        private enum AfterSetAction { Clear, CopyMaterial, Reset};
+        private enum AfterSetAction { Clear, CopyMaterial, Reset };
 
         [Range(1f, 20f)] public float normalStrength = 5f;
         [Range(0f, 3f)] public int normalSmoothing = 1;
@@ -37,7 +37,7 @@ namespace AllIn1SpriteShader
         private static float timeLastReload = -1f;
         private void Start()
         {
-            if(timeLastReload < 0) timeLastReload = Time.time;
+            if (timeLastReload < 0) timeLastReload = Time.time;
         }
 
         private void Update()
@@ -65,6 +65,11 @@ namespace AllIn1SpriteShader
             }
         }
 #endif
+
+        public Material GetMaterial()
+        {
+            return currMaterial;
+        }
 
         private void MakeNewMaterial(bool getShaderTypeFromPrefs, string shaderName = "AllIn1SpriteShader")
         {
@@ -263,15 +268,21 @@ namespace AllIn1SpriteShader
             SetSceneDirty();
         }
 
-        private void SetKeyword(string keyword, bool state = false)
+        public void SetKeyword(string keyword, bool state = false)
         {
-            if (destroyed) return;
+            if (destroyed)
+            {
+
+                Debug.Log("디스트로이드");
+                return;
+            }
             if (currMaterial == null)
             {
                 FindCurrMaterial();
                 if (currMaterial == null)
                 {
                     MissingRenderer();
+                    Debug.Log("미씽");
                     return;
                 }
             }
